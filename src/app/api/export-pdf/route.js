@@ -19,19 +19,23 @@ export async function POST(req) {
     const texFilePath = path.join(tempDir, texFileName);
     const pdfFilePath = path.join(tempDir, pdfFileName);
 
-    // 2. Generate LaTeX String (This replaces your Python script!)
+    // 2. Generate LaTeX String
     let latex = `\\documentclass[12pt]{exam}
 \\usepackage[utf8]{inputenc}
 \\usepackage{amsmath, amssymb}
 \\usepackage{graphicx}
 \\usepackage[export]{adjustbox}
-\\usepackage[margin=1in, landscape]{geometry}
+\\usepackage[margin=0.5in, landscape]{geometry} % FIX 2: Margins halved to 0.5 inches
 \\usepackage{multicol}
 \\usepackage{listings}
 \\usepackage{xcolor}
 
 \\pagecolor{black}
 \\color{white}
+
+% FIX 3: Force remove all page numbers from the bottom
+\\pagestyle{empty} 
+\\cfoot{}
 
 \\lstset{
     basicstyle=\\ttfamily\\small\\color{white},
@@ -52,16 +56,27 @@ export async function POST(req) {
 `;
 
     questions.forEach(q => {
-        let qText = q.text.replace(/_{3,}/g, '\\rule{2cm}{0.4pt}').replace(/[\u00A0\u2000-\u200B\u202F\u205F\u3000]/g, ' ');
+        // Scrub invisible characters and underscores
+        let qText = q.text.trim()
+            .replace(/_{3,}/g, '\\rule{2cm}{0.4pt}')
+            .replace(/[\u00A0\u2000-\u200B\u202F\u205F\u3000]/g, ' ');
+            
+        // FIX 1: Safely convert Textbox Newlines to LaTeX Newlines
+        // We split by $$ to ensure we DON'T put \newline inside block equations, which would crash LaTeX.
+        let textParts = qText.split('$$');
+        for (let i = 0; i < textParts.length; i++) {
+            if (i % 2 === 0) { // If it's normal text (outside $$ math blocks)
+                textParts[i] = textParts[i].replace(/\r?\n/g, '\\newline\n');
+            }
+        }
+        qText = textParts.join('$$');
         
         latex += "\\begin{multicols*}{2}\n";
 
-        // Image handling logic (Assuming images are in the public folder)
+        // Image handling logic 
         const imageList = q.diagram ? q.diagram.split(',').map(s => s.trim()).filter(Boolean) : [];
         imageList.forEach((imgName, i) => {
             if (!imgName) return;
-            // Note: pdflatex needs absolute or relative paths from the compilation folder. 
-            // We map it to your Next.js public folder.
             const imgPath = path.join(process.cwd(), 'public', subject, chapter, `${imgName}${q.ext}`).replace(/\\/g, '/');
             const latexImg = `\n\\begin{center}\n\\includegraphics[max width=0.9\\linewidth, keepaspectratio]{"${imgPath}"}\n\\end{center}\n`;
 
@@ -90,7 +105,8 @@ export async function POST(req) {
                 const imgPath = path.join(process.cwd(), 'public', subject, chapter, `${imgName}${q.ext}`).replace(/\\/g, '/');
                 return `\\includegraphics[width=0.4\\linewidth, valign=c]{"${imgPath}"}`;
             }
-            return opt;
+            // Apply the newline fix to options as well just in case
+            return opt.replace(/\r?\n/g, '\\newline\n');
         };
 
         if (hasOptions) {
@@ -112,7 +128,7 @@ export async function POST(req) {
     // 3. Write LaTeX to file
     await fs.writeFile(texFilePath, latex, 'utf8');
 
-    // 4. Run pdflatex command (WILL ONLY WORK ON LOCALHOST!)
+    // 4. Run pdflatex command (Localhost)
     try {
         await execAsync(`pdflatex -interaction=nonstopmode -output-directory="${tempDir}" "${texFilePath}"`);
     } catch (pdflatexError) {

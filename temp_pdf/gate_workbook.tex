@@ -3,13 +3,17 @@
 \usepackage{amsmath, amssymb}
 \usepackage{graphicx}
 \usepackage[export]{adjustbox}
-\usepackage[margin=1in, landscape]{geometry}
+\usepackage[margin=0.5in, landscape]{geometry} % FIX 2: Margins halved to 0.5 inches
 \usepackage{multicol}
 \usepackage{listings}
 \usepackage{xcolor}
 
 \pagecolor{black}
 \color{white}
+
+% FIX 3: Force remove all page numbers from the bottom
+\pagestyle{empty} 
+\cfoot{}
 
 \lstset{
     basicstyle=\ttfamily\small\color{white},
@@ -22,7 +26,7 @@
 
 \begin{document}
 \begin{center}
-\LARGE \textbf{GATE CSE: 5. Operating Systems - 6. Miscellaneous}
+\LARGE \textbf{GATE CSE: 1. Discrete Maths - 2. Set Theory and Algebra}
 \end{center}
 \vspace{0.5cm}
 
@@ -30,12 +34,138 @@
 \begin{multicols*}{2}
 
 \question {\small \textbf{[GATE 1995 | 1 Mark]}} \\[0.2cm]
-{\Large A linker is given object modules for a set of programs that were compiled separately. What information need to be included in an object module?}
+{\Large Let R be a symmetric and transitive relation on a set A. Then}
 \begin{choices}
-  \choice Object code
-  \choice Relocation bits
-  \choice Names and locations of all external symbols defined in the object module
-  \choice Absolute addresses of internal symbols
+  \choice R is reflexive and hence an equivalence relation
+  \choice R is reflexive and hence a partial order
+  \choice R is reflexive and hence not an equivalence relation
+  \choice None of the above
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 1995 | 1 Mark]}} \\[0.2cm]
+{\Large The number of elements in the power set P(S) of the set $S = \{(\phi), 1, (2, 3)\}$ is:}
+\begin{choices}
+  \choice 2
+  \choice 4
+  \choice 8
+  \choice None of these
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 1995 | 2 Mark]}} \\[0.2cm]
+{\Large Let A be the set of all nonsingular matrices over real numbers and let $*$ be the matrix multiplication operator. Then}
+\begin{choices}
+  \choice A is closed under $*$ but $\langle A, *\rangle$ is not a semigroup.
+  \choice $\langle A, *\rangle$ is a semigroup but not a monoid.
+  \choice $\langle A, *\rangle$ is a monoid but not a group.
+  \choice $\langle A, *\rangle$ is a group but not an abelian group
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 1996 | 1 Mark]}} \\[0.2cm]
+{\Large Let A and B be sets and let $A^c$ and $B^c$ denote the complements of the sets A and B. The set $(A - B) \cup (B - A) \cup (A \cap B)$ is equal to}
+\begin{choices}
+  \choice $A \cup B$
+  \choice $A^c \cup B^c$
+  \choice $A \cap B$
+  \choice $A^c \cap B^c$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 1996 | 1 Mark]}} \\[0.2cm]
+{\Large Let $X = \{2, 3, 6, 12, 24\}$. Let $\leq$ be the partial order defined by $x \leq y$ if $x$ divides $y$. The number of edges in the Hasse diagram of $(X, \leq)$ is}
+\begin{choices}
+  \choice 3
+  \choice 4
+  \choice 9
+  \choice None of these
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 1996 | 1 Mark]}} \\[0.2cm]
+{\Large Suppose X and Y are sets and $|X|$ and $|Y|$ are their respective cardinalities. It is given that there are exactly 97 functions from X to Y. From this one can conclude that}
+\begin{choices}
+  \choice $|X| = 1, |Y| = 97$
+  \choice $|X| = 97, |Y| = 1$
+  \choice $|X| = 97, |Y| = 97$
+  \choice None of the above
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 1996 | 1 Mark]}} \\[0.2cm]
+{\Large Which of the following statements is false?}
+\begin{choices}
+  \choice The set of rational numbers is an abelian group under addition
+  \choice The set of integers in an abelian group under addition
+  \choice The set of rational numbers form an abelian group under multiplication
+  \choice The set of real numbers excluding zero in an abelian group under multiplication
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 1996 | 2 Mark]}} \\[0.2cm]
+{\Large Let R denote the set of real numbers. Let $f: R \times R \rightarrow R \times R$ be a bijective function defined by $f(x, y) = (x + y,\ x - y)$. The inverse function of $f$ is given by}
+\begin{choices}
+  \choice $f^{-1}(x, y) = \left(\dfrac{1}{x+y}, \dfrac{1}{x-y}\right)$
+  \choice $f^{-1}(x, y) = (x - y,\ x + y)$
+  \choice $f^{-1}(x, y) = \left(\dfrac{x+y}{2}, \dfrac{x-y}{2}\right)$
+  \choice $f^{-1}(x, y) = (2(x - y),\ 2(x + y))$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 1996 | 2 Mark]}} \\[0.2cm]
+{\Large Let R be a non-empty relation on a collection of sets defined by $A\,R\,B$ if and only if $A \cap B = \phi$. Then, (pick the true statement)}
+\begin{choices}
+  \choice R is reflexive and transitive
+  \choice R is symmetric and not transitive
+  \choice R is an equivalence relation
+  \choice R is not reflexive and not symmetric
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 1996 | 2 Mark]}} \\[0.2cm]
+{\Large Which one of the following is false?}
+\begin{choices}
+  \choice The set of all bijective functions on a finite set forms a group under function composition.
+  \choice The set $\{1, 2, ..., p-1\}$ forms a group under multiplication mod p where p is a prime number.
+  \choice The set of all strings over a finite alphabet $\Sigma$ forms a group under concatenation.
+  \choice A subset $s \neq \phi$ of G is a subgroup of the group $\langle G, *\rangle$ if and only if for any pair of elements $a, b \in s$, $a * b^{-1} \in s$.
 \end{choices}
 
 \end{multicols*}
@@ -44,12 +174,12 @@
 \begin{multicols*}{2}
 
 \question {\small \textbf{[GATE 1997 | 1 Mark]}} \\[0.2cm]
-{\Large When an interrupt occurs, an operating system}
+{\Large The number of equivalence relations on the set $\{1, 2, 3, 4\}$ is}
 \begin{choices}
-  \choice ignores the interrupt
-  \choice always changes state of interrupted process after processing the interrupt
-  \choice always resumes execution of interrupted process after processing the interrupt
-  \choice may change state of interrupted process to ‘blocked’ and schedule another process
+  \choice 15
+  \choice 16
+  \choice 24
+  \choice 4
 \end{choices}
 
 \end{multicols*}
@@ -57,13 +187,13 @@
 \newpage
 \begin{multicols*}{2}
 
-\question {\small \textbf{[GATE 2005 | 1 Mark]}} \\[0.2cm]
-{\Large A user level process in Unix traps the signal sent on a Ctrl-C input, and has a signal handling routine that saves appropriate files before terminating the process. When a Ctrl-C input is given to this process, what is the mode in which the signal handling routine executes?}
+\question {\small \textbf{[GATE 1998 | 1 Mark]}} \\[0.2cm]
+{\Large Suppose $A$ is a finite set with $n$ elements. The number of elements in the Largest equivalence relation of $A$ is}
 \begin{choices}
-  \choice kernel mode
-  \choice super user mode
-  \choice privileged mode
-  \choice user mode
+  \choice $n$
+  \choice $n^2$
+  \choice $1$
+  \choice $n + 1$
 \end{choices}
 
 \end{multicols*}
@@ -71,18 +201,13 @@
 \newpage
 \begin{multicols*}{2}
 
-\question {\small \textbf{[GATE 2005 | 1 Mark]}} \\[0.2cm]
-{\Large A student wishes to create symbolic links in a computer system running Unix. Three text files named “file1”, “file2” and “file3” exist in her current working directory, and the student has read and write permissions for all three files. Assume that file1 contains information about her hobbies, file2 contains information about her friends and file3 contains information about her courses. The student executes the following sequence of commands from her current working directory. Which of the following types of information would be lost from her file system? I. Hobbies II. Friends III. Courses}
-
-\begin{lstlisting}
-ln -s file1 file2
-ln -s file2 file3
-\end{lstlisting}
+\question {\small \textbf{[GATE 1998 | 1 Mark]}} \\[0.2cm]
+{\Large Let $R_1$ and $R_2$ be two equivalence relations on a set. Consider the following assertions: (i) $R_1 \cup R_2$ is an equivalence relation (ii) $R_1 \cap R_2$ is an equivalence relation Which of the following is correct?}
 \begin{choices}
-  \choice I and II only
-  \choice II and III only
-  \choice II only
-  \choice I and III only
+  \choice both assertions are true
+  \choice assertion (i) is true but assertion (ii) is not true
+  \choice assertion (ii) is true but assertion (i) is not true
+  \choice neither (i) nor (ii) is true
 \end{choices}
 
 \end{multicols*}
@@ -90,13 +215,13 @@ ln -s file2 file3
 \newpage
 \begin{multicols*}{2}
 
-\question {\small \textbf{[GATE 2005 | 1 Mark]}} \\[0.2cm]
-{\Large The shell command find . -name passwd -print is executed in /etc directory of a computer system running Unix. Which of the following shell commands will give the same information as the above command when executed in the same directory?}
+\question {\small \textbf{[GATE 1998 | 1 Mark]}} \\[0.2cm]
+{\Large The number of functions from an $m$ element set to an $n$ element set is}
 \begin{choices}
-  \choice ls passwd
-  \choice cat passwd
-  \choice grep name passwd
-  \choice grep print passwd
+  \choice $m + n$
+  \choice $m^n$
+  \choice $n^m$
+  \choice $m * n$
 \end{choices}
 
 \end{multicols*}
@@ -104,13 +229,119 @@ ln -s file2 file3
 \newpage
 \begin{multicols*}{2}
 
-\question {\small \textbf{[GATE 2007 | 2 Mark]}} \\[0.2cm]
-{\Large Consider n jobs $J_1, J_2, \ldots, J_n$ such that job $J_i$ has execution time $t_i$ and a non-negative integer weight $w_i$. The weighted mean completion time of the jobs is defined to be $\frac{\sum_{i=1}^{n} w_i T_i}{\sum_{i=1}^{n} w_i}$ where $T_i$ is the completion time of job $J_i$. Assuming that there is only one processor available, in what order must the jobs be executed in order to minimize the weighted mean completion time of the jobs?}
+\question {\small \textbf{[GATE 1998 | 2 Mark]}} \\[0.2cm]
+{\Large The binary relation $R = {(1, 1), (2, 1), (2, 2), (2, 3), (2, 4), (3, 1), (3, 2), (3, 3), (3, 4)}$ on the set $A = {1, 2, 3, 4}$ is}
 \begin{choices}
-  \choice Non-decreasing order of $t_i$
-  \choice Non-increasing order of $w_i$
-  \choice Non-increasing order of $w_i t_i$
-  \choice Non-increasing order of $\frac{w_i}{t_i}$
+  \choice Reflexive, symmetric and transitive
+  \choice Neither reflexive, nor irreflexive but transitive
+  \choice Irreflexive, symmetric and transitive
+  \choice Irreflexive and antisymmetric
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 1998 | 2 Mark]}} \\[0.2cm]
+{\Large Suppose $A = {a, b, c, d}$ and $\Pi_1$ is the following partition of $A$ $$\Pi_1 = {{a, b, c}, {d}}$$ (a) List the ordered pairs of the equivalence relations induced by $\Pi_1$ (b) Draw the graph of the above equivalence relation}
+
+\vspace{0.5cm}
+\textbf{Answer:} \rule{3cm}{0.4pt}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 1998 | 2 Mark]}} \\[0.2cm]
+{\Large Let $(A, *)$ be a semigroup. Furthermore, for every $a$ and $b$ in $A$, if $a \ne b$, then $a * b \ne b * a$. (a) Show that for every $a$ in $A$ $$a * a = a$$ (b) Show that for every $a, b$ in $A$ $$a * b * a = a$$ (c) Show that for every $a, b, c$ in $A$ $$a * b * c = a * c$$}
+
+\vspace{0.5cm}
+\textbf{Answer:} \rule{3cm}{0.4pt}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 1999 | 1 Mark]}} \\[0.2cm]
+{\Large The number of binary relations on a set with $n$ elements is}
+\begin{choices}
+  \choice $n^2$
+  \choice $2n$
+  \choice $2^{n^2}$
+  \choice None of these
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 1999 | 2 Mark]}} \\[0.2cm]
+{\Large Mr. X claims the following: If a relation $R$ is both symmetric and transitive, then $R$ is reflexive. For this, Mr. X offers the following proof. "From $xRy$, using symmetry we get $yRx$. Now because $R$ is transitive, $xRy$ and $yRx$ together imply $xRx$. Therefore, $R$ is reflexive." Briefly point out the flaw in Mr. X's proof. (b) Give an example of a relation $R$ which is symmetric and transitive but not reflexive.}
+
+\vspace{0.5cm}
+\textbf{Answer:} \rule{3cm}{0.4pt}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2000 | 2 Mark]}} \\[0.2cm]
+{\Large A relation $R$ is defined on the set of integers as $xRy$ iff $(x + y)$ is even. Which of the following statements is true?}
+\begin{choices}
+  \choice $R$ is not an equivalence relation
+  \choice $R$ is an equivalence relation having $1$ equivalence class
+  \choice $R$ is an equivalence relation having $2$ equivalence classes
+  \choice $R$ is an equivalence relation having $3$ equivalence classes
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2000 | 2 Mark]}} \\[0.2cm]
+{\Large Let $P(S)$ denote the power set of a set $S$. Which of the following is always true?}
+\begin{choices}
+  \choice $P(P(S)) = P(S)$
+  \choice $P(S) \cap P(P(S)) = \{ \phi \} $
+  \choice $P(S) \cap S = P(S)$
+  \choice $S \notin P(S)$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2001 | 1 Mark]}} \\[0.2cm]
+{\Large Consider the following relations: $R_1(a, b)$ iff $(a + b)$ is even over the set of integers $R_2(a, b)$ iff $(a + b)$ is odd over the set of integers $R_3(a, b)$ iff $ab > 0$ over the set of non-zero rational numbers $R_4(a, b)$ iff $|a - b| \le 2$ over the set of natural numbers Which of the following statements is correct?}
+\begin{choices}
+  \choice $R_1$ and $R_2$ are equivalence relations, $R_3$ and $R_4$ are not
+  \choice $R_1$ and $R_3$ are equivalence relations, $R_2$ and $R_4$ are not
+  \choice $R_1$ and $R_4$ are equivalence relations, $R_2$ and $R_3$ are not
+  \choice $R_1, R_2, R_3$ and $R_4$ are all equivalence relations
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2001 | 2 Mark]}} \\[0.2cm]
+{\Large Consider the following statements:\newline
+$S_1$: There exist infinite sets $A, B, C$ such that $A \cap (B \cap C)$ is finite. \newline
+$S_2$: There exist two irrational numbers $x$ and $y$ such that $(x + y)$ is rational.\newline
+Which of the following is true about $S_1$ and $S_2$?}
+\begin{choices}
+  \choice Only $S_1$ is correct
+  \choice Only $S_2$ is correct
+  \choice Both $S_1$ and $S_2$ are correct
+  \choice None of $S_1$ and $S_2$ is correct
 \end{choices}
 
 \end{multicols*}
