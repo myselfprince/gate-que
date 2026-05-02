@@ -218,6 +218,35 @@ export default function Home() {
     }
   };
 
+  const handleExportPDF = async () => {
+    if (questions.length === 0) return alert("No questions to compile!");
+    
+    alert("Compiling LaTeX to PDF... This might take a few seconds.");
+    
+    try {
+      const response = await fetch('/api/export-pdf', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subject, chapter, questions })
+      });
+
+      if (!response.ok) throw new Error("PDF generation failed. Are you on Vercel?");
+
+      // Download the PDF file directly to the browser
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${subject}_${chapter}_PYQs.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    } catch (error) {
+      alert("Error generating PDF. Make sure you are running this locally and pdflatex is installed.");
+      console.error(error);
+    }
+  };
+
   // --- DATABASE, FILE HANDLING & EXPORT ---
   const saveToMongoDB = async () => {
     if (questions.length === 0) return alert("No questions to save!");
@@ -340,6 +369,9 @@ export default function Home() {
         
         {/* ACTION BUTTONS */}
         <div style={{ display: 'flex', gap: '10px', marginTop: '25px', alignItems: 'center', flexWrap: 'wrap' }}>
+          <button className="btn-export" style={{ background: '#cba6f7', color: '#11111b' }} onClick={handleExportPDF}>
+  🚀 Download PDF
+</button>
           <button className="btn-autofill" onClick={loadFromMongoDB}>📥 Revive</button>
           <button className="btn-export" style={{ background: '#a6e3a1', color: '#11111b' }} onClick={saveToMongoDB}>💾 Save DB</button>
           

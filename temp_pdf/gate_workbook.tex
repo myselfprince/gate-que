@@ -1,0 +1,121 @@
+\documentclass[12pt]{exam}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\usepackage[margin=1in, landscape]{geometry}
+\usepackage{multicol}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\pagecolor{black}
+\color{white}
+
+\lstset{
+    basicstyle=\ttfamily\small\color{white},
+    backgroundcolor=\color[rgb]{0.12,0.12,0.12},
+    frame=single,
+    rulecolor=\color{gray},
+    breaklines=true,
+    tabsize=4
+}
+
+\begin{document}
+\begin{center}
+\LARGE \textbf{GATE CSE: 5. Operating Systems - 6. Miscellaneous}
+\end{center}
+\vspace{0.5cm}
+
+\begin{questions}
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 1995 | 1 Mark]}} \\[0.2cm]
+{\Large A linker is given object modules for a set of programs that were compiled separately. What information need to be included in an object module?}
+\begin{choices}
+  \choice Object code
+  \choice Relocation bits
+  \choice Names and locations of all external symbols defined in the object module
+  \choice Absolute addresses of internal symbols
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 1997 | 1 Mark]}} \\[0.2cm]
+{\Large When an interrupt occurs, an operating system}
+\begin{choices}
+  \choice ignores the interrupt
+  \choice always changes state of interrupted process after processing the interrupt
+  \choice always resumes execution of interrupted process after processing the interrupt
+  \choice may change state of interrupted process to ‘blocked’ and schedule another process
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2005 | 1 Mark]}} \\[0.2cm]
+{\Large A user level process in Unix traps the signal sent on a Ctrl-C input, and has a signal handling routine that saves appropriate files before terminating the process. When a Ctrl-C input is given to this process, what is the mode in which the signal handling routine executes?}
+\begin{choices}
+  \choice kernel mode
+  \choice super user mode
+  \choice privileged mode
+  \choice user mode
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2005 | 1 Mark]}} \\[0.2cm]
+{\Large A student wishes to create symbolic links in a computer system running Unix. Three text files named “file1”, “file2” and “file3” exist in her current working directory, and the student has read and write permissions for all three files. Assume that file1 contains information about her hobbies, file2 contains information about her friends and file3 contains information about her courses. The student executes the following sequence of commands from her current working directory. Which of the following types of information would be lost from her file system? I. Hobbies II. Friends III. Courses}
+
+\begin{lstlisting}
+ln -s file1 file2
+ln -s file2 file3
+\end{lstlisting}
+\begin{choices}
+  \choice I and II only
+  \choice II and III only
+  \choice II only
+  \choice I and III only
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2005 | 1 Mark]}} \\[0.2cm]
+{\Large The shell command find . -name passwd -print is executed in /etc directory of a computer system running Unix. Which of the following shell commands will give the same information as the above command when executed in the same directory?}
+\begin{choices}
+  \choice ls passwd
+  \choice cat passwd
+  \choice grep name passwd
+  \choice grep print passwd
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2007 | 2 Mark]}} \\[0.2cm]
+{\Large Consider n jobs $J_1, J_2, \ldots, J_n$ such that job $J_i$ has execution time $t_i$ and a non-negative integer weight $w_i$. The weighted mean completion time of the jobs is defined to be $\frac{\sum_{i=1}^{n} w_i T_i}{\sum_{i=1}^{n} w_i}$ where $T_i$ is the completion time of job $J_i$. Assuming that there is only one processor available, in what order must the jobs be executed in order to minimize the weighted mean completion time of the jobs?}
+\begin{choices}
+  \choice Non-decreasing order of $t_i$
+  \choice Non-increasing order of $w_i$
+  \choice Non-increasing order of $w_i t_i$
+  \choice Non-increasing order of $\frac{w_i}{t_i}$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+
+\end{questions}
+\end{document}
