@@ -1,26 +1,22 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background: #1e1e2e; 
+    color: #cdd6f4; 
 }
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.card { 
+    background: #313244; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3); 
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.half-width { width: 50%; padding-right: 20px; box-sizing: border-box; border-right: 2px dashed #45475a; }
+label { display: block; margin-bottom: 6px; font-weight: bold; color: #89b4fa; margin-top: 12px; font-size: 14px; }
+input[type="text"], select, textarea { 
+    width: 100%; padding: 10px; border: 1px solid #45475a; border-radius: 4px; 
+    background: #181825; color: #cdd6f4; box-sizing: border-box; outline: none; 
 }
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+textarea.q-text { resize: vertical; min-height: 100px; font-size: 1em; line-height: 1.4; }
+textarea.code-text { min-height: 80px; font-family: monospace; }
+button { color: #11111b; border: none; padding: 12px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+.btn-export { background: #f38ba8; }
+.btn-autofill { background: #89b4fa; }
+.btn-clear { background: #f38ba8; }
