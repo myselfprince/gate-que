@@ -2,12 +2,38 @@
 
 import { useState, useEffect } from 'react';
 
+// --- SYLLABUS DATA STRUCTURE ---
+// Add, remove, or edit subjects and chapters here. The UI will automatically update.
+const GATE_SYLLABUS = {
+  "1. Discrete Maths": ["1. Mathematical Logic", "2. Set Theory and Algebra", "3. Combinatorics", "4. Graph Theory"],
+  "2. TOC": ["1. Finite Automata and Regular Languages", "2. PDA - CFL and DCFL", "3. Turing Machine, RE, REC, Undecidabilitu"],
+  "3. Computer Networks": ["1. ISO-OSI Stack and SWP", "2. LAN", "3. TCP, UDP and IP", "4. Routing and Application Layer"],
+  "4. COA": ["1. CPU Arch. and Address. Modes", "2. Control Unit Design", "3. Instructions Pipeline", "4. Memory Organization", "5. IO Organisation"],
+  "5. Operating Systems": ["1. Process Management-1", "2. Process Management-2", "3. Deadlock", "4. Mem. Mgmt and Virtual Mem", "5. File Sys and Device Mgmt", "6. Miscellaneous"],
+  "6. Data Structures": ["1. Arrays", "2. Stack and Queues", "3. Linked Lists", "4. Trees", "5. Graphs", "6. Hashing"],
+  "7. Algorithms": ["1. Algo. Analysis and Asymptotic Notations", "2. Divide and Conquer", "3. Greedy Method", "4. Dynamic Programming", "5. P and NP Concepts", "6. Miscellaneous Topics"],
+  "8. C Prog": ["1. Programming"],
+  "9. Digital Logic": ["1. Logic Functions and Minimizations", "2. Combinational Circuits", "3. Sequential Circuits", "4. Number Systems"],
+  "10. Compiler Design": ["1. Lexical Analysis", "2. Parsing Techniques", "3. Syntax Directed Translations", "4. Code Generations and Optimizatinos"],
+  "11. Engg. Maths": ["1. Probability", "2. Linear Algebra", "3. Calculus"],
+  "12. DBMS": ["1. ER Model", "2. Funcational Dependencies and Normalizaation", "3. Structure Query Language", "4. Relational Model", "5. Transactions and Concurrency Contorl", "6. File Structures"]
+};
+
 export default function Home() {
   const [questions, setQuestions] = useState([]);
   const [bulkText, setBulkText] = useState("");
-  const [subject, setSubject] = useState("digital-logic");
-  const [chapter, setChapter] = useState("chapter-1");
-  const [availableChapters, setAvailableChapters] = useState([]);
+  
+  // Set default states based on the first item in the syllabus dictionary
+  const availableSubjects = Object.keys(GATE_SYLLABUS);
+  const [subject, setSubject] = useState(availableSubjects[0]);
+  const [chapter, setChapter] = useState(GATE_SYLLABUS[availableSubjects[0]][0]);
+
+  // Handle Dropdown Changes to keep them linked
+  const handleSubjectChange = (e) => {
+    const selectedSubject = e.target.value;
+    setSubject(selectedSubject);
+    setChapter(GATE_SYLLABUS[selectedSubject][0]); // Auto-select first chapter of new subject
+  };
 
   // Load MathJax Script dynamically
   useEffect(() => {
@@ -23,23 +49,6 @@ export default function Home() {
       },
       startup: { typeset: false }
     };
-  }, []);
-
-  useEffect(() => {
-    fetch('/api/chapters')
-      .then(async res => {
-        if (!res.ok) {
-          const text = await res.text();
-          throw new Error(`API Error ${res.status}: ${text}`);
-        }
-        return res.json();
-      })
-      .then(data => {
-        if (data && data.success) setAvailableChapters(data.data);
-      })
-      .catch(err => {
-        console.error("Failed to load chapters on startup:", err);
-      });
   }, []);
 
   useEffect(() => {
@@ -122,7 +131,6 @@ export default function Home() {
     setQuestions([...questions, ...newQuestions]);
     setBulkText("");
     
-    // Auto-scroll to the bottom after pasting so you can see the new questions
     setTimeout(() => {
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }, 100);
@@ -177,9 +185,6 @@ export default function Home() {
       const data = await res.json();
       if (data.success) {
         alert(`${questions.length} questions saved to MongoDB (${subject} -> ${chapter})!`);
-        const fetchRes = await fetch('/api/chapters');
-        const fetchInfo = await fetchRes.json();
-        if (fetchInfo.success) setAvailableChapters(fetchInfo.data);
       } else {
          alert("Error saving to DB: " + data.error);
       }
@@ -190,7 +195,7 @@ export default function Home() {
 
   const loadFromMongoDB = async () => {
     try {
-      const res = await fetch(`/api/chapters?subject=${subject}&chapter=${chapter}`);
+      const res = await fetch(`/api/chapters?subject=${encodeURIComponent(subject)}&chapter=${encodeURIComponent(chapter)}`);
       const data = await res.json();
       if (data.success && data.data) {
         setQuestions(data.data.questions);
@@ -235,7 +240,6 @@ export default function Home() {
     e.target.value = null; 
   };
 
-  // The missing JSON Export Function for the Python Script
   const exportToJSON = () => {
     if (questions.length === 0) {
         alert("No questions to export!");
@@ -273,15 +277,23 @@ export default function Home() {
       {/* HEADER / NAVIGATION */}
       <div className="card" style={{ display: 'flex', gap: '20px', alignItems: 'center', marginBottom: '20px', padding: '15px' }}>
         <div style={{ flex: 1 }}>
-          <label>Subject Folder Name</label>
-          <input type="text" value={subject} onChange={e => setSubject(e.target.value)} placeholder="e.g. digital-logic" />
+          <label>Subject</label>
+          <select value={subject} onChange={handleSubjectChange} style={{ cursor: 'pointer' }}>
+            {availableSubjects.map(sub => (
+              <option key={sub} value={sub}>{sub}</option>
+            ))}
+          </select>
         </div>
         <div style={{ flex: 1 }}>
-          <label>Chapter Folder Name</label>
-          <input type="text" value={chapter} onChange={e => setChapter(e.target.value)} placeholder="e.g. chapter-1" />
+          <label>Chapter</label>
+          <select value={chapter} onChange={(e) => setChapter(e.target.value)} style={{ cursor: 'pointer' }}>
+            {GATE_SYLLABUS[subject].map(chap => (
+              <option key={chap} value={chap}>{chap}</option>
+            ))}
+          </select>
         </div>
         
-        {/* ACTION BUTTONS (Added Export Button Here) */}
+        {/* ACTION BUTTONS */}
         <div style={{ display: 'flex', gap: '10px', marginTop: '25px', alignItems: 'center', flexWrap: 'wrap' }}>
           <button className="btn-autofill" onClick={loadFromMongoDB}>📥 Revive</button>
           <button className="btn-export" style={{ background: '#a6e3a1', color: '#11111b' }} onClick={saveToMongoDB}>💾 Save DB</button>
@@ -291,7 +303,6 @@ export default function Home() {
             <input type="file" accept=".json" onChange={handleFileUpload} style={{ display: 'none' }} />
           </label>
           
-          {/* THE RETURN OF THE EXPORT BUTTON */}
           <button className="btn-export" style={{ background: '#f9e2af', color: '#11111b' }} onClick={exportToJSON}>
             📤 Export JSON (For Python)
           </button>
@@ -364,8 +375,7 @@ export default function Home() {
                     <div>
                       <label>Images (Comma Separated)</label>
                       <div className="input-group" style={{ display: 'flex' }}>
-                        <span style={{ fontSize: '12px', padding: '10px 5px' }}>/{chapter}/</span>
-                        <input type="text" value={q.diagram} onChange={(e) => updateQ(q.id, 'diagram', e.target.value)} placeholder="e.g. 1a, 1b" />
+                        <input type="text" value={q.diagram} onChange={(e) => updateQ(q.id, 'diagram', e.target.value)} placeholder="e.g. 1a, 1b" style={{ borderRadius: '4px 0 0 4px' }}/>
                         <select value={q.ext} onChange={(e) => updateQ(q.id, 'ext', e.target.value)} style={{ width: '60px' }}>
                           <option value=".png">.png</option>
                           <option value=".jpg">.jpg</option>
