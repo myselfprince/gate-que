@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 
 // --- SYLLABUS DATA STRUCTURE ---
-// Add, remove, or edit subjects and chapters here. The UI will automatically update.
 const GATE_SYLLABUS = {
   "1. Discrete Maths": ["1. Mathematical Logic", "2. Set Theory and Algebra", "3. Combinatorics", "4. Graph Theory"],
   "2. TOC": ["1. Finite Automata and Regular Languages", "2. PDA - CFL and DCFL", "3. Turing Machine, RE, REC, Undecidabilitu"],
@@ -23,16 +22,62 @@ export default function Home() {
   const [questions, setQuestions] = useState([]);
   const [bulkText, setBulkText] = useState("");
   
-  // Set default states based on the first item in the syllabus dictionary
   const availableSubjects = Object.keys(GATE_SYLLABUS);
   const [subject, setSubject] = useState(availableSubjects[0]);
   const [chapter, setChapter] = useState(GATE_SYLLABUS[availableSubjects[0]][0]);
 
-  // Handle Dropdown Changes to keep them linked
+  // --- PREFERENCES SYNC LOGIC ---
+  // 1. Fetch saved preference on initial load
+  useEffect(() => {
+    fetch('/api/preferences')
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.data) {
+          const savedSub = data.data.lastSubject;
+          const savedChap = data.data.lastChapter;
+          
+          // Verify it still exists in our syllabus before setting it
+          if (GATE_SYLLABUS[savedSub]) {
+            setSubject(savedSub);
+            if (GATE_SYLLABUS[savedSub].includes(savedChap)) {
+              setChapter(savedChap);
+            } else {
+              setChapter(GATE_SYLLABUS[savedSub][0]);
+            }
+          }
+        }
+      })
+      .catch(err => console.error("Failed to load preferences", err));
+  }, []);
+
+  // 2. Helper to save silently in the background
+  const syncPreferences = async (newSubject, newChapter) => {
+    try {
+      await fetch('/api/preferences', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subject: newSubject, chapter: newChapter })
+      });
+    } catch (e) {
+      console.error("Background sync failed", e);
+    }
+  };
+
+  // 3. Updated Dropdown Handlers
   const handleSubjectChange = (e) => {
     const selectedSubject = e.target.value;
+    const defaultChapter = GATE_SYLLABUS[selectedSubject][0];
+    
     setSubject(selectedSubject);
-    setChapter(GATE_SYLLABUS[selectedSubject][0]); // Auto-select first chapter of new subject
+    setChapter(defaultChapter);
+    syncPreferences(selectedSubject, defaultChapter); // Sync to DB
+  };
+
+  const handleChapterChange = (e) => {
+    const selectedChapter = e.target.value;
+    
+    setChapter(selectedChapter);
+    syncPreferences(subject, selectedChapter); // Sync to DB
   };
 
   // Load MathJax Script dynamically
@@ -286,7 +331,7 @@ export default function Home() {
         </div>
         <div style={{ flex: 1 }}>
           <label>Chapter</label>
-          <select value={chapter} onChange={(e) => setChapter(e.target.value)} style={{ cursor: 'pointer' }}>
+          <select value={chapter} onChange={handleChapterChange} style={{ cursor: 'pointer' }}>
             {GATE_SYLLABUS[subject].map(chap => (
               <option key={chap} value={chap}>{chap}</option>
             ))}
