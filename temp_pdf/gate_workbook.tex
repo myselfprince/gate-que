@@ -3,16 +3,13 @@
 \usepackage{amsmath, amssymb}
 \usepackage{graphicx}
 \usepackage[export]{adjustbox}
-\usepackage[margin=0.5in, landscape]{geometry} % FIX 2: Margins halved to 0.5 inches
+\usepackage[margin=0.5in, landscape]{geometry}
 \usepackage{multicol}
 \usepackage{listings}
 \usepackage{xcolor}
-
 \pagecolor{black}
 \color{white}
-
-% FIX 3: Force remove all page numbers from the bottom
-\pagestyle{empty} 
+\pagestyle{empty}
 \cfoot{}
 
 \lstset{
@@ -26,104 +23,19 @@
 
 \begin{document}
 \begin{center}
-\LARGE \textbf{GATE CSE: 1. Discrete Maths - 2. Set Theory and Algebra}
+\LARGE \textbf{GATE CSE: 1. Discrete Maths - 1. Mathematical Logic}
 \end{center}
 \vspace{0.5cm}
-
 \begin{questions}
 \begin{multicols*}{2}
 
-\question {\small \textbf{[GATE 1995 | 1 Mark]}} \\[0.2cm]
-{\Large Let R be a symmetric and transitive relation on a set A. Then}
-\begin{choices}
-  \choice R is reflexive and hence an equivalence relation
-  \choice R is reflexive and hence a partial order
-  \choice R is reflexive and hence not an equivalence relation
-  \choice None of the above
-\end{choices}
-
-\end{multicols*}
-\vspace{0.6cm}
-\newpage
-\begin{multicols*}{2}
-
-\question {\small \textbf{[GATE 1995 | 1 Mark]}} \\[0.2cm]
-{\Large The number of elements in the power set P(S) of the set $S = \{(\phi), 1, (2, 3)\}$ is:}
-\begin{choices}
-  \choice 2
-  \choice 4
-  \choice 8
-  \choice None of these
-\end{choices}
-
-\end{multicols*}
-\vspace{0.6cm}
-\newpage
-\begin{multicols*}{2}
-
 \question {\small \textbf{[GATE 1995 | 2 Mark]}} \\[0.2cm]
-{\Large Let A be the set of all nonsingular matrices over real numbers and let $*$ be the matrix multiplication operator. Then}
+{\Large If the proposition $\neg p \Rightarrow q$ is true, then the truth value of the proposition $\neg p \vee (p \Rightarrow q)$, where $\neg$ is negation, $\vee$ is inclusive or and $\Rightarrow$ is implication, is}
 \begin{choices}
-  \choice A is closed under $*$ but $\langle A, *\rangle$ is not a semigroup.
-  \choice $\langle A, *\rangle$ is a semigroup but not a monoid.
-  \choice $\langle A, *\rangle$ is a monoid but not a group.
-  \choice $\langle A, *\rangle$ is a group but not an abelian group
-\end{choices}
-
-\end{multicols*}
-\vspace{0.6cm}
-\newpage
-\begin{multicols*}{2}
-
-\question {\small \textbf{[GATE 1996 | 1 Mark]}} \\[0.2cm]
-{\Large Let A and B be sets and let $A^c$ and $B^c$ denote the complements of the sets A and B. The set $(A - B) \cup (B - A) \cup (A \cap B)$ is equal to}
-\begin{choices}
-  \choice $A \cup B$
-  \choice $A^c \cup B^c$
-  \choice $A \cap B$
-  \choice $A^c \cap B^c$
-\end{choices}
-
-\end{multicols*}
-\vspace{0.6cm}
-\newpage
-\begin{multicols*}{2}
-
-\question {\small \textbf{[GATE 1996 | 1 Mark]}} \\[0.2cm]
-{\Large Let $X = \{2, 3, 6, 12, 24\}$. Let $\leq$ be the partial order defined by $x \leq y$ if $x$ divides $y$. The number of edges in the Hasse diagram of $(X, \leq)$ is}
-\begin{choices}
-  \choice 3
-  \choice 4
-  \choice 9
-  \choice None of these
-\end{choices}
-
-\end{multicols*}
-\vspace{0.6cm}
-\newpage
-\begin{multicols*}{2}
-
-\question {\small \textbf{[GATE 1996 | 1 Mark]}} \\[0.2cm]
-{\Large Suppose X and Y are sets and $|X|$ and $|Y|$ are their respective cardinalities. It is given that there are exactly 97 functions from X to Y. From this one can conclude that}
-\begin{choices}
-  \choice $|X| = 1, |Y| = 97$
-  \choice $|X| = 97, |Y| = 1$
-  \choice $|X| = 97, |Y| = 97$
-  \choice None of the above
-\end{choices}
-
-\end{multicols*}
-\vspace{0.6cm}
-\newpage
-\begin{multicols*}{2}
-
-\question {\small \textbf{[GATE 1996 | 1 Mark]}} \\[0.2cm]
-{\Large Which of the following statements is false?}
-\begin{choices}
-  \choice The set of rational numbers is an abelian group under addition
-  \choice The set of integers in an abelian group under addition
-  \choice The set of rational numbers form an abelian group under multiplication
-  \choice The set of real numbers excluding zero in an abelian group under multiplication
+  \choice True
+  \choice Multiple valued
+  \choice False
+  \choice Cannot be determined
 \end{choices}
 
 \end{multicols*}
@@ -132,171 +44,12 @@
 \begin{multicols*}{2}
 
 \question {\small \textbf{[GATE 1996 | 2 Mark]}} \\[0.2cm]
-{\Large Let R denote the set of real numbers. Let $f: R \times R \rightarrow R \times R$ be a bijective function defined by $f(x, y) = (x + y,\ x - y)$. The inverse function of $f$ is given by}
+{\Large Which one of the following is false? Read $\wedge$ as AND, $\vee$ as OR, $\sim$ as NOT, $\rightarrow$ as one way implication and $\leftrightarrow$ as two way implication.}
 \begin{choices}
-  \choice $f^{-1}(x, y) = \left(\dfrac{1}{x+y}, \dfrac{1}{x-y}\right)$
-  \choice $f^{-1}(x, y) = (x - y,\ x + y)$
-  \choice $f^{-1}(x, y) = \left(\dfrac{x+y}{2}, \dfrac{x-y}{2}\right)$
-  \choice $f^{-1}(x, y) = (2(x - y),\ 2(x + y))$
-\end{choices}
-
-\end{multicols*}
-\vspace{0.6cm}
-\newpage
-\begin{multicols*}{2}
-
-\question {\small \textbf{[GATE 1996 | 2 Mark]}} \\[0.2cm]
-{\Large Let R be a non-empty relation on a collection of sets defined by $A\,R\,B$ if and only if $A \cap B = \phi$. Then, (pick the true statement)}
-\begin{choices}
-  \choice R is reflexive and transitive
-  \choice R is symmetric and not transitive
-  \choice R is an equivalence relation
-  \choice R is not reflexive and not symmetric
-\end{choices}
-
-\end{multicols*}
-\vspace{0.6cm}
-\newpage
-\begin{multicols*}{2}
-
-\question {\small \textbf{[GATE 1996 | 2 Mark]}} \\[0.2cm]
-{\Large Which one of the following is false?}
-\begin{choices}
-  \choice The set of all bijective functions on a finite set forms a group under function composition.
-  \choice The set $\{1, 2, ..., p-1\}$ forms a group under multiplication mod p where p is a prime number.
-  \choice The set of all strings over a finite alphabet $\Sigma$ forms a group under concatenation.
-  \choice A subset $s \neq \phi$ of G is a subgroup of the group $\langle G, *\rangle$ if and only if for any pair of elements $a, b \in s$, $a * b^{-1} \in s$.
-\end{choices}
-
-\end{multicols*}
-\vspace{0.6cm}
-\newpage
-\begin{multicols*}{2}
-
-\question {\small \textbf{[GATE 1997 | 1 Mark]}} \\[0.2cm]
-{\Large The number of equivalence relations on the set $\{1, 2, 3, 4\}$ is}
-\begin{choices}
-  \choice 15
-  \choice 16
-  \choice 24
-  \choice 4
-\end{choices}
-
-\end{multicols*}
-\vspace{0.6cm}
-\newpage
-\begin{multicols*}{2}
-
-\question {\small \textbf{[GATE 1998 | 1 Mark]}} \\[0.2cm]
-{\Large Suppose $A$ is a finite set with $n$ elements. The number of elements in the Largest equivalence relation of $A$ is}
-\begin{choices}
-  \choice $n$
-  \choice $n^2$
-  \choice $1$
-  \choice $n + 1$
-\end{choices}
-
-\end{multicols*}
-\vspace{0.6cm}
-\newpage
-\begin{multicols*}{2}
-
-\question {\small \textbf{[GATE 1998 | 1 Mark]}} \\[0.2cm]
-{\Large Let $R_1$ and $R_2$ be two equivalence relations on a set. Consider the following assertions: (i) $R_1 \cup R_2$ is an equivalence relation (ii) $R_1 \cap R_2$ is an equivalence relation Which of the following is correct?}
-\begin{choices}
-  \choice both assertions are true
-  \choice assertion (i) is true but assertion (ii) is not true
-  \choice assertion (ii) is true but assertion (i) is not true
-  \choice neither (i) nor (ii) is true
-\end{choices}
-
-\end{multicols*}
-\vspace{0.6cm}
-\newpage
-\begin{multicols*}{2}
-
-\question {\small \textbf{[GATE 1998 | 1 Mark]}} \\[0.2cm]
-{\Large The number of functions from an $m$ element set to an $n$ element set is}
-\begin{choices}
-  \choice $m + n$
-  \choice $m^n$
-  \choice $n^m$
-  \choice $m * n$
-\end{choices}
-
-\end{multicols*}
-\vspace{0.6cm}
-\newpage
-\begin{multicols*}{2}
-
-\question {\small \textbf{[GATE 1998 | 2 Mark]}} \\[0.2cm]
-{\Large The binary relation $R = {(1, 1), (2, 1), (2, 2), (2, 3), (2, 4), (3, 1), (3, 2), (3, 3), (3, 4)}$ on the set $A = {1, 2, 3, 4}$ is}
-\begin{choices}
-  \choice Reflexive, symmetric and transitive
-  \choice Neither reflexive, nor irreflexive but transitive
-  \choice Irreflexive, symmetric and transitive
-  \choice Irreflexive and antisymmetric
-\end{choices}
-
-\end{multicols*}
-\vspace{0.6cm}
-\newpage
-\begin{multicols*}{2}
-
-\question {\small \textbf{[GATE 1998 | 2 Mark]}} \\[0.2cm]
-{\Large Suppose $A = {a, b, c, d}$ and $\Pi_1$ is the following partition of $A$ $$\Pi_1 = {{a, b, c}, {d}}$$ (a) List the ordered pairs of the equivalence relations induced by $\Pi_1$ (b) Draw the graph of the above equivalence relation}
-
-\vspace{0.5cm}
-\textbf{Answer:} \rule{3cm}{0.4pt}
-
-\end{multicols*}
-\vspace{0.6cm}
-\newpage
-\begin{multicols*}{2}
-
-\question {\small \textbf{[GATE 1998 | 2 Mark]}} \\[0.2cm]
-{\Large Let $(A, *)$ be a semigroup. Furthermore, for every $a$ and $b$ in $A$, if $a \ne b$, then $a * b \ne b * a$. (a) Show that for every $a$ in $A$ $$a * a = a$$ (b) Show that for every $a, b$ in $A$ $$a * b * a = a$$ (c) Show that for every $a, b, c$ in $A$ $$a * b * c = a * c$$}
-
-\vspace{0.5cm}
-\textbf{Answer:} \rule{3cm}{0.4pt}
-
-\end{multicols*}
-\vspace{0.6cm}
-\newpage
-\begin{multicols*}{2}
-
-\question {\small \textbf{[GATE 1999 | 1 Mark]}} \\[0.2cm]
-{\Large The number of binary relations on a set with $n$ elements is}
-\begin{choices}
-  \choice $n^2$
-  \choice $2n$
-  \choice $2^{n^2}$
-  \choice None of these
-\end{choices}
-
-\end{multicols*}
-\vspace{0.6cm}
-\newpage
-\begin{multicols*}{2}
-
-\question {\small \textbf{[GATE 1999 | 2 Mark]}} \\[0.2cm]
-{\Large Mr. X claims the following: If a relation $R$ is both symmetric and transitive, then $R$ is reflexive. For this, Mr. X offers the following proof. "From $xRy$, using symmetry we get $yRx$. Now because $R$ is transitive, $xRy$ and $yRx$ together imply $xRx$. Therefore, $R$ is reflexive." Briefly point out the flaw in Mr. X's proof. (b) Give an example of a relation $R$ which is symmetric and transitive but not reflexive.}
-
-\vspace{0.5cm}
-\textbf{Answer:} \rule{3cm}{0.4pt}
-
-\end{multicols*}
-\vspace{0.6cm}
-\newpage
-\begin{multicols*}{2}
-
-\question {\small \textbf{[GATE 2000 | 2 Mark]}} \\[0.2cm]
-{\Large A relation $R$ is defined on the set of integers as $xRy$ iff $(x + y)$ is even. Which of the following statements is true?}
-\begin{choices}
-  \choice $R$ is not an equivalence relation
-  \choice $R$ is an equivalence relation having $1$ equivalence class
-  \choice $R$ is an equivalence relation having $2$ equivalence classes
-  \choice $R$ is an equivalence relation having $3$ equivalence classes
+  \choice $((x \rightarrow y) \wedge x) \rightarrow y$
+  \choice $((\sim x \rightarrow y) \wedge (\sim x \rightarrow \sim y)) \rightarrow x$
+  \choice $(x \rightarrow (x \vee y))$
+  \choice $((x \vee y) \leftrightarrow (\sim x \rightarrow \sim y))$
 \end{choices}
 
 \end{multicols*}
@@ -305,12 +58,12 @@
 \begin{multicols*}{2}
 
 \question {\small \textbf{[GATE 2000 | 2 Mark]}} \\[0.2cm]
-{\Large Let $P(S)$ denote the power set of a set $S$. Which of the following is always true?}
+{\Large Let $a, b, c, d$ be propositions. Assume that the equivalence $a \leftrightarrow (b \vee \neg b)$ and $b \leftrightarrow c$ hold. Then the truth-value of the formula $(a \wedge b) \rightarrow (a \wedge c) \vee d$ is always}
 \begin{choices}
-  \choice $P(P(S)) = P(S)$
-  \choice $P(S) \cap P(P(S)) = \{ \phi \} $
-  \choice $P(S) \cap S = P(S)$
-  \choice $S \notin P(S)$
+  \choice True
+  \choice False
+  \choice Same as the truth-value of $b$
+  \choice Same as the truth-value of $d$
 \end{choices}
 
 \end{multicols*}
@@ -319,12 +72,12 @@
 \begin{multicols*}{2}
 
 \question {\small \textbf{[GATE 2001 | 1 Mark]}} \\[0.2cm]
-{\Large Consider the following relations: $R_1(a, b)$ iff $(a + b)$ is even over the set of integers $R_2(a, b)$ iff $(a + b)$ is odd over the set of integers $R_3(a, b)$ iff $ab > 0$ over the set of non-zero rational numbers $R_4(a, b)$ iff $|a - b| \le 2$ over the set of natural numbers Which of the following statements is correct?}
+{\Large What is the converse of the following assertion? I stay only if you go}
 \begin{choices}
-  \choice $R_1$ and $R_2$ are equivalence relations, $R_3$ and $R_4$ are not
-  \choice $R_1$ and $R_3$ are equivalence relations, $R_2$ and $R_4$ are not
-  \choice $R_1$ and $R_4$ are equivalence relations, $R_2$ and $R_3$ are not
-  \choice $R_1, R_2, R_3$ and $R_4$ are all equivalence relations
+  \choice I stay if you go
+  \choice If I stay then you go
+  \choice If you do not go then I do not stay
+  \choice If I do not stay then you go
 \end{choices}
 
 \end{multicols*}
@@ -332,16 +85,867 @@
 \newpage
 \begin{multicols*}{2}
 
-\question {\small \textbf{[GATE 2001 | 2 Mark]}} \\[0.2cm]
-{\Large Consider the following statements:\newline
-$S_1$: There exist infinite sets $A, B, C$ such that $A \cap (B \cap C)$ is finite. \newline
-$S_2$: There exist two irrational numbers $x$ and $y$ such that $(x + y)$ is rational.\newline
-Which of the following is true about $S_1$ and $S_2$?}
+\question {\small \textbf{[GATE 2001 | 1 Mark]}} \\[0.2cm]
+{\Large Consider two well-formed formulas in propositional logic: $F_1 : P \Rightarrow \neg P$ $F_2 : (P \Rightarrow \neg P) \vee (\neg P \Rightarrow P)$ Which of the following statements is correct?}
 \begin{choices}
-  \choice Only $S_1$ is correct
-  \choice Only $S_2$ is correct
-  \choice Both $S_1$ and $S_2$ are correct
-  \choice None of $S_1$ and $S_2$ is correct
+  \choice $F_1$ is satisfiable, $F_2$ is valid
+  \choice $F_1$ is unsatisfiable, $F_2$ is satisfiable
+  \choice $F_1$ is unsatisfiable, $F_2$ is valid
+  \choice $F_1$ and $F_2$ are both satisfiable
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2002 | 1 Mark]}} \\[0.2cm]
+{\Large "If X then Y unless Z" is represented by which of the following formulas in propositional logic? ("$\neg$" is negation, "$\wedge$" is conjunction, and "$\rightarrow$" is implication)}
+\begin{choices}
+  \choice $(X \wedge \neg Z) \rightarrow Y$
+  \choice $(X \wedge Y) \rightarrow \neg Z$
+  \choice $X \rightarrow (Y \wedge \neg Z)$
+  \choice $(X \rightarrow Y) \wedge \neg Z$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2003 | 2 Mark]}} \\[0.2cm]
+{\Large Which of the following is a valid first order formula? (Here $\alpha$ and $\beta$ are first order formulae with x as their only free variable)}
+\begin{choices}
+  \choice $((\forall x) [\alpha] \Rightarrow (\forall x) [\beta]) \Rightarrow (\forall x) [\alpha \Rightarrow \beta]$
+  \choice $(\forall x) [\alpha] \Rightarrow (\exists x) [\alpha \wedge \beta]$
+  \choice $(\forall x) [\alpha \vee \beta] \Rightarrow (\exists x) [\alpha] \Rightarrow (\forall x) [\alpha]$
+  \choice $(\forall x) [\alpha \Rightarrow \beta] \Rightarrow ((\forall x) [\alpha] \Rightarrow (\forall x) [\beta])$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2003 | 2 Mark]}} \\[0.2cm]
+{\Large Consider the following formula $\alpha$ and its two interpretations $I_1$ and $I_2$.\newline
+$\alpha : (\forall x) [P_x \Leftrightarrow (\forall y) [Q_{xy} \Leftrightarrow \neg Q_{yy}]] \Rightarrow (\forall x) [\neg P_x]$\newline
+ $I_1 :$ Domain: the set of natural numbers \newline
+$P_x =$ 'x is a prime number' \newline
+$Q_{xy} =$ 'y divides x' \newline
+$I_2 :$ Same as $I_1$ except that $P_x =$ 'x is a composite number.' \newline
+Which of the following statements is true?}
+\begin{choices}
+  \choice $I_1$ satisfies $\alpha$, $I_2$ does not
+  \choice $I_2$ satisfies $\alpha$, $I_1$ does not
+  \choice Neither $I_2$ nor $I_1$ satisfies $\alpha$
+  \choice Both $I_1$ and $I_2$ satisfy $\alpha$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2003 | 2 Mark]}} \\[0.2cm]
+{\Large The following resolution rule is used in logic programming: Derive clause $(P \vee Q)$ from clauses $(P \vee R), (Q \vee \neg R)$ Which of the following statemnets related to this rule is FALSE?}
+\begin{choices}
+  \choice $(P \vee R) \wedge (Q \vee \neg R) \Rightarrow (P \vee Q)$ is logically valid
+  \choice $(P \vee Q) \Rightarrow (P \vee R) \wedge (Q \vee \neg R)$ is logically valid
+  \choice $(P \vee Q)$ is satisfiable if and only if $(P \vee R) \wedge (Q \vee \neg R)$ is satisfiable
+  \choice $(P \vee Q) \Rightarrow FALSE$ if and only if both P and Q are unsatisfiable
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2004 | 1 Mark]}} \\[0.2cm]
+{\Large Identify the correct translation into logical notation of the following assertion. Some boys in the class are taller than all the girls\newline
+$\textbf{Note:}$ Taller (x, y) is true if x is taller than y.}
+\begin{choices}
+  \choice $(\exists x) (\text{boy}(x) \to (\forall y) (\text{girl}(y) \wedge \text{taller} (x, y)))$
+  \choice $(\exists x) (\text{boy}(x) \wedge (\forall y) (\text{girl}(y) \wedge \text{taller} (x, y)))$
+  \choice $(\exists x) (\text{boy}(x) \to (\forall y) (\text{girl}(y) \to \text{taller} (x, y)))$
+  \choice $(\exists x) (\text{boy}(x) \wedge (\forall y) (\text{girl}(y) \to \text{taller} (x, y)))$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2004 | 1 Mark]}} \\[0.2cm]
+{\Large Let $a(x, y)$, $b(x, y)$, and $c(x, y)$ be three statements with variables $x$ and $y$ chosen from some universe. Consider the following statement:\newline
+ $(\exists x)(\forall y)[(a(x, y) \wedge b(x, y)) \wedge \neg c(x, y)]$\newline
+Which one of the following is its equivalent?}
+\begin{choices}
+  \choice $(\forall x)(\exists y)[(a(x, y) \vee b(x, y)) \to c(x, y)]$
+  \choice $(\exists x)(\forall y)[(a(x, y) \vee b(x, y)) \wedge \neg c(x, y)]$
+  \choice $\neg (\forall x)(\exists y)[(a(x, y) \wedge b(x, y)) \to c(x, y)]$
+  \choice $\neg (\forall x)(\exists y)[(a(x, y) \vee b(x, y)) \to c(x, y)]$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2004 | 2 Mark]}} \\[0.2cm]
+{\Large Let $p, q, r$ and $s$ be four primitive statements. Consider the following arguments:\newline
+P: $[(\neg p \vee q) \wedge (r \to s) \wedge (p \vee r)] \to (\neg s \to q)$ \newline
+Q: $[(\neg p \wedge q) \wedge [q \to (p \to r)]] \to \neg r$ \newline
+R: $[[(q \wedge r) \to p] \wedge (\neg q \vee p)] \to r$ S: $[p \wedge (p \to r) \wedge (q \vee \neg r)] \to q$ \newline
+Which of the above arguments are valid?}
+\begin{choices}
+  \choice P and Q only
+  \choice P and R only
+  \choice P and S only
+  \choice P, Q, R and S
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2004 | 2 Mark]}} \\[0.2cm]
+{\Large The following propositional statement is \newline
+$(P \to (Q \vee R)) \to ((P \wedge Q) \to R)$}
+\begin{choices}
+  \choice Satisfiable but not valid
+  \choice Valid
+  \choice A contraditiction
+  \choice None of the above
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2005 | 2 Mark]}} \\[0.2cm]
+{\Large Let P, Q and R be three atomic propositional assertions. Let X denote $(P \vee Q) \to R$ and Y denote $(P \to R) \vee (Q \to R)$. Which one of the following is a tautology?}
+\begin{choices}
+  \choice $X \equiv Y$
+  \choice $X \to Y$
+  \choice $Y \to X$
+  \choice $\neg Y \to X$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2005 | 2 Mark]}} \\[0.2cm]
+{\Large What is the first order predicate calculus statement equivalent to the following? Every teacher is liked by some student}
+\begin{choices}
+  \choice $\forall(x) [\text{teacher} (x) \to \exists(y) [\text{student} (y) \to \text{likes} (y, x)]]$
+  \choice $\forall(x) [\text{teacher} (x) \to \exists(y) [\text{student} (y) \wedge \text{likes} (y, x)]]$
+  \choice $\exists(y) \forall(x) [\text{teacher} (x) \to [\text{student} (y) \wedge \text{likes} (y, x)]]$
+  \choice $\forall(x) [\text{teacher} (x) \wedge \exists(y) [\text{student} (y) \to \text{likes} (y, x)]]$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2005 | 2 Mark]}} \\[0.2cm]
+{\Large Let $P(x)$ and $Q(x)$ be arbitrary predicates. Which of the following statements is always TRUE?}
+\begin{choices}
+  \choice $(\forall x(P(x) \vee Q(x))) \Rightarrow ((\forall x P(x)) \vee (\forall x Q(x)))$
+  \choice $(\forall x(P(x) \Rightarrow Q(x))) \Rightarrow ((\forall x P(x)) \Rightarrow (\forall x Q(x)))$
+  \choice $(\forall x(P(x) \Rightarrow (\forall x Q(x)))) \Rightarrow (\forall x(P(x) \Rightarrow Q(x)))$
+  \choice $((\forall x(P(x)) \Leftrightarrow (\forall x Q(x))) \Rightarrow (\forall x(P(x) \Leftrightarrow Q(x)))$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2006 | 2 Mark]}} \\[0.2cm]
+{\Large Consider the following first order logic formula in which $R$ is a binary relation symbol.\newline
+$\forall x \forall y (R(x, y) \Rightarrow R(y, x))$ The formula is}
+\begin{choices}
+  \choice Satisfiable and valid
+  \choice Satisfiable and so is its negation
+  \choice Unsatisfiable but its negation is valid
+  \choice Satisfiable but its negation is unsatisfiable
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2006 | 2 Mark]}} \\[0.2cm]
+{\Large Which one of the first order predicate calculus statements given below correctly expresses the following English statement?\newline
+Tigers and lions attack if they are hungry or threatened.}
+\begin{choices}
+  \choice $\forall x [(\text{tiger} (x) \wedge \text{lion} (x)) \to \{(\text{hungry} (x) \vee \text{threatened} (x)) \to \text{attacks} (x)\}]$
+  \choice $\forall x [(\text{tiger} (x) \vee \text{lion} (x)) \to \{(\text{hungry} (x) \vee \text{threatened} (x)) \wedge \text{attacks} (x)\}]$
+  \choice $\forall x [(\text{tiger} (x) \vee \text{lion} (x)) \to \{(\text{attacks} (x) \to (\text{hungry} (x) \vee \text{Threatened} (x))\}]$
+  \choice $\forall x [(\text{tiger} (x) \vee \text{lion} (x)) \to \{(\text{hungry} (x) \vee \text{threatened} (x)) \to \text{attacks} (x)\}]$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2006 | 2 Mark]}} \\[0.2cm]
+{\Large Consider the following propositional statements: \newline
+$P_1 : ((A \wedge B) \to C) \equiv ((A \to C) \wedge (B \to C))$\newline
+$P_2 : ((A \vee B) \to C) \equiv ((A \to C) \vee (B \to C))$ \newline
+Which one of the following is true?}
+\begin{choices}
+  \choice $P_1$ is a tautology, but not $P_2$
+  \choice $P_2$ is a tautology, but not $P_1$
+  \choice $P_1$ and $P_2$ are both tautologies
+  \choice Both $P_1$ and $P_2$ are not tautologies
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2006 | 2 Mark]}} \\[0.2cm]
+{\Large A logical binary relation $\odot$, is defined as follows: 
+\begin{center}
+\includegraphics[max width=0.9\linewidth, keepaspectratio]{"E:/gate-pyq-app/public/1. Discrete Maths/1. Mathematical Logic/20.png"}
+\end{center}
+ Let $\sim$ be the unary negation (NOT) operator, with higher precedence, than $\odot$. Which one of the following is equivalent to $A \wedge B$?}
+\begin{choices}
+  \choice $(\sim A \odot B)$
+  \choice $\sim (A \odot \sim B)$
+  \choice $\sim (\sim A \odot \sim B)$
+  \choice $\sim (\sim A \odot B)$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2007 | 2 Mark]}} \\[0.2cm]
+{\Large Let Graph ($x$) be a predicate which denotes that $x$ is a graph. Let Connected ($x$) be a predicate which denotes that $x$ is connected. Which of the following first order logic sentences DOES NOT represent the statement; "Not every graph is connected"?}
+\begin{choices}
+  \choice $\neg \forall x (\text{Graph}(x) \Rightarrow \text{Connected}(x))$
+  \choice $\exists x (\text{Graph}(x) \wedge \neg \text{Connected}(x))$
+  \choice $\neg \forall x (\neg \text{Graph}(x) \vee \text{Connected}(x))$
+  \choice $\forall x (\text{Graph}(x) \Rightarrow \neg \text{Connected}(x))$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2007 | 2 Mark]}} \\[0.2cm]
+{\Large Which of the following is TRUE about formulae in Conjunctive Normal Form?}
+\begin{choices}
+  \choice For any formula, there is a truth assignment for which at least half the clauses evaluate to true.
+  \choice For any formula, there is a truth assignment for which all the clauses evaluate to true.
+  \choice There is a formula such that for each truth assignment at most one-fourth of the clauses evaluate to true.
+  \choice None of the above
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2007 | 2 Mark]}} \\[0.2cm]
+{\Large Which one of these first-order logic formulae is valid?}
+\begin{choices}
+  \choice $\forall x(P(x) \Rightarrow Q(x)) \Rightarrow ((\forall xP(x)) \Rightarrow (\forall xQ(x)))$
+  \choice $\exists x(P(x) \vee Q(x)) \Rightarrow ((\exists xP(x)) \Rightarrow (\exists xQ(x)))$
+  \choice $\exists x(P(x) \wedge Q(x)) \Leftrightarrow ((\exists xP(x)) \wedge (\exists xQ(x)))$
+  \choice $\forall x \exists y P(x, y) \Rightarrow \exists y \forall x P(x, y)$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2008 | 1 Mark]}} \\[0.2cm]
+{\Large Let $fsa$ and $pda$ be two predicates such that $fsa(x)$ means $x$ is a finite state automaton, and $pda(y)$ means, that $y$ is a pushdown automaton. Let $equivalent$ be another predicate such that $equivalent (a, b)$ means $a$ and $b$ are equivalent. Which of the following first order logic statement represents the following:\newline
+Each finite state automaton has an equivalent pushdown automaton.}
+\begin{choices}
+  \choice $\forall x (fsa(x) \Rightarrow \exists y (pda(y) \wedge equivalent (x, y)))$
+  \choice $\sim \forall y (\exists x fsa(x) \Rightarrow pda(y) \wedge equivalent (x, y))$
+  \choice $\forall x \exists y (fsa(x) \wedge pda(y) \wedge equivalent (x, y))$
+  \choice $\forall x \exists y (fsa(y) \wedge pda(x) \wedge equivalent (x, y))$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2008 | 2 Mark]}} \\[0.2cm]
+{\Large Which of the following first order formulae is logically valid? Here $\alpha(x)$ is a first order formula with $x$ as a free variable, and $\beta$ is a first order formula with no free variable.}
+\begin{choices}
+  \choice $[\beta \rightarrow (\exists x, \alpha(x))] \rightarrow [\forall x, \beta \rightarrow \alpha(x)]$
+  \choice $[\exists x, \beta \rightarrow \alpha(x)] \rightarrow [\beta \rightarrow (\forall x, \alpha(x))]$
+  \choice $[(\exists x, \alpha(x)) \rightarrow \beta] \rightarrow [\forall x, \alpha(x) \rightarrow \beta]$
+  \choice $[(\forall x, \alpha(x)) \rightarrow \beta] \rightarrow [\forall x, \alpha(x) \rightarrow \beta]$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2008 | 2 Mark]}} \\[0.2cm]
+{\Large Which of the following is the negation of $[\forall x, \alpha \rightarrow (\exists y, \beta \rightarrow (\forall u, \exists v, \gamma))]$}
+\begin{choices}
+  \choice $[\exists x, \alpha \rightarrow (\forall y, \beta \rightarrow (\exists u, \forall v, \gamma))]$
+  \choice $[\exists x, \alpha \rightarrow (\forall y, \beta \rightarrow (\exists u, \forall v, \neg \gamma))]$
+  \choice $[\forall x, \neg \alpha \rightarrow (\exists y, \neg \beta \rightarrow (\forall u, \exists v, \neg \gamma))]$
+  \choice $\left[ \exists x,\ \alpha \land \left( \forall y,\ \beta \land \left( \exists u,\ \forall v,\ \neg \gamma \right) \right) \right]$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2008 | 2 Mark]}} \\[0.2cm]
+{\Large P and Q are two propositions. which of the following logical expressions are equivalent?\newline
+1. $P \vee \sim Q$\newline
+2. $\sim (\sim P \wedge Q)$\newline
+3. $(P \wedge Q) \vee (P \wedge \sim Q) \vee (\sim P \wedge \sim Q)$\newline
+4. $(P \wedge Q) \vee (P \wedge \sim Q) \vee (\sim P \wedge Q)$}
+\begin{choices}
+  \choice Only 1 and 2
+  \choice Only 1, 2 and 3
+  \choice Only 1, 2 and 4
+  \choice All of these
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2009 | 2 Mark]}} \\[0.2cm]
+{\Large Which one of the following is the most appropriate logical formula to represent the statement: "Gold and silver ornaments are precious"\newline
+The following notations are used:\newline
+$G(x)$: $x$ is a gold ornament\newline
+$S(x)$: $x$ is a silver ornament\newline
+$P(x)$: $x$ is precious}
+\begin{choices}
+  \choice $\forall x(P(x) \rightarrow (G(x) \wedge S(x)))$
+  \choice $\forall x(G(x) \wedge (S(x) \rightarrow P(x)))$
+  \choice $\exists x((G(x) \wedge S(x)) \rightarrow P(x))$
+  \choice $\forall x((G(x) \vee S(x)) \rightarrow P(x))$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2009 | 2 Mark]}} \\[0.2cm]
+{\Large The binary operation $\Box$ is defined as follows:\newline
+
+\begin{center}
+\includegraphics[max width=0.9\linewidth, keepaspectratio]{"E:/gate-pyq-app/public/1. Discrete Maths/1. Mathematical Logic/29.png"}
+\end{center}
+\newline
+Which one of the following is equivalent to $P \vee Q$?}
+\begin{choices}
+  \choice $\neg Q \Box \neg P$
+  \choice $P \Box \neg Q$
+  \choice $\neg P \Box Q$
+  \choice $\neg P \Box \neg Q$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2009 | 2 Mark]}} \\[0.2cm]
+{\Large Consider the following well-formed formulae:\newline
+I. $\neg \forall x(P(x))$\newline
+II. $\neg \exists x(P(x))$\newline
+III. $\neg \exists x(\neg P(x))$\newline
+IV. $\exists x(\neg P(x))$\newline
+Which of the above are equivalent?}
+\begin{choices}
+  \choice I and III
+  \choice I and IV
+  \choice II and III
+  \choice II and IV
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2010 | 2 Mark]}} \\[0.2cm]
+{\Large Suppose the predicate $F(x, y, t)$ is used to represent the statement that person $x$ can fool person $y$ at time $t$. Which one of the statements below expresses best the meaning of the formula $\forall x \exists y \exists t (\neg F(x, y, t))$?}
+\begin{choices}
+  \choice Everyone can fool some person at some time
+  \choice No one can fool everyone all the time
+  \choice Everyone cannot fool some person all the time
+  \choice No one can fool some person at some time
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2011 | 2 Mark]}} \\[0.2cm]
+{\Large Which one of the following options is CORRECT given three positive integers $x, y$ and $z$, and a predicate\newline
+$P(x) = \neg (x = 1) \wedge \forall y (\exists z (x = y * z) \Rightarrow (y = x) \vee (y = 1))$}
+\begin{choices}
+  \choice $P(x)$ being true means that $x$ is a prime number
+  \choice $P(x)$ being true means that $x$ is a number other than 1
+  \choice $P(x)$ is always true irrespective of the value of $x$
+  \choice $P(x)$ being true means that $x$ has exactly two factors other than 1 and $x$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2012 | 1 Mark]}} \\[0.2cm]
+{\Large Consider the following logical inferences.\newline
+$I_1$: If it rains then the cricket match will not be played.\newline
+The cricket match was played.\newline
+Inference: There was no rain.\newline
+$I_2$: If it rains then the cricket match will not be played.\newline
+It did not rain.\newline
+Inference: The cricket match was played.\newline
+Which of the following is TRUE?}
+\begin{choices}
+  \choice Both $I_1$ and $I_2$ are correct inferences
+  \choice $I_1$ is correct but $I_2$ is not a correct inference
+  \choice $I_1$ is not correct but $I_2$ is a correct inference
+  \choice Both $I_1$ and $I_2$ are not correct inferences
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2012 | 1 Mark]}} \\[0.2cm]
+{\Large What is the correct translation of the following statement into mathematical logic?\newline
+"Some real numbers are rational"}
+\begin{choices}
+  \choice $\exists x (\text{real} (x) \vee \text{rational} (x))$
+  \choice $\forall x (\text{real} (x) \rightarrow \text{rational} (x))$
+  \choice $\exists x (\text{real} (x) \wedge \text{rational} (x))$
+  \choice $\exists x (\text{rational} (x) \rightarrow \text{real} (x))$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2013 | 2 Mark]}} \\[0.2cm]
+{\Large What is the logical translation of the following statements?\newline
+"None of my friends are perfect"}
+\begin{choices}
+  \choice $\exists x (F(x) \wedge \neg P(x))$
+  \choice $\exists x (\neg F(x) \wedge P(x))$
+  \choice $\exists x (\neg F(x) \wedge \neg P(x))$
+  \choice $\neg \exists x (F(x) \wedge P(x))$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2013 | 2 Mark]}} \\[0.2cm]
+{\Large Which one of the following is NOT logically equivalent to $\neg \exists x(\forall y(\alpha) \wedge \forall z(\beta))$}
+\begin{choices}
+  \choice $\forall x(\exists z(\neg \beta) \rightarrow \forall y(\alpha))$
+  \choice $\forall x(\forall z(\beta) \rightarrow \exists y(\neg \alpha))$
+  \choice $\forall x(\forall y(\alpha) \rightarrow \exists z(\neg \beta))$
+  \choice $\forall x(\exists y(\neg \alpha) \vee \exists z(\neg \beta))$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2014 | 1 Mark]}} \\[0.2cm]
+{\Large Consider the statement:\newline
+"Not all that glitters is gold"\newline
+Predicate $glitters(x)$ is true if $x$ glitters and predicate $gold(x)$ is true if $x$ is gold. Which one of the following logical formulae represents the above statement?}
+\begin{choices}
+  \choice $\forall x: glitters(x) \Rightarrow \neg gold(x)$
+  \choice $\forall x: gold(x) \Rightarrow glitters(x)$
+  \choice $\exists x: gold(x) \wedge \neg glitters(x)$
+  \choice $\exists x: glitters(x) \wedge \neg gold(x)$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2014 | 2 Mark]}} \\[0.2cm]
+{\Large Which one of the following propositional logic formulas is TRUE when exactly two of $p, q$, and $r$ are TRUE?}
+\begin{choices}
+  \choice $((p \leftrightarrow q) \wedge r) \vee (p \wedge q \wedge \sim r)$
+  \choice $(\sim(p \leftrightarrow q) \wedge r) \vee (p \wedge q \wedge \sim r)$
+  \choice $((p \rightarrow q) \wedge r) \vee (p \wedge q \wedge \sim r)$
+  \choice $(\sim(p \leftrightarrow q) \wedge r) \wedge (p \wedge q \wedge \sim r)$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2014 | 2 Mark]}} \\[0.2cm]
+{\Large Which one of the following Boolean expressions is NOT a tautology?}
+\begin{choices}
+  \choice $((a \rightarrow b) \wedge (b \rightarrow c)) \rightarrow (a \rightarrow c)$
+  \choice $(a \leftrightarrow c) \rightarrow (\sim b \rightarrow (a \wedge c))$
+  \choice $(a \wedge b \wedge c) \rightarrow (c \vee a)$
+  \choice $a \rightarrow (b \rightarrow a)$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2014 | 1 Mark]}} \\[0.2cm]
+{\Large Consider the following statements:\newline
+P: Good mobile phones are not cheap\newline
+Q: Cheap mobile phones are not good\newline
+L: P implies Q\newline
+M: Q implies P\newline
+N: P is equivalent to Q\newline
+Which one of the following about L, M, and N is CORRECT?}
+\begin{choices}
+  \choice Only L is TRUE
+  \choice Only M is TRUE
+  \choice Only N is TRUE
+  \choice L, M and N are TRUE
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2014 | 2 Mark]}} \\[0.2cm]
+{\Large The CORRECT formula for the sentence, "not all rainy days are cold" is}
+\begin{choices}
+  \choice $\forall d (\text{Rainy}(d) \wedge \sim \text{Cold}(d))$
+  \choice $\forall d (\sim \text{Rainy}(d) \rightarrow \text{Cold}(d))$
+  \choice $\exists d (\sim \text{Rainy}(d) \rightarrow \text{Cold}(d))$
+  \choice $\exists d (\text{Rainy}(d) \wedge \sim \text{Cold}(d))$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2015 | 1 Mark]}} \\[0.2cm]
+{\Large Which one of the following is Not equivalent to $p \leftrightarrow q$?}
+\begin{choices}
+  \choice $(\sim p \vee q) \wedge (p \vee \sim q)$
+  \choice $(\sim p \vee q) \wedge (q \rightarrow p)$
+  \choice $(\sim p \wedge q) \vee (p \wedge \sim q)$
+  \choice $(\sim p \wedge \sim q) \vee (p \wedge q)$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2015 | 2 Mark]}} \\[0.2cm]
+{\Large The binary operator $\oplus$ is defined by the following truth table.\newline
+
+\begin{center}
+\includegraphics[max width=0.9\linewidth, keepaspectratio]{"E:/gate-pyq-app/public/1. Discrete Maths/1. Mathematical Logic/43.png"}
+\end{center}
+\newline
+Which one of the following is true about the binary operator $\oplus$?}
+\begin{choices}
+  \choice Both commutative and associative
+  \choice Commutative but not associative
+  \choice Not commutative but associative
+  \choice Neither commutative nor associative
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2015 | 1 Mark]}} \\[0.2cm]
+{\Large Consider the following two statements:\newline
+$S_1$: If a candidate is known to be corrupt, then he will not be elected.\newline
+$S_2$: If a candidate is kind, he will be elected.\newline
+Which one of the following statements follows from $S_1$ and $S_2$ as per sound inference rules of logic?}
+\begin{choices}
+  \choice If a person is known to be corrupt, he is kind
+  \choice If a person is not known to be corrupt, he is not kind
+  \choice If a person is kind, he is not known to be corrupt
+  \choice If a person is not kind, he is not known to be corrupt
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2015 | 2 Mark]}} \\[0.2cm]
+{\Large Which one of the following well formed formulae is a tautology?}
+\begin{choices}
+  \choice $\forall x \exists y R(x,y) \leftrightarrow \exists y \forall x R(x,y)$
+  \choice $(\forall x [\exists y R(x,y) \rightarrow S(x,y)]) \rightarrow \forall x \exists y S(x,y)$
+  \choice $[\forall x \exists y (P(x,y) \rightarrow R(x,y))] \leftrightarrow [\forall x \exists y (\neg P(x,y) \vee R(x,y))]$
+  \choice $\forall x \forall y P(x,y) \rightarrow \forall x \forall y P(y,x)$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2015 | 1 Mark]}} \\[0.2cm]
+{\Large In a room there are only two types of people, namely Type 1 and Type 2. Type 1 people always tell the truth and Type 2 people always lie. You give a fair coin to a person in that room, without knowing which type he is from and tell him to toss it and hide the result from you till you ask for it. Upon asking, the person replies the following:\newline
+$\textit{``The result of the toss is head if and only if I am telling the truth.``}$\newline
+Which of the following options is correct?}
+\begin{choices}
+  \choice The result is head
+  \choice The result is tail
+  \choice If the person is of Type 2, then the result is tail
+  \choice If the person is of Type 1, then the result is tail
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2016 | 1 Mark]}} \\[0.2cm]
+{\Large Let $p, q, r, s$ represent the following propositions.\newline
+$p$: $x \in \{8, 9, 10, 11, 12\}$\newline
+$q$: $x$ is a composite number\newline
+$r$: $x$ is a perfect square\newline
+$s$: $x$ is a prime number\newline
+The integer $x \geq 2$ which satisfies $\neg ((p \Rightarrow q) \wedge (\sim r \vee \sim s))$ is \rule{2cm}{0.4pt}}
+
+\vspace{0.5cm}
+\textbf{Answer:} \rule{3cm}{0.4pt}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2016 | 1 Mark]}} \\[0.2cm]
+{\Large Consider the following expressions:\newline
+(i) False\newline
+(ii) $Q$\newline
+(iii) True\newline
+(iv) $P \vee Q$\newline
+(v) $\neg Q \vee P$\newline
+The number of expressions given above that are logically implied by $P \wedge (P \Rightarrow Q)$ is \rule{2cm}{0.4pt}}
+
+\vspace{0.5cm}
+\textbf{Answer:} \rule{3cm}{0.4pt}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2016 | 2 Mark]}} \\[0.2cm]
+{\Large Which one of the following well-formed formulae in predicate calculus is NOT valid?}
+\begin{choices}
+  \choice $(\forall x p(x) \Rightarrow \forall x q(x)) \Rightarrow (\exists x \neg p(x) \vee \forall x q(x))$
+  \choice $(\exists x p(x) \vee \exists x q(x)) \Rightarrow \exists x (p(x) \vee q(x))$
+  \choice $(\exists x (p(x) \wedge q(x))) \Rightarrow (\exists x p(x) \wedge \exists x q(x))$
+  \choice $\forall x (p(x) \vee q(x)) \Rightarrow (\forall x p(x) \vee \forall x q(x))$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2017 | 1 Mark]}} \\[0.2cm]
+{\Large Consider the first-order logic sentence $\forall x \exists y R(x,y)$. Assuming non-empty logical domains, which of the sentences below are implied by $F$?\newline
+I. $\exists y \forall x R(x,y)$\newline
+II. $\exists y \forall x R(x,y)$\newline
+III. $\forall y \exists x R(x,y)$\newline
+IV. $\exists x \forall y \neg R(x,y)$}
+\begin{choices}
+  \choice IV only
+  \choice I and IV only
+  \choice II only
+  \choice II and III only
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2017 | 1 Mark]}} \\[0.2cm]
+{\Large The statement $(\neg p) \Rightarrow (\neg q)$ is logically equivalent to which of the statements below?\newline
+I. $p \Rightarrow q$\newline
+II. $q \Rightarrow p$\newline
+III. $(\neg q) \vee p$\newline
+IV. $(\neg p) \vee q$}
+\begin{choices}
+  \choice I only
+  \choice I and IV only
+  \choice II only
+  \choice II and III only
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2026 | 1 Mark]}} \\[0.2cm]
+{\Large Let $p, q,$ and $r$ be propositions and the expression $(p \Rightarrow q) \Rightarrow r$ be a contradiction. Then, the expression $(r \Rightarrow p) \Rightarrow \neg q$ is}
+\begin{choices}
+  \choice A tautology
+  \choice A contradiction
+  \choice Always TRUE when $p$ is FALSE
+  \choice Always TRUE when $q$ is TRUE
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2026 | 1 Mark]}} \\[0.2cm]
+{\Large Let $p, q, r$ denote the statements “It is raining”, “It is cold”, and “It is pleasant”, respectively. Then the statement “It is not raining and it is pleasant, and it is not pleasant only if it is raining and it is cold” is represented by}
+\begin{choices}
+  \choice $(\neg p \wedge r) \wedge (\neg r \Rightarrow (p \wedge q))$
+  \choice $(\neg p \wedge r) \wedge ((p \wedge q) \Rightarrow \neg r)$
+  \choice $(\neg p \wedge r) \vee ((p \wedge q) \Rightarrow \neg r)$
+  \choice $(\neg p \wedge r) \vee (\neg r \Rightarrow (p \wedge q))$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2019 | 2 Mark]}} \\[0.2cm]
+{\Large Consider this first order predicate formula\newline
+$\forall x[(\forall z; z \mid x \Rightarrow (z = x \vee z = 1)) \Rightarrow \exists u (w > x) \vee (w = z) \vee (z = 1)]$\newline
+Here $a \mid b$ denotes that “$a$ divides $b$”, where $a$ and $b$ are integers. Consider the following sets:\newline
+$S_1$: ${1, 2, 3, ..., 100}$\newline
+$S_2$: Set of all positive integers\newline
+$S_3$: Set of all integers\newline
+Which of the above sets satisfy $\varphi$?}
+\begin{choices}
+  \choice $S_1$ and $S_3$
+  \choice $S_2$ and $S_3$
+  \choice $S_1, S_2$ and $S_3$
+  \choice $S_1$ and $S_2$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2020 | 2 Mark]}} \\[0.2cm]
+{\Large Which one of the following predicate formulae is NOT logically valid? Note that $W$ is a predicate formula without any free occurrence of $x$.}
+\begin{choices}
+  \choice $\exists x (p(x) \wedge W) \equiv \exists x p(x) \wedge W$
+  \choice $\forall x (p(x) \Rightarrow W) \equiv \forall x p(x) \Rightarrow W$
+  \choice $\exists x (p(x) \Rightarrow W) \equiv \forall x p(x) \Rightarrow W$
+  \choice $\forall x (p(x) \vee W) \equiv \forall x p(x) \vee W$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2021 | 1 Mark]}} \\[0.2cm]
+{\Large Let $p$ and $q$ be two propositions. Consider the following formulae in propositional logic.\newline
+$S_1: (\neg p \vee q) \Rightarrow q$\newline
+$S_2: q \Rightarrow (p \vee q)$\newline
+Which one of the following choices is correct?}
+\begin{choices}
+  \choice Neither $S_1$ nor $S_2$ is a tautology
+  \choice Both $S_1$ and $S_2$ are tautologies
+  \choice $S_1$ is a tautology but $S_2$ is not a tautology
+  \choice $S_1$ is not a tautology but $S_2$ is a tautology
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2021 | 1 Mark]}} \\[0.2cm]
+{\Large Choose the correct choice(s) regarding the following propositional logic assertion $S$:\newline
+$S: ((P \wedge Q) \Rightarrow R) \Rightarrow ((P \wedge Q) \Rightarrow (Q \Rightarrow R))$}
+\begin{choices}
+  \choice $S$ is a tautology
+  \choice $S$ is neither a tautology nor a contradiction
+  \choice The antecedent of $S$ is logically equivalent to consequent of $S$
+  \choice $S$ is a contradiction
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2023 | 1 Mark]}} \\[0.2cm]
+{\Large Geetha has a conjecture about integers, which is of the form $\forall x (P(x) \Rightarrow \exists y Q(x,y))$, where $P$ is a statement about integers, and $Q$ is a statement about pairs of integers. Which of the following (one or more) option(s) imply Geetha’s conjecture?}
+\begin{choices}
+  \choice $\exists x (P(x) \wedge \forall y Q(x,y))$
+  \choice $\forall x \forall y Q(x,y)$
+  \choice $\exists y \forall x (P(x) \Rightarrow Q(x,y))$
+  \choice $\exists x (P(x) \wedge \exists y Q(x,y))$
+\end{choices}
+
+\end{multicols*}
+\vspace{0.6cm}
+\newpage
+\begin{multicols*}{2}
+
+\question {\small \textbf{[GATE 2024 | 1 Mark]}} \\[0.2cm]
+{\Large Let $p$ and $q$ be the following propositions:\newline
+$p$: Fail grade can be given.\newline
+$q$: Student scores more than $50\%$ marks.\newline
+Consider the statement “Fail grade cannot be given when student scores more than $50\%$ marks.” Which one of the following is the CORRECT representation of the above statement in propositional logic?}
+\begin{choices}
+  \choice $q \Rightarrow p$
+  \choice $q \Rightarrow \neg p$
+  \choice $p \Rightarrow q$
+  \choice $\neg p \Rightarrow \neg q$
 \end{choices}
 
 \end{multicols*}
