@@ -324,26 +324,26 @@ export default function Home() {
         } catch (error) { alert("Error loading from DB"); }
     };
 
-    const handleFileUpload = (e) => {
-        const file = e.target.files[0]; if (!file) return; const reader = new FileReader();
-        reader.onload = (event) => {
-            try {
-                const importedQuestions = JSON.parse(event.target.result);
-                const sanitizedQuestions = importedQuestions.map((q) => ({
-                    ...q, id: q.id || generateId(),
-                    optA: q.options?.A || q.optA || "", optB: q.options?.B || q.optB || "",
-                    optC: q.options?.C || q.optC || "", optD: q.options?.D || q.optD || "",
-                    natAnswer: q.nat_answer || q.natAnswer || "",
-                    diagram: q.diagram_path ? q.diagram_path.replace('images/', '').split('.')[0] : (q.diagram || ""),
-                    ext: q.diagram_path ? '.' + q.diagram_path.split('.').pop() : (q.ext || ".png"),
-                    text: q.question_text || q.text || "", code: q.code_snippet || q.code || "",
-                    year: q.gate_year || q.year || "2026", marks: q.marks || "1"
-                }));
-                setQuestions(sanitizedQuestions); setSyncedCount(0); setIsDirty(true);
-            } catch (err) { alert("Error reading JSON file."); }
-        };
-        reader.readAsText(file); e.target.value = null;
-    };
+    // const handleFileUpload = (e) => {
+    //     const file = e.target.files[0]; if (!file) return; const reader = new FileReader();
+    //     reader.onload = (event) => {
+    //         try {
+    //             const importedQuestions = JSON.parse(event.target.result);
+    //             const sanitizedQuestions = importedQuestions.map((q) => ({
+    //                 ...q, id: q.id || generateId(),
+    //                 optA: q.options?.A || q.optA || "", optB: q.options?.B || q.optB || "",
+    //                 optC: q.options?.C || q.optC || "", optD: q.options?.D || q.optD || "",
+    //                 natAnswer: q.nat_answer || q.natAnswer || "",
+    //                 diagram: q.diagram_path ? q.diagram_path.replace('images/', '').split('.')[0] : (q.diagram || ""),
+    //                 ext: q.diagram_path ? '.' + q.diagram_path.split('.').pop() : (q.ext || ".png"),
+    //                 text: q.question_text || q.text || "", code: q.code_snippet || q.code || "",
+    //                 year: q.gate_year || q.year || "2026", marks: q.marks || "1"
+    //             }));
+    //             setQuestions(sanitizedQuestions); setSyncedCount(0); setIsDirty(true);
+    //         } catch (err) { alert("Error reading JSON file."); }
+    //     };
+    //     reader.readAsText(file); e.target.value = null;
+    // };
 
     const handleExportPDF = async () => {
         if (questions.length === 0) return alert("No questions to compile!");
@@ -361,47 +361,47 @@ export default function Home() {
     };
 
     // FRONTEND HIGH-RES IMAGE EXPORT ENGINE
-    const handleExportSingleImage = async (q, qNum) => {
-        if (!window.html2canvas) {
-            alert("Image capture engine is still loading. Please try again in a few seconds.");
-            return;
-        }
+    // const handleExportSingleImage = async (q, qNum) => {
+    //     if (!window.html2canvas) {
+    //         alert("Image capture engine is still loading. Please try again in a few seconds.");
+    //         return;
+    //     }
 
-        const element = document.getElementById(`preview-${q.id}`);
-        if (!element) return;
+    //     const element = document.getElementById(`preview-${q.id}`);
+    //     if (!element) return;
 
-        try {
-            // Apply temporary presentation styles for a clean flashcard look
-            const originalBackground = element.style.background;
-            const originalPadding = element.style.padding;
+    //     try {
+    //         // Apply temporary presentation styles for a clean flashcard look
+    //         const originalBackground = element.style.background;
+    //         const originalPadding = element.style.padding;
             
-            element.style.background = '#11111b'; // Deep dark background for teaching software
-            element.style.padding = '30px';
-            element.style.borderRadius = '10px';
+    //         element.style.background = '#11111b'; // Deep dark background for teaching software
+    //         element.style.padding = '30px';
+    //         element.style.borderRadius = '10px';
 
-            const canvas = await window.html2canvas(element, {
-                scale: 2, // 2x resolution for crystal clear presentation
-                useCORS: true,
-                backgroundColor: '#11111b'
-            });
+    //         const canvas = await window.html2canvas(element, {
+    //             scale: 2, // 2x resolution for crystal clear presentation
+    //             useCORS: true,
+    //             backgroundColor: '#11111b'
+    //         });
 
-            // Revert DOM back to normal instantly
-            element.style.background = originalBackground;
-            element.style.padding = originalPadding;
-            element.style.borderRadius = '';
+    //         // Revert DOM back to normal instantly
+    //         element.style.background = originalBackground;
+    //         element.style.padding = originalPadding;
+    //         element.style.borderRadius = '';
 
-            const dataUrl = canvas.toDataURL('image/png');
-            const a = document.createElement('a');
-            a.href = dataUrl;
-            a.download = `${subject}_${chapter}_Q${qNum}.png`;
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-        } catch (error) {
-            console.error("Failed to capture image", error);
-            alert("Error exporting image.");
-        }
-    };
+    //         const dataUrl = canvas.toDataURL('image/png');
+    //         const a = document.createElement('a');
+    //         a.href = dataUrl;
+    //         a.download = `${subject}_${chapter}_Q${qNum}.png`;
+    //         document.body.appendChild(a);
+    //         a.click();
+    //         a.remove();
+    //     } catch (error) {
+    //         console.error("Failed to capture image", error);
+    //         alert("Error exporting image.");
+    //     }
+    // };
 
     const cleanLatexForYT = (text) => {
     if (!text) return "";
@@ -473,13 +473,57 @@ export default function Home() {
 
     
 
-    const exportToJSON = () => {
-        if (questions.length === 0) return alert("No questions to export!");
-        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(questions, null, 4));
-        const downloadAnchorNode = document.createElement('a'); downloadAnchorNode.setAttribute("href", dataStr);
-        downloadAnchorNode.setAttribute("download", "gate_pyq_bulk_export.json");
-        document.body.appendChild(downloadAnchorNode); downloadAnchorNode.click(); downloadAnchorNode.remove();
-    };
+    // const exportToJSON = () => {
+    //     if (questions.length === 0) return alert("No questions to export!");
+    //     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(questions, null, 4));
+    //     const downloadAnchorNode = document.createElement('a'); downloadAnchorNode.setAttribute("href", dataStr);
+    //     downloadAnchorNode.setAttribute("download", "gate_pyq_bulk_export.json");
+    //     document.body.appendChild(downloadAnchorNode); downloadAnchorNode.click(); downloadAnchorNode.remove();
+    // };
+
+    const handleExportYTData = () => {
+    if (questions.length === 0) return alert("No questions to export!");
+
+    const ytData = questions.map((q, index) => {
+        // Clean LaTeX and limit length to keep OS filenames and YT titles manageable
+        const cleanText = cleanLatexForYT(q.text).substring(0, 60).trim() + "...";
+        
+        // Strip the numeric prefixes from your syllabus mapping (e.g., "1. Discrete Maths" -> "Discrete Maths")
+        const cleanSubject = subject.replace(/^\d+\.\s*/, '');
+        const cleanChapter = chapter.replace(/^\d+\.\s*/, '');
+
+        return {
+            index: index + 1,
+            year: q.year,
+            marks: q.marks,
+            subject: cleanSubject,
+            chapter: cleanChapter,
+            // Format for file renaming: GATE CSE Year - Subject - Question text
+            video_title: `GATE CSE ${q.year} - ${cleanSubject} - ${cleanText}`,
+            // Format for description: GATE CSE Year Chapter - Question text
+            timestamp_title: `GATE CSE ${q.year} ${cleanChapter} - ${cleanText}`
+        };
+    });
+
+
+    const jsonString = JSON.stringify(ytData, null, 4);
+
+    // Copy to clipboard
+    navigator.clipboard.writeText(jsonString).then(() => {
+        alert("YouTube Data copied to clipboard & downloading as JSON!");
+    }).catch(err => {
+        console.error("Clipboard write failed", err);
+    });
+
+    // Trigger JSON download
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(jsonString);
+    const downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute("download", "G4Gate_YT_Export.json");
+    document.body.appendChild(downloadAnchorNode);
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+};
 
     const clearWorkspace = () => {
         if (confirm("Clear screen?")) { setQuestions([]); setSyncedCount(0); setIsDirty(true); }
@@ -495,6 +539,35 @@ export default function Home() {
         }
         return optText;
     };
+
+    const handleExportAllImages = async () => {
+    if (questions.length === 0) return alert("No questions to export!");
+    
+    alert("Starting lightning-fast image export! Please wait a few seconds while the ZIP is generated...");
+    
+    try {
+      const baseUrl = window.location.origin; // e.g. http://localhost:3000
+      const response = await fetch('/api/export-images-zip', {
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subject, chapter, questions, baseUrl })
+      });
+
+      if (!response.ok) throw new Error("Image export failed.");
+      
+      const blob = await response.blob(); 
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a'); 
+      a.href = url; 
+      a.download = `${subject}_${chapter}_Images.zip`;
+      document.body.appendChild(a); 
+      a.click(); 
+      a.remove();
+    } catch (error) { 
+      console.error(error);
+      alert("Error generating Image ZIP. Check the server console."); 
+    }
+  };
 
     return (
         <div style={{ maxWidth: '98%', margin: 'auto', padding: '20px' }}>
@@ -543,12 +616,20 @@ export default function Home() {
                     <button className="btn-autofill" style={{ padding: '10px 15px' }} onClick={loadFromMongoDB}>📥 Revive</button>
                     <button className="btn-export" style={{ background: '#a6e3a1', color: '#11111b', padding: '10px 15px' }} onClick={saveToMongoDB}>💾 Save DB</button>
 
-                    <label style={{ margin: 0, cursor: 'pointer', background: '#89b4fa', color: '#11111b', padding: '10px 15px', borderRadius: '4px', fontWeight: 'bold' }}>
+                    {/* <label style={{ margin: 0, cursor: 'pointer', background: '#89b4fa', color: '#11111b', padding: '10px 15px', borderRadius: '4px', fontWeight: 'bold' }}>
                         📂 Import JSON
                         <input type="file" accept=".json" onChange={handleFileUpload} style={{ display: 'none' }} />
-                    </label>
+                    </label> */}
 
-                    <button className="btn-export" style={{ background: '#f9e2af', color: '#11111b', padding: '10px 15px' }} onClick={exportToJSON}>📤 Export JSON</button>
+                    {/* <button className="btn-export" style={{ background: '#f9e2af', color: '#11111b', padding: '10px 15px' }} onClick={exportToJSON}>📤 Export JSON</button> */}
+                    <button className="btn-export" style={{ background: '#f5c2e7', color: '#11111b', padding: '10px 15px' }} onClick={handleExportYTData}>▶️ Export YT Data</button>
+                    <button 
+                        className="btn-export" 
+                        style={{ background: '#89dceb', color: '#11111b', padding: '10px 15px' }} 
+                        onClick={handleExportAllImages}
+                        >
+                        📸 Export All Images (ZIP)
+                        </button>
                     <button className="btn-clear" style={{ padding: '10px 15px' }} onClick={clearWorkspace}>🗑️ Clear</button>
 
                     <div style={{ display: 'flex', gap: '5px', marginLeft: 'auto' }}>
@@ -604,7 +685,7 @@ export default function Home() {
                                     <div className="q-header" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', alignItems: 'center' }}>
                                         <div>
                                             <h3 style={{ margin: 0, color: '#a6e3a1', display: 'inline-block' }}>Question {qNum}</h3>
-                                            <button className="btn-export" style={{ background: '#89dceb', color: '#11111b', padding: '4px 10px', marginLeft: '15px', fontSize: '12px' }} onClick={() => handleExportSingleImage(q, qNum)}>🖼️ Single Image</button>
+                                            {/* <button className="btn-export" style={{ background: '#89dceb', color: '#11111b', padding: '4px 10px', marginLeft: '15px', fontSize: '12px' }} onClick={() => handleExportSingleImage(q, qNum)}>🖼️ Single Image</button> */}
                                             <button className="btn-export" style={{ background: '#f9e2af', color: '#11111b', padding: '4px 10px', marginLeft: '10px', fontSize: '12px' }} onClick={() => copyForYouTube(q, idx)}>📋 Copy for YT</button>
                                         </div>
                                         <button className="btn-clear" style={{ padding: '4px 10px' }} onClick={() => removeQuestion(q.id)}>Remove</button>
