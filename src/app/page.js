@@ -33,6 +33,8 @@ export default function Home() {
   const [missingFocusIndex, setMissingFocusIndex] = useState(0);
   const [activePasteIndex, setActivePasteIndex] = useState(null);
   const [inlinePasteText, setInlinePasteText] = useState("");
+  // Add this around line 28, with your other state variables
+  const [imageTextWidth, setImageTextWidth] = useState(70); // Defaulting to 70% for YT
 
   // New states for Toast and Auto-Revive
   const [toast, setToast] = useState(null);
@@ -369,34 +371,61 @@ export default function Home() {
     } catch (error) { showToast("❌ Error generating PDF. Make sure you are running locally.", "error"); }
   };
 
-  const cleanLatexForYT = (text) => {
+  
+
+ const cleanLatexForYT = (text) => {
     if (!text) return "";
-    let cleaned = text.replace(/<[^>]*>?/gm, '');
+
+    // Remove HTML tags but KEEP the content inside them
+    let cleaned = text.replace(/<[^>]+>/g, ' ');
+
+    // Remove MathJax delimiters
     cleaned = cleaned.replace(/\$/g, '');
     cleaned = cleaned.replace(/\\\[/g, '');
     cleaned = cleaned.replace(/\\\]/g, '');
+
+    // LaTeX to Windows/YouTube safe keyboard symbols & text
     const map = {
       '\\Rightarrow': ' implies ', '\\Leftarrow': ' is implied by ', '\\Leftrightarrow': ' if and only if ',
       '\\neg': ' not ', '\\vee': ' or ', '\\wedge': ' and ', '\\oplus': ' xor ',
-      '\\rightarrow': ' to ', '\\leftarrow': ' from ', '\\ge': ' greater than or equal to ', '\\le': ' less than or equal to ',
-      '\\neq': ' not equal to ', '\\approx': ' approximately ', '\\equiv': ' equivalent to ', '\\times': ' times ', '\\div': ' divided by ',
-      '\\pm': ' plus minus ', '\\infty': ' infinity ', '\\forall': ' for all ', '\\exists': ' exists ',
+      '\\rightarrow': ' to ', '\\leftarrow': ' from ', '\\ge': ' greater equal ', '\\le': ' less equal ',
+      '\\neq': ' != ', '\\approx': ' ~ ', '\\equiv': ' = ', '\\times': ' x ', '\\div': ' div ',
+      '\\pm': ' +- ', '\\infty': ' infinity ', '\\forall': ' for all ', '\\exists': ' exists ',
       '\\in ': ' in ', '\\notin ': ' not in ', '\\cup': ' union ', '\\cap': ' intersection ',
       '\\emptyset': ' empty set '
     };
+
     for (const [key, value] of Object.entries(map)) {
       cleaned = cleaned.replaceAll(key, value);
     }
+
+    // Handle standard math symbols
     cleaned = cleaned.replace(/=>/g, ' implies ');
-    cleaned = cleaned.replace(/<=/g, ' less than or equal to ');
+    cleaned = cleaned.replace(/<=/g, ' less equal ');
     cleaned = cleaned.replace(/<=>/g, ' if and only if ');
+
+    // Remove remaining backslash latex commands (e.g., \frac, \text)
     cleaned = cleaned.replace(/\\[a-zA-Z]+/g, ' ');
-    cleaned = cleaned.replace(/[()<>{}\[\]]/g, ' ');
+
+    // CRITICAL FIX: Only remove curly braces { }. PRESERVE ( ) and [ ]
+    cleaned = cleaned.replace(/[{}]/g, ' ');
+
+    // STRIP ALL Windows & YouTube forbidden characters: < > : " / \ | ? *
+    cleaned = cleaned.replace(/[<>:"/\\|?*]/g, ' ');
+
     return cleaned.replace(/\s+/g, ' ').trim();
   };
 
   const copyForYouTube = (q, index) => {
-    let ytText = `GATE ${q.year} | ${q.marks} Mark\n\n`;
+    // Clean subject and chapter names by removing prefix numbers
+    const cleanSubject = subject.replace(/^\d+\.\s*/, '').trim();
+    const cleanChapter = chapter.replace(/^\d+\.\s*/, '').trim();
+
+    // ==========================================
+    // 1. ORIGINAL FORMAT (Continuous Manner)
+    // ==========================================
+    // Using commas instead of hyphens or pipes
+    let ytText = `[GATE ${q.year}, ${q.marks} Mark, ${cleanSubject}, ${cleanChapter}]\n\n`;
     ytText += `${cleanLatexForYT(q.text)}\n`;
     
     if (q.code) {
@@ -405,18 +434,53 @@ export default function Home() {
     }
     
     if (q.optA || q.optB || q.optC || q.optD) {
-      if (q.optA) ytText += `A. ${cleanLatexForYT(q.optA)}\n`;
-      if (q.optB) ytText += `B. ${cleanLatexForYT(q.optB)}\n`;
-      if (q.optC) ytText += `C. ${cleanLatexForYT(q.optC)}\n`;
-      if (q.optD) ytText += `D. ${cleanLatexForYT(q.optD)}\n`;
+      if (q.optA) ytText += `(A) ${cleanLatexForYT(q.optA)}\n`;
+      if (q.optB) ytText += `(B) ${cleanLatexForYT(q.optB)}\n`;
+      if (q.optC) ytText += `(C) ${cleanLatexForYT(q.optC)}\n`;
+      if (q.optD) ytText += `(D) ${cleanLatexForYT(q.optD)}\n\n`;
     } else if (q.natAnswer) {
-      ytText += `Answer: ${cleanLatexForYT(q.natAnswer)}\n`;
+      ytText += `Answer: ${cleanLatexForYT(q.natAnswer)}\n\n`;
     }
-    
-    navigator.clipboard.writeText(ytText.trim());
-    showToast("📋 Copied text to clipboard for YouTube!");
-  };
 
+    ytText += `--------------------------------------------------------\n\n`;
+
+    // ==========================================
+    // 2. NEW SEO FORMAT (Without Emojis)
+    // ==========================================
+    // Using commas instead of hyphens or pipes
+    ytText += `GATE CSE ${q.year} PYQ, ${cleanSubject}, ${cleanChapter}\n`;
+    ytText += `Marks: ${q.marks} Mark\n\n`;
+
+    ytText += `Question:\n${cleanLatexForYT(q.text)}\n\n`;
+
+    if (q.code) {
+      let safeCode = q.code.replace(/[<>]/g, ' ');
+      ytText += `Code Snippet:\n${safeCode}\n\n`;
+    }
+
+    if (q.optA || q.optB || q.optC || q.optD) {
+      ytText += `Options:\n`;
+      if (q.optA) ytText += `(A) ${cleanLatexForYT(q.optA)}\n`;
+      if (q.optB) ytText += `(B) ${cleanLatexForYT(q.optB)}\n`;
+      if (q.optC) ytText += `(C) ${cleanLatexForYT(q.optC)}\n`;
+      if (q.optD) ytText += `(D) ${cleanLatexForYT(q.optD)}\n\n`;
+    } else if (q.natAnswer) {
+      ytText += `Answer: ${cleanLatexForYT(q.natAnswer)}\n\n`;
+    }
+
+    // SEO Friendly Description Paragraph
+    ytText += `Prepare for GATE Computer Science Engineering (CSE) with detailed previous year questions (PYQs). `;
+    ytText += `This specific problem belongs to the ${cleanSubject} subject, focusing on the ${cleanChapter} topic.\n\n`;
+
+    // Dynamic SEO Hashtags
+    const subjectTag = cleanSubject.replace(/[^a-zA-Z0-9]/g, '');
+    const chapterTag = cleanChapter.replace(/[^a-zA-Z0-9]/g, '');
+    ytText += `#GATECSE #GATE${q.year} #${subjectTag} #${chapterTag} #GATEPreparation #GATECSEPYQ #ComputerScience #GATEExam`;
+
+    // Copy to clipboard
+    navigator.clipboard.writeText(ytText.trim());
+    showToast("📋 Copied combined text for YT!");
+  };
   const handleExportYTData = () => {
     if (questions.length === 0) return showToast("❌ No questions to export!", "error");
     
@@ -486,15 +550,16 @@ export default function Home() {
 
   const handleExportAllImages = async () => {
     if (questions.length === 0) return showToast("❌ No questions to export!", "error");
-    
-    showToast("📸 Generating Image ZIP... Please wait.", "info");
-    try {
-      const baseUrl = window.location.origin;
-      const response = await fetch('/api/export-images-zip', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ subject, chapter, questions, baseUrl })
-      });
+      showToast("📸 Generating Image ZIP... Please wait.", "info");
+      try {
+        const baseUrl = window.location.origin;
+        const response = await fetch('/api/export-images-zip', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          // 👇 Update the body to include contentWidth
+          body: JSON.stringify({ subject, chapter, questions, baseUrl, contentWidth: imageTextWidth }) 
+        });
+        // ... rest of the function remains the same
       
       if (!response.ok) throw new Error("Image export failed.");
       const blob = await response.blob();
@@ -585,6 +650,18 @@ export default function Home() {
               ⚠️ {missingIndices.length} Issues Found (Click to Jump)
             </button>
           )}
+        </div>
+
+        {/* Add this right before the <div> containing the buttons */}
+        <div style={{ flex: '1 1 150px', display: 'flex', flexDirection: 'column', padding: '0 10px' }}>
+          <label style={{ marginTop: 0, fontSize: '13px', color: '#cdd6f4' }}>
+            Thumbnail Text Width: <strong>{imageTextWidth}%</strong>
+          </label>
+          <input 
+            type="range" min="40" max="100" value={imageTextWidth} 
+            onChange={(e) => setImageTextWidth(e.target.value)} 
+            style={{ cursor: 'pointer', marginTop: '5px' }}
+          />
         </div>
         
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
