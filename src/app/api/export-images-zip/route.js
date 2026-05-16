@@ -68,7 +68,7 @@ export async function POST(req) {
       <div class="export-card" id="q-${idx + 1}">
         <!-- 👇 This div restricts the width based on the slider value -->
         <div style="width: ${contentWidth}%;">
-           <div style="display: inline-block; background: #a6e3a1; color: #11111b; font-weight: 900; margin-bottom: 25px; font-size: 38px; padding: 2px 3px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+           <div style="display: inline-block; background: #a6e3a1; color: #11111b; font-weight: 900; margin-bottom: 25px; font-size: 38px; padding: 2px 10px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
             GATE ${q.year} | ${q.marks} Mark
           </div>
           <div style="line-height: 1.5;">${formattedText}</div>

@@ -33,7 +33,6 @@ export default function Home() {
   const [missingFocusIndex, setMissingFocusIndex] = useState(0);
   const [activePasteIndex, setActivePasteIndex] = useState(null);
   const [inlinePasteText, setInlinePasteText] = useState("");
-  // Add this around line 28, with your other state variables
   const [imageTextWidth, setImageTextWidth] = useState(70); // Defaulting to 70% for YT
 
   // New states for Toast and Auto-Revive
@@ -256,7 +255,13 @@ export default function Home() {
 
   const processExtractedQuestions = (textStr, startIndexOffset = 0) => {
     if (!textStr.trim()) return [];
-    let parts = textStr.split(/QUESTION:\s*/i);
+    
+    // Clean double dollar signs and remove blank lines (replace multiple newlines with single newline)
+    let cleanedTextStr = textStr
+      .replace(/\$\$/g, '$')
+      .replace(/\n(?:\s*\n)+/g, '\n');
+
+    let parts = cleanedTextStr.split(/QUESTION:\s*/i);
     let newQuestions = [];
     parts.forEach(part => {
       if (!part.trim()) return;
@@ -313,13 +318,25 @@ export default function Home() {
     showToast(`Inserted ${newQs.length} questions inline!`);
   };
 
-  const updateQ = (id, field, value) => { setQuestions(questions.map(q => q.id === id ? { ...q, [field]: value } : q)); setIsDirty(true); };
+  // Modified updateQ to enforce $$ -> $ and remove blank lines real-time
+  const updateQ = (id, field, value) => { 
+    let finalValue = value;
+    if (typeof value === 'string' && ['text', 'optA', 'optB', 'optC', 'optD', 'natAnswer'].includes(field)) {
+      finalValue = value.replace(/\$\$/g, '$').replace(/\n(?:\s*\n)+/g, '\n');
+    }
+    setQuestions(questions.map(q => q.id === id ? { ...q, [field]: finalValue } : q)); 
+    setIsDirty(true); 
+  };
+  
   const removeQuestion = (id) => { setQuestions(questions.filter(q => q.id !== id)); setIsDirty(true); showToast("Question removed", "info"); };
 
   const handleOptionPaste = (id, e) => {
-    const pastedText = e.clipboardData.getData('text');
+    let pastedText = e.clipboardData.getData('text');
     if (pastedText.includes(';')) {
-      e.preventDefault(); const parts = pastedText.split(';');
+      e.preventDefault(); 
+      // Clean before parsing
+      pastedText = pastedText.replace(/\$\$/g, '$').replace(/\n(?:\s*\n)+/g, '\n');
+      const parts = pastedText.split(';');
       setQuestions(questions.map(q => {
         if (q.id === id) return { ...q, optA: parts[0]?.trim() || "", optB: parts[1]?.trim() || "", optC: parts[2]?.trim() || "", optD: parts[3]?.trim() || "", natAnswer: "" };
         return q;
@@ -330,7 +347,6 @@ export default function Home() {
   };
 
   const saveToMongoDB = async () => {
-    // SECURITY CONFIRMATION TO PREVENT ACCIDENTAL WIPES
     if (!confirm(`🚨 DATABASE OVERWRITE CONFIRMATION 🚨\n\nAre you sure you want to SAVE to DB?\n\nThis will permanently overwrite the database for "${subject} - ${chapter}" with the ${questions.length} questions currently on your screen.`)) {
       return;
     }
@@ -370,8 +386,6 @@ export default function Home() {
       showToast("✅ PDF Exported Successfully!");
     } catch (error) { showToast("❌ Error generating PDF. Make sure you are running locally.", "error"); }
   };
-
-  
 
  const cleanLatexForYT = (text) => {
     if (!text) return "";
@@ -481,6 +495,7 @@ export default function Home() {
     navigator.clipboard.writeText(ytText.trim());
     showToast("📋 Copied combined text for YT!");
   };
+
   const handleExportYTData = () => {
     if (questions.length === 0) return showToast("❌ No questions to export!", "error");
     
@@ -559,7 +574,6 @@ export default function Home() {
           // 👇 Update the body to include contentWidth
           body: JSON.stringify({ subject, chapter, questions, baseUrl, contentWidth: imageTextWidth }) 
         });
-        // ... rest of the function remains the same
       
       if (!response.ok) throw new Error("Image export failed.");
       const blob = await response.blob();
