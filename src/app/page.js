@@ -519,19 +519,36 @@ export default function Home() {
 
   const handleExportPDF = async () => {
     if (questions.length === 0) return showToast("❌ No questions to compile!", "error");
-    showToast("🚀 Compiling LaTeX to PDF...", "info");
+    
+    // Updated toast to reflect chunking progress
+    showToast("🚀 Compiling LaTeX chunks... This may take a moment.", "info");
+    
     try {
       const response = await fetch('/api/export-pdf', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ subject, chapter, questions })
       });
+      
       if (!response.ok) throw new Error("PDF generation failed.");
       
-      const blob = await response.blob(); const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a'); a.href = url; a.download = `${subject}_${chapter}_PYQs.pdf`;
-      document.body.appendChild(a); a.click(); a.remove();
-      showToast("✅ PDF Exported Successfully!");
-    } catch (error) { showToast("❌ Error generating PDF. Make sure you are running locally.", "error"); }
+      const blob = await response.blob(); 
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a'); 
+      a.href = url; 
+      
+      // Check headers to dynamically set the correct extension (.zip vs fallback .pdf)
+      const contentType = response.headers.get('Content-Type');
+      const isZip = contentType === 'application/zip';
+      a.download = isZip ? `${subject}_${chapter}_PYQs.zip` : `${subject}_${chapter}_PYQs.pdf`;
+      
+      document.body.appendChild(a); 
+      a.click(); 
+      a.remove();
+      
+      showToast("✅ PDF Chunks Exported Successfully!");
+    } catch (error) { 
+      showToast("❌ Error generating PDF. Make sure you are running locally.", "error"); 
+    }
   };
 
   const cleanLatexForYT = (text) => {
