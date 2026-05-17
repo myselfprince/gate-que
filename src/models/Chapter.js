@@ -4,9 +4,14 @@ const ChapterSchema = new mongoose.Schema({
   subject: { type: String, required: true },
   chapter: { type: String, required: true },
   questions: { type: Array, default: [] },
+  lockCount: { type: Number, default: 0 } // 🔥 Store lock state
 }, { timestamps: true });
 
-// Compound index to ensure Subject + Chapter is unique
 ChapterSchema.index({ subject: 1, chapter: 1 }, { unique: true });
 
-export default mongoose.models.Chapter || mongoose.model('Chapter', ChapterSchema);
+// 🔥 FIX: Prevent Next.js from using a cached version of the schema
+if (mongoose.models.Chapter) {
+  delete mongoose.models.Chapter;
+}
+
+export default mongoose.model('Chapter', ChapterSchema);

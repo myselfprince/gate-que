@@ -123,6 +123,8 @@ export default function ScraperPage() {
   const [groupedQuestions, setGroupedQuestions] = useState({});
   const [toast, setToast] = useState(null);
   const [expandedGroups, setExpandedGroups] = useState({});
+  // 🔥 NEW: Toggle between Grouped and Ungrouped views
+  const [isGroupedView, setIsGroupedView] = useState(true);
 
   const availableSubjects = Object.keys(GATE_SYLLABUS);
   const [subject, setSubject] = useState(availableSubjects[1]);
@@ -131,6 +133,8 @@ export default function ScraperPage() {
   // 🔥 NEW STATE: Track Offline Backups
   const [savedBackups, setSavedBackups] = useState([]);
   const [selectedBackup, setSelectedBackup] = useState('');
+
+  
 
   const showToast = (message, type = 'success') => {
     setToast({ message, type });
@@ -146,6 +150,11 @@ export default function ScraperPage() {
     setSavedBackups(keys);
     if (keys.length > 0 && !selectedBackup) setSelectedBackup(keys[0]);
   };
+
+  // 🔥 NEW: Compute a flat, year-sorted array of all scraped questions
+  const flatQuestions = Object.values(groupedQuestions)
+    .flat()
+    .sort((a, b) => parseInt(a.year) - parseInt(b.year));
 
   const handleLoadFromDB = async (targetSubject) => {
     if (!targetSubject) return;
@@ -261,7 +270,8 @@ const handlePushBackupToDB = async (targetSubject) => {
     if (isScraping) return;
     const timer = setTimeout(() => {
       if (typeof window !== 'undefined' && window.MathJax && window.MathJax.typesetPromise) {
-        const container = document.getElementById('grouped_questions_container');
+        // Changed ID to wrap both view modes
+        const container = document.getElementById('questions_render_container');
         if (container) {
           window.MathJax.typesetClear([container]);
           window.MathJax.typesetPromise([container]).catch(err => console.error(err));
@@ -269,7 +279,7 @@ const handlePushBackupToDB = async (targetSubject) => {
       }
     }, 200);
     return () => clearTimeout(timer);
-  }, [groupedQuestions, expandedGroups, isScraping]);
+  }, [groupedQuestions, expandedGroups, isGroupedView, isScraping]); // Added isGroupedView here
 
   const startScraping = async () => {
     if (!url.includes('practicepaper.in')) {
@@ -339,6 +349,22 @@ const handlePushBackupToDB = async (targetSubject) => {
     
     navigator.clipboard.writeText(bulkString.trim());
     showToast(`📋 Copied ${questionsArray.length} questions for ${chapterName}!`);
+  };
+  // 🔥 NEW: Format specifically for bulk-copying EVERYTHING in Ungrouped view
+  const handleCopyAllUngrouped = () => {
+    let bulkString = "";
+    
+    flatQuestions.forEach(q => {
+      bulkString += `QUESTION: ${q.text.trim()} [${q.year} : ${q.marks} M]\n`;
+      if (q.code) bulkString += `CODE: ${q.code}\n`;
+      if (q.optA || q.optB || q.optC || q.optD) {
+        bulkString += `OPTIONS: ${q.optA || ''} ; ${q.optB || ''} ; ${q.optC || ''} ; ${q.optD || ''}\n`;
+      }
+      bulkString += `\n`;
+    });
+    
+    navigator.clipboard.writeText(bulkString.trim());
+    showToast(`📋 Copied all ${flatQuestions.length} questions for Main Page!`);
   };
 
   const toggleGroup = (chapterName) => {
@@ -413,6 +439,17 @@ const handlePushBackupToDB = async (targetSubject) => {
       showToast("❌ Network error saving to database", "error");
     }
   };
+  // 🔥 NEW: Format specifically for a single question
+  const handleCopySingleQuestion = (q) => {
+    let qString = `QUESTION: ${q.text.trim()} [${q.year} : ${q.marks} M]\n`;
+    if (q.code) qString += `CODE: ${q.code}\n`;
+    if (q.optA || q.optB || q.optC || q.optD) {
+      qString += `OPTIONS: ${q.optA || ''} ; ${q.optB || ''} ; ${q.optC || ''} ; ${q.optD || ''}\n`;
+    }
+    
+    navigator.clipboard.writeText(qString.trim());
+    showToast(`📋 Copied Question to clipboard!`);
+  };
 
   return (
     <div style={{ maxWidth: '1200px', margin: 'auto', padding: '20px', color: '#cdd6f4' }}>
@@ -478,23 +515,130 @@ const handlePushBackupToDB = async (targetSubject) => {
       </div>
 
       {Object.keys(groupedQuestions).length > 0 && (
-        <div style={{ background: '#313244', padding: '15px', borderRadius: '10px', display: 'flex', gap: '15px', alignItems: 'center', marginBottom: '20px', border: '1px solid #a6e3a1', flexWrap: 'wrap' }}>
-          
-          <div style={{ flex: '1 1 30%' }}>
-            <label style={{ display: 'block', fontSize: '12px', color: '#bac2de' }}>Target Subject:</label>
-            <select value={subject} onChange={(e) => { setSubject(e.target.value); setChapter(GATE_SYLLABUS[e.target.value][0]); }} style={{ width: '100%', padding: '8px', borderRadius: '4px', background: '#11111b', color: '#cdd6f4', border: '1px solid #45475a' }}>
-              {availableSubjects.map(sub => <option key={sub} value={sub}>{sub}</option>)}
-            </select>
+        <>
+          <div style={{ background: '#313244', padding: '15px', borderRadius: '10px', display: 'flex', gap: '15px', alignItems: 'center', marginBottom: '20px', border: '1px solid #a6e3a1', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+            
+            <div style={{ display: 'flex', gap: '15px', alignItems: 'center', flex: '1 1 auto' }}>
+              <div>
+                <label style={{ display: 'block', fontSize: '12px', color: '#bac2de' }}>Target Subject:</label>
+                <select value={subject} onChange={(e) => { setSubject(e.target.value); setChapter(GATE_SYLLABUS[e.target.value][0]); }} style={{ padding: '8px', borderRadius: '4px', background: '#11111b', color: '#cdd6f4', border: '1px solid #45475a' }}>
+                  {availableSubjects.map(sub => <option key={sub} value={sub}>{sub}</option>)}
+                </select>
+              </div>
+
+              {/* 🔥 View Mode Toggle */}
+              <div style={{ borderLeft: '1px solid #45475a', paddingLeft: '15px' }}>
+                <label style={{ display: 'block', fontSize: '12px', color: '#bac2de', marginBottom: '5px' }}>View Mode:</label>
+                <div style={{ display: 'flex', gap: '5px' }}>
+                  <button onClick={() => setIsGroupedView(true)} style={{ background: isGroupedView ? '#cba6f7' : '#45475a', color: isGroupedView ? '#11111b' : '#cdd6f4', padding: '6px 12px', borderRadius: '4px', border: 'none', cursor: 'pointer', fontWeight: 'bold', fontSize: '12px' }}>Grouped</button>
+                  <button onClick={() => setIsGroupedView(false)} style={{ background: !isGroupedView ? '#cba6f7' : '#45475a', color: !isGroupedView ? '#11111b' : '#cdd6f4', padding: '6px 12px', borderRadius: '4px', border: 'none', cursor: 'pointer', fontWeight: 'bold', fontSize: '12px' }}>Ungrouped</button>
+                </div>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              <button onClick={handleSaveToLocalStorage} style={{ background: '#89b4fa', color: '#11111b', padding: '10px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
+                💾 Save Backup
+              </button>
+              
+              {/* Contextual Buttons based on View Mode */}
+              {isGroupedView ? (
+                <>
+                  <button onClick={() => toggleAll(true)} style={{ background: '#45475a', color: '#cdd6f4', padding: '10px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>Expand All</button>
+                  <button onClick={() => toggleAll(false)} style={{ background: '#45475a', color: '#cdd6f4', padding: '10px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>Collapse All</button>
+                </>
+              ) : (
+                <button onClick={handleCopyAllUngrouped} style={{ background: '#a6e3a1', color: '#11111b', padding: '10px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
+                  📋 Copy All {flatQuestions.length} Questions
+                </button>
+              )}
+            </div>
           </div>
 
-          <div style={{ display: 'flex', gap: '10px', marginTop: '16px', flex: '1 1 60%', justifyContent: 'flex-end' }}>
-            <button onClick={handleSaveToLocalStorage} style={{ background: '#89b4fa', color: '#11111b', padding: '10px 20px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
-              💾 Save Backup as '{subject}'
-            </button>
-            <button onClick={() => toggleAll(true)} style={{ background: '#45475a', color: '#cdd6f4', padding: '10px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>Expand All</button>
-            <button onClick={() => toggleAll(false)} style={{ background: '#45475a', color: '#cdd6f4', padding: '10px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>Collapse All</button>
+          {/* 🔥 Main Render Container for MathJax */}
+          <div id="questions_render_container">
+            {/* GROUPED VIEW RENDER */}
+            {isGroupedView && (
+              <div style={{ display: 'grid', gap: '15px' }}>
+                {Object.entries(groupedQuestions).map(([chapterName, questionsArray]) => (
+                  <div key={chapterName} style={{ background: '#11111b', border: '2px solid #cba6f7', borderRadius: '10px', overflow: 'hidden' }}>
+                    <div 
+                      onClick={() => toggleGroup(chapterName)}
+                      style={{ background: '#313244', padding: '15px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', userSelect: 'none', borderBottom: expandedGroups[chapterName] ? '2px solid #cba6f7' : 'none' }}
+                    >
+                      <h2 style={{ margin: 0, color: '#cba6f7', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <span style={{ fontSize: '16px', display: 'inline-block', width: '20px', textAlign: 'center' }}>{expandedGroups[chapterName] ? '▼' : '▶'}</span>
+                        {chapterName} <span style={{ fontSize: '14px', color: '#bac2de' }}>({questionsArray.length} Qs)</span>
+                      </h2>
+                      <button onClick={(e) => { e.stopPropagation(); handleCopyGroup(questionsArray, chapterName); }} style={{ background: '#a6e3a1', color: '#11111b', padding: '8px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
+                        📋 Copy Group
+                      </button>
+                    </div>
+
+                    {expandedGroups[chapterName] && (
+                      <div style={{ padding: '20px', display: 'grid', gap: '20px' }}>
+                        {questionsArray.map((q, idx) => (
+                          <div key={q.id} style={{ background: '#1e1e2e', padding: '20px', borderRadius: '8px', border: '1px solid #45475a' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+                              <span style={{ color: '#89b4fa', fontWeight: 'bold' }}>#{idx + 1}</span>
+                              <div style={{ display: 'flex', alignItems: 'center' }}>
+                                {q.setNum && <span style={{ background: '#89b4fa', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold', marginRight: '10px' }}>Set-{q.setNum}</span>}
+                                <span style={{ background: '#f9e2af', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold' }}>GATE {q.year} | {q.marks} Mark</span>
+                                
+                                {/* 🔥 Single Copy Button */}
+                                <button onClick={() => handleCopySingleQuestion(q)} style={{ background: '#cba6f7', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold', marginLeft: '10px', border: 'none', cursor: 'pointer' }} title="Copy formatted LaTeX for this question">
+                                  📋 Copy
+                                </button>
+                              </div>
+                            </div>
+                            <div style={{ marginBottom: '15px', whiteSpace: 'pre-wrap' }} dangerouslySetInnerHTML={{ __html: q.text.replace(/\n/g, '<br>') }} />
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                              {q.optA && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(A)</strong> <span dangerouslySetInnerHTML={{ __html: q.optA }} /></div>}
+                              {q.optB && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(B)</strong> <span dangerouslySetInnerHTML={{ __html: q.optB }} /></div>}
+                              {q.optC && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(C)</strong> <span dangerouslySetInnerHTML={{ __html: q.optC }} /></div>}
+                              {q.optD && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(D)</strong> <span dangerouslySetInnerHTML={{ __html: q.optD }} /></div>}
+                            </div>
+                            {q.natAnswer === "NAT" && !q.optA && <div style={{ marginTop: '10px', color: '#f38ba8', fontWeight: 'bold' }}>Numerical Answer Type (NAT)</div>}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* UNGROUPED VIEW RENDER (Flat List Sorted by Year) */}
+            {!isGroupedView && (
+              <div style={{ display: 'grid', gap: '20px' }}>
+                {flatQuestions.map((q, idx) => (
+                  <div key={q.id} style={{ background: '#1e1e2e', padding: '20px', borderRadius: '8px', border: '1px solid #45475a' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+                      <span style={{ color: '#89b4fa', fontWeight: 'bold' }}>#{idx + 1} <span style={{ color: '#bac2de', fontWeight: 'normal', fontSize: '13px', marginLeft: '10px' }}>(from {q.rawTopic || 'Uncategorized'})</span></span>
+                     <div style={{ display: 'flex', alignItems: 'center' }}>
+                        {q.setNum && <span style={{ background: '#89b4fa', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold', marginRight: '10px' }}>Set-{q.setNum}</span>}
+                        <span style={{ background: '#f9e2af', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold' }}>GATE {q.year} | {q.marks} Mark</span>
+                        
+                        {/* 🔥 Single Copy Button */}
+                        <button onClick={() => handleCopySingleQuestion(q)} style={{ background: '#cba6f7', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold', marginLeft: '10px', border: 'none', cursor: 'pointer' }} title="Copy formatted LaTeX for this question">
+                          📋 Copy
+                        </button>
+                      </div>
+                    </div>
+                    <div style={{ marginBottom: '15px', whiteSpace: 'pre-wrap' }} dangerouslySetInnerHTML={{ __html: q.text.replace(/\n/g, '<br>') }} />
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                      {q.optA && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(A)</strong> <span dangerouslySetInnerHTML={{ __html: q.optA }} /></div>}
+                      {q.optB && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(B)</strong> <span dangerouslySetInnerHTML={{ __html: q.optB }} /></div>}
+                      {q.optC && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(C)</strong> <span dangerouslySetInnerHTML={{ __html: q.optC }} /></div>}
+                      {q.optD && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(D)</strong> <span dangerouslySetInnerHTML={{ __html: q.optD }} /></div>}
+                    </div>
+                    {q.natAnswer === "NAT" && !q.optA && <div style={{ marginTop: '10px', color: '#f38ba8', fontWeight: 'bold' }}>Numerical Answer Type (NAT)</div>}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
-        </div>
+        </>
       )}
 
       <div id="grouped_questions_container" style={{ display: 'grid', gap: '15px' }}>

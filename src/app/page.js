@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 
 const GATE_SYLLABUS = {
   "1. Discrete Maths": ["1. Mathematical Logic", "2. Set Theory and Algebra", "3. Combinatorics", "4. Graph Theory"],
@@ -19,13 +20,14 @@ const GATE_SYLLABUS = {
 
 export default function Home() {
   const [questions, setQuestions] = useState([]);
+  const [history, setHistory] = useState([]); 
   const [bulkText, setBulkText] = useState("");
   const jumpInputRef = useRef(null);
-  
+  const [lockCount, setLockCount] = useState(0);
+  const lockInputRef = useRef(null);
   const availableSubjects = Object.keys(GATE_SYLLABUS);
   const [subject, setSubject] = useState(availableSubjects[0]);
   const [chapter, setChapter] = useState(GATE_SYLLABUS[availableSubjects[0]][0]);
-  
   const [syncedCount, setSyncedCount] = useState(0);
   const [isDirty, setIsDirty] = useState(false);
   const [imgCacheBuster, setImgCacheBuster] = useState(Date.now());
@@ -33,15 +35,27 @@ export default function Home() {
   const [missingFocusIndex, setMissingFocusIndex] = useState(0);
   const [activePasteIndex, setActivePasteIndex] = useState(null);
   const [inlinePasteText, setInlinePasteText] = useState("");
-  const [imageTextWidth, setImageTextWidth] = useState(70); // Defaulting to 70% for YT
-
-  // New states for Toast and Auto-Revive
+  const [imageTextWidth, setImageTextWidth] = useState(70);
   const [toast, setToast] = useState(null);
   const [isReviving, setIsReviving] = useState(false);
 
   const showToast = (message, type = 'success') => {
     setToast({ message, type });
     setTimeout(() => setToast(null), 3500);
+  };
+
+  const saveHistory = () => {
+    setHistory(prev => [...prev, JSON.parse(JSON.stringify(questions))].slice(-20)); 
+  };
+
+  const handleUndo = () => {
+    if (history.length === 0) return showToast("Nothing to undo!", "info");
+    const prevHistory = [...history];
+    const previousState = prevHistory.pop();
+    setHistory(prevHistory);
+    setQuestions(previousState);
+    setIsDirty(true);
+    showToast("⏪ Undid recent change!");
   };
 
   const loadChapterState = (sub, chap) => {
@@ -51,12 +65,15 @@ export default function Home() {
       const parsed = JSON.parse(draft);
       setQuestions(parsed.questions || []);
       setSyncedCount(parsed.syncedCount || 0);
+      setLockCount(parsed.lockCount || 0);
       setIsDirty(parsed.isDirty || false);
     } else {
       setQuestions([]);
       setSyncedCount(0);
+      setLockCount(0);
       setIsDirty(false);
     }
+    setHistory([]); 
   };
 
   const loadFromMongoDB = async (sub, chap) => {
@@ -65,9 +82,11 @@ export default function Home() {
       const res = await fetch(`/api/chapters?subject=${encodeURIComponent(sub)}&chapter=${encodeURIComponent(chap)}`);
       const data = await res.json();
       if (data.success && data.data && data.data.questions && data.data.questions.length > 0) {
-        setQuestions(data.data.questions); 
-        setSyncedCount(data.data.questions.length); 
+        setQuestions(data.data.questions);
+        setSyncedCount(data.data.questions.length);
+        setLockCount(data.data.lockCount || 0);
         setIsDirty(false);
+        setHistory([]); 
         showToast(`✅ Revived ${data.data.questions.length} questions!`, 'success');
       } else {
         showToast("ℹ️ No DB data found. Loaded local draft.", "info");
@@ -137,15 +156,17 @@ export default function Home() {
     const defaultChapter = GATE_SYLLABUS[selectedSubject][0];
     setSubject(selectedSubject);
     setChapter(defaultChapter);
+    setLockCount(0);
     syncPreferences(selectedSubject, defaultChapter);
-    loadFromMongoDB(selectedSubject, defaultChapter); // Auto-revive
+    loadFromMongoDB(selectedSubject, defaultChapter);
   };
 
   const handleChapterChange = (e) => {
     const selectedChapter = e.target.value;
     setChapter(selectedChapter);
+    setLockCount(0);
     syncPreferences(subject, selectedChapter);
-    loadFromMongoDB(subject, selectedChapter); // Auto-revive
+    loadFromMongoDB(subject, selectedChapter);
   };
 
   useEffect(() => {
@@ -162,11 +183,11 @@ export default function Home() {
   useEffect(() => {
     const draftKey = `gate_draft_${subject}_${chapter}`;
     if (isDirty) {
-      localStorage.setItem(draftKey, JSON.stringify({ questions, syncedCount, isDirty }));
+      localStorage.setItem(draftKey, JSON.stringify({ questions, syncedCount, isDirty, lockCount }));
     } else {
       localStorage.removeItem(draftKey);
     }
-  }, [questions, syncedCount, isDirty, subject, chapter]);
+  }, [questions, syncedCount, isDirty, subject, chapter, lockCount]);
 
   useEffect(() => {
     if (typeof window !== 'undefined' && !window.MathJax) {
@@ -178,11 +199,6 @@ export default function Home() {
       script.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js";
       script.async = true;
       document.head.appendChild(script);
-
-      const h2cScript = document.createElement("script");
-      h2cScript.src = "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js";
-      h2cScript.async = true;
-      document.head.appendChild(h2cScript);
     }
   }, []);
 
@@ -199,6 +215,12 @@ export default function Home() {
     return () => clearTimeout(timer);
   });
 
+  useEffect(() => {
+    if (lockInputRef.current) {
+      lockInputRef.current.value = lockCount > 0 ? lockCount : '';
+    }
+  }, [lockCount]);
+
   const forceRefreshPreview = () => {
     setImgCacheBuster(Date.now());
     setImageErrors(new Set());
@@ -207,6 +229,56 @@ export default function Home() {
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   const scrollToBottom = () => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+
+  // 🔥 UPDATED: Save to DB now accepts an override to bypass confirmation alerts when locking
+  const saveToMongoDB = async (overrideLockCount = null, isSilent = false) => {
+    const lockVal = overrideLockCount !== null ? overrideLockCount : lockCount;
+    
+    if (!isSilent) {
+      if (!confirm(`🚨 DATABASE OVERWRITE CONFIRMATION 🚨\n\nAre you sure you want to SAVE to DB?\n\nThis will permanently overwrite the database for "${subject} - ${chapter}" with the ${questions.length} questions currently on your screen.`)) {
+        return false;
+      }
+    }
+
+    try {
+      if (!isSilent) showToast("Saving to DB...", "info");
+      const res = await fetch('/api/chapters', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subject, chapter, questions, lockCount: lockVal })
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSyncedCount(questions.length);
+        setIsDirty(false);
+        if (!isSilent) showToast(`✅ Saved successfully!`);
+        return true;
+      } else {
+        showToast("❌ Error saving to DB: " + data.error, "error");
+        return false;
+      }
+    } catch (error) {
+      showToast("❌ Error connecting to database", "error");
+      return false;
+    }
+  };
+
+  // 🔥 UPDATED: handleLock now automatically calls saveToMongoDB silently
+  const handleLock = async (e) => {
+    e.preventDefault();
+    const val = parseInt(lockInputRef.current?.value || 0, 10);
+    if (isNaN(val) || val < 0 || val > questions.length) {
+      return showToast(`❌ Invalid lock number. Must be between 0 and ${questions.length}`, "error");
+    }
+    
+    setLockCount(val);
+    showToast("Saving lock state to DB...", "info");
+    
+    const success = await saveToMongoDB(val, true);
+    if (success) {
+      if (val === 0) showToast("🔓 All questions unlocked & Saved!");
+      else showToast(`🔒 Locked Qs 1 to ${val} & Saved!`);
+    }
+  };
 
   const handleJump = (e) => {
     e.preventDefault();
@@ -217,6 +289,78 @@ export default function Home() {
     else showToast(`❌ Question ${jumpValue} not found.`, "error");
     jumpInputRef.current.value = "";
   };
+
+  const handleMoveQuestion = (currentIndex, e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const targetQNum = parseInt(e.target.value, 10);
+      if (isNaN(targetQNum) || targetQNum < 1 || targetQNum > questions.length) {
+        return showToast("❌ Invalid target question number", "error");
+      }
+      const targetIndex = targetQNum - 1;
+      if (currentIndex < lockCount) return showToast("❌ Cannot move a locked question!", "error");
+      if (targetIndex < lockCount) return showToast(`❌ Cannot move into locked zone (Qs 1-${lockCount})!`, "error");
+
+      saveHistory(); 
+      const updated = [...questions];
+      const [movedItem] = updated.splice(currentIndex, 1);
+      updated.splice(targetIndex, 0, movedItem);
+      
+      // 🔥 NEW: Auto-renumber images after shifting
+      const synced = updated.map((q, idx) => {
+        if (idx < lockCount) return q; // Do not touch locked questions
+        const expectedNum = idx + 1;
+        
+        // Replaces the first number it finds in the string (e.g., "67a" -> "49a")
+        const syncStr = (str) => str ? str.split(',').map(s => s.replace(/\d+/, expectedNum)).join(',') : "";
+        const syncOpt = (opt) => opt && opt.startsWith('IMG:') ? opt.replace(/\d+/, expectedNum) : opt;
+        
+        return {
+          ...q,
+          diagram: syncStr(q.diagram),
+          optA: syncOpt(q.optA),
+          optB: syncOpt(q.optB),
+          optC: syncOpt(q.optC),
+          optD: syncOpt(q.optD)
+        };
+      });
+
+      setQuestions(synced);
+      setIsDirty(true);
+      e.target.value = '';
+      
+      setTimeout(() => {
+        const targetEl = document.getElementById(`question-${targetQNum}`);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+          targetEl.children[1].style.transition = 'box-shadow 0.3s ease-in-out';
+          targetEl.children[1].style.boxShadow = '0 0 15px 5px #a6e3a1';
+          setTimeout(() => { targetEl.children[1].style.boxShadow = '0 4px 6px rgba(0,0,0,0.3)'; }, 1500);
+        }
+      }, 100);
+      showToast(`✅ Moved to Q${targetQNum} & Synced Images!`);
+    }
+  };
+
+  const removeQuestion = (id) => { 
+    saveHistory(); 
+    const filtered = questions.filter(q => q.id !== id);
+    
+    // 🔥 NEW: Auto-renumber images after deleting so the ones below it shift up correctly
+    const synced = filtered.map((q, idx) => {
+      if (idx < lockCount) return q;
+      const expectedNum = idx + 1;
+      const syncStr = (str) => str ? str.split(',').map(s => s.replace(/\d+/, expectedNum)).join(',') : "";
+      const syncOpt = (opt) => opt && opt.startsWith('IMG:') ? opt.replace(/\d+/, expectedNum) : opt;
+      return { ...q, diagram: syncStr(q.diagram), optA: syncOpt(q.optA), optB: syncOpt(q.optB), optC: syncOpt(q.optC), optD: syncOpt(q.optD) };
+    });
+
+    setQuestions(synced); 
+    setIsDirty(true); 
+    showToast("🗑️ Question removed & Images synced!", "info"); 
+  };
+
+
 
   const missingIndices = questions.map((q, idx) => {
     const textNeedsImg = q.text.includes('[DIAGRAM_PLACEHOLDER]') || q.text.includes('[IMG_');
@@ -255,12 +399,10 @@ export default function Home() {
 
   const processExtractedQuestions = (textStr, startIndexOffset = 0) => {
     if (!textStr.trim()) return [];
-    
-    // Clean double dollar signs and remove blank lines (replace multiple newlines with single newline)
     let cleanedTextStr = textStr
       .replace(/\$\$/g, '$')
       .replace(/\n(?:\s*\n)+/g, '\n');
-
+    
     let parts = cleanedTextStr.split(/QUESTION:\s*/i);
     let newQuestions = [];
     parts.forEach(part => {
@@ -298,7 +440,36 @@ export default function Home() {
     }));
   };
 
+  // 🔥 UPDATED: Improved Regex logic to isolate consecutive math blocks and clean up punctuation
+  const handleFormatSingleLatexSpaces = (id, text) => {
+    if (!text || !/\$\s+\$/.test(text)) return showToast("ℹ️ No '$ $' spaces found in this question.", "info");
+    
+    saveHistory();
+    
+    // 1. Target consecutive math blocks separated by whitespace
+    let formattedText = text.replace(/\$[^$]+\$(?:\s+\$[^$]+\$)+/g, (match) => {
+      // Replace the spaces between $ $ with newlines
+      const formatted = match.replace(/\$\s+\$/g, '$\n$');
+      // Wrap the entire sequence in newlines to separate it from preceding/following text
+      return `\n${formatted}\n`;
+    });
+
+    // 2. Clean up whitespace around newlines to ensure clean margins
+    formattedText = formattedText
+      .replace(/([^\S\n]*)\n([^\S\n]*)/g, '\n') // strip spaces immediately before or after newlines
+      .replace(/\n\.([A-Z])/g, '\n$1') // FIX: removes orphaned dots at start of new line (e.g., \n.Which -> \nWhich)
+      .replace(/\n{3,}/g, '\n\n') // prevent huge gaps if multiple newlines cascade
+      .trim();
+
+    setQuestions(questions.map(q => 
+      q.id === id ? { ...q, text: formattedText } : q
+    ));
+    setIsDirty(true);
+    showToast("✨ Formatted math spacing & isolated blocks!");
+  };
+
   const parseAllPastedText = () => {
+    saveHistory(); 
     const newQs = processExtractedQuestions(bulkText, 0);
     setQuestions([...questions, ...newQs]);
     setIsDirty(true);
@@ -308,6 +479,7 @@ export default function Home() {
   };
 
   const handleInlinePaste = (index) => {
+    saveHistory(); 
     const newQs = processExtractedQuestions(inlinePasteText, index);
     const updated = [...questions];
     updated.splice(index, 0, ...newQs);
@@ -318,23 +490,22 @@ export default function Home() {
     showToast(`Inserted ${newQs.length} questions inline!`);
   };
 
-  // Modified updateQ to enforce $$ -> $ and remove blank lines real-time
-  const updateQ = (id, field, value) => { 
+  const updateQ = (id, field, value) => {
     let finalValue = value;
     if (typeof value === 'string' && ['text', 'optA', 'optB', 'optC', 'optD', 'natAnswer'].includes(field)) {
       finalValue = value.replace(/\$\$/g, '$').replace(/\n(?:\s*\n)+/g, '\n');
     }
-    setQuestions(questions.map(q => q.id === id ? { ...q, [field]: finalValue } : q)); 
-    setIsDirty(true); 
+    setQuestions(questions.map(q => q.id === id ? { ...q, [field]: finalValue } : q));
+    setIsDirty(true);
   };
+
   
-  const removeQuestion = (id) => { setQuestions(questions.filter(q => q.id !== id)); setIsDirty(true); showToast("Question removed", "info"); };
 
   const handleOptionPaste = (id, e) => {
     let pastedText = e.clipboardData.getData('text');
     if (pastedText.includes(';')) {
-      e.preventDefault(); 
-      // Clean before parsing
+      e.preventDefault();
+      saveHistory(); 
       pastedText = pastedText.replace(/\$\$/g, '$').replace(/\n(?:\s*\n)+/g, '\n');
       const parts = pastedText.split(';');
       setQuestions(questions.map(q => {
@@ -343,30 +514,6 @@ export default function Home() {
       }));
       setIsDirty(true);
       showToast("Options auto-filled!");
-    }
-  };
-
-  const saveToMongoDB = async () => {
-    if (!confirm(`🚨 DATABASE OVERWRITE CONFIRMATION 🚨\n\nAre you sure you want to SAVE to DB?\n\nThis will permanently overwrite the database for "${subject} - ${chapter}" with the ${questions.length} questions currently on your screen.`)) {
-      return;
-    }
-
-    try {
-      showToast("Saving to DB...", "info");
-      const res = await fetch('/api/chapters', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ subject, chapter, questions })
-      });
-      const data = await res.json();
-      if (data.success) {
-        setSyncedCount(questions.length);
-        setIsDirty(false);
-        showToast(`✅ Saved successfully!`);
-      } else {
-        showToast("❌ Error saving to DB: " + data.error, "error");
-      }
-    } catch (error) { 
-        showToast("❌ Error connecting to database", "error"); 
     }
   };
 
@@ -387,18 +534,12 @@ export default function Home() {
     } catch (error) { showToast("❌ Error generating PDF. Make sure you are running locally.", "error"); }
   };
 
- const cleanLatexForYT = (text) => {
+  const cleanLatexForYT = (text) => {
     if (!text) return "";
-
-    // Remove HTML tags but KEEP the content inside them
     let cleaned = text.replace(/<[^>]+>/g, ' ');
-
-    // Remove MathJax delimiters
     cleaned = cleaned.replace(/\$/g, '');
     cleaned = cleaned.replace(/\\\[/g, '');
     cleaned = cleaned.replace(/\\\]/g, '');
-
-    // LaTeX to Windows/YouTube safe keyboard symbols & text
     const map = {
       '\\Rightarrow': ' implies ', '\\Leftarrow': ' is implied by ', '\\Leftrightarrow': ' if and only if ',
       '\\neg': ' not ', '\\vee': ' or ', '\\wedge': ' and ', '\\oplus': ' xor ',
@@ -408,37 +549,20 @@ export default function Home() {
       '\\in ': ' in ', '\\notin ': ' not in ', '\\cup': ' union ', '\\cap': ' intersection ',
       '\\emptyset': ' empty set '
     };
-
-    for (const [key, value] of Object.entries(map)) {
-      cleaned = cleaned.replaceAll(key, value);
-    }
-
-    // Handle standard math symbols
+    for (const [key, value] of Object.entries(map)) { cleaned = cleaned.replaceAll(key, value); }
     cleaned = cleaned.replace(/=>/g, ' implies ');
     cleaned = cleaned.replace(/<=/g, ' less equal ');
     cleaned = cleaned.replace(/<=>/g, ' if and only if ');
-
-    // Remove remaining backslash latex commands (e.g., \frac, \text)
     cleaned = cleaned.replace(/\\[a-zA-Z]+/g, ' ');
-
-    // CRITICAL FIX: Only remove curly braces { }. PRESERVE ( ) and [ ]
     cleaned = cleaned.replace(/[{}]/g, ' ');
-
-    // STRIP ALL Windows & YouTube forbidden characters: < > : " / \ | ? *
     cleaned = cleaned.replace(/[<>:"/\\|?*]/g, ' ');
-
     return cleaned.replace(/\s+/g, ' ').trim();
   };
 
   const copyForYouTube = (q, index) => {
-    // Clean subject and chapter names by removing prefix numbers
     const cleanSubject = subject.replace(/^\d+\.\s*/, '').trim();
     const cleanChapter = chapter.replace(/^\d+\.\s*/, '').trim();
 
-    // ==========================================
-    // 1. ORIGINAL FORMAT (Continuous Manner)
-    // ==========================================
-    // Using commas instead of hyphens or pipes
     let ytText = `[GATE ${q.year}, ${q.marks} Mark, ${cleanSubject}, ${cleanChapter}]\n\n`;
     ytText += `${cleanLatexForYT(q.text)}\n`;
     
@@ -455,16 +579,10 @@ export default function Home() {
     } else if (q.natAnswer) {
       ytText += `Answer: ${cleanLatexForYT(q.natAnswer)}\n\n`;
     }
-
     ytText += `--------------------------------------------------------\n\n`;
 
-    // ==========================================
-    // 2. NEW SEO FORMAT (Without Emojis)
-    // ==========================================
-    // Using commas instead of hyphens or pipes
     ytText += `GATE CSE ${q.year} PYQ, ${cleanSubject}, ${cleanChapter}\n`;
     ytText += `Marks: ${q.marks} Mark\n\n`;
-
     ytText += `Question:\n${cleanLatexForYT(q.text)}\n\n`;
 
     if (q.code) {
@@ -481,17 +599,13 @@ export default function Home() {
     } else if (q.natAnswer) {
       ytText += `Answer: ${cleanLatexForYT(q.natAnswer)}\n\n`;
     }
-
-    // SEO Friendly Description Paragraph
     ytText += `Prepare for GATE Computer Science Engineering (CSE) with detailed previous year questions (PYQs). `;
     ytText += `This specific problem belongs to the ${cleanSubject} subject, focusing on the ${cleanChapter} topic.\n\n`;
 
-    // Dynamic SEO Hashtags
     const subjectTag = cleanSubject.replace(/[^a-zA-Z0-9]/g, '');
     const chapterTag = cleanChapter.replace(/[^a-zA-Z0-9]/g, '');
     ytText += `#GATECSE #GATE${q.year} #${subjectTag} #${chapterTag} #GATEPreparation #GATECSEPYQ #ComputerScience #GATEExam`;
 
-    // Copy to clipboard
     navigator.clipboard.writeText(ytText.trim());
     showToast("📋 Copied combined text for YT!");
   };
@@ -505,9 +619,7 @@ export default function Home() {
         .map(opt => cleanLatexForYT(opt))
         .filter(opt => opt && !opt.startsWith('IMG:'));
       
-      if (optionsList.length > 0) {
-        fullText += ' ' + optionsList.join(' ');
-      }
+      if (optionsList.length > 0) fullText += ' ' + optionsList.join(' ');
       
       const cleanText = fullText.replace(/\s+/g, ' ').trim();
       const cleanSubject = subject.replace(/^\d+\.\s*/, '').trim();
@@ -517,21 +629,14 @@ export default function Home() {
       const timestampTitle = `GATE CSE ${q.year} ${cleanChapter} ${cleanText}`.replace(/\s+/g, ' ').trim();
       
       return {
-        index: index + 1,
-        year: q.year,
-        marks: q.marks,
-        subject: cleanSubject,
-        chapter: cleanChapter,
-        video_title: videoTitle,
-        timestamp_title: timestampTitle
+        index: index + 1, year: q.year, marks: q.marks, subject: cleanSubject, chapter: cleanChapter,
+        video_title: videoTitle, timestamp_title: timestampTitle
       };
     });
     
     const jsonString = JSON.stringify(ytData, null, 4);
     navigator.clipboard.writeText(jsonString).then(() => {
       showToast("▶️ YT Data copied to clipboard & downloaded!");
-    }).catch(err => {
-      console.error("Clipboard write failed", err);
     });
     
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(jsonString);
@@ -545,6 +650,7 @@ export default function Home() {
 
   const clearWorkspace = () => {
     if (confirm("🚨 Are you sure you want to clear the screen?")) { 
+        saveHistory(); 
         setQuestions([]); 
         setSyncedCount(0); 
         setIsDirty(true); 
@@ -569,9 +675,7 @@ export default function Home() {
       try {
         const baseUrl = window.location.origin;
         const response = await fetch('/api/export-images-zip', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          // 👇 Update the body to include contentWidth
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ subject, chapter, questions, baseUrl, contentWidth: imageTextWidth }) 
         });
       
@@ -585,16 +689,11 @@ export default function Home() {
       a.click();
       a.remove();
       showToast("✅ Images exported successfully!");
-    } catch (error) {
-      console.error(error);
-      showToast("❌ Error generating Image ZIP.", "error");
-    }
+    } catch (error) { showToast("❌ Error generating Image ZIP.", "error"); }
   };
 
   return (
     <div style={{ maxWidth: '98%', margin: 'auto', padding: '20px' }}>
-
-      {/* OVERLAY: Toast Notifications */}
       {toast && (
         <div style={{
           position: 'fixed', bottom: '30px', right: '30px',
@@ -607,7 +706,6 @@ export default function Home() {
         </div>
       )}
 
-      {/* OVERLAY: Auto-Reviving Loader */}
       {isReviving && (
         <div style={{
           position: 'fixed', top: '0', left: '0', width: '100%', height: '100%',
@@ -666,7 +764,6 @@ export default function Home() {
           )}
         </div>
 
-        {/* Add this right before the <div> containing the buttons */}
         <div style={{ flex: '1 1 150px', display: 'flex', flexDirection: 'column', padding: '0 10px' }}>
           <label style={{ marginTop: 0, fontSize: '13px', color: '#cdd6f4' }}>
             Thumbnail Text Width: <strong>{imageTextWidth}%</strong>
@@ -679,13 +776,29 @@ export default function Home() {
         </div>
         
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
-          <button className="btn-export" style={{ background: '#cba6f7', color: '#11111b', padding: '10px 15px' }} onClick={handleExportPDF}>🚀 Export Full PDF</button>
-          <button className="btn-export" style={{ background: '#a6e3a1', color: '#11111b', padding: '10px 15px' }} onClick={saveToMongoDB}>💾 Save DB</button>
+          <button className="btn-export" style={{ background: '#cba6f7', color: '#11111b', padding: '10px 15px' }} onClick={() => handleExportPDF()}>🚀 Export Full PDF</button>
+          <button className="btn-export" style={{ background: '#a6e3a1', color: '#11111b', padding: '10px 15px' }} onClick={() => saveToMongoDB(null, false)}>💾 Save DB</button>
           <button className="btn-export" style={{ background: '#f5c2e7', color: '#11111b', padding: '10px 15px' }} onClick={handleExportYTData}>▶️ Export YT Data</button>
           <button className="btn-export" style={{ background: '#89dceb', color: '#11111b', padding: '10px 15px' }} onClick={handleExportAllImages}>📸 Export All Images (ZIP)</button>
           <button className="btn-clear" style={{ padding: '10px 15px' }} onClick={clearWorkspace}>🗑️ Clear</button>
           
+          <button 
+            className="btn-export" 
+            style={{ background: history.length > 0 ? '#fab387' : '#45475a', color: history.length > 0 ? '#11111b' : '#6c7086', padding: '10px 15px', cursor: history.length > 0 ? 'pointer' : 'not-allowed' }} 
+            onClick={handleUndo} 
+            disabled={history.length === 0}
+            title={history.length > 0 ? "Undo recent structural change" : "Nothing to undo"}
+          >
+            ⏪ Undo
+          </button>
+          
           <div style={{ display: 'flex', gap: '5px', marginLeft: 'auto' }}>
+            
+            <form onSubmit={handleLock} style={{ display: 'flex', gap: '5px', marginRight: '10px' }}>
+              <input type="number" min="0" max={questions.length} ref={lockInputRef} placeholder="Lock #" title="Lock questions 1 through N" style={{ width: '60px', padding: '8px', borderRadius: '4px', border: '1px solid #f9e2af', background: '#181825', color: '#cdd6f4', textAlign: 'center', outline: 'none' }} />
+              <button type="submit" style={{ background: '#f9e2af', color: '#11111b', border: 'none', padding: '8px 12px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>🔒 Lock</button>
+            </form>
+
             <form onSubmit={handleJump} style={{ display: 'flex', gap: '5px', marginRight: '5px' }}>
               <input type="number" min="1" max={questions.length || 1} ref={jumpInputRef} placeholder="Q#" style={{ width: '55px', padding: '8px', borderRadius: '4px', border: '1px solid #45475a', background: '#181825', color: '#cdd6f4', textAlign: 'center', outline: 'none' }} />
               <button type="submit" style={{ background: '#89b4fa', color: '#11111b', border: 'none', padding: '8px 12px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>Go</button>
@@ -695,6 +808,11 @@ export default function Home() {
             <button onClick={scrollToBottom} style={{ background: '#45475a', color: '#cdd6f4', border: 'none', padding: '8px 12px', borderRadius: '4px', cursor: 'pointer', fontSize: '16px' }} title="Bottom">⬇️</button>
           </div>
         </div>
+       
+        <Link href="/scraper" style={{ background: '#3ac04e', color: '#11111b', padding: '10px 15px', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold', marginTop: '10px' }} target="_blank">
+          Go to scraper
+        </Link>
+     
       </div>
 
       <div id="questions_container">
@@ -702,6 +820,7 @@ export default function Home() {
           const qNum = idx + 1;
           const imageList = q.diagram ? q.diagram.split(',').map(s => s.trim()).filter(Boolean) : [];
           const hasOptions = q.optA || q.optB || q.optC || q.optD;
+          const isLocked = idx < lockCount;
           
           let formattedText = q.text.replace(/\n/g, '<br>');
           
@@ -719,7 +838,7 @@ export default function Home() {
           });
 
           return (
-            <div key={q.id} id={`question-${qNum}`} style={{ scrollMarginTop: '160px' }}>
+            <div key={q.id} id={`question-${qNum}`} style={{ scrollMarginTop: '160px', opacity: isLocked ? 0.85 : 1 }}>
               <div style={{ textAlign: 'center', margin: '-10px 0 10px 0' }}>
                 {activePasteIndex === idx ? (
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', background: '#181825', padding: '15px', borderRadius: '8px', border: '1px dashed #cba6f7' }}>
@@ -730,41 +849,75 @@ export default function Home() {
                     </div>
                   </div>
                 ) : (
-                  <button className="btn-autofill" style={{ width: 'auto', padding: '4px 12px', fontSize: '12px', background: '#45475a', color: '#cdd6f4' }} onClick={() => setActivePasteIndex(idx)}>⚡ Quick Paste Here</button>
+                  <button className="btn-autofill" disabled={isLocked} style={{ width: 'auto', padding: '4px 12px', fontSize: '12px', background: '#45475a', color: '#cdd6f4', opacity: isLocked ? 0.5 : 1, cursor: isLocked ? 'not-allowed' : 'pointer' }} onClick={() => setActivePasteIndex(idx)}>⚡ Quick Paste Here</button>
                 )}
               </div>
               
-              <div className="card question-card" style={{ display: 'flex' }}>
+              <div className="card question-card" style={{ display: 'flex', border: isLocked ? '1px solid #f9e2af' : 'none' }}>
                 <div className="half-width">
                   <div className="q-header" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', alignItems: 'center' }}>
                     <div>
-                      <h3 style={{ margin: 0, color: '#a6e3a1', display: 'inline-block' }}>Question {qNum}</h3>
+                      <h3 style={{ margin: 0, color: isLocked ? '#f9e2af' : '#a6e3a1', display: 'inline-block' }}>
+                        {isLocked && "🔒 "}Question {qNum}
+                      </h3>
                       <button className="btn-export" style={{ background: '#f9e2af', color: '#11111b', padding: '4px 10px', marginLeft: '10px', fontSize: '12px' }} onClick={() => copyForYouTube(q, idx)}>📋 Copy for YT</button>
+                      
+                      <button 
+                        className="btn-export" 
+                        disabled={isLocked} 
+                        style={{ background: '#f5a97f', color: '#11111b', padding: '4px 10px', marginLeft: '10px', fontSize: '12px', opacity: isLocked ? 0.5 : 1, cursor: isLocked ? 'not-allowed' : 'pointer' }} 
+                        onClick={() => handleFormatSingleLatexSpaces(q.id, q.text)}
+                        title="Converts consecutive math blocks onto separate lines"
+                      >
+                        ✨ Format $ $
+                      </button>
                     </div>
-                    <button className="btn-clear" style={{ padding: '4px 10px' }} onClick={() => removeQuestion(q.id)}>Remove</button>
+                    
+                    <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                      <input 
+                        type="number" 
+                        placeholder="Move to #" 
+                        onKeyDown={(e) => handleMoveQuestion(idx, e)}
+                        disabled={isLocked}
+                        title={isLocked ? "Locked" : "Type target Q# and press Enter"}
+                        style={{ width: '80px', padding: '4px 8px', borderRadius: '4px', border: '1px solid #89b4fa', background: '#11111b', color: '#cdd6f4', textAlign: 'center', outline: 'none', cursor: isLocked ? 'not-allowed' : 'text' }} 
+                      />
+                      <button className="btn-clear" disabled={isLocked} style={{ padding: '4px 10px', opacity: isLocked ? 0.5 : 1, cursor: isLocked ? 'not-allowed' : 'pointer' }} onClick={() => removeQuestion(q.id)}>Remove</button>
+                    </div>
                   </div>
                   
                   <label>Question Text</label>
-                  <textarea value={q.text} onChange={(e) => updateQ(q.id, 'text', e.target.value)} className="q-text" />
+                  <textarea disabled={isLocked} value={q.text} onChange={(e) => updateQ(q.id, 'text', e.target.value)} className="q-text" />
                   
                   <label>Code Snippet</label>
-                  <textarea value={q.code} onChange={(e) => updateQ(q.id, 'code', e.target.value)} className="code-text" />
+                  <textarea disabled={isLocked} value={q.code} onChange={(e) => updateQ(q.id, 'code', e.target.value)} className="code-text" />
                   
                   <div className="grid-meta" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 2fr', gap: '10px' }}>
-                    <div><label>Year</label><select value={q.year} onChange={(e) => updateQ(q.id, 'year', e.target.value)}>{getYearOptions().map(y => <option key={y} value={y}>{y}</option>)}</select></div>
-                    <div><label>Marks</label><div className="radio-group" style={{ display: 'flex', gap: '5px' }}><input type="radio" checked={q.marks === "1"} onChange={() => updateQ(q.id, 'marks', "1")} /> 1M <input type="radio" checked={q.marks === "2"} onChange={() => updateQ(q.id, 'marks', "2")} style={{ marginLeft: '10px' }} /> 2M</div></div>
-                    <div><label>Images</label><div className="input-group" style={{ display: 'flex' }}><input type="text" value={q.diagram} onChange={(e) => updateQ(q.id, 'diagram', e.target.value)} placeholder="e.g. 1a, 1b" style={{ borderRadius: '4px 0 0 4px' }} /><select value={q.ext} onChange={(e) => updateQ(q.id, 'ext', e.target.value)} style={{ width: '60px' }}><option value=".png">.png</option><option value=".jpg">.jpg</option></select></div></div>
+                    <div><label>Year</label><select disabled={isLocked} value={q.year} onChange={(e) => updateQ(q.id, 'year', e.target.value)}>{getYearOptions().map(y => <option key={y} value={y}>{y}</option>)}</select></div>
+                    <div><label>Marks</label><div className="radio-group" style={{ display: 'flex', gap: '5px' }}><input disabled={isLocked} type="radio" checked={q.marks === "1"} onChange={() => updateQ(q.id, 'marks', "1")} /> 1M <input disabled={isLocked} type="radio" checked={q.marks === "2"} onChange={() => updateQ(q.id, 'marks', "2")} style={{ marginLeft: '10px' }} /> 2M</div></div>
+                    <div><label>Images</label><div className="input-group" style={{ display: 'flex' }}><input disabled={isLocked} type="text" value={q.diagram} onChange={(e) => updateQ(q.id, 'diagram', e.target.value)} placeholder="e.g. 1a, 1b" style={{ borderRadius: '4px 0 0 4px' }} /><select disabled={isLocked} value={q.ext} onChange={(e) => updateQ(q.id, 'ext', e.target.value)} style={{ width: '60px' }}><option value=".png">.png</option><option value=".jpg">.jpg</option></select></div></div>
                   </div>
                   
                   <label style={{ color: '#f5c2e7' }}>Options (Paste A;B;C;D in Box A. IMG:filename for images. Blank for NAT)</label>
                   <div className="grid-opts" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                    <input type="text" value={q.optA} onPaste={(e) => handleOptionPaste(q.id, e)} onChange={(e) => updateQ(q.id, 'optA', e.target.value)} placeholder="Option A" />
-                    <input type="text" value={q.optB} onChange={(e) => updateQ(q.id, 'optB', e.target.value)} placeholder="Option B" />
-                    <input type="text" value={q.optC} onChange={(e) => updateQ(q.id, 'optC', e.target.value)} placeholder="Option C" />
-                    <input type="text" value={q.optD} onChange={(e) => updateQ(q.id, 'optD', e.target.value)} placeholder="Option D" />
+                    <input disabled={isLocked} type="text" value={q.optA} onPaste={(e) => handleOptionPaste(q.id, e)} onChange={(e) => updateQ(q.id, 'optA', e.target.value)} placeholder="Option A" />
+                    <input disabled={isLocked} type="text" value={q.optB} onChange={(e) => updateQ(q.id, 'optB', e.target.value)} placeholder="Option B" />
+                    <input disabled={isLocked} type="text" value={q.optC} onChange={(e) => updateQ(q.id, 'optC', e.target.value)} placeholder="Option C" />
+                    <input disabled={isLocked} type="text" value={q.optD} onChange={(e) => updateQ(q.id, 'optD', e.target.value)} placeholder="Option D" />
                   </div>
                   
-                  {!hasOptions && (<div style={{ marginTop: '10px' }}><input type="text" value={q.natAnswer || ""} onChange={(e) => updateQ(q.id, 'natAnswer', e.target.value)} placeholder="NAT Answer" style={{ border: '1px solid #f38ba8' }} /></div>)}
+                  {/* 🔥 NEW: Subjective / Proof Toggle */}
+                  {!hasOptions && (
+                    <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center', gap: '15px' }}>
+                      {!q.isProof && (
+                        <input disabled={isLocked} type="text" value={q.natAnswer || ""} onChange={(e) => updateQ(q.id, 'natAnswer', e.target.value)} placeholder="NAT Answer" style={{ border: '1px solid #f38ba8', flex: 1 }} />
+                      )}
+                      <label style={{ display: 'flex', alignItems: 'center', gap: '5px', color: '#bac2de', cursor: 'pointer', fontSize: '13px', fontWeight: 'bold' }}>
+                        <input disabled={isLocked} type="checkbox" checked={q.isProof || false} onChange={(e) => updateQ(q.id, 'isProof', e.target.checked)} />
+                        {q.isProof ? '📝 Proof/Subjective (NAT Hidden)' : 'Hide NAT'}
+                      </label>
+                    </div>
+                  )}
                 </div>
                 
                 <div id={`preview-${q.id}`} className="preview-pane" style={{ paddingLeft: '20px', width: '50%' }}>

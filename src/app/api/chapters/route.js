@@ -4,15 +4,15 @@ import Chapter from '@/models/Chapter';
 
 export async function POST(req) {
   try {
-    await dbConnect(); // Moved inside the try block
-    const { subject, chapter, questions } = await req.json();
+    await dbConnect();
+    // 🔥 NEW: Extract lockCount (defaulting to 0 if missing)
+    const { subject, chapter, questions, lockCount = 0 } = await req.json();
     
     const savedChapter = await Chapter.findOneAndUpdate(
       { subject, chapter },
-      { questions },
+      { questions, lockCount }, // 🔥 NEW: Save to DB
       { new: true, upsert: true }
     );
-    
     return NextResponse.json({ success: true, data: savedChapter });
   } catch (error) {
     console.error("POST Error:", error);
