@@ -18,6 +18,7 @@ const GATE_SYLLABUS = {
 };
 export default function Home() {
 const [questions, setQuestions] = useState([]);
+const [history, setHistory] = useState([]);
 const [bulkText, setBulkText] = useState("");
 const jumpInputRef = useRef(null);
 const [lockCount, setLockCount] = useState(0);
@@ -39,6 +40,18 @@ const showToast = (message, type = 'success') => {
 setToast({ message, type });
 setTimeout(() => setToast(null), 3500);
 };
+const saveHistory = () => {
+setHistory(prev => [...prev, JSON.parse(JSON.stringify(questions))].slice(-20));
+};
+const handleUndo = () => {
+if (history.length === 0) return showToast("Nothing to undo!", "info");
+const prevHistory = [...history];
+const previousState = prevHistory.pop();
+setHistory(prevHistory);
+setQuestions(previousState);
+setIsDirty(true);
+showToast("⏪ Undid recent change!");
+};
 const loadChapterState = (sub, chap) => {
 const draftKey = `gate_draft_${sub}_${chap}`;
 const draft = localStorage.getItem(draftKey);
@@ -54,6 +67,7 @@ setSyncedCount(0);
 setLockCount(0);
 setIsDirty(false);
 }
+setHistory([]);
 };
 const loadFromMongoDB = async (sub, chap) => {
 setIsReviving(true);
@@ -65,6 +79,7 @@ setQuestions(data.data.questions);
 setSyncedCount(data.data.questions.length);
 setLockCount(data.data.lockCount || 0);
 setIsDirty(false);
+setHistory([]);
 showToast(`✅ Revived ${data.data.questions.length} questions!`, 'success');
 } else {
 showToast("ℹ️ No DB data found. Loaded local draft.", "info");
@@ -195,16 +210,47 @@ showToast("🔄 Previews refreshed", "info");
 };
 const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 const scrollToBottom = () => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
-const handleLock = (e) => {
+const saveToMongoDB = async (overrideLockCount = null, isSilent = false) => {
+const lockVal = overrideLockCount !== null ? overrideLockCount : lockCount;
+if (!isSilent) {
+if (!confirm(`🚨 DATABASE OVERWRITE CONFIRMATION 🚨\n\nAre you sure you want to SAVE to DB?\n\nThis will permanently overwrite the database for "${subject} - ${chapter}" with the ${questions.length} questions currently on your screen.`)) {
+return false;
+}
+}
+try {
+if (!isSilent) showToast("Saving to DB...", "info");
+const res = await fetch('/api/chapters', {
+method: 'POST', headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ subject, chapter, questions, lockCount: lockVal })
+});
+const data = await res.json();
+if (data.success) {
+setSyncedCount(questions.length);
+setIsDirty(false);
+if (!isSilent) showToast(`✅ Saved successfully!`);
+return true;
+} else {
+showToast("❌ Error saving to DB: " + data.error, "error");
+return false;
+}
+} catch (error) {
+showToast("❌ Error connecting to database", "error");
+return false;
+}
+};
+const handleLock = async (e) => {
 e.preventDefault();
 const val = parseInt(lockInputRef.current?.value || 0, 10);
 if (isNaN(val) || val < 0 || val > questions.length) {
 return showToast(`❌ Invalid lock number. Must be between 0 and ${questions.length}`, "error");
 }
 setLockCount(val);
-setIsDirty(true);
-if (val === 0) showToast("🔓 All questions unlocked!");
-else showToast(`🔒 Locked Questions 1 to ${val}`);
+showToast("Saving lock state to DB...", "info");
+const success = await saveToMongoDB(val, true);
+if (success) {
+if (val === 0) showToast("🔓 All questions unlocked & Saved!");
+else showToast(`🔒 Locked Qs 1 to ${val} & Saved!`);
+}
 };
 const handleJump = (e) => {
 e.preventDefault();
@@ -223,16 +269,27 @@ if (isNaN(targetQNum) || targetQNum < 1 || targetQNum > questions.length) {
 return showToast("❌ Invalid target question number", "error");
 }
 const targetIndex = targetQNum - 1;
-if (currentIndex < lockCount) {
-return showToast("❌ Cannot move a locked question!", "error");
-}
-if (targetIndex < lockCount) {
-return showToast(`❌ Cannot move into locked zone (Qs 1-${lockCount})!`, "error");
-}
+if (currentIndex < lockCount) return showToast("❌ Cannot move a locked question!", "error");
+if (targetIndex < lockCount) return showToast(`❌ Cannot move into locked zone (Qs 1-${lockCount})!`, "error");
+saveHistory();
 const updated = [...questions];
 const [movedItem] = updated.splice(currentIndex, 1);
 updated.splice(targetIndex, 0, movedItem);
-setQuestions(updated);
+const synced = updated.map((q, idx) => {
+if (idx < lockCount) return q;
+const expectedNum = idx + 1;
+const syncStr = (str) => str ? str.split(',').map(s => s.replace(/\d+/, expectedNum)).join(',') : "";
+const syncOpt = (opt) => opt && opt.startsWith('IMG:') ? opt.replace(/\d+/, expectedNum) : opt;
+return {
+...q,
+diagram: syncStr(q.diagram),
+optA: syncOpt(q.optA),
+optB: syncOpt(q.optB),
+optC: syncOpt(q.optC),
+optD: syncOpt(q.optD)
+};
+});
+setQuestions(synced);
 setIsDirty(true);
 e.target.value = '';
 setTimeout(() => {
@@ -244,8 +301,22 @@ targetEl.children[1].style.boxShadow = '0 0 15px 5px #a6e3a1';
 setTimeout(() => { targetEl.children[1].style.boxShadow = '0 4px 6px rgba(0,0,0,0.3)'; }, 1500);
 }
 }, 100);
-showToast(`✅ Moved to Q${targetQNum}`);
+showToast(`✅ Moved to Q${targetQNum} & Synced Images!`);
 }
+};
+const removeQuestion = (id) => {
+saveHistory();
+const filtered = questions.filter(q => q.id !== id);
+const synced = filtered.map((q, idx) => {
+if (idx < lockCount) return q;
+const expectedNum = idx + 1;
+const syncStr = (str) => str ? str.split(',').map(s => s.replace(/\d+/, expectedNum)).join(',') : "";
+const syncOpt = (opt) => opt && opt.startsWith('IMG:') ? opt.replace(/\d+/, expectedNum) : opt;
+return { ...q, diagram: syncStr(q.diagram), optA: syncOpt(q.optA), optB: syncOpt(q.optB), optC: syncOpt(q.optC), optD: syncOpt(q.optD) };
+});
+setQuestions(synced);
+setIsDirty(true);
+showToast("🗑️ Question removed & Images synced!", "info");
 };
 const missingIndices = questions.map((q, idx) => {
 const textNeedsImg = q.text.includes('[DIAGRAM_PLACEHOLDER]') || q.text.includes('[IMG_');
@@ -310,31 +381,30 @@ optD: rawOptionsArray[3] ? rawOptionsArray[3].trim() : "",
 natAnswer: ""
 });
 });
-const handleFormatLatexSpaces = () => {
-let modifiedCount = 0;
-const updatedQuestions = questions.map(q => {
-if (q.text && /\$\s+\$/.test(q.text)) {
-modifiedCount++;
-return {
-...q,
-text: q.text.replace(/\$\s+\$/g, '$\n$')
-};
-}
-return q;
-});
-if (modifiedCount > 0) {
-setQuestions(updatedQuestions);
-setIsDirty(true);
-showToast(`✨ Formatted math spacing in ${modifiedCount} questions!`, 'success');
-} else {
-showToast("ℹ️ No '$ $' spaces found to format.", "info");
-}
-};
 return newQuestions.map((q, idx) => ({
 ...q, diagram: q.diagram === "auto" ? (questions.length + idx + startIndexOffset + 1).toString() : q.diagram
 }));
 };
+const handleFormatSingleLatexSpaces = (id, text) => {
+if (!text || !/\$\s+\$/.test(text)) return showToast("ℹ️ No '$ $' spaces found in this question.", "info");
+saveHistory();
+let formattedText = text.replace(/\$[^$]+\$(?:\s+\$[^$]+\$)+/g, (match) => {
+const formatted = match.replace(/\$\s+\$/g, '$\n$');
+return `\n${formatted}\n`;
+});
+formattedText = formattedText
+.replace(/([^\S\n]*)\n([^\S\n]*)/g, '\n')
+.replace(/\n\.([A-Z])/g, '\n$1')
+.replace(/\n{3,}/g, '\n\n')
+.trim();
+setQuestions(questions.map(q =>
+q.id === id ? { ...q, text: formattedText } : q
+));
+setIsDirty(true);
+showToast("✨ Formatted math spacing & isolated blocks!");
+};
 const parseAllPastedText = () => {
+saveHistory();
 const newQs = processExtractedQuestions(bulkText, 0);
 setQuestions([...questions, ...newQs]);
 setIsDirty(true);
@@ -343,6 +413,7 @@ setTimeout(() => window.scrollTo({ top: document.body.scrollHeight, behavior: 's
 showToast(`Parsed ${newQs.length} questions from text!`);
 };
 const handleInlinePaste = (index) => {
+saveHistory();
 const newQs = processExtractedQuestions(inlinePasteText, index);
 const updated = [...questions];
 updated.splice(index, 0, ...newQs);
@@ -360,11 +431,11 @@ finalValue = value.replace(/\$\$/g, '$').replace(/\n(?:\s*\n)+/g, '\n');
 setQuestions(questions.map(q => q.id === id ? { ...q, [field]: finalValue } : q));
 setIsDirty(true);
 };
-const removeQuestion = (id) => { setQuestions(questions.filter(q => q.id !== id)); setIsDirty(true); showToast("Question removed", "info"); };
 const handleOptionPaste = (id, e) => {
 let pastedText = e.clipboardData.getData('text');
 if (pastedText.includes(';')) {
 e.preventDefault();
+saveHistory();
 pastedText = pastedText.replace(/\$\$/g, '$').replace(/\n(?:\s*\n)+/g, '\n');
 const parts = pastedText.split(';');
 setQuestions(questions.map(q => {
@@ -373,28 +444,6 @@ return q;
 }));
 setIsDirty(true);
 showToast("Options auto-filled!");
-}
-};
-const saveToMongoDB = async () => {
-if (!confirm(`🚨 DATABASE OVERWRITE CONFIRMATION 🚨\n\nAre you sure you want to SAVE to DB?\n\nThis will permanently overwrite the database for "${subject} - ${chapter}" with the ${questions.length} questions currently on your screen.`)) {
-return;
-}
-try {
-showToast("Saving to DB...", "info");
-const res = await fetch('/api/chapters', {
-method: 'POST', headers: { 'Content-Type': 'application/json' },
-body: JSON.stringify({ subject, chapter, questions, lockCount })
-});
-const data = await res.json();
-if (data.success) {
-setSyncedCount(questions.length);
-setIsDirty(false);
-showToast(`✅ Saved successfully!`);
-} else {
-showToast("❌ Error saving to DB: " + data.error, "error");
-}
-} catch (error) {
-showToast("❌ Error connecting to database", "error");
 }
 };
 const handleExportPDF = async () => {
@@ -510,6 +559,7 @@ downloadAnchorNode.remove();
 };
 const clearWorkspace = () => {
 if (confirm("🚨 Are you sure you want to clear the screen?")) {
+saveHistory();
 setQuestions([]);
 setSyncedCount(0);
 setIsDirty(true);
@@ -623,13 +673,21 @@ style={{ cursor: 'pointer', marginTop: '5px' }}
 />
 </div>
 <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
-<button className="btn-export" style={{ background: '#cba6f7', color: '#11111b', padding: '10px 15px' }} onClick={handleExportPDF}>🚀 Export Full PDF</button>
-<button className="btn-export" style={{ background: '#a6e3a1', color: '#11111b', padding: '10px 15px' }} onClick={saveToMongoDB}>💾 Save DB</button>
+<button className="btn-export" style={{ background: '#cba6f7', color: '#11111b', padding: '10px 15px' }} onClick={() => handleExportPDF()}>🚀 Export Full PDF</button>
+<button className="btn-export" style={{ background: '#a6e3a1', color: '#11111b', padding: '10px 15px' }} onClick={() => saveToMongoDB(null, false)}>💾 Save DB</button>
 <button className="btn-export" style={{ background: '#f5c2e7', color: '#11111b', padding: '10px 15px' }} onClick={handleExportYTData}>▶️ Export YT Data</button>
 <button className="btn-export" style={{ background: '#89dceb', color: '#11111b', padding: '10px 15px' }} onClick={handleExportAllImages}>📸 Export All Images (ZIP)</button>
 <button className="btn-clear" style={{ padding: '10px 15px' }} onClick={clearWorkspace}>🗑️ Clear</button>
+<button
+className="btn-export"
+style={{ background: history.length > 0 ? '#fab387' : '#45475a', color: history.length > 0 ? '#11111b' : '#6c7086', padding: '10px 15px', cursor: history.length > 0 ? 'pointer' : 'not-allowed' }}
+onClick={handleUndo}
+disabled={history.length === 0}
+title={history.length > 0 ? "Undo recent structural change" : "Nothing to undo"}
+>
+⏪ Undo
+</button>
 <div style={{ display: 'flex', gap: '5px', marginLeft: 'auto' }}>
-{}
 <form onSubmit={handleLock} style={{ display: 'flex', gap: '5px', marginRight: '10px' }}>
 <input type="number" min="0" max={questions.length} ref={lockInputRef} placeholder="Lock #" title="Lock questions 1 through N" style={{ width: '60px', padding: '8px', borderRadius: '4px', border: '1px solid #f9e2af', background: '#181825', color: '#cdd6f4', textAlign: 'center', outline: 'none' }} />
 <button type="submit" style={{ background: '#f9e2af', color: '#11111b', border: 'none', padding: '8px 12px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>🔒 Lock</button>
@@ -688,9 +746,17 @@ return (
 {isLocked && "🔒 "}Question {qNum}
 </h3>
 <button className="btn-export" style={{ background: '#f9e2af', color: '#11111b', padding: '4px 10px', marginLeft: '10px', fontSize: '12px' }} onClick={() => copyForYouTube(q, idx)}>📋 Copy for YT</button>
+<button
+className="btn-export"
+disabled={isLocked}
+style={{ background: '#f5a97f', color: '#11111b', padding: '4px 10px', marginLeft: '10px', fontSize: '12px', opacity: isLocked ? 0.5 : 1, cursor: isLocked ? 'not-allowed' : 'pointer' }}
+onClick={() => handleFormatSingleLatexSpaces(q.id, q.text)}
+title="Converts consecutive math blocks onto separate lines"
+>
+✨ Format $ $
+</button>
 </div>
 <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-{}
 <input
 type="number"
 placeholder="Move to #"
@@ -718,7 +784,18 @@ style={{ width: '80px', padding: '4px 8px', borderRadius: '4px', border: '1px so
 <input disabled={isLocked} type="text" value={q.optC} onChange={(e) => updateQ(q.id, 'optC', e.target.value)} placeholder="Option C" />
 <input disabled={isLocked} type="text" value={q.optD} onChange={(e) => updateQ(q.id, 'optD', e.target.value)} placeholder="Option D" />
 </div>
-{!hasOptions && (<div style={{ marginTop: '10px' }}><input disabled={isLocked} type="text" value={q.natAnswer || ""} onChange={(e) => updateQ(q.id, 'natAnswer', e.target.value)} placeholder="NAT Answer" style={{ border: '1px solid #f38ba8' }} /></div>)}
+{}
+{!hasOptions && (
+<div style={{ marginTop: '10px', display: 'flex', alignItems: 'center', gap: '15px' }}>
+{!q.isProof && (
+<input disabled={isLocked} type="text" value={q.natAnswer || ""} onChange={(e) => updateQ(q.id, 'natAnswer', e.target.value)} placeholder="NAT Answer" style={{ border: '1px solid #f38ba8', flex: 1 }} />
+)}
+<label style={{ display: 'flex', alignItems: 'center', gap: '5px', color: '#bac2de', cursor: 'pointer', fontSize: '13px', fontWeight: 'bold' }}>
+<input disabled={isLocked} type="checkbox" checked={q.isProof || false} onChange={(e) => updateQ(q.id, 'isProof', e.target.checked)} />
+{q.isProof ? '📝 Proof/Subjective (NAT Hidden)' : 'Hide NAT'}
+</label>
+</div>
+)}
 </div>
 <div id={`preview-${q.id}`} className="preview-pane" style={{ paddingLeft: '20px', width: '50%' }}>
 <div style={{ color: '#a6e3a1', fontWeight: 'bold', marginBottom: '10px' }}>[GATE {q.year} | {q.marks} Mark]</div>
@@ -732,7 +809,9 @@ style={{ width: '80px', padding: '4px 8px', borderRadius: '4px', border: '1px so
 <div style={{ marginBottom: '8px' }}><strong>(C)</strong> <span dangerouslySetInnerHTML={{ __html: renderOptionText(q.optC, q.ext) }} /></div>
 <div style={{ marginBottom: '8px' }}><strong>(D)</strong> <span dangerouslySetInnerHTML={{ __html: renderOptionText(q.optD, q.ext) }} /></div>
 </>
-) : (<div style={{ color: '#f38ba8' }}><strong>NAT Answer:</strong> {q.natAnswer ? q.natAnswer : '_________________'}</div>)}
+) : !q.isProof ? (
+<div style={{ color: '#f38ba8' }}><strong>NAT Answer:</strong> {q.natAnswer ? q.natAnswer : '_________________'}</div>
+) : null}
 </div>
 </div>
 </div>
@@ -1026,7 +1105,6 @@ textParts[i] = textParts[i].replace(/\r?\n/g, '\\newline\n');
 }
 }
 qText = textParts.join('$$');
-latex += "\\begin{multicols*}{2}\n";
 const imageList = q.diagram ? q.diagram.split(',').map(s => s.trim()).filter(Boolean) : [];
 imageList.forEach((imgName, i) => {
 if (!imgName) return;
@@ -1042,7 +1120,9 @@ qText += latexImg;
 }
 });
 qText = qText.replace('[DIAGRAM_PLACEHOLDER]', '');
-latex += `\n\\question {\\small \\textbf{[GATE ${q.year || ''} | ${q.marks || '1'} Mark]}} \\\\[0.2cm]\n{\\Large ${qText}}\n`;
+latex += `\n\\question {\\small \\textbf{[GATE ${q.year || ''} | ${q.marks || '1'} Mark]}} \\\\[0.2cm]\n`;
+latex += "\\begin{multicols*}{2}\n";
+latex += `{\\Large ${qText}}\n`;
 if (q.code) {
 latex += `\n\\begin{lstlisting}\n${q.code}\n\\end{lstlisting}\n`;
 }
@@ -1063,7 +1143,7 @@ if (q.optB) latex += `  \\choice ${processOpt(q.optB)}\n`;
 if (q.optC) latex += `  \\choice ${processOpt(q.optC)}\n`;
 if (q.optD) latex += `  \\choice ${processOpt(q.optD)}\n`;
 latex += "\\end{choices}\n";
-} else {
+} else if (!q.isProof) {
 latex += `\n\\vspace{0.5cm}\n\\textbf{Answer:} ${escapeLatex(q.natAnswer) || '\\rule{3cm}{0.4pt}'}\n`;
 }
 latex += "\n\\end{multicols*}\n\\vspace{0.6cm}\n\\newpage\n";
