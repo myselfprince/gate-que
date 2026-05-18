@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
@@ -20,14 +20,16 @@ const GATE_SYLLABUS = {
 
 export default function Home() {
   const [questions, setQuestions] = useState([]);
-  const [history, setHistory] = useState([]); 
+  const [history, setHistory] = useState([]);
   const [bulkText, setBulkText] = useState("");
   const jumpInputRef = useRef(null);
   const [lockCount, setLockCount] = useState(0);
   const lockInputRef = useRef(null);
+
   const availableSubjects = Object.keys(GATE_SYLLABUS);
   const [subject, setSubject] = useState(availableSubjects[0]);
   const [chapter, setChapter] = useState(GATE_SYLLABUS[availableSubjects[0]][0]);
+
   const [syncedCount, setSyncedCount] = useState(0);
   const [isDirty, setIsDirty] = useState(false);
   const [imgCacheBuster, setImgCacheBuster] = useState(Date.now());
@@ -39,13 +41,19 @@ export default function Home() {
   const [toast, setToast] = useState(null);
   const [isReviving, setIsReviving] = useState(false);
 
+  // SEARCH STATES
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [currentSearchIndex, setCurrentSearchIndex] = useState(0);
+  const [hasJumped, setHasJumped] = useState(false); // Tracks if we've scrolled to the first result yet
+
   const showToast = (message, type = 'success') => {
     setToast({ message, type });
     setTimeout(() => setToast(null), 3500);
   };
 
   const saveHistory = () => {
-    setHistory(prev => [...prev, JSON.parse(JSON.stringify(questions))].slice(-20)); 
+    setHistory(prev => [...prev, JSON.parse(JSON.stringify(questions))].slice(-20));
   };
 
   const handleUndo = () => {
@@ -73,7 +81,9 @@ export default function Home() {
       setLockCount(0);
       setIsDirty(false);
     }
-    setHistory([]); 
+    setHistory([]);
+    setSearchQuery(""); 
+    setHasJumped(false);
   };
 
   const loadFromMongoDB = async (sub, chap) => {
@@ -86,7 +96,7 @@ export default function Home() {
         setSyncedCount(data.data.questions.length);
         setLockCount(data.data.lockCount || 0);
         setIsDirty(false);
-        setHistory([]); 
+        setHistory([]);
         showToast(`✅ Revived ${data.data.questions.length} questions!`, 'success');
       } else {
         showToast("ℹ️ No DB data found. Loaded local draft.", "info");
@@ -97,6 +107,8 @@ export default function Home() {
       loadChapterState(sub, chap);
     } finally {
       setIsReviving(false);
+      setSearchQuery(""); 
+      setHasJumped(false);
     }
   };
 
@@ -138,6 +150,39 @@ export default function Home() {
     };
     return () => { delete window.reportImageStatus; };
   }, []);
+
+  // SEARCH SCANNER EFFECT
+  useEffect(() => {
+    if (!searchQuery.trim()) {
+      setSearchResults([]);
+      setCurrentSearchIndex(0);
+      setHasJumped(false);
+      return;
+    }
+    const lowerQuery = searchQuery.toLowerCase();
+    const matches = [];
+    
+    questions.forEach((q, idx) => {
+      const isLocked = idx < lockCount;
+      if (!isLocked) {
+        const matchesSearch =
+          q.text.toLowerCase().includes(lowerQuery) ||
+          (q.code && q.code.toLowerCase().includes(lowerQuery)) ||
+          (q.optA && q.optA.toLowerCase().includes(lowerQuery)) ||
+          (q.optB && q.optB.toLowerCase().includes(lowerQuery)) ||
+          (q.optC && q.optC.toLowerCase().includes(lowerQuery)) ||
+          (q.optD && q.optD.toLowerCase().includes(lowerQuery));
+
+        if (matchesSearch) {
+          matches.push(idx); // Store the actual array index of the match
+        }
+      }
+    });
+
+    setSearchResults(matches);
+    setCurrentSearchIndex(0);
+    setHasJumped(false); // Reset jump state when typing new queries
+  }, [searchQuery, questions, lockCount]);
 
   const syncPreferences = async (newSubject, newChapter) => {
     try {
@@ -230,16 +275,13 @@ export default function Home() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   const scrollToBottom = () => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
 
-  // 🔥 UPDATED: Save to DB now accepts an override to bypass confirmation alerts when locking
   const saveToMongoDB = async (overrideLockCount = null, isSilent = false) => {
     const lockVal = overrideLockCount !== null ? overrideLockCount : lockCount;
-    
     if (!isSilent) {
       if (!confirm(`🚨 DATABASE OVERWRITE CONFIRMATION 🚨\n\nAre you sure you want to SAVE to DB?\n\nThis will permanently overwrite the database for "${subject} - ${chapter}" with the ${questions.length} questions currently on your screen.`)) {
         return false;
       }
     }
-
     try {
       if (!isSilent) showToast("Saving to DB...", "info");
       const res = await fetch('/api/chapters', {
@@ -262,17 +304,14 @@ export default function Home() {
     }
   };
 
-  // 🔥 UPDATED: handleLock now automatically calls saveToMongoDB silently
   const handleLock = async (e) => {
     e.preventDefault();
     const val = parseInt(lockInputRef.current?.value || 0, 10);
     if (isNaN(val) || val < 0 || val > questions.length) {
       return showToast(`❌ Invalid lock number. Must be between 0 and ${questions.length}`, "error");
     }
-    
     setLockCount(val);
     showToast("Saving lock state to DB...", "info");
-    
     const success = await saveToMongoDB(val, true);
     if (success) {
       if (val === 0) showToast("🔓 All questions unlocked & Saved!");
@@ -290,6 +329,64 @@ export default function Home() {
     jumpInputRef.current.value = "";
   };
 
+  // --- SEARCH CONTROLS ---
+  const jumpToMatch = (index) => {
+    if (searchResults.length === 0) return;
+    const targetQIdx = searchResults[index];
+    const targetEl = document.getElementById(`question-${targetQIdx + 1}`);
+    
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const card = targetEl.querySelector('.question-card');
+      if (card) {
+        card.style.transition = 'box-shadow 0.3s ease-in-out';
+        card.style.boxShadow = '0 0 20px 5px #89b4fa';
+        setTimeout(() => { card.style.boxShadow = 'none'; }, 1500);
+      }
+    }
+  };
+
+  const handleNextMatch = (e) => {
+    if (e) e.preventDefault();
+    if (searchResults.length === 0) return showToast("No match found", "info");
+    
+    let targetIndex = currentSearchIndex;
+    if (hasJumped) {
+       targetIndex = (currentSearchIndex + 1) % searchResults.length;
+       setCurrentSearchIndex(targetIndex);
+    } else {
+       setHasJumped(true); // First click jumps to current index 0
+    }
+    jumpToMatch(targetIndex);
+  };
+
+  const handlePrevMatch = (e) => {
+    if (e) e.preventDefault();
+    if (searchResults.length === 0) return showToast("No match found", "info");
+    
+    let targetIndex = currentSearchIndex;
+    if (hasJumped) {
+       targetIndex = (currentSearchIndex - 1 + searchResults.length) % searchResults.length;
+       setCurrentSearchIndex(targetIndex);
+    } else {
+       setHasJumped(true); // First click jumps to current index 0
+    }
+    jumpToMatch(targetIndex);
+  };
+
+  const handleSearchKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (!searchQuery.trim()) return;
+      if (e.shiftKey) {
+        handlePrevMatch();
+      } else {
+        handleNextMatch();
+      }
+    }
+  };
+  // ----------------------
+
   const handleMoveQuestion = (currentIndex, e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -298,23 +395,20 @@ export default function Home() {
         return showToast("❌ Invalid target question number", "error");
       }
       const targetIndex = targetQNum - 1;
+
       if (currentIndex < lockCount) return showToast("❌ Cannot move a locked question!", "error");
       if (targetIndex < lockCount) return showToast(`❌ Cannot move into locked zone (Qs 1-${lockCount})!`, "error");
 
-      saveHistory(); 
+      saveHistory();
       const updated = [...questions];
       const [movedItem] = updated.splice(currentIndex, 1);
       updated.splice(targetIndex, 0, movedItem);
-      
-      // 🔥 NEW: Auto-renumber images after shifting
+
       const synced = updated.map((q, idx) => {
-        if (idx < lockCount) return q; // Do not touch locked questions
+        if (idx < lockCount) return q;
         const expectedNum = idx + 1;
-        
-        // Replaces the first number it finds in the string (e.g., "67a" -> "49a")
         const syncStr = (str) => str ? str.split(',').map(s => s.replace(/\d+/, expectedNum)).join(',') : "";
         const syncOpt = (opt) => opt && opt.startsWith('IMG:') ? opt.replace(/\d+/, expectedNum) : opt;
-        
         return {
           ...q,
           diagram: syncStr(q.diagram),
@@ -328,25 +422,24 @@ export default function Home() {
       setQuestions(synced);
       setIsDirty(true);
       e.target.value = '';
-      
+
       setTimeout(() => {
         const targetEl = document.getElementById(`question-${targetQNum}`);
         if (targetEl) {
           targetEl.scrollIntoView({ behavior: 'smooth' });
           targetEl.children[1].style.transition = 'box-shadow 0.3s ease-in-out';
           targetEl.children[1].style.boxShadow = '0 0 15px 5px #a6e3a1';
-          setTimeout(() => { targetEl.children[1].style.boxShadow = '0 4px 6px rgba(0,0,0,0.3)'; }, 1500);
+          setTimeout(() => { targetEl.children[1].style.boxShadow = 'none'; }, 1500);
         }
       }, 100);
+
       showToast(`✅ Moved to Q${targetQNum} & Synced Images!`);
     }
   };
 
-  const removeQuestion = (id) => { 
-    saveHistory(); 
+  const removeQuestion = (id) => {
+    saveHistory();
     const filtered = questions.filter(q => q.id !== id);
-    
-    // 🔥 NEW: Auto-renumber images after deleting so the ones below it shift up correctly
     const synced = filtered.map((q, idx) => {
       if (idx < lockCount) return q;
       const expectedNum = idx + 1;
@@ -354,29 +447,29 @@ export default function Home() {
       const syncOpt = (opt) => opt && opt.startsWith('IMG:') ? opt.replace(/\d+/, expectedNum) : opt;
       return { ...q, diagram: syncStr(q.diagram), optA: syncOpt(q.optA), optB: syncOpt(q.optB), optC: syncOpt(q.optC), optD: syncOpt(q.optD) };
     });
-
-    setQuestions(synced); 
-    setIsDirty(true); 
-    showToast("🗑️ Question removed & Images synced!", "info"); 
+    setQuestions(synced);
+    setIsDirty(true);
+    showToast("🗑️ Question removed & Images synced!", "info");
   };
-
-
 
   const missingIndices = questions.map((q, idx) => {
     const textNeedsImg = q.text.includes('[DIAGRAM_PLACEHOLDER]') || q.text.includes('[IMG_');
     const noDiagramSet = !q.diagram || q.diagram.trim() === '';
     const incompleteOptImg = q.optA === 'IMG:' || q.optB === 'IMG:' || q.optC === 'IMG:' || q.optD === 'IMG:';
     let has404 = false;
+
     const imageList = q.diagram ? q.diagram.split(',').map(s => s.trim()).filter(Boolean) : [];
     imageList.forEach((imgName) => {
       if (imageErrors.has(`/${subject}/${chapter}/${imgName}${q.ext}`)) has404 = true;
     });
+
     ['optA', 'optB', 'optC', 'optD'].forEach(opt => {
       if (q[opt]?.startsWith('IMG:')) {
         const imgName = q[opt].replace('IMG:', '').trim();
         if (imgName && imageErrors.has(`/${subject}/${chapter}/${imgName}${q.ext}`)) has404 = true;
       }
     });
+
     if ((textNeedsImg && noDiagramSet) || incompleteOptImg || has404) return idx + 1;
     return null;
   }).filter(val => val !== null);
@@ -389,7 +482,7 @@ export default function Home() {
       targetEl.scrollIntoView({ behavior: 'smooth' });
       targetEl.children[1].style.transition = 'box-shadow 0.3s ease-in-out';
       targetEl.children[1].style.boxShadow = '0 0 15px 5px #f38ba8';
-      setTimeout(() => { targetEl.children[1].style.boxShadow = '0 4px 6px rgba(0,0,0,0.3)'; }, 1500);
+      setTimeout(() => { targetEl.children[1].style.boxShadow = 'none'; }, 1500);
     }
     setMissingFocusIndex(prev => prev + 1);
   };
@@ -402,27 +495,28 @@ export default function Home() {
     let cleanedTextStr = textStr
       .replace(/\$\$/g, '$')
       .replace(/\n(?:\s*\n)+/g, '\n');
-    
+
     let parts = cleanedTextStr.split(/QUESTION:\s*/i);
     let newQuestions = [];
+
     parts.forEach(part => {
       if (!part.trim()) return;
       let qText = part; let codeText = ""; let optionsText = "";
-      
+
       let optMatch = qText.match(/OPTIONS:\s*(.*)/is);
       if (optMatch) { optionsText = optMatch[1].trim(); qText = qText.replace(/OPTIONS:\s*(.*)/is, '').trim(); }
-      
+
       let codeMatch = qText.match(/CODE:\s*(.*)/is);
       if (codeMatch) { codeText = codeMatch[1].trim(); qText = qText.replace(/CODE:\s*(.*)/is, '').trim(); }
-      
+
       qText = qText.replace(/^([Q]?[\d\.]+)\s*/i, '');
       const metaMatch = qText.match(/\[\s*(\d{4})[^:]*:\s*(\d+)\s*M\s*\]/i);
       let year = "2026"; let marks = "1";
       if (metaMatch) { year = metaMatch[1]; marks = metaMatch[2]; qText = qText.replace(metaMatch[0], '').trim(); }
-      
+
       let hasDiagram = qText.includes('[DIAGRAM_PLACEHOLDER]') || qText.includes('[IMG_1]');
       let rawOptionsArray = optionsText.split(';');
-      
+
       newQuestions.push({
         id: generateId(),
         text: qText.trim(), code: codeText, year, marks,
@@ -434,42 +528,55 @@ export default function Home() {
         natAnswer: ""
       });
     });
-    
+
     return newQuestions.map((q, idx) => ({
       ...q, diagram: q.diagram === "auto" ? (questions.length + idx + startIndexOffset + 1).toString() : q.diagram
     }));
   };
 
-  // 🔥 UPDATED: Improved Regex logic to isolate consecutive math blocks and clean up punctuation
-  const handleFormatSingleLatexSpaces = (id, text) => {
-    if (!text || !/\$\s+\$/.test(text)) return showToast("ℹ️ No '$ $' spaces found in this question.", "info");
-    
-    saveHistory();
-    
-    // 1. Target consecutive math blocks separated by whitespace
-    let formattedText = text.replace(/\$[^$]+\$(?:\s+\$[^$]+\$)+/g, (match) => {
-      // Replace the spaces between $ $ with newlines
+  const applyLatexFormatting = (str) => {
+    if (!str || !/\$\s+\$/.test(str)) return str;
+    let formattedText = str.replace(/\$[^$]+\$(?:\s+\$[^$]+\$)+/g, (match) => {
       const formatted = match.replace(/\$\s+\$/g, '$\n$');
-      // Wrap the entire sequence in newlines to separate it from preceding/following text
       return `\n${formatted}\n`;
     });
-
-    // 2. Clean up whitespace around newlines to ensure clean margins
-    formattedText = formattedText
-      .replace(/([^\S\n]*)\n([^\S\n]*)/g, '\n') // strip spaces immediately before or after newlines
-      .replace(/\n\.([A-Z])/g, '\n$1') // FIX: removes orphaned dots at start of new line (e.g., \n.Which -> \nWhich)
-      .replace(/\n{3,}/g, '\n\n') // prevent huge gaps if multiple newlines cascade
+    return formattedText
+      .replace(/([^\S\n]*)\n([^\S\n]*)/g, '\n')
+      .replace(/\n\.([A-Z])/g, '\n$1')
+      .replace(/\n{3,}/g, '\n\n')
       .trim();
+  };
 
-    setQuestions(questions.map(q => 
-      q.id === id ? { ...q, text: formattedText } : q
-    ));
-    setIsDirty(true);
-    showToast("✨ Formatted math spacing & isolated blocks!");
+  const handleFormatSingleLatexSpaces = (id) => {
+    saveHistory();
+    let hasChanges = false;
+
+    setQuestions(questions.map(q => {
+      if (q.id === id) {
+        const newText = applyLatexFormatting(q.text);
+        const newOptA = applyLatexFormatting(q.optA);
+        const newOptB = applyLatexFormatting(q.optB);
+        const newOptC = applyLatexFormatting(q.optC);
+        const newOptD = applyLatexFormatting(q.optD);
+
+        if (newText !== q.text || newOptA !== q.optA || newOptB !== q.optB || newOptC !== q.optC || newOptD !== q.optD) {
+          hasChanges = true;
+        }
+        return { ...q, text: newText, optA: newOptA, optB: newOptB, optC: newOptC, optD: newOptD };
+      }
+      return q;
+    }));
+
+    if (hasChanges) {
+      setIsDirty(true);
+      showToast("✨ Formatted math spacing in Question & Options!");
+    } else {
+      showToast("ℹ️ No '$ $' spaces found in this question or options.", "info");
+    }
   };
 
   const parseAllPastedText = () => {
-    saveHistory(); 
+    saveHistory();
     const newQs = processExtractedQuestions(bulkText, 0);
     setQuestions([...questions, ...newQs]);
     setIsDirty(true);
@@ -479,7 +586,7 @@ export default function Home() {
   };
 
   const handleInlinePaste = (index) => {
-    saveHistory(); 
+    saveHistory();
     const newQs = processExtractedQuestions(inlinePasteText, index);
     const updated = [...questions];
     updated.splice(index, 0, ...newQs);
@@ -499,13 +606,11 @@ export default function Home() {
     setIsDirty(true);
   };
 
-  
-
   const handleOptionPaste = (id, e) => {
     let pastedText = e.clipboardData.getData('text');
     if (pastedText.includes(';')) {
       e.preventDefault();
-      saveHistory(); 
+      saveHistory();
       pastedText = pastedText.replace(/\$\$/g, '$').replace(/\n(?:\s*\n)+/g, '\n');
       const parts = pastedText.split(';');
       setQuestions(questions.map(q => {
@@ -519,103 +624,113 @@ export default function Home() {
 
   const handleExportPDF = async () => {
     if (questions.length === 0) return showToast("❌ No questions to compile!", "error");
-    
-    // Updated toast to reflect chunking progress
     showToast("🚀 Compiling LaTeX chunks... This may take a moment.", "info");
-    
+
     try {
       const response = await fetch('/api/export-pdf', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ subject, chapter, questions })
       });
-      
+
       if (!response.ok) throw new Error("PDF generation failed.");
-      
-      const blob = await response.blob(); 
+
+      const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a'); 
-      a.href = url; 
-      
-      // Check headers to dynamically set the correct extension (.zip vs fallback .pdf)
+      const a = document.createElement('a');
+      a.href = url;
       const contentType = response.headers.get('Content-Type');
       const isZip = contentType === 'application/zip';
       a.download = isZip ? `${subject}_${chapter}_PYQs.zip` : `${subject}_${chapter}_PYQs.pdf`;
-      
-      document.body.appendChild(a); 
-      a.click(); 
+      document.body.appendChild(a);
+      a.click();
       a.remove();
-      
       showToast("✅ PDF Chunks Exported Successfully!");
-    } catch (error) { 
-      showToast("❌ Error generating PDF. Make sure you are running locally.", "error"); 
+    } catch (error) {
+      showToast("❌ Error generating PDF. Make sure you are running locally.", "error");
     }
   };
 
   const cleanLatexForYT = (text) => {
     if (!text) return "";
-    let cleaned = text.replace(/<[^>]+>/g, ' ');
+    let cleaned = text.replace(/\[IMG_\d+\]/g, ' ');
+    cleaned = cleaned.replace(/\[DIAGRAM_PLACEHOLDER\]/g, ' ');
+    cleaned = cleaned.replace(/<[^>]+>/g, ' ');
     cleaned = cleaned.replace(/\$/g, '');
     cleaned = cleaned.replace(/\\\[/g, '');
     cleaned = cleaned.replace(/\\\]/g, '');
+
+    cleaned = cleaned.replace(/\\Leftrightarrow/g, ' bi implication ');
+    cleaned = cleaned.replace(/\\leftrightarrow/g, ' bi implication ');
+    cleaned = cleaned.replace(/<=>/g, ' bi implication ');
+    cleaned = cleaned.replace(/<->/g, ' bi implication ');
+
+    cleaned = cleaned.replace(/\\Rightarrow/g, ' implication ');
+    cleaned = cleaned.replace(/\\rightarrow/g, ' implication ');
+    cleaned = cleaned.replace(/=>/g, ' implication ');
+    cleaned = cleaned.replace(/->/g, ' implication ');
+
     const map = {
-      '\\Rightarrow': ' implies ', '\\Leftarrow': ' is implied by ', '\\Leftrightarrow': ' if and only if ',
+      '\\Leftarrow': ' is implied by ', '\\leftarrow': ' from ',
       '\\neg': ' not ', '\\vee': ' or ', '\\wedge': ' and ', '\\oplus': ' xor ',
-      '\\rightarrow': ' to ', '\\leftarrow': ' from ', '\\ge': ' greater equal ', '\\le': ' less equal ',
+      '\\ge': ' greater equal ', '\\le': ' less equal ',
       '\\neq': ' != ', '\\approx': ' ~ ', '\\equiv': ' = ', '\\times': ' x ', '\\div': ' div ',
       '\\pm': ' +- ', '\\infty': ' infinity ', '\\forall': ' for all ', '\\exists': ' exists ',
       '\\in ': ' in ', '\\notin ': ' not in ', '\\cup': ' union ', '\\cap': ' intersection ',
       '\\emptyset': ' empty set '
     };
-    for (const [key, value] of Object.entries(map)) { cleaned = cleaned.replaceAll(key, value); }
-    cleaned = cleaned.replace(/=>/g, ' implies ');
-    cleaned = cleaned.replace(/<=/g, ' less equal ');
-    cleaned = cleaned.replace(/<=>/g, ' if and only if ');
+
+    for (const [key, value] of Object.entries(map)) {
+      cleaned = cleaned.replaceAll(key, value);
+    }
+
+    cleaned = cleaned.replace(/<=/g, ' less equal '); 
     cleaned = cleaned.replace(/\\[a-zA-Z]+/g, ' ');
     cleaned = cleaned.replace(/[{}]/g, ' ');
     cleaned = cleaned.replace(/[<>:"/\\|?*]/g, ' ');
+
     return cleaned.replace(/\s+/g, ' ').trim();
   };
 
   const copyForYouTube = (q, index) => {
     const cleanSubject = subject.replace(/^\d+\.\s*/, '').trim();
     const cleanChapter = chapter.replace(/^\d+\.\s*/, '').trim();
+    const isTextOpt = (opt) => opt && !opt.startsWith('IMG:');
 
     let ytText = `[GATE ${q.year}, ${q.marks} Mark, ${cleanSubject}, ${cleanChapter}]\n\n`;
     ytText += `${cleanLatexForYT(q.text)}\n`;
-    
     if (q.code) {
       let safeCode = q.code.replace(/[<>]/g, ' ');
       ytText += `\nCode:\n${safeCode}\n\n`;
     }
-    
-    if (q.optA || q.optB || q.optC || q.optD) {
-      if (q.optA) ytText += `(A) ${cleanLatexForYT(q.optA)}\n`;
-      if (q.optB) ytText += `(B) ${cleanLatexForYT(q.optB)}\n`;
-      if (q.optC) ytText += `(C) ${cleanLatexForYT(q.optC)}\n`;
-      if (q.optD) ytText += `(D) ${cleanLatexForYT(q.optD)}\n\n`;
+    if (isTextOpt(q.optA) || isTextOpt(q.optB) || isTextOpt(q.optC) || isTextOpt(q.optD)) {
+      if (isTextOpt(q.optA)) ytText += `(A) ${cleanLatexForYT(q.optA)}\n`;
+      if (isTextOpt(q.optB)) ytText += `(B) ${cleanLatexForYT(q.optB)}\n`;
+      if (isTextOpt(q.optC)) ytText += `(C) ${cleanLatexForYT(q.optC)}\n`;
+      if (isTextOpt(q.optD)) ytText += `(D) ${cleanLatexForYT(q.optD)}\n\n`;
     } else if (q.natAnswer) {
       ytText += `Answer: ${cleanLatexForYT(q.natAnswer)}\n\n`;
     }
-    ytText += `--------------------------------------------------------\n\n`;
 
+    ytText += `--------------------------------------------------------\n\n`;
     ytText += `GATE CSE ${q.year} PYQ, ${cleanSubject}, ${cleanChapter}\n`;
     ytText += `Marks: ${q.marks} Mark\n\n`;
-    ytText += `Question:\n${cleanLatexForYT(q.text)}\n\n`;
 
+    ytText += `Question:\n${cleanLatexForYT(q.text)}\n\n`;
     if (q.code) {
       let safeCode = q.code.replace(/[<>]/g, ' ');
       ytText += `Code Snippet:\n${safeCode}\n\n`;
     }
 
-    if (q.optA || q.optB || q.optC || q.optD) {
+    if (isTextOpt(q.optA) || isTextOpt(q.optB) || isTextOpt(q.optC) || isTextOpt(q.optD)) {
       ytText += `Options:\n`;
-      if (q.optA) ytText += `(A) ${cleanLatexForYT(q.optA)}\n`;
-      if (q.optB) ytText += `(B) ${cleanLatexForYT(q.optB)}\n`;
-      if (q.optC) ytText += `(C) ${cleanLatexForYT(q.optC)}\n`;
-      if (q.optD) ytText += `(D) ${cleanLatexForYT(q.optD)}\n\n`;
+      if (isTextOpt(q.optA)) ytText += `(A) ${cleanLatexForYT(q.optA)}\n`;
+      if (isTextOpt(q.optB)) ytText += `(B) ${cleanLatexForYT(q.optB)}\n`;
+      if (isTextOpt(q.optC)) ytText += `(C) ${cleanLatexForYT(q.optC)}\n`;
+      if (isTextOpt(q.optD)) ytText += `(D) ${cleanLatexForYT(q.optD)}\n\n`;
     } else if (q.natAnswer) {
       ytText += `Answer: ${cleanLatexForYT(q.natAnswer)}\n\n`;
     }
+
     ytText += `Prepare for GATE Computer Science Engineering (CSE) with detailed previous year questions (PYQs). `;
     ytText += `This specific problem belongs to the ${cleanSubject} subject, focusing on the ${cleanChapter} topic.\n\n`;
 
@@ -629,33 +744,32 @@ export default function Home() {
 
   const handleExportYTData = () => {
     if (questions.length === 0) return showToast("❌ No questions to export!", "error");
-    
+
     const ytData = questions.map((q, index) => {
       let fullText = cleanLatexForYT(q.text);
       const optionsList = [q.optA, q.optB, q.optC, q.optD]
         .map(opt => cleanLatexForYT(opt))
         .filter(opt => opt && !opt.startsWith('IMG:'));
-      
+
       if (optionsList.length > 0) fullText += ' ' + optionsList.join(' ');
-      
       const cleanText = fullText.replace(/\s+/g, ' ').trim();
       const cleanSubject = subject.replace(/^\d+\.\s*/, '').trim();
       const cleanChapter = chapter.replace(/^\d+\.\s*/, '').trim();
-      
+
       const videoTitle = `GATE CSE ${q.year} ${cleanSubject} ${cleanText}`.replace(/\s+/g, ' ').trim();
       const timestampTitle = `GATE CSE ${q.year} ${cleanChapter} ${cleanText}`.replace(/\s+/g, ' ').trim();
-      
+
       return {
         index: index + 1, year: q.year, marks: q.marks, subject: cleanSubject, chapter: cleanChapter,
         video_title: videoTitle, timestamp_title: timestampTitle
       };
     });
-    
+
     const jsonString = JSON.stringify(ytData, null, 4);
     navigator.clipboard.writeText(jsonString).then(() => {
       showToast("▶️ YT Data copied to clipboard & downloaded!");
     });
-    
+
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(jsonString);
     const downloadAnchorNode = document.createElement('a');
     downloadAnchorNode.setAttribute("href", dataStr);
@@ -666,12 +780,12 @@ export default function Home() {
   };
 
   const clearWorkspace = () => {
-    if (confirm("🚨 Are you sure you want to clear the screen?")) { 
-        saveHistory(); 
-        setQuestions([]); 
-        setSyncedCount(0); 
-        setIsDirty(true); 
-        showToast("Workspace cleared.", "info");
+    if (confirm("🚨 Are you sure you want to clear the screen?")) {
+      saveHistory();
+      setQuestions([]);
+      setSyncedCount(0);
+      setIsDirty(true);
+      showToast("Workspace cleared.", "info");
     }
   };
 
@@ -683,19 +797,20 @@ export default function Home() {
       const isErr = imageErrors.has(imgPath);
       return `<img src="${imgPath}?t=${imgCacheBuster}" onerror="window.reportImageStatus('${imgPath}', true)" onload="window.reportImageStatus('${imgPath}', false)" style="max-height:60px; vertical-align:middle; border:2px solid ${isErr ? '#f38ba8' : '#45475a'}; border-radius:4px; margin-left:10px;"/>`;
     }
-    return optText;
+    return optText.replace(/\n/g, '<br>');
   };
 
   const handleExportAllImages = async () => {
     if (questions.length === 0) return showToast("❌ No questions to export!", "error");
-      showToast("📸 Generating Image ZIP... Please wait.", "info");
-      try {
-        const baseUrl = window.location.origin;
-        const response = await fetch('/api/export-images-zip', {
-          method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ subject, chapter, questions, baseUrl, contentWidth: imageTextWidth }) 
-        });
-      
+    showToast("📸 Generating Image ZIP... Please wait.", "info");
+
+    try {
+      const baseUrl = window.location.origin;
+      const response = await fetch('/api/export-images-zip', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subject, chapter, questions, baseUrl, contentWidth: imageTextWidth })
+      });
+
       if (!response.ok) throw new Error("Image export failed.");
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
@@ -747,21 +862,19 @@ export default function Home() {
         borderBottom: '2px solid #89b4fa', margin: '-20px -20px 20px -20px',
         borderRadius: '0 0 8px 8px'
       }}>
-        
         <div style={{ flex: '1 1 200px' }}>
           <label style={{ marginTop: 0 }}>Subject</label>
           <select value={subject} onChange={handleSubjectChange} style={{ cursor: 'pointer' }}>
             {availableSubjects.map(sub => <option key={sub} value={sub}>{sub}</option>)}
           </select>
         </div>
-        
         <div style={{ flex: '1 1 200px' }}>
           <label style={{ marginTop: 0 }}>Chapter</label>
           <select value={chapter} onChange={handleChapterChange} style={{ cursor: 'pointer' }}>
             {GATE_SYLLABUS[subject].map(chap => <option key={chap} value={chap}>{chap}</option>)}
           </select>
         </div>
-        
+
         <div style={{ flex: '1 1 250px', textAlign: 'center', padding: '10px', background: '#181825', borderRadius: '4px', border: `1px solid ${isDirty ? '#f9e2af' : (questions.length > 0 ? '#a6e3a1' : '#45475a')}` }}>
           {questions.length === 0 ? (
             <span style={{ color: '#6c7086', fontWeight: 'bold' }}>No Questions Found</span>
@@ -770,7 +883,7 @@ export default function Home() {
           ) : (
             <span style={{ color: '#a6e3a1', fontWeight: 'bold' }}>✅ All {questions.length} Synced</span>
           )}
-          
+
           {missingIndices.length > 0 && (
             <button
               onClick={handleNextMissingImage}
@@ -785,36 +898,66 @@ export default function Home() {
           <label style={{ marginTop: 0, fontSize: '13px', color: '#cdd6f4' }}>
             Thumbnail Text Width: <strong>{imageTextWidth}%</strong>
           </label>
-          <input 
-            type="range" min="40" max="100" value={imageTextWidth} 
-            onChange={(e) => setImageTextWidth(e.target.value)} 
+          <input
+            type="range" min="40" max="100" value={imageTextWidth}
+            onChange={(e) => setImageTextWidth(e.target.value)}
             style={{ cursor: 'pointer', marginTop: '5px' }}
           />
         </div>
-        
+
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
           <button className="btn-export" style={{ background: '#cba6f7', color: '#11111b', padding: '10px 15px' }} onClick={() => handleExportPDF()}>🚀 Export Full PDF</button>
           <button className="btn-export" style={{ background: '#a6e3a1', color: '#11111b', padding: '10px 15px' }} onClick={() => saveToMongoDB(null, false)}>💾 Save DB</button>
           <button className="btn-export" style={{ background: '#f5c2e7', color: '#11111b', padding: '10px 15px' }} onClick={handleExportYTData}>▶️ Export YT Data</button>
           <button className="btn-export" style={{ background: '#89dceb', color: '#11111b', padding: '10px 15px' }} onClick={handleExportAllImages}>📸 Export All Images (ZIP)</button>
           <button className="btn-clear" style={{ padding: '10px 15px' }} onClick={clearWorkspace}>🗑️ Clear</button>
-          
-          <button 
-            className="btn-export" 
-            style={{ background: history.length > 0 ? '#fab387' : '#45475a', color: history.length > 0 ? '#11111b' : '#6c7086', padding: '10px 15px', cursor: history.length > 0 ? 'pointer' : 'not-allowed' }} 
-            onClick={handleUndo} 
+
+          <button
+            className="btn-export"
+            style={{ background: history.length > 0 ? '#fab387' : '#45475a', color: history.length > 0 ? '#11111b' : '#6c7086', padding: '10px 15px', cursor: history.length > 0 ? 'pointer' : 'not-allowed' }}
+            onClick={handleUndo}
             disabled={history.length === 0}
             title={history.length > 0 ? "Undo recent structural change" : "Nothing to undo"}
           >
             ⏪ Undo
           </button>
-          
+
           <div style={{ display: 'flex', gap: '5px', marginLeft: 'auto' }}>
-            
             <form onSubmit={handleLock} style={{ display: 'flex', gap: '5px', marginRight: '10px' }}>
               <input type="number" min="0" max={questions.length} ref={lockInputRef} placeholder="Lock #" title="Lock questions 1 through N" style={{ width: '60px', padding: '8px', borderRadius: '4px', border: '1px solid #f9e2af', background: '#181825', color: '#cdd6f4', textAlign: 'center', outline: 'none' }} />
               <button type="submit" style={{ background: '#f9e2af', color: '#11111b', border: 'none', padding: '8px 12px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>🔒 Lock</button>
             </form>
+
+            {/* SEARCH BOX WITH ARROWS */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginRight: '10px', background: '#181825', border: '1px solid #74c7ec', borderRadius: '4px', padding: '0 5px' }}>
+              <input
+                type="text"
+                placeholder="🔍 Search (Enter)"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyDown={handleSearchKeyDown}
+                style={{ width: '130px', padding: '8px', border: 'none', background: 'transparent', color: '#cdd6f4', outline: 'none' }}
+              />
+              
+              {searchQuery && (
+                <span style={{ fontSize: '12px', color: '#a6adc8', fontWeight: 'bold', minWidth: '35px', textAlign: 'center' }}>
+                  {searchResults.length > 0 ? `${currentSearchIndex + 1}/${searchResults.length}` : '0/0'}
+                </span>
+              )}
+              
+              {searchResults.length > 0 && (
+                <div style={{ display: 'flex', gap: '2px', borderLeft: '1px solid #45475a', paddingLeft: '5px', marginLeft: '2px' }}>
+                  <button type="button" onClick={handlePrevMatch} style={{ background: 'transparent', color: '#cdd6f4', border: 'none', cursor: 'pointer', padding: '0 4px', fontSize: '12px' }} title="Previous Match (Shift+Enter)">▲</button>
+                  <button type="button" onClick={handleNextMatch} style={{ background: 'transparent', color: '#cdd6f4', border: 'none', cursor: 'pointer', padding: '0 4px', fontSize: '12px' }} title="Next Match (Enter)">▼</button>
+                </div>
+              )}
+
+              {searchQuery && (
+                <button type="button" onClick={() => { setSearchQuery(''); setSearchResults([]); setHasJumped(false); }} style={{ background: 'transparent', color: '#f38ba8', border: 'none', padding: '0 5px', cursor: 'pointer', fontWeight: 'bold', fontSize: '14px', marginLeft: '2px' }} title="Clear Search">
+                  ✕
+                </button>
+              )}
+            </div>
 
             <form onSubmit={handleJump} style={{ display: 'flex', gap: '5px', marginRight: '5px' }}>
               <input type="number" min="1" max={questions.length || 1} ref={jumpInputRef} placeholder="Q#" style={{ width: '55px', padding: '8px', borderRadius: '4px', border: '1px solid #45475a', background: '#181825', color: '#cdd6f4', textAlign: 'center', outline: 'none' }} />
@@ -825,11 +968,10 @@ export default function Home() {
             <button onClick={scrollToBottom} style={{ background: '#45475a', color: '#cdd6f4', border: 'none', padding: '8px 12px', borderRadius: '4px', cursor: 'pointer', fontSize: '16px' }} title="Bottom">⬇️</button>
           </div>
         </div>
-       
+
         <Link href="/scraper" style={{ background: '#3ac04e', color: '#11111b', padding: '10px 15px', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold', marginTop: '10px' }} target="_blank">
           Go to scraper
         </Link>
-     
       </div>
 
       <div id="questions_container">
@@ -838,9 +980,9 @@ export default function Home() {
           const imageList = q.diagram ? q.diagram.split(',').map(s => s.trim()).filter(Boolean) : [];
           const hasOptions = q.optA || q.optB || q.optC || q.optD;
           const isLocked = idx < lockCount;
-          
+
           let formattedText = q.text.replace(/\n/g, '<br>');
-          
+
           imageList.forEach((imgName, i) => {
             const imgPath = `/${subject}/${chapter}/${imgName}${q.ext}`;
             const isErr = imageErrors.has(imgPath);
@@ -848,7 +990,6 @@ export default function Home() {
               <img src="${imgPath}?t=${imgCacheBuster}" onerror="window.reportImageStatus('${imgPath}', true)" onload="window.reportImageStatus('${imgPath}', false)" alt="Missing" style="max-width:100%; max-height:200px;"/>
               <br/><small style="color:${isErr ? '#f38ba8' : '#74c7ec'}">${isErr ? '⚠️ 404 NOT FOUND: ' : ''}${imgPath}</small>
             </div>`;
-            
             if (formattedText.includes(`[IMG_${i + 1}]`)) formattedText = formattedText.replace(`[IMG_${i + 1}]`, imgTag);
             else if (i === 0 && formattedText.includes('[DIAGRAM_PLACEHOLDER]')) formattedText = formattedText.replace('[DIAGRAM_PLACEHOLDER]', imgTag);
             else formattedText += imgTag;
@@ -869,7 +1010,7 @@ export default function Home() {
                   <button className="btn-autofill" disabled={isLocked} style={{ width: 'auto', padding: '4px 12px', fontSize: '12px', background: '#45475a', color: '#cdd6f4', opacity: isLocked ? 0.5 : 1, cursor: isLocked ? 'not-allowed' : 'pointer' }} onClick={() => setActivePasteIndex(idx)}>⚡ Quick Paste Here</button>
                 )}
               </div>
-              
+
               <div className="card question-card" style={{ display: 'flex', border: isLocked ? '1px solid #f9e2af' : 'none' }}>
                 <div className="half-width">
                   <div className="q-header" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', alignItems: 'center' }}>
@@ -878,52 +1019,49 @@ export default function Home() {
                         {isLocked && "🔒 "}Question {qNum}
                       </h3>
                       <button className="btn-export" style={{ background: '#f9e2af', color: '#11111b', padding: '4px 10px', marginLeft: '10px', fontSize: '12px' }} onClick={() => copyForYouTube(q, idx)}>📋 Copy for YT</button>
-                      
-                      <button 
-                        className="btn-export" 
-                        disabled={isLocked} 
-                        style={{ background: '#f5a97f', color: '#11111b', padding: '4px 10px', marginLeft: '10px', fontSize: '12px', opacity: isLocked ? 0.5 : 1, cursor: isLocked ? 'not-allowed' : 'pointer' }} 
-                        onClick={() => handleFormatSingleLatexSpaces(q.id, q.text)}
+                      <button
+                        className="btn-export"
+                        disabled={isLocked}
+                        style={{ background: '#f5a97f', color: '#11111b', padding: '4px 10px', marginLeft: '10px', fontSize: '12px', opacity: isLocked ? 0.5 : 1, cursor: isLocked ? 'not-allowed' : 'pointer' }}
+                        onClick={() => handleFormatSingleLatexSpaces(q.id)}
                         title="Converts consecutive math blocks onto separate lines"
                       >
                         ✨ Format $ $
                       </button>
                     </div>
-                    
                     <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                      <input 
-                        type="number" 
-                        placeholder="Move to #" 
+                      <input
+                        type="number"
+                        placeholder="Move to #"
                         onKeyDown={(e) => handleMoveQuestion(idx, e)}
                         disabled={isLocked}
                         title={isLocked ? "Locked" : "Type target Q# and press Enter"}
-                        style={{ width: '80px', padding: '4px 8px', borderRadius: '4px', border: '1px solid #89b4fa', background: '#11111b', color: '#cdd6f4', textAlign: 'center', outline: 'none', cursor: isLocked ? 'not-allowed' : 'text' }} 
+                        style={{ width: '80px', padding: '4px 8px', borderRadius: '4px', border: '1px solid #89b4fa', background: '#11111b', color: '#cdd6f4', textAlign: 'center', outline: 'none', cursor: isLocked ? 'not-allowed' : 'text' }}
                       />
                       <button className="btn-clear" disabled={isLocked} style={{ padding: '4px 10px', opacity: isLocked ? 0.5 : 1, cursor: isLocked ? 'not-allowed' : 'pointer' }} onClick={() => removeQuestion(q.id)}>Remove</button>
                     </div>
                   </div>
-                  
+
                   <label>Question Text</label>
                   <textarea disabled={isLocked} value={q.text} onChange={(e) => updateQ(q.id, 'text', e.target.value)} className="q-text" />
-                  
+
                   <label>Code Snippet</label>
                   <textarea disabled={isLocked} value={q.code} onChange={(e) => updateQ(q.id, 'code', e.target.value)} className="code-text" />
-                  
+
                   <div className="grid-meta" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 2fr', gap: '10px' }}>
                     <div><label>Year</label><select disabled={isLocked} value={q.year} onChange={(e) => updateQ(q.id, 'year', e.target.value)}>{getYearOptions().map(y => <option key={y} value={y}>{y}</option>)}</select></div>
                     <div><label>Marks</label><div className="radio-group" style={{ display: 'flex', gap: '5px' }}><input disabled={isLocked} type="radio" checked={q.marks === "1"} onChange={() => updateQ(q.id, 'marks', "1")} /> 1M <input disabled={isLocked} type="radio" checked={q.marks === "2"} onChange={() => updateQ(q.id, 'marks', "2")} style={{ marginLeft: '10px' }} /> 2M</div></div>
                     <div><label>Images</label><div className="input-group" style={{ display: 'flex' }}><input disabled={isLocked} type="text" value={q.diagram} onChange={(e) => updateQ(q.id, 'diagram', e.target.value)} placeholder="e.g. 1a, 1b" style={{ borderRadius: '4px 0 0 4px' }} /><select disabled={isLocked} value={q.ext} onChange={(e) => updateQ(q.id, 'ext', e.target.value)} style={{ width: '60px' }}><option value=".png">.png</option><option value=".jpg">.jpg</option></select></div></div>
                   </div>
-                  
+
                   <label style={{ color: '#f5c2e7' }}>Options (Paste A;B;C;D in Box A. IMG:filename for images. Blank for NAT)</label>
                   <div className="grid-opts" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                    <input disabled={isLocked} type="text" value={q.optA} onPaste={(e) => handleOptionPaste(q.id, e)} onChange={(e) => updateQ(q.id, 'optA', e.target.value)} placeholder="Option A" />
-                    <input disabled={isLocked} type="text" value={q.optB} onChange={(e) => updateQ(q.id, 'optB', e.target.value)} placeholder="Option B" />
-                    <input disabled={isLocked} type="text" value={q.optC} onChange={(e) => updateQ(q.id, 'optC', e.target.value)} placeholder="Option C" />
-                    <input disabled={isLocked} type="text" value={q.optD} onChange={(e) => updateQ(q.id, 'optD', e.target.value)} placeholder="Option D" />
+                    <textarea disabled={isLocked} value={q.optA} onPaste={(e) => handleOptionPaste(q.id, e)} onChange={(e) => updateQ(q.id, 'optA', e.target.value)} placeholder="Option A" style={{ minHeight: '60px', padding: '8px', borderRadius: '4px', border: '1px solid #45475a', background: '#181825', color: '#cdd6f4', resize: 'vertical' }} />
+                    <textarea disabled={isLocked} value={q.optB} onChange={(e) => updateQ(q.id, 'optB', e.target.value)} placeholder="Option B" style={{ minHeight: '60px', padding: '8px', borderRadius: '4px', border: '1px solid #45475a', background: '#181825', color: '#cdd6f4', resize: 'vertical' }} />
+                    <textarea disabled={isLocked} value={q.optC} onChange={(e) => updateQ(q.id, 'optC', e.target.value)} placeholder="Option C" style={{ minHeight: '60px', padding: '8px', borderRadius: '4px', border: '1px solid #45475a', background: '#181825', color: '#cdd6f4', resize: 'vertical' }} />
+                    <textarea disabled={isLocked} value={q.optD} onChange={(e) => updateQ(q.id, 'optD', e.target.value)} placeholder="Option D" style={{ minHeight: '60px', padding: '8px', borderRadius: '4px', border: '1px solid #45475a', background: '#181825', color: '#cdd6f4', resize: 'vertical' }} />
                   </div>
-                  
-                  {/* 🔥 NEW: Subjective / Proof Toggle */}
+
                   {!hasOptions && (
                     <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center', gap: '15px' }}>
                       {!q.isProof && (
@@ -936,12 +1074,12 @@ export default function Home() {
                     </div>
                   )}
                 </div>
-                
+
                 <div id={`preview-${q.id}`} className="preview-pane" style={{ paddingLeft: '20px', width: '50%' }}>
                   <div style={{ color: '#a6e3a1', fontWeight: 'bold', marginBottom: '10px' }}>[GATE {q.year} | {q.marks} Mark]</div>
                   <div dangerouslySetInnerHTML={{ __html: formattedText }} />
                   {q.code && <div style={{ background: '#181825', padding: '10px', border: '1px solid #45475a', fontFamily: 'monospace', whiteSpace: 'pre-wrap', margin: '10px 0' }}>{q.code}</div>}
-                  
+
                   <div style={{ marginTop: '15px' }}>
                     {hasOptions ? (
                       <>
@@ -960,7 +1098,7 @@ export default function Home() {
           );
         })}
       </div>
-      
+
       <div className="card" id="paste_section" style={{ marginTop: '20px', border: '2px solid #89b4fa' }}>
         <label style={{ fontSize: '16px' }}>⚡ Bulk Quick Paste</label>
         <textarea value={bulkText} onChange={(e) => setBulkText(e.target.value)} style={{ minHeight: '120px', marginTop: '10px' }}></textarea>

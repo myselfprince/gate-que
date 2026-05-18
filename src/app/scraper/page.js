@@ -1,8 +1,7 @@
-'use client';
+'use client'
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-// Your Official Syllabus Categories
 const GATE_SYLLABUS = {
   "1. Discrete Maths": ["1. Mathematical Logic", "2. Set Theory and Algebra", "3. Combinatorics", "4. Graph Theory"],
   "2. TOC": ["1. Finite Automata and Regular Languages", "2. PDA - CFL and DCFL", "3. Turing Machine, RE, REC, Undecidabilitu"],
@@ -18,7 +17,6 @@ const GATE_SYLLABUS = {
   "12. DBMS": ["1. ER Model", "2. Funcational Dependencies and Normalizaation", "3. Structure Query Language", "4. Relational Model", "5. Transactions and Concurrency Contorl", "6. File Structures"]
 };
 
-// 🔥 The Master Translation Dictionary
 const TOPIC_MAPPING = {
   "Asymptotic Notation": "1. Algo. Analysis and Asymptotic Notations",
   "Recurrence Relation": "1. Algo. Analysis and Asymptotic Notations",
@@ -26,7 +24,7 @@ const TOPIC_MAPPING = {
   "Sorting": "2. Divide and Conquer",
   "Greedy Technique": "3. Greedy Method",
   "Minimum Spanning Tree": "3. Greedy Method",
-  "Shortest Path": "3. Greedy Method", 
+  "Shortest Path": "3. Greedy Method",
   "Graph Traversal": "6. Miscellaneous Topics",
   "Dynamic Programming": "4. Dynamic Programming",
   "Array": "1. Arrays",
@@ -123,25 +121,18 @@ export default function ScraperPage() {
   const [groupedQuestions, setGroupedQuestions] = useState({});
   const [toast, setToast] = useState(null);
   const [expandedGroups, setExpandedGroups] = useState({});
-  // 🔥 NEW: Toggle between Grouped and Ungrouped views
-  const [isGroupedView, setIsGroupedView] = useState(true);
 
   const availableSubjects = Object.keys(GATE_SYLLABUS);
   const [subject, setSubject] = useState(availableSubjects[1]);
   const [chapter, setChapter] = useState(GATE_SYLLABUS[availableSubjects[1]][0]);
-
-  // 🔥 NEW STATE: Track Offline Backups
   const [savedBackups, setSavedBackups] = useState([]);
   const [selectedBackup, setSelectedBackup] = useState('');
-
-  
 
   const showToast = (message, type = 'success') => {
     setToast({ message, type });
     setTimeout(() => setToast(null), 3500);
   };
 
-  // Helper to fetch keys from LocalStorage
   const loadAvailableBackups = () => {
     if (typeof window === 'undefined') return;
     const keys = Object.keys(localStorage)
@@ -151,28 +142,20 @@ export default function ScraperPage() {
     if (keys.length > 0 && !selectedBackup) setSelectedBackup(keys[0]);
   };
 
-  // 🔥 NEW: Compute a flat, year-sorted array of all scraped questions
-  const flatQuestions = Object.values(groupedQuestions)
-    .flat()
-    .sort((a, b) => parseInt(a.year) - parseInt(b.year));
-
   const handleLoadFromDB = async (targetSubject) => {
     if (!targetSubject) return;
-    
     try {
       showToast(`☁️ Fetching ${targetSubject} from Cloud DB...`, "info");
       const loadedGroups = {};
       const newExpandedState = {};
       let totalQs = 0;
 
-      // Fetch each chapter for the subject directly from MongoDB
       for (const chap of GATE_SYLLABUS[targetSubject]) {
         const res = await fetch(`/api/scraped-chapters?subject=${encodeURIComponent(targetSubject)}&chapter=${encodeURIComponent(chap)}`);
         const data = await res.json();
-        
         if (data.success && data.data && data.data.questions && data.data.questions.length > 0) {
           loadedGroups[chap] = data.data.questions;
-          newExpandedState[chap] = false;
+          newExpandedState[chap] = true; // Default Expand
           totalQs += data.data.questions.length;
         }
       }
@@ -182,12 +165,10 @@ export default function ScraperPage() {
         return;
       }
 
-      // Populate the UI with the fetched database data
       setGroupedQuestions(loadedGroups);
       setExpandedGroups(newExpandedState);
       setSubject(targetSubject);
       setChapter(GATE_SYLLABUS[targetSubject][0]);
-      
       showToast(`✅ Loaded ${totalQs} questions from DB for ${targetSubject}!`);
     } catch (error) {
       showToast("❌ Error loading from DB", "error");
@@ -196,10 +177,9 @@ export default function ScraperPage() {
 
   const handlePushLiveToDB = async () => {
     if (Object.keys(groupedQuestions).length === 0) return showToast("❌ No questions on screen to push!", "error");
-    
     const flatQuestions = [];
     Object.values(groupedQuestions).forEach(arr => flatQuestions.push(...arr));
-    
+
     if (!confirm(`🚨 Are you sure you want to OVERWRITE the Cloud DB for all chapters in "${subject}" with the ${flatQuestions.length} questions currently on your screen?`)) return;
 
     try {
@@ -216,38 +196,6 @@ export default function ScraperPage() {
       showToast("❌ Network error saving to cloud", "error");
     }
   };
-  // 🔥 NEW: Push Offline Backup directly to the Scraped DB
-const handlePushBackupToDB = async (targetSubject) => {
-  if (!targetSubject) return;
-  const saved = localStorage.getItem(`gate_scraper_backup_${targetSubject}`);
-  
-  if (!saved) return showToast("❌ No backup data found for this subject.", "error");
-
-  const parsedGroups = JSON.parse(saved);
-  const flatQuestions = [];
-  
-  // Flatten the grouped questions into a single array for the database
-  Object.values(parsedGroups).forEach(arr => flatQuestions.push(...arr));
-
-  if (!confirm(`🚨 Are you sure you want to OVERWRITE the cloud database for all chapters in "${targetSubject}" with these ${flatQuestions.length} questions?`)) return;
-
-  try {
-    showToast(`☁️ Pushing ${targetSubject} to Cloud...`, "info");
-    
-    // We loop through the groups and save them chapter by chapter
-    for (const [chapterName, qsArray] of Object.entries(parsedGroups)) {
-      await fetch('/api/scraped-chapters', { 
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ subject: targetSubject, chapter: chapterName, questions: qsArray })
-      });
-    }
-    
-    showToast(`✅ Successfully pushed all ${targetSubject} data to Cloud DB!`);
-  } catch (error) {
-    showToast("❌ Network error saving to cloud", "error");
-  }
-};
 
   useEffect(() => {
     loadAvailableBackups();
@@ -270,7 +218,6 @@ const handlePushBackupToDB = async (targetSubject) => {
     if (isScraping) return;
     const timer = setTimeout(() => {
       if (typeof window !== 'undefined' && window.MathJax && window.MathJax.typesetPromise) {
-        // Changed ID to wrap both view modes
         const container = document.getElementById('questions_render_container');
         if (container) {
           window.MathJax.typesetClear([container]);
@@ -279,24 +226,23 @@ const handlePushBackupToDB = async (targetSubject) => {
       }
     }, 200);
     return () => clearTimeout(timer);
-  }, [groupedQuestions, expandedGroups, isGroupedView, isScraping]); // Added isGroupedView here
+  }, [groupedQuestions, expandedGroups, isScraping]);
 
   const startScraping = async () => {
     if (!url.includes('practicepaper.in')) {
       return showToast("❌ Please enter a valid practicepaper.in URL", "error");
     }
-
     setIsScraping(true);
     setGroupedQuestions({});
     setExpandedGroups({});
     setProgress({ current: 1, total: '?' });
+
     let allQuestions = [];
     let totalPages = 1;
 
     try {
       const firstRes = await fetch(`/api/scrape?url=${encodeURIComponent(url)}&page=1`);
       const firstData = await firstRes.json();
-      
       if (!firstData.success) throw new Error(firstData.error);
       
       totalPages = firstData.totalPages;
@@ -314,12 +260,12 @@ const handlePushBackupToDB = async (targetSubject) => {
 
       const newGroups = {};
       const newExpandedState = {};
-      
+
       allQuestions.sort((a, b) => parseInt(a.year) - parseInt(b.year)).forEach(q => {
         const mappedChapter = TOPIC_MAPPING[q.rawTopic] || q.rawTopic || "Uncategorized";
         if (!newGroups[mappedChapter]) {
           newGroups[mappedChapter] = [];
-          newExpandedState[mappedChapter] = false;
+          newExpandedState[mappedChapter] = true; // Default Expand
         }
         newGroups[mappedChapter].push(q);
       });
@@ -327,7 +273,6 @@ const handlePushBackupToDB = async (targetSubject) => {
       setGroupedQuestions(newGroups);
       setExpandedGroups(newExpandedState);
       showToast(`✅ Successfully scraped ${allQuestions.length} questions into ${Object.keys(newGroups).length} groups!`);
-
     } catch (error) {
       showToast(`❌ Error: ${error.message}`, "error");
     } finally {
@@ -337,7 +282,6 @@ const handlePushBackupToDB = async (targetSubject) => {
 
   const handleCopyGroup = (questionsArray, chapterName) => {
     let bulkString = "";
-    
     questionsArray.forEach(q => {
       bulkString += `QUESTION: ${q.text.trim()} [${q.year} : ${q.marks} M]\n`;
       if (q.code) bulkString += `CODE: ${q.code}\n`;
@@ -346,25 +290,8 @@ const handlePushBackupToDB = async (targetSubject) => {
       }
       bulkString += `\n`;
     });
-    
     navigator.clipboard.writeText(bulkString.trim());
     showToast(`📋 Copied ${questionsArray.length} questions for ${chapterName}!`);
-  };
-  // 🔥 NEW: Format specifically for bulk-copying EVERYTHING in Ungrouped view
-  const handleCopyAllUngrouped = () => {
-    let bulkString = "";
-    
-    flatQuestions.forEach(q => {
-      bulkString += `QUESTION: ${q.text.trim()} [${q.year} : ${q.marks} M]\n`;
-      if (q.code) bulkString += `CODE: ${q.code}\n`;
-      if (q.optA || q.optB || q.optC || q.optD) {
-        bulkString += `OPTIONS: ${q.optA || ''} ; ${q.optB || ''} ; ${q.optC || ''} ; ${q.optD || ''}\n`;
-      }
-      bulkString += `\n`;
-    });
-    
-    navigator.clipboard.writeText(bulkString.trim());
-    showToast(`📋 Copied all ${flatQuestions.length} questions for Main Page!`);
   };
 
   const toggleGroup = (chapterName) => {
@@ -377,76 +304,35 @@ const handlePushBackupToDB = async (targetSubject) => {
     setExpandedGroups(newState);
   };
 
-  // 🔥 NEW: Save to Local Storage by Subject
   const handleSaveToLocalStorage = () => {
     if (Object.keys(groupedQuestions).length === 0) return showToast("❌ No data to save!", "error");
     localStorage.setItem(`gate_scraper_backup_${subject}`, JSON.stringify(groupedQuestions));
     loadAvailableBackups();
-    setSelectedBackup(subject); // Auto-select the newly saved backup
+    setSelectedBackup(subject);
     showToast(`💾 Saved backup for ${subject}!`);
   };
 
-  // 🔥 NEW: Load from Local Storage by Subject
   const handleLoadFromLocalStorage = (targetSubject) => {
     if (!targetSubject) return;
     const saved = localStorage.getItem(`gate_scraper_backup_${targetSubject}`);
     if (saved) {
       const parsed = JSON.parse(saved);
       setGroupedQuestions(parsed);
-      
       const newExpandedState = {};
-      Object.keys(parsed).forEach(key => { newExpandedState[key] = false; });
+      Object.keys(parsed).forEach(key => { newExpandedState[key] = true; }); // Default Expand
       setExpandedGroups(newExpandedState);
-      
-      setSubject(targetSubject); // Sync UI subject dropdown
-      setChapter(GATE_SYLLABUS[targetSubject][0]); 
+      setSubject(targetSubject);
+      setChapter(GATE_SYLLABUS[targetSubject][0]);
       showToast(`📂 Loaded backup for ${targetSubject}!`);
     }
   };
 
-  // 🔥 NEW: Delete Backup
-  const handleDeleteBackup = (targetSubject) => {
-    if (!confirm(`Are you sure you want to delete the offline backup for ${targetSubject}?`)) return;
-    localStorage.removeItem(`gate_scraper_backup_${targetSubject}`);
-    loadAvailableBackups();
-    if (selectedBackup === targetSubject) setSelectedBackup('');
-    showToast(`🗑️ Deleted backup for ${targetSubject}.`, 'info');
-  };
-
-  const handleSaveToDB = async () => {
-    if (Object.keys(groupedQuestions).length === 0) return showToast("❌ No questions to save!", "error");
-    
-    const flatQuestions = [];
-    Object.values(groupedQuestions).forEach(arr => flatQuestions.push(...arr));
-
-    if (!confirm(`🚨 Are you sure you want to OVERWRITE "${subject} - ${chapter}" in the SCRAPED DATABASE with ${flatQuestions.length} questions?`)) return;
-
-    try {
-      showToast("💾 Saving to Scraped DB...", "info");
-      const res = await fetch('/api/scraped-chapters', { 
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ subject, chapter, questions: flatQuestions })
-      });
-      const data = await res.json();
-      
-      if (data.success) {
-        showToast(`✅ Successfully saved ${flatQuestions.length} questions to DB2!`);
-      } else {
-        showToast("❌ Error saving to DB: " + data.error, "error");
-      }
-    } catch (error) {
-      showToast("❌ Network error saving to database", "error");
-    }
-  };
-  // 🔥 NEW: Format specifically for a single question
   const handleCopySingleQuestion = (q) => {
     let qString = `QUESTION: ${q.text.trim()} [${q.year} : ${q.marks} M]\n`;
     if (q.code) qString += `CODE: ${q.code}\n`;
     if (q.optA || q.optB || q.optC || q.optD) {
       qString += `OPTIONS: ${q.optA || ''} ; ${q.optB || ''} ; ${q.optC || ''} ; ${q.optD || ''}\n`;
     }
-    
     navigator.clipboard.writeText(qString.trim());
     showToast(`📋 Copied Question to clipboard!`);
   };
@@ -468,14 +354,11 @@ const handlePushBackupToDB = async (targetSubject) => {
         </Link>
       </div>
 
-      {/* 🔥 Backup Manager UI */}
-      {/* Cloud DB Manager (Works in Incognito) */}
       <div className="card" style={{ background: '#1e1e2e', padding: '15px 20px', borderRadius: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', border: '1px solid #a6e3a1' }}>
         <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
           <span style={{ fontSize: '20px' }}>☁️</span>
           <h3 style={{ margin: 0, color: '#a6e3a1', fontSize: '16px' }}>Cloud DB Manager</h3>
         </div>
-        
         <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
           <select
             value={subject}
@@ -484,11 +367,9 @@ const handlePushBackupToDB = async (targetSubject) => {
           >
             {availableSubjects.map(sub => <option key={sub} value={sub}>{sub}</option>)}
           </select>
-          
           <button onClick={() => handleLoadFromDB(subject)} style={{ background: '#a6e3a1', color: '#11111b', padding: '8px 15px', borderRadius: '4px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
             📂 Load from DB
           </button>
-          
           {Object.keys(groupedQuestions).length > 0 && (
             <button onClick={handlePushLiveToDB} style={{ background: '#f38ba8', color: '#11111b', padding: '8px 15px', borderRadius: '4px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
               🚨 Push Screen to DB
@@ -496,214 +377,91 @@ const handlePushBackupToDB = async (targetSubject) => {
           )}
         </div>
       </div>
+
       <div className="card" style={{ background: '#181825', padding: '20px', borderRadius: '10px', display: 'flex', flexWrap: 'wrap', gap: '15px', alignItems: 'flex-end', marginBottom: '20px' }}>
         <div style={{ flex: '1 1 100%' }}>
           <label style={{ display: 'block', marginBottom: '5px', color: '#bac2de', fontWeight: 'bold' }}>Target URL to Scrape</label>
-          <input 
-            type="text" 
-            value={url} 
-            onChange={(e) => setUrl(e.target.value)} 
-            placeholder="e.g., https://practicepaper.in/gate-cse/theory-of-computation" 
+          <input
+            type="text"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            placeholder="e.g., https://practicepaper.in/gate-cse/theory-of-computation"
             style={{ width: '100%', padding: '12px', borderRadius: '6px', border: '1px solid #45475a', background: '#11111b', color: '#cdd6f4', outline: 'none' }}
             disabled={isScraping}
           />
         </div>
-        
         <button onClick={startScraping} disabled={isScraping || !url} style={{ background: isScraping ? '#6c7086' : '#89b4fa', color: '#11111b', padding: '12px 25px', borderRadius: '6px', fontWeight: 'bold', border: 'none', cursor: isScraping ? 'not-allowed' : 'pointer' }}>
           {isScraping ? `Scraping Page ${progress.current} of ${progress.total}...` : '🚀 Start Scraping & Auto-Group'}
         </button>
       </div>
 
       {Object.keys(groupedQuestions).length > 0 && (
-        <>
-          <div style={{ background: '#313244', padding: '15px', borderRadius: '10px', display: 'flex', gap: '15px', alignItems: 'center', marginBottom: '20px', border: '1px solid #a6e3a1', flexWrap: 'wrap', justifyContent: 'space-between' }}>
-            
-            <div style={{ display: 'flex', gap: '15px', alignItems: 'center', flex: '1 1 auto' }}>
-              <div>
-                <label style={{ display: 'block', fontSize: '12px', color: '#bac2de' }}>Target Subject:</label>
-                <select value={subject} onChange={(e) => { setSubject(e.target.value); setChapter(GATE_SYLLABUS[e.target.value][0]); }} style={{ padding: '8px', borderRadius: '4px', background: '#11111b', color: '#cdd6f4', border: '1px solid #45475a' }}>
-                  {availableSubjects.map(sub => <option key={sub} value={sub}>{sub}</option>)}
-                </select>
-              </div>
-
-              {/* 🔥 View Mode Toggle */}
-              <div style={{ borderLeft: '1px solid #45475a', paddingLeft: '15px' }}>
-                <label style={{ display: 'block', fontSize: '12px', color: '#bac2de', marginBottom: '5px' }}>View Mode:</label>
-                <div style={{ display: 'flex', gap: '5px' }}>
-                  <button onClick={() => setIsGroupedView(true)} style={{ background: isGroupedView ? '#cba6f7' : '#45475a', color: isGroupedView ? '#11111b' : '#cdd6f4', padding: '6px 12px', borderRadius: '4px', border: 'none', cursor: 'pointer', fontWeight: 'bold', fontSize: '12px' }}>Grouped</button>
-                  <button onClick={() => setIsGroupedView(false)} style={{ background: !isGroupedView ? '#cba6f7' : '#45475a', color: !isGroupedView ? '#11111b' : '#cdd6f4', padding: '6px 12px', borderRadius: '4px', border: 'none', cursor: 'pointer', fontWeight: 'bold', fontSize: '12px' }}>Ungrouped</button>
-                </div>
-              </div>
-            </div>
-
-            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-              <button onClick={handleSaveToLocalStorage} style={{ background: '#89b4fa', color: '#11111b', padding: '10px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
-                💾 Save Backup
-              </button>
-              
-              {/* Contextual Buttons based on View Mode */}
-              {isGroupedView ? (
-                <>
-                  <button onClick={() => toggleAll(true)} style={{ background: '#45475a', color: '#cdd6f4', padding: '10px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>Expand All</button>
-                  <button onClick={() => toggleAll(false)} style={{ background: '#45475a', color: '#cdd6f4', padding: '10px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>Collapse All</button>
-                </>
-              ) : (
-                <button onClick={handleCopyAllUngrouped} style={{ background: '#a6e3a1', color: '#11111b', padding: '10px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
-                  📋 Copy All {flatQuestions.length} Questions
-                </button>
-              )}
+        <div style={{ background: '#313244', padding: '15px', borderRadius: '10px', display: 'flex', gap: '15px', alignItems: 'center', marginBottom: '20px', border: '1px solid #a6e3a1', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', gap: '15px', alignItems: 'center', flex: '1 1 auto' }}>
+            <div>
+              <label style={{ display: 'block', fontSize: '12px', color: '#bac2de' }}>Target Subject:</label>
+              <select value={subject} onChange={(e) => { setSubject(e.target.value); setChapter(GATE_SYLLABUS[e.target.value][0]); }} style={{ padding: '8px', borderRadius: '4px', background: '#11111b', color: '#cdd6f4', border: '1px solid #45475a' }}>
+                {availableSubjects.map(sub => <option key={sub} value={sub}>{sub}</option>)}
+              </select>
             </div>
           </div>
 
-          {/* 🔥 Main Render Container for MathJax */}
-          <div id="questions_render_container">
-            {/* GROUPED VIEW RENDER */}
-            {isGroupedView && (
-              <div style={{ display: 'grid', gap: '15px' }}>
-                {Object.entries(groupedQuestions).map(([chapterName, questionsArray]) => (
-                  <div key={chapterName} style={{ background: '#11111b', border: '2px solid #cba6f7', borderRadius: '10px', overflow: 'hidden' }}>
-                    <div 
-                      onClick={() => toggleGroup(chapterName)}
-                      style={{ background: '#313244', padding: '15px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', userSelect: 'none', borderBottom: expandedGroups[chapterName] ? '2px solid #cba6f7' : 'none' }}
-                    >
-                      <h2 style={{ margin: 0, color: '#cba6f7', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <span style={{ fontSize: '16px', display: 'inline-block', width: '20px', textAlign: 'center' }}>{expandedGroups[chapterName] ? '▼' : '▶'}</span>
-                        {chapterName} <span style={{ fontSize: '14px', color: '#bac2de' }}>({questionsArray.length} Qs)</span>
-                      </h2>
-                      <button onClick={(e) => { e.stopPropagation(); handleCopyGroup(questionsArray, chapterName); }} style={{ background: '#a6e3a1', color: '#11111b', padding: '8px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
-                        📋 Copy Group
-                      </button>
-                    </div>
-
-                    {expandedGroups[chapterName] && (
-                      <div style={{ padding: '20px', display: 'grid', gap: '20px' }}>
-                        {questionsArray.map((q, idx) => (
-                          <div key={q.id} style={{ background: '#1e1e2e', padding: '20px', borderRadius: '8px', border: '1px solid #45475a' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-                              <span style={{ color: '#89b4fa', fontWeight: 'bold' }}>#{idx + 1}</span>
-                              <div style={{ display: 'flex', alignItems: 'center' }}>
-                                {q.setNum && <span style={{ background: '#89b4fa', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold', marginRight: '10px' }}>Set-{q.setNum}</span>}
-                                <span style={{ background: '#f9e2af', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold' }}>GATE {q.year} | {q.marks} Mark</span>
-                                
-                                {/* 🔥 Single Copy Button */}
-                                <button onClick={() => handleCopySingleQuestion(q)} style={{ background: '#cba6f7', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold', marginLeft: '10px', border: 'none', cursor: 'pointer' }} title="Copy formatted LaTeX for this question">
-                                  📋 Copy
-                                </button>
-                              </div>
-                            </div>
-                            <div style={{ marginBottom: '15px', whiteSpace: 'pre-wrap' }} dangerouslySetInnerHTML={{ __html: q.text.replace(/\n/g, '<br>') }} />
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                              {q.optA && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(A)</strong> <span dangerouslySetInnerHTML={{ __html: q.optA }} /></div>}
-                              {q.optB && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(B)</strong> <span dangerouslySetInnerHTML={{ __html: q.optB }} /></div>}
-                              {q.optC && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(C)</strong> <span dangerouslySetInnerHTML={{ __html: q.optC }} /></div>}
-                              {q.optD && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(D)</strong> <span dangerouslySetInnerHTML={{ __html: q.optD }} /></div>}
-                            </div>
-                            {q.natAnswer === "NAT" && !q.optA && <div style={{ marginTop: '10px', color: '#f38ba8', fontWeight: 'bold' }}>Numerical Answer Type (NAT)</div>}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* UNGROUPED VIEW RENDER (Flat List Sorted by Year) */}
-            {!isGroupedView && (
-              <div style={{ display: 'grid', gap: '20px' }}>
-                {flatQuestions.map((q, idx) => (
-                  <div key={q.id} style={{ background: '#1e1e2e', padding: '20px', borderRadius: '8px', border: '1px solid #45475a' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-                      <span style={{ color: '#89b4fa', fontWeight: 'bold' }}>#{idx + 1} <span style={{ color: '#bac2de', fontWeight: 'normal', fontSize: '13px', marginLeft: '10px' }}>(from {q.rawTopic || 'Uncategorized'})</span></span>
-                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                        {q.setNum && <span style={{ background: '#89b4fa', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold', marginRight: '10px' }}>Set-{q.setNum}</span>}
-                        <span style={{ background: '#f9e2af', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold' }}>GATE {q.year} | {q.marks} Mark</span>
-                        
-                        {/* 🔥 Single Copy Button */}
-                        <button onClick={() => handleCopySingleQuestion(q)} style={{ background: '#cba6f7', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold', marginLeft: '10px', border: 'none', cursor: 'pointer' }} title="Copy formatted LaTeX for this question">
-                          📋 Copy
-                        </button>
-                      </div>
-                    </div>
-                    <div style={{ marginBottom: '15px', whiteSpace: 'pre-wrap' }} dangerouslySetInnerHTML={{ __html: q.text.replace(/\n/g, '<br>') }} />
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                      {q.optA && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(A)</strong> <span dangerouslySetInnerHTML={{ __html: q.optA }} /></div>}
-                      {q.optB && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(B)</strong> <span dangerouslySetInnerHTML={{ __html: q.optB }} /></div>}
-                      {q.optC && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(C)</strong> <span dangerouslySetInnerHTML={{ __html: q.optC }} /></div>}
-                      {q.optD && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(D)</strong> <span dangerouslySetInnerHTML={{ __html: q.optD }} /></div>}
-                    </div>
-                    {q.natAnswer === "NAT" && !q.optA && <div style={{ marginTop: '10px', color: '#f38ba8', fontWeight: 'bold' }}>Numerical Answer Type (NAT)</div>}
-                  </div>
-                ))}
-              </div>
-            )}
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+            <button onClick={handleSaveToLocalStorage} style={{ background: '#89b4fa', color: '#11111b', padding: '10px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
+              💾 Save Backup
+            </button>
+            <button onClick={() => toggleAll(true)} style={{ background: '#45475a', color: '#cdd6f4', padding: '10px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>Expand All</button>
+            <button onClick={() => toggleAll(false)} style={{ background: '#45475a', color: '#cdd6f4', padding: '10px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>Collapse All</button>
           </div>
-        </>
+        </div>
       )}
 
-      <div id="grouped_questions_container" style={{ display: 'grid', gap: '15px' }}>
-        {Object.entries(groupedQuestions).map(([chapterName, questionsArray]) => (
-          <div key={chapterName} style={{ background: '#11111b', border: '2px solid #cba6f7', borderRadius: '10px', overflow: 'hidden' }}>
-            
-            <div 
-              onClick={() => toggleGroup(chapterName)}
-              style={{ 
-                background: '#313244', padding: '15px 20px', display: 'flex', justifyContent: 'space-between', 
-                alignItems: 'center', cursor: 'pointer', userSelect: 'none',
-                borderBottom: expandedGroups[chapterName] ? '2px solid #cba6f7' : 'none' 
-              }}
-            >
-              <h2 style={{ margin: 0, color: '#cba6f7', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <span style={{ fontSize: '16px', display: 'inline-block', width: '20px', textAlign: 'center' }}>
-                  {expandedGroups[chapterName] ? '▼' : '▶'}
-                </span>
-                {chapterName} <span style={{ fontSize: '14px', color: '#bac2de' }}>({questionsArray.length} Qs)</span>
-              </h2>
-              
-              <button 
-                onClick={(e) => { e.stopPropagation(); handleCopyGroup(questionsArray, chapterName); }} 
-                style={{ background: '#a6e3a1', color: '#11111b', padding: '8px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}
+      <div id="questions_render_container">
+        <div style={{ display: 'grid', gap: '15px' }}>
+          {Object.entries(groupedQuestions).map(([chapterName, questionsArray]) => (
+            <div key={chapterName} style={{ background: '#11111b', border: '2px solid #cba6f7', borderRadius: '10px', overflow: 'hidden' }}>
+              <div
+                onClick={() => toggleGroup(chapterName)}
+                style={{ background: '#313244', padding: '15px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', userSelect: 'none', borderBottom: expandedGroups[chapterName] ? '2px solid #cba6f7' : 'none' }}
               >
-                📋 Copy Group
-              </button>
-            </div>
-
-            {expandedGroups[chapterName] && (
-              <div style={{ padding: '20px', display: 'grid', gap: '20px' }}>
-                {questionsArray.map((q, idx) => (
-                  <div key={q.id} style={{ background: '#1e1e2e', padding: '20px', borderRadius: '8px', border: '1px solid #45475a' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-                      <span style={{ color: '#89b4fa', fontWeight: 'bold' }}>#{idx + 1}</span>
-                      <div>
-                        {q.setNum && (
-                          <span style={{ background: '#89b4fa', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold', marginRight: '10px' }}>
-                            Set-{q.setNum}
-                          </span>
-                        )}
-                        <span style={{ background: '#f9e2af', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold' }}>
-                          GATE {q.year} | {q.marks} Mark
-                        </span>
-                      </div>
-                    </div>
-                    
-                    <div style={{ marginBottom: '15px', whiteSpace: 'pre-wrap' }} dangerouslySetInnerHTML={{ __html: q.text.replace(/\n/g, '<br>') }} />
-                    
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                      {q.optA && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(A)</strong> <span dangerouslySetInnerHTML={{ __html: q.optA }} /></div>}
-                      {q.optB && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(B)</strong> <span dangerouslySetInnerHTML={{ __html: q.optB }} /></div>}
-                      {q.optC && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(C)</strong> <span dangerouslySetInnerHTML={{ __html: q.optC }} /></div>}
-                      {q.optD && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(D)</strong> <span dangerouslySetInnerHTML={{ __html: q.optD }} /></div>}
-                    </div>
-                    
-                    {q.natAnswer === "NAT" && !q.optA && (
-                      <div style={{ marginTop: '10px', color: '#f38ba8', fontWeight: 'bold' }}>Numerical Answer Type (NAT)</div>
-                    )}
-                  </div>
-                ))}
+                <h2 style={{ margin: 0, color: '#cba6f7', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <span style={{ fontSize: '16px', display: 'inline-block', width: '20px', textAlign: 'center' }}>{expandedGroups[chapterName] ? '▼' : '▶'}</span>
+                  {chapterName} <span style={{ fontSize: '14px', color: '#bac2de' }}>({questionsArray.length} Qs)</span>
+                </h2>
+                <button onClick={(e) => { e.stopPropagation(); handleCopyGroup(questionsArray, chapterName); }} style={{ background: '#a6e3a1', color: '#11111b', padding: '8px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
+                  📋 Copy Group
+                </button>
               </div>
-            )}
-          </div>
-        ))}
+
+              {expandedGroups[chapterName] && (
+                <div style={{ padding: '20px', display: 'grid', gap: '20px' }}>
+                  {questionsArray.map((q, idx) => (
+                    <div key={q.id} style={{ background: '#1e1e2e', padding: '20px', borderRadius: '8px', border: '1px solid #45475a' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+                        <span style={{ color: '#89b4fa', fontWeight: 'bold' }}>#{idx + 1}</span>
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                          {q.setNum && <span style={{ background: '#89b4fa', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold', marginRight: '10px' }}>Set-{q.setNum}</span>}
+                          <span style={{ background: '#f9e2af', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold' }}>GATE {q.year} | {q.marks} Mark</span>
+                          <button onClick={() => handleCopySingleQuestion(q)} style={{ background: '#cba6f7', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold', marginLeft: '10px', border: 'none', cursor: 'pointer' }} title="Copy formatted LaTeX for this question">
+                            📋 Copy
+                          </button>
+                        </div>
+                      </div>
+                      <div style={{ marginBottom: '15px', whiteSpace: 'pre-wrap' }} dangerouslySetInnerHTML={{ __html: q.text.replace(/\n/g, '<br>') }} />
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                        {q.optA && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(A)</strong> <span dangerouslySetInnerHTML={{ __html: q.optA }} /></div>}
+                        {q.optB && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(B)</strong> <span dangerouslySetInnerHTML={{ __html: q.optB }} /></div>}
+                        {q.optC && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(C)</strong> <span dangerouslySetInnerHTML={{ __html: q.optC }} /></div>}
+                        {q.optD && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(D)</strong> <span dangerouslySetInnerHTML={{ __html: q.optD }} /></div>}
+                      </div>
+                      {q.natAnswer === "NAT" && !q.optA && <div style={{ marginTop: '10px', color: '#f38ba8', fontWeight: 'bold' }}>Numerical Answer Type (NAT)</div>}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

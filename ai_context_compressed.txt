@@ -447,22 +447,33 @@ showToast("Options auto-filled!");
 };
 const handleExportPDF = async () => {
 if (questions.length === 0) return showToast("❌ No questions to compile!", "error");
-showToast("🚀 Compiling LaTeX to PDF...", "info");
+showToast("🚀 Compiling LaTeX chunks... This may take a moment.", "info");
 try {
 const response = await fetch('/api/export-pdf', {
 method: 'POST', headers: { 'Content-Type': 'application/json' },
 body: JSON.stringify({ subject, chapter, questions })
 });
 if (!response.ok) throw new Error("PDF generation failed.");
-const blob = await response.blob(); const url = window.URL.createObjectURL(blob);
-const a = document.createElement('a'); a.href = url; a.download = `${subject}_${chapter}_PYQs.pdf`;
-document.body.appendChild(a); a.click(); a.remove();
-showToast("✅ PDF Exported Successfully!");
-} catch (error) { showToast("❌ Error generating PDF. Make sure you are running locally.", "error"); }
+const blob = await response.blob();
+const url = window.URL.createObjectURL(blob);
+const a = document.createElement('a');
+a.href = url;
+const contentType = response.headers.get('Content-Type');
+const isZip = contentType === 'application/zip';
+a.download = isZip ? `${subject}_${chapter}_PYQs.zip` : `${subject}_${chapter}_PYQs.pdf`;
+document.body.appendChild(a);
+a.click();
+a.remove();
+showToast("✅ PDF Chunks Exported Successfully!");
+} catch (error) {
+showToast("❌ Error generating PDF. Make sure you are running locally.", "error");
+}
 };
 const cleanLatexForYT = (text) => {
 if (!text) return "";
-let cleaned = text.replace(/<[^>]+>/g, ' ');
+let cleaned = text.replace(/\[IMG_\d+\]/g, ' ');
+cleaned = cleaned.replace(/\[DIAGRAM_PLACEHOLDER\]/g, ' ');
+cleaned = cleaned.replace(/<[^>]+>/g, ' ');
 cleaned = cleaned.replace(/\$/g, '');
 cleaned = cleaned.replace(/\\\[/g, '');
 cleaned = cleaned.replace(/\\\]/g, '');
@@ -487,17 +498,18 @@ return cleaned.replace(/\s+/g, ' ').trim();
 const copyForYouTube = (q, index) => {
 const cleanSubject = subject.replace(/^\d+\.\s*/, '').trim();
 const cleanChapter = chapter.replace(/^\d+\.\s*/, '').trim();
+const isTextOpt = (opt) => opt && !opt.startsWith('IMG:');
 let ytText = `[GATE ${q.year}, ${q.marks} Mark, ${cleanSubject}, ${cleanChapter}]\n\n`;
 ytText += `${cleanLatexForYT(q.text)}\n`;
 if (q.code) {
 let safeCode = q.code.replace(/[<>]/g, ' ');
 ytText += `\nCode:\n${safeCode}\n\n`;
 }
-if (q.optA || q.optB || q.optC || q.optD) {
-if (q.optA) ytText += `(A) ${cleanLatexForYT(q.optA)}\n`;
-if (q.optB) ytText += `(B) ${cleanLatexForYT(q.optB)}\n`;
-if (q.optC) ytText += `(C) ${cleanLatexForYT(q.optC)}\n`;
-if (q.optD) ytText += `(D) ${cleanLatexForYT(q.optD)}\n\n`;
+if (isTextOpt(q.optA) || isTextOpt(q.optB) || isTextOpt(q.optC) || isTextOpt(q.optD)) {
+if (isTextOpt(q.optA)) ytText += `(A) ${cleanLatexForYT(q.optA)}\n`;
+if (isTextOpt(q.optB)) ytText += `(B) ${cleanLatexForYT(q.optB)}\n`;
+if (isTextOpt(q.optC)) ytText += `(C) ${cleanLatexForYT(q.optC)}\n`;
+if (isTextOpt(q.optD)) ytText += `(D) ${cleanLatexForYT(q.optD)}\n\n`;
 } else if (q.natAnswer) {
 ytText += `Answer: ${cleanLatexForYT(q.natAnswer)}\n\n`;
 }
@@ -509,12 +521,12 @@ if (q.code) {
 let safeCode = q.code.replace(/[<>]/g, ' ');
 ytText += `Code Snippet:\n${safeCode}\n\n`;
 }
-if (q.optA || q.optB || q.optC || q.optD) {
+if (isTextOpt(q.optA) || isTextOpt(q.optB) || isTextOpt(q.optC) || isTextOpt(q.optD)) {
 ytText += `Options:\n`;
-if (q.optA) ytText += `(A) ${cleanLatexForYT(q.optA)}\n`;
-if (q.optB) ytText += `(B) ${cleanLatexForYT(q.optB)}\n`;
-if (q.optC) ytText += `(C) ${cleanLatexForYT(q.optC)}\n`;
-if (q.optD) ytText += `(D) ${cleanLatexForYT(q.optD)}\n\n`;
+if (isTextOpt(q.optA)) ytText += `(A) ${cleanLatexForYT(q.optA)}\n`;
+if (isTextOpt(q.optB)) ytText += `(B) ${cleanLatexForYT(q.optB)}\n`;
+if (isTextOpt(q.optC)) ytText += `(C) ${cleanLatexForYT(q.optC)}\n`;
+if (isTextOpt(q.optD)) ytText += `(D) ${cleanLatexForYT(q.optD)}\n\n`;
 } else if (q.natAnswer) {
 ytText += `Answer: ${cleanLatexForYT(q.natAnswer)}\n\n`;
 }
@@ -1050,6 +1062,7 @@ import { exec } from 'child_process';
 import { promisify } from 'util';
 import fs from 'fs/promises';
 import path from 'path';
+import AdmZip from 'adm-zip';
 const execAsync = promisify(exec);
 const escapeLatex = (text) => {
 if (!text) return "";
@@ -1057,9 +1070,17 @@ return text.replace(/(?<!\\)%/g, '\\%');
 };
 export async function POST(req) {
 const uniqueId = Date.now().toString(36) + Math.random().toString(36).substring(2, 8);
-const tempDir = path.join(process.cwd(), `temp_pdf_${uniqueId}`);
+const baseTempDir = path.join(process.cwd(), `temp_pdf_${uniqueId}`);
 try {
 const { subject, chapter, questions } = await req.json();
+await fs.mkdir(baseTempDir, { recursive: true });
+const zip = new AdmZip();
+const CHUNK_SIZE = 20;
+for (let i = 0; i < questions.length; i += CHUNK_SIZE) {
+const chunk = questions.slice(i, i + CHUNK_SIZE);
+const chunkIndex = Math.floor(i / CHUNK_SIZE) + 1;
+const startQNum = i;
+const tempDir = path.join(baseTempDir, `chunk_${chunkIndex}`);
 await fs.mkdir(tempDir, { recursive: true });
 const texFileName = 'gate_workbook.tex';
 const pdfFileName = 'gate_workbook.pdf';
@@ -1088,32 +1109,35 @@ tabsize=4
 }
 \\begin{document}
 \\begin{center}
-\\LARGE \\textbf{GATE CSE: ${subject} - ${chapter}}
+\\LARGE \\textbf{GATE CSE: ${subject} - ${chapter} (Part ${chunkIndex})}
 \\end{center}
 \\vspace{0.5cm}
 \\begin{questions}
 `;
-questions.forEach(q => {
+if (startQNum > 0) {
+latex += `\\setcounter{question}{${startQNum}}\n`;
+}
+chunk.forEach(q => {
 let qText = escapeLatex(q.text.trim())
 .replace(/_{3,}/g, '\\rule{2cm}{0.4pt}')
 .replace(/[\u00A0\u2000-\u200B\u202F\u205F\u3000]/g, ' ');
 let textParts = qText.split('$$');
-for (let i = 0; i < textParts.length; i++) {
-if (i % 2 === 0) {
-textParts[i] = textParts[i].replace(/\r?\n/g, '\\newline\n');
+for (let j = 0; j < textParts.length; j++) {
+if (j % 2 === 0) {
+textParts[j] = textParts[j].replace(/\r?\n/g, '\\newline\n');
 }
 }
 qText = textParts.join('$$');
 latex += "\\begin{multicols*}{2}\n";
 const imageList = q.diagram ? q.diagram.split(',').map(s => s.trim()).filter(Boolean) : [];
-imageList.forEach((imgName, i) => {
+imageList.forEach((imgName, imgIndex) => {
 if (!imgName) return;
 const imgPath = path.join(process.cwd(), 'public', subject, chapter, `${imgName}${q.ext}`).replace(/\\/g, '/');
 const latexImg = `\n\\begin{center}\n\\includegraphics[max width=0.9\\linewidth, keepaspectratio]{"${imgPath}"}\n\\end{center}\n`;
-const tag = `[IMG_${i + 1}]`;
+const tag = `[IMG_${imgIndex + 1}]`;
 if (qText.includes(tag)) {
 qText = qText.replace(tag, latexImg);
-} else if (i === 0 && qText.includes('[DIAGRAM_PLACEHOLDER]')) {
+} else if (imgIndex === 0 && qText.includes('[DIAGRAM_PLACEHOLDER]')) {
 qText = qText.replace('[DIAGRAM_PLACEHOLDER]', latexImg);
 } else {
 qText += latexImg;
@@ -1151,21 +1175,24 @@ await fs.writeFile(texFilePath, latex, 'utf8');
 try {
 await execAsync(`pdflatex -interaction=nonstopmode -output-directory="${tempDir}" "${texFilePath}"`);
 } catch (pdflatexError) {
-console.warn("pdflatex threw a warning, but might have generated the PDF.", pdflatexError);
+console.warn(`pdflatex threw a warning on chunk ${chunkIndex}, but might have generated the PDF.`, pdflatexError);
 }
 const pdfBuffer = await fs.readFile(pdfFilePath);
-await fs.rm(tempDir, { recursive: true, force: true });
-return new NextResponse(pdfBuffer, {
+zip.addFile(`${subject}_${chapter}_PYQs_Part${chunkIndex}.pdf`, pdfBuffer);
+}
+const zipBuffer = zip.toBuffer();
+await fs.rm(baseTempDir, { recursive: true, force: true });
+return new NextResponse(zipBuffer, {
 status: 200,
 headers: {
-'Content-Type': 'application/pdf',
-'Content-Disposition': `attachment; filename="${subject}_${chapter}_PYQs.pdf"`,
+'Content-Type': 'application/zip',
+'Content-Disposition': `attachment; filename="${subject}_${chapter}_PYQs.zip"`,
 },
 });
 } catch (error) {
 console.error("PDF Generation Error:", error);
 try {
-await fs.rm(tempDir, { recursive: true, force: true });
+await fs.rm(baseTempDir, { recursive: true, force: true });
 } catch (cleanupError) {
 console.error("Failed to clean up temp directory:", cleanupError);
 }
