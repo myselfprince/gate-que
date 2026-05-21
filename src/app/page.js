@@ -93,7 +93,9 @@ export default function Home() {
   const [searchResults, setSearchResults] = useState([]);
   const [currentSearchIndex, setCurrentSearchIndex] = useState(0);
   const [hasJumped, setHasJumped] = useState(false);
-  
+  const [showMissingDropdown, setShowMissingDropdown] = useState(false);
+  const [showBlankDropdown, setShowBlankDropdown] = useState(false);
+  const [blankBulkText, setBlankBulkText] = useState("");
   // VIEW FILTERS
   const [filterYear, setFilterYear] = useState('All');
   const [hideBulkLocked, setHideBulkLocked] = useState(false);
@@ -339,14 +341,25 @@ export default function Home() {
     }
     try {
       if (!isSilent) showToast("Saving to DB...", "info");
+
+      // Strip the temporary _justFilled tags before sending to DB
+      const cleanQuestions = questions.map(q => {
+        const { _justFilled, ...rest } = q;
+        return rest;
+      });
+
       const res = await fetch('/api/chapters', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ subject, chapter, questions, lockCount: lockVal })
+        body: JSON.stringify({ subject, chapter, questions: cleanQuestions, lockCount: lockVal })
       });
       const data = await res.json();
       if (data.success) {
         setSyncedCount(questions.length);
         setIsDirty(false);
+        
+        // Refresh the dropdown UI by removing the _justFilled tags locally
+        setQuestions(prev => prev.map(q => ({ ...q, _justFilled: false })));
+        
         if (!isSilent) showToast(`✅ Saved successfully!`);
         return true;
       } else {
@@ -358,7 +371,6 @@ export default function Home() {
       return false;
     }
   };
-
   const handleLock = async (e) => {
     e.preventDefault();
     const val = parseInt(lockInputRef.current?.value || 0, 10);
@@ -637,8 +649,7 @@ export default function Home() {
     }
     setMissingFocusIndex(prev => prev + 1);
   };
-  // --- ✅ NEW: BLANK TRACKER LOGIC START ---
-  const blankIndices = questions.map((q, idx) => q.isBlank ? idx + 1 : null).filter(val => val !== null);
+  const blankIndices = questions.map((q, idx) => (q.isBlank || q._justFilled) ? idx + 1 : null).filter(val => val !== null);
 
   const handleNextBlank = () => {
     if (blankIndices.length === 0) return;
@@ -654,6 +665,51 @@ export default function Home() {
       showToast(`Blank Q${targetQNum} is hidden by your active filters.`, "error");
     }
     setBlankFocusIndex(prev => prev + 1);
+  };
+  const handleBulkBlankFill = () => {
+    if (!blankBulkText.trim()) return showToast("Nothing to paste!", "info");
+    saveHistory();
+
+    const parsedQs = processExtractedQuestions(blankBulkText, 0);
+    if (parsedQs.length === 0) return showToast("No valid questions found in text", "error");
+
+    let updatedQuestions = [...questions];
+    
+    // Find only the TRULY empty blanks (ignoring ones we just filled)
+    const actualBlankIndices = updatedQuestions
+      .map((q, idx) => q.isBlank && !q._justFilled ? idx : -1)
+      .filter(idx => idx !== -1);
+
+    if (actualBlankIndices.length === 0) {
+      return showToast("No empty blanks available to fill!", "error");
+    }
+
+    let fillCount = 0;
+    for (let i = 0; i < parsedQs.length; i++) {
+      if (i < actualBlankIndices.length) {
+         const targetIdx = actualBlankIndices[i];
+         
+         // Overwrite the blank with the parsed question, but keep its ID and Lock State
+         updatedQuestions[targetIdx] = {
+           ...parsedQs[i],
+           id: updatedQuestions[targetIdx].id,
+           isPosLocked: updatedQuestions[targetIdx].isPosLocked,
+           isBlank: false,
+           _justFilled: true, // Temporary flag to keep it in the dropdown as Green
+         };
+         fillCount++;
+      }
+    }
+
+    setQuestions(updatedQuestions);
+    setIsDirty(true);
+    setBlankBulkText("");
+    
+    if (parsedQs.length > fillCount) {
+      showToast(`✅ Filled ${fillCount} blanks. Ignored ${parsedQs.length - fillCount} extra questions.`, "info");
+    } else {
+      showToast(`✅ Chronologically filled ${fillCount} blank(s)!`);
+    }
   };
 
   const generateId = () => Math.random().toString(36).substr(2, 9);
@@ -965,6 +1021,26 @@ export default function Home() {
       }
   }
 
+  const jumpToSpecificQuestion = (qNum, type) => {
+    const targetEl = document.getElementById(`question-${qNum}`);
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      
+      const card = targetEl.querySelector('.question-card') || targetEl;
+      card.style.transition = 'box-shadow 0.3s ease-in-out';
+      
+      // Use red for issues, yellow for blanks
+      card.style.boxShadow = type === 'issue' ? '0 0 15px 5px #f38ba8' : '0 0 15px 5px #f9e2af';
+      setTimeout(() => { card.style.boxShadow = 'none'; }, 1500);
+
+      // Close the dropdowns
+      setShowMissingDropdown(false);
+      setShowBlankDropdown(false);
+    } else {
+      showToast(`Question ${qNum} is hidden by your active filters.`, "error");
+    }
+  };
+
   return (
     <div style={{ maxWidth: '98%', margin: 'auto', padding: '20px' }}>
       {toast && (
@@ -1020,20 +1096,97 @@ export default function Home() {
         <div style={{ flex: '1 1 250px', textAlign: 'center', padding: '10px', background: '#181825', borderRadius: '4px', border: `1px solid ${isDirty ? '#f9e2af' : (questions.length > 0 ? '#a6e3a1' : '#45475a')}` }}>
           {questions.length === 0 ? (<span style={{ color: '#6c7086', fontWeight: 'bold' }}>No Questions Found</span>) : isDirty ? (<span style={{ color: '#f9e2af', fontWeight: 'bold' }}>⚠️ {syncedCount}/{questions.length} Synced (Unsaved)</span>) : (<span style={{ color: '#a6e3a1', fontWeight: 'bold' }}>✅ All {questions.length} Synced</span>)}
           
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '5px', flexWrap: 'wrap', marginTop: '5px' }}>
-            {missingIndices.length > 0 && (
-              <button onClick={handleNextMissingImage} style={{ background: '#f38ba8', color: '#11111b', border: 'none', padding: '4px 10px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '12px' }}>
-                ⚠️ {missingIndices.length} Issues
-              </button>
-            )}
-            
-            {/* ✅ NEW: Blank Jumper Button */}
-            {blankIndices.length > 0 && (
-              <button onClick={handleNextBlank} style={{ background: '#f9e2af', color: '#11111b', border: 'none', padding: '4px 10px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '12px' }}>
-                🔲 {blankIndices.length} Blanks
-              </button>
-            )}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '15px', flexWrap: 'wrap', marginTop: '5px' }}>
+              {missingIndices.length > 0 && (
+                <div style={{ position: 'relative' }}>
+                  <button
+                    onClick={() => {
+                      setShowMissingDropdown(prev => !prev);
+                      setShowBlankDropdown(false); // Close the other dropdown
+                    }}
+                    style={{ background: '#f38ba8', color: '#11111b', border: 'none', padding: '4px 10px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '12px' }}
+                  >
+                    ⚠️ {missingIndices.length} Issues ▼
+                  </button>
+
+                  {showMissingDropdown && (
+                    <div style={{ position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)', marginTop: '8px', background: '#181825', border: '1px solid #45475a', borderRadius: '6px', padding: '8px', width: '170px', maxHeight: '200px', overflowY: 'auto', zIndex: 1000, boxShadow: '0 8px 15px rgba(0,0,0,0.5)' }}>
+                      <div style={{ fontSize: '11px', color: '#a6adc8', marginBottom: '8px', textAlign: 'center', fontWeight: 'bold' }}>Jump to Image Issue</div>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px' }}>
+                        {missingIndices.map(qNum => (
+                          <button 
+                            key={`miss-${qNum}`} 
+                            onClick={() => jumpToSpecificQuestion(qNum, 'issue')} 
+                            style={{ background: '#313244', color: '#f38ba8', border: '1px solid #45475a', borderRadius: '4px', padding: '4px 0', fontSize: '12px', cursor: 'pointer', textAlign: 'center' }}
+                          >
+                            Q{qNum}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {blankIndices.length > 0 && (
+                <div style={{ position: 'relative' }}>
+                  <button
+                    onClick={() => {
+                      setShowBlankDropdown(prev => !prev);
+                      setShowMissingDropdown(false); // Close the other dropdown
+                    }}
+                    style={{ background: '#f9e2af', color: '#11111b', border: 'none', padding: '4px 10px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '12px' }}
+                  >
+                    🔲 {blankIndices.length} Blanks ▼
+                  </button>
+
+                  {showBlankDropdown && (
+        <div style={{ position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)', marginTop: '8px', background: '#181825', border: '1px solid #45475a', borderRadius: '6px', padding: '12px', width: '320px', maxHeight: '450px', overflowY: 'auto', zIndex: 1000, boxShadow: '0 8px 15px rgba(0,0,0,0.5)' }}>
+          
+          {/* Quick Paste Area */}
+          <div style={{ marginBottom: '15px', borderBottom: '1px solid #45475a', paddingBottom: '15px' }}>
+            <div style={{ fontSize: '11px', color: '#a6adc8', marginBottom: '8px', textAlign: 'center', fontWeight: 'bold' }}>⚡ Bulk Fill Blanks (In Order)</div>
+            <textarea 
+              value={blankBulkText}
+              onChange={(e) => setBlankBulkText(e.target.value)}
+              placeholder="Paste multiple QUESTION: ... OPTIONS: ... here to fill blanks chronologically."
+              style={{ width: '100%', minHeight: '80px', background: '#11111b', color: '#cdd6f4', border: '1px solid #45475a', borderRadius: '4px', padding: '8px', fontSize: '11px', resize: 'vertical', outline: 'none' }}
+            />
+            <button 
+              onClick={handleBulkBlankFill}
+              style={{ width: '100%', background: '#a6e3a1', color: '#11111b', fontWeight: 'bold', border: 'none', borderRadius: '4px', padding: '8px', marginTop: '8px', cursor: 'pointer', fontSize: '12px' }}
+            >
+              ⚡ Fill Available Blanks
+            </button>
           </div>
+
+          <div style={{ fontSize: '11px', color: '#a6adc8', marginBottom: '8px', textAlign: 'center', fontWeight: 'bold' }}>Jump to Blank</div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '6px' }}>
+            {blankIndices.map(qNum => {
+               // Check if the question was just filled during this session
+               const isFilled = questions[qNum - 1]._justFilled;
+               return (
+                 <button 
+                   key={`blank-${qNum}`} 
+                   onClick={() => jumpToSpecificQuestion(qNum, 'blank')} 
+                   style={{ 
+                     background: isFilled ? '#a6e3a1' : '#313244', 
+                     color: isFilled ? '#11111b' : '#f9e2af', 
+                     border: `1px solid ${isFilled ? '#a6e3a1' : '#45475a'}`, 
+                     borderRadius: '4px', padding: '6px 0', fontSize: '12px', cursor: 'pointer', textAlign: 'center', fontWeight: isFilled ? 'bold' : 'normal'
+                   }}
+                   title={isFilled ? "Filled! Waiting for Save/Lock" : "Empty Blank"}
+                 >
+                   Q{qNum}
+                 </button>
+               );
+            })}
+          </div>
+        </div>
+      )}
+                </div>
+              )}
+            </div>
         </div>
         
         <div style={{ flex: '1 1 150px', display: 'flex', flexDirection: 'column', padding: '0 10px' }}>
