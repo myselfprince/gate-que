@@ -476,14 +476,28 @@ export default function Home() {
       if (idx < currentLockCount || q.isPosLocked || q.isBlank) return q;
       const expectedNum = idx + 1;
       const syncStr = (str) => str ? str.split(',').map(s => s.replace(/\d+/, expectedNum)).join(',') : "";
-      const syncOpt = (opt) => opt && opt.startsWith('IMG:') ? opt.replace(/\d+/, expectedNum) : opt;
+      
+      // --- NEW: Smart Option Translator ---
+      const syncOpt = (opt, letter) => {
+        if (!opt) return opt;
+        // If the AI gave us the generic "IMG:optA", auto-translate it to the real number!
+        if (opt.match(/IMG:opt[a-d]/i)) {
+            return opt.replace(/IMG:opt[a-d]/i, `IMG:${expectedNum}${letter}`);
+        }
+        // Otherwise, if it has an old number, sync it to the new expected number
+        if (opt.startsWith('IMG:')) {
+            return opt.replace(/\d+/, expectedNum);
+        }
+        return opt;
+      };
+
       return {
         ...q,
         diagram: q.diagram === "auto" ? expectedNum.toString() : syncStr(q.diagram),
-        optA: syncOpt(q.optA),
-        optB: syncOpt(q.optB),
-        optC: syncOpt(q.optC),
-        optD: syncOpt(q.optD)
+        optA: syncOpt(q.optA, 'a'),
+        optB: syncOpt(q.optB, 'b'),
+        optC: syncOpt(q.optC, 'c'),
+        optD: syncOpt(q.optD, 'd')
       };
     });
   };
@@ -722,21 +736,27 @@ export default function Home() {
     let cleanedTextStr = textStr.replace(/\$\$/g, '$').replace(/\n(?:\s*\n)+/g, '\n');
     let parts = cleanedTextStr.split(/QUESTION:\s*/i);
     let newQuestions = [];
+    
     parts.forEach(part => {
       if (!part.trim()) return;
       let qText = part; let codeText = ""; let optionsText = "";
+      
       let optMatch = qText.match(/OPTIONS:\s*(.*)/is);
       if (optMatch) { optionsText = optMatch[1].trim(); qText = qText.replace(/OPTIONS:\s*(.*)/is, '').trim(); }
+      
       let codeMatch = qText.match(/CODE:\s*(.*)/is);
       if (codeMatch) { codeText = codeMatch[1].trim(); qText = qText.replace(/CODE:\s*(.*)/is, '').trim(); }
+      
       qText = qText.replace(/^([Q]?[\d\.]+)\s*/i, '');
       const metaMatch = qText.match(/\[\s*(\d{4})[^:]*:\s*(\d+)\s*M\s*\]/i);
       let year = "2026"; let marks = "1";
       if (metaMatch) { year = metaMatch[1]; marks = metaMatch[2]; qText = qText.replace(metaMatch[0], '').trim(); }
+      
       let hasDiagram = qText.includes('[DIAGRAM_PLACEHOLDER]') || qText.includes('[IMG_1]');
       let rawOptionsArray = optionsText.split(';');
       let needsManualOptionFix = false;
       let finalOptA = "", finalOptB = "", finalOptC = "", finalOptD = "";
+      
       if (rawOptionsArray.length > 4) {
         needsManualOptionFix = true;
         finalOptA = optionsText;
@@ -746,6 +766,7 @@ export default function Home() {
         finalOptC = formatOptionsIndent(rawOptionsArray[2] ? rawOptionsArray[2].trim() : "");
         finalOptD = formatOptionsIndent(rawOptionsArray[3] ? rawOptionsArray[3].trim() : "");
       }
+      
       newQuestions.push({
         id: generateId(),
         isBlank: false, isPosLocked: false, needsManualOptionFix, isCodeOptions: false,
@@ -758,9 +779,29 @@ export default function Home() {
         optLayout: "auto"
       });
     });
-    return newQuestions.map((q, idx) => ({
-      ...q, diagram: q.diagram === "auto" ? (questions.length + idx + startIndexOffset + 1).toString() : q.diagram
-    }));
+
+    return newQuestions.map((q, idx) => {
+      // 1. We calculate your math formula ONCE here
+      const expectedNum = questions.length + idx + startIndexOffset + 1;
+      
+      // 2. We use it to magically translate AI generic names to specific files (optA -> 130a)
+      const autoReplaceOpt = (opt, letter) => {
+          if (opt && opt.match(/IMG:opt[a-d]/i)) {
+              return opt.replace(/IMG:opt[a-d]/i, `IMG:${expectedNum}${letter}`);
+          }
+          return opt;
+      };
+
+      return {
+        ...q, 
+        // 3. We ALSO use the math variable here for the main question diagram
+        diagram: q.diagram === "auto" ? expectedNum.toString() : q.diagram,
+        optA: autoReplaceOpt(q.optA, 'a'),
+        optB: autoReplaceOpt(q.optB, 'b'),
+        optC: autoReplaceOpt(q.optC, 'c'),
+        optD: autoReplaceOpt(q.optD, 'd')
+      };
+    });
   };
 
   const parseAllPastedText = () => {
@@ -801,42 +842,71 @@ export default function Home() {
   };
 
   const updateQ = (id, field, value) => {
-    let finalValue = value;
-    if (typeof value === 'string' && ['text', 'optA', 'optB', 'optC', 'optD', 'natAnswer'].includes(field)) {
-      finalValue = value.replace(/\$\$/g, '$').replace(/\n(?:\s*\n)+/g, '\n');
-    }
-    setQuestions(questions.map(q => q.id === id ? { ...q, [field]: finalValue } : q));
-    setIsDirty(true);
-  };
+let finalValue = value;
+if (typeof value === 'string' && ['text', 'optA', 'optB', 'optC', 'optD', 'natAnswer'].includes(field)) {
+finalValue = value.replace(/\$\$/g, '$').replace(/\n(?:\s*\n)+/g, '\n');
+}
+setQuestions(questions.map((q, idx) => {
+if (q.id === id) {
+// AUTO-MAGIC IMAGE FIX: Catch manual typing of IMG:optA
+if (typeof finalValue === 'string' && finalValue.match(/IMG:opt[a-d]/i)) {
+const expectedNum = idx + 1;
+let letter = '';
+if (field === 'optA') letter = 'a';
+else if (field === 'optB') letter = 'b';
+else if (field === 'optC') letter = 'c';
+else if (field === 'optD') letter = 'd';
 
-  const handleOptionPaste = (id, e) => {
-    let pastedText = e.clipboardData.getData('text');
-    if (pastedText.includes(';') || pastedText.includes('#') || pastedText.includes('@')) {
-      e.preventDefault();
-      saveHistory();
-      pastedText = pastedText.replace(/\$\$/g, '$').replace(/\n(?:\s*\n)+/g, '\n');
-      let separator = ';';
-      if (pastedText.includes('#')) separator = '#';
-      else if (pastedText.includes('@')) separator = '@';
-      const parts = pastedText.split(separator);
-      setQuestions(questions.map(q => {
-        if (q.id === id) {
-          return {
-            ...q,
-            needsManualOptionFix: false,
-            optA: q.isCodeOptions ? formatCCode(parts[0]?.trim() || "") : formatOptionsIndent(parts[0]?.trim() || ""),
-            optB: q.isCodeOptions ? formatCCode(parts[1]?.trim() || "") : formatOptionsIndent(parts[1]?.trim() || ""),
-            optC: q.isCodeOptions ? formatCCode(parts[2]?.trim() || "") : formatOptionsIndent(parts[2]?.trim() || ""),
-            optD: q.isCodeOptions ? formatCCode(parts[3]?.trim() || "") : formatOptionsIndent(parts[3]?.trim() || ""),
-            natAnswer: ""
-          };
-        }
-        return q;
-      }));
-      setIsDirty(true);
-      showToast(`Options auto-filled (split by ${separator}) and aligned!`);
-    }
-  };
+if (letter) {
+finalValue = finalValue.replace(/IMG:opt[a-d]/i, `IMG:${expectedNum}${letter}`);
+}
+}
+return { ...q, [field]: finalValue };
+}
+return q;
+}));
+setIsDirty(true);
+};
+
+const handleOptionPaste = (id, e) => {
+let pastedText = e.clipboardData.getData('text');
+if (pastedText.includes(';') || pastedText.includes('#') || pastedText.includes('@')) {
+e.preventDefault();
+saveHistory();
+pastedText = pastedText.replace(/\$\$/g, '$').replace(/\n(?:\s*\n)+/g, '\n');
+let separator = ';';
+if (pastedText.includes('#')) separator = '#';
+else if (pastedText.includes('@')) separator = '@';
+const parts = pastedText.split(separator);
+
+setQuestions(questions.map((q, idx) => {
+if (q.id === id) {
+const expectedNum = idx + 1;
+
+// AUTO-MAGIC IMAGE FIX: Catch semicolon pastes with IMG:optA
+const autoReplaceOpt = (opt, letter) => {
+if (opt && opt.match(/IMG:opt[a-d]/i)) {
+return opt.replace(/IMG:opt[a-d]/i, `IMG:${expectedNum}${letter}`);
+}
+return opt;
+};
+
+return {
+...q,
+needsManualOptionFix: false,
+optA: autoReplaceOpt(q.isCodeOptions ? formatCCode(parts[0]?.trim() || "") : formatOptionsIndent(parts[0]?.trim() || ""), 'a'),
+optB: autoReplaceOpt(q.isCodeOptions ? formatCCode(parts[1]?.trim() || "") : formatOptionsIndent(parts[1]?.trim() || ""), 'b'),
+optC: autoReplaceOpt(q.isCodeOptions ? formatCCode(parts[2]?.trim() || "") : formatOptionsIndent(parts[2]?.trim() || ""), 'c'),
+optD: autoReplaceOpt(q.isCodeOptions ? formatCCode(parts[3]?.trim() || "") : formatOptionsIndent(parts[3]?.trim() || ""), 'd'),
+natAnswer: ""
+};
+}
+return q;
+}));
+setIsDirty(true);
+showToast(`Options auto-filled (split by ${separator}) and aligned!`);
+}
+};
 
   const handleFormatSingleLatexSpaces = (id) => {
     saveHistory();
@@ -864,29 +934,53 @@ export default function Home() {
   };
 
   const handleExportPDF = async () => {
-    const validQs = questions.filter(q => !q.isBlank);
-    if (validQs.length === 0) return showToast("❌ No valid questions to compile!", "error");
-    showToast("🚀 Compiling LaTeX chunks... This may take a moment.", "info");
-    try {
-      const response = await fetch('/api/export-pdf', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ subject, chapter, questions: validQs })
-      });
-      if (!response.ok) throw new Error("PDF generation failed.");
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      const isZip = response.headers.get('Content-Type') === 'application/zip';
-      a.download = isZip ? `${subject}_${chapter}_PYQs.zip` : `${subject}_${chapter}_PYQs.pdf`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      showToast("✅ PDF Chunks Exported Successfully!");
-    } catch (error) {
-      showToast("❌ Error generating PDF. Make sure you are running locally.", "error");
-    }
-  };
+  // Send all questions (including blanks) so numbering stays perfectly aligned
+  if (questions.length === 0) return showToast("❌ No questions to compile!", "error");
+  showToast("🚀 Compiling LaTeX chunks... This may take a moment.", "info");
+  try {
+    const response = await fetch('/api/export-pdf', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ subject, chapter, questions })
+    });
+    if (!response.ok) throw new Error("PDF generation failed.");
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    const isZip = response.headers.get('Content-Type') === 'application/zip';
+    a.download = isZip ? `${subject}_${chapter}_PYQs.zip` : `${subject}_${chapter}_PYQs.pdf`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    showToast("✅ PDF Chunks Exported Successfully!");
+  } catch (error) {
+    showToast("❌ Error generating PDF. Make sure you are running locally.", "error");
+  }
+};
+
+const handleExportAllImages = async () => {
+  // Send all questions (including blanks) so numbering stays perfectly aligned
+  if (questions.length === 0) return showToast("❌ No questions to export!", "error");
+  showToast("📸 Generating Image ZIP... Please wait.", "info");
+  try {
+    const response = await fetch('/api/export-images-zip', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ subject, chapter, questions, baseUrl: window.location.origin, contentWidth: imageTextWidth })
+    });
+    if (!response.ok) throw new Error("Image export failed.");
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${subject}_${chapter}_Images.zip`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    showToast("✅ Images exported successfully!");
+  } catch (error) { 
+    showToast("❌ Error generating Image ZIP.", "error"); 
+  }
+};
 
   const cleanLatexForYT = (text) => {
     if (!text) return "";
@@ -989,27 +1083,7 @@ export default function Home() {
     return text.replace(/\n/g, '<br>');
   };
 
-  const handleExportAllImages = async () => {
-    const validQs = questions.filter(q => !q.isBlank);
-    if (validQs.length === 0) return showToast("❌ No valid questions to export!", "error");
-    showToast("📸 Generating Image ZIP... Please wait.", "info");
-    try {
-      const response = await fetch('/api/export-images-zip', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ subject, chapter, questions: validQs, baseUrl: window.location.origin, contentWidth: imageTextWidth })
-      });
-      if (!response.ok) throw new Error("Image export failed.");
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `${subject}_${chapter}_Images.zip`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      showToast("✅ Images exported successfully!");
-    } catch (error) { showToast("❌ Error generating Image ZIP.", "error"); }
-  };
+  
 
   let filterMinIdx = -1;
   let filterMaxIdx = -1;
