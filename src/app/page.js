@@ -1308,6 +1308,7 @@ const handleExportAllImages = async () => {
       <div>
 
             <Link href="/scraper" style={{ background: '#3ac04e', color: '#11111b', padding: '10px 15px', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold', marginTop: '10px' }} target="_blank">Go to scraper</Link>
+            <Link href="/status" style={{ background: '#f38ba8', color: '#11111b', padding: '10px 15px', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold', marginTop: '10px' , marginLeft: '10px'}} target="_blank">Check Status</Link>
       </div>
       
       
