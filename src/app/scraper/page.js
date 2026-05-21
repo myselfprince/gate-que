@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
@@ -121,12 +121,17 @@ export default function ScraperPage() {
   const [groupedQuestions, setGroupedQuestions] = useState({});
   const [toast, setToast] = useState(null);
   const [expandedGroups, setExpandedGroups] = useState({});
-
   const availableSubjects = Object.keys(GATE_SYLLABUS);
   const [subject, setSubject] = useState(availableSubjects[1]);
   const [chapter, setChapter] = useState(GATE_SYLLABUS[availableSubjects[1]][0]);
   const [savedBackups, setSavedBackups] = useState([]);
   const [selectedBackup, setSelectedBackup] = useState('');
+  const [lastCopied, setLastCopied] = useState(null);
+  const [clickedRanges, setClickedRanges] = useState(new Set());
+  const [chunkSizes, setChunkSizes] = useState({});
+  
+  // NEW: Scraper Filter Year State
+  const [filterYear, setFilterYear] = useState('All');
 
   const showToast = (message, type = 'success') => {
     setToast({ message, type });
@@ -149,22 +154,19 @@ export default function ScraperPage() {
       const loadedGroups = {};
       const newExpandedState = {};
       let totalQs = 0;
-
       for (const chap of GATE_SYLLABUS[targetSubject]) {
         const res = await fetch(`/api/scraped-chapters?subject=${encodeURIComponent(targetSubject)}&chapter=${encodeURIComponent(chap)}`);
         const data = await res.json();
         if (data.success && data.data && data.data.questions && data.data.questions.length > 0) {
           loadedGroups[chap] = data.data.questions;
-          newExpandedState[chap] = true; // Default Expand
+          newExpandedState[chap] = true;
           totalQs += data.data.questions.length;
         }
       }
-
       if (totalQs === 0) {
         showToast(`ℹ️ No data found in MongoDB for ${targetSubject}`, "info");
         return;
       }
-
       setGroupedQuestions(loadedGroups);
       setExpandedGroups(newExpandedState);
       setSubject(targetSubject);
@@ -179,9 +181,7 @@ export default function ScraperPage() {
     if (Object.keys(groupedQuestions).length === 0) return showToast("❌ No questions on screen to push!", "error");
     const flatQuestions = [];
     Object.values(groupedQuestions).forEach(arr => flatQuestions.push(...arr));
-
     if (!confirm(`🚨 Are you sure you want to OVERWRITE the Cloud DB for all chapters in "${subject}" with the ${flatQuestions.length} questions currently on your screen?`)) return;
-
     try {
       showToast(`☁️ Pushing ${subject} to Cloud...`, "info");
       for (const [chapterName, qsArray] of Object.entries(groupedQuestions)) {
@@ -226,7 +226,7 @@ export default function ScraperPage() {
       }
     }, 200);
     return () => clearTimeout(timer);
-  }, [groupedQuestions, expandedGroups, isScraping]);
+  }, [groupedQuestions, expandedGroups, isScraping, filterYear]);
 
   const startScraping = async () => {
     if (!url.includes('practicepaper.in')) {
@@ -236,19 +236,15 @@ export default function ScraperPage() {
     setGroupedQuestions({});
     setExpandedGroups({});
     setProgress({ current: 1, total: '?' });
-
     let allQuestions = [];
     let totalPages = 1;
-
     try {
       const firstRes = await fetch(`/api/scrape?url=${encodeURIComponent(url)}&page=1`);
       const firstData = await firstRes.json();
       if (!firstData.success) throw new Error(firstData.error);
-      
       totalPages = firstData.totalPages;
       allQuestions = [...firstData.questions];
       setProgress({ current: 1, total: totalPages });
-
       for (let p = 2; p <= totalPages; p++) {
         setProgress({ current: p, total: totalPages });
         const res = await fetch(`/api/scrape?url=${encodeURIComponent(url)}&page=${p}`);
@@ -257,19 +253,16 @@ export default function ScraperPage() {
           allQuestions = [...allQuestions, ...data.questions];
         }
       }
-
       const newGroups = {};
       const newExpandedState = {};
-
       allQuestions.sort((a, b) => parseInt(a.year) - parseInt(b.year)).forEach(q => {
         const mappedChapter = TOPIC_MAPPING[q.rawTopic] || q.rawTopic || "Uncategorized";
         if (!newGroups[mappedChapter]) {
           newGroups[mappedChapter] = [];
-          newExpandedState[mappedChapter] = true; // Default Expand
+          newExpandedState[mappedChapter] = true;
         }
         newGroups[mappedChapter].push(q);
       });
-
       setGroupedQuestions(newGroups);
       setExpandedGroups(newExpandedState);
       showToast(`✅ Successfully scraped ${allQuestions.length} questions into ${Object.keys(newGroups).length} groups!`);
@@ -291,7 +284,52 @@ export default function ScraperPage() {
       bulkString += `\n`;
     });
     navigator.clipboard.writeText(bulkString.trim());
+    setLastCopied({ chapter: chapterName, range: filterYear === 'All' ? `ALL (${questionsArray.length})` : `ALL VISIBLE (${questionsArray.length})` });
     showToast(`📋 Copied ${questionsArray.length} questions for ${chapterName}!`);
+  };
+
+  const handleCopyRange = (questionsArray, chapterName, rangeStr) => {
+    if (!rangeStr || !rangeStr.includes('-')) {
+      return showToast("❌ Invalid range format. Use Start-End (e.g., 1-50)", "error");
+    }
+    const [startStr, endStr] = rangeStr.split('-');
+    let start = parseInt(startStr.trim(), 10);
+    let end = parseInt(endStr.trim(), 10);
+    if (isNaN(start) || isNaN(end) || start < 1 || end < start) {
+      return showToast("❌ Invalid numbers in range.", "error");
+    }
+    start = Math.max(1, start);
+    end = Math.min(questionsArray.length, end);
+    
+    // NEW: Apply the filter to the sliced range!
+    let slicedQs = questionsArray.slice(start - 1, end);
+    if (filterYear !== 'All') {
+        slicedQs = slicedQs.filter(q => q.year === filterYear);
+    }
+
+    if (slicedQs.length === 0) {
+      return showToast("❌ No questions found in that range matching the active filter.", "error");
+    }
+
+    let bulkString = "";
+    slicedQs.forEach(q => {
+      bulkString += `QUESTION: ${q.text.trim()} [${q.year} : ${q.marks} M]\n`;
+      if (q.code) bulkString += `CODE: ${q.code}\n`;
+      if (q.optA || q.optB || q.optC || q.optD) {
+        bulkString += `OPTIONS: ${q.optA || ''} ; ${q.optB || ''} ; ${q.optC || ''} ; ${q.optD || ''}\n`;
+      }
+      bulkString += `\n`;
+    });
+    
+    navigator.clipboard.writeText(bulkString.trim());
+    const actualRange = `${start}-${end}`;
+    setLastCopied({ chapter: chapterName, range: actualRange });
+    setClickedRanges(prev => {
+      const next = new Set(prev);
+      next.add(`${chapterName}_${actualRange}`);
+      return next;
+    });
+    showToast(`📋 Copied Q${start} to Q${end} (${slicedQs.length} questions) for ${chapterName}!`);
   };
 
   const toggleGroup = (chapterName) => {
@@ -319,7 +357,7 @@ export default function ScraperPage() {
       const parsed = JSON.parse(saved);
       setGroupedQuestions(parsed);
       const newExpandedState = {};
-      Object.keys(parsed).forEach(key => { newExpandedState[key] = true; }); // Default Expand
+      Object.keys(parsed).forEach(key => { newExpandedState[key] = true; });
       setExpandedGroups(newExpandedState);
       setSubject(targetSubject);
       setChapter(GATE_SYLLABUS[targetSubject][0]);
@@ -337,6 +375,11 @@ export default function ScraperPage() {
     showToast(`📋 Copied Question to clipboard!`);
   };
 
+  // NEW: Get all unique years across all scraped questions
+  const yearSet = new Set();
+  Object.values(groupedQuestions).forEach(qs => qs.forEach(q => { if (q.year) yearSet.add(q.year); }));
+  const scraperAvailableYears = ['All', ...Array.from(yearSet).sort((a, b) => parseInt(b) - parseInt(a))];
+
   return (
     <div style={{ maxWidth: '1200px', margin: 'auto', padding: '20px', color: '#cdd6f4' }}>
       {toast && (
@@ -346,7 +389,7 @@ export default function ScraperPage() {
           color: '#11111b', padding: '15px 25px', borderRadius: '8px', zIndex: 9999, fontWeight: 'bold'
         }}>{toast.message}</div>
       )}
-
+      
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #89b4fa', paddingBottom: '15px', marginBottom: '20px' }}>
         <h1 style={{ color: '#89b4fa', margin: 0 }}>🕸️ Topic-Grouped Scraper</h1>
         <Link href="/" style={{ background: '#45475a', color: '#cdd6f4', padding: '10px 20px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold' }}>
@@ -404,8 +447,16 @@ export default function ScraperPage() {
                 {availableSubjects.map(sub => <option key={sub} value={sub}>{sub}</option>)}
               </select>
             </div>
+            
+            {/* NEW: Dropdown to filter by year */}
+            <div>
+              <label style={{ display: 'block', fontSize: '12px', color: '#bac2de' }}>Year Filter:</label>
+              <select value={filterYear} onChange={(e) => setFilterYear(e.target.value)} style={{ padding: '8px', borderRadius: '4px', background: '#11111b', color: '#cdd6f4', border: '1px solid #89b4fa', outline: 'none' }}>
+                {scraperAvailableYears.map(y => <option key={y} value={y}>{y}</option>)}
+              </select>
+            </div>
           </div>
-
+          
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
             <button onClick={handleSaveToLocalStorage} style={{ background: '#89b4fa', color: '#11111b', padding: '10px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
               💾 Save Backup
@@ -418,49 +469,139 @@ export default function ScraperPage() {
 
       <div id="questions_render_container">
         <div style={{ display: 'grid', gap: '15px' }}>
-          {Object.entries(groupedQuestions).map(([chapterName, questionsArray]) => (
-            <div key={chapterName} style={{ background: '#11111b', border: '2px solid #cba6f7', borderRadius: '10px', overflow: 'hidden' }}>
-              <div
-                onClick={() => toggleGroup(chapterName)}
-                style={{ background: '#313244', padding: '15px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', userSelect: 'none', borderBottom: expandedGroups[chapterName] ? '2px solid #cba6f7' : 'none' }}
-              >
-                <h2 style={{ margin: 0, color: '#cba6f7', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <span style={{ fontSize: '16px', display: 'inline-block', width: '20px', textAlign: 'center' }}>{expandedGroups[chapterName] ? '▼' : '▶'}</span>
-                  {chapterName} <span style={{ fontSize: '14px', color: '#bac2de' }}>({questionsArray.length} Qs)</span>
-                </h2>
-                <button onClick={(e) => { e.stopPropagation(); handleCopyGroup(questionsArray, chapterName); }} style={{ background: '#a6e3a1', color: '#11111b', padding: '8px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
-                  📋 Copy Group
-                </button>
-              </div>
+          {Object.entries(groupedQuestions).map(([chapterName, questionsArray]) => {
+            // Check visibility dynamically
+            const visibleQs = filterYear === 'All' ? questionsArray : questionsArray.filter(q => q.year === filterYear);
+            
+            // Auto-hide the entire chapter container if filter returns 0 matches
+            if (visibleQs.length === 0) return null;
 
-              {expandedGroups[chapterName] && (
-                <div style={{ padding: '20px', display: 'grid', gap: '20px' }}>
-                  {questionsArray.map((q, idx) => (
-                    <div key={q.id} style={{ background: '#1e1e2e', padding: '20px', borderRadius: '8px', border: '1px solid #45475a' }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-                        <span style={{ color: '#89b4fa', fontWeight: 'bold' }}>#{idx + 1}</span>
-                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                          {q.setNum && <span style={{ background: '#89b4fa', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold', marginRight: '10px' }}>Set-{q.setNum}</span>}
-                          <span style={{ background: '#f9e2af', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold' }}>GATE {q.year} | {q.marks} Mark</span>
-                          <button onClick={() => handleCopySingleQuestion(q)} style={{ background: '#cba6f7', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold', marginLeft: '10px', border: 'none', cursor: 'pointer' }} title="Copy formatted LaTeX for this question">
-                            📋 Copy
-                          </button>
-                        </div>
-                      </div>
-                      <div style={{ marginBottom: '15px', whiteSpace: 'pre-wrap' }} dangerouslySetInnerHTML={{ __html: q.text.replace(/\n/g, '<br>') }} />
-                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                        {q.optA && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(A)</strong> <span dangerouslySetInnerHTML={{ __html: q.optA }} /></div>}
-                        {q.optB && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(B)</strong> <span dangerouslySetInnerHTML={{ __html: q.optB }} /></div>}
-                        {q.optC && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(C)</strong> <span dangerouslySetInnerHTML={{ __html: q.optC }} /></div>}
-                        {q.optD && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(D)</strong> <span dangerouslySetInnerHTML={{ __html: q.optD }} /></div>}
-                      </div>
-                      {q.natAnswer === "NAT" && !q.optA && <div style={{ marginTop: '10px', color: '#f38ba8', fontWeight: 'bold' }}>Numerical Answer Type (NAT)</div>}
-                    </div>
-                  ))}
+            return (
+              <div key={chapterName} style={{ background: '#11111b', border: '2px solid #cba6f7', borderRadius: '10px', overflow: 'hidden' }}>
+                <div
+                  onClick={() => toggleGroup(chapterName)}
+                  style={{ background: '#313244', padding: '15px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', userSelect: 'none', borderBottom: expandedGroups[chapterName] ? '2px solid #cba6f7' : 'none' }}
+                >
+                  <h2 style={{ margin: 0, color: '#cba6f7', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span style={{ fontSize: '16px', display: 'inline-block', width: '20px', textAlign: 'center' }}>{expandedGroups[chapterName] ? '▼' : '▶'}</span>
+                    {chapterName} <span style={{ fontSize: '14px', color: '#bac2de' }}>({visibleQs.length}{filterYear !== 'All' ? ` / ${questionsArray.length}` : ''} Qs)</span>
+                  </h2>
+                  
+                  <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }} onClick={(e) => e.stopPropagation()}>
+                    <input
+                      type="text"
+                      placeholder="e.g. 1-50 + Enter"
+                      title="Type a range like 1-50 and press Enter to copy just those questions"
+                      style={{ width: '145px', padding: '8px', borderRadius: '6px', border: '1px solid #45475a', background: '#11111b', color: '#cdd6f4', outline: 'none', textAlign: 'center' }}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault();
+                          handleCopyRange(questionsArray, chapterName, e.target.value);
+                          e.target.value = '';
+                        }
+                      }}
+                    />
+                    <button onClick={() => handleCopyGroup(visibleQs, chapterName)} style={{ background: '#a6e3a1', color: '#11111b', padding: '8px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
+                      📋 Copy {filterYear === 'All' ? 'All' : 'Visible'}
+                    </button>
+                  </div>
                 </div>
-              )}
-            </div>
-          ))}
+
+                {expandedGroups[chapterName] && (
+                  <div style={{ padding: '20px', display: 'grid', gap: '20px' }}>
+                    
+                    <div style={{ background: '#181825', padding: '15px', borderRadius: '8px', border: '1px solid #45475a' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+                        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                          <label style={{ color: '#bac2de', fontSize: '14px', fontWeight: 'bold' }}>Generate Batch Buttons (Size):</label>
+                          <input
+                            type="number"
+                            placeholder="e.g. 20 + Enter"
+                            title="Type a chunk size (e.g., 20) and press Enter to generate quick-copy buttons"
+                            style={{ width: '130px', padding: '6px 10px', borderRadius: '4px', border: '1px solid #45475a', background: '#11111b', color: '#cdd6f4', outline: 'none' }}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter') {
+                                e.preventDefault();
+                                const val = parseInt(e.target.value, 10);
+                                if (!isNaN(val) && val > 0) {
+                                  setChunkSizes(prev => ({ ...prev, [chapterName]: val }));
+                                } else {
+                                  setChunkSizes(prev => { const copy = {...prev}; delete copy[chapterName]; return copy; });
+                                }
+                              }
+                            }}
+                          />
+                        </div>
+                        {lastCopied?.chapter === chapterName && (
+                          <div style={{ color: '#f9e2af', fontSize: '14px', fontWeight: 'bold', background: '#313244', padding: '6px 12px', borderRadius: '4px' }}>
+                            🕒 Last Copied: {lastCopied.range}
+                          </div>
+                        )}
+                      </div>
+                      
+                      {chunkSizes[chapterName] > 0 && (
+                        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '15px', paddingTop: '15px', borderTop: '1px dashed #45475a' }}>
+                          {Array.from({ length: Math.ceil(questionsArray.length / chunkSizes[chapterName]) }).map((_, i) => {
+                            const start = i * chunkSizes[chapterName] + 1;
+                            const end = Math.min((i + 1) * chunkSizes[chapterName], questionsArray.length);
+                            const rangeStr = `${start}-${end}`;
+                            const isClicked = clickedRanges.has(`${chapterName}_${rangeStr}`);
+                            return (
+                              <button
+                                key={rangeStr}
+                                onClick={() => handleCopyRange(questionsArray, chapterName, rangeStr)}
+                                style={{
+                                  background: isClicked ? '#313244' : '#cba6f7',
+                                  color: isClicked ? '#a6adc8' : '#11111b',
+                                  padding: '8px 15px',
+                                  borderRadius: '4px',
+                                  border: isClicked ? '1px solid #6c7086' : 'none',
+                                  cursor: 'pointer',
+                                  fontWeight: 'bold',
+                                  transition: '0.2s',
+                                  boxShadow: isClicked ? 'none' : '0 4px 6px rgba(0,0,0,0.3)'
+                                }}
+                              >
+                                {isClicked ? '✅ Copied: ' : '📋 Copy '}{rangeStr}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Mapping over questions Array so Absolute ID is preserved */}
+                    {questionsArray.map((q, idx) => {
+                      if (filterYear !== 'All' && q.year !== filterYear) return null;
+
+                      return (
+                        <div key={q.id} style={{ background: '#1e1e2e', padding: '20px', borderRadius: '8px', border: '1px solid #45475a' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+                            <span style={{ color: '#89b4fa', fontWeight: 'bold' }}>#{idx + 1}</span>
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                              {q.setNum && <span style={{ background: '#89b4fa', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold', marginRight: '10px' }}>Set-{q.setNum}</span>}
+                              <span style={{ background: '#f9e2af', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold' }}>GATE {q.year} | {q.marks} Mark</span>
+                              <button onClick={() => handleCopySingleQuestion(q)} style={{ background: '#cba6f7', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold', marginLeft: '10px', border: 'none', cursor: 'pointer' }} title="Copy formatted LaTeX for this question">
+                                📋 Copy
+                              </button>
+                            </div>
+                          </div>
+                          <div style={{ marginBottom: '15px', whiteSpace: 'pre-wrap' }} dangerouslySetInnerHTML={{ __html: q.text.replace(/\n/g, '<br>') }} />
+                          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                            {q.optA && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(A)</strong> <span dangerouslySetInnerHTML={{ __html: q.optA }} /></div>}
+                            {q.optB && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(B)</strong> <span dangerouslySetInnerHTML={{ __html: q.optB }} /></div>}
+                            {q.optC && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(C)</strong> <span dangerouslySetInnerHTML={{ __html: q.optC }} /></div>}
+                            {q.optD && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(D)</strong> <span dangerouslySetInnerHTML={{ __html: q.optD }} /></div>}
+                          </div>
+                          {q.natAnswer === "NAT" && !q.optA && <div style={{ marginTop: '10px', color: '#f38ba8', fontWeight: 'bold' }}>Numerical Answer Type (NAT)</div>}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

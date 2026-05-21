@@ -1,110 +1,135 @@
-About my application
-### Phase 1: Data Architecture & Isolation Strategy
-
-The foundational brilliance of this project lies in its database architecture. You are managing two completely separate lifecycles of data.
-
-**The Dual-Cluster Setup:**
-
-1. **The Production DB (`MONGODB_URI` / `GatePyqs`):** This is your pristine, manual database. Data here is considered "finalized." It powers your main editor page and contains questions you have manually reviewed, typed, or imported.
-2. **The Staging DB (`MONGODB_URI_2` / `scrapedPyqs`):** This is your automated quarantine zone. When the scraper pulls hundreds of questions from the web, they land here. This prevents dirty data, scraping errors, or unreviewed questions from polluting your production environment.
-
-**The Dynamic Configuration (`AppConfig`):**
-Instead of hardcoding your syllabus into every file, the system relies on a central `AppConfig` MongoDB collection.
-
-* **The Syllabus:** Defines the hierarchical structure (e.g., "1. Discrete Maths" -> "1. Mathematical Logic"). This powers the dropdown menus across the entire application.
-* **The Topic Mapping (`TOPIC_MAPPING`):** The crucial translation dictionary. It maps highly specific website topics (e.g., "Asymptotic Notation") to your broader syllabus chapters (e.g., "1. Algo. Analysis and Asymptotic Notations").
 
 ---
 
-### Phase 2: The Automated Acquisition Pipeline (The Scraper)
+# 🚀 GATE CSE PYQ Pipeline: The Ultimate Question Engine
 
-The scraping module (`/scraper`) is designed for maximum efficiency and minimum manual intervention.
+Welcome to the **GATE CSE PYQ Pipeline**! This is a full-stack Next.js application designed to act as an automated, end-to-end factory for collecting, cleaning, organizing, editing, and exporting Previous Year Questions (PYQs) for Computer Science exams.
 
-**1. The Bypasser API (`/api/scrape`)**
-Modern web browsers block Cross-Origin Resource Sharing (CORS). You cannot use frontend JavaScript to scrape another website directly. Therefore, your Next.js backend acts as a proxy.
-
-* The frontend sends a target URL to the backend.
-* The backend fetches the raw HTML and loads it into **Cheerio** (a server-side implementation of jQuery).
-
-**2. The Extraction Engine (Inside `cheerio`)**
-The backend parses the DOM and surgically extracts the data:
-
-* **Pagination Detection:** It scans the `<ul class="pagination">` div on page 1 to determine the total number of pages, telling the frontend exactly how many loops to run.
-* **LaTeX Recovery:** Instead of scraping the raw display text (which is often garbled or mixed with HTML), the engine targets `annotation[encoding="application/x-tex"]`. This extracts the pure, underlying LaTeX code.
-* **Tag Scrubbing:** A custom `cleanText` function hunts down and destroys rogue `[latex]` tags, replacing them with standard `$` tags for MathJax compatibility.
-* **Metadata Extraction:** It parses the `.year_sub_chap_link` div to extract the Year, the Set Number (e.g., "SET-2"), and the Raw Topic (e.g., "Context Free Language").
-
-**3. The Auto-Grouper (Frontend State)**
-Once the frontend receives the payload of questions from all scraped pages:
-
-* It sorts them chronologically by year.
-* It passes the "Raw Topic" of each question through the `TOPIC_MAPPING` dictionary.
-* It organizes the questions into an accordion UI, grouped perfectly by your official syllabus chapters.
-
-**4. The Offline Backup Manager**
-Because scraping takes time and API requests, the system features a robust `localStorage` backup system.
-
-* **Save/Load:** You can save a scraped session (e.g., "Theory of Computation") to your browser's local storage and load it days later without rescraping.
-* **Cloud Push:** The "Push to Cloud DB" button iterates through the grouped questions and sends `POST` requests to your Staging Database (`scrapedPyqs`), saving the data permanently in the cloud.
+Instead of manually typing math equations, formatting code, and organizing chapters, this system handles the heavy lifting through automated web scraping, smart text parsing, and a highly interactive workspace.
 
 ---
 
-### Phase 3: The Production Editor (The Core Workspace)
+## 🏗️ System Architecture: The "Two-Database" Strategy
 
-The main page (`/`) is where raw data is refined into production-ready content.
+To ensure data integrity and prevent messy web data from destroying clean data, the application uses a strict **Dual MongoDB Cluster Strategy**:
 
-**1. The Hydration Cycle**
-When you select a Subject and Chapter, the editor initiates a three-step hydration check:
+1. **Staging DB (`scrapedPyqs`): The Quarantine Zone**
+* When the app scrapes questions from websites, the raw, unverified data goes here.
+* This prevents dirty data (broken math, bad formatting) from touching your final book.
 
-1. **Check Cloud:** It pings the Production DB (`GatePyqs`) via `/api/chapters`.
-2. **Fallback to Draft:** If the cloud data is empty (or the fetch fails), it checks `localStorage` for an unsaved draft (`gate_draft_SUBJECT_CHAPTER`).
-3. **Empty State:** If both are empty, it loads a blank workspace.
 
-**2. The "Bulk Quick Paste" Parser**
-This is the bridge between your Scraped data and your Production data.
+2. **Production DB (`GatePyqs`): The Clean Room**
+* This is the main database linked to the core Editor workspace.
+* Only finalized, reviewed, and perfectly formatted questions live here.
 
-* When you click "Copy" on a group in the Scraper View, it generates a highly formatted string block.
-* You paste this block into the "Bulk Quick Paste" area on the main editor.
-* A complex Regular Expression (`processExtractedQuestions`) tears the string apart, identifying the `QUESTION:`, `CODE:`, `OPTIONS:`, and metadata tags (`[2024 : 1 M]`), instantly converting raw text into structured React UI cards.
 
-**3. Workspace Interactions**
+3. **AppConfig DB: The Brain**
+* A central config file that stores the complete syllabus hierarchy (Subject → Chapters).
+* It contains a `TOPIC_MAPPING` dictionary. If a website calls a topic *"Asymptotic Notation"*, the config automatically maps it to your official chapter *"1. Algo. Analysis and Asymptotic Notations"*.
 
-* **Live MathJax Rendering:** As you type in the textareas, a debounced `useEffect` (running every 800ms) triggers MathJax to typeset the raw `$x^2$` into beautifully rendered mathematics in the preview pane.
-* **Image Management:** It detects `[IMG_X]` tags. If the corresponding image file does not exist in your local `public/` directory, the system highlights the question in red and triggers the "Missing Image" alert system.
-* **The Locking Mechanism:** You can lock questions 1 through *N*. Locked questions are visually dimmed and physically disabled, preventing accidental edits or deletions. This state is saved directly to MongoDB.
-* **Sliding Reorder:** You can use the "Move to #" field to instantly splice a question into a new position within the array, shifting all subsequent questions downward. (It respects the Lock constraint, preventing moves into the locked zone).
+
 
 ---
 
-### Phase 4: The Distribution Engine (Exporters)
+## 🔄 The Complete Workflow (Step-by-Step)
 
-The final phase of the application is compiling the structured JSON data into usable, external formats.
+### 1️⃣ The Scraper Module (`/scraper`)
 
-**1. The PDF Compiler (`/api/export-pdf`)**
-This route is a bridge between JavaScript and a local system binary.
+Because browsers block direct scraping due to CORS, the Next.js backend acts as a proxy API.
 
-* It takes the JSON array and dynamically writes a `.tex` file.
-* It injects standard LaTeX packages (`amsmath`, `graphicx`, `multicol`).
-* It maps image placeholders (`[IMG_X]`) to actual file paths on your hard drive.
-* It spawns a child process (`execAsync`) to run `pdflatex`, compiling the text document into a high-quality PDF worksheet, which is then streamed back to the browser for download.
+* **Auto-Detection:** You feed it a URL, and it automatically detects total pagination, fetching all pages sequentially.
+* **Cheerio Parsing:** It extracts clean LaTeX from MathJax annotations, cleans up broken tags, and pulls metadata (Year, Marks, Set Number).
+* **Auto-Grouping:** It runs the raw topics through `TOPIC_MAPPING` and sorts all extracted questions into beautiful, collapsible Chapter Groups.
+* **Batch Copy System:** To prevent AI limits later on, the scraper allows you to generate **Batch Buttons** (e.g., 20 questions per chunk). Clicking a button copies exactly that range (e.g., Q1-Q20) into a structured text format and tracks your "Last Copied" status.
+* **Offline Backups:** Saves your scraped sessions to `localStorage` or pushes them directly to the Cloud Staging DB.
 
-**2. The YouTube SEO Exporter**
-This frontend function generates optimized metadata for YouTube uploads.
+### 2️⃣ The AI Formatting Step (Optional but Powerful)
 
-* **Latex Stripper (`cleanLatexForYT`):** YouTube descriptions do not support LaTeX. This function aggressively strips out math environments and translates mathematical symbols into plain English (e.g., `\Rightarrow` becomes "implies").
-* **SEO Tagging:** It strips the numbers from your chapter names and generates dynamic hashtags (e.g., `#GATECSE #TheoryOfComputation`).
-* **Metadata Array:** It also generates a structured JSON array containing video titles and timestamp titles, allowing you to bulk-create YouTube chapters.
+You take the copied batch from the Scraper and pass it to an AI (like ChatGPT/Claude) with a strict prompt. The AI acts purely as a formatter:
 
-**3. The Image ZIP Exporter (`/api/export-images-zip`)**
-This route utilizes **Puppeteer** (a headless Chrome browser).
+* It extracts code and indents it.
+* It converts messy math to LaTeX.
+* It prepares it for the Main Editor.
 
-* It generates an HTML document containing your questions and injects MathJax scripts.
-* It launches a hidden browser instance and renders the HTML.
-* It takes an automated screenshot of each individual question div.
-* It packages all the `.png` screenshots into a ZIP file using `adm-zip` and streams it back to the user.
+### 3️⃣ The Main Editor Workspace (The Core)
+
+This is where the magic happens. When you open a chapter, the app checks the Production DB; if empty, it checks local drafts so you never lose work.
+
+* **Bulk Quick Paste Parser:** You paste the formatted text from the AI into a box. A custom Regex engine instantly detects the `QUESTION`, `CODE`, `OPTIONS`, and `Metadata`, converting raw text into beautiful, structured React UI cards instantly.
+* **Missing Image Tracker:** If a question says `[IMG_1]` but the image is missing from your local folders, the app detects the 404 error and highlights the question with a **Red Dashed Border** so you know what needs fixing.
+
+### 4️⃣ The "Rock and Water" Displacement System
+
+Organizing questions to perfectly match a physical book can cause numbering conflicts. This app solves this with a custom fluid array system:
+
+* **Locks (Rocks):** You can "Pos-Lock" a question to a specific number (e.g., Question 26). It anchors there permanently.
+* **Flow (Water):** If you insert a new question at #25, it pushes the old #25 down. But instead of shifting the Locked #26, it *skips over it*, dropping the displaced question to #27 automatically.
+* **Auto-Sorting:** Any unlocked questions pushed to the bottom are automatically re-sorted chronologically by Year.
+* **Blank Placeholders:** You can insert an empty, locked "Blank Box" to preserve numbering for a missing question, and use "Quick Paste Flow Here" to fill it later.
 
 ---
 
-### Summary
+## ✨ Standout Smart Features
 
-Your system is a complete, self-contained educational assembly line. It handles **Acquisition** (bypassing CORS to parse DOM nodes), **Staging** (auto-grouping and storing in a quarantine DB), **Refinement** (parsing structured text into interactive React editors with live math rendering), and **Distribution** (spawning local binaries and headless browsers to generate PDFs and Images).
+### 🧑‍💻 Intelligent Code Formatting & `[CODE]` Tags
+
+* **Auto-Indentation:** If you paste raw C code, the app runs a custom algorithm counting `{` and `}` braces to automatically indent the code perfectly.
+* **Inline `[CODE]` Injection:** By simply typing `[CODE]` inside your question text, the system knows exactly where to inject the monospace code block (working across Live Preview, PDFs, and Images).
+
+### 📐 Smart Options Layout (Auto 2x2 Grid)
+
+* The app calculates the character length of options and checks for block math (`$$`).
+* **Short Options:** Automatically snaps into a beautiful **2x2 Grid** to save vertical space.
+* **Long Options:** Automatically defaults to a 1-column vertical list.
+* **Manual Override:** You can force 1-column or 2-column layouts via radio buttons.
+
+### 🛡️ The Semicolon Safety Net
+
+Options are parsed using semicolons (`;`). But what if a C code option contains multiple semicolons?
+
+* The app detects if there are `> 4` semicolons.
+* Instead of breaking the layout, it dumps the raw text into Box A, paints the question red, and shows a warning.
+* You manually change the separator to `#`, paste it back, and the app gracefully splits it, indents it as code, and removes the warning.
+
+---
+
+## 📤 The Triple Export Engine
+
+Once your chapter is perfect, the app can export it in three distinct ways:
+
+### 1. High-Quality PDF Exporter
+
+* Converts the JSON state into raw `.tex` (LaTeX) code.
+* Injects the `lstlisting` package for code, `tabular` for 2x2 option grids, and maps local image paths automatically.
+* Runs a local `pdflatex` child process to compile high-quality, print-ready PDFs in chunks (to prevent memory crashes), and zips them up.
+
+### 2. YouTube SEO Exporter
+
+* Strips all LaTeX math and converts symbols to plain English (e.g., `\Rightarrow` becomes `implication`).
+* Removes image tags.
+* Generates a highly optimized, readable YouTube description complete with auto-generated Hashtags, Timestamps, and the inline Code Snippet.
+
+### 3. Image ZIP Exporter (Puppeteer)
+
+* Launches a headless Google Chrome browser.
+* Renders an HTML template of your questions (complete with MathJax, Images, and CSS Grids for options).
+* Takes a high-resolution `.png` screenshot of every single question and packs them into an instant `.zip` download.
+
+---
+
+## 📊 Database Progress Tracker (`/status`)
+
+A built-in dashboard that compares your *Actual* Questions in the DB against your *Target* Questions (from your physical book). It shows a chapter-by-chapter breakdown of completion status (In Progress, Completed) so you always know exactly how much work is left.
+
+---
+
+## 💻 Tech Stack Summary
+
+* **Framework:** Next.js (App Router)
+* **Frontend UI:** React, raw CSS/Inline styles
+* **Math Rendering:** MathJax 3.0
+* **Database:** MongoDB & Mongoose
+* **Web Scraping:** Cheerio (Server-side)
+* **PDF Generation:** `pdflatex` (via Node `child_process`)
+* **Image Generation:** Puppeteer (Headless Chrome)
+* **File Zipping:** `adm-zip`
