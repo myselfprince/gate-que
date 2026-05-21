@@ -539,35 +539,62 @@ export default function ScraperPage() {
                         )}
                       </div>
                       
-                      {chunkSizes[chapterName] > 0 && (
-                        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '15px', paddingTop: '15px', borderTop: '1px dashed #45475a' }}>
-                          {Array.from({ length: Math.ceil(questionsArray.length / chunkSizes[chapterName]) }).map((_, i) => {
-                            const start = i * chunkSizes[chapterName] + 1;
-                            const end = Math.min((i + 1) * chunkSizes[chapterName], questionsArray.length);
-                            const rangeStr = `${start}-${end}`;
-                            const isClicked = clickedRanges.has(`${chapterName}_${rangeStr}`);
-                            return (
-                              <button
-                                key={rangeStr}
-                                onClick={() => handleCopyRange(questionsArray, chapterName, rangeStr)}
-                                style={{
-                                  background: isClicked ? '#313244' : '#cba6f7',
-                                  color: isClicked ? '#a6adc8' : '#11111b',
-                                  padding: '8px 15px',
-                                  borderRadius: '4px',
-                                  border: isClicked ? '1px solid #6c7086' : 'none',
-                                  cursor: 'pointer',
-                                  fontWeight: 'bold',
-                                  transition: '0.2s',
-                                  boxShadow: isClicked ? 'none' : '0 4px 6px rgba(0,0,0,0.3)'
-                                }}
-                              >
-                                {isClicked ? '✅ Copied: ' : '📋 Copy '}{rangeStr}
-                              </button>
-                            );
-                          })}
-                        </div>
-                      )}
+                      {chunkSizes[chapterName] > 0 && (() => {
+                        // SMART BATCH LOGIC: Calculate dynamic chunks so GATE years are never split across buttons
+                        const getSmartChunks = (qs, baseSize) => {
+                          const chunks = [];
+                          let start = 1;
+                          
+                          while (start <= qs.length) {
+                            let end = Math.min(start + baseSize - 1, qs.length);
+                            
+                            // If this isn't the very last question, check if the year bleeds over the boundary
+                            if (end < qs.length) {
+                              const boundaryYear = qs[end - 1].year; 
+                              
+                              // Look ahead: as long as the next question has the SAME year, expand the end boundary
+                              while (end < qs.length && qs[end].year === boundaryYear) {
+                                end++;
+                              }
+                            }
+                            
+                            chunks.push({ start, end });
+                            start = end + 1; // The next button safely starts after the expanded boundary
+                          }
+                          return chunks;
+                        };
+
+                        const smartChunks = getSmartChunks(questionsArray, chunkSizes[chapterName]);
+
+                        return (
+                          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '15px', paddingTop: '15px', borderTop: '1px dashed #45475a' }}>
+                            {smartChunks.map(({ start, end }) => {
+                              const rangeStr = `${start}-${end}`;
+                              const isClicked = clickedRanges.has(`${chapterName}_${rangeStr}`);
+                              
+                              return (
+                                <button
+                                  key={rangeStr}
+                                  onClick={() => handleCopyRange(questionsArray, chapterName, rangeStr)}
+                                  style={{
+                                    background: isClicked ? '#313244' : '#cba6f7',
+                                    color: isClicked ? '#a6adc8' : '#11111b',
+                                    padding: '8px 15px',
+                                    borderRadius: '4px',
+                                    border: isClicked ? '1px solid #6c7086' : 'none',
+                                    cursor: 'pointer',
+                                    fontWeight: 'bold',
+                                    transition: '0.2s',
+                                    boxShadow: isClicked ? 'none' : '0 4px 6px rgba(0,0,0,0.3)'
+                                  }}
+                                >
+                                  {isClicked ? '✅ Copied: ' : '📋 Copy '}{rangeStr}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        );
+                      })()}
                     </div>
 
                     {/* Mapping over questions Array so Absolute ID is preserved */}

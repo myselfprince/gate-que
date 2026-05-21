@@ -83,6 +83,7 @@ export default function Home() {
   const [imgCacheBuster, setImgCacheBuster] = useState(Date.now());
   const [imageErrors, setImageErrors] = useState(new Set());
   const [missingFocusIndex, setMissingFocusIndex] = useState(0);
+  const [blankFocusIndex, setBlankFocusIndex] = useState(0)
   const [activePasteIndex, setActivePasteIndex] = useState(null);
   const [inlinePasteText, setInlinePasteText] = useState("");
   const [imageTextWidth, setImageTextWidth] = useState(70);
@@ -483,12 +484,13 @@ export default function Home() {
       if (i >= result.length) {
         result.push(itemsToPlace.shift());
       } else {
-        const isSpotLocked = (i < currentLockCount) || result[i].isPosLocked;
+        // ✅ CHANGED: Treat blank questions as weak targets, ignoring their lock state
+        const isSpotLocked = (i < currentLockCount) || (result[i].isPosLocked && !result[i].isBlank);
         if (isSpotLocked) {
           i++;
           continue;
         }
-        if (result[i].isBlank && !result[i].isPosLocked) {
+        if (result[i].isBlank) {
           result[i] = itemsToPlace.shift();
         } else {
           itemsToPlace.push(result[i]);
@@ -527,7 +529,12 @@ export default function Home() {
       const targetIndex = targetQNum - 1;
       if (currentIndex < lockCount) return showToast("❌ Cannot move a bulk-locked question!", "error");
       if (targetIndex < lockCount) return showToast(`❌ Cannot move into bulk-locked zone (Qs 1-${lockCount})!`, "error");
-      if (questions[targetIndex]?.isPosLocked) return showToast(`❌ Position Q${targetQNum} is already Locked! Unlock it first.`, "error");
+      
+      // ✅ CHANGED: Allow moving to a locked position IF it is a blank question
+      if (questions[targetIndex]?.isPosLocked && !questions[targetIndex]?.isBlank) {
+          return showToast(`❌ Position Q${targetQNum} is already Locked! Unlock it first.`, "error");
+      }
+
       saveHistory();
       const movingQ = { ...questions[currentIndex], isPosLocked: true };
       let updated = [...questions];
@@ -629,6 +636,24 @@ export default function Home() {
       showToast(`Missing image in Q${targetQNum} is hidden by your active filters.`, "error");
     }
     setMissingFocusIndex(prev => prev + 1);
+  };
+  // --- ✅ NEW: BLANK TRACKER LOGIC START ---
+  const blankIndices = questions.map((q, idx) => q.isBlank ? idx + 1 : null).filter(val => val !== null);
+
+  const handleNextBlank = () => {
+    if (blankIndices.length === 0) return;
+    const targetQNum = blankIndices[blankFocusIndex % blankIndices.length];
+    const targetEl = document.getElementById(`question-${targetQNum}`);
+    if (targetEl) {
+      targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Apply shadow directly to the element since blanks don't have the .question-card class
+      targetEl.style.transition = 'box-shadow 0.3s ease-in-out';
+      targetEl.style.boxShadow = '0 0 15px 5px #f9e2af'; // Yellow glow for blanks
+      setTimeout(() => { targetEl.style.boxShadow = 'none'; }, 1500);
+    } else {
+      showToast(`Blank Q${targetQNum} is hidden by your active filters.`, "error");
+    }
+    setBlankFocusIndex(prev => prev + 1);
   };
 
   const generateId = () => Math.random().toString(36).substr(2, 9);
@@ -930,6 +955,16 @@ export default function Home() {
     } catch (error) { showToast("❌ Error generating Image ZIP.", "error"); }
   };
 
+  let filterMinIdx = -1;
+  let filterMaxIdx = -1;
+  if (filterYear !== 'All') {
+      const yearIndices = questions.map((q, i) => (q.year === filterYear && !q.isBlank ? i : -1)).filter(i => i !== -1);
+      if (yearIndices.length > 0) {
+          filterMinIdx = Math.min(...yearIndices);
+          filterMaxIdx = Math.max(...yearIndices);
+      }
+  }
+
   return (
     <div style={{ maxWidth: '98%', margin: 'auto', padding: '20px' }}>
       {toast && (
@@ -984,7 +1019,21 @@ export default function Home() {
 
         <div style={{ flex: '1 1 250px', textAlign: 'center', padding: '10px', background: '#181825', borderRadius: '4px', border: `1px solid ${isDirty ? '#f9e2af' : (questions.length > 0 ? '#a6e3a1' : '#45475a')}` }}>
           {questions.length === 0 ? (<span style={{ color: '#6c7086', fontWeight: 'bold' }}>No Questions Found</span>) : isDirty ? (<span style={{ color: '#f9e2af', fontWeight: 'bold' }}>⚠️ {syncedCount}/{questions.length} Synced (Unsaved)</span>) : (<span style={{ color: '#a6e3a1', fontWeight: 'bold' }}>✅ All {questions.length} Synced</span>)}
-          {missingIndices.length > 0 && (<button onClick={handleNextMissingImage} style={{ display: 'block', margin: '5px auto 0 auto', background: '#f38ba8', color: '#11111b', border: 'none', padding: '4px 10px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '12px' }}>⚠️ {missingIndices.length} Issues Found (Click to Jump)</button>)}
+          
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '5px', flexWrap: 'wrap', marginTop: '5px' }}>
+            {missingIndices.length > 0 && (
+              <button onClick={handleNextMissingImage} style={{ background: '#f38ba8', color: '#11111b', border: 'none', padding: '4px 10px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '12px' }}>
+                ⚠️ {missingIndices.length} Issues
+              </button>
+            )}
+            
+            {/* ✅ NEW: Blank Jumper Button */}
+            {blankIndices.length > 0 && (
+              <button onClick={handleNextBlank} style={{ background: '#f9e2af', color: '#11111b', border: 'none', padding: '4px 10px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '12px' }}>
+                🔲 {blankIndices.length} Blanks
+              </button>
+            )}
+          </div>
         </div>
         
         <div style={{ flex: '1 1 150px', display: 'flex', flexDirection: 'column', padding: '0 10px' }}>
@@ -1029,8 +1078,12 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <div>
+
+            <Link href="/scraper" style={{ background: '#3ac04e', color: '#11111b', padding: '10px 15px', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold', marginTop: '10px' }} target="_blank">Go to scraper</Link>
+      </div>
       
-      <Link href="/scraper" style={{ background: '#3ac04e', color: '#11111b', padding: '10px 15px', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold', marginTop: '10px' }} target="_blank">Go to scraper</Link>
+      
       
       <div id="questions_container">
         {questions.map((q, idx) => {
@@ -1039,7 +1092,16 @@ export default function Home() {
 
           // --- NEW: RENDER FILTER LOGIC ---
           // 1. Check Year Filter
-          if (filterYear !== 'All' && (q.isBlank || q.year !== filterYear)) return null;
+          if (filterYear !== 'All') {
+            if (q.isBlank) {
+              // ✅ CHANGED: Show blank if it's within (or immediately adjacent to) the filtered year's range.
+              // Extending by +/- 1 so a blank right before the first or right after the last question is visible.
+              const isNearYear = filterMinIdx !== -1 && (idx >= filterMinIdx - 1 && idx <= filterMaxIdx + 1);
+              if (!isNearYear) return null;
+            } else if (q.year !== filterYear) {
+              return null;
+            }
+          }
           // 2. Check Lock Filters
           if (hideBulkLocked && isBulkLocked) return null;
           if (hidePosLocked && q.isPosLocked) return null;
