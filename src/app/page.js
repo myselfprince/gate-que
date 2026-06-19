@@ -1122,7 +1122,7 @@ PROVIDED QUESTIONS TO FORMAT:
       a.href = url;
       
       // Name files sequentially: e.g., AI_Prompt_OS_Part1_of_4.txt
-      a.download = `AI_Prompt_${cleanSubject}_${cleanChapter}_Part${i + 1}_of_${totalChunks}.txt`;
+      a.download = `${cleanSubject}_${i + 1}.txt`;
       
       document.body.appendChild(a);
       a.click();
