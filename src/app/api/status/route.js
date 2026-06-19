@@ -1,48 +1,41 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongodb';
-import Chapter from '@/models/Chapter';
-import Target from '@/models/Target';
+import ScrapedChapter from '@/models/ScrapedChapter';
 
-export async function GET() {
+export async function POST(req) {
   try {
-    await dbConnect();
+    await dbConnect(); // Use the standard connection
+    const { subject, chapter, questions } = await req.json();
     
-    // Fetch all chapters to count actual questions saved
-    const chapters = await Chapter.find({}, 'subject chapter questions');
-    // Fetch all targets you have set
-    const targets = await Target.find({});
-
-    const actualCounts = {};
-    chapters.forEach(ch => {
-      actualCounts[`${ch.subject}|${ch.chapter}`] = ch.questions.length;
-    });
-
-    const targetCounts = {};
-    targets.forEach(t => {
-      targetCounts[`${t.subject}|${t.chapter}`] = t.targetCount;
-    });
-
-    return NextResponse.json({ success: true, actualCounts, targetCounts });
+    const savedChapter = await ScrapedChapter.findOneAndUpdate(
+      { subject, chapter },
+      { questions },
+      { new: true, upsert: true }
+    );
+    
+    return NextResponse.json({ success: true, data: savedChapter });
   } catch (error) {
-    console.error("Status GET Error:", error);
+    console.error("POST Error:", error);
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
 
-export async function POST(req) {
+export async function GET(req) {
   try {
-    await dbConnect();
-    const { subject, chapter, targetCount } = await req.json();
+    await dbConnect(); // Use the standard connection
+    const { searchParams } = new URL(req.url);
+    const subject = searchParams.get('subject');
+    const chapter = searchParams.get('chapter');
     
-    await Target.findOneAndUpdate(
-      { subject, chapter },
-      { targetCount: Number(targetCount) },
-      { new: true, upsert: true }
-    );
-    
-    return NextResponse.json({ success: true });
+    if (subject && chapter) {
+      const data = await ScrapedChapter.findOne({ subject, chapter });
+      return NextResponse.json({ success: true, data });
+    } else {
+      const chapters = await ScrapedChapter.find({}, 'subject chapter -_id');
+      return NextResponse.json({ success: true, data: chapters });
+    }
   } catch (error) {
-    console.error("Status POST Error:", error);
+    console.error("GET Error:", error);
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }

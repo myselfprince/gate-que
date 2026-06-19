@@ -1,101 +1,169 @@
+import tkinter as tk
+from tkinter import ttk, filedialog, messagebox
 import os
-import json
-import re
-from moviepy import VideoFileClip
+import subprocess
 
-def format_timestamp(seconds):
-    """Converts seconds into YouTube-friendly HH:MM:SS or MM:SS format."""
-    hours = int(seconds // 3600)
-    minutes = int((seconds % 3600) // 60)
-    secs = int(seconds % 60)
-    
-    if hours > 0:
-        return f"{hours:02d}:{minutes:02d}:{secs:02d}"
-    else:
-        return f"{minutes:02d}:{secs:02d}"
+def get_gray_code(n):
+    """Generates Gray code sequences for K-Map headers."""
+    if n == 0: return ['']
+    if n == 1: return ['0', '1']
+    prev = get_gray_code(n - 1)
+    return ['0' + c for c in prev] + ['1' + c for c in reversed(prev)]
 
-def sanitize_filename(filename):
-    """Removes invalid OS/shell characters to prevent renaming errors."""
-    return re.sub(r'[\\/*?:"<>|]', "-", filename)
+def get_config(num_vars):
+    """Returns row/col counts and labels based on variable count."""
+    config = {
+        2: (1, 1, 'A', 'B'),
+        3: (1, 2, 'A', 'BC'),
+        4: (2, 2, 'AB', 'CD'),
+        5: (2, 3, 'AB', 'CDE'),
+        6: (3, 3, 'ABC', 'DEF')
+    }
+    return config.get(num_vars, (2, 2, 'AB', 'CD'))
 
-def process_youtube_videos(folder_path):
-    valid_extensions = ('.mp4', '.mkv', '.avi', '.mov', '.flv', '.wmv')
-    
-    # 1. Find the exported JSON file
-    json_files = [f for f in os.listdir(folder_path) if f.endswith('.json') and 'G4Gate_YT_Export' in f]
-    if not json_files:
-        print("❌ No 'G4Gate_YT_Export.json' file found in this directory.")
-        print("Please click 'Export YT Data' in your Next.js app and place the JSON file here.")
-        return
-    
-    json_path = os.path.join(folder_path, json_files[0])
-    with open(json_path, 'r', encoding='utf-8') as f:
-        yt_data = json.load(f)
+class KMapApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("K-Map to LaTeX Generator")
+        self.root.geometry("600x600")
+        self.root.configure(padx=20, pady=20)
 
-    # 2. Fetch and sort video files by modification date (oldest first = order of recording)
-    files = [f for f in os.listdir(folder_path) if f.lower().endswith(valid_extensions)]
-    files.sort(key=lambda x: os.path.getmtime(os.path.join(folder_path, x)))
+        self.num_vars = tk.IntVar(value=4)
+        self.cell_data = {}  # Maps (row, col) to '1', '0', 'X', or ''
+        self.buttons = {}    # Maps (row, col) to tk.Button widget
 
-    if not files:
-        print("❌ No video files found in the current folder.")
-        return
+        self.setup_ui()
+        self.create_grid()
 
-    # 3. Check for mismatches between recorded videos and exported questions
-    num_videos = len(files)
-    num_questions = len(yt_data)
-    
-    if num_videos != num_questions:
-        print(f"\n⚠️ WARNING: MISMATCH DETECTED!")
-        print(f"There are {num_videos} videos in the folder, but {num_questions} questions in the JSON export.")
-        proceed = input("Do you want to proceed anyway? This might assign the wrong titles to videos. (y/n): ")
-        if proceed.lower() != 'y':
-            print("Operation aborted. Please check your folder and recordings.")
+    def setup_ui(self):
+        # Control Panel
+        control_frame = tk.Frame(self.root)
+        control_frame.pack(fill=tk.X, pady=(0, 20))
+
+        tk.Label(control_frame, text="Variables:", font=("Arial", 12, "bold")).pack(side=tk.LEFT)
+        
+        var_combo = ttk.Combobox(control_frame, textvariable=self.num_vars, values=[2, 3, 4, 5, 6], state="readonly", width=5)
+        var_combo.pack(side=tk.LEFT, padx=10)
+        var_combo.bind("<<ComboboxSelected>>", lambda e: self.create_grid())
+
+        tk.Button(control_frame, text="Clear Grid", command=self.clear_grid, bg="#ffcccc").pack(side=tk.LEFT, padx=10)
+        tk.Button(control_frame, text="Export LaTeX (.tex)", command=self.export_latex, bg="#ccffcc", font=("Arial", 10, "bold")).pack(side=tk.RIGHT)
+
+        # Grid Container
+        self.grid_frame = tk.Frame(self.root)
+        self.grid_frame.pack(expand=True)
+
+    def create_grid(self):
+        # Clear existing grid
+        for widget in self.grid_frame.winfo_children():
+            widget.destroy()
+        
+        self.cell_data.clear()
+        self.buttons.clear()
+
+        n = self.num_vars.get()
+        row_bits, col_bits, row_label, col_label = get_config(n)
+        
+        self.row_gray = get_gray_code(row_bits)
+        self.col_gray = get_gray_code(col_bits)
+
+        # Top-Left Header (Diagonal representation in UI)
+        tk.Label(self.grid_frame, text=f"{col_label}\n{row_label}", font=("Arial", 10, "bold"), fg="green").grid(row=0, column=0, padx=5, pady=5)
+
+        # Column Headers
+        for c, code in enumerate(self.col_gray):
+            tk.Label(self.grid_frame, text=code, font=("Arial", 12, "bold")).grid(row=0, column=c+1, padx=5, pady=5)
+
+        # Row Headers and Buttons
+        for r, r_code in enumerate(self.row_gray):
+            tk.Label(self.grid_frame, text=r_code, font=("Arial", 12, "bold")).grid(row=r+1, column=0, padx=5, pady=5)
+            
+            for c, c_code in enumerate(self.col_gray):
+                btn = tk.Button(self.grid_frame, text="", width=4, height=2, font=("Arial", 16, "bold"),
+                                command=lambda row=r, col=c: self.toggle_cell(row, col))
+                btn.grid(row=r+1, column=c+1, padx=2, pady=2)
+                self.buttons[(r, c)] = btn
+                self.cell_data[(r, c)] = ""
+
+    def toggle_cell(self, r, c):
+        states = ["", "1", "0", "X"]
+        current = self.cell_data.get((r, c), "")
+        idx = states.index(current) if current in states else 0
+        next_state = states[(idx + 1) % len(states)]
+        
+        self.cell_data[(r, c)] = next_state
+        self.buttons[(r, c)].config(text=next_state)
+
+    def clear_grid(self):
+        for (r, c), btn in self.buttons.items():
+            self.cell_data[(r, c)] = ""
+            btn.config(text="")
+
+    def export_latex(self):
+        file_path = filedialog.asksaveasfilename(defaultextension=".tex", 
+                                                 initialfile=f"kmap_{self.num_vars.get()}var.tex",
+                                                 filetypes=[("LaTeX Files", "*.tex"), ("All Files", "*.*")])
+        if not file_path:
             return
 
-    output_filename = os.path.join(folder_path, "G4Gate_timestamps.txt")
-    current_time_seconds = 0
+        n = self.num_vars.get()
+        row_bits, col_bits, row_label, col_label = get_config(n)
+        rows = len(self.row_gray)
+        cols = len(self.col_gray)
 
-    print("\n🚀 Starting G4Gate Video Processing Pipeline...\n")
+        # Generate TikZ Code
+        tex = [
+            r"\documentclass[tikz, border=5mm]{standalone}",
+            r"\usepackage{lmodern}",
+            r"\begin{document}",
+            r"\begin{tikzpicture}[x=1.5cm, y=1.5cm]"
+        ]
 
-    with open(output_filename, 'w', encoding='utf-8') as txt_file:
-        # 4. Pair each sorted video with its corresponding extracted data
-        for index, (filename, q_data) in enumerate(zip(files, yt_data), start=1):
-            timestamp = format_timestamp(current_time_seconds)
+        # Draw Grid (Main boxes only)
+        tex.append(f"    \\draw[thick] (0,0) grid ({cols},{rows});")
+
+        # Draw Diagonal Line
+        tex.append(f"    \\draw[thick] (0,{rows}) -- (-1,{rows+1});")
+
+        # Draw Variable Labels (Green)
+        tex.append(f"    \\node[text=green!60!black, font=\\Large\\bfseries] at (-0.7, {rows+0.3}) {{{row_label}}};")
+        tex.append(f"    \\node[text=green!60!black, font=\\Large\\bfseries] at (-0.3, {rows+0.7}) {{{col_label}}};")
+
+        # Draw Column Headers (Floating above grid)
+        for c, code in enumerate(self.col_gray):
+            tex.append(f"    \\node[font=\\Large\\bfseries] at ({c+0.5}, {rows+0.3}) {{{code}}};")
+
+        # Draw Row Headers (Floating left of grid)
+        for r, code in enumerate(self.row_gray):
+            y_pos = rows - r - 0.5
+            tex.append(f"    \\node[font=\\Large\\bfseries] at (-0.5, {y_pos}) {{{code}}};")
+
+        # Draw Cell Values (Huge text inside grid)
+        for r in range(rows):
+            for c in range(cols):
+                val = self.cell_data.get((r, c), "")
+                if val:
+                    y_pos = rows - r - 0.5
+                    x_pos = c + 0.5
+                    tex.append(f"    \\node[font=\\Huge\\bfseries] at ({x_pos}, {y_pos}) {{{val}}};")
+
+        tex.append(r"\end{tikzpicture}")
+        tex.append(r"\end{document}")
+
+        latex_code = "\n".join(tex)
+
+        try:
+            with open(file_path, 'w') as f:
+                f.write(latex_code)
             
-            # Extract extension and create a clean, OS-safe filename
-            ext = os.path.splitext(filename)[1]
-            safe_video_title = sanitize_filename(q_data['video_title'])
-            new_filename = f"{safe_video_title}{ext}"
-            
-            old_filepath = os.path.join(folder_path, filename)
-            new_filepath = os.path.join(folder_path, new_filename)
-
-            # Rename the video file
-            try:
-                os.rename(old_filepath, new_filepath)
-                print(f"✅ Renamed: '{filename}' -> '{new_filename}'")
-            except Exception as e:
-                print(f"❌ Error renaming {filename}: {e}")
-                # Fallback to old name so the timestamp loop doesn't crash
-                new_filepath = old_filepath 
-                new_filename = filename
-
-            # Generate the YouTube description string
-            line = f"{timestamp} - {q_data['timestamp_title']}"
-            print(f"   Timestamp: {line}")
-            txt_file.write(line + "\n")
-
-            # Load the video clip to calculate duration for the *next* timestamp
-            try:
-                clip = VideoFileClip(new_filepath)
-                current_time_seconds += clip.duration
-                clip.close()  # Critical: Close to free up RAM on large batch runs
-            except Exception as e:
-                print(f"⚠️ Skipping duration check for {new_filename} due to error: {e}")
-
-    print(f"\n🎉 Done! All videos renamed and timestamps saved to '{output_filename}'.")
+            # Optional: Ask user if they want to compile it immediately
+            if messagebox.askyesno("Success", f"Saved to {file_path}.\n\nDo you want to compile it to PDF right now using pdflatex?"):
+                subprocess.run(["pdflatex", "-interaction=nonstopmode", file_path], cwd=os.path.dirname(file_path))
+                messagebox.showinfo("Compiled", "Compilation finished. Check the folder for the PDF.")
+        except Exception as e:
+            messagebox.showerror("Error", f"An error occurred:\n{e}")
 
 if __name__ == "__main__":
-    # Runs in the current directory
-    target_folder = "." 
-    process_youtube_videos(target_folder)
+    root = tk.Tk()
+    app = KMapApp(root)
+    root.mainloop()

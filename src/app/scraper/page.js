@@ -459,7 +459,7 @@ export default function ScraperPage() {
           
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
             <button onClick={handleSaveToLocalStorage} style={{ background: '#89b4fa', color: '#11111b', padding: '10px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
-              💾 Save Backup
+              💾 Save Backup Local Storage
             </button>
             <button onClick={() => toggleAll(true)} style={{ background: '#45475a', color: '#cdd6f4', padding: '10px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>Expand All</button>
             <button onClick={() => toggleAll(false)} style={{ background: '#45475a', color: '#cdd6f4', padding: '10px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>Collapse All</button>

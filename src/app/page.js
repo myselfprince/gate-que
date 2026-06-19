@@ -1032,6 +1032,57 @@ const handleExportAllImages = async () => {
     showToast("📋 Copied combined text for YT!");
   };
 
+  const handleExportForAI = () => {
+    const validQs = questions.filter((q) => {
+      if (q.isBlank) return false;
+
+      // 1. Exclude questions with any image or diagram placeholder
+      const hasImage = 
+        (q.diagram && q.diagram !== "auto" && q.diagram.trim() !== "") ||
+        (q.text && (q.text.includes("[DIAGRAM_PLACEHOLDER]") || q.text.includes("[IMG_"))) ||
+        [q.optA, q.optB, q.optC, q.optD].some((opt) => opt && opt.includes("IMG:"));
+
+      if (hasImage) return false;
+
+      // 3. Exclude very long questions
+      // Currently set to: > 15 lines of C code OR > 800 characters of text
+      const codeLines = q.code ? q.code.split('\n').length : 0;
+      const isTooLong = codeLines > 15 || (q.text && q.text.length > 800);
+
+      if (isTooLong) return false;
+
+      return true;
+    });
+
+    if (validQs.length === 0) return showToast("❌ No valid questions to export for AI!", "error");
+
+    let exportText = "";
+    
+    validQs.forEach((q, index) => {
+      // 2 & 4. Copy Question text, code, and options only (No Year/Marks metadata)
+      exportText += `Q${index + 1}. ${q.text.trim()}\n`;
+      
+      if (q.code) {
+        exportText += `${q.code.trim()}\n`;
+      }
+
+      if (q.optA || q.optB || q.optC || q.optD) {
+        let opts = [];
+        if (q.optA) opts.push(`(A) ${q.optA.trim()}`);
+        if (q.optB) opts.push(`(B) ${q.optB.trim()}`);
+        if (q.optC) opts.push(`(C) ${q.optC.trim()}`);
+        if (q.optD) opts.push(`(D) ${q.optD.trim()}`);
+        exportText += `Options: ${opts.join("  ")}\n`;
+      } else if (q.natAnswer) {
+        exportText += `NAT Answer: ${q.natAnswer.trim()}\n`;
+      }
+      exportText += `\n`;
+    });
+
+    navigator.clipboard.writeText(exportText.trim());
+    showToast(`🤖 Copied ${validQs.length} text-only questions for AI!`);
+  };
+
   const handleExportYTData = () => {
     const validQs = questions.filter(q => !q.isBlank);
     if (validQs.length === 0) return showToast("❌ No valid questions to export!", "error");
@@ -1273,6 +1324,8 @@ const handleExportAllImages = async () => {
           <button className="btn-export" style={{ background: '#a6e3a1', color: '#11111b', padding: '10px 15px' }} onClick={() => saveToMongoDB(null, false)}>💾 Save DB</button>
           <button className="btn-export" style={{ background: '#f5c2e7', color: '#11111b', padding: '10px 15px' }} onClick={handleExportYTData}>▶️ Export YT Data</button>
           <button className="btn-export" style={{ background: '#89dceb', color: '#11111b', padding: '10px 15px' }} onClick={handleExportAllImages}>📸 Export All Images (ZIP)</button>
+              <button className="btn-export" style={{ background: '#f9e2af', color: '#11111b', padding: '10px 15px', fontWeight: 'bold' }} onClick={handleExportForAI}>🤖 Export for AI</button>
+
           <button className="btn-clear" style={{ padding: '10px 15px' }} onClick={clearWorkspace}>🗑️ Clear</button>
           <button className="btn-export" style={{ background: history.length > 0 ? '#fab387' : '#45475a', color: history.length > 0 ? '#11111b' : '#6c7086', padding: '10px 15px', cursor: history.length > 0 ? 'pointer' : 'not-allowed' }} onClick={handleUndo} disabled={history.length === 0}>⏪ Undo</button>
           
@@ -1309,6 +1362,7 @@ const handleExportAllImages = async () => {
 
             <Link href="/scraper" style={{ background: '#3ac04e', color: '#11111b', padding: '10px 15px', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold', marginTop: '10px' }} target="_blank">Go to scraper</Link>
             <Link href="/status" style={{ background: '#f38ba8', color: '#11111b', padding: '10px 15px', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold', marginTop: '10px' , marginLeft: '10px'}} target="_blank">Check Status</Link>
+            <Link href="/kmap-maker" style={{ background: '#89b4fa', color: '#11111b', padding: '10px 15px', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold', marginTop: '10px' , marginLeft: '10px'}} target="_blank">K-Map Maker</Link>
       </div>
       
       
