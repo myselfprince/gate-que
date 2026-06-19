@@ -1032,7 +1032,7 @@ const handleExportAllImages = async () => {
     showToast("📋 Copied combined text for YT!");
   };
 
-  const handleExportForAI = () => {
+  const handleExportForAI = async () => {
     const validQs = questions.filter((q) => {
       if (q.isBlank) return false;
 
@@ -1044,10 +1044,11 @@ const handleExportAllImages = async () => {
 
       if (hasImage) return false;
 
-      // 3. Exclude very long questions
-      // Currently set to: > 15 lines of C code OR > 800 characters of text
-      const codeLines = q.code ? q.code.split('\n').length : 0;
-      const isTooLong = codeLines > 15 || (q.text && q.text.length > 800);
+      // 2. NEW: Exclude any questions that contain a code snippet
+      if (q.code && q.code.trim() !== "") return false;
+
+      // 3. Exclude very long questions (> 800 characters of text)
+      const isTooLong = q.text && q.text.length > 800;
 
       if (isTooLong) return false;
 
@@ -1056,31 +1057,85 @@ const handleExportAllImages = async () => {
 
     if (validQs.length === 0) return showToast("❌ No valid questions to export for AI!", "error");
 
-    let exportText = "";
+    // The complete system prompt injected programmatically
+    const systemPrompt = `PROMPT
+Act as an expert GATE CS problem generator. Generate practice questions for GATE Computer Science. Write the Answers and Explanations of the Provided Questions below in the correct format.
+
+Constraints:
+1. Allowed Subjects: You must strictly categorize the question under one of these subjects: Discrete Maths, Engg. Maths, Digital L., COA, Prog. and DS, Algo, TOC, Compiler, OS, DBMS, Computer Networks, General Aptitude, Other.
+2. Formatting Output: Use plain text only for the labels. Do not use bolding, markdown formatting, or numbering for the keys.
+3. Math & LaTeX (CRITICAL FOR WRAPPING): Use $ for inline equations and $$ for block equations. You must keep plain English text outside of the MathJax/LaTeX delimiters wherever possible to allow for standard HTML text wrapping. Never use \\text{...} to wrap long English sentences inside math environments.
+   * Bad: $L = \\{w \\in \\{a,b\\}^* \\mid w \\text{ contains an even number of a's...}\\}$
+   * Good: $L = \\{w \\in \\{a,b\\}^* \\mid w$ contains an even number of $a$'s and an odd number of $b$'s$\\}$
+4. Option Separation: Separate the choices strictly with a space, a single semicolon, and a space ( ; ).
+5. Contributor Tag: Always end with CONTRIBUTOR: G4Gate.
+
+Exact Output Template (Do not deviate):
+SUBJECT: [Subject]
+TYPE: [MCQ/MSQ/NAT]
+QUESTION: [Question Text]
+OPTIONS: [Option 1] ; [Option 2] ; [Option 3] ; [Option 4]
+ANSWER: [Correct Option]
+EXPLANATION: [Brief explanation of the solution]
+CONTRIBUTOR: G4Gate
+
+---------------------------------------------------
+PROVIDED QUESTIONS TO FORMAT:
+
+`;
+
+    const CHUNK_SIZE = 20; 
+    const totalChunks = Math.ceil(validQs.length / CHUNK_SIZE);
     
-    validQs.forEach((q, index) => {
-      // 2 & 4. Copy Question text, code, and options only (No Year/Marks metadata)
-      exportText += `Q${index + 1}. ${q.text.trim()}\n`;
+    // Clean up subject/chapter names for a clean filename
+    const cleanSubject = subject.replace(/^\d+\.\s*/, '').replace(/[^a-zA-Z0-9]/g, '_');
+    const cleanChapter = chapter.replace(/^\d+\.\s*/, '').replace(/[^a-zA-Z0-9]/g, '_');
+
+    showToast(`📦 Preparing ${totalChunks} file(s) for download...`, 'info');
+
+    // Loop through the valid questions in chunks of 20
+    for (let i = 0; i < totalChunks; i++) {
+      const chunk = validQs.slice(i * CHUNK_SIZE, (i + 1) * CHUNK_SIZE);
+      let exportText = systemPrompt;
       
-      if (q.code) {
-        exportText += `${q.code.trim()}\n`;
-      }
+      chunk.forEach((q) => {
+        // Replaced 'Q{number}.' with just 'Q.' 
+        exportText += `Q. ${q.text.trim()}\n`;
 
-      if (q.optA || q.optB || q.optC || q.optD) {
-        let opts = [];
-        if (q.optA) opts.push(`(A) ${q.optA.trim()}`);
-        if (q.optB) opts.push(`(B) ${q.optB.trim()}`);
-        if (q.optC) opts.push(`(C) ${q.optC.trim()}`);
-        if (q.optD) opts.push(`(D) ${q.optD.trim()}`);
-        exportText += `Options: ${opts.join("  ")}\n`;
-      } else if (q.natAnswer) {
-        exportText += `NAT Answer: ${q.natAnswer.trim()}\n`;
-      }
-      exportText += `\n`;
-    });
+        if (q.optA || q.optB || q.optC || q.optD) {
+          let opts = [];
+          if (q.optA) opts.push(`(A) ${q.optA.trim()}`);
+          if (q.optB) opts.push(`(B) ${q.optB.trim()}`);
+          if (q.optC) opts.push(`(C) ${q.optC.trim()}`);
+          if (q.optD) opts.push(`(D) ${q.optD.trim()}`);
+          exportText += `Options: ${opts.join("  ")}\n`;
+        } else if (q.natAnswer) {
+          exportText += `NAT Answer: ${q.natAnswer.trim()}\n`;
+        }
+        exportText += `\n`;
+      });
 
-    navigator.clipboard.writeText(exportText.trim());
-    showToast(`🤖 Copied ${validQs.length} text-only questions for AI!`);
+      // Create and download the .txt file for this specific chunk
+      const blob = new Blob([exportText], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      
+      // Name files sequentially: e.g., AI_Prompt_OS_Part1_of_4.txt
+      a.download = `AI_Prompt_${cleanSubject}_${cleanChapter}_Part${i + 1}_of_${totalChunks}.txt`;
+      
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      // Add a slight delay (500ms) to prevent the browser from blocking multiple automatic downloads
+      if (i < totalChunks - 1) {
+        await new Promise(resolve => setTimeout(resolve, 500));
+      }
+    }
+
+    showToast(`🤖 Downloaded ${totalChunks} AI Prompt file(s) with ${validQs.length} total questions!`);
   };
 
   const handleExportYTData = () => {

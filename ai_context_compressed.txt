@@ -929,6 +929,78 @@ ytText += `#GATECSE #GATE${q.year} #${cleanSubject.replace(/[^a-zA-Z0-9]/g, '')}
 navigator.clipboard.writeText(ytText.trim());
 showToast("📋 Copied combined text for YT!");
 };
+const handleExportForAI = async () => {
+const validQs = questions.filter((q) => {
+if (q.isBlank) return false;
+const hasImage =
+(q.diagram && q.diagram !== "auto" && q.diagram.trim() !== "") ||
+(q.text && (q.text.includes("[DIAGRAM_PLACEHOLDER]") || q.text.includes("[IMG_"))) ||
+[q.optA, q.optB, q.optC, q.optD].some((opt) => opt && opt.includes("IMG:"));
+if (hasImage) return false;
+if (q.code && q.code.trim() !== "") return false;
+const isTooLong = q.text && q.text.length > 800;
+if (isTooLong) return false;
+return true;
+});
+if (validQs.length === 0) return showToast("❌ No valid questions to export for AI!", "error");
+const systemPrompt = `PROMPT
+Act as an expert GATE CS problem generator. Generate practice questions for GATE Computer Science. Write the Answers and Explanations of the Provided Questions below in the correct format.
+Constraints:
+1. Allowed Subjects: You must strictly categorize the question under one of these subjects: Discrete Maths, Engg. Maths, Digital L., COA, Prog. and DS, Algo, TOC, Compiler, OS, DBMS, Computer Networks, General Aptitude, Other.
+2. Formatting Output: Use plain text only for the labels. Do not use bolding, markdown formatting, or numbering for the keys.
+3. Math & LaTeX (CRITICAL FOR WRAPPING): Use $ for inline equations and $$ for block equations. You must keep plain English text outside of the MathJax/LaTeX delimiters wherever possible to allow for standard HTML text wrapping. Never use \\text{...} to wrap long English sentences inside math environments.
+* Bad: $L = \\{w \\in \\{a,b\\}^* \\mid w \\text{ contains an even number of a's...}\\}$
+* Good: $L = \\{w \\in \\{a,b\\}^* \\mid w$ contains an even number of $a$'s and an odd number of $b$'s$\\}$
+4. Option Separation: Separate the choices strictly with a space, a single semicolon, and a space ( ; ).
+5. Contributor Tag: Always end with CONTRIBUTOR: G4Gate.
+Exact Output Template (Do not deviate):
+SUBJECT: [Subject]
+TYPE: [MCQ/MSQ/NAT]
+QUESTION: [Question Text]
+OPTIONS: [Option 1] ; [Option 2] ; [Option 3] ; [Option 4]
+ANSWER: [Correct Option]
+EXPLANATION: [Brief explanation of the solution]
+CONTRIBUTOR: G4Gate
+---------------------------------------------------
+PROVIDED QUESTIONS TO FORMAT:
+`;
+const CHUNK_SIZE = 20;
+const totalChunks = Math.ceil(validQs.length / CHUNK_SIZE);
+const cleanSubject = subject.replace(/^\d+\.\s*/, '').replace(/[^a-zA-Z0-9]/g, '_');
+const cleanChapter = chapter.replace(/^\d+\.\s*/, '').replace(/[^a-zA-Z0-9]/g, '_');
+showToast(`📦 Preparing ${totalChunks} file(s) for download...`, 'info');
+for (let i = 0; i < totalChunks; i++) {
+const chunk = validQs.slice(i * CHUNK_SIZE, (i + 1) * CHUNK_SIZE);
+let exportText = systemPrompt;
+chunk.forEach((q) => {
+exportText += `Q. ${q.text.trim()}\n`;
+if (q.optA || q.optB || q.optC || q.optD) {
+let opts = [];
+if (q.optA) opts.push(`(A) ${q.optA.trim()}`);
+if (q.optB) opts.push(`(B) ${q.optB.trim()}`);
+if (q.optC) opts.push(`(C) ${q.optC.trim()}`);
+if (q.optD) opts.push(`(D) ${q.optD.trim()}`);
+exportText += `Options: ${opts.join("  ")}\n`;
+} else if (q.natAnswer) {
+exportText += `NAT Answer: ${q.natAnswer.trim()}\n`;
+}
+exportText += `\n`;
+});
+const blob = new Blob([exportText], { type: 'text/plain' });
+const url = URL.createObjectURL(blob);
+const a = document.createElement('a');
+a.href = url;
+a.download = `AI_Prompt_${cleanSubject}_${cleanChapter}_Part${i + 1}_of_${totalChunks}.txt`;
+document.body.appendChild(a);
+a.click();
+document.body.removeChild(a);
+URL.revokeObjectURL(url);
+if (i < totalChunks - 1) {
+await new Promise(resolve => setTimeout(resolve, 500));
+}
+}
+showToast(`🤖 Downloaded ${totalChunks} AI Prompt file(s) with ${validQs.length} total questions!`);
+};
 const handleExportYTData = () => {
 const validQs = questions.filter(q => !q.isBlank);
 if (validQs.length === 0) return showToast("❌ No valid questions to export!", "error");
@@ -1143,6 +1215,7 @@ Q{qNum}
 <button className="btn-export" style={{ background: '#a6e3a1', color: '#11111b', padding: '10px 15px' }} onClick={() => saveToMongoDB(null, false)}>💾 Save DB</button>
 <button className="btn-export" style={{ background: '#f5c2e7', color: '#11111b', padding: '10px 15px' }} onClick={handleExportYTData}>▶️ Export YT Data</button>
 <button className="btn-export" style={{ background: '#89dceb', color: '#11111b', padding: '10px 15px' }} onClick={handleExportAllImages}>📸 Export All Images (ZIP)</button>
+<button className="btn-export" style={{ background: '#f9e2af', color: '#11111b', padding: '10px 15px', fontWeight: 'bold' }} onClick={handleExportForAI}>🤖 Export for AI</button>
 <button className="btn-clear" style={{ padding: '10px 15px' }} onClick={clearWorkspace}>🗑️ Clear</button>
 <button className="btn-export" style={{ background: history.length > 0 ? '#fab387' : '#45475a', color: history.length > 0 ? '#11111b' : '#6c7086', padding: '10px 15px', cursor: history.length > 0 ? 'pointer' : 'not-allowed' }} onClick={handleUndo} disabled={history.length === 0}>⏪ Undo</button>
 <div style={{ display: 'flex', gap: '5px', marginLeft: 'auto' }}>
@@ -1379,3 +1452,2100 @@ gap: isTwoCol ? '10px 20px' : '0'
 </div>
 );
 }
+
+src\app\api\chapters\route.js
+import { NextResponse } from 'next/server';
+import dbConnect from '@/lib/mongodb';
+import Chapter from '@/models/Chapter';
+export async function POST(req) {
+try {
+await dbConnect();
+const { subject, chapter, questions, lockCount = 0 } = await req.json();
+const savedChapter = await Chapter.findOneAndUpdate(
+{ subject, chapter },
+{ questions, lockCount },
+{ new: true, upsert: true }
+);
+return NextResponse.json({ success: true, data: savedChapter });
+} catch (error) {
+console.error("POST Error:", error);
+return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+}
+}
+export async function GET(req) {
+try {
+await dbConnect();
+const { searchParams } = new URL(req.url);
+const subject = searchParams.get('subject');
+const chapter = searchParams.get('chapter');
+if (subject && chapter) {
+const data = await Chapter.findOne({ subject, chapter });
+return NextResponse.json({ success: true, data });
+} else {
+const chapters = await Chapter.find({}, 'subject chapter -_id');
+return NextResponse.json({ success: true, data: chapters });
+}
+} catch (error) {
+console.error("GET Error:", error);
+return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+}
+}
+
+src\app\api\config\route.js
+import { NextResponse } from 'next/server';
+import dbConnect from '@/lib/mongodb';
+import AppConfig from '@/models/AppConfig';
+const DEFAULT_SYLLABUS = {
+"1. Discrete Maths": ["1. Mathematical Logic", "2. Set Theory and Algebra", "3. Combinatorics", "4. Graph Theory"],
+"2. TOC": ["1. Finite Automata and Regular Languages", "2. PDA - CFL and DCFL", "3. Turing Machine, RE, REC, Undecidabilitu"],
+"3. Computer Networks": ["1. ISO-OSI Stack and SWP", "2. LAN", "3. TCP, UDP and IP", "4. Routing and Application Layer"],
+"4. COA": ["1. CPU Arch. and Address. Modes", "2. Control Unit Design", "3. Instructions Pipeline", "4. Memory Organization", "5. IO Organisation"],
+"5. Operating Systems": ["1. Process Management-1", "2. Process Management-2", "3. Deadlock", "4. Mem. Mgmt and Virtual Mem", "5. File Sys and Device Mgmt", "6. Miscellaneous"],
+"6. Data Structures": ["1. Arrays", "2. Stack and Queues", "3. Linked Lists", "4. Trees", "5. Graphs", "6. Hashing"],
+"7. Algorithms": ["1. Algo. Analysis and Asymptotic Notations", "2. Divide and Conquer", "3. Greedy Method", "4. Dynamic Programming", "5. P and NP Concepts", "6. Miscellaneous Topics"],
+"8. C Prog": ["1. Programming"],
+"9. Digital Logic": ["1. Logic Functions and Minimizations", "2. Combinational Circuits", "3. Sequential Circuits", "4. Number Systems"],
+"10. Compiler Design": ["1. Lexical Analysis", "2. Parsing Techniques", "3. Syntax Directed Translations", "4. Code Generations and Optimizatinos"],
+"11. Engg. Maths": ["1. Probability", "2. Linear Algebra", "3. Calculus"],
+"12. DBMS": ["1. ER Model", "2. Funcational Dependencies and Normalizaation", "3. Structure Query Language", "4. Relational Model", "5. Transactions and Concurrency Contorl", "6. File Structures"]
+};
+const DEFAULT_MAPPING = {
+"Asymptotic Notation": "1. Algo. Analysis and Asymptotic Notations",
+"Array": "1. Arrays"
+};
+export async function GET() {
+try {
+await dbConnect();
+let config = await AppConfig.findOne({ configName: "default" });
+if (!config) {
+config = await AppConfig.create({
+configName: "default",
+syllabus: DEFAULT_SYLLABUS,
+topicMapping: DEFAULT_MAPPING
+});
+}
+return NextResponse.json({ success: true, data: config });
+} catch (error) {
+console.error("Config GET Error:", error);
+return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+}
+}
+export async function POST(req) {
+try {
+await dbConnect();
+const { syllabus, topicMapping } = await req.json();
+const config = await AppConfig.findOneAndUpdate(
+{ configName: "default" },
+{ syllabus, topicMapping },
+{ new: true, upsert: true }
+);
+return NextResponse.json({ success: true, data: config });
+} catch (error) {
+return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+}
+}
+
+src\app\api\export-images-zip\route.js
+import { NextResponse } from 'next/server';
+import puppeteer from 'puppeteer';
+import AdmZip from 'adm-zip';
+export async function POST(req) {
+try {
+const { subject, chapter, questions, baseUrl, contentWidth = 100 } = await req.json();
+if (!questions || questions.length === 0) {
+return NextResponse.json({ success: false, error: "No questions provided" }, { status: 400 });
+}
+let htmlContent = `
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script>
+window.MathJax = {
+tex: { inlineMath: [['$', '$'], ['\\\\(', '\\\\)']], displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']] },
+startup: { typeset: false }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<style>
+body { background: #1a1a1b; color: #cdd6f4; font-family: sans-serif; padding: 20px; }
+.export-card {
+background: #000000;
+padding: 15px 20px;
+border-radius: 10px;
+margin-bottom: 20px;
+width: 1100px;
+font-size: 26px;
+display: inline-block;
+}
+.code-block { background: #181825; padding: 15px; border: 1px solid #45475a; font-family: monospace; white-space: pre-wrap; margin: 15px 0; font-size: 22px; }
+.img-placeholder { border:1px dashed #74c7ec; padding:10px; text-align:center; margin: 10px 0; }
+img { max-width: 100%; max-height: 350px; }
+</style>
+</head>
+<body>
+<div id="container">
+`;
+questions.forEach((q, idx) => {
+if (q.isBlank) {
+htmlContent += `
+<div class="export-card" id="q-${idx + 1}" style="background: transparent; border: 4px dashed #45475a;">
+<div style="width: ${contentWidth}%; height: 350px; display: flex; align-items: center; justify-content: center;">
+<span style="color: #45475a; font-size: 36px; font-weight: bold;">[Blank Placeholder - Q${idx + 1}]</span>
+</div>
+</div><br/>
+`;
+return;
+}
+let formattedText = q.text.replace(/\n/g, '<br>');
+const imageList = q.diagram ? q.diagram.split(',').map(s => s.trim()).filter(Boolean) : [];
+imageList.forEach((imgName, i) => {
+const imgPath = `${baseUrl}/${subject}/${chapter}/${imgName}${q.ext}`;
+const imgTag = `<div class="img-placeholder"><img src="${imgPath}" /></div>`;
+if (formattedText.includes(`[IMG_${i + 1}]`)) formattedText = formattedText.replace(`[IMG_${i + 1}]`, imgTag);
+else if (i === 0 && formattedText.includes('[DIAGRAM_PLACEHOLDER]')) formattedText = formattedText.replace('[DIAGRAM_PLACEHOLDER]', imgTag);
+else formattedText += imgTag;
+});
+if (q.code) {
+const safeHtmlCode = q.code.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const codeTag = `<div class="code-block">${safeHtmlCode}</div>`;
+if (formattedText.includes('[CODE]')) {
+formattedText = formattedText.replace('[CODE]', codeTag);
+} else {
+formattedText += codeTag;
+}
+}
+const renderOpt = (opt, isCode) => {
+if (!opt) return "";
+if (opt.startsWith('IMG:')) return `<img src="${baseUrl}/${subject}/${chapter}/${opt.replace('IMG:', '').trim()}${q.ext}" style="max-height:80px; vertical-align:middle;"/>`;
+let text = opt;
+if (isCode) {
+text = text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+return `<span style="white-space: pre-wrap; font-family: monospace;">${text.replace(/\n/g, '<br>')}</span>`;
+}
+return text;
+};
+const hasOptions = q.optA || q.optB || q.optC || q.optD;
+htmlContent += `
+<div class="export-card" id="q-${idx + 1}">
+<div style="width: ${contentWidth}%;">
+<div style="display: inline-block; background: #a6e3a1; color: #11111b; font-weight: 900; margin-bottom: 25px; font-size: 38px; padding: 2px 10px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
+GATE ${q.year} | ${q.marks} Mark
+</div>
+<div style="line-height: 1.5;">${formattedText}</div>
+<div style="margin-top: 20px;">
+${hasOptions ? `
+<div style="margin-bottom: 10px;"><strong>(A)</strong> <span>${renderOpt(q.optA, q.isCodeOptions)}</span></div>
+<div style="margin-bottom: 10px;"><strong>(B)</strong> <span>${renderOpt(q.optB, q.isCodeOptions)}</span></div>
+<div style="margin-bottom: 10px;"><strong>(C)</strong> <span>${renderOpt(q.optC, q.isCodeOptions)}</span></div>
+<div style="margin-bottom: 10px;"><strong>(D)</strong> <span>${renderOpt(q.optD, q.isCodeOptions)}</span></div>
+` : `
+<div style="color: #f38ba8;"><strong>NAT Answer:</strong> ${q.natAnswer || '_________________'}</div>
+`}
+</div>
+</div>
+</div><br/>
+`;
+});
+htmlContent += `
+</div>
+<script>
+window.MathJax.typesetPromise().then(() => {
+const div = document.createElement('div');
+div.id = 'mathjax-done';
+document.body.appendChild(div);
+});
+</script>
+</body>
+</html>
+`;
+const browser = await puppeteer.launch({
+headless: "new",
+args: ['--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu']
+});
+const page = await browser.newPage();
+await page.setViewport({ width: 1200, height: 1000, deviceScaleFactor: 3 });
+await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
+await page.waitForSelector('#mathjax-done', { timeout: 15000 });
+const zip = new AdmZip();
+for (let i = 0; i < questions.length; i++) {
+const qNum = i + 1;
+const element = await page.$(`#q-${qNum}`);
+if (element) {
+const screenshotBuffer = await element.screenshot({ type: 'png' });
+zip.addFile(`${subject}_${chapter}_Q${qNum}.png`, screenshotBuffer);
+await new Promise(resolve => setTimeout(resolve, 100));
+}
+}
+await browser.close();
+const zipBuffer = zip.toBuffer();
+return new NextResponse(zipBuffer, {
+status: 200,
+headers: {
+'Content-Type': 'application/zip',
+'Content-Disposition': `attachment; filename="${subject}_${chapter}_Images.zip"`,
+},
+});
+} catch (error) {
+console.error("Puppeteer Export Error:", error);
+return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+}
+}
+
+src\app\api\export-pdf\route.js
+import { NextResponse } from 'next/server';
+import { exec } from 'child_process';
+import { promisify } from 'util';
+import fs from 'fs/promises';
+import path from 'path';
+import AdmZip from 'adm-zip';
+const execAsync = promisify(exec);
+const escapeLatex = (text) => {
+if (!text) return "";
+return text.replace(/(?<!\\)%/g, '\\%');
+};
+const shouldUseTwoCols = (q) => {
+if (!q.optA && !q.optB && !q.optC && !q.optD) return false;
+const maxLen = Math.max(
+(q.optA || "").length, (q.optB || "").length,
+(q.optC || "").length, (q.optD || "").length
+);
+const hasBlockMath = [q.optA, q.optB, q.optC, q.optD].some(opt => opt?.includes('$$'));
+const hasManyBreaks = [q.optA, q.optB, q.optC, q.optD].some(opt => (opt?.match(/\n/g) || []).length > 2);
+if (hasBlockMath || hasManyBreaks || maxLen > 65) return false;
+return true;
+};
+export async function POST(req) {
+const uniqueId = Date.now().toString(36) + Math.random().toString(36).substring(2, 8);
+const baseTempDir = path.join(process.cwd(), `temp_pdf_${uniqueId}`);
+try {
+const { subject, chapter, questions } = await req.json();
+await fs.mkdir(baseTempDir, { recursive: true });
+const zip = new AdmZip();
+const CHUNK_SIZE = 20;
+for (let i = 0; i < questions.length; i += CHUNK_SIZE) {
+const chunk = questions.slice(i, i + CHUNK_SIZE);
+const chunkIndex = Math.floor(i / CHUNK_SIZE) + 1;
+const startQNum = i;
+const tempDir = path.join(baseTempDir, `chunk_${chunkIndex}`);
+await fs.mkdir(tempDir, { recursive: true });
+const texFileName = 'gate_workbook.tex';
+const pdfFileName = 'gate_workbook.pdf';
+const texFilePath = path.join(tempDir, texFileName);
+const pdfFilePath = path.join(tempDir, pdfFileName);
+let latex = `\\documentclass[12pt]{exam}
+\\usepackage[utf8]{inputenc}
+\\usepackage{amsmath, amssymb}
+\\usepackage{graphicx}
+\\usepackage[export]{adjustbox}
+\\usepackage[margin=0.5in, landscape]{geometry}
+\\usepackage{multicol}
+\\usepackage{listings}
+\\usepackage{xcolor}
+\\usepackage[none]{hyphenat}
+\\sloppy
+\\pagecolor{black}
+\\color{white}
+\\pagestyle{empty}
+\\cfoot{}
+\\lstset{
+basicstyle=\\ttfamily\\small\\color{white},
+backgroundcolor=\\color[rgb]{0.12,0.12,0.12},
+frame=single,
+rulecolor=\\color{gray},
+breaklines=true,
+tabsize=4
+}
+\\begin{document}
+\\begin{center}
+\\LARGE \\textbf{GATE CSE: ${subject} - ${chapter} (Part ${chunkIndex})}
+\\end{center}
+\\vspace{0.5cm}
+\\begin{questions}
+`;
+if (startQNum > 0) {
+latex += `\\setcounter{question}{${startQNum}}\n`;
+}
+chunk.forEach(q => {
+if (q.isBlank) {
+latex += "\\begin{multicols*}{2}\n";
+latex += `\n\\question {\\small \\textbf{[Blank Placeholder]}} \\\\[0.2cm]\n{\\Large \\textit{This question is reserved/blank.}}\n\\vspace{4cm}\n`;
+latex += "\n\\end{multicols*}\n\\vspace{0.6cm}\n\\newpage\n";
+return;
+}
+let qText = escapeLatex(q.text.trim())
+.replace(/_{3,}/g, '\\rule{2cm}{0.4pt}')
+.replace(/[\u00A0\u2000-\u200B\u202F\u205F\u3000]/g, ' ');
+let textParts = qText.split(/(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$)/);
+for (let j = 0; j < textParts.length; j++) {
+if (j % 2 === 0) {
+textParts[j] = textParts[j].replace(/\r?\n/g, '\\newline\n');
+}
+}
+qText = textParts.join('');
+latex += "\\begin{multicols*}{2}\n";
+const imageList = q.diagram ? q.diagram.split(',').map(s => s.trim()).filter(Boolean) : [];
+imageList.forEach((imgName, imgIndex) => {
+if (!imgName) return;
+const imgPath = path.join(process.cwd(), 'public', subject, chapter, `${imgName}${q.ext}`).replace(/\\/g, '/');
+const latexImg = `\n\\begin{center}\n\\includegraphics[max width=0.9\\linewidth, keepaspectratio]{"${imgPath}"}\n\\end{center}\n`;
+const tag = `[IMG_${imgIndex + 1}]`;
+if (qText.includes(tag)) {
+qText = qText.replace(tag, latexImg);
+} else if (imgIndex === 0 && qText.includes('[DIAGRAM_PLACEHOLDER]')) {
+qText = qText.replace('[DIAGRAM_PLACEHOLDER]', latexImg);
+} else {
+qText += latexImg;
+}
+});
+qText = qText.replace('[DIAGRAM_PLACEHOLDER]', '');
+let codeLatex = q.code ? `\n\\vspace{0.2cm}\\begin{lstlisting}\n${q.code}\n\\end{lstlisting}\\vspace{0.2cm}\n` : '';
+if (qText.includes('[CODE]')) {
+qText = qText.replace('[CODE]', codeLatex);
+latex += `\n\\question {\\small \\textbf{[GATE ${q.year || ''} | ${q.marks || '1'} Mark]}} \\\\[0.2cm]\n{\\Large ${qText}}\n`;
+} else {
+latex += `\n\\question {\\small \\textbf{[GATE ${q.year || ''} | ${q.marks || '1'} Mark]}} \\\\[0.2cm]\n{\\Large ${qText}}\n`;
+if (q.code) {
+latex += codeLatex;
+}
+}
+const hasOptions = q.optA || q.optB || q.optC || q.optD;
+const processOpt = (opt, isCode) => {
+if (!opt) return "";
+if (opt.startsWith("IMG:")) {
+const imgName = opt.replace("IMG:", "").trim();
+const imgPath = path.join(process.cwd(), 'public', subject, chapter, `${imgName}${q.ext}`).replace(/\\/g, '/');
+return `\\includegraphics[width=0.4\\linewidth, valign=c]{"${imgPath}"}`;
+}
+if (isCode) {
+let codeSafe = opt
+.replace(/\\/g, '\\textbackslash{}')
+.replace(/[{}]/g, '\\$&')
+.replace(/[_&#%$]/g, '\\$&')
+.replace(/</g, '\\textless{}')
+.replace(/>/g, '\\textgreater{}')
+.replace(/~/g, '\\textasciitilde{}')
+.replace(/\^/g, '\\textasciicircum{}')
+.replace(/ /g, '~')
+.replace(/\r?\n/g, '\\newline\n');
+return `\\texttt{${codeSafe}}`;
+}
+let escapedOpt = escapeLatex(opt);
+let optParts = escapedOpt.split(/(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$)/);
+for (let j = 0; j < optParts.length; j++) {
+if (j % 2 === 0) {
+optParts[j] = optParts[j].replace(/\r?\n/g, '\\newline\n');
+}
+}
+return optParts.join('');
+};
+if (hasOptions) {
+const isTwoCol = q.optLayout === '2col' || (q.optLayout !== '1col' && shouldUseTwoCols(q));
+if (isTwoCol) {
+latex += "\n\\vspace{0.3cm}\\noindent\\begin{tabular}{@{}p{0.48\\linewidth} p{0.48\\linewidth}@{}}\n";
+let row1 = "";
+row1 += q.optA ? `\\textbf{(A)} ${processOpt(q.optA, q.isCodeOptions)}` : "";
+row1 += " & ";
+row1 += q.optB ? `\\textbf{(B)} ${processOpt(q.optB, q.isCodeOptions)}` : "";
+row1 += " \\\\[0.4cm]\n";
+let row2 = "";
+row2 += q.optC ? `\\textbf{(C)} ${processOpt(q.optC, q.isCodeOptions)}` : "";
+row2 += " & ";
+row2 += q.optD ? `\\textbf{(D)} ${processOpt(q.optD, q.isCodeOptions)}` : "";
+row2 += " \\\\\n";
+latex += row1 + row2;
+latex += "\\end{tabular}\n";
+} else {
+latex += "\\begin{choices}\n";
+if (q.optA) latex += `  \\choice ${processOpt(q.optA, q.isCodeOptions)}\n`;
+if (q.optB) latex += `  \\choice ${processOpt(q.optB, q.isCodeOptions)}\n`;
+if (q.optC) latex += `  \\choice ${processOpt(q.optC, q.isCodeOptions)}\n`;
+if (q.optD) latex += `  \\choice ${processOpt(q.optD, q.isCodeOptions)}\n`;
+latex += "\\end{choices}\n";
+}
+} else {
+latex += `\n\\vspace{0.5cm}\n\\textbf{Answer:} ${escapeLatex(q.natAnswer) || '\\rule{3cm}{0.4pt}'}\n`;
+}
+latex += "\n\\end{multicols*}\n\\vspace{0.6cm}\n\\newpage\n";
+});
+latex += "\n\\end{questions}\n\\end{document}\n";
+await fs.writeFile(texFilePath, latex, 'utf8');
+try {
+await execAsync(`pdflatex -interaction=nonstopmode -output-directory="${tempDir}" "${texFilePath}"`);
+} catch (pdflatexError) {
+console.warn(`pdflatex threw a warning on chunk ${chunkIndex}, but might have generated the PDF.`, pdflatexError);
+}
+const pdfBuffer = await fs.readFile(pdfFilePath);
+zip.addFile(`${subject}_${chapter}_PYQs_Part${chunkIndex}.pdf`, pdfBuffer);
+}
+const zipBuffer = zip.toBuffer();
+await fs.rm(baseTempDir, { recursive: true, force: true });
+return new NextResponse(zipBuffer, {
+status: 200,
+headers: {
+'Content-Type': 'application/zip',
+'Content-Disposition': `attachment; filename="${subject}_${chapter}_PYQs.zip"`,
+},
+});
+} catch (error) {
+console.error("PDF Generation Error:", error);
+try {
+await fs.rm(baseTempDir, { recursive: true, force: true });
+} catch (cleanupError) {
+console.error("Failed to clean up temp directory:", cleanupError);
+}
+return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+}
+}
+
+src\app\api\preferences\route.js
+import { NextResponse } from 'next/server';
+import dbConnect from '@/lib/mongodb';
+import Preference from '@/models/Preference';
+export async function GET() {
+try {
+await dbConnect();
+const prefs = await Preference.findOne({ user: 'admin' });
+return NextResponse.json({ success: true, data: prefs });
+} catch (error) {
+console.error("Prefs GET Error:", error);
+return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+}
+}
+export async function POST(req) {
+try {
+await dbConnect();
+const { subject, chapter } = await req.json();
+const prefs = await Preference.findOneAndUpdate(
+{ user: 'admin' },
+{ lastSubject: subject, lastChapter: chapter },
+{ new: true, upsert: true }
+);
+return NextResponse.json({ success: true, data: prefs });
+} catch (error) {
+console.error("Prefs POST Error:", error);
+return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+}
+}
+
+src\app\api\scrape\route.js
+import { NextResponse } from 'next/server';
+import * as cheerio from 'cheerio';
+export async function GET(req) {
+try {
+const { searchParams } = new URL(req.url);
+const baseUrl = searchParams.get('url');
+const pageNo = searchParams.get('page') || '1';
+if (!baseUrl) return NextResponse.json({ success: false, error: "Missing URL parameter" }, { status: 400 });
+const targetUrl = `${baseUrl.split('?')[0]}?page_no=${pageNo}`;
+const response = await fetch(targetUrl);
+const html = await response.text();
+const $ = cheerio.load(html);
+let totalPages = 1;
+if (pageNo === '1') {
+$('.pagination li a').each((i, el) => {
+const text = $(el).text().trim();
+if (!isNaN(parseInt(text))) totalPages = Math.max(totalPages, parseInt(text));
+});
+}
+const questions = [];
+const cleanText = (str) => {
+if (!str) return "";
+return str
+.replace(/\[\/?latex\]/gi, '$')
+.replace(/&nbsp;/g, ' ')
+.replace(/\s+/g, ' ')
+.trim();
+};
+$('.question').each((i, el) => {
+const typeLabel = $(el).find('.question_type_labal').text();
+let marks = typeLabel.includes("2 Mark") ? "2" : "1";
+const metaLinks = $(el).find('.year_sub_chap_link a');
+let year = "2026";
+let setNum = "";
+let rawTopic = "Unknown Topic";
+if (metaLinks.length > 0) {
+const metaText = $(metaLinks[0]).text();
+const yearMatch = metaText.match(/\d{4}/);
+if (yearMatch) year = yearMatch[0];
+const setMatch = metaText.match(/SET\s*[-_]?\s*(\d+)/i);
+if (setMatch) setNum = setMatch[1];
+}
+if (metaLinks.length > 1) {
+rawTopic = $(metaLinks[1]).text().trim();
+}
+$(el).find('.katex').each((j, katexEl) => {
+const latex = $(katexEl).find('annotation[encoding="application/x-tex"]').text();
+if (latex) $(katexEl).replaceWith(`$${latex}$`);
+});
+let diagram = "";
+$(el).find('.question_text img').each((j, imgEl) => {
+const src = $(imgEl).attr('src') || $(imgEl).attr('data-src');
+if (src) diagram += `(Ext: ${src}) `;
+$(imgEl).replaceWith('[DIAGRAM_PLACEHOLDER]');
+});
+$(el).find('.question_text br').replaceWith('\n');
+let text = $(el).find('.question_text').text().trim();
+text = text.replace(/^Question \d+\s*/i, '').trim();
+text = cleanText(text);
+let optA = "", optB = "", optC = "", optD = "";
+const rows = $(el).find('.answer_table tbody tr');
+if (rows.length >= 4) {
+optA = cleanText($(rows[0]).find('.option_data').text());
+optB = cleanText($(rows[1]).find('.option_data').text());
+optC = cleanText($(rows[2]).find('.option_data').text());
+optD = cleanText($(rows[3]).find('.option_data').text());
+}
+questions.push({
+id: Math.random().toString(36).substr(2, 9),
+text,
+code: "",
+year,
+setNum,
+rawTopic,
+marks,
+diagram: diagram.trim(),
+ext: ".png",
+optA,
+optB,
+optC,
+optD,
+natAnswer: rows.length === 0 ? "NAT" : ""
+});
+});
+return NextResponse.json({ success: true, totalPages, currentPage: parseInt(pageNo), questions });
+} catch (error) {
+return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+}
+}
+
+src\app\api\scraped-chapters\route.js
+import { NextResponse } from 'next/server';
+import dbConnect2 from '@/lib/mongodb2';
+import ScrapedChapterSchema from '@/models/ScrapedChapter';
+export async function POST(req) {
+try {
+const conn = await dbConnect2();
+const ScrapedChapter = conn.models.ScrapedChapter || conn.model('ScrapedChapter', ScrapedChapterSchema);
+const { subject, chapter, questions } = await req.json();
+const savedChapter = await ScrapedChapter.findOneAndUpdate(
+{ subject, chapter },
+{ questions },
+{ new: true, upsert: true }
+);
+return NextResponse.json({ success: true, data: savedChapter });
+} catch (error) {
+console.error("POST Error:", error);
+return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+}
+}
+export async function GET(req) {
+try {
+const conn = await dbConnect2();
+const ScrapedChapter = conn.models.ScrapedChapter || conn.model('ScrapedChapter', ScrapedChapterSchema);
+const { searchParams } = new URL(req.url);
+const subject = searchParams.get('subject');
+const chapter = searchParams.get('chapter');
+if (subject && chapter) {
+const data = await ScrapedChapter.findOne({ subject, chapter });
+return NextResponse.json({ success: true, data });
+} else {
+const chapters = await ScrapedChapter.find({}, 'subject chapter -_id');
+return NextResponse.json({ success: true, data: chapters });
+}
+} catch (error) {
+console.error("GET Error:", error);
+return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+}
+}
+
+src\app\api\status\route.js
+import { NextResponse } from 'next/server';
+import dbConnect from '@/lib/mongodb';
+import ScrapedChapter from '@/models/ScrapedChapter';
+export async function POST(req) {
+try {
+await dbConnect();
+const { subject, chapter, questions } = await req.json();
+const savedChapter = await ScrapedChapter.findOneAndUpdate(
+{ subject, chapter },
+{ questions },
+{ new: true, upsert: true }
+);
+return NextResponse.json({ success: true, data: savedChapter });
+} catch (error) {
+console.error("POST Error:", error);
+return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+}
+}
+export async function GET(req) {
+try {
+await dbConnect();
+const { searchParams } = new URL(req.url);
+const subject = searchParams.get('subject');
+const chapter = searchParams.get('chapter');
+if (subject && chapter) {
+const data = await ScrapedChapter.findOne({ subject, chapter });
+return NextResponse.json({ success: true, data });
+} else {
+const chapters = await ScrapedChapter.find({}, 'subject chapter -_id');
+return NextResponse.json({ success: true, data: chapters });
+}
+} catch (error) {
+console.error("GET Error:", error);
+return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+}
+}
+
+src\app\kmap-maker\page.js
+import React, { useState, useRef, useEffect } from 'react';
+import Link from 'next/link';
+import html2canvas from 'html2canvas';
+const getGrayCodes = (bits) => {
+if (bits === 0) return [''];
+if (bits === 1) return ['0', '1'];
+const prev = getGrayCodes(bits - 1);
+return [...prev.map(c => '0' + c), ...prev.reverse().map(c => '1' + c)];
+};
+const getMapConfig = (numVars) => {
+switch (numVars) {
+case 2: return { rowBits: 1, colBits: 1 };
+case 3: return { rowBits: 1, colBits: 2 };
+case 4: return { rowBits: 2, colBits: 2 };
+case 5: return { rowBits: 2, colBits: 3 };
+case 6: return { rowBits: 3, colBits: 3 };
+default: return { rowBits: 2, colBits: 2 };
+}
+};
+const getLabels = (numVars, varStr) => {
+const v = (varStr + "ABCDEF").substring(0, numVars);
+switch (numVars) {
+case 2: return { rowLabel: v.slice(0, 1), colLabel: v.slice(1, 2) };
+case 3: return { rowLabel: v.slice(0, 1), colLabel: v.slice(1, 3) };
+case 4: return { rowLabel: v.slice(0, 2), colLabel: v.slice(2, 4) };
+case 5: return { rowLabel: v.slice(0, 2), colLabel: v.slice(2, 5) };
+case 6: return { rowLabel: v.slice(0, 3), colLabel: v.slice(3, 6) };
+default: return { rowLabel: v.slice(0, 2), colLabel: v.slice(2, 4) };
+}
+};
+const getDefaultVarString = (n) => "ABCDEF".substring(0, n);
+export default function KMapPage() {
+const [numVars, setNumVars] = useState(4);
+const [varString, setVarString] = useState("ABCD");
+const [fileName, setFileName] = useState("8");
+const [cellData, setCellData] = useState({});
+const [activeTool, setActiveTool] = useState('cycle');
+const [showVarExpr, setShowVarExpr] = useState(false);
+const [toast, setToast] = useState(null);
+const mapRef = useRef(null);
+const config = getMapConfig(numVars);
+const labels = getLabels(numVars, varString);
+const rowCodes = getGrayCodes(config.rowBits);
+const colCodes = getGrayCodes(config.colBits);
+const showToast = (message, type = 'success') => {
+setToast({ message, type });
+setTimeout(() => setToast(null), 3000);
+};
+useEffect(() => {
+const handleGlobalKeyDown = (e) => {
+if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') {
+return;
+}
+const key = e.key.toUpperCase();
+if (key === '1') setActiveTool('1');
+else if (key === '0') setActiveTool('0');
+else if (key === 'X') setActiveTool('X');
+else if (key === 'C') setActiveTool('cycle');
+else if (key === 'E' || key === 'BACKSPACE' || key === 'DELETE') setActiveTool('erase');
+};
+window.addEventListener('keydown', handleGlobalKeyDown);
+return () => window.removeEventListener('keydown', handleGlobalKeyDown);
+}, []);
+const handleNumVarsChange = (e) => {
+const newVal = parseInt(e.target.value);
+setNumVars(newVal);
+setVarString(getDefaultVarString(newVal));
+setCellData({});
+};
+const handleCellClick = (rCode, cCode) => {
+const key = `${rCode}-${cCode}`;
+setCellData((prev) => {
+if (activeTool === 'cycle') {
+const current = prev[key] || '';
+let nextState = '1';
+if (current === '1') nextState = '0';
+else if (current === '0') nextState = 'X';
+else if (current === 'X') nextState = '';
+return { ...prev, [key]: nextState };
+} else if (activeTool === 'erase') {
+return { ...prev, [key]: '' };
+} else {
+return { ...prev, [key]: activeTool };
+}
+});
+};
+const handleCellKeyDown = (e, rCode, cCode) => {
+const key = `${rCode}-${cCode}`;
+const val = e.key.toUpperCase();
+if (['1', '0', 'X', 'BACKSPACE', 'DELETE'].includes(val)) {
+e.preventDefault();
+}
+if (val === '1' || val === '0' || val === 'X') {
+setCellData(prev => ({ ...prev, [key]: val }));
+setActiveTool(val);
+} else if (val === 'BACKSPACE' || val === 'DELETE') {
+setCellData(prev => ({ ...prev, [key]: '' }));
+}
+};
+const handleFillEmptyWithZeros = () => {
+setCellData(prev => {
+const newData = { ...prev };
+let filledCount = 0;
+rowCodes.forEach(r => {
+colCodes.forEach(c => {
+const key = `${r}-${c}`;
+if (!newData[key]) {
+newData[key] = '0';
+filledCount++;
+}
+});
+});
+if (filledCount > 0) {
+showToast(`Filled ${filledCount} empty boxes with 0`, "info");
+} else {
+showToast("No empty boxes left to fill", "info");
+}
+return newData;
+});
+};
+const handleClear = () => {
+setCellData({});
+showToast("Grid cleared", "info");
+};
+const handleDownload = async () => {
+if (!mapRef.current) return;
+const defaultName = `KMap_${numVars}Var`;
+let requestedName = window.prompt("Enter a name for your K-Map image:", fileName || defaultName);
+if (requestedName === null) return;
+let finalName = requestedName.trim() || defaultName;
+if (!finalName.toLowerCase().endsWith('.png')) {
+finalName += '.png';
+}
+if (document.activeElement) document.activeElement.blur();
+showToast("Generating high-res PNG...", "info");
+try {
+const canvas = await html2canvas(mapRef.current, {
+scale: 3,
+backgroundColor: '#ffffff',
+logging: false,
+});
+const image = canvas.toDataURL("image/png");
+const link = document.createElement('a');
+link.href = image;
+link.download = finalName;
+link.click();
+showToast(`✅ Downloaded as ${finalName}`);
+} catch (error) {
+console.error("Export Error:", error);
+showToast("❌ Failed to download image", "error");
+}
+};
+const renderHeader = (code, vars) => {
+if (!showVarExpr) return code;
+return (
+<div style={{ display: 'flex' }}>
+{code.split('').map((bit, i) => {
+const v = vars[i] || '';
+return (
+<span
+key={i}
+style={{
+textDecoration: bit === '0' ? 'overline' : 'none',
+marginRight: '1px'
+}}
+>
+{v}
+</span>
+);
+})}
+</div>
+);
+};
+const CELL_SIZE = 75;
+const HEADER_W = 60;
+const HEADER_H = 50;
+const getToolBtnStyle = (toolName) => ({
+padding: '6px 12px',
+borderRadius: '4px',
+fontWeight: 'bold',
+cursor: 'pointer',
+border: 'none',
+transition: '0.2s',
+background: activeTool === toolName ? '#cba6f7' : 'transparent',
+color: activeTool === toolName ? '#11111b' : '#bac2de',
+});
+return (
+<div style={{ maxWidth: '1200px', margin: 'auto', padding: '20px', color: '#cdd6f4', fontFamily: 'sans-serif' }}>
+{toast && (
+<div style={{
+position: 'fixed', bottom: '30px', right: '30px',
+background: toast.type === 'error' ? '#f38ba8' : toast.type === 'info' ? '#89b4fa' : '#a6e3a1',
+color: '#11111b', padding: '15px 25px', borderRadius: '8px', zIndex: 9999, fontWeight: 'bold',
+boxShadow: '0 8px 15px rgba(0,0,0,0.5)', transition: 'all 0.3s ease-in-out'
+}}>
+{toast.message}
+</div>
+)}
+{}
+<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #89b4fa', paddingBottom: '15px', marginBottom: '30px' }}>
+<h1 style={{ color: '#89b4fa', margin: 0 }}>📐 LaTeX-Style K-Map Generator</h1>
+<Link href="/" style={{ background: '#45475a', color: '#cdd6f4', padding: '10px 20px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold' }}>
+⬅ Back to Editor
+</Link>
+</div>
+{}
+<div style={{ background: '#1e1e2e', padding: '20px', borderRadius: '10px', display: 'flex', gap: '20px', alignItems: 'center', marginBottom: '15px', boxShadow: '0 4px 6px rgba(0,0,0,0.3)', flexWrap: 'wrap' }}>
+{}
+<div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+<label style={{ fontWeight: 'bold', color: '#bac2de' }}>Variables:</label>
+<select
+value={numVars}
+onChange={handleNumVarsChange}
+style={{ padding: '8px 12px', borderRadius: '4px', background: '#11111b', color: '#cdd6f4', border: '1px solid #45475a', outline: 'none', cursor: 'pointer' }}
+>
+{[2, 3, 4, 5, 6].map(v => <option key={v} value={v}>{v}</option>)}
+</select>
+</div>
+{}
+<div style={{ display: 'flex', alignItems: 'center', gap: '5px', borderLeft: '1px solid #45475a', paddingLeft: '20px' }}>
+<label style={{ fontWeight: 'bold', color: '#bac2de', marginRight: '5px' }}>Vars:</label>
+<input
+type="text"
+maxLength={numVars}
+value={varString}
+onChange={(e) => setVarString(e.target.value.replace(/[^a-zA-Z0-9]/g, ''))}
+placeholder={getDefaultVarString(numVars)}
+style={{
+width: '80px',
+padding: '8px',
+textAlign: 'center',
+borderRadius: '4px',
+background: '#11111b',
+color: '#a6e3a1',
+border: '1px solid #45475a',
+outline: 'none',
+fontWeight: 'bold',
+letterSpacing: '2px'
+}}
+/>
+</div>
+{}
+<div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginRight: 'auto', borderLeft: '1px solid #45475a', paddingLeft: '20px' }}>
+<label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontWeight: 'bold', color: '#bac2de', userSelect: 'none' }}>
+<input
+type="checkbox"
+checked={showVarExpr}
+onChange={(e) => setShowVarExpr(e.target.checked)}
+style={{ width: '16px', height: '16px', cursor: 'pointer' }}
+/>
+Show Variable Expressions
+</label>
+</div>
+{}
+<div style={{ display: 'flex', alignItems: 'center', gap: '5px', borderLeft: '1px solid #45475a', paddingLeft: '20px' }}>
+<label style={{ fontWeight: 'bold', color: '#bac2de', marginRight: '5px' }}>Default Name:</label>
+<input
+type="text"
+value={fileName}
+onChange={(e) => setFileName(e.target.value)}
+style={{
+width: '80px',
+padding: '8px',
+borderRadius: '4px',
+background: '#11111b',
+color: '#cdd6f4',
+border: '1px solid #45475a',
+outline: 'none',
+}}
+/>
+</div>
+{}
+<button onClick={handleFillEmptyWithZeros} style={{ background: '#89dceb', color: '#11111b', padding: '8px 16px', borderRadius: '4px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }} title="Fill all empty boxes with 0">
+0️⃣ Fill Empty with 0
+</button>
+<button onClick={handleClear} style={{ background: '#f38ba8', color: '#11111b', padding: '8px 16px', borderRadius: '4px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
+🗑️ Clear
+</button>
+<button onClick={handleDownload} style={{ background: '#a6e3a1', color: '#11111b', padding: '8px 16px', borderRadius: '4px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
+📸 Download PNG
+</button>
+</div>
+{}
+<div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+<div style={{ background: '#181825', border: '1px solid #45475a', padding: '6px', borderRadius: '8px', display: 'flex', gap: '5px', alignItems: 'center' }}>
+<span style={{ color: '#6c7086', fontWeight: 'bold', fontSize: '14px', marginRight: '10px', marginLeft: '5px' }}>Active Paint Tool:</span>
+<button onClick={() => setActiveTool('cycle')} style={getToolBtnStyle('cycle')} title="Press 'C' - Click to cycle 1 -> 0 -> X">🔄 Cycle (C)</button>
+<div style={{ width: '1px', height: '20px', background: '#45475a', margin: '0 5px' }}></div>
+<button onClick={() => setActiveTool('1')} style={getToolBtnStyle('1')} title="Press '1'">🖌️ Paint 1</button>
+<button onClick={() => setActiveTool('0')} style={getToolBtnStyle('0')} title="Press '0'">🖌️ Paint 0</button>
+<button onClick={() => setActiveTool('X')} style={getToolBtnStyle('X')} title="Press 'X'">🖌️ Paint X</button>
+<div style={{ width: '1px', height: '20px', background: '#45475a', margin: '0 5px' }}></div>
+<button onClick={() => setActiveTool('erase')} style={getToolBtnStyle('erase')} title="Press 'E' or Backspace">🧽 Erase (E)</button>
+</div>
+</div>
+{}
+<div style={{ display: 'flex', justifyContent: 'center', padding: '40px', background: '#181825', borderRadius: '10px', overflowX: 'auto' }}>
+<div
+ref={mapRef}
+style={{
+backgroundColor: '#ffffff',
+padding: '40px',
+display: 'inline-block',
+fontFamily: '"Times New Roman", Times, serif',
+color: '#000000'
+}}
+>
+<div style={{ display: 'flex' }}>
+{}
+<div style={{ display: 'flex', flexDirection: 'column' }}>
+{}
+<div style={{ width: `${HEADER_W}px`, height: `${HEADER_H}px`, position: 'relative' }}>
+<svg width="100%" height="100%" style={{ position: 'absolute', overflow: 'visible' }}>
+<line x1={HEADER_W} y1={HEADER_H} x2={10} y2={10} stroke="black" strokeWidth="1.5" />
+</svg>
+<div style={{ position: 'absolute', bottom: '-5px', left: '0px', color: '#008000', fontWeight: 'bold', fontSize: '20px' }}>
+{labels.rowLabel}
+</div>
+<div style={{ position: 'absolute', top: '-5px', right: '-15px', color: '#008000', fontWeight: 'bold', fontSize: '20px' }}>
+{labels.colLabel}
+</div>
+</div>
+{}
+{rowCodes.map(r => (
+<div key={r} style={{ width: `${HEADER_W}px`, height: `${CELL_SIZE}px`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '22px' }}>
+{renderHeader(r, labels.rowLabel)}
+</div>
+))}
+</div>
+{}
+<div style={{ display: 'flex', flexDirection: 'column' }}>
+{}
+<div style={{ display: 'flex', height: `${HEADER_H}px` }}>
+{colCodes.map(c => (
+<div key={c} style={{ width: `${CELL_SIZE}px`, display: 'flex', alignItems: 'flex-end', justifyContent: 'center', paddingBottom: '10px', fontWeight: 'bold', fontSize: '22px' }}>
+{renderHeader(c, labels.colLabel)}
+</div>
+))}
+</div>
+{}
+<div style={{
+borderTop: '1.5px solid black',
+borderLeft: '1.5px solid black',
+display: 'inline-flex',
+flexDirection: 'column'
+}}>
+{rowCodes.map(r => (
+<div key={r} style={{ display: 'flex' }}>
+{colCodes.map(c => {
+const key = `${r}-${c}`;
+const val = cellData[key] || '';
+return (
+<div
+key={c}
+tabIndex={0}
+onClick={() => handleCellClick(r, c)}
+onKeyDown={(e) => handleCellKeyDown(e, r, c)}
+style={{
+width: `${CELL_SIZE}px`,
+height: `${CELL_SIZE}px`,
+borderRight: '1.5px solid black',
+borderBottom: '1.5px solid black',
+display: 'flex',
+alignItems: 'center',
+justifyContent: 'center',
+fontSize: '42px',
+fontWeight: 'bold',
+cursor: 'pointer',
+userSelect: 'none',
+outlineColor: '#89b4fa'
+}}
+>
+{val}
+</div>
+);
+})}
+</div>
+))}
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+);
+}
+
+src\app\scraped-view\page.js
+import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
+const GATE_SYLLABUS = {
+"1. Discrete Maths": ["1. Mathematical Logic", "2. Set Theory and Algebra", "3. Combinatorics", "4. Graph Theory"],
+"2. TOC": ["1. Finite Automata and Regular Languages", "2. PDA - CFL and DCFL", "3. Turing Machine, RE, REC, Undecidabilitu"],
+"12. DBMS": ["1. ER Model", "2. Funcational Dependencies and Normalizaation", "3. Structure Query Language", "4. Relational Model", "5. Transactions and Concurrency Contorl", "6. File Structures"]
+};
+export default function ScrapedViewer() {
+const [questions, setQuestions] = useState([]);
+const availableSubjects = Object.keys(GATE_SYLLABUS);
+const [subject, setSubject] = useState(availableSubjects[0]);
+const [chapter, setChapter] = useState(GATE_SYLLABUS[availableSubjects[0]][0]);
+const [syncedCount, setSyncedCount] = useState(0);
+const [isDirty, setIsDirty] = useState(false);
+const [imgCacheBuster, setImgCacheBuster] = useState(Date.now());
+const [imageErrors, setImageErrors] = useState(new Set());
+const [toast, setToast] = useState(null);
+const [isReviving, setIsReviving] = useState(false);
+const showToast = (message, type = 'success') => {
+setToast({ message, type });
+setTimeout(() => setToast(null), 3500);
+};
+const loadChapterState = (sub, chap) => {
+const draftKey = `scraped_draft_${sub}_${chap}`;
+const draft = localStorage.getItem(draftKey);
+if (draft) {
+const parsed = JSON.parse(draft);
+setQuestions(parsed.questions || []);
+setSyncedCount(parsed.syncedCount || 0);
+setIsDirty(parsed.isDirty || false);
+} else {
+setQuestions([]);
+setSyncedCount(0);
+setIsDirty(false);
+}
+};
+const loadFromMongoDB = async (sub, chap) => {
+setIsReviving(true);
+try {
+const res = await fetch(`/api/scraped-chapters?subject=${encodeURIComponent(sub)}&chapter=${encodeURIComponent(chap)}`);
+const data = await res.json();
+if (data.success && data.data && data.data.questions && data.data.questions.length > 0) {
+setQuestions(data.data.questions);
+setSyncedCount(data.data.questions.length);
+setIsDirty(false);
+showToast(`✅ Revived ${data.data.questions.length} scraped questions!`, 'success');
+} else {
+showToast("ℹ️ No Scraped DB data found. Loaded local draft.", "info");
+loadChapterState(sub, chap);
+}
+} catch (error) {
+showToast("❌ Error auto-loading from DB", "error");
+loadChapterState(sub, chap);
+} finally {
+setIsReviving(false);
+}
+};
+useEffect(() => {
+loadFromMongoDB(subject, chapter);
+}, []);
+const handleSubjectChange = (e) => {
+const selectedSubject = e.target.value;
+const defaultChapter = GATE_SYLLABUS[selectedSubject][0];
+setSubject(selectedSubject);
+setChapter(defaultChapter);
+loadFromMongoDB(selectedSubject, defaultChapter);
+};
+const handleChapterChange = (e) => {
+const selectedChapter = e.target.value;
+setChapter(selectedChapter);
+loadFromMongoDB(subject, selectedChapter);
+};
+useEffect(() => {
+const draftKey = `scraped_draft_${subject}_${chapter}`;
+if (isDirty) localStorage.setItem(draftKey, JSON.stringify({ questions, syncedCount, isDirty }));
+else localStorage.removeItem(draftKey);
+}, [questions, syncedCount, isDirty, subject, chapter]);
+useEffect(() => {
+if (typeof window !== 'undefined' && !window.MathJax) {
+window.MathJax = {
+tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+startup: { typeset: false }
+};
+const script = document.createElement("script");
+script.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js";
+script.async = true;
+document.head.appendChild(script);
+}
+}, []);
+useEffect(() => {
+const timer = setTimeout(() => {
+if (typeof window !== 'undefined' && window.MathJax && window.MathJax.typesetPromise) {
+const container = document.getElementById('scraped_questions_container');
+if (container) {
+window.MathJax.typesetClear([container]);
+window.MathJax.typesetPromise([container]).catch(err => console.error("MathJax Render Error:", err));
+}
+}
+}, 800);
+return () => clearTimeout(timer);
+});
+const updateQ = (id, field, value) => {
+let finalValue = value;
+if (typeof value === 'string' && ['text', 'optA', 'optB', 'optC', 'optD', 'natAnswer'].includes(field)) {
+finalValue = value.replace(/\$\$/g, '$').replace(/\n(?:\s*\n)+/g, '\n');
+}
+setQuestions(questions.map(q => q.id === id ? { ...q, [field]: finalValue } : q));
+setIsDirty(true);
+};
+const saveToMongoDB = async () => {
+if (!confirm(`🚨 Are you sure you want to SAVE to the SCRAPED DB for "${subject} - ${chapter}"?`)) return;
+try {
+showToast("Saving to Scraped DB...", "info");
+const res = await fetch('/api/scraped-chapters', {
+method: 'POST', headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ subject, chapter, questions })
+});
+const data = await res.json();
+if (data.success) {
+setSyncedCount(questions.length);
+setIsDirty(false);
+showToast(`✅ Saved successfully!`);
+} else {
+showToast("❌ Error saving to DB: " + data.error, "error");
+}
+} catch (error) {
+showToast("❌ Error connecting to database", "error");
+}
+};
+return (
+<div style={{ maxWidth: '98%', margin: 'auto', padding: '20px' }}>
+{toast && (
+<div style={{
+position: 'fixed', bottom: '30px', right: '30px',
+background: toast.type === 'error' ? '#f38ba8' : toast.type === 'info' ? '#89b4fa' : '#a6e3a1',
+color: '#11111b', padding: '15px 25px', borderRadius: '8px', zIndex: 9999, fontWeight: 'bold'
+}}>{toast.message}</div>
+)}
+<div className="card" style={{ display: 'flex', gap: '15px', alignItems: 'center', padding: '15px', borderBottom: '2px solid #f9e2af', marginBottom: '20px' }}>
+<h2 style={{ color: '#f9e2af', margin: 0, paddingRight: '20px', borderRight: '1px solid #45475a' }}>📚 Scraped DB Viewer</h2>
+<div>
+<label style={{ marginTop: 0 }}>Subject</label>
+<select value={subject} onChange={handleSubjectChange} style={{ cursor: 'pointer' }}>
+{availableSubjects.map(sub => <option key={sub} value={sub}>{sub}</option>)}
+</select>
+</div>
+<div>
+<label style={{ marginTop: 0 }}>Chapter</label>
+<select value={chapter} onChange={handleChapterChange} style={{ cursor: 'pointer' }}>
+{GATE_SYLLABUS[subject].map(chap => <option key={chap} value={chap}>{chap}</option>)}
+</select>
+</div>
+<div style={{ flex: 1, textAlign: 'center', padding: '10px', background: '#181825', borderRadius: '4px' }}>
+{isDirty ? (
+<span style={{ color: '#f9e2af', fontWeight: 'bold' }}>⚠️ {syncedCount}/{questions.length} Synced (Unsaved)</span>
+) : (
+<span style={{ color: '#a6e3a1', fontWeight: 'bold' }}>✅ All {questions.length} Synced</span>
+)}
+</div>
+<button style={{ background: '#a6e3a1', color: '#11111b', padding: '10px 15px', fontWeight: 'bold', border: 'none', borderRadius: '4px', cursor: 'pointer' }} onClick={saveToMongoDB}>💾 Save DB</button>
+<Link href="/" style={{ background: '#45475a', color: '#cdd6f4', padding: '10px 15px', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold' }}>⬅ Main Editor</Link>
+<Link href="/scraper" style={{ background: '#cba6f7', color: '#11111b', padding: '10px 15px', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold' }}>🕸️ Scraper</Link>
+</div>
+{}
+<div id="scraped_questions_container">
+{questions.map((q, idx) => {
+let formattedText = q.text.replace(/\n/g, '<br>');
+const hasOptions = q.optA || q.optB || q.optC || q.optD;
+return (
+<div key={q.id} style={{ display: 'flex', background: '#181825', border: '1px solid #313244', borderRadius: '8px', marginBottom: '20px', padding: '20px' }}>
+<div style={{ flex: 1, paddingRight: '20px', borderRight: '1px solid #313244' }}>
+<h3 style={{ margin: '0 0 10px 0', color: '#f9e2af' }}>Question {idx + 1}</h3>
+<textarea value={q.text} onChange={(e) => updateQ(q.id, 'text', e.target.value)} style={{ width: '100%', minHeight: '100px', background: '#11111b', color: '#cdd6f4', border: '1px solid #45475a', padding: '10px' }} />
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginTop: '10px' }}>
+<input type="text" value={q.optA} onChange={(e) => updateQ(q.id, 'optA', e.target.value)} placeholder="Option A" />
+<input type="text" value={q.optB} onChange={(e) => updateQ(q.id, 'optB', e.target.value)} placeholder="Option B" />
+<input type="text" value={q.optC} onChange={(e) => updateQ(q.id, 'optC', e.target.value)} placeholder="Option C" />
+<input type="text" value={q.optD} onChange={(e) => updateQ(q.id, 'optD', e.target.value)} placeholder="Option D" />
+</div>
+{!hasOptions && <input type="text" value={q.natAnswer || ""} onChange={(e) => updateQ(q.id, 'natAnswer', e.target.value)} placeholder="NAT Answer" style={{ marginTop: '10px', border: '1px solid #f38ba8' }} />}
+</div>
+<div style={{ flex: 1, paddingLeft: '20px' }}>
+<div style={{ color: '#a6e3a1', fontWeight: 'bold', marginBottom: '10px' }}>
+[GATE {q.year} {q.setNum ? `Set-${q.setNum} ` : ''}| {q.marks} Mark]
+</div>
+<div dangerouslySetInnerHTML={{ __html: formattedText }} />
+<div style={{ marginTop: '15px' }}>
+{hasOptions ? (
+<>
+<div style={{ marginBottom: '8px' }}><strong>(A)</strong> <span dangerouslySetInnerHTML={{ __html: q.optA }} /></div>
+<div style={{ marginBottom: '8px' }}><strong>(B)</strong> <span dangerouslySetInnerHTML={{ __html: q.optB }} /></div>
+<div style={{ marginBottom: '8px' }}><strong>(C)</strong> <span dangerouslySetInnerHTML={{ __html: q.optC }} /></div>
+<div style={{ marginBottom: '8px' }}><strong>(D)</strong> <span dangerouslySetInnerHTML={{ __html: q.optD }} /></div>
+</>
+) : (<div style={{ color: '#f38ba8' }}><strong>NAT Answer:</strong> {q.natAnswer ? q.natAnswer : '_________________'}</div>)}
+</div>
+</div>
+</div>
+);
+})}
+</div>
+</div>
+);
+}
+
+src\app\scraper\page.js
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+const GATE_SYLLABUS = {
+"1. Discrete Maths": ["1. Mathematical Logic", "2. Set Theory and Algebra", "3. Combinatorics", "4. Graph Theory"],
+"2. TOC": ["1. Finite Automata and Regular Languages", "2. PDA - CFL and DCFL", "3. Turing Machine, RE, REC, Undecidabilitu"],
+"3. Computer Networks": ["1. ISO-OSI Stack and SWP", "2. LAN", "3. TCP, UDP and IP", "4. Routing and Application Layer"],
+"4. COA": ["1. CPU Arch. and Address. Modes", "2. Control Unit Design", "3. Instructions Pipeline", "4. Memory Organization", "5. IO Organisation"],
+"5. Operating Systems": ["1. Process Management-1", "2. Process Management-2", "3. Deadlock", "4. Mem. Mgmt and Virtual Mem", "5. File Sys and Device Mgmt", "6. Miscellaneous"],
+"6. Data Structures": ["1. Arrays", "2. Stack and Queues", "3. Linked Lists", "4. Trees", "5. Graphs", "6. Hashing"],
+"7. Algorithms": ["1. Algo. Analysis and Asymptotic Notations", "2. Divide and Conquer", "3. Greedy Method", "4. Dynamic Programming", "5. P and NP Concepts", "6. Miscellaneous Topics"],
+"8. C Prog": ["1. Programming"],
+"9. Digital Logic": ["1. Logic Functions and Minimizations", "2. Combinational Circuits", "3. Sequential Circuits", "4. Number Systems"],
+"10. Compiler Design": ["1. Lexical Analysis", "2. Parsing Techniques", "3. Syntax Directed Translations", "4. Code Generations and Optimizatinos"],
+"11. Engg. Maths": ["1. Probability", "2. Linear Algebra", "3. Calculus"],
+"12. DBMS": ["1. ER Model", "2. Funcational Dependencies and Normalizaation", "3. Structure Query Language", "4. Relational Model", "5. Transactions and Concurrency Contorl", "6. File Structures"]
+};
+const TOPIC_MAPPING = {
+"Asymptotic Notation": "1. Algo. Analysis and Asymptotic Notations",
+"Recurrence Relation": "1. Algo. Analysis and Asymptotic Notations",
+"Divide and Conquer": "2. Divide and Conquer",
+"Sorting": "2. Divide and Conquer",
+"Greedy Technique": "3. Greedy Method",
+"Minimum Spanning Tree": "3. Greedy Method",
+"Shortest Path": "3. Greedy Method",
+"Graph Traversal": "6. Miscellaneous Topics",
+"Dynamic Programming": "4. Dynamic Programming",
+"Array": "1. Arrays",
+"Link List": "3. Linked Lists",
+"Stack": "2. Stack and Queues",
+"Queue": "2. Stack and Queues",
+"Binary Tree": "4. Trees",
+"Binary Search Tree": "4. Trees",
+"AVL Tree": "4. Trees",
+"B Tree": "4. Trees",
+"B+ Tree": "4. Trees",
+"Heap Tree": "4. Trees",
+"n-ary Tree": "4. Trees",
+"Hashing": "6. Hashing",
+"Arithmetic Operation": "1. Programming",
+"Conditional Statement": "1. Programming",
+"Loops": "1. Programming",
+"Array and Pointer": "1. Programming",
+"Function": "1. Programming",
+"Lexical Analysis": "1. Lexical Analysis",
+"Parsing": "2. Parsing Techniques",
+"Syntax-directed Translation": "3. Syntax Directed Translations",
+"Intermediate Code Generation": "4. Code Generations and Optimizatinos",
+"Runtime Environment": "4. Code Generations and Optimizatinos",
+"Matching": "1. Lexical Analysis",
+"Regular Expression": "1. Finite Automata and Regular Languages",
+"Regular Grammar": "1. Finite Automata and Regular Languages",
+"Regular Language": "1. Finite Automata and Regular Languages",
+"Finite Automata": "1. Finite Automata and Regular Languages",
+"Context Free Grammar": "2. PDA - CFL and DCFL",
+"Context Free Language": "2. PDA - CFL and DCFL",
+"Push-down Automata": "2. PDA - CFL and DCFL",
+"Recursive Language": "3. Turing Machine, RE, REC, Undecidabilitu",
+"Turing Machine": "3. Turing Machine, RE, REC, Undecidabilitu",
+"Undecidability": "3. Turing Machine, RE, REC, Undecidabilitu",
+"Process": "1. Process Management-1",
+"Thread": "1. Process Management-1",
+"CPU Scheduling": "1. Process Management-1",
+"Process Synchronization": "2. Process Management-2",
+"Deadlock": "3. Deadlock",
+"Memory Management": "4. Mem. Mgmt and Virtual Mem",
+"File Systems": "5. File Sys and Device Mgmt",
+"Disk Scheduling": "5. File Sys and Device Mgmt",
+"System Call": "6. Miscellaneous",
+"OSI Layer": "1. ISO-OSI Stack and SWP",
+"Physical Layer": "1. ISO-OSI Stack and SWP",
+"Data Link Layer": "1. ISO-OSI Stack and SWP",
+"Network Layer Protocol": "3. TCP, UDP and IP",
+"Transport Layer Protocol": "3. TCP, UDP and IP",
+"Application Layer Protocols": "4. Routing and Application Layer",
+"Network Security": "4. Routing and Application Layer",
+"Machine Instruction": "1. CPU Arch. and Address. Modes",
+"Addressing Modes": "1. CPU Arch. and Address. Modes",
+"ALU Data Path and Control Unit": "2. Control Unit Design",
+"Pipeline Processor": "3. Instructions Pipeline",
+"Cache Memory": "4. Memory Organization",
+"Secondary Storage": "4. Memory Organization",
+"Memory Chip Design": "4. Memory Organization",
+"IO Interface": "5. IO Organisation",
+"Interrupt": "5. IO Organisation",
+"ER Model": "1. ER Model",
+"Normal Form": "2. Funcational Dependencies and Normalizaation",
+"SQL": "3. Structure Query Language",
+"Relational Schema": "4. Relational Model",
+"Relational Algebra": "4. Relational Model",
+"Tuple Calculus": "4. Relational Model",
+"Integrity Constraints": "4. Relational Model",
+"Transactions": "5. Transactions and Concurrency Contorl",
+"File System": "6. File Structures",
+"Propositional Logic": "1. Mathematical Logic",
+"Set Theory": "2. Set Theory and Algebra",
+"Relation": "2. Set Theory and Algebra",
+"Functions": "2. Set Theory and Algebra",
+"Lattice": "2. Set Theory and Algebra",
+"Group Theory": "2. Set Theory and Algebra",
+"Combination": "3. Combinatorics",
+"Recurrence": "3. Combinatorics",
+"Graph Theory": "4. Graph Theory",
+"Planar Graph": "4. Graph Theory",
+"Probability Theory": "1. Probability",
+"Boolean Algebra": "1. Logic Functions and Minimizations",
+"Combinational Circuit": "2. Combinational Circuits",
+"Sequential Circuit": "3. Sequential Circuits",
+"Number System": "4. Number Systems",
+"Linear Algebra": "2. Linear Algebra",
+"Calculus": "3. Calculus",
+"Numerical Method": "3. Calculus"
+};
+export default function ScraperPage() {
+const [url, setUrl] = useState('');
+const [isScraping, setIsScraping] = useState(false);
+const [progress, setProgress] = useState({ current: 0, total: 0 });
+const [groupedQuestions, setGroupedQuestions] = useState({});
+const [toast, setToast] = useState(null);
+const [expandedGroups, setExpandedGroups] = useState({});
+const availableSubjects = Object.keys(GATE_SYLLABUS);
+const [subject, setSubject] = useState(availableSubjects[1]);
+const [chapter, setChapter] = useState(GATE_SYLLABUS[availableSubjects[1]][0]);
+const [savedBackups, setSavedBackups] = useState([]);
+const [selectedBackup, setSelectedBackup] = useState('');
+const [lastCopied, setLastCopied] = useState(null);
+const [clickedRanges, setClickedRanges] = useState(new Set());
+const [chunkSizes, setChunkSizes] = useState({});
+const [filterYear, setFilterYear] = useState('All');
+const showToast = (message, type = 'success') => {
+setToast({ message, type });
+setTimeout(() => setToast(null), 3500);
+};
+const loadAvailableBackups = () => {
+if (typeof window === 'undefined') return;
+const keys = Object.keys(localStorage)
+.filter(key => key.startsWith('gate_scraper_backup_'))
+.map(key => key.replace('gate_scraper_backup_', ''));
+setSavedBackups(keys);
+if (keys.length > 0 && !selectedBackup) setSelectedBackup(keys[0]);
+};
+const handleLoadFromDB = async (targetSubject) => {
+if (!targetSubject) return;
+try {
+showToast(`☁️ Fetching ${targetSubject} from Cloud DB...`, "info");
+const loadedGroups = {};
+const newExpandedState = {};
+let totalQs = 0;
+for (const chap of GATE_SYLLABUS[targetSubject]) {
+const res = await fetch(`/api/scraped-chapters?subject=${encodeURIComponent(targetSubject)}&chapter=${encodeURIComponent(chap)}`);
+const data = await res.json();
+if (data.success && data.data && data.data.questions && data.data.questions.length > 0) {
+loadedGroups[chap] = data.data.questions;
+newExpandedState[chap] = true;
+totalQs += data.data.questions.length;
+}
+}
+if (totalQs === 0) {
+showToast(`ℹ️ No data found in MongoDB for ${targetSubject}`, "info");
+return;
+}
+setGroupedQuestions(loadedGroups);
+setExpandedGroups(newExpandedState);
+setSubject(targetSubject);
+setChapter(GATE_SYLLABUS[targetSubject][0]);
+showToast(`✅ Loaded ${totalQs} questions from DB for ${targetSubject}!`);
+} catch (error) {
+showToast("❌ Error loading from DB", "error");
+}
+};
+const handlePushLiveToDB = async () => {
+if (Object.keys(groupedQuestions).length === 0) return showToast("❌ No questions on screen to push!", "error");
+const flatQuestions = [];
+Object.values(groupedQuestions).forEach(arr => flatQuestions.push(...arr));
+if (!confirm(`🚨 Are you sure you want to OVERWRITE the Cloud DB for all chapters in "${subject}" with the ${flatQuestions.length} questions currently on your screen?`)) return;
+try {
+showToast(`☁️ Pushing ${subject} to Cloud...`, "info");
+for (const [chapterName, qsArray] of Object.entries(groupedQuestions)) {
+await fetch('/api/scraped-chapters', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ subject, chapter: chapterName, questions: qsArray })
+});
+}
+showToast(`✅ Successfully pushed all ${subject} data to Cloud DB!`);
+} catch (error) {
+showToast("❌ Network error saving to cloud", "error");
+}
+};
+useEffect(() => {
+loadAvailableBackups();
+}, []);
+useEffect(() => {
+if (typeof window !== 'undefined' && !window.MathJax) {
+window.MathJax = {
+tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+startup: { typeset: false }
+};
+const script = document.createElement("script");
+script.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js";
+script.async = true;
+document.head.appendChild(script);
+}
+}, []);
+useEffect(() => {
+if (isScraping) return;
+const timer = setTimeout(() => {
+if (typeof window !== 'undefined' && window.MathJax && window.MathJax.typesetPromise) {
+const container = document.getElementById('questions_render_container');
+if (container) {
+window.MathJax.typesetClear([container]);
+window.MathJax.typesetPromise([container]).catch(err => console.error(err));
+}
+}
+}, 200);
+return () => clearTimeout(timer);
+}, [groupedQuestions, expandedGroups, isScraping, filterYear]);
+const startScraping = async () => {
+if (!url.includes('practicepaper.in')) {
+return showToast("❌ Please enter a valid practicepaper.in URL", "error");
+}
+setIsScraping(true);
+setGroupedQuestions({});
+setExpandedGroups({});
+setProgress({ current: 1, total: '?' });
+let allQuestions = [];
+let totalPages = 1;
+try {
+const firstRes = await fetch(`/api/scrape?url=${encodeURIComponent(url)}&page=1`);
+const firstData = await firstRes.json();
+if (!firstData.success) throw new Error(firstData.error);
+totalPages = firstData.totalPages;
+allQuestions = [...firstData.questions];
+setProgress({ current: 1, total: totalPages });
+for (let p = 2; p <= totalPages; p++) {
+setProgress({ current: p, total: totalPages });
+const res = await fetch(`/api/scrape?url=${encodeURIComponent(url)}&page=${p}`);
+const data = await res.json();
+if (data.success && data.questions) {
+allQuestions = [...allQuestions, ...data.questions];
+}
+}
+const newGroups = {};
+const newExpandedState = {};
+allQuestions.sort((a, b) => parseInt(a.year) - parseInt(b.year)).forEach(q => {
+const mappedChapter = TOPIC_MAPPING[q.rawTopic] || q.rawTopic || "Uncategorized";
+if (!newGroups[mappedChapter]) {
+newGroups[mappedChapter] = [];
+newExpandedState[mappedChapter] = true;
+}
+newGroups[mappedChapter].push(q);
+});
+setGroupedQuestions(newGroups);
+setExpandedGroups(newExpandedState);
+showToast(`✅ Successfully scraped ${allQuestions.length} questions into ${Object.keys(newGroups).length} groups!`);
+} catch (error) {
+showToast(`❌ Error: ${error.message}`, "error");
+} finally {
+setIsScraping(false);
+}
+};
+const handleCopyGroup = (questionsArray, chapterName) => {
+let bulkString = "";
+questionsArray.forEach(q => {
+bulkString += `QUESTION: ${q.text.trim()} [${q.year} : ${q.marks} M]\n`;
+if (q.code) bulkString += `CODE: ${q.code}\n`;
+if (q.optA || q.optB || q.optC || q.optD) {
+bulkString += `OPTIONS: ${q.optA || ''} ; ${q.optB || ''} ; ${q.optC || ''} ; ${q.optD || ''}\n`;
+}
+bulkString += `\n`;
+});
+navigator.clipboard.writeText(bulkString.trim());
+setLastCopied({ chapter: chapterName, range: filterYear === 'All' ? `ALL (${questionsArray.length})` : `ALL VISIBLE (${questionsArray.length})` });
+showToast(`📋 Copied ${questionsArray.length} questions for ${chapterName}!`);
+};
+const handleCopyRange = (questionsArray, chapterName, rangeStr) => {
+if (!rangeStr || !rangeStr.includes('-')) {
+return showToast("❌ Invalid range format. Use Start-End (e.g., 1-50)", "error");
+}
+const [startStr, endStr] = rangeStr.split('-');
+let start = parseInt(startStr.trim(), 10);
+let end = parseInt(endStr.trim(), 10);
+if (isNaN(start) || isNaN(end) || start < 1 || end < start) {
+return showToast("❌ Invalid numbers in range.", "error");
+}
+start = Math.max(1, start);
+end = Math.min(questionsArray.length, end);
+let slicedQs = questionsArray.slice(start - 1, end);
+if (filterYear !== 'All') {
+slicedQs = slicedQs.filter(q => q.year === filterYear);
+}
+if (slicedQs.length === 0) {
+return showToast("❌ No questions found in that range matching the active filter.", "error");
+}
+let bulkString = "";
+slicedQs.forEach(q => {
+bulkString += `QUESTION: ${q.text.trim()} [${q.year} : ${q.marks} M]\n`;
+if (q.code) bulkString += `CODE: ${q.code}\n`;
+if (q.optA || q.optB || q.optC || q.optD) {
+bulkString += `OPTIONS: ${q.optA || ''} ; ${q.optB || ''} ; ${q.optC || ''} ; ${q.optD || ''}\n`;
+}
+bulkString += `\n`;
+});
+navigator.clipboard.writeText(bulkString.trim());
+const actualRange = `${start}-${end}`;
+setLastCopied({ chapter: chapterName, range: actualRange });
+setClickedRanges(prev => {
+const next = new Set(prev);
+next.add(`${chapterName}_${actualRange}`);
+return next;
+});
+showToast(`📋 Copied Q${start} to Q${end} (${slicedQs.length} questions) for ${chapterName}!`);
+};
+const toggleGroup = (chapterName) => {
+setExpandedGroups(prev => ({ ...prev, [chapterName]: !prev[chapterName] }));
+};
+const toggleAll = (forceExpand) => {
+const newState = {};
+Object.keys(groupedQuestions).forEach(key => { newState[key] = forceExpand; });
+setExpandedGroups(newState);
+};
+const handleSaveToLocalStorage = () => {
+if (Object.keys(groupedQuestions).length === 0) return showToast("❌ No data to save!", "error");
+localStorage.setItem(`gate_scraper_backup_${subject}`, JSON.stringify(groupedQuestions));
+loadAvailableBackups();
+setSelectedBackup(subject);
+showToast(`💾 Saved backup for ${subject}!`);
+};
+const handleLoadFromLocalStorage = (targetSubject) => {
+if (!targetSubject) return;
+const saved = localStorage.getItem(`gate_scraper_backup_${targetSubject}`);
+if (saved) {
+const parsed = JSON.parse(saved);
+setGroupedQuestions(parsed);
+const newExpandedState = {};
+Object.keys(parsed).forEach(key => { newExpandedState[key] = true; });
+setExpandedGroups(newExpandedState);
+setSubject(targetSubject);
+setChapter(GATE_SYLLABUS[targetSubject][0]);
+showToast(`📂 Loaded backup for ${targetSubject}!`);
+}
+};
+const handleCopySingleQuestion = (q) => {
+let qString = `QUESTION: ${q.text.trim()} [${q.year} : ${q.marks} M]\n`;
+if (q.code) qString += `CODE: ${q.code}\n`;
+if (q.optA || q.optB || q.optC || q.optD) {
+qString += `OPTIONS: ${q.optA || ''} ; ${q.optB || ''} ; ${q.optC || ''} ; ${q.optD || ''}\n`;
+}
+navigator.clipboard.writeText(qString.trim());
+showToast(`📋 Copied Question to clipboard!`);
+};
+const yearSet = new Set();
+Object.values(groupedQuestions).forEach(qs => qs.forEach(q => { if (q.year) yearSet.add(q.year); }));
+const scraperAvailableYears = ['All', ...Array.from(yearSet).sort((a, b) => parseInt(b) - parseInt(a))];
+return (
+<div style={{ maxWidth: '1200px', margin: 'auto', padding: '20px', color: '#cdd6f4' }}>
+{toast && (
+<div style={{
+position: 'fixed', bottom: '30px', right: '30px',
+background: toast.type === 'error' ? '#f38ba8' : toast.type === 'info' ? '#89b4fa' : '#a6e3a1',
+color: '#11111b', padding: '15px 25px', borderRadius: '8px', zIndex: 9999, fontWeight: 'bold'
+}}>{toast.message}</div>
+)}
+<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #89b4fa', paddingBottom: '15px', marginBottom: '20px' }}>
+<h1 style={{ color: '#89b4fa', margin: 0 }}>🕸️ Topic-Grouped Scraper</h1>
+<Link href="/" style={{ background: '#45475a', color: '#cdd6f4', padding: '10px 20px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold' }}>
+⬅ Back to Editor
+</Link>
+</div>
+<div className="card" style={{ background: '#1e1e2e', padding: '15px 20px', borderRadius: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', border: '1px solid #a6e3a1' }}>
+<div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+<span style={{ fontSize: '20px' }}>☁️</span>
+<h3 style={{ margin: 0, color: '#a6e3a1', fontSize: '16px' }}>Cloud DB Manager</h3>
+</div>
+<div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+<select
+value={subject}
+onChange={(e) => { setSubject(e.target.value); setChapter(GATE_SYLLABUS[e.target.value][0]); }}
+style={{ padding: '8px', borderRadius: '4px', background: '#11111b', color: '#cdd6f4', border: '1px solid #a6e3a1', outline: 'none', cursor: 'pointer' }}
+>
+{availableSubjects.map(sub => <option key={sub} value={sub}>{sub}</option>)}
+</select>
+<button onClick={() => handleLoadFromDB(subject)} style={{ background: '#a6e3a1', color: '#11111b', padding: '8px 15px', borderRadius: '4px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
+📂 Load from DB
+</button>
+{Object.keys(groupedQuestions).length > 0 && (
+<button onClick={handlePushLiveToDB} style={{ background: '#f38ba8', color: '#11111b', padding: '8px 15px', borderRadius: '4px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
+🚨 Push Screen to DB
+</button>
+)}
+</div>
+</div>
+<div className="card" style={{ background: '#181825', padding: '20px', borderRadius: '10px', display: 'flex', flexWrap: 'wrap', gap: '15px', alignItems: 'flex-end', marginBottom: '20px' }}>
+<div style={{ flex: '1 1 100%' }}>
+<label style={{ display: 'block', marginBottom: '5px', color: '#bac2de', fontWeight: 'bold' }}>Target URL to Scrape</label>
+<input
+type="text"
+value={url}
+onChange={(e) => setUrl(e.target.value)}
+placeholder="e.g., https://practicepaper.in/gate-cse/theory-of-computation"
+style={{ width: '100%', padding: '12px', borderRadius: '6px', border: '1px solid #45475a', background: '#11111b', color: '#cdd6f4', outline: 'none' }}
+disabled={isScraping}
+/>
+</div>
+<button onClick={startScraping} disabled={isScraping || !url} style={{ background: isScraping ? '#6c7086' : '#89b4fa', color: '#11111b', padding: '12px 25px', borderRadius: '6px', fontWeight: 'bold', border: 'none', cursor: isScraping ? 'not-allowed' : 'pointer' }}>
+{isScraping ? `Scraping Page ${progress.current} of ${progress.total}...` : '🚀 Start Scraping & Auto-Group'}
+</button>
+</div>
+{Object.keys(groupedQuestions).length > 0 && (
+<div style={{ background: '#313244', padding: '15px', borderRadius: '10px', display: 'flex', gap: '15px', alignItems: 'center', marginBottom: '20px', border: '1px solid #a6e3a1', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+<div style={{ display: 'flex', gap: '15px', alignItems: 'center', flex: '1 1 auto' }}>
+<div>
+<label style={{ display: 'block', fontSize: '12px', color: '#bac2de' }}>Target Subject:</label>
+<select value={subject} onChange={(e) => { setSubject(e.target.value); setChapter(GATE_SYLLABUS[e.target.value][0]); }} style={{ padding: '8px', borderRadius: '4px', background: '#11111b', color: '#cdd6f4', border: '1px solid #45475a' }}>
+{availableSubjects.map(sub => <option key={sub} value={sub}>{sub}</option>)}
+</select>
+</div>
+{}
+<div>
+<label style={{ display: 'block', fontSize: '12px', color: '#bac2de' }}>Year Filter:</label>
+<select value={filterYear} onChange={(e) => setFilterYear(e.target.value)} style={{ padding: '8px', borderRadius: '4px', background: '#11111b', color: '#cdd6f4', border: '1px solid #89b4fa', outline: 'none' }}>
+{scraperAvailableYears.map(y => <option key={y} value={y}>{y}</option>)}
+</select>
+</div>
+</div>
+<div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+<button onClick={handleSaveToLocalStorage} style={{ background: '#89b4fa', color: '#11111b', padding: '10px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
+💾 Save Backup Local Storage
+</button>
+<button onClick={() => toggleAll(true)} style={{ background: '#45475a', color: '#cdd6f4', padding: '10px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>Expand All</button>
+<button onClick={() => toggleAll(false)} style={{ background: '#45475a', color: '#cdd6f4', padding: '10px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>Collapse All</button>
+</div>
+</div>
+)}
+<div id="questions_render_container">
+<div style={{ display: 'grid', gap: '15px' }}>
+{Object.entries(groupedQuestions).map(([chapterName, questionsArray]) => {
+const visibleQs = filterYear === 'All' ? questionsArray : questionsArray.filter(q => q.year === filterYear);
+if (visibleQs.length === 0) return null;
+return (
+<div key={chapterName} style={{ background: '#11111b', border: '2px solid #cba6f7', borderRadius: '10px', overflow: 'hidden' }}>
+<div
+onClick={() => toggleGroup(chapterName)}
+style={{ background: '#313244', padding: '15px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', userSelect: 'none', borderBottom: expandedGroups[chapterName] ? '2px solid #cba6f7' : 'none' }}
+>
+<h2 style={{ margin: 0, color: '#cba6f7', display: 'flex', alignItems: 'center', gap: '10px' }}>
+<span style={{ fontSize: '16px', display: 'inline-block', width: '20px', textAlign: 'center' }}>{expandedGroups[chapterName] ? '▼' : '▶'}</span>
+{chapterName} <span style={{ fontSize: '14px', color: '#bac2de' }}>({visibleQs.length}{filterYear !== 'All' ? ` / ${questionsArray.length}` : ''} Qs)</span>
+</h2>
+<div style={{ display: 'flex', gap: '10px', alignItems: 'center' }} onClick={(e) => e.stopPropagation()}>
+<input
+type="text"
+placeholder="e.g. 1-50 + Enter"
+title="Type a range like 1-50 and press Enter to copy just those questions"
+style={{ width: '145px', padding: '8px', borderRadius: '6px', border: '1px solid #45475a', background: '#11111b', color: '#cdd6f4', outline: 'none', textAlign: 'center' }}
+onKeyDown={(e) => {
+if (e.key === 'Enter') {
+e.preventDefault();
+handleCopyRange(questionsArray, chapterName, e.target.value);
+e.target.value = '';
+}
+}}
+/>
+<button onClick={() => handleCopyGroup(visibleQs, chapterName)} style={{ background: '#a6e3a1', color: '#11111b', padding: '8px 15px', borderRadius: '6px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
+📋 Copy {filterYear === 'All' ? 'All' : 'Visible'}
+</button>
+</div>
+</div>
+{expandedGroups[chapterName] && (
+<div style={{ padding: '20px', display: 'grid', gap: '20px' }}>
+<div style={{ background: '#181825', padding: '15px', borderRadius: '8px', border: '1px solid #45475a' }}>
+<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
+<div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+<label style={{ color: '#bac2de', fontSize: '14px', fontWeight: 'bold' }}>Generate Batch Buttons (Size):</label>
+<input
+type="number"
+placeholder="e.g. 20 + Enter"
+title="Type a chunk size (e.g., 20) and press Enter to generate quick-copy buttons"
+style={{ width: '130px', padding: '6px 10px', borderRadius: '4px', border: '1px solid #45475a', background: '#11111b', color: '#cdd6f4', outline: 'none' }}
+onKeyDown={(e) => {
+if (e.key === 'Enter') {
+e.preventDefault();
+const val = parseInt(e.target.value, 10);
+if (!isNaN(val) && val > 0) {
+setChunkSizes(prev => ({ ...prev, [chapterName]: val }));
+} else {
+setChunkSizes(prev => { const copy = {...prev}; delete copy[chapterName]; return copy; });
+}
+}
+}}
+/>
+</div>
+{lastCopied?.chapter === chapterName && (
+<div style={{ color: '#f9e2af', fontSize: '14px', fontWeight: 'bold', background: '#313244', padding: '6px 12px', borderRadius: '4px' }}>
+🕒 Last Copied: {lastCopied.range}
+</div>
+)}
+</div>
+{chunkSizes[chapterName] > 0 && (() => {
+const getSmartChunks = (qs, baseSize) => {
+const chunks = [];
+let start = 1;
+while (start <= qs.length) {
+let end = Math.min(start + baseSize - 1, qs.length);
+if (end < qs.length) {
+const boundaryYear = qs[end - 1].year;
+while (end < qs.length && qs[end].year === boundaryYear) {
+end++;
+}
+}
+chunks.push({ start, end });
+start = end + 1;
+}
+return chunks;
+};
+const smartChunks = getSmartChunks(questionsArray, chunkSizes[chapterName]);
+return (
+<div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '15px', paddingTop: '15px', borderTop: '1px dashed #45475a' }}>
+{smartChunks.map(({ start, end }) => {
+const rangeStr = `${start}-${end}`;
+const isClicked = clickedRanges.has(`${chapterName}_${rangeStr}`);
+return (
+<button
+key={rangeStr}
+onClick={() => handleCopyRange(questionsArray, chapterName, rangeStr)}
+style={{
+background: isClicked ? '#313244' : '#cba6f7',
+color: isClicked ? '#a6adc8' : '#11111b',
+padding: '8px 15px',
+borderRadius: '4px',
+border: isClicked ? '1px solid #6c7086' : 'none',
+cursor: 'pointer',
+fontWeight: 'bold',
+transition: '0.2s',
+boxShadow: isClicked ? 'none' : '0 4px 6px rgba(0,0,0,0.3)'
+}}
+>
+{isClicked ? '✅ Copied: ' : '📋 Copy '}{rangeStr}
+</button>
+);
+})}
+</div>
+);
+})()}
+</div>
+{}
+{questionsArray.map((q, idx) => {
+if (filterYear !== 'All' && q.year !== filterYear) return null;
+return (
+<div key={q.id} style={{ background: '#1e1e2e', padding: '20px', borderRadius: '8px', border: '1px solid #45475a' }}>
+<div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+<span style={{ color: '#89b4fa', fontWeight: 'bold' }}>#{idx + 1}</span>
+<div style={{ display: 'flex', alignItems: 'center' }}>
+{q.setNum && <span style={{ background: '#89b4fa', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold', marginRight: '10px' }}>Set-{q.setNum}</span>}
+<span style={{ background: '#f9e2af', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold' }}>GATE {q.year} | {q.marks} Mark</span>
+<button onClick={() => handleCopySingleQuestion(q)} style={{ background: '#cba6f7', color: '#11111b', padding: '3px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold', marginLeft: '10px', border: 'none', cursor: 'pointer' }} title="Copy formatted LaTeX for this question">
+📋 Copy
+</button>
+</div>
+</div>
+<div style={{ marginBottom: '15px', whiteSpace: 'pre-wrap' }} dangerouslySetInnerHTML={{ __html: q.text.replace(/\n/g, '<br>') }} />
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+{q.optA && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(A)</strong> <span dangerouslySetInnerHTML={{ __html: q.optA }} /></div>}
+{q.optB && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(B)</strong> <span dangerouslySetInnerHTML={{ __html: q.optB }} /></div>}
+{q.optC && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(C)</strong> <span dangerouslySetInnerHTML={{ __html: q.optC }} /></div>}
+{q.optD && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(D)</strong> <span dangerouslySetInnerHTML={{ __html: q.optD }} /></div>}
+</div>
+{q.natAnswer === "NAT" && !q.optA && <div style={{ marginTop: '10px', color: '#f38ba8', fontWeight: 'bold' }}>Numerical Answer Type (NAT)</div>}
+</div>
+);
+})}
+</div>
+)}
+</div>
+);
+})}
+</div>
+</div>
+</div>
+);
+}
+
+src\app\status\page.js
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+const GATE_SYLLABUS = {
+"1. Discrete Maths": ["1. Mathematical Logic", "2. Set Theory and Algebra", "3. Combinatorics", "4. Graph Theory"],
+"2. TOC": ["1. Finite Automata and Regular Languages", "2. PDA - CFL and DCFL", "3. Turing Machine, RE, REC, Undecidabilitu"],
+"3. Computer Networks": ["1. ISO-OSI Stack and SWP", "2. LAN", "3. TCP, UDP and IP", "4. Routing and Application Layer"],
+"4. COA": ["1. CPU Arch. and Address. Modes", "2. Control Unit Design", "3. Instructions Pipeline", "4. Memory Organization", "5. IO Organisation"],
+"5. Operating Systems": ["1. Process Management-1", "2. Process Management-2", "3. Deadlock", "4. Mem. Mgmt and Virtual Mem", "5. File Sys and Device Mgmt", "6. Miscellaneous"],
+"6. Data Structures": ["1. Arrays", "2. Stack and Queues", "3. Linked Lists", "4. Trees", "5. Graphs", "6. Hashing"],
+"7. Algorithms": ["1. Algo. Analysis and Asymptotic Notations", "2. Divide and Conquer", "3. Greedy Method", "4. Dynamic Programming", "5. P and NP Concepts", "6. Miscellaneous Topics"],
+"8. C Prog": ["1. Programming"],
+"9. Digital Logic": ["1. Logic Functions and Minimizations", "2. Combinational Circuits", "3. Sequential Circuits", "4. Number Systems"],
+"10. Compiler Design": ["1. Lexical Analysis", "2. Parsing Techniques", "3. Syntax Directed Translations", "4. Code Generations and Optimizatinos"],
+"11. Engg. Maths": ["1. Probability", "2. Linear Algebra", "3. Calculus"],
+"12. DBMS": ["1. ER Model", "2. Funcational Dependencies and Normalizaation", "3. Structure Query Language", "4. Relational Model", "5. Transactions and Concurrency Contorl", "6. File Structures"]
+};
+const INITIAL_TARGETS = {
+"1. Discrete Maths|1. Mathematical Logic": 59,
+"1. Discrete Maths|2. Set Theory and Algebra": 100,
+"1. Discrete Maths|3. Combinatorics": 42,
+"1. Discrete Maths|4. Graph Theory": 65,
+};
+export default function StatusPage() {
+const [actualCounts, setActualCounts] = useState({});
+const [targetCounts, setTargetCounts] = useState({});
+const [loading, setLoading] = useState(true);
+const [toast, setToast] = useState(null);
+const showToast = (message, type = 'success') => {
+setToast({ message, type });
+setTimeout(() => setToast(null), 3000);
+};
+useEffect(() => {
+fetchData();
+}, []);
+const fetchData = async () => {
+try {
+const res = await fetch('/api/status');
+const data = await res.json();
+if (data.success) {
+setActualCounts(data.actualCounts || {});
+const mergedTargets = { ...INITIAL_TARGETS, ...data.targetCounts };
+setTargetCounts(mergedTargets);
+}
+} catch (error) {
+showToast("❌ Error loading status data", "error");
+} finally {
+setLoading(false);
+}
+};
+const handleTargetChange = (subject, chapter, value) => {
+const key = `${subject}|${chapter}`;
+setTargetCounts(prev => ({ ...prev, [key]: value }));
+};
+const saveTarget = async (subject, chapter) => {
+const key = `${subject}|${chapter}`;
+const count = targetCounts[key] || 0;
+try {
+const res = await fetch('/api/status', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ subject, chapter, targetCount: count })
+});
+const data = await res.json();
+if (data.success) {
+showToast(`✅ Target saved for ${chapter}`);
+} else {
+showToast("❌ Failed to save target", "error");
+}
+} catch (error) {
+showToast("❌ Network error saving target", "error");
+}
+};
+if (loading) {
+return <div style={{ color: '#a6e3a1', padding: '50px', textAlign: 'center', fontSize: '24px' }}>Loading DB Status...</div>;
+}
+let grandTotalTarget = 0;
+let grandTotalAdded = 0;
+return (
+<div style={{ maxWidth: '1200px', margin: 'auto', padding: '20px', color: '#cdd6f4', fontFamily: 'sans-serif' }}>
+{toast && (
+<div style={{
+position: 'fixed', bottom: '30px', right: '30px',
+background: toast.type === 'error' ? '#f38ba8' : '#a6e3a1',
+color: '#11111b', padding: '15px 25px', borderRadius: '8px',
+zIndex: 9999, fontWeight: 'bold', boxShadow: '0 8px 15px rgba(0,0,0,0.5)',
+transition: 'all 0.3s ease-in-out'
+}}>
+{toast.message}
+</div>
+)}
+<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #89b4fa', paddingBottom: '15px', marginBottom: '30px' }}>
+<h1 style={{ color: '#89b4fa', margin: 0 }}>📊 Database Progress Tracker</h1>
+<Link href="/" style={{ background: '#45475a', color: '#cdd6f4', padding: '10px 20px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold' }}>
+⬅ Back to Editor
+</Link>
+</div>
+{Object.entries(GATE_SYLLABUS).map(([subject, chapters]) => {
+let subjectTotalTarget = 0;
+let subjectTotalAdded = 0;
+const chapterRows = chapters.map(chapter => {
+const key = `${subject}|${chapter}`;
+const target = parseInt(targetCounts[key]) || 0;
+const added = actualCounts[key] || 0;
+const remaining = target > 0 ? target - added : 0;
+subjectTotalTarget += target;
+subjectTotalAdded += added;
+let statusText = "";
+let statusColor = "";
+if (added === 0) {
+statusText = "Not added yet";
+statusColor = "#f38ba8";
+} else if (added >= target && target > 0) {
+statusText = "Completed 🎉";
+statusColor = "#a6e3a1";
+} else {
+statusText = "In Progress";
+statusColor = "#f9e2af";
+}
+return (
+<tr key={chapter} style={{ borderBottom: '1px solid #313244', background: '#181825' }}>
+<td style={{ padding: '12px', fontWeight: 'bold', color: '#bac2de' }}>{chapter}</td>
+<td style={{ padding: '12px', textAlign: 'center' }}>
+<input
+type="number"
+min="0"
+value={targetCounts[key] || ''}
+onChange={(e) => handleTargetChange(subject, chapter, e.target.value)}
+onBlur={() => saveTarget(subject, chapter)}
+placeholder="0"
+style={{ width: '70px', padding: '6px', background: '#11111b', color: '#cdd6f4', border: '1px solid #45475a', borderRadius: '4px', textAlign: 'center' }}
+/>
+</td>
+<td style={{ padding: '12px', textAlign: 'center', fontSize: '16px', fontWeight: 'bold', color: added > 0 ? '#89b4fa' : '#6c7086' }}>
+{added}
+</td>
+<td style={{ padding: '12px', textAlign: 'center', color: '#cba6f7' }}>
+{remaining > 0 ? remaining : 0}
+</td>
+<td style={{ padding: '12px', textAlign: 'center', color: statusColor, fontWeight: 'bold' }}>
+{statusText}
+</td>
+</tr>
+);
+});
+grandTotalTarget += subjectTotalTarget;
+grandTotalAdded += subjectTotalAdded;
+return (
+<div key={subject} style={{ background: '#1e1e2e', borderRadius: '10px', padding: '20px', marginBottom: '25px', boxShadow: '0 4px 6px rgba(0,0,0,0.3)' }}>
+<h2 style={{ color: '#f5c2e7', marginTop: 0, display: 'flex', justifyContent: 'space-between' }}>
+<span>{subject}</span>
+<span style={{ fontSize: '18px', color: '#a6adc8' }}>
+{subjectTotalAdded} / {subjectTotalTarget} Added
+</span>
+</h2>
+<table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '15px' }}>
+<thead>
+<tr style={{ background: '#313244', color: '#cdd6f4', textAlign: 'left' }}>
+<th style={{ padding: '12px', borderRadius: '6px 0 0 0' }}>Chapter</th>
+<th style={{ padding: '12px', textAlign: 'center' }}>Total Qs (Target)</th>
+<th style={{ padding: '12px', textAlign: 'center' }}>Added to DB</th>
+<th style={{ padding: '12px', textAlign: 'center' }}>Left</th>
+<th style={{ padding: '12px', textAlign: 'center', borderRadius: '0 6px 0 0' }}>Status</th>
+</tr>
+</thead>
+<tbody>
+{chapterRows}
+</tbody>
+</table>
+</div>
+);
+})}
+<div style={{ position: 'sticky', bottom: '20px', background: '#313244', padding: '20px', borderRadius: '10px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 10px 25px rgba(0,0,0,0.8)', border: '2px solid #a6e3a1' }}>
+<h2 style={{ margin: 0, color: '#cdd6f4' }}>Grand Total Progress:</h2>
+<div style={{ fontSize: '24px', fontWeight: 'bold', color: '#a6e3a1' }}>
+{grandTotalAdded} / {grandTotalTarget} Questions Synced
+</div>
+</div>
+</div>
+);
+}
+
+src\lib\mongodb.js
+import mongoose from 'mongoose';
+const MONGODB_URI = process.env.MONGODB_URI;
+if (!MONGODB_URI) {
+throw new Error('Please define the MONGODB_URI environment variable');
+}
+let cached = global.mongoose;
+if (!cached) {
+cached = global.mongoose = { conn: null, promise: null };
+}
+async function dbConnect() {
+if (cached.conn) return cached.conn;
+if (!cached.promise) {
+cached.promise = mongoose.connect(MONGODB_URI).then((mongoose) => {
+return mongoose;
+});
+}
+cached.conn = await cached.promise;
+return cached.conn;
+}
+export default dbConnect;
+
+src\lib\mongodb2.js
+import mongoose from 'mongoose';
+const MONGODB_URI_2 = process.env.MONGODB_URI_2;
+if (!MONGODB_URI_2) {
+throw new Error('Please define the MONGODB_URI_2 environment variable inside .env');
+}
+let cached2 = global.mongoose2;
+if (!cached2) {
+cached2 = global.mongoose2 = { conn: null, promise: null };
+}
+async function dbConnect2() {
+if (cached2.conn) return cached2.conn;
+if (!cached2.promise) {
+cached2.promise = mongoose.createConnection(MONGODB_URI_2).asPromise();
+}
+cached2.conn = await cached2.promise;
+return cached2.conn;
+}
+export default dbConnect2;
+
+src\models\AppConfig.js
+import mongoose from 'mongoose';
+const AppConfigSchema = new mongoose.Schema({
+configName: { type: String, default: "default", unique: true },
+syllabus: { type: Object, default: {} },
+topicMapping: { type: Object, default: {} }
+});
+export default mongoose.models.AppConfig || mongoose.model('AppConfig', AppConfigSchema);
+
+src\models\Chapter.js
+import mongoose from 'mongoose';
+const ChapterSchema = new mongoose.Schema({
+subject: { type: String, required: true },
+chapter: { type: String, required: true },
+questions: { type: Array, default: [] },
+lockCount: { type: Number, default: 0 }
+}, { timestamps: true });
+ChapterSchema.index({ subject: 1, chapter: 1 }, { unique: true });
+if (mongoose.models.Chapter) {
+delete mongoose.models.Chapter;
+}
+export default mongoose.model('Chapter', ChapterSchema);
+
+src\models\Preference.js
+import mongoose from 'mongoose';
+const PreferenceSchema = new mongoose.Schema({
+user: { type: String, required: true, unique: true },
+lastSubject: { type: String, required: true },
+lastChapter: { type: String, required: true }
+});
+export default mongoose.models.Preference || mongoose.model('Preference', PreferenceSchema);
+
+src\models\ScrapedChapter.js
+import mongoose from 'mongoose';
+const ScrapedChapterSchema = new mongoose.Schema({
+subject: { type: String, required: true },
+chapter: { type: String, required: true },
+questions: { type: Array, default: [] },
+}, { timestamps: true });
+ScrapedChapterSchema.index({ subject: 1, chapter: 1 }, { unique: true });
+export default ScrapedChapterSchema;
+
+src\models\Target.js
+import mongoose from 'mongoose';
+const TargetSchema = new mongoose.Schema({
+subject: { type: String, required: true },
+chapter: { type: String, required: true },
+targetCount: { type: Number, default: 0 }
+}, { timestamps: true });
+TargetSchema.index({ subject: 1, chapter: 1 }, { unique: true });
+export default mongoose.models.Target || mongoose.model('Target', TargetSchema);
+
