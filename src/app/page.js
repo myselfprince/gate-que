@@ -1084,7 +1084,7 @@ PROVIDED QUESTIONS TO FORMAT:
 
 `;
 
-    const CHUNK_SIZE = 20; 
+    const CHUNK_SIZE = 10; 
     const totalChunks = Math.ceil(validQs.length / CHUNK_SIZE);
     
     // Clean up subject/chapter names for a clean filename
