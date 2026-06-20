@@ -1058,31 +1058,7 @@ const handleExportAllImages = async () => {
     if (validQs.length === 0) return showToast("❌ No valid questions to export for AI!", "error");
 
     // The complete system prompt injected programmatically
-    const systemPrompt = `PROMPT
-Act as an expert GATE CS problem generator. Generate practice questions for GATE Computer Science. Write the Answers and Explanations of the Provided Questions below in the correct format.
-
-Constraints:
-1. Allowed Subjects: You must strictly categorize the question under one of these subjects: Discrete Maths, Engg. Maths, Digital L., COA, Prog. and DS, Algo, TOC, Compiler, OS, DBMS, Computer Networks, General Aptitude, Other.
-2. Formatting Output: Use plain text only for the labels. Do not use bolding, markdown formatting, or numbering for the keys.
-3. Math & LaTeX (CRITICAL FOR WRAPPING): Use $ for inline equations and $$ for block equations. You must keep plain English text outside of the MathJax/LaTeX delimiters wherever possible to allow for standard HTML text wrapping. Never use \\text{...} to wrap long English sentences inside math environments.
-   * Bad: $L = \\{w \\in \\{a,b\\}^* \\mid w \\text{ contains an even number of a's...}\\}$
-   * Good: $L = \\{w \\in \\{a,b\\}^* \\mid w$ contains an even number of $a$'s and an odd number of $b$'s$\\}$
-4. Option Separation: Separate the choices strictly with a space, a single semicolon, and a space ( ; ).
-5. Contributor Tag: Always end with CONTRIBUTOR: G4Gate.
-
-Exact Output Template (Do not deviate):
-SUBJECT: [Subject]
-TYPE: [MCQ/MSQ/NAT]
-QUESTION: [Question Text]
-OPTIONS: [Option 1] ; [Option 2] ; [Option 3] ; [Option 4]
-ANSWER: [Correct Option]
-EXPLANATION: [Brief explanation of the solution]
-CONTRIBUTOR: G4Gate
-
----------------------------------------------------
-PROVIDED QUESTIONS TO FORMAT:
-
-`;
+    const systemPrompt = ``;
 
     const CHUNK_SIZE = 10; 
     const totalChunks = Math.ceil(validQs.length / CHUNK_SIZE);
