@@ -16,7 +16,11 @@ async function dbConnect2() {
   if (cached2.conn) return cached2.conn;
 
   if (!cached2.promise) {
-    cached2.promise = mongoose.createConnection(MONGODB_URI_2).asPromise();
+    cached2.promise = mongoose.createConnection(MONGODB_URI_2, { serverSelectionTimeoutMS: 10_000 }).asPromise()
+      .catch((error) => {
+        cached2.promise = null;
+        throw error;
+      });
   }
   cached2.conn = await cached2.promise;
   return cached2.conn;

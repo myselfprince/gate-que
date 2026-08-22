@@ -1,33 +1,41 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongodb';
 import Preference from '@/models/Preference';
+import { jsonError, parseJson, requireMutationAccess, requireReadAccess, unexpectedError, validatePreferencePayload, ValidationError } from '@/lib/api-utils';
 
-export async function GET() {
+export const runtime = 'nodejs';
+
+export async function GET(request) {
+  const denied = requireReadAccess(request);
+  if (denied) return denied;
   try {
     await dbConnect();
     const prefs = await Preference.findOne({ user: 'admin' });
     return NextResponse.json({ success: true, data: prefs });
   } catch (error) {
-    console.error("Prefs GET Error:", error);
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    console.error('Preferences GET error:', error);
+    return unexpectedError();
   }
 }
 
-export async function POST(req) {
+export async function POST(request) {
+  const denied = requireMutationAccess(request);
+  if (denied) return denied;
   try {
     await dbConnect();
-    const { subject, chapter } = await req.json();
+    const { subject, chapter } = validatePreferencePayload(await parseJson(request));
     
     // Upsert: Create it if it doesn't exist, update it if it does
     const prefs = await Preference.findOneAndUpdate(
       { user: 'admin' },
-      { lastSubject: subject, lastChapter: chapter },
-      { new: true, upsert: true }
+      { $set: { lastSubject: subject, lastChapter: chapter } },
+      { new: true, upsert: true, runValidators: true, setDefaultsOnInsert: true }
     );
     
     return NextResponse.json({ success: true, data: prefs });
   } catch (error) {
-    console.error("Prefs POST Error:", error);
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    if (error instanceof ValidationError) return jsonError(error.message);
+    console.error('Preferences POST error:', error);
+    return unexpectedError();
   }
 }

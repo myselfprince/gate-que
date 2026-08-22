@@ -1,52 +1,132 @@
 import { NextResponse } from 'next/server';
-import { exec } from 'child_process';
+import { execFile } from 'child_process';
+import { randomUUID } from 'crypto';
 import { promisify } from 'util';
 import fs from 'fs/promises';
 import path from 'path';
 import AdmZip from 'adm-zip';
+import { getSafeImageNames, jsonError, parseJson, rateLimit, requireMutationAccess, validateExportPayload, ValidationError } from '@/lib/api-utils';
 
-const execAsync = promisify(exec);
+export const runtime = 'nodejs';
 
-const escapeLatex = (text) => {
-  if (!text) return "";
-  return text.replace(/(?<!\\)%/g, '\\%');
-};
-
-const shouldUseTwoCols = (q) => {
-    if (!q.optA && !q.optB && !q.optC && !q.optD) return false;
-    const maxLen = Math.max(
-        (q.optA || "").length, (q.optB || "").length,
-        (q.optC || "").length, (q.optD || "").length
-    );
-    const hasBlockMath = [q.optA, q.optB, q.optC, q.optD].some(opt => opt?.includes('$$'));
-    const hasManyBreaks = [q.optA, q.optB, q.optC, q.optD].some(opt => (opt?.match(/\n/g) || []).length > 2);
-    
-    if (hasBlockMath || hasManyBreaks || maxLen > 65) return false;
-    return true;
-};
-
-export async function POST(req) {
-const uniqueId = Date.now().toString(36) + Math.random().toString(36).substring(2, 8);
-const baseTempDir = path.join(process.cwd(), `temp_pdf_${uniqueId}`);
-try {
-const { subject, chapter, questions } = await req.json();
-await fs.mkdir(baseTempDir, { recursive: true });
-const zip = new AdmZip();
+const execFileAsync = promisify(execFile);
 const CHUNK_SIZE = 20;
 
-for (let i = 0; i < questions.length; i += CHUNK_SIZE) {
-const chunk = questions.slice(i, i + CHUNK_SIZE);
-const chunkIndex = Math.floor(i / CHUNK_SIZE) + 1;
-const startQNum = i;
-const tempDir = path.join(baseTempDir, `chunk_${chunkIndex}`);
-await fs.mkdir(tempDir, { recursive: true });
+const latexEscapes = {
+  '\\': '\\textbackslash{}',
+  '{': '\\{',
+  '}': '\\}',
+  '#': '\\#',
+  '$': '\\$',
+  '%': '\\%',
+  '&': '\\&',
+  '_': '\\_',
+  '~': '\\textasciitilde{}',
+  '^': '\\textasciicircum{}'
+};
 
-const texFileName = 'gate_workbook.tex';
-const pdfFileName = 'gate_workbook.pdf';
-const texFilePath = path.join(tempDir, texFileName);
-const pdfFilePath = path.join(tempDir, pdfFileName);
+const escapeLatexText = (value = '') => String(value).replace(/[\\{}#$%&_~^]/g, (character) => latexEscapes[character]);
 
-let latex = `\\documentclass[12pt]{exam}
+const escapeLatexKeepingMath = (value = '') => String(value)
+  .split(/(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$|\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\])/)
+  .map((part, index) => (index % 2 ? part : escapeLatexText(part).replace(/\r?\n/g, '\\newline\n')))
+  .join('');
+
+const escapeListing = (value = '') => String(value).replace(/\\end\{lstlisting\}/g, '\\textbackslash{}end\\{lstlisting\\}');
+
+const shouldUseTwoCols = (question) => {
+  if (!question.optA && !question.optB && !question.optC && !question.optD) return false;
+  const options = [question.optA, question.optB, question.optC, question.optD];
+  const maxLength = Math.max(...options.map((option) => option.length));
+  return !options.some((option) => option.includes('$$') || (option.match(/\n/g) || []).length > 2) && maxLength <= 65;
+};
+
+const imageLatex = (subject, chapter, imageName, extension) => {
+  const imagePath = path.join(process.cwd(), 'public', subject, chapter, `${imageName}${extension}`).replace(/\\/g, '/');
+  return `\n\\begin{center}\n\\includegraphics[max width=0.9\\linewidth, keepaspectratio]{"${imagePath}"}\n\\end{center}\n`;
+};
+
+const renderOption = (option, question, subject, chapter) => {
+  if (!option) return '';
+  if (option.startsWith('IMG:')) {
+    const imageName = option.slice(4).trim();
+    if (!getSafeImageNames(imageName).length) return '[Invalid image name]';
+    const imagePath = path.join(process.cwd(), 'public', subject, chapter, `${imageName}${question.ext}`).replace(/\\/g, '/');
+    return `\\includegraphics[width=0.4\\linewidth, valign=c]{"${imagePath}"}`;
+  }
+  if (question.isCodeOptions) return `\\texttt{${escapeLatexText(option).replace(/ /g, '~').replace(/\r?\n/g, '\\newline\n')}}`;
+  return escapeLatexKeepingMath(option);
+};
+
+const renderQuestion = (question, subject, chapter) => {
+  if (question.isBlank) {
+    return '\\begin{multicols*}{2}\n\\question {\\small \\textbf{[Blank Placeholder]}} \\\\[0.2cm]\n{\\Large \\textit{This question is reserved/blank.}}\n\\vspace{4cm}\n\\end{multicols*}\n\\vspace{0.6cm}\n\\newpage\n';
+  }
+
+  let questionText = escapeLatexKeepingMath(question.text).replace(/_{3,}/g, '\\rule{2cm}{0.4pt}');
+  getSafeImageNames(question.diagram).forEach((imageName, index) => {
+    const image = imageLatex(subject, chapter, imageName, question.ext);
+    const tag = `[IMG_${index + 1}]`;
+    if (questionText.includes(tag)) questionText = questionText.replace(tag, image);
+    else if (index === 0 && questionText.includes('[DIAGRAM_PLACEHOLDER]')) questionText = questionText.replace('[DIAGRAM_PLACEHOLDER]', image);
+    else questionText += image;
+  });
+  questionText = questionText.replace(/\[IMG_\d+\]|\[DIAGRAM_PLACEHOLDER\]/g, '');
+
+  const codeLatex = question.code
+    ? `\n\\vspace{0.2cm}\\begin{lstlisting}\n${escapeListing(question.code)}\n\\end{lstlisting}\\vspace{0.2cm}\n`
+    : '';
+  const containsCodeTag = questionText.includes('[CODE]');
+  if (containsCodeTag) questionText = questionText.replace('[CODE]', codeLatex);
+
+  let latex = '\\begin{multicols*}{2}\n';
+  latex += `\n\\question {\\small \\textbf{[GATE ${escapeLatexText(question.year)} | ${escapeLatexText(question.marks || '1')} Mark]}} \\\\[0.2cm]\n{\\Large ${questionText}}\n`;
+  if (question.code && !containsCodeTag) latex += codeLatex;
+
+  const hasOptions = question.optA || question.optB || question.optC || question.optD;
+  if (hasOptions) {
+    const useTwoColumns = question.optLayout === '2col' || (question.optLayout !== '1col' && shouldUseTwoCols(question));
+    if (useTwoColumns) {
+      latex += '\n\\vspace{0.3cm}\\noindent\\begin{tabular}{@{}p{0.48\\linewidth} p{0.48\\linewidth}@{}}\n';
+      latex += `${question.optA ? `\\textbf{(A)} ${renderOption(question.optA, question, subject, chapter)}` : ''} & ${question.optB ? `\\textbf{(B)} ${renderOption(question.optB, question, subject, chapter)}` : ''} \\\\[0.4cm]\n`;
+      latex += `${question.optC ? `\\textbf{(C)} ${renderOption(question.optC, question, subject, chapter)}` : ''} & ${question.optD ? `\\textbf{(D)} ${renderOption(question.optD, question, subject, chapter)}` : ''} \\\\n`;
+      latex += '\\end{tabular}\n';
+    } else {
+      latex += '\\begin{choices}\n';
+      for (const option of ['optA', 'optB', 'optC', 'optD']) {
+        if (question[option]) latex += `  \\choice ${renderOption(question[option], question, subject, chapter)}\n`;
+      }
+      latex += '\\end{choices}\n';
+    }
+  } else if (!question.isProof) {
+    latex += `\n\\vspace{0.5cm}\n\\textbf{Answer:} ${escapeLatexKeepingMath(question.natAnswer) || '\\rule{3cm}{0.4pt}'}\n`;
+  }
+
+  return `${latex}\\end{multicols*}\n\\vspace{0.6cm}\n\\newpage\n`;
+};
+
+export async function POST(request) {
+  const denied = requireMutationAccess(request);
+  if (denied) return denied;
+  const limited = rateLimit(request, 'export-pdf', { limit: 4, windowMs: 60_000 });
+  if (limited) return limited;
+
+  const baseTempDir = path.join(process.cwd(), `temp_pdf_${randomUUID()}`);
+  try {
+    const { subject, chapter, questions } = validateExportPayload(await parseJson(request));
+    if (!questions.length) return jsonError('At least one question is required for export.');
+    await fs.mkdir(baseTempDir, { recursive: true });
+
+    const zip = new AdmZip();
+    for (let index = 0; index < questions.length; index += CHUNK_SIZE) {
+      const chunk = questions.slice(index, index + CHUNK_SIZE);
+      const chunkNumber = Math.floor(index / CHUNK_SIZE) + 1;
+      const tempDir = path.join(baseTempDir, `chunk_${chunkNumber}`);
+      const texFilePath = path.join(tempDir, 'gate_workbook.tex');
+      const pdfFilePath = path.join(tempDir, 'gate_workbook.pdf');
+      await fs.mkdir(tempDir, { recursive: true });
+
+      let latex = `\\documentclass[12pt]{exam}
 \\usepackage[utf8]{inputenc}
 \\usepackage{amsmath, amssymb}
 \\usepackage{graphicx}
@@ -61,170 +141,44 @@ let latex = `\\documentclass[12pt]{exam}
 \\color{white}
 \\pagestyle{empty}
 \\cfoot{}
-\\lstset{
-basicstyle=\\ttfamily\\small\\color{white},
-backgroundcolor=\\color[rgb]{0.12,0.12,0.12},
-frame=single,
-rulecolor=\\color{gray},
-breaklines=true,
-tabsize=4
-}
+\\lstset{basicstyle=\\ttfamily\\small\\color{white}, backgroundcolor=\\color[rgb]{0.12,0.12,0.12}, frame=single, rulecolor=\\color{gray}, breaklines=true, tabsize=4}
 \\begin{document}
 \\begin{center}
-\\LARGE \\textbf{GATE CSE: ${subject} - ${chapter} (Part ${chunkIndex})}
+\\LARGE \\textbf{GATE CSE: ${escapeLatexText(subject)} - ${escapeLatexText(chapter)} (Part ${chunkNumber})}
 \\end{center}
 \\vspace{0.5cm}
 \\begin{questions}
 `;
+      if (index > 0) latex += `\\setcounter{question}{${index}}\n`;
+      latex += chunk.map((question) => renderQuestion(question, subject, chapter)).join('');
+      latex += '\\end{questions}\n\\end{document}\n';
+      await fs.writeFile(texFilePath, latex, 'utf8');
 
-if (startQNum > 0) {
-latex += `\\setcounter{question}{${startQNum}}\n`;
-}
+      await execFileAsync('pdflatex', [
+        '-no-shell-escape',
+        '-halt-on-error',
+        '-interaction=nonstopmode',
+        `-output-directory=${tempDir}`,
+        texFilePath
+      ], { timeout: 30_000, maxBuffer: 10 * 1024 * 1024 });
 
-chunk.forEach(q => {
-// BLANK PLACEHOLDER LOGIC FOR PDF
-if (q.isBlank) {
-latex += "\\begin{multicols*}{2}\n";
-latex += `\n\\question {\\small \\textbf{[Blank Placeholder]}} \\\\[0.2cm]\n{\\Large \\textit{This question is reserved/blank.}}\n\\vspace{4cm}\n`;
-latex += "\n\\end{multicols*}\n\\vspace{0.6cm}\n\\newpage\n";
-return;
-}
+      const pdfBuffer = await fs.readFile(pdfFilePath);
+      zip.addFile(`PYQs_Part${chunkNumber}.pdf`, pdfBuffer);
+    }
 
-let qText = escapeLatex(q.text.trim())
-.replace(/_{3,}/g, '\\rule{2cm}{0.4pt}')
-.replace(/[\u00A0\u2000-\u200B\u202F\u205F\u3000]/g, ' ');
-
-// SMART MATH SPLITTER: Protects BOTH $$...$$ and $...$ from being corrupted by \newline
-let textParts = qText.split(/(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$)/);
-for (let j = 0; j < textParts.length; j++) {
-  if (j % 2 === 0) {
-    // Only replace \n with \newline in standard text (even indexes)
-    textParts[j] = textParts[j].replace(/\r?\n/g, '\\newline\n');
+    return new NextResponse(zip.toBuffer(), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/zip',
+        'Content-Disposition': 'attachment; filename="gate-pyqs.pdf.zip"',
+        'Cache-Control': 'no-store'
+      }
+    });
+  } catch (error) {
+    if (error instanceof ValidationError) return jsonError(error.message);
+    console.error('PDF generation error:', error);
+    return jsonError('PDF generation failed. Check that pdflatex is installed and the question content is valid.', 500);
+  } finally {
+    await fs.rm(baseTempDir, { recursive: true, force: true }).catch((cleanupError) => console.error('PDF cleanup error:', cleanupError));
   }
-}
-qText = textParts.join('');
-
-latex += "\\begin{multicols*}{2}\n";
-
-const imageList = q.diagram ? q.diagram.split(',').map(s => s.trim()).filter(Boolean) : [];
-imageList.forEach((imgName, imgIndex) => {
-if (!imgName) return;
-const imgPath = path.join(process.cwd(), 'public', subject, chapter, `${imgName}${q.ext}`).replace(/\\/g, '/');
-const latexImg = `\n\\begin{center}\n\\includegraphics[max width=0.9\\linewidth, keepaspectratio]{"${imgPath}"}\n\\end{center}\n`;
-const tag = `[IMG_${imgIndex + 1}]`;
-if (qText.includes(tag)) {
-qText = qText.replace(tag, latexImg);
-} else if (imgIndex === 0 && qText.includes('[DIAGRAM_PLACEHOLDER]')) {
-qText = qText.replace('[DIAGRAM_PLACEHOLDER]', latexImg);
-} else {
-qText += latexImg;
-}
-});
-qText = qText.replace('[DIAGRAM_PLACEHOLDER]', '');
-
-let codeLatex = q.code ? `\n\\vspace{0.2cm}\\begin{lstlisting}\n${q.code}\n\\end{lstlisting}\\vspace{0.2cm}\n` : '';
-if (qText.includes('[CODE]')) {
-qText = qText.replace('[CODE]', codeLatex);
-latex += `\n\\question {\\small \\textbf{[GATE ${q.year || ''} | ${q.marks || '1'} Mark]}} \\\\[0.2cm]\n{\\Large ${qText}}\n`;
-} else {
-latex += `\n\\question {\\small \\textbf{[GATE ${q.year || ''} | ${q.marks || '1'} Mark]}} \\\\[0.2cm]\n{\\Large ${qText}}\n`;
-if (q.code) {
-latex += codeLatex;
-}
-}
-
-const hasOptions = q.optA || q.optB || q.optC || q.optD;
-
-const processOpt = (opt, isCode) => {
-if (!opt) return "";
-if (opt.startsWith("IMG:")) {
-const imgName = opt.replace("IMG:", "").trim();
-const imgPath = path.join(process.cwd(), 'public', subject, chapter, `${imgName}${q.ext}`).replace(/\\/g, '/');
-return `\\includegraphics[width=0.4\\linewidth, valign=c]{"${imgPath}"}`;
-}
-if (isCode) {
-let codeSafe = opt
-.replace(/\\/g, '\\textbackslash{}')
-.replace(/[{}]/g, '\\$&')
-.replace(/[_&#%$]/g, '\\$&')
-.replace(/</g, '\\textless{}')
-.replace(/>/g, '\\textgreater{}')
-.replace(/~/g, '\\textasciitilde{}')
-.replace(/\^/g, '\\textasciicircum{}')
-.replace(/ /g, '~')
-.replace(/\r?\n/g, '\\newline\n');
-return `\\texttt{${codeSafe}}`;
-}
-
-// Ensure options are also protected from \newline inside math tags
-let escapedOpt = escapeLatex(opt);
-let optParts = escapedOpt.split(/(\$\$[\s\S]*?\$\$|\$[\s\S]*?\$)/);
-for (let j = 0; j < optParts.length; j++) {
-  if (j % 2 === 0) {
-    optParts[j] = optParts[j].replace(/\r?\n/g, '\\newline\n');
-  }
-}
-return optParts.join('');
-};
-
-if (hasOptions) {
-const isTwoCol = q.optLayout === '2col' || (q.optLayout !== '1col' && shouldUseTwoCols(q));
-if (isTwoCol) {
-latex += "\n\\vspace{0.3cm}\\noindent\\begin{tabular}{@{}p{0.48\\linewidth} p{0.48\\linewidth}@{}}\n";
-let row1 = "";
-row1 += q.optA ? `\\textbf{(A)} ${processOpt(q.optA, q.isCodeOptions)}` : "";
-row1 += " & ";
-row1 += q.optB ? `\\textbf{(B)} ${processOpt(q.optB, q.isCodeOptions)}` : "";
-row1 += " \\\\[0.4cm]\n";
-let row2 = "";
-row2 += q.optC ? `\\textbf{(C)} ${processOpt(q.optC, q.isCodeOptions)}` : "";
-row2 += " & ";
-row2 += q.optD ? `\\textbf{(D)} ${processOpt(q.optD, q.isCodeOptions)}` : "";
-row2 += " \\\\\n";
-latex += row1 + row2;
-latex += "\\end{tabular}\n";
-} else {
-latex += "\\begin{choices}\n";
-if (q.optA) latex += `  \\choice ${processOpt(q.optA, q.isCodeOptions)}\n`;
-if (q.optB) latex += `  \\choice ${processOpt(q.optB, q.isCodeOptions)}\n`;
-if (q.optC) latex += `  \\choice ${processOpt(q.optC, q.isCodeOptions)}\n`;
-if (q.optD) latex += `  \\choice ${processOpt(q.optD, q.isCodeOptions)}\n`;
-latex += "\\end{choices}\n";
-}
-} else {
-latex += `\n\\vspace{0.5cm}\n\\textbf{Answer:} ${escapeLatex(q.natAnswer) || '\\rule{3cm}{0.4pt}'}\n`;
-}
-latex += "\n\\end{multicols*}\n\\vspace{0.6cm}\n\\newpage\n";
-});
-
-latex += "\n\\end{questions}\n\\end{document}\n";
-await fs.writeFile(texFilePath, latex, 'utf8');
-
-try {
-await execAsync(`pdflatex -interaction=nonstopmode -output-directory="${tempDir}" "${texFilePath}"`);
-} catch (pdflatexError) {
-console.warn(`pdflatex threw a warning on chunk ${chunkIndex}, but might have generated the PDF.`, pdflatexError);
-}
-const pdfBuffer = await fs.readFile(pdfFilePath);
-zip.addFile(`${subject}_${chapter}_PYQs_Part${chunkIndex}.pdf`, pdfBuffer);
-}
-
-const zipBuffer = zip.toBuffer();
-await fs.rm(baseTempDir, { recursive: true, force: true });
-return new NextResponse(zipBuffer, {
-status: 200,
-headers: {
-'Content-Type': 'application/zip',
-'Content-Disposition': `attachment; filename="${subject}_${chapter}_PYQs.zip"`,
-},
-});
-} catch (error) {
-console.error("PDF Generation Error:", error);
-try {
-await fs.rm(baseTempDir, { recursive: true, force: true });
-} catch (cleanupError) {
-console.error("Failed to clean up temp directory:", cleanupError);
-}
-return NextResponse.json({ success: false, error: error.message }, { status: 500 });
-}
 }

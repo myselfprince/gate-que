@@ -9,9 +9,4 @@ const ChapterSchema = new mongoose.Schema({
 
 ChapterSchema.index({ subject: 1, chapter: 1 }, { unique: true });
 
-// 🔥 FIX: Prevent Next.js from using a cached version of the schema
-if (mongoose.models.Chapter) {
-  delete mongoose.models.Chapter;
-}
-
-export default mongoose.model('Chapter', ChapterSchema);
+export default mongoose.models.Chapter || mongoose.model('Chapter', ChapterSchema);

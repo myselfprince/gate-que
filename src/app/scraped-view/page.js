@@ -1,13 +1,7 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-
-const GATE_SYLLABUS = {
-  "1. Discrete Maths": ["1. Mathematical Logic", "2. Set Theory and Algebra", "3. Combinatorics", "4. Graph Theory"],
-  "2. TOC": ["1. Finite Automata and Regular Languages", "2. PDA - CFL and DCFL", "3. Turing Machine, RE, REC, Undecidabilitu"],
-  // ... (Include your full syllabus here)
-  "12. DBMS": ["1. ER Model", "2. Funcational Dependencies and Normalizaation", "3. Structure Query Language", "4. Relational Model", "5. Transactions and Concurrency Contorl", "6. File Structures"]
-};
+import { GATE_SYLLABUS } from '@/lib/syllabus';
 
 export default function ScrapedViewer() {
   const [questions, setQuestions] = useState([]);
@@ -17,8 +11,6 @@ export default function ScrapedViewer() {
   
   const [syncedCount, setSyncedCount] = useState(0);
   const [isDirty, setIsDirty] = useState(false);
-  const [imgCacheBuster, setImgCacheBuster] = useState(Date.now());
-  const [imageErrors, setImageErrors] = useState(new Set());
   const [toast, setToast] = useState(null);
   const [isReviving, setIsReviving] = useState(false);
 
@@ -67,7 +59,9 @@ export default function ScrapedViewer() {
   };
 
   useEffect(() => {
-    loadFromMongoDB(subject, chapter);
+    queueMicrotask(() => loadFromMongoDB(subject, chapter));
+    // The initial chapter is restored only once on mount.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSubjectChange = (e) => {
@@ -114,7 +108,7 @@ export default function ScrapedViewer() {
       }
     }, 800);
     return () => clearTimeout(timer);
-  });
+  }, [questions]);
 
   const updateQ = (id, field, value) => { 
     let finalValue = value;
@@ -189,7 +183,6 @@ export default function ScrapedViewer() {
       {/* Render Questions (Same mapping logic as your main page) */}
       <div id="scraped_questions_container">
         {questions.map((q, idx) => {
-          let formattedText = q.text.replace(/\n/g, '<br>');
           const hasOptions = q.optA || q.optB || q.optC || q.optD;
 
           return (
@@ -211,14 +204,14 @@ export default function ScrapedViewer() {
                 <div style={{ color: '#a6e3a1', fontWeight: 'bold', marginBottom: '10px' }}>
                     [GATE {q.year} {q.setNum ? `Set-${q.setNum} ` : ''}| {q.marks} Mark]
                 </div>
-                <div dangerouslySetInnerHTML={{ __html: formattedText }} />
+                <div style={{ whiteSpace: 'pre-wrap' }}>{q.text}</div>
                 <div style={{ marginTop: '15px' }}>
                   {hasOptions ? (
                     <>
-                      <div style={{ marginBottom: '8px' }}><strong>(A)</strong> <span dangerouslySetInnerHTML={{ __html: q.optA }} /></div>
-                      <div style={{ marginBottom: '8px' }}><strong>(B)</strong> <span dangerouslySetInnerHTML={{ __html: q.optB }} /></div>
-                      <div style={{ marginBottom: '8px' }}><strong>(C)</strong> <span dangerouslySetInnerHTML={{ __html: q.optC }} /></div>
-                      <div style={{ marginBottom: '8px' }}><strong>(D)</strong> <span dangerouslySetInnerHTML={{ __html: q.optD }} /></div>
+                      <div style={{ marginBottom: '8px', whiteSpace: 'pre-wrap' }}><strong>(A)</strong> {q.optA}</div>
+                      <div style={{ marginBottom: '8px', whiteSpace: 'pre-wrap' }}><strong>(B)</strong> {q.optB}</div>
+                      <div style={{ marginBottom: '8px', whiteSpace: 'pre-wrap' }}><strong>(C)</strong> {q.optC}</div>
+                      <div style={{ marginBottom: '8px', whiteSpace: 'pre-wrap' }}><strong>(D)</strong> {q.optD}</div>
                     </>
                   ) : (<div style={{ color: '#f38ba8' }}><strong>NAT Answer:</strong> {q.natAnswer ? q.natAnswer : '_________________'}</div>)}
                 </div>

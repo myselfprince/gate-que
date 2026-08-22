@@ -16,10 +16,11 @@ async function dbConnect() {
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
-    // We removed the deprecated options here!
-    cached.promise = mongoose.connect(MONGODB_URI).then((mongoose) => {
-      return mongoose;
-    });
+    cached.promise = mongoose.connect(MONGODB_URI, { serverSelectionTimeoutMS: 10_000 })
+      .catch((error) => {
+        cached.promise = null;
+        throw error;
+      });
   }
   cached.conn = await cached.promise;
   return cached.conn;

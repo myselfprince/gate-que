@@ -1,21 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-
-const GATE_SYLLABUS = {
-  "1. Discrete Maths": ["1. Mathematical Logic", "2. Set Theory and Algebra", "3. Combinatorics", "4. Graph Theory"],
-  "2. TOC": ["1. Finite Automata and Regular Languages", "2. PDA - CFL and DCFL", "3. Turing Machine, RE, REC, Undecidabilitu"],
-  "3. Computer Networks": ["1. ISO-OSI Stack and SWP", "2. LAN", "3. TCP, UDP and IP", "4. Routing and Application Layer"],
-  "4. COA": ["1. CPU Arch. and Address. Modes", "2. Control Unit Design", "3. Instructions Pipeline", "4. Memory Organization", "5. IO Organisation"],
-  "5. Operating Systems": ["1. Process Management-1", "2. Process Management-2", "3. Deadlock", "4. Mem. Mgmt and Virtual Mem", "5. File Sys and Device Mgmt", "6. Miscellaneous"],
-  "6. Data Structures": ["1. Arrays", "2. Stack and Queues", "3. Linked Lists", "4. Trees", "5. Graphs", "6. Hashing"],
-  "7. Algorithms": ["1. Algo. Analysis and Asymptotic Notations", "2. Divide and Conquer", "3. Greedy Method", "4. Dynamic Programming", "5. P and NP Concepts", "6. Miscellaneous Topics"],
-  "8. C Prog": ["1. Programming"],
-  "9. Digital Logic": ["1. Logic Functions and Minimizations", "2. Combinational Circuits", "3. Sequential Circuits", "4. Number Systems"],
-  "10. Compiler Design": ["1. Lexical Analysis", "2. Parsing Techniques", "3. Syntax Directed Translations", "4. Code Generations and Optimizatinos"],
-  "11. Engg. Maths": ["1. Probability", "2. Linear Algebra", "3. Calculus"],
-  "12. DBMS": ["1. ER Model", "2. Funcational Dependencies and Normalizaation", "3. Structure Query Language", "4. Relational Model", "5. Transactions and Concurrency Contorl", "6. File Structures"]
-};
+import { GATE_SYLLABUS } from '@/lib/syllabus';
 
 const TOPIC_MAPPING = {
   "Asymptotic Notation": "1. Algo. Analysis and Asymptotic Notations",
@@ -198,7 +184,9 @@ export default function ScraperPage() {
   };
 
   useEffect(() => {
-    loadAvailableBackups();
+    queueMicrotask(loadAvailableBackups);
+    // Browser storage only needs to be scanned once on mount.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -613,12 +601,12 @@ export default function ScraperPage() {
                               </button>
                             </div>
                           </div>
-                          <div style={{ marginBottom: '15px', whiteSpace: 'pre-wrap' }} dangerouslySetInnerHTML={{ __html: q.text.replace(/\n/g, '<br>') }} />
+                          <div style={{ marginBottom: '15px', whiteSpace: 'pre-wrap' }}>{q.text}</div>
                           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                            {q.optA && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(A)</strong> <span dangerouslySetInnerHTML={{ __html: q.optA }} /></div>}
-                            {q.optB && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(B)</strong> <span dangerouslySetInnerHTML={{ __html: q.optB }} /></div>}
-                            {q.optC && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(C)</strong> <span dangerouslySetInnerHTML={{ __html: q.optC }} /></div>}
-                            {q.optD && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a' }}><strong>(D)</strong> <span dangerouslySetInnerHTML={{ __html: q.optD }} /></div>}
+                            {q.optA && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a', whiteSpace: 'pre-wrap' }}><strong>(A)</strong> {q.optA}</div>}
+                            {q.optB && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a', whiteSpace: 'pre-wrap' }}><strong>(B)</strong> {q.optB}</div>}
+                            {q.optC && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a', whiteSpace: 'pre-wrap' }}><strong>(C)</strong> {q.optC}</div>}
+                            {q.optD && <div style={{ background: '#11111b', padding: '10px', borderRadius: '4px', border: '1px solid #45475a', whiteSpace: 'pre-wrap' }}><strong>(D)</strong> {q.optD}</div>}
                           </div>
                           {q.natAnswer === "NAT" && !q.optA && <div style={{ marginTop: '10px', color: '#f38ba8', fontWeight: 'bold' }}>Numerical Answer Type (NAT)</div>}
                         </div>

@@ -1,149 +1,104 @@
 import { NextResponse } from 'next/server';
 import puppeteer from 'puppeteer';
 import AdmZip from 'adm-zip';
+import { getSafeImageNames, jsonError, parseJson, rateLimit, requireMutationAccess, validateExportPayload, ValidationError } from '@/lib/api-utils';
 
-export async function POST(req) {
-try {
-const { subject, chapter, questions, baseUrl, contentWidth = 100 } = await req.json();
-if (!questions || questions.length === 0) {
-return NextResponse.json({ success: false, error: "No questions provided" }, { status: 400 });
-}
-let htmlContent = `
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<script>
-window.MathJax = {
-tex: { inlineMath: [['$', '$'], ['\\\\(', '\\\\)']], displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']] },
-startup: { typeset: false }
+export const runtime = 'nodejs';
+
+const escapeHtml = (value = '') => String(value)
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;')
+  .replace(/'/g, '&#39;');
+
+const imageUrl = (origin, subject, chapter, imageName, extension) => {
+  const segments = [subject, chapter, `${imageName}${extension}`].map(encodeURIComponent);
+  return `${origin}/${segments.join('/')}`;
 };
-</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-<style>
-body { background: #1a1a1b; color: #cdd6f4; font-family: sans-serif; padding: 20px; }
-.export-card {
-background: #000000;
-padding: 15px 20px;
-border-radius: 10px;
-margin-bottom: 20px;
-width: 1100px;
-font-size: 26px;
-display: inline-block;
-}
-.code-block { background: #181825; padding: 15px; border: 1px solid #45475a; font-family: monospace; white-space: pre-wrap; margin: 15px 0; font-size: 22px; }
-.img-placeholder { border:1px dashed #74c7ec; padding:10px; text-align:center; margin: 10px 0; }
-img { max-width: 100%; max-height: 350px; }
-</style>
-</head>
-<body>
-<div id="container">
-`;
 
-questions.forEach((q, idx) => {
-// BLANK PLACEHOLDER LOGIC FOR IMAGES
-if (q.isBlank) {
-  htmlContent += `
-  <div class="export-card" id="q-${idx + 1}" style="background: transparent; border: 4px dashed #45475a;">
-    <div style="width: ${contentWidth}%; height: 350px; display: flex; align-items: center; justify-content: center;">
-      <span style="color: #45475a; font-size: 36px; font-weight: bold;">[Blank Placeholder - Q${idx + 1}]</span>
-    </div>
-  </div><br/>
-  `;
-  return;
-}
+const renderQuestion = (question, index, origin, subject, chapter, contentWidth) => {
+  if (question.isBlank) {
+    return `<div class="export-card" id="q-${index}" style="background: transparent; border: 4px dashed #45475a;"><div style="width: ${contentWidth}%; height: 350px; display: flex; align-items: center; justify-content: center;"><span style="color: #45475a; font-size: 36px; font-weight: bold;">[Blank Placeholder - Q${index}]</span></div></div><br/>`;
+  }
 
-let formattedText = q.text.replace(/\n/g, '<br>');
-const imageList = q.diagram ? q.diagram.split(',').map(s => s.trim()).filter(Boolean) : [];
-imageList.forEach((imgName, i) => {
-const imgPath = `${baseUrl}/${subject}/${chapter}/${imgName}${q.ext}`;
-const imgTag = `<div class="img-placeholder"><img src="${imgPath}" /></div>`;
-if (formattedText.includes(`[IMG_${i + 1}]`)) formattedText = formattedText.replace(`[IMG_${i + 1}]`, imgTag);
-else if (i === 0 && formattedText.includes('[DIAGRAM_PLACEHOLDER]')) formattedText = formattedText.replace('[DIAGRAM_PLACEHOLDER]', imgTag);
-else formattedText += imgTag;
-});
-if (q.code) {
-const safeHtmlCode = q.code.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const codeTag = `<div class="code-block">${safeHtmlCode}</div>`;
-if (formattedText.includes('[CODE]')) {
-formattedText = formattedText.replace('[CODE]', codeTag);
-} else {
-formattedText += codeTag;
-}
-}
-const renderOpt = (opt, isCode) => {
-if (!opt) return "";
-if (opt.startsWith('IMG:')) return `<img src="${baseUrl}/${subject}/${chapter}/${opt.replace('IMG:', '').trim()}${q.ext}" style="max-height:80px; vertical-align:middle;"/>`;
-let text = opt;
-if (isCode) {
-text = text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-return `<span style="white-space: pre-wrap; font-family: monospace;">${text.replace(/\n/g, '<br>')}</span>`;
-}
-return text;
+  let text = escapeHtml(question.text).replace(/\r?\n/g, '<br>');
+  getSafeImageNames(question.diagram).forEach((imageName, imageIndex) => {
+    const source = imageUrl(origin, subject, chapter, imageName, question.ext);
+    const imageTag = `<div class="img-placeholder"><img src="${source}" alt="Question diagram" /></div>`;
+    const token = `[IMG_${imageIndex + 1}]`;
+    if (text.includes(token)) text = text.replace(token, imageTag);
+    else if (imageIndex === 0 && text.includes('[DIAGRAM_PLACEHOLDER]')) text = text.replace('[DIAGRAM_PLACEHOLDER]', imageTag);
+    else text += imageTag;
+  });
+  text = text.replace(/\[IMG_\d+\]|\[DIAGRAM_PLACEHOLDER\]/g, '');
+
+  const codeTag = question.code ? `<div class="code-block">${escapeHtml(question.code)}</div>` : '';
+  const hasCodeToken = text.includes('[CODE]');
+  if (hasCodeToken) text = text.replace('[CODE]', codeTag);
+  else text += codeTag;
+
+  const renderOption = (option) => {
+    if (!option) return '';
+    if (option.startsWith('IMG:')) {
+      const imageName = option.slice(4).trim();
+      if (!getSafeImageNames(imageName).length) return '[Invalid image name]';
+      return `<img src="${imageUrl(origin, subject, chapter, imageName, question.ext)}" alt="Option diagram" style="max-height:80px; vertical-align:middle;"/>`;
+    }
+    const className = question.isCodeOptions ? 'option-code' : '';
+    return `<span class="${className}">${escapeHtml(option).replace(/\r?\n/g, '<br>')}</span>`;
+  };
+
+  const hasOptions = question.optA || question.optB || question.optC || question.optD;
+  const options = hasOptions
+    ? `<div style="margin-top: 20px;"><div><strong>(A)</strong> ${renderOption(question.optA)}</div><div><strong>(B)</strong> ${renderOption(question.optB)}</div><div><strong>(C)</strong> ${renderOption(question.optC)}</div><div><strong>(D)</strong> ${renderOption(question.optD)}</div></div>`
+    : (question.isProof ? '' : `<div style="margin-top:20px; color:#f38ba8;"><strong>NAT Answer:</strong> ${escapeHtml(question.natAnswer || '_________________')}</div>`);
+
+  return `<div class="export-card" id="q-${index}"><div style="width: ${contentWidth}%;"><div class="meta">GATE ${escapeHtml(question.year)} | ${escapeHtml(question.marks)} Mark</div><div class="question-text">${text}</div>${options}</div></div><br/>`;
 };
-const hasOptions = q.optA || q.optB || q.optC || q.optD;
-htmlContent += `
-<div class="export-card" id="q-${idx + 1}">
-<div style="width: ${contentWidth}%;">
-<div style="display: inline-block; background: #a6e3a1; color: #11111b; font-weight: 900; margin-bottom: 25px; font-size: 38px; padding: 2px 10px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);">
-GATE ${q.year} | ${q.marks} Mark
-</div>
-<div style="line-height: 1.5;">${formattedText}</div>
-<div style="margin-top: 20px;">
-${hasOptions ? `
-<div style="margin-bottom: 10px;"><strong>(A)</strong> <span>${renderOpt(q.optA, q.isCodeOptions)}</span></div>
-<div style="margin-bottom: 10px;"><strong>(B)</strong> <span>${renderOpt(q.optB, q.isCodeOptions)}</span></div>
-<div style="margin-bottom: 10px;"><strong>(C)</strong> <span>${renderOpt(q.optC, q.isCodeOptions)}</span></div>
-<div style="margin-bottom: 10px;"><strong>(D)</strong> <span>${renderOpt(q.optD, q.isCodeOptions)}</span></div>
-` : `
-<div style="color: #f38ba8;"><strong>NAT Answer:</strong> ${q.natAnswer || '_________________'}</div>
-`}
-</div>
-</div>
-</div><br/>
-`;
-});
-htmlContent += `
-</div>
-<script>
-window.MathJax.typesetPromise().then(() => {
-const div = document.createElement('div');
-div.id = 'mathjax-done';
-document.body.appendChild(div);
-});
-</script>
-</body>
-</html>
-`;
-const browser = await puppeteer.launch({
-headless: "new",
-args: ['--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu']
-});
-const page = await browser.newPage();
-await page.setViewport({ width: 1200, height: 1000, deviceScaleFactor: 3 });
-await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
-await page.waitForSelector('#mathjax-done', { timeout: 15000 });
-const zip = new AdmZip();
-for (let i = 0; i < questions.length; i++) {
-const qNum = i + 1;
-const element = await page.$(`#q-${qNum}`);
-if (element) {
-const screenshotBuffer = await element.screenshot({ type: 'png' });
-zip.addFile(`${subject}_${chapter}_Q${qNum}.png`, screenshotBuffer);
-await new Promise(resolve => setTimeout(resolve, 100));
-}
-}
-await browser.close();
-const zipBuffer = zip.toBuffer();
-return new NextResponse(zipBuffer, {
-status: 200,
-headers: {
-'Content-Type': 'application/zip',
-'Content-Disposition': `attachment; filename="${subject}_${chapter}_Images.zip"`,
-},
-});
-} catch (error) {
-console.error("Puppeteer Export Error:", error);
-return NextResponse.json({ success: false, error: error.message }, { status: 500 });
-}
+
+export async function POST(request) {
+  const denied = requireMutationAccess(request);
+  if (denied) return denied;
+  const limited = rateLimit(request, 'export-images', { limit: 3, windowMs: 60_000 });
+  if (limited) return limited;
+
+  let browser;
+  try {
+    const { subject, chapter, questions, contentWidth } = validateExportPayload(await parseJson(request));
+    if (!questions.length) return jsonError('At least one question is required for export.');
+    const origin = new URL(request.url).origin;
+    const cards = questions.map((question, index) => renderQuestion(question, index + 1, origin, subject, chapter, contentWidth)).join('');
+    const html = `<!doctype html><html><head><meta charset="UTF-8" /><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\\\(','\\\\)']],displayMath:[['$$','$$'],['\\\\[','\\\\]']]},startup:{typeset:false}};</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><style>body{background:#1a1a1b;color:#cdd6f4;font-family:sans-serif;padding:20px}.export-card{background:#000;padding:15px 20px;border-radius:10px;margin-bottom:20px;width:1100px;font-size:26px;display:inline-block}.meta{display:inline-block;background:#a6e3a1;color:#11111b;font-weight:900;margin-bottom:25px;font-size:38px;padding:2px 10px;border-radius:8px}.question-text{line-height:1.5}.code-block,.option-code{background:#181825;padding:15px;border:1px solid #45475a;font-family:monospace;white-space:pre-wrap;margin:15px 0;font-size:22px}.option-code{padding:0;border:0;margin:0}.img-placeholder{border:1px dashed #74c7ec;padding:10px;text-align:center;margin:10px 0}img{max-width:100%;max-height:350px}</style></head><body><div id="container">${cards}</div><script>window.MathJax.typesetPromise().then(()=>{const done=document.createElement('div');done.id='mathjax-done';document.body.appendChild(done);});</script></body></html>`;
+
+    browser = await puppeteer.launch({
+      headless: true,
+      args: ['--disable-dev-shm-usage', '--disable-gpu']
+    });
+    const page = await browser.newPage();
+    await page.setViewport({ width: 1200, height: 1000, deviceScaleFactor: 3 });
+    await page.setContent(html, { waitUntil: 'load', timeout: 20_000 });
+    await page.waitForSelector('#mathjax-done', { timeout: 15_000 });
+
+    const zip = new AdmZip();
+    for (let index = 0; index < questions.length; index += 1) {
+      const element = await page.$(`#q-${index + 1}`);
+      if (element) zip.addFile(`Question_${index + 1}.png`, await element.screenshot({ type: 'png' }));
+    }
+
+    return new NextResponse(zip.toBuffer(), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/zip',
+        'Content-Disposition': 'attachment; filename="gate-pyqs-images.zip"',
+        'Cache-Control': 'no-store'
+      }
+    });
+  } catch (error) {
+    if (error instanceof ValidationError) return jsonError(error.message);
+    console.error('Image export error:', error);
+    return jsonError('Image export failed. Please try again.', 500);
+  } finally {
+    await browser?.close().catch((cleanupError) => console.error('Browser cleanup error:', cleanupError));
+  }
 }

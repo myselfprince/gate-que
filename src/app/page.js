@@ -1,21 +1,9 @@
 "use client";
+/* eslint-disable @next/next/no-img-element -- Question diagrams use runtime file names and explicit missing-image feedback. */
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-
-const GATE_SYLLABUS = {
-  "1. Discrete Maths": ["1. Mathematical Logic", "2. Set Theory and Algebra", "3. Combinatorics", "4. Graph Theory"],
-  "2. TOC": ["1. Finite Automata and Regular Languages", "2. PDA - CFL and DCFL", "3. Turing Machine, RE, REC, Undecidabilitu"],
-  "3. Computer Networks": ["1. ISO-OSI Stack and SWP", "2. LAN", "3. TCP, UDP and IP", "4. Routing and Application Layer"],
-  "4. COA": ["1. CPU Arch. and Address. Modes", "2. Control Unit Design", "3. Instructions Pipeline", "4. Memory Organization", "5. IO Organisation"],
-  "5. Operating Systems": ["1. Process Management-1", "2. Process Management-2", "3. Deadlock", "4. Mem. Mgmt and Virtual Mem", "5. File Sys and Device Mgmt", "6. Miscellaneous"],
-  "6. Data Structures": ["1. Arrays", "2. Stack and Queues", "3. Linked Lists", "4. Trees", "5. Graphs", "6. Hashing"],
-  "7. Algorithms": ["1. Algo. Analysis and Asymptotic Notations", "2. Divide and Conquer", "3. Greedy Method", "4. Dynamic Programming", "5. P and NP Concepts", "6. Miscellaneous Topics"],
-  "8. C Prog": ["1. Programming"],
-  "9. Digital Logic": ["1. Logic Functions and Minimizations", "2. Combinational Circuits", "3. Sequential Circuits", "4. Number Systems"],
-  "10. Compiler Design": ["1. Lexical Analysis", "2. Parsing Techniques", "3. Syntax Directed Translations", "4. Code Generations and Optimizatinos"],
-  "11. Engg. Maths": ["1. Probability", "2. Linear Algebra", "3. Calculus"],
-  "12. DBMS": ["1. ER Model", "2. Funcational Dependencies and Normalizaation", "3. Structure Query Language", "4. Relational Model", "5. Transactions and Concurrency Contorl", "6. File Structures"]
-};
+import { v4 as uuidv4 } from 'uuid';
+import { GATE_SYLLABUS } from '@/lib/syllabus';
 
 const shouldUseTwoCols = (q) => {
   if (!q.optA && !q.optB && !q.optC && !q.optD) return false;
@@ -80,8 +68,8 @@ export default function Home() {
   const [chapter, setChapter] = useState(GATE_SYLLABUS[availableSubjects[0]][0]);
   const [syncedCount, setSyncedCount] = useState(0);
   const [isDirty, setIsDirty] = useState(false);
-  const [imgCacheBuster, setImgCacheBuster] = useState(Date.now());
-  const [imageErrors, setImageErrors] = useState(new Set());
+  const [imgCacheBuster, setImgCacheBuster] = useState(() => Date.now());
+  const [imageErrors, setImageErrors] = useState(() => new Set());
   const [missingFocusIndex, setMissingFocusIndex] = useState(0);
   const [blankFocusIndex, setBlankFocusIndex] = useState(0)
   const [activePasteIndex, setActivePasteIndex] = useState(null);
@@ -195,50 +183,38 @@ export default function Home() {
         console.error("Failed to load preferences", err);
         loadFromMongoDB(availableSubjects[0], GATE_SYLLABUS[availableSubjects[0]][0]);
       });
-  }, []);
+  // The initial restore intentionally runs once; later chapter changes are handled by the select controls.
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    window.reportImageStatus = (path, isError) => {
-      setImageErrors(prev => {
-        if (isError && prev.has(path)) return prev;
-        if (!isError && !prev.has(path)) return prev;
-        const newSet = new Set(prev);
-        if (isError) newSet.add(path);
-        else newSet.delete(path);
-        return newSet;
+    const timer = setTimeout(() => {
+      if (!searchQuery.trim()) {
+        setSearchResults([]);
+        setCurrentSearchIndex(0);
+        setHasJumped(false);
+        return;
+      }
+      const lowerQuery = searchQuery.toLowerCase();
+      const matches = [];
+      questions.forEach((q, idx) => {
+        if (q.isBlank) return;
+        const isLocked = idx < lockCount;
+        if (!isLocked) {
+          const matchesSearch =
+            (q.text && q.text.toLowerCase().includes(lowerQuery)) ||
+            (q.code && q.code.toLowerCase().includes(lowerQuery)) ||
+            (q.optA && q.optA.toLowerCase().includes(lowerQuery)) ||
+            (q.optB && q.optB.toLowerCase().includes(lowerQuery)) ||
+            (q.optC && q.optC.toLowerCase().includes(lowerQuery)) ||
+            (q.optD && q.optD.toLowerCase().includes(lowerQuery));
+          if (matchesSearch) matches.push(idx);
+        }
       });
-    };
-    return () => { delete window.reportImageStatus; };
-  }, []);
-
-  useEffect(() => {
-    if (!searchQuery.trim()) {
-      setSearchResults([]);
+      setSearchResults(matches);
       setCurrentSearchIndex(0);
       setHasJumped(false);
-      return;
-    }
-    const lowerQuery = searchQuery.toLowerCase();
-    const matches = [];
-    questions.forEach((q, idx) => {
-      if (q.isBlank) return;
-      const isLocked = idx < lockCount;
-      if (!isLocked) {
-        const matchesSearch =
-          (q.text && q.text.toLowerCase().includes(lowerQuery)) ||
-          (q.code && q.code.toLowerCase().includes(lowerQuery)) ||
-          (q.optA && q.optA.toLowerCase().includes(lowerQuery)) ||
-          (q.optB && q.optB.toLowerCase().includes(lowerQuery)) ||
-          (q.optC && q.optC.toLowerCase().includes(lowerQuery)) ||
-          (q.optD && q.optD.toLowerCase().includes(lowerQuery));
-        if (matchesSearch) {
-          matches.push(idx);
-        }
-      }
-    });
-    setSearchResults(matches);
-    setCurrentSearchIndex(0);
-    setHasJumped(false);
+    }, 100);
+    return () => clearTimeout(timer);
   }, [searchQuery, questions, lockCount]);
 
   const syncPreferences = async (newSubject, newChapter) => {
@@ -726,7 +702,7 @@ export default function Home() {
     }
   };
 
-  const generateId = () => Math.random().toString(36).substr(2, 9);
+  const generateId = () => uuidv4();
   const getYearOptions = () => { let opts = []; for (let y = 2026; y >= 1990; y--) opts.push(y); return opts; };
 
   const availableYears = ['All', ...Array.from(new Set(questions.filter(q => !q.isBlank && q.year).map(q => q.year))).sort((a, b) => parseInt(b) - parseInt(a))];
@@ -965,7 +941,7 @@ const handleExportAllImages = async () => {
   try {
     const response = await fetch('/api/export-images-zip', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ subject, chapter, questions, baseUrl: window.location.origin, contentWidth: imageTextWidth })
+      body: JSON.stringify({ subject, chapter, questions, contentWidth: imageTextWidth })
     });
     if (!response.ok) throw new Error("Image export failed.");
     const blob = await response.blob();
@@ -1151,18 +1127,68 @@ const handleExportAllImages = async () => {
     }
   };
 
-  const renderOptionText = (optText, ext, isCode) => {
+  const buildImagePath = (imageName, ext) => `/${[subject, chapter, `${imageName}${ext}`].map(encodeURIComponent).join('/')}`;
+
+  const reportImageStatus = (imagePath, isError) => {
+    setImageErrors((previous) => {
+      if (isError === previous.has(imagePath)) return previous;
+      const next = new Set(previous);
+      if (isError) next.add(imagePath);
+      else next.delete(imagePath);
+      return next;
+    });
+  };
+
+  const renderPreviewImage = (imageName, ext, key, compact = false) => {
+    const imagePath = buildImagePath(imageName, ext);
+    const isMissing = imageErrors.has(imagePath);
+    return (
+      <div key={key} style={{ border: `1px dashed ${isMissing ? '#f38ba8' : '#74c7ec'}`, padding: '10px', textAlign: 'center', margin: '10px 0' }}>
+        <img src={`${imagePath}?t=${imgCacheBuster}`} onError={() => reportImageStatus(imagePath, true)} onLoad={() => reportImageStatus(imagePath, false)} alt="Question diagram" style={{ maxWidth: '100%', maxHeight: compact ? '80px' : '200px', verticalAlign: 'middle' }} />
+        {!compact && <><br /><small style={{ color: isMissing ? '#f38ba8' : '#74c7ec' }}>{isMissing ? '⚠️ 404 NOT FOUND: ' : ''}{imagePath}</small></>}
+      </div>
+    );
+  };
+
+  const renderQuestionPreview = (question, imageList) => {
+    const seenImages = new Set();
+    const nodes = [];
+    const tokens = (question.text || '').split(/(\[CODE\]|\[IMG_\d+\]|\[DIAGRAM_PLACEHOLDER\])/g);
+    let containsCodeTag = false;
+
+    tokens.forEach((token, index) => {
+      if (token === '[CODE]') {
+        containsCodeTag = true;
+        if (question.code) nodes.push(<pre key={`code-${index}`} style={{ background: '#181825', padding: '10px', border: '1px solid #45475a', fontFamily: 'monospace', whiteSpace: 'pre-wrap', margin: '10px 0' }}>{question.code}</pre>);
+        return;
+      }
+      const numberedImage = token.match(/^\[IMG_(\d+)\]$/);
+      const imageIndex = numberedImage ? Number(numberedImage[1]) - 1 : (token === '[DIAGRAM_PLACEHOLDER]' ? 0 : -1);
+      if (imageIndex >= 0) {
+        const imageName = imageList[imageIndex];
+        if (imageName) {
+          seenImages.add(imageIndex);
+          nodes.push(renderPreviewImage(imageName, question.ext, `image-${index}`));
+        }
+        return;
+      }
+      if (token) nodes.push(<span key={`text-${index}`} style={{ whiteSpace: 'pre-wrap' }}>{token}</span>);
+    });
+
+    imageList.forEach((imageName, index) => {
+      if (!seenImages.has(index)) nodes.push(renderPreviewImage(imageName, question.ext, `extra-image-${index}`));
+    });
+
+    return { content: nodes, containsCodeTag };
+  };
+
+  const renderOptionText = (optText, ext) => {
     if (!optText) return null;
-    if (optText.startsWith('IMG:')) {
-      const imgPath = `/${subject}/${chapter}/${optText.replace('IMG:', '').trim()}${ext}`;
-      const isErr = imageErrors.has(imgPath);
-      return `<img src="${imgPath}?t=${imgCacheBuster}" onerror="window.reportImageStatus('${imgPath}', true)" onload="window.reportImageStatus('${imgPath}', false)" style="max-height:60px; vertical-align:middle; border:2px solid ${isErr ? '#f38ba8' : '#45475a'}; border-radius:4px; margin-left:10px;"/>`;
-    }
-    let text = optText;
-    if (isCode) {
-      text = text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    }
-    return text.replace(/\n/g, '<br>');
+    if (!optText.startsWith('IMG:')) return optText;
+    const imageName = optText.slice(4).trim();
+    const imagePath = buildImagePath(imageName, ext);
+    const isMissing = imageErrors.has(imagePath);
+    return <img src={`${imagePath}?t=${imgCacheBuster}`} onError={() => reportImageStatus(imagePath, true)} onLoad={() => reportImageStatus(imagePath, false)} alt="Option diagram" style={{ maxHeight: '60px', verticalAlign: 'middle', border: `2px solid ${isMissing ? '#f38ba8' : '#45475a'}`, borderRadius: '4px', marginLeft: '10px' }} />;
   };
 
   
@@ -1452,16 +1478,7 @@ const handleExportAllImages = async () => {
 
           const imageList = q.diagram ? q.diagram.split(',').map(s => s.trim()).filter(Boolean) : [];
           const hasOptions = q.optA || q.optB || q.optC || q.optD;
-          let formattedText = (q.text || "").replace(/\n/g, '<br>');
-          
-          imageList.forEach((imgName, i) => {
-            const imgPath = `/${subject}/${chapter}/${imgName}${q.ext}`;
-            const isErr = imageErrors.has(imgPath);
-            const imgTag = `<div style="border:1px dashed ${isErr ? '#f38ba8' : '#74c7ec'}; padding:10px; text-align:center; margin: 10px 0;"><img src="${imgPath}?t=${imgCacheBuster}" onerror="window.reportImageStatus('${imgPath}', true)" onload="window.reportImageStatus('${imgPath}', false)" alt="Missing" style="max-width:100%; max-height:200px;"/><br/><small style="color:${isErr ? '#f38ba8' : '#74c7ec'}">${isErr ? '⚠️ 404 NOT FOUND: ' : ''}${imgPath}</small></div>`;
-            if (formattedText.includes(`[IMG_${i + 1}]`)) formattedText = formattedText.replace(`[IMG_${i + 1}]`, imgTag);
-            else if (i === 0 && formattedText.includes('[DIAGRAM_PLACEHOLDER]')) formattedText = formattedText.replace('[DIAGRAM_PLACEHOLDER]', imgTag);
-            else formattedText += imgTag;
-          });
+          const preview = renderQuestionPreview(q, imageList);
 
           return (
             <div key={q.id} id={`question-${qNum}`} style={{ scrollMarginTop: '160px', opacity: isBulkLocked ? 0.85 : 1 }}>
@@ -1582,12 +1599,9 @@ const handleExportAllImages = async () => {
                 
                 <div id={`preview-${q.id}`} className="preview-pane" style={{ paddingLeft: '20px', width: '50%' }}>
                   <div style={{ color: '#a6e3a1', fontWeight: 'bold', marginBottom: '10px' }}>[GATE {q.year} | {q.marks} Mark]</div>
-                  <div dangerouslySetInnerHTML={{ __html: q.code && formattedText.includes('[CODE]')
-                    ? formattedText.replace('[CODE]', `<div style="background: #181825; padding: 10px; border: 1px solid #45475a; font-family: monospace; white-space: pre-wrap; margin: 10px 0;">${q.code.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>`)
-                    : formattedText
-                  }} />
-                  
-                  {q.code && !formattedText.includes('[CODE]') && <div style={{ background: '#181825', padding: '10px', border: '1px solid #45475a', fontFamily: 'monospace', whiteSpace: 'pre-wrap', margin: '10px 0' }}>{q.code}</div>}
+                  <div>{preview.content}</div>
+
+                  {q.code && !preview.containsCodeTag && <div style={{ background: '#181825', padding: '10px', border: '1px solid #45475a', fontFamily: 'monospace', whiteSpace: 'pre-wrap', margin: '10px 0' }}>{q.code}</div>}
                   
                   <div style={{ marginTop: '15px' }}>
                     {hasOptions ? (() => {
@@ -1598,10 +1612,10 @@ const handleExportAllImages = async () => {
                           gridTemplateColumns: isTwoCol ? '1fr 1fr' : 'none',
                           gap: isTwoCol ? '10px 20px' : '0'
                         }}>
-                          <div style={{ marginBottom: '8px' }}><strong>(A)</strong> <span style={{ whiteSpace: q.isCodeOptions ? 'pre-wrap' : 'normal', fontFamily: q.isCodeOptions ? 'monospace' : 'inherit', display: q.isCodeOptions ? 'inline-block' : 'inline', verticalAlign: 'top' }} dangerouslySetInnerHTML={{ __html: renderOptionText(q.optA, q.ext, q.isCodeOptions) }} /></div>
-                          <div style={{ marginBottom: '8px' }}><strong>(B)</strong> <span style={{ whiteSpace: q.isCodeOptions ? 'pre-wrap' : 'normal', fontFamily: q.isCodeOptions ? 'monospace' : 'inherit', display: q.isCodeOptions ? 'inline-block' : 'inline', verticalAlign: 'top' }} dangerouslySetInnerHTML={{ __html: renderOptionText(q.optB, q.ext, q.isCodeOptions) }} /></div>
-                          <div style={{ marginBottom: '8px' }}><strong>(C)</strong> <span style={{ whiteSpace: q.isCodeOptions ? 'pre-wrap' : 'normal', fontFamily: q.isCodeOptions ? 'monospace' : 'inherit', display: q.isCodeOptions ? 'inline-block' : 'inline', verticalAlign: 'top' }} dangerouslySetInnerHTML={{ __html: renderOptionText(q.optC, q.ext, q.isCodeOptions) }} /></div>
-                          <div style={{ marginBottom: '8px' }}><strong>(D)</strong> <span style={{ whiteSpace: q.isCodeOptions ? 'pre-wrap' : 'normal', fontFamily: q.isCodeOptions ? 'monospace' : 'inherit', display: q.isCodeOptions ? 'inline-block' : 'inline', verticalAlign: 'top' }} dangerouslySetInnerHTML={{ __html: renderOptionText(q.optD, q.ext, q.isCodeOptions) }} /></div>
+                          <div style={{ marginBottom: '8px' }}><strong>(A)</strong> <span style={{ whiteSpace: 'pre-wrap', fontFamily: q.isCodeOptions ? 'monospace' : 'inherit', display: q.isCodeOptions ? 'inline-block' : 'inline', verticalAlign: 'top' }}>{renderOptionText(q.optA, q.ext)}</span></div>
+                          <div style={{ marginBottom: '8px' }}><strong>(B)</strong> <span style={{ whiteSpace: 'pre-wrap', fontFamily: q.isCodeOptions ? 'monospace' : 'inherit', display: q.isCodeOptions ? 'inline-block' : 'inline', verticalAlign: 'top' }}>{renderOptionText(q.optB, q.ext)}</span></div>
+                          <div style={{ marginBottom: '8px' }}><strong>(C)</strong> <span style={{ whiteSpace: 'pre-wrap', fontFamily: q.isCodeOptions ? 'monospace' : 'inherit', display: q.isCodeOptions ? 'inline-block' : 'inline', verticalAlign: 'top' }}>{renderOptionText(q.optC, q.ext)}</span></div>
+                          <div style={{ marginBottom: '8px' }}><strong>(D)</strong> <span style={{ whiteSpace: 'pre-wrap', fontFamily: q.isCodeOptions ? 'monospace' : 'inherit', display: q.isCodeOptions ? 'inline-block' : 'inline', verticalAlign: 'top' }}>{renderOptionText(q.optD, q.ext)}</span></div>
                         </div>
                       );
                     })() : !q.isProof ? (

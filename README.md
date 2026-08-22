@@ -5,6 +5,22 @@
 
 Welcome to the **GATE CSE PYQ Pipeline**! This is a full-stack Next.js application designed to act as an automated, end-to-end factory for collecting, cleaning, organizing, editing, and exporting Previous Year Questions (PYQs) for Computer Science exams.
 
+## Run locally
+
+1. Install Node.js 20.9 or later, MongoDB access, a TeX installation that provides `pdflatex`, and the browser dependencies required by Puppeteer.
+2. Copy `.env.example` to `.env.local` and enter your two MongoDB connection strings. For local development, authentication is disabled by default to preserve the existing one-user workflow.
+3. Run `npm ci`, then `npm run dev`.
+
+Run `npm run lint` and `npm run build` before deployment.
+
+## Production requirements
+
+This application performs browser screenshots, LaTeX compilation, ZIP generation, and database writes. Deploy it to a Node.js server or container with a writable temporary directory, `pdflatex`, and Chrome/Puppeteer support; it is not suitable for a filesystem-restricted serverless runtime.
+
+Production authentication is enabled by default. Set both `JWT_SECRET` and `APP_PASSWORD` to long, unique values before starting the service, then sign in at `/login`. The existing API and UI remain available after sign-in.
+
+Question diagrams live in `public/` and are intentionally versioned so a fresh clone and production deployment contain the same images. If the asset library grows substantially, move it to object storage and store stable URLs in question records.
+
 Instead of manually typing math equations, formatting code, and organizing chapters, this system handles the heavy lifting through automated web scraping, smart text parsing, and a highly interactive workspace.
 
 ---

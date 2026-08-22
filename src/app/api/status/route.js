@@ -2,8 +2,13 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongodb';
 import Chapter from '@/models/Chapter';
 import Target from '@/models/Target';
+import { jsonError, parseJson, requireMutationAccess, requireReadAccess, unexpectedError, validateStatusPayload, ValidationError } from '@/lib/api-utils';
 
-export async function GET(req) {
+export const runtime = 'nodejs';
+
+export async function GET(request) {
+  const denied = requireReadAccess(request);
+  if (denied) return denied;
   try {
     await dbConnect();
 
@@ -23,26 +28,29 @@ export async function GET(req) {
 
     return NextResponse.json({ success: true, actualCounts, targetCounts });
   } catch (error) {
-    console.error("GET Error:", error);
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    console.error('Status GET error:', error);
+    return unexpectedError();
   }
 }
 
-export async function POST(req) {
+export async function POST(request) {
+  const denied = requireMutationAccess(request);
+  if (denied) return denied;
   try {
     await dbConnect();
-    const { subject, chapter, targetCount } = await req.json();
+    const { subject, chapter, targetCount } = validateStatusPayload(await parseJson(request));
 
     // Update or create the target count
     const savedTarget = await Target.findOneAndUpdate(
       { subject, chapter },
-      { targetCount: parseInt(targetCount) || 0 },
-      { new: true, upsert: true }
+      { $set: { targetCount } },
+      { new: true, upsert: true, runValidators: true, setDefaultsOnInsert: true }
     );
 
     return NextResponse.json({ success: true, data: savedTarget });
   } catch (error) {
-    console.error("POST Error:", error);
-    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
+    if (error instanceof ValidationError) return jsonError(error.message);
+    console.error('Status POST error:', error);
+    return unexpectedError();
   }
 }
