@@ -70,6 +70,8 @@ export default function PdfPreview({ url }) {
       const viewport = page.getViewport({ scale });
       const ratio = Math.min(window.devicePixelRatio || 1, 2);
       const target = canvas.current;
+      delete target.dataset.renderedPage;
+      delete target.dataset.renderedWidth;
       target.width = Math.floor(viewport.width * ratio); target.height = Math.floor(viewport.height * ratio);
       target.style.width = `${viewport.width}px`; target.style.height = `${viewport.height}px`;
       textContainer.replaceChildren();
@@ -90,6 +92,7 @@ export default function PdfPreview({ url }) {
       if (disposed) return;
       textLayer = new loaded.library.TextLayer({ textContentSource: content, container: textContainer, viewport });
       await textLayer.render();
+      if (!disposed) { target.dataset.renderedPage = String(pageNumber); target.dataset.renderedWidth = String(viewport.width); }
     })().catch(error => { if (!disposed && error.name !== 'RenderingCancelledException') setError(error.message); });
     return () => { disposed = true; render?.cancel(); textLayer?.cancel(); };
   }, [loaded, pageNumber, zoom, width]);

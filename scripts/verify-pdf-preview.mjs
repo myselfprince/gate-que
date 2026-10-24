@@ -39,9 +39,21 @@ try {
   await page.select('[aria-label="PDF zoom"]', '1.5');
   await page.waitForFunction(() => document.querySelector('[data-pdf-page="21"] canvas')?.style.width.startsWith('1262'));
   await page.select('[aria-label="PDF zoom"]', 'fit');
-  const panel = await page.$('[aria-label="PDF exports"]');
-  await panel.screenshot({ path: 'tmp/pdfs/export-upgrade/pdf-preview-ui.png' });
+  await page.waitForFunction(() => {
+    const canvas = document.querySelector('[data-pdf-page="21"] canvas');
+    return canvas?.dataset.renderedPage === '21' && Math.abs(Number(canvas.dataset.renderedWidth) - (canvas.parentElement.parentElement.clientWidth - 64)) < 2;
+  });
+  await page.$eval('[aria-label="Actual PDF preview"]', node => node.scrollIntoView({ block: 'center' }));
+  await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+  await page.waitForFunction(() => Boolean(document.querySelector('[data-pdf-page="21"] canvas')?.dataset.renderedWidth));
+  await page.screenshot({ path: 'tmp/pdfs/export-upgrade/pdf-preview-settled.png' });
+  const canvasImage = await page.$eval('[data-pdf-page="21"] canvas', node => node.toDataURL('image/png').split(',')[1]);
+  await fs.writeFile('tmp/pdfs/export-upgrade/pdf-preview-canvas.png', Buffer.from(canvasImage, 'base64'));
   const details = await page.evaluate(() => ({ page: document.querySelector('[data-pdf-page]')?.getAttribute('data-pdf-page'), linkCount: document.querySelectorAll('[aria-label="Actual PDF preview"] a').length, textSpans: document.querySelectorAll('[aria-label="Actual PDF preview"] canvas + div span').length, thumbnails: document.querySelectorAll('[aria-label="PDF page thumbnails"] button').length, alerts: [...document.querySelectorAll('[aria-label="Actual PDF preview"] [role="alert"]')].map(node => node.textContent) }));
+  console.log(await page.evaluate(() => {
+    const c=document.querySelector('[data-pdf-page] canvas');
+    return {intrinsic:[c.width,c.height],css:[c.style.width,c.style.height],transform:c.getContext('2d').getTransform().toString(),rect:[c.getBoundingClientRect().width,c.getBoundingClientRect().height],sample1:[...c.getContext('2d').getImageData(500,300,1,1).data]};
+  }));
   assert.deepEqual(errors, []);
   assert.deepEqual(details.alerts, []);
   assert.equal(details.page, '21');
