@@ -17,5 +17,5 @@ export function proxy(request) {
 }
 
 export const config = {
-  matcher: ['/', '/scraper/:path*', '/scraped-view/:path*', '/status/:path*', '/pdf-tracker/:path*', '/kmap-maker/:path*', '/api/:path*']
+  matcher: ['/', '/scraper/:path*', '/scraped-view/:path*', '/status/:path*', '/pdf-tracker/:path*', '/kmap-maker/:path*', '/diagram-maker/:path*', '/api/:path*']
 };
