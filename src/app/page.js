@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { v4 as uuidv4 } from 'uuid';
 import { GATE_SYLLABUS } from '@/lib/syllabus';
 import { safeSolutionUrl } from '@/lib/solution-links.mjs';
+import { DEFAULT_PDF_SETTINGS } from '@/lib/pdf-settings.mjs';
+import PdfSettingsPanel from '@/components/PdfSettingsPanel';
 
 const shouldUseTwoCols = (q) => {
   if (!q.optA && !q.optB && !q.optC && !q.optD) return false;
@@ -77,6 +79,7 @@ export default function Home() {
   const [inlinePasteText, setInlinePasteText] = useState("");
   const [imageTextWidth, setImageTextWidth] = useState(70);
   const [pdfBusy, setPdfBusy] = useState(false);
+  const [pdfSettings, setPdfSettings] = useState({ ...DEFAULT_PDF_SETTINGS });
   const [toast, setToast] = useState(null);
   const [isReviving, setIsReviving] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -916,7 +919,7 @@ showToast(`Options auto-filled (split by ${separator}) and aligned!`);
     try {
       const response = await fetch('/api/export-latex', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ subject, chapter, questions })
+        body: JSON.stringify({ subject, chapter, questions, pdfSettings })
       });
       if (!response.ok) {
         const payload = await response.json();
@@ -945,7 +948,7 @@ showToast(`Options auto-filled (split by ${separator}) and aligned!`);
   try {
     const response = await fetch('/api/export-pdf', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ subject, chapter, questions, format })
+      body: JSON.stringify({ subject, chapter, questions, pdfSettings, format })
     });
     if (!response.ok) throw new Error((await response.json()).error || 'PDF generation failed.');
     const blob = await response.blob();
@@ -1459,6 +1462,7 @@ const handleExportAllImages = async () => {
       
       
       
+      <PdfSettingsPanel settings={pdfSettings} onChange={setPdfSettings} />
       <div id="questions_container">
         {questions.map((q, idx) => {
           const qNum = idx + 1;
@@ -1587,6 +1591,14 @@ const handleExportAllImages = async () => {
                   <label htmlFor={`solution-${q.id}`}>Video solution URL (optional; YouTube timestamps supported)</label>
                   <input id={`solution-${q.id}`} type="url" disabled={isBulkLocked} value={q.solutionUrl || ''} onChange={e => updateQ(q.id, 'solutionUrl', e.target.value)} placeholder="https://www.youtube.com/watch?v=...&t=90s" aria-invalid={Boolean(q.solutionUrl?.trim() && !safeSolutionUrl(q.solutionUrl))} />
                   {q.solutionUrl?.trim() && !safeSolutionUrl(q.solutionUrl) && <small style={{ color: '#f38ba8' }}>Enter a YouTube video URL with a valid timestamp.</small>}
+                  <details style={{ margin: '12px 0', color: '#bac2de' }}>
+                    <summary style={{ cursor: 'pointer' }}>PDF settings for this question</summary>
+                    <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+                      <label>Text size<select aria-label={`PDF font for question ${qNum}`} disabled={isBulkLocked} value={q.pdfStyle?.fontSize ?? ''} onChange={e => updateQ(q.id, 'pdfStyle', { ...q.pdfStyle, fontSize: e.target.value ? Number(e.target.value) : undefined })}><option value="">Chapter default</option>{[8, 10, 12, 14, 16, 18, 20, 22, 24, 28, 32].map(size => <option key={size} value={size}>{size}pt</option>)}</select></label>
+                      <label>Diagram size<select aria-label={`PDF diagram for question ${qNum}`} disabled={isBulkLocked} value={q.pdfStyle?.imageScale ?? ''} onChange={e => updateQ(q.id, 'pdfStyle', { ...q.pdfStyle, imageScale: e.target.value ? Number(e.target.value) : undefined })}><option value="">Chapter default</option>{[0.5, 0.75, 1, 1.25, 1.5].map(size => <option key={size} value={size}>{size}×</option>)}</select></label>
+                      <button type="button" disabled={isBulkLocked} onClick={() => updateQ(q.id, 'pdfStyle', {})}>Reset overrides</button>
+                    </div>
+                  </details>
                   
                   <div className="grid-meta" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 2fr', gap: '10px' }}>
                     <div><label>Year</label><select disabled={isBulkLocked} value={q.year} onChange={(e) => updateQ(q.id, 'year', e.target.value)}>{getYearOptions().map(y => <option key={y} value={y}>{y}</option>)}</select></div>

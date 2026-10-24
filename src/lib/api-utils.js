@@ -2,6 +2,7 @@ import { randomUUID } from 'crypto';
 import { NextResponse } from 'next/server';
 import { requireAccess } from '@/lib/auth';
 import { normalizeQuestionMetadata } from '@/lib/question-metadata.mjs';
+import { normalizePdfSettings } from '@/lib/pdf-settings.mjs';
 
 const DEFAULT_MAX_BODY_BYTES = 10 * 1024 * 1024;
 const MAX_STRING_LENGTH = 20_000;
@@ -150,9 +151,13 @@ export const validateExportPayload = (data) => {
   const maxQuestions = Number(process.env.MAX_EXPORT_QUESTIONS) || 250;
   const identity = validateChapterIdentity(data);
   const questions = validateQuestions(data?.questions, maxQuestions);
+  let pdfSettings;
+  try { pdfSettings = normalizePdfSettings(data?.pdfSettings); }
+  catch (error) { throw new ValidationError(error.message); }
   return {
     ...identity,
     questions,
+    pdfSettings,
     contentWidth: Math.min(100, Math.max(30, Number(data?.contentWidth) || 100))
   };
 };

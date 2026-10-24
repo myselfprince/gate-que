@@ -10,7 +10,7 @@ test('question-page layout uses full width, a dark theme and one page boundary p
   assert.match(tex, /\\begin\{minipage\}\[t\]\{\\textwidth\}/);
   assert.equal((tex.match(/% Question page /g) || []).length, 35);
   assert.equal((tex.match(/\\clearpage/g) || []).length, 34);
-  assert.match(tex, /\\resizebox\*/);
+  assert.match(tex, /\\PackageError\{G4Gate\}/);
   assert.doesNotMatch(tex, /multicols|\\begin\{questions\}|Answer key|\\\\n\\end\{tabular\}/);
   assert.match(tex, /GATE 2024 \(Set-2\)/);
   assert.match(tex, /35 \/ 35/);

@@ -68,6 +68,9 @@ export async function exportQuestionPdf(payload, { projectRoot = process.cwd(), 
         throw new PdfExportError(`PDF failed near question ${questionIndex}. ${reason}`, { questionIndex, questionId: questions[questionIndex - 1]?.id, part: number }, error);
       }
       for (const line of output.split(/\r?\n/).filter(line => /Overfull|GATEFITWARNING/.test(line))) warnings.push({ part: number, message: line });
+      for (const match of output.matchAll(/GATEFIT:(\d+):FONT:(\d+)/g)) {
+        if (Number(match[2]) < 12) warnings.push({ part: number, questionIndex: Number(match[1]), message: `Question ${match[1]} uses ${match[2]}pt body text. Review readability.` });
+      }
       const bytes = await fs.readFile(path.join(batchDirectory, 'main.pdf'));
       parts.push({ number, count: batch.length, bytes });
       await onProgress({ completed: Math.min(index + batch.length, questions.length), total: questions.length, part: number });

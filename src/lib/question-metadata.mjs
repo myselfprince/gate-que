@@ -1,7 +1,12 @@
 import { normalizeSolutionUrl } from './solution-links.mjs';
+import { normalizePdfSettings } from './pdf-settings.mjs';
 
 export function normalizeQuestionMetadata(value, fail = (message) => { throw new Error(message); }) {
   const metadata = {};
+  if (value.pdfStyle !== undefined) {
+    try { metadata.pdfStyle = normalizePdfSettings(value.pdfStyle, { partial: true }); }
+    catch (error) { fail(error.message); }
+  }
   if (value.solutionUrl !== undefined) {
     try { metadata.solutionUrl = normalizeSolutionUrl(value.solutionUrl); }
     catch (error) { fail(error.message); }
