@@ -41,6 +41,7 @@ export default function PdfSettingsPanel({ settings, onChange }) {
         ['lineSpacing', 'Line spacing', 1.1, 1.8, 0.05, '×'],
         ['marginMm', 'Page margins', 8, 25, 1, 'mm'],
         ['imageScale', 'Diagram size', 0.5, 1.5, 0.05, '×'],
+        ['workingLines', 'Working-space lines', 0, 10, 1, ''],
       ].map(([key, label, min, max, step, unit]) => <label key={key}>{label}: {Number(settings[key].toFixed(2))}{unit}<input aria-label={label} type="range" min={min} max={max} step={step} value={settings[key]} onChange={e => update(key, Number(e.target.value))} /></label>)}
       <label>Page theme<select value={settings.theme} onChange={e => update('theme', e.target.value)}><option value="dark">Black / white text</option><option value="light">White / black text</option></select></label>
       <label>If the question still does not fit<select value={settings.overflow} onChange={e => update('overflow', e.target.value)}><option value="error">Stop and show the question</option><option value="warn">Shrink further and warn</option></select></label>
@@ -49,6 +50,7 @@ export default function PdfSettingsPanel({ settings, onChange }) {
       <label><input type="checkbox" checked={settings.showSolutions} onChange={e => update('showSolutions', e.target.checked)} /> Video solution links</label>
       <label><input type="checkbox" checked={settings.showWebsite} onChange={e => update('showWebsite', e.target.checked)} /> g4gate.com footer</label>
       <label><input type="checkbox" checked={settings.includePageImages} onChange={e => update('includePageImages', e.target.checked)} /> Matching page images ZIP</label>
+      <label><input type="checkbox" checked={settings.includeAnswerKey} onChange={e => update('includeAnswerKey', e.target.checked)} /> Separate answer-key PDF</label>
     </div>
     <p style={{ color: '#bac2de', fontSize: 13 }}>Auto-fit reflows each question down to the minimum size. Large questions may need a smaller font or diagram. Use the PDF preview to check the result.</p>
     <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>

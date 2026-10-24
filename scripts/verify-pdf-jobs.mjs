@@ -69,6 +69,14 @@ try {
     assert.equal(image.readUInt32BE(16), 1920);
     await fs.writeFile(path.join(root, 'matched-page-001.png'), image);
   }
+  if (payload.pdfSettings?.includeAnswerKey) {
+    const answerResponse = await fetch(`${origin}/api/pdf-jobs/${created.id}/download?kind=answers`);
+    assert.equal(answerResponse.status, 200);
+    const answers = new Uint8Array(await answerResponse.arrayBuffer());
+    assert.ok((await PDFDocument.load(answers)).getPageCount() > 0);
+    assert.equal(finalJob.report.answerKeyBoundsChecked, true);
+    await fs.writeFile(path.join(root, 'verified-answer-key.pdf'), answers);
+  }
   const missing = await fetch(`${origin}/api/pdf-jobs/not-a-job/download`);
   assert.equal(missing.status, 404);
   console.log(JSON.stringify({ acceptanceMs, pages: payload.questions.length, cancelledAndRetried: cancelled.status === 'cancelled', reusedBatches: finalJob.report.reusedBatches, report: finalJob.report }, null, 2));

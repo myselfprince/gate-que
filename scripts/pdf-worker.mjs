@@ -52,6 +52,7 @@ try {
   });
   controller.signal.throwIfAborted();
   await fs.writeFile(path.join(directory, 'complete.pdf'), result.pdf);
+  if (result.answerKey) await fs.writeFile(path.join(directory, 'answer-key.pdf'), result.answerKey);
   if (payload.pdfSettings?.includePageImages) {
     status = { ...status, phase: 'images' };
     await writeJobStatus(directory, status);
@@ -73,6 +74,7 @@ try {
   }
   const zip = new AdmZip();
   for (const part of result.parts) zip.addFile(`PYQs_Part${part.number}.pdf`, part.bytes);
+  if (result.answerKey) zip.addFile('Answer-Key.pdf', result.answerKey);
   zip.addFile('export-qa.json', Buffer.from(JSON.stringify(result.report, null, 2)));
   await fs.writeFile(path.join(directory, 'parts.zip'), zip.toBuffer());
   await fs.writeFile(path.join(directory, 'report.json'), JSON.stringify(result.report, null, 2));

@@ -11,12 +11,29 @@ import { collectLatexImages } from './latex-source.mjs';
 import { normalizePdfSettings } from './pdf-settings.mjs';
 import { normalizeSolutionUrl } from './solution-links.mjs';
 import { addQuestionBookmarks } from './pdf-bookmarks.mjs';
+import { buildAnswerKey } from './answer-key.mjs';
 
 const run = promisify(execFile);
 export const PDF_BATCH_SIZE = 20;
 
 export class PdfExportError extends Error {
   constructor(message, details = {}, cause) { super(message, { cause }); this.name = 'PdfExportError'; this.details = details; }
+}
+
+async function inspectTextBounds(file, count, signal) {
+  const { stdout } = await run(process.env.PDFTOTEXT_BIN || 'pdftotext', ['-bbox', file, '-'], { windowsHide: true, timeout: 60_000, maxBuffer: 20 * 1024 * 1024, signal });
+  const xml = load(stdout, { xmlMode: true });
+  const pages = xml('page').toArray();
+  if (pages.length !== count) throw new PdfExportError('Text read-back has an unexpected page count.');
+  pages.forEach((page, index) => {
+    const width = Number(xml(page).attr('width')), height = Number(xml(page).attr('height'));
+    const words = xml(page).find('word').toArray();
+    if (!words.length) throw new PdfExportError(`Page ${index + 1} has no readable text.`);
+    for (const word of words) {
+      const node = xml(word);
+      if (Number(node.attr('xMin')) < -1 || Number(node.attr('yMin')) < -1 || Number(node.attr('xMax')) > width + 1 || Number(node.attr('yMax')) > height + 1) throw new PdfExportError(`Text is outside page ${index + 1}. Reduce the font or diagram size.`, { questionIndex: index + 1 });
+    }
+  });
 }
 
 export async function mergeQuestionPdfs(parts, expectedPages, title = 'G4Gate questions', questions = []) {
@@ -90,8 +107,11 @@ export async function exportQuestionPdf(payload, { projectRoot = process.cwd(), 
         const questionIndex = markers.length ? Number(markers.at(-1)[1]) : index + 1;
         const reason = error.code === 'ENOENT' ? 'pdflatex is not installed or PDFLATEX_BIN is incorrect.'
           : /Access is denied/i.test(error.stdout || '') ? 'The TeX installation cannot access its configuration folders.'
+          : /does not fit at minimum font/.test(error.stdout || '') ? 'This question does not fit at the minimum font size. Reduce its text or diagram size in PDF settings.'
           : error.killed ? 'Compilation timed out.' : 'Check this question’s math, code and image references.';
-        throw new PdfExportError(`PDF failed near question ${questionIndex}. ${reason}`, { questionIndex, questionId: questions[questionIndex - 1]?.id, part: number }, error);
+        const question = questions[questionIndex - 1];
+        const label = question?.source?.questionNumber || question?.exportNumber || String(questionIndex);
+        throw new PdfExportError(`PDF failed near export question ${questionIndex} (Q${label}). ${reason}`, { questionIndex, questionId: question?.id, questionNumber: label, part: number }, error);
       }
       const batchWarnings = output.split(/\r?\n/).filter(line => /Overfull|GATEFITWARNING/.test(line)).map(message => ({ part: number, message }));
       for (const match of output.matchAll(/GATEFIT:(\d+):FONT:(\d+)/g)) {
@@ -133,25 +153,31 @@ export async function exportQuestionPdf(payload, { projectRoot = process.cwd(), 
     let textBoundsChecked = false;
     await fs.writeFile(path.join(directory, 'complete.pdf'), pdf);
     try {
-      const { stdout } = await run(process.env.PDFTOTEXT_BIN || 'pdftotext', ['-bbox', path.join(directory, 'complete.pdf'), '-'], { windowsHide: true, timeout: 60_000, maxBuffer: 20 * 1024 * 1024, signal });
-      const xml = load(stdout, { xmlMode: true });
-      const pages = xml('page').toArray();
-      if (pages.length !== questions.length) throw new PdfExportError('Text read-back has an unexpected page count.');
-      pages.forEach((page, index) => {
-        const width = Number(xml(page).attr('width')), height = Number(xml(page).attr('height'));
-        const words = xml(page).find('word').toArray();
-        if (!words.length) throw new PdfExportError(`Page ${index + 1} has no readable text.`);
-        for (const word of words) {
-          const node = xml(word);
-          if (Number(node.attr('xMin')) < -1 || Number(node.attr('yMin')) < -1 || Number(node.attr('xMax')) > width + 1 || Number(node.attr('yMax')) > height + 1) throw new PdfExportError(`Text is outside page ${index + 1}. Reduce this question’s font or diagram size.`, { questionIndex: index + 1 });
-        }
-      });
+      await inspectTextBounds(path.join(directory, 'complete.pdf'), questions.length, signal);
       textBoundsChecked = true;
     } catch (error) {
       if (error instanceof PdfExportError || signal?.aborted) throw error;
       warnings.push({ message: 'Text bounds could not be checked. Install Poppler pdftotext or set PDFTOTEXT_BIN, then retry.' });
     }
-    return { pdf, parts, report: { questions: questions.length, pages: questions.length, batches: parts.length, reusedBatches, warnings, pageCountVerified: true, textBoundsChecked, linksVerified: true, websiteLinks, solutionLinks } };
+    let answerKey, answerKeyPages, answerKeyBoundsChecked;
+    if (settings.includeAnswerKey) {
+      await onProgress({ completed: questions.length, total: questions.length, phase: 'answers' });
+      await fs.writeFile(path.join(directory, 'answer-key.tex'), buildAnswerKey(payload));
+      try {
+        const result = await run(process.env.PDFLATEX_BIN || 'pdflatex', ['-no-shell-escape', '-halt-on-error', '-interaction=nonstopmode', 'answer-key.tex'], { cwd: directory, windowsHide: true, timeout: 60_000, maxBuffer: 10 * 1024 * 1024, signal });
+        for (const line of result.stdout.split(/\r?\n/).filter(line => /Overfull/.test(line))) warnings.push({ message: `Answer key: ${line}` });
+      } catch (error) {
+        if (signal?.aborted) throw error;
+        const markers = [...(error.stdout || '').matchAll(/GATEANSWER:(\d+)/g)];
+        throw new PdfExportError(`Answer key failed near question ${markers.at(-1)?.[1] || 1}. Check the stored answer’s math.`, {}, error);
+      }
+      answerKey = await fs.readFile(path.join(directory, 'answer-key.pdf'));
+      answerKeyPages = (await PDFDocument.load(answerKey)).getPageCount();
+      answerKeyBoundsChecked = false;
+      try { await inspectTextBounds(path.join(directory, 'answer-key.pdf'), answerKeyPages, signal); answerKeyBoundsChecked = true; }
+      catch (error) { if (error instanceof PdfExportError || signal?.aborted) throw error; warnings.push({ message: 'Answer-key text bounds could not be checked. Install Poppler pdftotext and retry.' }); }
+    }
+    return { pdf, parts, answerKey, report: { questions: questions.length, pages: questions.length, batches: parts.length, reusedBatches, warnings, pageCountVerified: true, textBoundsChecked, linksVerified: true, websiteLinks, solutionLinks, ...(answerKey ? { answerKeyPages, answerKeyBoundsChecked } : {}) } };
   } finally {
     await fs.rm(directory, { recursive: true, force: true });
   }

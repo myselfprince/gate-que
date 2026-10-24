@@ -11,6 +11,7 @@ export function buildQuestionPages({ subject, chapter, questions, pdfSettings },
   collectLatexImages(questions);
   const settings = normalizePdfSettings(pdfSettings);
   const foreground = settings.theme === 'dark' ? 'white' : 'black';
+  const workingSpace = settings.workingLines ? `{\\color{${foreground}!35}\\vbox{\\offinterlineskip{\\fontsize{9}{12}\\selectfont Working space\\strut}\\vskip2pt\n${'\\hrule height0.3pt\\vskip13.7pt\n'.repeat(settings.workingLines)}}}\\par\n` : '';
   const title = escapeLatex(`${subject} - ${chapter}`);
   let source = `\\documentclass[12pt,a4paper,landscape]{article}
 \\usepackage[utf8]{inputenc}
@@ -33,7 +34,7 @@ export function buildQuestionPages({ subject, chapter, questions, pdfSettings },
 \\newlength{\\questionheight}
 \\newlength{\\questionimageheight}
 \\newcommand{\\questionbody}{}
-\\setlength{\\questionheight}{\\dimexpr\\textheight-22pt\\relax}
+\\setlength{\\questionheight}{\\dimexpr\\textheight-22pt-${settings.workingLines ? (settings.workingLines + 1) * 14 : 0}pt\\relax}
 \\begin{document}
 `;
   questions.forEach((q, index) => {
@@ -90,6 +91,7 @@ ${renderSourceQuestion({ text: '[CODE]', code: q.code })}
   \\usebox{\\questionbox}
 \\fi
 \\par\\vfill
+${workingSpace}
 {\\fontsize{9}{12}\\selectfont\\color{${foreground}!75}${settings.showWebsite ? '\\href{https://g4gate.com}{g4gate.com}' : ''}\\hfill ${solutionUrl ? `\\href{${solutionUrl}}{Watch video solution}\\hfill ` : ''}${startIndex + index + 1} / ${totalQuestions}\\par}
 `;
   });

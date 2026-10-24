@@ -97,7 +97,7 @@ export default function PdfExportPanel({ payload }) {
     {error && <p role="alert" style={{ color: '#f38ba8' }}>{error}</p>}
     {jobs.length > 0 && <label>Export history<select aria-label="Export history" value={job?.id || ''} onChange={e => { setSelected(e.target.value); setSnapshot(''); }}>{jobs.map(item => <option key={item.id} value={item.id}>{item.subject} / {item.chapter} · {item.total} questions · {item.status} · {new Date(item.createdAt).toLocaleString()}</option>)}</select></label>}
     {job && <div>
-      <p role="status">{job.status === 'queued' ? 'Waiting for the active export to finish' : job.status === 'running' ? job.phase === 'images' ? 'Rendering matching page images...' : job.phase === 'checking' ? 'Checking PDF pages and links...' : `Compiling: ${job.completed} / ${job.total}` : job.status === 'completed' ? `${job.total} pages ready · page count and links verified` : job.error || job.status}{job.cancelRequested && active(job) ? ' · Cancelling...' : ''}</p>
+      <p role="status">{job.status === 'queued' ? 'Waiting for the active export to finish' : job.status === 'running' ? job.phase === 'answers' ? 'Building separate answer key...' : job.phase === 'images' ? 'Rendering matching page images...' : job.phase === 'checking' ? 'Checking PDF pages and links...' : `Compiling: ${job.completed} / ${job.total}` : job.status === 'completed' ? `${job.total} pages ready · page count and links verified` : job.error || job.status}{job.cancelRequested && active(job) ? ' · Cancelling...' : ''}</p>
       {active(job) && <><progress aria-label="PDF export progress" max={job.total} value={job.completed} style={{ width: 'min(100%,600px)' }} /><button type="button" disabled={busy || job.cancelRequested} onClick={() => action('cancel')}>Cancel export</button></>}
       {['failed', 'cancelled'].includes(job.status) && <button type="button" disabled={busy} onClick={() => action('retry')}>Retry saved snapshot</button>}
       {job.status === 'completed' && <div>
@@ -106,6 +106,7 @@ export default function PdfExportPanel({ payload }) {
           <a href={`/api/pdf-jobs/${job.id}/download?kind=zip`} style={{ color: '#89b4fa' }}>20-question parts ZIP</a>
           <a href={`/api/pdf-jobs/${job.id}/download?kind=report`} style={{ color: '#89b4fa' }}>QA report</a>
           {job.report?.imagesAvailable && <a href={`/api/pdf-jobs/${job.id}/download?kind=images`} style={{ color: '#89b4fa' }}>Matching page images ZIP</a>}
+          {job.report?.answerKeyPages && <a href={`/api/pdf-jobs/${job.id}/download?kind=answers`} style={{ color: '#89b4fa' }}>Separate answer-key PDF</a>}
           <a href={`/api/pdf-jobs/${job.id}/download?inline=1`} target="_blank" rel="noopener noreferrer" style={{ color: '#89b4fa' }}>Open PDF preview ↗</a>
         </div>
         <p style={{ fontSize: 13, color: '#bac2de' }}>{job.report?.textBoundsChecked ? 'Text bounds checked.' : 'Text bounds were not checked.'} Content still needs source review.{snapshot && snapshot !== signature ? ' Your draft or PDF settings changed. Build a new PDF to include them.' : ' Downloads contain the saved export snapshot.'}</p>

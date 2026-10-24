@@ -70,10 +70,17 @@ try {
   const exportRequest = JSON.parse((await submitted).postData());
   assert.deepEqual(exportRequest.questions.map(question => question.exportNumber), ['20', '21']);
   await page.waitForFunction(() => document.querySelector('[aria-label="PDF page number"]')?.max === '2' && Boolean(document.querySelector('[data-pdf-page="1"] canvas')?.dataset.renderedWidth), { timeout: 30000 });
+  const bookmarkLabels = await page.$$eval('[aria-label="Jump to PDF question"] option', options => options.map(option => option.textContent));
+  assert.equal(bookmarkLabels.length, 2);
+  assert.ok(bookmarkLabels[0].startsWith('Q20'));
+  assert.ok(bookmarkLabels[1].startsWith('Q21'));
+  await page.select('[aria-label="Jump to PDF question"]', '2');
+  await page.waitForFunction(() => document.querySelector('[data-pdf-page="2"] canvas')?.dataset.renderedPage === '2');
   await page.$eval('[aria-label="PDF exports"]', node => node.scrollIntoView({ block: 'start' }));
   await page.evaluate(() => window.scrollBy(0, -210));
   await page.screenshot({ path: 'tmp/pdfs/export-upgrade/selection-preview.png' });
   details.rangeSelectionBuilt = true;
+  details.bookmarkNavigationVerified = true;
   console.log(JSON.stringify(details, null, 2));
 } catch (error) {
   if (page) {

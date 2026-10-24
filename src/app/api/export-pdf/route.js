@@ -20,6 +20,7 @@ export async function POST(request) {
     if (format === 'pdf') return new NextResponse(new Uint8Array(result.pdf), { headers: { ...headers, 'Content-Type': 'application/pdf', 'Content-Disposition': 'attachment; filename="gate-pyqs.pdf"' } });
     const zip = new AdmZip();
     for (const part of result.parts) zip.addFile(`PYQs_Part${part.number}.pdf`, part.bytes);
+    if (result.answerKey) zip.addFile('Answer-Key.pdf', result.answerKey);
     return new NextResponse(zip.toBuffer(), { headers: { ...headers, 'Content-Type': 'application/zip', 'Content-Disposition': 'attachment; filename="gate-pyqs.zip"' } });
   } catch (error) {
     if (error instanceof ValidationError || error instanceof PdfExportError) return jsonError(error.message, 400);

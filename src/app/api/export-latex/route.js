@@ -4,6 +4,7 @@ import path from 'path';
 import AdmZip from 'adm-zip';
 import { collectLatexImages } from '@/lib/latex-source.mjs';
 import { buildQuestionPages } from '@/lib/question-pages.mjs';
+import { buildAnswerKey } from '@/lib/answer-key.mjs';
 import { jsonError, parseJson, rateLimit, requireMutationAccess, validateExportPayload, ValidationError } from '@/lib/api-utils';
 
 export const runtime = 'nodejs';
@@ -28,8 +29,9 @@ export async function POST(request) {
       }
     }
     zip.addFile('main.tex', Buffer.from(buildQuestionPages(payload), 'utf8'));
+    if (payload.pdfSettings.includeAnswerKey) zip.addFile('answer-key.tex', Buffer.from(buildAnswerKey(payload), 'utf8'));
     zip.addFile('chapter.json', Buffer.from(JSON.stringify(payload, null, 2), 'utf8'));
-    zip.addFile('README.txt', Buffer.from('Extract this ZIP before compiling main.tex with pdflatex. Each question uses one black landscape page, matching the PDF export. Keep the images folder next to main.tex. The JSON preserves editable question data, source references and available answer keys; answers are not printed on the question pages.\n', 'utf8'));
+    zip.addFile('README.txt', Buffer.from('Extract this ZIP before compiling main.tex with pdflatex. Each question uses one landscape page with your chosen design settings, matching the PDF export. Keep the images folder next to main.tex. If answer-key.tex is included, compile it separately for available stored answers. The JSON preserves editable question data and source references; answers are not printed on question pages.\n', 'utf8'));
     return new NextResponse(zip.toBuffer(), {
       headers: { 'Content-Type': 'application/zip', 'Content-Disposition': 'attachment; filename="gate-pyqs-latex.zip"', 'Cache-Control': 'no-store' },
     });

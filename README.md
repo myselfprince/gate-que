@@ -42,6 +42,11 @@ Complete PDFs include question bookmarks. Enable **Matching page images ZIP**
 to render 1920-pixel page PNGs directly from the final PDF using Poppler
 `pdftoppm` (or `PDFTOPPM_BIN`). This is separate from the editor's existing
 thumbnail-image export, which has its own presentation layout.
+Optional working-space lines reserve space before question fitting. Enable the
+separate answer-key PDF to export stored MCQ/MSQ/NAT answers without revealing
+them on question pages. Missing answers are labeled explicitly. The LaTeX ZIP
+includes `answer-key.tex`, and the terminal exporter writes an adjacent
+`.answer-key.pdf` when this option is enabled.
 
 ## Production requirements
 
