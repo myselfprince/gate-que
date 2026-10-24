@@ -13,6 +13,13 @@ Welcome to the **GATE CSE PYQ Pipeline**! This is a full-stack Next.js applicati
 
 Run `npm run lint` and `npm run build` before deployment.
 
+PDF export offers a complete chapter PDF and a ZIP of 20-question parts. Both
+compile in bounded batches and verify page counts before delivery. For terminal
+exports, use `npm run export:pdf -- chapter.json output.pdf` with the `chapter.json`
+from an extracted LaTeX ZIP. The command also writes an adjacent `.qa.json` report.
+Install `pdflatex` (or set `PDFLATEX_BIN`) and keep chapter diagrams in `public/`.
+Layout warnings require review; successful compilation is not content verification.
+
 ## Production requirements
 
 This application performs browser screenshots, LaTeX compilation, ZIP generation, and database writes. Deploy it to a Node.js server or container with a writable temporary directory, `pdflatex`, and Chrome/Puppeteer support; it is not suitable for a filesystem-restricted serverless runtime.

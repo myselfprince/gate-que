@@ -60,7 +60,7 @@ export function buildQuestionPages({ subject, chapter, questions }, {
 \\end{lrbox}
 `;
     };
-    source += `\n% Question page ${number}\n`;
+    source += `\n% Question page ${number}\n\\typeout{GATEQUESTION:${startIndex + index + 1}}\n`;
     if (q.code && !q.isBlank) source += `\\begin{lrbox}{\\questioncodebox}
 \\begin{minipage}{\\textwidth}
 ${renderSourceQuestion({ text: '[CODE]', code: q.code })}

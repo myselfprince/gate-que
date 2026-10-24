@@ -75,6 +75,7 @@ export default function Home() {
   const [activePasteIndex, setActivePasteIndex] = useState(null);
   const [inlinePasteText, setInlinePasteText] = useState("");
   const [imageTextWidth, setImageTextWidth] = useState(70);
+  const [pdfBusy, setPdfBusy] = useState(false);
   const [toast, setToast] = useState(null);
   const [isReviving, setIsReviving] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -934,16 +935,18 @@ showToast(`Options auto-filled (split by ${separator}) and aligned!`);
     }
   };
 
-  const handleExportPDF = async () => {
+  const handleExportPDF = async (format = 'pdf') => {
   // Send all questions (including blanks) so numbering stays perfectly aligned
   if (questions.length === 0) return showToast("❌ No questions to compile!", "error");
+  if (pdfBusy) return;
+  setPdfBusy(true);
   showToast("🚀 Compiling LaTeX chunks... This may take a moment.", "info");
   try {
     const response = await fetch('/api/export-pdf', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ subject, chapter, questions })
+      body: JSON.stringify({ subject, chapter, questions, format })
     });
-    if (!response.ok) throw new Error("PDF generation failed.");
+    if (!response.ok) throw new Error((await response.json()).error || 'PDF generation failed.');
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -953,9 +956,13 @@ showToast(`Options auto-filled (split by ${separator}) and aligned!`);
     document.body.appendChild(a);
     a.click();
     a.remove();
-    showToast("✅ PDF Chunks Exported Successfully!");
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    const warningCount = Number(response.headers.get('X-PDF-Warnings'));
+    showToast(warningCount ? `PDF exported with ${warningCount} layout warnings. Review the pages.` : 'PDF exported. Page count verified.', warningCount ? 'info' : 'success');
   } catch (error) {
-    showToast("❌ Error generating PDF. Make sure you are running locally.", "error");
+    showToast(error.message, 'error');
+  } finally {
+    setPdfBusy(false);
   }
 };
 
@@ -1402,7 +1409,8 @@ const handleExportAllImages = async () => {
         </div>
 
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
-          <button className="btn-export" style={{ background: '#cba6f7', color: '#11111b', padding: '10px 15px' }} onClick={handleExportPDF}>🚀 Export Full PDF</button>
+          <button className="btn-export" disabled={pdfBusy} style={{ background: '#cba6f7', color: '#11111b', padding: '10px 15px' }} onClick={() => handleExportPDF('pdf')}>{pdfBusy ? 'Compiling PDF...' : 'Export Complete PDF'}</button>
+          <button className="btn-export" disabled={pdfBusy} onClick={() => handleExportPDF('zip')}>20-question parts ZIP</button>
           <button className="btn-export" style={{ background: '#cba6f7', color: '#11111b', padding: '10px 15px' }} onClick={handleExportLatex}>Export LaTeX ZIP</button>
           <button className="btn-export" style={{ background: '#a6e3a1', color: '#11111b', padding: '10px 15px' }} onClick={() => saveToMongoDB(null, false)}>💾 Save DB</button>
           <button className="btn-export" style={{ background: '#f5c2e7', color: '#11111b', padding: '10px 15px' }} onClick={handleExportYTData}>▶️ Export YT Data</button>

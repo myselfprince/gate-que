@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "node --test tests/*.test.mjs",
+    "export:pdf": "node scripts/export-pdf.mjs"
   },
   "dependencies": {
     "adm-zip": "0.6.0",
@@ -14,6 +16,7 @@
     "html2canvas": "^1.4.1",
     "mongoose": "9.7.2",
     "next": "16.3.2",
+    "pdf-lib": "1.17.1",
     "puppeteer": "25.8.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
