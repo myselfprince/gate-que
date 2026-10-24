@@ -1,0 +1,320 @@
+[
+  {
+    "number": "3.1",
+    "id": "566ccd50-7491-4f3e-b9e7-1c61878c1ae1",
+    "beforeHash": "bf0e55e0b9a7021f18c8d33f17acbf7cc1671fbc5c71ff32204610a905d54ca4",
+    "correctOptions": [
+      "D"
+    ],
+    "conflicts": [
+      "Legacy option C says discarded; printed option C says forwarded. Printed key D is retained; source explanation uses discarded."
+    ]
+  },
+  {
+    "number": "3.2",
+    "id": "0860edd7-c49f-4c8c-9aef-0fdad0e81bfd",
+    "beforeHash": "1e8a5eb91e92815c13ca1e40faa2b025661480cbec1f5f3f27760abf252a1c54",
+    "correctOptions": [
+      "D"
+    ],
+    "conflicts": []
+  },
+  {
+    "number": "3.3",
+    "id": "dda9cce0-5cbb-4b1f-8e79-0f2fcba900b0",
+    "beforeHash": "2ffddc4891a54cae26cb735040b8574b3d2b9fda0cbbf7b4fc1f55fcb48eaaf1",
+    "correctOptions": [
+      "D"
+    ],
+    "conflicts": [
+      "Legacy marks 1; printed source marks 2. Existing value preserved.",
+      "Legacy option A has 172.56.87.233; source prints 172.56.87.23.2 (invalid five-component address). Legacy B/C order differs."
+    ]
+  },
+  {
+    "number": "3.4",
+    "id": "726785c6-9568-4468-9bda-6ab090366a4a",
+    "beforeHash": "8433a3517b618534601d85f1249a7c99f4bb90cd660383c108d9600cb3d4e5e0",
+    "correctOptions": [
+      "B"
+    ],
+    "conflicts": []
+  },
+  {
+    "number": "3.5",
+    "id": "6c10bdbc-9783-4d36-8e59-57321f3dba5d",
+    "beforeHash": "dbdb7450f21772de86e6334997aca183785a7b2202fca1a3ecf7bbec417b295c",
+    "correctOptions": [
+      "A"
+    ],
+    "conflicts": []
+  },
+  {
+    "number": "3.6",
+    "id": "d8ddf0ae-c107-4957-9a90-949ca9f92a50",
+    "beforeHash": "b4f88e37f1649d83f741b8d55097011ecd3193f637126ca4cd4b6c487585c242",
+    "correctOptions": [
+      "C"
+    ],
+    "conflicts": []
+  },
+  {
+    "number": "3.7",
+    "id": "ce6046c8-a23c-4c17-b426-904cf22c0e2c",
+    "beforeHash": "d1a43a3b132394d631ab6c05a7116a985e768356a2edacfa63af94a1e674c8d3",
+    "correctOptions": [
+      "A"
+    ],
+    "conflicts": []
+  },
+  {
+    "number": "3.8",
+    "id": "8d75f3de-33e0-4336-84fc-89ac5386a7f3",
+    "beforeHash": "85d3d092c68fe59095a3956c433a5298555eb344d8a50e79af9823a04f771661",
+    "correctOptions": [
+      "D"
+    ],
+    "conflicts": [
+      "Legacy marks 1; printed source marks 2. Existing value preserved."
+    ]
+  },
+  {
+    "number": "3.9",
+    "id": "7e1b814d-8cc1-4cbb-93f9-27fd090e868f",
+    "beforeHash": "339238fd4c07937434ebaac3c49651d0bb29038d7b8fb941edadee0d62c0b94b",
+    "correctOptions": [
+      "C"
+    ],
+    "conflicts": [
+      "Legacy marks 1; printed source marks 2. Existing value preserved."
+    ]
+  },
+  {
+    "number": "3.10",
+    "id": "72b74aff-3a3d-4f61-9417-0304fae41f5b",
+    "beforeHash": "fa612b8430262296eeb9a1dee10111504d50d37e682c73e99587fa9f0ea28a89",
+    "correctOptions": [
+      "B"
+    ],
+    "conflicts": [
+      "Legacy marks 1; printed source marks 2. Existing value preserved."
+    ]
+  },
+  {
+    "number": "3.11",
+    "id": "29636da7-d0b3-4d4c-9e6d-f7604745641a",
+    "beforeHash": "5bdd9b532d4aeb2f2038eed1aeeb10b282b943d0a2e0098f91eb21616fef9a15",
+    "correctOptions": [
+      "A"
+    ],
+    "conflicts": [
+      "Legacy marks 1; printed source marks 2. Existing value preserved."
+    ]
+  },
+  {
+    "number": "3.12",
+    "id": "eb2331ad-167e-41e7-af17-24a1c88e24fe",
+    "beforeHash": "1fdb60c0f1ebb20440c68fb8a2e5a1f17c6fa1d697f20e6ba064aafa1964d1e1",
+    "correctOptions": [
+      "D"
+    ],
+    "conflicts": [
+      "Legacy marks 1; printed source marks 2. Existing value preserved."
+    ]
+  },
+  {
+    "number": "3.14",
+    "id": "32de7480-7845-4476-9495-52e1a27c9933",
+    "beforeHash": "f48b530a46b391c75188b8e95354e4f3220aeaf51c8e79dd2a07e8beab43dd70",
+    "correctOptions": [
+      "B"
+    ],
+    "conflicts": []
+  },
+  {
+    "number": "3.15",
+    "id": "53cef89a-36f4-4092-a7a3-3054a9b56885",
+    "beforeHash": "d264cc4c37ed2a9919099a07d05c2992a9eb941728a5b0340ee1c36fe08e23f5",
+    "correctOptions": [
+      "D"
+    ],
+    "conflicts": []
+  },
+  {
+    "number": "3.16",
+    "id": "a8765cf7-11ae-442d-88da-a96d9e6c93ea",
+    "beforeHash": "7ad751a1ac2c1ed42df79e306ef844faba05caa2d4a9c48031a4a6d168b8dcbb",
+    "correctOptions": [
+      "D"
+    ],
+    "conflicts": []
+  },
+  {
+    "number": "3.19",
+    "id": "2e17ca0e-4bb1-43d1-a99c-0e45ebb5ee2f",
+    "beforeHash": "f11c4764104fdabfc8bf285b5824930a55d0dbe1f1cd2e851c9fd1dd856a5cb3",
+    "correctOptions": [
+      "B"
+    ],
+    "conflicts": [
+      "Legacy marks 1; printed source marks 2. Existing value preserved."
+    ]
+  },
+  {
+    "number": "3.21",
+    "id": "9f914c57-f15c-447b-97dc-2af3d45987bd",
+    "beforeHash": "90a06351e6cd53c64c1b321b8ae6de6c66c2cbd31f29bd2b2a63b38f64944715",
+    "correctOptions": [
+      "D"
+    ],
+    "conflicts": [
+      "Legacy marks 1; printed source marks 2. Existing value preserved."
+    ]
+  },
+  {
+    "number": "3.23",
+    "id": "b9368e60-3686-4083-82d7-a06b71cf781d",
+    "beforeHash": "086101322db15329b3a2ee1d80ac0973a468d6b310c1f2cb7415788b4343a201",
+    "correctOptions": [
+      "C"
+    ],
+    "conflicts": []
+  },
+  {
+    "number": "3.24",
+    "id": "a6785371-8683-41f8-8726-84d232d7fbff",
+    "beforeHash": "469d3b916bef5a8b68ec5d0d01a4339b305eeaeaea019b41fe86b55ca2ebfb7a",
+    "correctOptions": [
+      "C"
+    ],
+    "conflicts": [
+      "Legacy marks 1; printed source marks 2. Existing value preserved.",
+      "Legacy table uses single backslashes for row separators; verified source version contains a valid editable LaTeX array."
+    ]
+  },
+  {
+    "number": "3.27",
+    "id": "c6df236d-a037-4362-8415-b7aeb9021527",
+    "beforeHash": "6e7a7629bf7112111766a404413b4f67714e566fed466d05a4a35f462ee678f9",
+    "correctOptions": [
+      "C"
+    ],
+    "conflicts": [
+      "Legacy marks 1; printed source marks 2. Existing value preserved."
+    ]
+  },
+  {
+    "number": "3.28",
+    "id": "9e87d40d-a796-4b7e-893f-5258808d507f",
+    "beforeHash": "2600362a1780d1c693f2ec53481e5e554673f0d6df74fdcc177a24f44e53eefd",
+    "correctOptions": [
+      "D"
+    ],
+    "conflicts": [
+      "Legacy marks 1; printed source marks 2. Existing value preserved."
+    ]
+  },
+  {
+    "number": "3.29",
+    "id": "26b1ae9c-9e42-4753-8688-60966ef8fa9f",
+    "beforeHash": "6fd69d16de078557620f5b6e4420fe8a995ecbad219f34c899a9b7be06cc61cb",
+    "correctOptions": [
+      "C"
+    ],
+    "conflicts": [
+      "Legacy marks 1; printed source marks 2. Existing value preserved."
+    ]
+  },
+  {
+    "number": "3.30",
+    "id": "b0848316-00ea-4bdb-9f29-00e51e28ed63",
+    "beforeHash": "b799abe943d7cec4d3326784b4353adc40e2bde0a2eb7e60258f77573416256b",
+    "correctOptions": [
+      "B"
+    ],
+    "conflicts": []
+  },
+  {
+    "number": "3.31",
+    "id": "03ce7ba3-4b02-4fb3-ad8f-4d74cda07ba5",
+    "beforeHash": "7589ac407ff4fc5ebb8cd36628b2a13b8826e34480d9b295995e93b7ade92f86",
+    "correctOptions": [
+      "D"
+    ],
+    "conflicts": []
+  },
+  {
+    "number": "3.32",
+    "id": "e5cd0a39-ec33-4493-9f92-de76700c77cf",
+    "beforeHash": "0b9ce71d096072e7c9a9d74d3abfefc469b2836d4cfd8365d7383342610f734f",
+    "correctOptions": [
+      "C"
+    ],
+    "conflicts": [
+      "Legacy marks 1; printed source marks 2. Existing value preserved."
+    ]
+  },
+  {
+    "number": "3.33",
+    "id": "76b798c6-f4ad-4f5c-b3c7-a9d89b866c61",
+    "beforeHash": "d7558454b4ce2ff02876fe2ab45302e15e5a66a15b48823e5177d29633a9d160",
+    "correctOptions": [
+      "A"
+    ],
+    "conflicts": []
+  },
+  {
+    "number": "3.35",
+    "id": "46b2d9f1-a4cf-433c-b7c7-0482307b028e",
+    "beforeHash": "07d2a54cd97ecb32830e591d581f4035e3a16703c17887f147a0e153172d26e3",
+    "correctOptions": [
+      "B"
+    ],
+    "conflicts": []
+  },
+  {
+    "number": "3.36",
+    "id": "3b1e06ad-5c4f-4683-845e-b93d26801b45",
+    "beforeHash": "567038cbcbbe7684a346fee925b30a747536631baf8979024acf39883624d240",
+    "correctOptions": [
+      "B"
+    ],
+    "conflicts": []
+  },
+  {
+    "number": "3.37",
+    "id": "95e25371-0c33-4add-ba7b-b2be394c8b22",
+    "beforeHash": "ad2e74c3102812c0412fd231a1c9b2316bc709b90a946ee9b91cae1b2980f252",
+    "correctOptions": [
+      "C"
+    ],
+    "conflicts": []
+  },
+  {
+    "number": "3.38",
+    "id": "b5ac3dd9-df85-46c7-ac6c-e2098792d470",
+    "beforeHash": "5609e0511c6edfa10f1619003da89c017b637c0803eb6280e350adb4dcd6bccf",
+    "correctOptions": [
+      "B"
+    ],
+    "conflicts": []
+  },
+  {
+    "number": "3.39",
+    "id": "3cd8222c-2021-49aa-bd5b-7e8100a0ddd7",
+    "beforeHash": "ba2e479bff15d60d61a1417a450e5a88628ed38280f660e616725f3504fc11d8",
+    "correctOptions": [
+      "D"
+    ],
+    "conflicts": []
+  },
+  {
+    "number": "3.40",
+    "id": "2e69954f-df22-40fa-a1f2-46feac7fe227",
+    "beforeHash": "04de7de412ee3334f00212854f78b0eb353774135ba67c52f2eef98500ac1ed4",
+    "correctOptions": [
+      "C"
+    ],
+    "conflicts": []
+  }
+]

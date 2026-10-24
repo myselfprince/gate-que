@@ -909,6 +909,31 @@ showToast(`Options auto-filled (split by ${separator}) and aligned!`);
     else { showToast("ℹ️ Everything looks formatted.", "info"); }
   };
 
+  const handleExportLatex = async () => {
+    if (!questions.length) return showToast('No questions to export.', 'error');
+    try {
+      const response = await fetch('/api/export-latex', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subject, chapter, questions })
+      });
+      if (!response.ok) {
+        const payload = await response.json();
+        throw new Error(payload.error || 'LaTeX export failed.');
+      }
+      const url = URL.createObjectURL(await response.blob());
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${subject}_${chapter}_LaTeX.zip`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      showToast('LaTeX source, JSON and images exported.');
+    } catch (error) {
+      showToast(error.message, 'error');
+    }
+  };
+
   const handleExportPDF = async () => {
   // Send all questions (including blanks) so numbering stays perfectly aligned
   if (questions.length === 0) return showToast("❌ No questions to compile!", "error");
@@ -1378,6 +1403,7 @@ const handleExportAllImages = async () => {
 
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
           <button className="btn-export" style={{ background: '#cba6f7', color: '#11111b', padding: '10px 15px' }} onClick={handleExportPDF}>🚀 Export Full PDF</button>
+          <button className="btn-export" style={{ background: '#cba6f7', color: '#11111b', padding: '10px 15px' }} onClick={handleExportLatex}>Export LaTeX ZIP</button>
           <button className="btn-export" style={{ background: '#a6e3a1', color: '#11111b', padding: '10px 15px' }} onClick={() => saveToMongoDB(null, false)}>💾 Save DB</button>
           <button className="btn-export" style={{ background: '#f5c2e7', color: '#11111b', padding: '10px 15px' }} onClick={handleExportYTData}>▶️ Export YT Data</button>
           <button className="btn-export" style={{ background: '#89dceb', color: '#11111b', padding: '10px 15px' }} onClick={handleExportAllImages}>📸 Export All Images (ZIP)</button>
@@ -1597,8 +1623,8 @@ const handleExportAllImages = async () => {
                   </div>
                 </div>
                 
-                <div id={`preview-${q.id}`} className="preview-pane" style={{ paddingLeft: '20px', width: '50%' }}>
-                  <div style={{ color: '#a6e3a1', fontWeight: 'bold', marginBottom: '10px' }}>[GATE {q.year} | {q.marks} Mark]</div>
+                <div id={`preview-${q.id}`} className="preview-pane" style={{ paddingLeft: '20px', width: '50%', minWidth: 0, boxSizing: 'border-box', overflowWrap: 'anywhere' }}>
+                  <div style={{ color: '#a6e3a1', fontWeight: 'bold', marginBottom: '10px' }}>[GATE {q.year}{q.setNum ? ` (Set-${q.setNum})` : ''} | {q.marks} Mark{q.questionType ? ` | ${q.questionType}` : ''}]{q.source?.questionNumber ? ` · Book Q${q.source.questionNumber}` : ''}</div>
                   <div>{preview.content}</div>
 
                   {q.code && !preview.containsCodeTag && <div style={{ background: '#181825', padding: '10px', border: '1px solid #45475a', fontFamily: 'monospace', whiteSpace: 'pre-wrap', margin: '10px 0' }}>{q.code}</div>}

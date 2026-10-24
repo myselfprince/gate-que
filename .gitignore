@@ -46,3 +46,9 @@ next-env.d.ts
 #images
 
 /public
+
+# Local export artifacts and database snapshots
+/tmp/
+/output/
+/data/backups/
+__pycache__/
