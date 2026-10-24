@@ -9,6 +9,7 @@ import { DEFAULT_PDF_SETTINGS } from '@/lib/pdf-settings.mjs';
 import PdfSettingsPanel from '@/components/PdfSettingsPanel';
 import PdfExportPanel from '@/components/PdfExportPanel';
 import styles from './workspace.module.css';
+import YouTubeStudio from '@/components/YouTubeStudio';
 
 const shouldUseTwoCols = (q) => {
   if (!q.optA && !q.optB && !q.optC && !q.optD) return false;
@@ -63,6 +64,7 @@ const formatOptionsIndent = (opt) => {
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('editor');
+  const youtubeStudioRef = useRef(null);
   const [questions, setQuestions] = useState([]);
   const [history, setHistory] = useState([]);
   const [bulkText, setBulkText] = useState("");
@@ -941,56 +943,6 @@ const handleExportAllImages = async () => {
   }
 };
 
-  const cleanLatexForYT = (text) => {
-    if (!text) return "";
-    let cleaned = text.replace(/\[IMG_\d+\]/g, ' ').replace(/\[DIAGRAM_PLACEHOLDER\]/g, ' ').replace(/<[^>]+>/g, ' ').replace(/\$/g, '').replace(/\\\[/g, '').replace(/\\\]/g, '');
-    const map = { '\\Leftrightarrow': ' bi implication ', '\\leftrightarrow': ' bi implication ', '<=>': ' bi implication ', '<->': ' bi implication ', '\\Rightarrow': ' implication ', '\\rightarrow': ' implication ', '=>': ' implication ', '->': ' implication ', '\\Leftarrow': ' is implied by ', '\\leftarrow': ' from ', '\\neg': ' not ', '\\vee': ' or ', '\\wedge': ' and ', '\\oplus': ' xor ', '\\ge': ' greater equal ', '\\le': ' less equal ', '\\neq': ' != ', '\\approx': ' ~ ', '\\equiv': ' = ', '\\times': ' x ', '\\div': ' div ', '\\pm': ' +- ', '\\infty': ' infinity ', '\\forall': ' for all ', '\\exists': ' exists ', '\\in ': ' in ', '\\notin ': ' not in ', '\\cup': ' union ', '\\cap': ' intersection ', '\\emptyset': ' empty set ' };
-    for (const [key, value] of Object.entries(map)) { cleaned = cleaned.replaceAll(key, value); }
-    cleaned = cleaned.replace(/<=/g, ' less equal ').replace(/\\[a-zA-Z]+/g, ' ').replace(/[{}]/g, ' ').replace(/[<>:"/\\|?*]/g, ' ');
-    return cleaned.replace(/\s+/g, ' ').trim();
-  };
-
-  const copyForYouTube = (q) => {
-    const cleanSubject = subject.replace(/^\d+\.\s*/, '').trim();
-    const cleanChapter = chapter.replace(/^\d+\.\s*/, '').trim();
-    const isTextOpt = (opt) => opt && !opt.startsWith('IMG:');
-    let textForYT = cleanLatexForYT(q.text);
-    let safeCode = q.code ? q.code.replace(/[<>]/g, ' ') : '';
-    if (safeCode && textForYT.includes('[CODE]')) {
-      textForYT = textForYT.replace('[CODE]', `\n\nCode Snippet:\n${safeCode}\n\n`);
-    }
-    let ytText = `[GATE ${q.year}, ${q.marks} Mark, ${cleanSubject}, ${cleanChapter}]\n\n${textForYT}\n`;
-    if (safeCode && !cleanLatexForYT(q.text).includes('[CODE]')) {
-      ytText += `\nCode:\n${safeCode}\n\n`;
-    }
-    if (isTextOpt(q.optA) || isTextOpt(q.optB) || isTextOpt(q.optC) || isTextOpt(q.optD)) {
-      if (isTextOpt(q.optA)) ytText += `(A) ${cleanLatexForYT(q.optA)}\n`;
-      if (isTextOpt(q.optB)) ytText += `(B) ${cleanLatexForYT(q.optB)}\n`;
-      if (isTextOpt(q.optC)) ytText += `(C) ${cleanLatexForYT(q.optC)}\n`;
-      if (isTextOpt(q.optD)) ytText += `(D) ${cleanLatexForYT(q.optD)}\n\n`;
-    } else if (q.natAnswer) {
-      ytText += `Answer: ${cleanLatexForYT(q.natAnswer)}\n\n`;
-    }
-    ytText += `--------------------------------------------------------\n\n`;
-    ytText += `GATE CSE ${q.year} PYQ, ${cleanSubject}, ${cleanChapter}\nMarks: ${q.marks} Mark\n\nQuestion:\n${textForYT}\n\n`;
-    if (safeCode && !cleanLatexForYT(q.text).includes('[CODE]')) {
-      ytText += `Code Snippet:\n${safeCode}\n\n`;
-    }
-    if (isTextOpt(q.optA) || isTextOpt(q.optB) || isTextOpt(q.optC) || isTextOpt(q.optD)) {
-      ytText += `Options:\n`;
-      if (isTextOpt(q.optA)) ytText += `(A) ${cleanLatexForYT(q.optA)}\n`;
-      if (isTextOpt(q.optB)) ytText += `(B) ${cleanLatexForYT(q.optB)}\n`;
-      if (isTextOpt(q.optC)) ytText += `(C) ${cleanLatexForYT(q.optC)}\n`;
-      if (isTextOpt(q.optD)) ytText += `(D) ${cleanLatexForYT(q.optD)}\n\n`;
-    } else if (q.natAnswer) {
-      ytText += `Answer: ${cleanLatexForYT(q.natAnswer)}\n\n`;
-    }
-    ytText += `Prepare for GATE Computer Science Engineering (CSE) with detailed previous year questions (PYQs). This specific problem belongs to the ${cleanSubject} subject, focusing on the ${cleanChapter} topic.\n\n`;
-    ytText += `#GATECSE #GATE${q.year} #${cleanSubject.replace(/[^a-zA-Z0-9]/g, '')} #${cleanChapter.replace(/[^a-zA-Z0-9]/g, '')} #GATEPreparation #GATECSEPYQ #ComputerScience #GATEExam`;
-    navigator.clipboard.writeText(ytText.trim());
-    showToast("📋 Copied combined text for YT!");
-  };
-
   const handleExportForAI = async () => {
     const validQs = questions.filter((q) => {
       if (q.isBlank) return false;
@@ -1071,33 +1023,6 @@ const handleExportAllImages = async () => {
     }
 
     showToast(`🤖 Downloaded ${totalChunks} AI Prompt file(s) with ${validQs.length} total questions!`);
-  };
-
-  const handleExportYTData = () => {
-    const validQs = questions.filter(q => !q.isBlank);
-    if (validQs.length === 0) return showToast("❌ No valid questions to export!", "error");
-    const ytData = validQs.map((q, index) => {
-      let fullText = cleanLatexForYT(q.text);
-      const optionsList = [q.optA, q.optB, q.optC, q.optD].map(opt => cleanLatexForYT(opt)).filter(opt => opt && !opt.startsWith('IMG:'));
-      if (optionsList.length > 0) fullText += ' ' + optionsList.join(' ');
-      const cleanText = fullText.replace(/\s+/g, ' ').trim();
-      const cleanSubject = subject.replace(/^\d+\.\s*/, '').trim();
-      const cleanChapter = chapter.replace(/^\d+\.\s*/, '').trim();
-      return {
-        index: index + 1, year: q.year, marks: q.marks, subject: cleanSubject, chapter: cleanChapter,
-        video_title: `GATE CSE ${q.year} ${cleanSubject} ${cleanText}`.replace(/\s+/g, ' ').trim(),
-        timestamp_title: `GATE CSE ${q.year} ${cleanChapter} ${cleanText}`.replace(/\s+/g, ' ').trim()
-      };
-    });
-    const jsonString = JSON.stringify(ytData, null, 4);
-    navigator.clipboard.writeText(jsonString).then(() => showToast("▶️ YT Data copied to clipboard & downloaded!"));
-    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(jsonString);
-    const downloadAnchorNode = document.createElement('a');
-    downloadAnchorNode.setAttribute("href", dataStr);
-    downloadAnchorNode.setAttribute("download", "G4Gate_YT_Export.json");
-    document.body.appendChild(downloadAnchorNode);
-    downloadAnchorNode.click();
-    downloadAnchorNode.remove();
   };
 
   const clearWorkspace = () => {
@@ -1351,12 +1276,9 @@ const handleExportAllImages = async () => {
       </section>
       <section id="panel-youtube" role="tabpanel" aria-labelledby="tab-youtube" hidden={activeTab !== 'youtube'}>
         <div className={styles.sectionTitle}><div><h2>YouTube studio</h2><p>Prepare your upload data and question images for this chapter.</p></div></div>
-        <div className={styles.panel}><div className={styles.actions}><button style={{ background: '#f5c2e7' }} onClick={handleExportYTData}>Export YT Data</button><button style={{ background: '#89dceb' }} onClick={handleExportAllImages}>Thumbnail images ZIP</button></div>        <div style={{ flex: '1 1 150px', display: 'flex', flexDirection: 'column', padding: '0 10px' }}>
-          <label style={{ marginTop: 0, fontSize: '13px', color: '#cdd6f4' }}>Thumbnail Text Width: <strong>{imageTextWidth}%</strong></label>
-          <input type="range" min="40" max="100" value={imageTextWidth} onChange={(e) => setImageTextWidth(e.target.value)} style={{ cursor: 'pointer', marginTop: '5px' }} />
-        </div>
-
-</div>
+        <YouTubeStudio ref={youtubeStudioRef} key={`youtube-${subject}|${chapter}`} subject={subject} chapter={chapter} questions={questions} notify={showToast}>
+          <details className={styles.panel}><summary>Question image export</summary><p className={styles.subtitle}>Download the original question-card images for this chapter.</p><label>Question text width: {imageTextWidth}%<input type="range" min="40" max="100" value={imageTextWidth} onChange={e => setImageTextWidth(Number(e.target.value))} /></label><button style={{ background: '#89dceb' }} onClick={handleExportAllImages}>Question images ZIP</button></details>
+        </YouTubeStudio>
       </section>
       <section id="panel-editor" role="tabpanel" aria-labelledby="tab-editor" hidden={activeTab !== 'editor'}>
         <div className={styles.toolbar}>
@@ -1503,7 +1425,7 @@ const handleExportAllImages = async () => {
                       <h3 style={{ margin: 0, color: (isBulkLocked || q.isPosLocked) ? '#f9e2af' : '#a6e3a1', display: 'inline-block' }}>
                         {(isBulkLocked || q.isPosLocked) && "🔒 "}Question {qNum}
                       </h3>
-                      <button className="btn-export" style={{ background: '#f9e2af', color: '#11111b', padding: '4px 10px', marginLeft: '10px', fontSize: '12px' }} onClick={() => copyForYouTube(q)}>📋 Copy for YT</button>
+                      <button className="btn-export" style={{ background: '#f9e2af', color: '#11111b', padding: '4px 10px', marginLeft: '10px', fontSize: '12px' }} onClick={() => youtubeStudioRef.current?.copyQuestion(q.id)}>📋 Copy for YT</button><button style={{ background: '#30384e', color: '#cdd6f4', padding: '4px 10px', fontSize: '12px' }} onClick={() => { youtubeStudioRef.current?.openQuestion(q.id); setActiveTab('youtube'); scrollToTop(); }}>Edit YouTube copy ↗</button>
                       <button className="btn-export" disabled={isBulkLocked} style={{ background: '#f5a97f', color: '#11111b', padding: '4px 10px', marginLeft: '10px', fontSize: '12px', opacity: isBulkLocked ? 0.5 : 1, cursor: isBulkLocked ? 'not-allowed' : 'pointer' }} onClick={() => handleFormatSingleLatexSpaces(q.id)} title="Format Math Spacing">✨ Format $ $</button>
                     </div>
                     <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>

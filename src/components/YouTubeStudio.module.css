@@ -1,0 +1,27 @@
+.studio { display: grid; grid-template-columns: minmax(240px, .72fr) minmax(0, 1.7fr); gap: 20px; align-items: start; }
+.panel { background: #191d2a; border: 1px solid #353a50; border-radius: 12px; padding: 22px; margin-bottom: 18px; min-width: 0; }
+.panel h3 { color: #f1f3fa; margin: 0 0 8px; font-size: 17px; }
+.muted { color: #a6adc8; font-size: 12px; line-height: 1.65; }
+.panel label { color: #bac2de; font-size: 12px; margin-top: 18px; }
+.panel input, .panel select, .panel textarea { margin-top: 7px; }
+.panel textarea { line-height: 1.65; resize: vertical; font-size: 14px; }
+.actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+.primary { background: #a6e3a1; color: #11111b; }
+.secondary { background: #30384e; color: #cdd6f4; }
+.export { background: #cba6f7; color: #11111b; }
+.count { margin-left: 10px; color: #a6adc8; font-weight: 400; }
+.bad { color: #f38ba8; }
+.fieldHeading { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin: 18px 0 0; }
+.fieldHeading label { margin: 0; }
+.fieldHeading button { padding: 6px 10px; font-size: 12px; }
+.suggestions { display: flex; flex-direction: column; gap: 7px; margin: 10px 0; }
+.suggestions button { text-align: left; background: #22283a; color: #bac2de; border: 1px solid #353a50; font-weight: 400; font-size: 12px; line-height: 1.6; padding: 10px; }
+.searchPreview { background: #11141e; padding: 16px; border-radius: 8px; margin-top: 18px; }
+.searchPreview h4 { color: #f1f3fa; font-size: 15px; margin: 0 0 8px; overflow-wrap: anywhere; }
+.searchPreview p { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.check { display: flex; align-items: center; gap: 8px; }
+.check input { margin: 0; }
+.empty { text-align: center; padding: 40px 20px; color: #a6adc8; border: 1px dashed #45475a; border-radius: 12px; }
+.notice { color: #f9e2af; font-size: 12px; line-height: 1.6; }
+@media (max-width: 900px) { .studio { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 600px) { .panel { padding: 16px; } .fieldHeading { flex-wrap: wrap; } }
