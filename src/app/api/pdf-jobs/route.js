@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createJob, listJobs } from '@/lib/pdf-jobs.mjs';
+import { createJob, createBookJob, listJobs } from '@/lib/pdf-jobs.mjs';
 import { jsonError, parseJson, rateLimit, requireMutationAccess, requireReadAccess, validateExportPayload } from '@/lib/api-utils';
 
 export const runtime = 'nodejs';
@@ -14,7 +14,12 @@ export async function POST(request) {
   const limited = rateLimit(request, 'pdf-jobs', { limit: 8, windowMs: 60_000 });
   if (limited) return limited;
   try {
-    const payload = validateExportPayload(await parseJson(request));
+    const body = await parseJson(request);
+    if (body.mode === 'book') {
+      const job = await createBookJob(body.exportIds, body.title);
+      return NextResponse.json({ job }, { status: 202, headers: { 'Cache-Control': 'no-store' } });
+    }
+    const payload = validateExportPayload(body);
     if (!payload.questions.length) return jsonError('At least one question is required.');
     const job = await createJob(payload);
     return NextResponse.json({ job }, { status: 202, headers: { 'Cache-Control': 'no-store' } });

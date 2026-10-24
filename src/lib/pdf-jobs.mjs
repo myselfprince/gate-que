@@ -86,6 +86,32 @@ export async function cancelJob(id, root = jobsRoot()) {
   if (['queued', 'running'].includes(job.status)) await fs.writeFile(path.join(jobDirectory(id, root), 'cancel'), '');
   return readJob(id, root);
 }
+export async function createBookJob(ids, title, { root = jobsRoot(), launch = true } = {}) {
+  if (!Array.isArray(ids) || ids.length < 2 || ids.length > 20 || new Set(ids).size !== ids.length) throw new Error('Choose 2 to 20 different completed chapter exports.');
+  if (typeof title !== 'string' || !title.trim() || title.length > 120) throw new Error('Enter a book title up to 120 characters.');
+  const chapters = await Promise.all(ids.map(id => readJob(id, root)));
+  if (chapters.some(job => !job || job.status !== 'completed' || job.kind === 'book')) throw new Error('Choose completed chapter exports.');
+  if (chapters.some(job => job.subject !== chapters[0].subject)) throw new Error('Choose exports from the same subject.');
+  const total = chapters.reduce((sum, job) => sum + job.total, 0);
+  if (total > 2000) throw new Error('A subject book can contain up to 2000 question pages.');
+  if ((await listJobs(root)).filter(job => ['queued', 'running'].includes(job.status)).length >= 8) throw new Error('The export queue is full.');
+  const id = randomUUID(), directory = jobDirectory(id, root);
+  await fs.mkdir(path.join(directory, 'chapters'), { recursive: true });
+  try {
+    const snapshots = [];
+    for (const [index, job] of chapters.entries()) {
+      const bytes = await fs.readFile(path.join(jobDirectory(job.id, root), 'complete.pdf'));
+      const request = JSON.parse(await fs.readFile(path.join(jobDirectory(job.id, root), 'request.json'), 'utf8'));
+      const file = `chapter-${index + 1}.pdf`;
+      await fs.writeFile(path.join(directory, 'chapters', file), bytes);
+      snapshots.push({ file, sha256: createHash('sha256').update(bytes).digest('hex'), sourceId: job.id, chapter: job.chapter, pages: job.total, report: job.report, questionIds: request.questions.map(question => question.id) });
+    }
+    await fs.writeFile(path.join(directory, 'request.json'), JSON.stringify({ kind: 'book', subject: chapters[0].subject, chapter: title.trim(), total, chapters: snapshots }));
+    await writeJobStatus(directory, { id, kind: 'book', status: 'queued', subject: chapters[0].subject, chapter: title.trim(), total, completed: 0, createdAt: new Date().toISOString(), attempt: 1 });
+    if (launch) await launchJob(id, root);
+    return readJob(id, root);
+  } catch (error) { await fs.rm(directory, { recursive: true, force: true }); throw error; }
+}
 export async function retryJob(id, root = jobsRoot()) {
   const job = await readJob(id, root);
   if (!job) return null;

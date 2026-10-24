@@ -70,7 +70,7 @@ try {
   const exportRequest = JSON.parse((await submitted).postData());
   assert.deepEqual(exportRequest.questions.map(question => question.exportNumber), ['20', '21']);
   await page.waitForFunction(() => document.querySelector('[aria-label="PDF page number"]')?.max === '2' && Boolean(document.querySelector('[data-pdf-page="1"] canvas')?.dataset.renderedWidth), { timeout: 30000 });
-  const bookmarkLabels = await page.$$eval('[aria-label="Jump to PDF question"] option', options => options.map(option => option.textContent));
+  const bookmarkLabels = await page.$$eval('[aria-label="Jump to PDF question"] option', options => options.filter(option => option.value).map(option => option.textContent));
   assert.equal(bookmarkLabels.length, 2);
   assert.ok(bookmarkLabels[0].startsWith('Q20'));
   assert.ok(bookmarkLabels[1].startsWith('Q21'));
@@ -81,6 +81,20 @@ try {
   await page.screenshot({ path: 'tmp/pdfs/export-upgrade/selection-preview.png' });
   details.rangeSelectionBuilt = true;
   details.bookmarkNavigationVerified = true;
+  await page.evaluate(() => {
+    const details = [...document.querySelectorAll('details')].find(node => node.querySelector('summary')?.textContent.includes('Combine saved exports'));
+    details.open = true;
+    const checkboxes = [...details.querySelectorAll('input[type="checkbox"]')];
+    checkboxes.slice(0, 2).forEach(input => input.click());
+  });
+  await page.waitForFunction(() => [...document.querySelectorAll('button')].some(button => button.textContent === 'Build subject book · 2 exports' && !button.disabled));
+  const bookResponse = page.waitForResponse(response => response.url() === origin + '/api/pdf-jobs' && response.request().method() === 'POST');
+  await page.evaluate(() => [...document.querySelectorAll('button')].find(button => button.textContent === 'Build subject book · 2 exports').click());
+  const book = (await (await bookResponse).json()).job;
+  await page.waitForFunction(id => [...document.querySelectorAll('a')].some(link => link.href.includes(id) && link.textContent === 'Chapter PDFs ZIP'), { timeout: 30000 }, book.id);
+  await page.waitForFunction(total => document.querySelector('[aria-label="PDF page number"]')?.max === String(total) && Boolean(document.querySelector('[data-pdf-page="1"] canvas')?.dataset.renderedWidth), { timeout: 30000 }, book.total);
+  details.subjectBookBuilt = true;
+  details.subjectBookPages = book.total;
   console.log(JSON.stringify(details, null, 2));
 } catch (error) {
   if (page) {

@@ -18,6 +18,8 @@ export default function PdfExportPanel({ payload }) {
   const [includeBlanks, setIncludeBlanks] = useState(true);
   const [sourceMode, setSourceMode] = useState('editable');
   const [sampleNumber, setSampleNumber] = useState(1);
+  const [bookIds, setBookIds] = useState([]);
+  const [bookTitle, setBookTitle] = useState('Subject book');
   let selection = [], selectionError = '';
   try { selection = selectPdfQuestions(payload.questions, { scope, year, range, selectedIds, includeBlanks, sourceMode }); }
   catch (error) { selectionError = error.message; }
@@ -40,6 +42,7 @@ export default function PdfExportPanel({ payload }) {
     return () => clearInterval(timer);
   }, [running, refresh]);
   const job = jobs.find(job => job.id === selected) || jobs[0];
+  const bookCandidates = jobs.filter(job => job.status === 'completed' && job.kind !== 'book' && job.subject === payload.subject);
   async function start(candidate = exportPayload) {
     setBusy(true); setError('');
     try {
@@ -72,6 +75,16 @@ export default function PdfExportPanel({ payload }) {
     } catch (error) { setError(error.message); }
     finally { setBusy(false); }
   }
+  async function buildBook() {
+    setBusy(true); setError('');
+    try {
+      const response = await fetch('/api/pdf-jobs', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ mode: 'book', title: bookTitle, exportIds: bookIds }) });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error);
+      setSelected(data.job.id); setSnapshot(''); setJobs(previous => [data.job, ...previous]);
+    } catch (error) { setError(error.message); }
+    finally { setBusy(false); }
+  }
   return <section aria-label="PDF exports" style={{ padding: 18, margin: '16px 0', border: '1px solid #cba6f7', borderRadius: 10, background: '#181825' }}>
     <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'end', marginBottom: 14 }}>
       <label>Export questions<select aria-label="Export question selection" value={scope} onChange={e => setScope(e.target.value)}><option value="all">All questions</option><option value="year">By year</option><option value="range">Question ranges</option><option value="selected">Choose questions</option></select></label>
@@ -94,22 +107,30 @@ export default function PdfExportPanel({ payload }) {
       <label>Quick preview: question #<input aria-label="Sample PDF question" type="number" min="1" max={payload.questions.length || 1} value={sampleNumber} onChange={e => setSampleNumber(Math.max(1, Math.min(payload.questions.length || 1, Number(e.target.value) || 1)))} style={{ width: 90 }} /></label>
       <button type="button" disabled={busy || !payload.questions.length} onClick={() => start({ ...payload, questions: selectPdfQuestions(payload.questions, { scope: 'range', range: String(sampleNumber), sourceMode }) })}>Preview one question</button>
     </div>
+    <details style={{ marginTop: 16 }}>
+      <summary style={{ cursor: 'pointer', color: '#89b4fa' }}>Combine saved exports into a subject book</summary>
+      <p style={{ color: '#bac2de', fontSize: 13 }}>Choose completed exports from {payload.subject}. Pages keep their layouts, links and chapter numbering. Order the exports below; chapter answer keys remain separate downloads.</p>
+      <label>Book title<input aria-label="PDF book title" maxLength={120} value={bookTitle} onChange={e => setBookTitle(e.target.value)} /></label>
+      <div style={{ maxHeight: 160, overflowY: 'auto' }}>{bookCandidates.map(item => <label key={item.id} style={{ display: 'block', margin: '6px 0' }}><input type="checkbox" checked={bookIds.includes(item.id)} onChange={e => setBookIds(ids => e.target.checked ? [...ids, item.id] : ids.filter(id => id !== item.id))} /> {item.chapter} · {item.total} pages · {new Date(item.createdAt).toLocaleString()}</label>)}</div>
+      {bookIds.map((id, index) => <div key={id} style={{ display: 'flex', gap: 8, alignItems: 'center', margin: '8px 0' }}><span>{index + 1}. {jobs.find(item => item.id === id)?.chapter || 'Saved export'}</span><button type="button" disabled={index === 0} aria-label={`Move book chapter ${index + 1} up`} onClick={() => setBookIds(ids => { const next = [...ids]; [next[index - 1], next[index]] = [next[index], next[index - 1]]; return next; })}>↑</button><button type="button" disabled={index === bookIds.length - 1} aria-label={`Move book chapter ${index + 1} down`} onClick={() => setBookIds(ids => { const next = [...ids]; [next[index + 1], next[index]] = [next[index], next[index + 1]]; return next; })}>↓</button></div>)}
+      <button type="button" disabled={busy || bookIds.length < 2 || !bookTitle.trim()} onClick={buildBook}>Build subject book · {bookIds.length} exports</button>
+    </details>
     {error && <p role="alert" style={{ color: '#f38ba8' }}>{error}</p>}
     {jobs.length > 0 && <label>Export history<select aria-label="Export history" value={job?.id || ''} onChange={e => { setSelected(e.target.value); setSnapshot(''); }}>{jobs.map(item => <option key={item.id} value={item.id}>{item.subject} / {item.chapter} · {item.total} questions · {item.status} · {new Date(item.createdAt).toLocaleString()}</option>)}</select></label>}
     {job && <div>
-      <p role="status">{job.status === 'queued' ? 'Waiting for the active export to finish' : job.status === 'running' ? job.phase === 'answers' ? 'Building separate answer key...' : job.phase === 'images' ? 'Rendering matching page images...' : job.phase === 'checking' ? 'Checking PDF pages and links...' : `Compiling: ${job.completed} / ${job.total}` : job.status === 'completed' ? `${job.total} pages ready · page count and links verified` : job.error || job.status}{job.cancelRequested && active(job) ? ' · Cancelling...' : ''}</p>
+      <p role="status">{job.status === 'queued' ? 'Waiting for the active export to finish' : job.status === 'running' ? job.phase === 'combining' ? `Combining saved PDFs: ${job.completed} / ${job.total}` : job.phase === 'answers' ? 'Building separate answer key...' : job.phase === 'images' ? 'Rendering matching page images...' : job.phase === 'checking' ? 'Checking PDF pages and links...' : `Compiling: ${job.completed} / ${job.total}` : job.status === 'completed' ? `${job.total} pages ready · page count and links verified` : job.error || job.status}{job.cancelRequested && active(job) ? ' · Cancelling...' : ''}</p>
       {active(job) && <><progress aria-label="PDF export progress" max={job.total} value={job.completed} style={{ width: 'min(100%,600px)' }} /><button type="button" disabled={busy || job.cancelRequested} onClick={() => action('cancel')}>Cancel export</button></>}
       {['failed', 'cancelled'].includes(job.status) && <button type="button" disabled={busy} onClick={() => action('retry')}>Retry saved snapshot</button>}
       {job.status === 'completed' && <div>
         <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap', marginBottom: 12 }}>
           <a href={`/api/pdf-jobs/${job.id}/download`} style={{ color: '#a6e3a1' }}>Download complete PDF</a>
-          <a href={`/api/pdf-jobs/${job.id}/download?kind=zip`} style={{ color: '#89b4fa' }}>20-question parts ZIP</a>
+          <a href={`/api/pdf-jobs/${job.id}/download?kind=zip`} style={{ color: '#89b4fa' }}>{job.kind === 'book' ? 'Chapter PDFs ZIP' : '20-question parts ZIP'}</a>
           <a href={`/api/pdf-jobs/${job.id}/download?kind=report`} style={{ color: '#89b4fa' }}>QA report</a>
           {job.report?.imagesAvailable && <a href={`/api/pdf-jobs/${job.id}/download?kind=images`} style={{ color: '#89b4fa' }}>Matching page images ZIP</a>}
           {job.report?.answerKeyPages && <a href={`/api/pdf-jobs/${job.id}/download?kind=answers`} style={{ color: '#89b4fa' }}>Separate answer-key PDF</a>}
           <a href={`/api/pdf-jobs/${job.id}/download?inline=1`} target="_blank" rel="noopener noreferrer" style={{ color: '#89b4fa' }}>Open PDF preview ↗</a>
         </div>
-        <p style={{ fontSize: 13, color: '#bac2de' }}>{job.report?.textBoundsChecked ? 'Text bounds checked.' : 'Text bounds were not checked.'} Content still needs source review.{snapshot && snapshot !== signature ? ' Your draft or PDF settings changed. Build a new PDF to include them.' : ' Downloads contain the saved export snapshot.'}</p>
+        <p style={{ fontSize: 13, color: '#bac2de' }}>{job.report?.textBoundsChecked ? job.kind === 'book' ? 'Source chapter text bounds checked; pages copied without reflow.' : 'Text bounds checked.' : 'Text bounds were not checked.'} Content still needs source review.{snapshot && snapshot !== signature ? ' Your draft or PDF settings changed. Build a new PDF to include them.' : ' Downloads contain the saved export snapshot.'}</p>
         {Boolean(job.report?.warnings?.length) && <details><summary style={{ color: '#f9e2af' }}>{job.report.warnings.length} layout/readability warnings</summary><ul>{job.report.warnings.map((warning, index) => <li key={index}>{warning.message}</li>)}</ul></details>}
         <PdfPreview key={job.id + '-' + job.attempt} url={`/api/pdf-jobs/${job.id}/download?inline=1`} />
       </div>}

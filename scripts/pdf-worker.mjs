@@ -4,6 +4,7 @@ import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import AdmZip from 'adm-zip';
 import { exportQuestionPdf } from '../src/lib/pdf-export.mjs';
+import { exportPdfBook } from '../src/lib/pdf-book.mjs';
 import { jobDirectory, jobsRoot, writeJobStatus, isProcessAlive } from '../src/lib/pdf-jobs.mjs';
 
 const id = process.argv[2];
@@ -46,7 +47,8 @@ try {
   await writeJobStatus(directory, status);
   poll = setInterval(async () => { if (await cancelled()) controller.abort(); }, 500);
   const payload = JSON.parse(await fs.readFile(path.join(directory, 'request.json'), 'utf8'));
-  const result = await exportQuestionPdf(payload, {
+  const result = await (payload.kind === 'book' ? exportPdfBook : exportQuestionPdf)(payload, {
+    directory,
     assetDirectory: path.join(directory, 'images'), checkpointDirectory: path.join(directory, 'parts'), signal: controller.signal,
     onProgress: async progress => { status = { ...status, ...progress, phase: progress.phase || 'compiling' }; await writeJobStatus(directory, status); },
   });
@@ -73,7 +75,7 @@ try {
     await fs.rm(imageDirectory, { recursive: true, force: true });
   }
   const zip = new AdmZip();
-  for (const part of result.parts) zip.addFile(`PYQs_Part${part.number}.pdf`, part.bytes);
+  for (const part of result.parts) zip.addFile(`${payload.kind === 'book' ? 'Chapter' : 'PYQs_Part'}${part.number}.pdf`, part.bytes);
   if (result.answerKey) zip.addFile('Answer-Key.pdf', result.answerKey);
   zip.addFile('export-qa.json', Buffer.from(JSON.stringify(result.report, null, 2)));
   await fs.writeFile(path.join(directory, 'parts.zip'), zip.toBuffer());

@@ -79,5 +79,23 @@ try {
   }
   const missing = await fetch(`${origin}/api/pdf-jobs/not-a-job/download`);
   assert.equal(missing.status, 404);
-  console.log(JSON.stringify({ acceptanceMs, pages: payload.questions.length, cancelledAndRetried: cancelled.status === 'cancelled', reusedBatches: finalJob.report.reusedBatches, report: finalJob.report }, null, 2));
+  let bookPages;
+  if (process.argv.includes('--book')) {
+    const { jobs } = await request('/api/pdf-jobs');
+    const other = jobs.filter(job => job.id !== created.id && job.status === 'completed' && job.kind !== 'book' && job.subject === created.subject && job.total !== created.total).sort((a, b) => b.total - a.total)[0];
+    assert.ok(other, 'Book verification requires another completed chapter export from the same subject.');
+    const exportIds = [created.id, other.id];
+    const { job: book } = await request('/api/pdf-jobs', { mode: 'book', title: 'Verified subject book', exportIds });
+    const finished = await waitFor(book.id, job => job.status === 'completed');
+    assert.deepEqual(finished.report.sourceJobs, exportIds);
+    bookPages = created.total + other.total;
+    assert.equal(finished.report.pages, bookPages);
+    assert.equal(finished.report.websiteLinks, finalJob.report.websiteLinks + other.report.websiteLinks);
+    const pdfResponse = await fetch(`${origin}/api/pdf-jobs/${book.id}/download`);
+    assert.equal(pdfResponse.status, 200);
+    const bytes = new Uint8Array(await pdfResponse.arrayBuffer());
+    assert.equal((await PDFDocument.load(bytes)).getPageCount(), bookPages);
+    await fs.writeFile(path.join(root, 'verified-subject-book.pdf'), bytes);
+  }
+  console.log(JSON.stringify({ acceptanceMs, pages: payload.questions.length, cancelledAndRetried: cancelled.status === 'cancelled', reusedBatches: finalJob.report.reusedBatches, bookPages, report: finalJob.report }, null, 2));
 } finally { server.kill(); }

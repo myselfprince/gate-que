@@ -47,6 +47,11 @@ separate answer-key PDF to export stored MCQ/MSQ/NAT answers without revealing
 them on question pages. Missing answers are labeled explicitly. The LaTeX ZIP
 includes `answer-key.tex`, and the terminal exporter writes an adjacent
 `.answer-key.pdf` when this option is enabled.
+Combine 2-20 completed exports from the same subject into a book (up to 2000
+question pages). Choose their order in the export panel. The background worker
+snapshots the source PDFs, verifies page counts and preserved links, and adds
+chapter/question bookmarks. Pages retain their chapter numbering and layout;
+chapter answer keys remain separate. No questions are recompiled or reflowed.
 
 ## Production requirements
 
