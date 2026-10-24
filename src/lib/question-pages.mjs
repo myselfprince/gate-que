@@ -40,7 +40,7 @@ export function buildQuestionPages({ subject, chapter, questions, pdfSettings },
     const style = questionPdfSettings(settings, q.pdfStyle);
     const solutionUrl = q.isBlank || !settings.showSolutions ? '' : normalizeSolutionUrl(q.solutionUrl);
     if (index) source += '\\clearpage\n';
-    const number = q.source?.questionNumber || String(startIndex + index + 1);
+    const number = q.source?.questionNumber || q.exportNumber || String(startIndex + index + 1);
     const meta = `GATE ${q.year || ''}${q.setNum ? ` (Set-${q.setNum})` : ''} | ${q.marks || '1'} Mark${q.questionType ? ` | ${q.questionType}` : ''}`;
     // Capture verbatim code once outside conditionals. The measured question
     // can then reflow at full width, independently scaling the saved listing.

@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import PdfPreview from './PdfPreview';
+import { selectPdfQuestions } from '@/lib/pdf-selection.mjs';
 
 const active = job => job && ['queued', 'running'].includes(job.status);
 export default function PdfExportPanel({ payload }) {
@@ -10,7 +11,18 @@ export default function PdfExportPanel({ payload }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [snapshot, setSnapshot] = useState('');
-  const signature = JSON.stringify(payload);
+  const [scope, setScope] = useState('all');
+  const [year, setYear] = useState('');
+  const [range, setRange] = useState('');
+  const [selectedIds, setSelectedIds] = useState([]);
+  const [includeBlanks, setIncludeBlanks] = useState(true);
+  const [sourceMode, setSourceMode] = useState('editable');
+  const [sampleNumber, setSampleNumber] = useState(1);
+  let selection = [], selectionError = '';
+  try { selection = selectPdfQuestions(payload.questions, { scope, year, range, selectedIds, includeBlanks, sourceMode }); }
+  catch (error) { selectionError = error.message; }
+  const exportPayload = { ...payload, questions: selection };
+  const signature = JSON.stringify({ ...payload, scope, year, range, selectedIds, includeBlanks, sourceMode });
   const refresh = useCallback(async () => {
     const response = await fetch('/api/pdf-jobs', { cache: 'no-store' });
     const data = await response.json();
@@ -28,14 +40,25 @@ export default function PdfExportPanel({ payload }) {
     return () => clearInterval(timer);
   }, [running, refresh]);
   const job = jobs.find(job => job.id === selected) || jobs[0];
-  async function start() {
+  async function start(candidate = exportPayload) {
     setBusy(true); setError('');
     try {
-      const response = await fetch('/api/pdf-jobs', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: signature });
+      const response = await fetch('/api/pdf-jobs', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(candidate) });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || 'Export could not be started.');
       setSelected(data.job.id); setSnapshot(signature);
       setJobs(previous => [data.job, ...previous.filter(job => job.id !== data.job.id)]);
+    } catch (error) { setError(error.message); }
+    finally { setBusy(false); }
+  }
+  async function sourceZip() {
+    setBusy(true); setError('');
+    try {
+      const response = await fetch('/api/export-latex', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(exportPayload) });
+      if (!response.ok) throw new Error((await response.json()).error);
+      const url = URL.createObjectURL(await response.blob());
+      const link = document.createElement('a'); link.href = url; link.download = `${payload.subject}_${payload.chapter}_LaTeX.zip`; link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
     } catch (error) { setError(error.message); }
     finally { setBusy(false); }
   }
@@ -50,13 +73,29 @@ export default function PdfExportPanel({ payload }) {
     finally { setBusy(false); }
   }
   return <section aria-label="PDF exports" style={{ padding: 18, margin: '16px 0', border: '1px solid #cba6f7', borderRadius: 10, background: '#181825' }}>
+    <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'end', marginBottom: 14 }}>
+      <label>Export questions<select aria-label="Export question selection" value={scope} onChange={e => setScope(e.target.value)}><option value="all">All questions</option><option value="year">By year</option><option value="range">Question ranges</option><option value="selected">Choose questions</option></select></label>
+      {scope === 'year' && <label>Year<select aria-label="Export year" value={year} onChange={e => setYear(e.target.value)}><option value="">Choose year</option>{[...new Set(payload.questions.map(q => q.year).filter(Boolean))].sort().map(year => <option key={year} value={year}>{year}</option>)}</select></label>}
+      {scope === 'range' && <label>Ranges<input aria-label="Export ranges" value={range} onChange={e => setRange(e.target.value)} placeholder="1-20, 25, 40-50" /></label>}
+      <label><input type="checkbox" checked={includeBlanks} onChange={e => setIncludeBlanks(e.target.checked)} /> Include blank placeholders</label>
+      {payload.questions.some(q => q.source?.verifiedQuestion) && <label>Question version<select aria-label="Export question version" value={sourceMode} onChange={e => setSourceMode(e.target.value)}><option value="editable">Current editable questions</option><option value="verified">Reviewed source version where available</option></select></label>}
+    </div>
+    {sourceMode === 'verified' && <p style={{ color: '#f9e2af', fontSize: 13 }}>Reviewed source text is used where available; other questions use current edits. This choice does not change your database.</p>}
+    {scope === 'selected' && <div style={{ maxHeight: 180, overflowY: 'auto', border: '1px solid #45475a', padding: 10, marginBottom: 12 }}>{payload.questions.map((question, index) => <label key={question.id} style={{ display: 'block', margin: '5px 0' }}><input type="checkbox" checked={selectedIds.includes(question.id)} onChange={e => setSelectedIds(ids => e.target.checked ? [...ids, question.id] : ids.filter(id => id !== question.id))} /> Q{index + 1} · {question.year} · {question.isBlank ? 'Blank placeholder' : question.text?.slice(0, 100)}</label>)}</div>}
+    {selectionError && <p role="alert" style={{ color: '#f38ba8' }}>{selectionError}</p>}
+    <p style={{ color: '#bac2de', fontSize: 13 }}>Selected: {selection.length} / {payload.questions.length}. Printed question numbers are preserved. Editor view filters do not change this export selection.</p>
     <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
-      <button type="button" disabled={busy || !payload.questions.length} onClick={start} style={{ background: '#cba6f7', color: '#11111b', fontWeight: 'bold', padding: '10px 18px' }}>{busy ? 'Please wait...' : `Build PDF · ${payload.questions.length} questions`}</button>
+      <button type="button" disabled={busy || !selection.length || Boolean(selectionError)} onClick={() => start()} style={{ background: '#cba6f7', color: '#11111b', fontWeight: 'bold', padding: '10px 18px' }}>{busy ? 'Please wait...' : `Build PDF · ${selection.length} questions`}</button>
+      <button type="button" disabled={busy || !selection.length || Boolean(selectionError)} onClick={sourceZip}>Editable LaTeX ZIP</button>
       <span style={{ color: '#bac2de', fontSize: 13 }}>Your export continues in the background. Refreshing this page keeps its progress.</span>
       <button type="button" disabled={busy} onClick={() => refresh().catch(error => setError(error.message))}>Refresh history</button>
     </div>
+    <div style={{ display: 'flex', alignItems: 'end', gap: 12, marginTop: 12, flexWrap: 'wrap' }}>
+      <label>Quick preview: question #<input aria-label="Sample PDF question" type="number" min="1" max={payload.questions.length || 1} value={sampleNumber} onChange={e => setSampleNumber(Math.max(1, Math.min(payload.questions.length || 1, Number(e.target.value) || 1)))} style={{ width: 90 }} /></label>
+      <button type="button" disabled={busy || !payload.questions.length} onClick={() => start({ ...payload, questions: selectPdfQuestions(payload.questions, { scope: 'range', range: String(sampleNumber), sourceMode }) })}>Preview one question</button>
+    </div>
     {error && <p role="alert" style={{ color: '#f38ba8' }}>{error}</p>}
-    {jobs.length > 0 && <label>Export history<select value={job?.id || ''} onChange={e => { setSelected(e.target.value); setSnapshot(''); }}>{jobs.map(item => <option key={item.id} value={item.id}>{item.subject} / {item.chapter} · {item.total} questions · {item.status} · {new Date(item.createdAt).toLocaleString()}</option>)}</select></label>}
+    {jobs.length > 0 && <label>Export history<select aria-label="Export history" value={job?.id || ''} onChange={e => { setSelected(e.target.value); setSnapshot(''); }}>{jobs.map(item => <option key={item.id} value={item.id}>{item.subject} / {item.chapter} · {item.total} questions · {item.status} · {new Date(item.createdAt).toLocaleString()}</option>)}</select></label>}
     {job && <div>
       <p role="status">{job.status === 'queued' ? 'Waiting for the active export to finish' : job.status === 'running' ? `Compiling: ${job.completed} / ${job.total}` : job.status === 'completed' ? `${job.total} pages ready · page count and links verified` : job.error || job.status}{job.cancelRequested && active(job) ? ' · Cancelling...' : ''}</p>
       {active(job) && <><progress aria-label="PDF export progress" max={job.total} value={job.completed} style={{ width: 'min(100%,600px)' }} /><button type="button" disabled={busy || job.cancelRequested} onClick={() => action('cancel')}>Cancel export</button></>}

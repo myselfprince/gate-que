@@ -914,31 +914,6 @@ showToast(`Options auto-filled (split by ${separator}) and aligned!`);
     else { showToast("ℹ️ Everything looks formatted.", "info"); }
   };
 
-  const handleExportLatex = async () => {
-    if (!questions.length) return showToast('No questions to export.', 'error');
-    try {
-      const response = await fetch('/api/export-latex', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ subject, chapter, questions, pdfSettings })
-      });
-      if (!response.ok) {
-        const payload = await response.json();
-        throw new Error(payload.error || 'LaTeX export failed.');
-      }
-      const url = URL.createObjectURL(await response.blob());
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `${subject}_${chapter}_LaTeX.zip`;
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
-      showToast('LaTeX source, JSON and images exported.');
-    } catch (error) {
-      showToast(error.message, 'error');
-    }
-  };
-
 const handleExportAllImages = async () => {
   // Send all questions (including blanks) so numbering stays perfectly aligned
   if (questions.length === 0) return showToast("❌ No questions to export!", "error");
@@ -1382,7 +1357,6 @@ const handleExportAllImages = async () => {
         </div>
 
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
-          <button className="btn-export" style={{ background: '#cba6f7', color: '#11111b', padding: '10px 15px' }} onClick={handleExportLatex}>Export LaTeX ZIP</button>
           <button className="btn-export" style={{ background: '#a6e3a1', color: '#11111b', padding: '10px 15px' }} onClick={() => saveToMongoDB(null, false)}>💾 Save DB</button>
           <button className="btn-export" style={{ background: '#f5c2e7', color: '#11111b', padding: '10px 15px' }} onClick={handleExportYTData}>▶️ Export YT Data</button>
           <button className="btn-export" style={{ background: '#89dceb', color: '#11111b', padding: '10px 15px' }} onClick={handleExportAllImages}>📸 Export All Images (ZIP)</button>
@@ -1430,7 +1404,7 @@ const handleExportAllImages = async () => {
       
       
       <PdfSettingsPanel settings={pdfSettings} onChange={setPdfSettings} />
-      <PdfExportPanel payload={{ subject, chapter, questions, pdfSettings }} />
+      <PdfExportPanel key={`${subject}|${chapter}`} payload={{ subject, chapter, questions, pdfSettings }} />
       <div id="questions_container">
         {questions.map((q, idx) => {
           const qNum = idx + 1;

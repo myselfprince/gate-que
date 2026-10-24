@@ -32,6 +32,12 @@ queued/running jobs. Keep the full `scripts/` directory when deploying.
 Install Poppler `pdftotext` for automatic text-bound checks. If unavailable the QA
 report explicitly marks that check incomplete. Jobs and snapshots remain in
 `output/pdf-jobs/` (or `PDF_EXPORT_DIR`); protect and back up this local directory.
+The export panel has its own explicit all/year/range/checkbox selection and blank
+placeholder toggle. The editable-source ZIP uses the same selection and settings.
+Use the one-question preview before building a chapter. When a reviewed source
+version exists, choose it explicitly; current edits remain the default and are
+never overwritten by exporting. PDF.js previews render the downloadable artifact
+with lazy thumbnails, selectable text, search, zoom, and external links.
 
 ## Production requirements
 

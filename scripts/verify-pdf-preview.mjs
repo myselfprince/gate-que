@@ -32,6 +32,11 @@ try {
     return request.continue();
   });
   await page.goto(origin, { waitUntil: 'networkidle0' });
+  const { jobs } = await (await fetch(origin + '/api/pdf-jobs')).json();
+  const large = jobs.find(job => job.total === payload.questions.length && job.status === 'completed');
+  assert.ok(large, 'Run the background job verification first.');
+  await page.waitForSelector('[aria-label="Export history"]');
+  await page.select('[aria-label="Export history"]', large.id);
   await page.waitForFunction(() => document.querySelector('[aria-label="Actual PDF preview"] canvas')?.width > 100, { timeout: 30000 });
   await page.waitForSelector('[aria-label="Actual PDF preview"] a[href^="https://g4gate.com"]', { timeout: 10000 });
   await page.locator('[aria-label="PDF page number"]').fill('21');
@@ -58,6 +63,17 @@ try {
   assert.deepEqual(details.alerts, []);
   assert.equal(details.page, '21');
   assert.ok(details.textSpans > 0);
+  await page.select('[aria-label="Export question selection"]', 'range');
+  await page.locator('[aria-label="Export ranges"]').fill('20-21');
+  const submitted = page.waitForRequest(request => request.url() === origin + '/api/pdf-jobs' && request.method() === 'POST');
+  await page.evaluate(() => [...document.querySelectorAll('button')].find(button => button.textContent === 'Build PDF · 2 questions').click());
+  const exportRequest = JSON.parse((await submitted).postData());
+  assert.deepEqual(exportRequest.questions.map(question => question.exportNumber), ['20', '21']);
+  await page.waitForFunction(() => document.querySelector('[aria-label="PDF page number"]')?.max === '2' && Boolean(document.querySelector('[data-pdf-page="1"] canvas')?.dataset.renderedWidth), { timeout: 30000 });
+  await page.$eval('[aria-label="PDF exports"]', node => node.scrollIntoView({ block: 'start' }));
+  await page.evaluate(() => window.scrollBy(0, -210));
+  await page.screenshot({ path: 'tmp/pdfs/export-upgrade/selection-preview.png' });
+  details.rangeSelectionBuilt = true;
   console.log(JSON.stringify(details, null, 2));
 } catch (error) {
   if (page) {

@@ -3,6 +3,10 @@ import { normalizePdfSettings } from './pdf-settings.mjs';
 
 export function normalizeQuestionMetadata(value, fail = (message) => { throw new Error(message); }) {
   const metadata = {};
+  if (value.exportNumber !== undefined) {
+    if (typeof value.exportNumber !== 'string' || !/^[1-9]\d{0,5}$/.test(value.exportNumber)) fail('Export question number is invalid.');
+    metadata.exportNumber = value.exportNumber;
+  }
   if (value.pdfStyle !== undefined) {
     try { metadata.pdfStyle = normalizePdfSettings(value.pdfStyle, { partial: true }); }
     catch (error) { fail(error.message); }
