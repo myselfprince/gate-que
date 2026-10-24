@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { SYMBOLS, createNode, createEdge, nodePorts, portPosition, edgeGeometry, emptyDiagram, validateDiagram, duplicateItems, removeItems, contentBounds } from '../src/lib/diagram-model.mjs';
+import { SYMBOLS, createNode, createEdge, nodePorts, portPosition, edgeGeometry, emptyDiagram, validateDiagram, duplicateItems, removeItems, contentBounds, translateItems } from '../src/lib/diagram-model.mjs';
 import { diagramSvg } from '../src/lib/diagram-svg.mjs';
 import { DIAGRAM_TEMPLATES, makeTemplate } from '../src/lib/diagram-templates.mjs';
 
@@ -41,4 +41,22 @@ test('import rejects active markup styles, missing references and oversized pin 
 test('SVG exports escape labels and omit editor controls while keeping editable artwork',()=>{
   const doc={...emptyDiagram('<script>title</script>'),nodes:[createNode('text',20,20,{label:'A < B & "C" <script>alert(1)</script>'})],edges:[]};
   const svg=diagramSvg(doc,{background:'transparent'});assert.doesNotMatch(svg,/<script>|onclick=|foreignObject|data-port/);assert.match(svg,/&lt;script&gt;/);assert.match(svg,/fill="currentColor"/);assert.doesNotMatch(svg,/<rect/);
+});
+test('feedback wiring connects actual pins and routes around a digital block',()=>{
+  const ff=createNode('dff',200,200),edge=createEdge({nodeId:ff.id,portId:'right0'},{nodeId:ff.id,portId:'left0'},[ff]);
+  const geometry=edgeGeometry(edge,[ff]);assert.equal(geometry.start.x,portPosition(ff,'right0').x);assert.equal(geometry.end.x,portPosition(ff,'left0').x);assert.ok(geometry.extents.some(point=>point.y>ff.y+ff.height));
+  const doc=validateDiagram({...emptyDiagram(),nodes:[ff],edges:[edge]});assert.ok(contentBounds(doc).height>ff.height+80);
+});
+test('moving a group carries its internal wire bends and leaves external routing intact',()=>{
+  const doc=makeTemplate('half-adder'),source=doc.nodes[0],target=doc.nodes.find(node=>node.type==='and'),edge=doc.edges.find(edge=>edge.source.nodeId===source.id&&edge.target.nodeId===target.id);assert.ok(edge.points.length);
+  const moved=translateItems(doc,[source.id,target.id],100,60),updated=moved.edges.find(item=>item.id===edge.id);assert.deepEqual(updated.points,edge.points.map(point=>({x:point.x+100,y:point.y+60})));
+  const external=doc.edges.find(item=>item.source.nodeId===source.id&&item.target.nodeId!==target.id);assert.deepEqual(moved.edges.find(item=>item.id===external.id).points,external.points);
+});
+test('ragged tables normalize safely and empty imported tables are rejected',()=>{
+  const table=createNode('table',0,0,{cells:[['A','B'],['0']]}),doc=validateDiagram({...emptyDiagram(),nodes:[table]});assert.deepEqual(doc.nodes[0].cells,[['A','B'],['0','']]);assert.throws(()=>validateDiagram({...emptyDiagram(),nodes:[{...table,cells:[]}]}),/at least/);
+});
+test('automatic right-angle routing respects rotated output pins and bottom select pins',()=>{
+  const source=createNode('input',100,100,{rotation:90}),mux=createNode('mux',400,200),a=portPosition(source,'right0'),b=portPosition(mux,'bottom0');assert.equal(a.side,'bottom');assert.equal(b.side,'bottom');
+  const geometry=edgeGeometry(createEdge({nodeId:source.id,portId:'right0'},{nodeId:mux.id,portId:'bottom0'},[source,mux]),[source,mux]);
+  assert.equal(geometry.extents[1].x,a.x);assert.ok(geometry.extents[1].y>a.y);assert.equal(geometry.extents.at(-2).x,b.x);assert.ok(geometry.extents.at(-2).y>b.y);
 });

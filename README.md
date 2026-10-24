@@ -66,6 +66,9 @@ Greek and arrow symbols. Freehand, rectangle, ellipse, line, arrow, text and
 erase tools support annotations. Shift-click or drag a selection box to select
 several symbols; move, duplicate, align or distribute them together. Wheel
 zooms, Space-drag pans, arrow keys nudge, and Ctrl/Cmd-Z undoes changes.
+Moving a complete circuit also moves its internal wire bends. Feedback wires
+between different pins on one digital block route around the block; automatic
+right-angle connections respect pin orientation, including rotated symbols.
 
 Export cropped artwork or a full artboard as editable SVG, high-resolution PNG,
 clipboard PNG or project JSON. Choose a theme, white or transparent background;

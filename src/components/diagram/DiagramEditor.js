@@ -3,7 +3,7 @@
 import { memo, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { GRID, SYMBOLS, MATH_SYMBOLS, clone, contentBounds, createEdge, createNode, duplicateItems, edgeGeometry, emptyDiagram, isState, nodeBounds, nodePorts, portPosition, removeItems, resizeNode, snap, uid, validateDiagram } from '@/lib/diagram-model.mjs';
+import { GRID, SYMBOLS, MATH_SYMBOLS, clone, contentBounds, createEdge, createNode, duplicateItems, edgeGeometry, emptyDiagram, isState, nodeBounds, nodePorts, portPosition, removeItems, resizeNode, snap, translateItems, uid, validateDiagram } from '@/lib/diagram-model.mjs';
 import { diagramPalette, edgeSvg, nodeSvg } from '@/lib/diagram-svg.mjs';
 import { exportDiagram } from '@/lib/diagram-export.mjs';
 import { DIAGRAM_TEMPLATES, makeTemplate } from '@/lib/diagram-templates.mjs';
@@ -289,14 +289,7 @@ export default function DiagramEditor() {
       if (delta && selected.length) {
         event.preventDefault();
         const step = event.shiftKey ? 20 : snapping ? GRID : 1;
-        apply({
-          ...projectRef.current,
-          nodes: projectRef.current.nodes.map(node => selected.includes(node.id) ? {
-            ...node,
-            x: node.x + delta[0] * step,
-            y: node.y + delta[1] * step
-          } : node)
-        });
+        apply(translateItems(projectRef.current, selected, delta[0] * step, delta[1] * step));
         return;
       }
       if (!command && !event.altKey) {
@@ -361,10 +354,11 @@ export default function DiagramEditor() {
       sourceNode = doc.nodes.find(node => node.id === connection.nodeId),
       targetNode = doc.nodes.find(node => node.id === target.nodeId);
     if (!sourceNode || !targetNode) return;
-    if (sourceNode.id === targetNode.id && !isState(sourceNode)) {
-      notify('For a wire loop, add a junction or bend between pins.');
+    if (sourceNode.id === targetNode.id && !isState(sourceNode) && connection.portId === target.portId) {
+      notify('Choose a different pin for a feedback connection.');
       return;
     }
+    if (doc.edges.length >= 1500) { notify('This canvas supports 1,500 connections. Start another project for more.'); return; }
     const reverse = doc.edges.some(edge => edge.source.nodeId === target.nodeId && edge.target.nodeId === connection.nodeId);
     const edge = createEdge(connection, target, doc.nodes, reverse && isState(sourceNode) ? {
       bend: 70
@@ -489,6 +483,7 @@ export default function DiagramEditor() {
     }
     const type = tool === 'pen' ? 'freehand' : tool;
     if (['freehand', 'rectangle', 'ellipse', 'line', 'arrow'].includes(type)) {
+      if (projectRef.current.nodes.length >= 500) { notify('This canvas supports 500 symbols. Start another project for more.'); return; }
       const node = createNode(type, p.x, p.y, {
         width: 8,
         height: 8,
@@ -535,14 +530,7 @@ export default function DiagramEditor() {
       const dx = snap(p.x - drag.start.x, snapping),
         dy = snap(p.y - drag.start.y, snapping);
       drag.changed = dx !== 0 || dy !== 0;
-      stage({
-        ...drag.base,
-        nodes: drag.base.nodes.map(node => drag.ids.includes(node.id) ? {
-          ...node,
-          x: node.x + dx,
-          y: node.y + dy
-        } : node)
-      });
+      stage(translateItems(drag.base, drag.ids, dx, dy));
       return;
     }
     if (drag.kind === 'marquee') {
@@ -662,6 +650,7 @@ export default function DiagramEditor() {
   function duplicate() {
     if (!selected.length) return;
     const result = duplicateItems(projectRef.current, selected);
+    if (result.project.nodes.length > 500 || result.project.edges.length > 1500) { notify('This selection would exceed the project size limit. Start another project for more.'); return; }
     apply(result.project);
     setSelected(result.ids);
   }
@@ -678,6 +667,7 @@ export default function DiagramEditor() {
   function pasteSelection() {
     const data = clipboardRef.current;
     if (!data) return notify('Copy a selection in this canvas first.');
+    if (projectRef.current.nodes.length + data.nodes.length > 500 || projectRef.current.edges.length + data.edges.length > 1500) { notify('This selection would exceed the project size limit. Start another project for more.'); return; }
     const result = duplicateItems(data, data.nodes.map(node => node.id));
     apply({
       ...projectRef.current,

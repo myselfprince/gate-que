@@ -126,7 +126,7 @@ export function nodePorts(node) {
     x: w / 2,
     y: h / 2,
     side: 'right'
-  });else if (type === 'input' || type === 'clock' || type === 'ground') side(1, 'right', [node.label || 'OUT']);else if (type === 'output') side(1, 'left', ['IN']);else if (['not', 'buffer', 'tristate'].includes(type)) {
+  });else if (type === 'ground') ports.push({ id: 'right0', x: w / 2, y: 0, label: 'GND', side: 'top', direction: 'in' });else if (type === 'input' || type === 'clock') side(1, 'right', [node.label || 'OUT']);else if (type === 'output') side(1, 'left', ['IN']);else if (['not', 'buffer', 'tristate'].includes(type)) {
     side(1, 'left', ['A']);
     side(1, 'right', ['Y']);
     if (type === 'tristate') side(1, 'bottom', ['EN']);
@@ -190,6 +190,7 @@ export function portPosition(node, portId) {
     dy = port.y - node.height / 2;
   return {
     ...port,
+    side: ['right', 'bottom', 'left', 'top'][(Math.max(0, ['right', 'bottom', 'left', 'top'].indexOf(port.side)) + Math.round((node.rotation || 0) / 90)) % 4],
     x: node.x + node.width / 2 + dx * Math.cos(radians) - dy * Math.sin(radians),
     y: node.y + node.height / 2 + dx * Math.sin(radians) + dy * Math.cos(radians)
   };
@@ -259,7 +260,7 @@ export function edgeGeometry(edge, nodes) {
   const points = edge.points || [];
   let start = portPosition(source, edge.source.portId) || center(source),
     end = portPosition(target, edge.target.portId) || center(target);
-  if (source.id === target.id) {
+  if (source.id === target.id && isState(source)) {
     const c = center(source),
       r = source.width / 2,
       side = edge.loopSide || 'top',
@@ -292,6 +293,12 @@ export function edgeGeometry(edge, nodes) {
       end
     };
   }
+  if (source.id === target.id && !points.length) {
+    const bounds = nodeBounds(source), gap = Math.max(35, Math.abs(edge.bend || 45));
+    const right = bounds.x + bounds.width + gap, left = bounds.x - gap, bottom = bounds.y + bounds.height + gap;
+    const vertices = [start, { x: right, y: start.y }, { x: right, y: bottom }, { x: left, y: bottom }, { x: left, y: end.y }, end];
+    return { path: vertices.map((p, index) => `${index ? 'L' : 'M'} ${p.x} ${p.y}`).join(' '), start, end, extents: vertices, label: { x: (left + right) / 2 + (edge.labelX || 0), y: bottom - 10 + (edge.labelY || 0) } };
+  }
   if (isState(source)) start = stateAnchor(source, points[0] || center(target));
   if (isState(target)) end = stateAnchor(target, points.at(-1) || center(source));
   if (edge.style === 'curve' && !points.length) {
@@ -313,6 +320,22 @@ export function edgeGeometry(edge, nodes) {
       start,
       end
     };
+  }
+  if (edge.style === 'orthogonal' && !points.length) {
+    const directions = { left: [-1, 0], right: [1, 0], top: [0, -1], bottom: [0, 1] };
+    const from = directions[start.side] || directions.right, to = directions[end.side] || directions.left;
+    const a = { x: start.x + from[0] * 24, y: start.y + from[1] * 24 }, b = { x: end.x + to[0] * 24, y: end.y + to[1] * 24 };
+    let corners;
+    if (from[0] && to[0]) {
+      if ((from[0] > 0 && a.x > b.x) || (from[0] < 0 && a.x < b.x)) {
+        const lower = Math.max(nodeBounds(source).y + nodeBounds(source).height, nodeBounds(target).y + nodeBounds(target).height) + 40;
+        corners = [{ x: a.x, y: lower }, { x: b.x, y: lower }];
+      } else { const middle = (a.x + b.x) / 2; corners = [{ x: middle, y: a.y }, { x: middle, y: b.y }]; }
+    } else if (!from[0] && !to[0]) {
+      const middle = (a.y + b.y) / 2; corners = [{ x: a.x, y: middle }, { x: b.x, y: middle }];
+    } else corners = [from[0] ? { x: b.x, y: a.y } : { x: a.x, y: b.y }];
+    const vertices = [start, a, ...corners, b, end];
+    return { path: vertices.map((p, index) => `${index ? 'L' : 'M'} ${p.x} ${p.y}`).join(' '), start, end, extents: vertices, label: { x: (a.x + b.x) / 2 + (edge.labelX || 0), y: (a.y + b.y) / 2 - 12 + (edge.labelY || 0) } };
   }
   let vertices = [start, ...points, end];
   if (edge.style === 'orthogonal') {
@@ -403,6 +426,10 @@ export function removeItems(project, ids) {
     edges: project.edges.filter(edge => !ids.includes(edge.id) && nodes.some(node => node.id === edge.source.nodeId) && nodes.some(node => node.id === edge.target.nodeId))
   };
 }
+export function translateItems(project, ids, dx, dy) {
+  const selected = new Set(ids);
+  return { ...project, nodes: project.nodes.map(node => selected.has(node.id) ? { ...node, x: node.x + dx, y: node.y + dy } : node), edges: project.edges.map(edge => selected.has(edge.source.nodeId) && selected.has(edge.target.nodeId) ? { ...edge, points: (edge.points || []).map(point => ({ x: point.x + dx, y: point.y + dy })) } : edge) };
+}
 export function duplicateItems(project, ids, offset = 40) {
   const selected = project.nodes.filter(node => ids.includes(node.id)),
     mapping = new Map(selected.map(node => [node.id, uid()]));
@@ -482,6 +509,11 @@ export function validateDiagram(value) {
     if (node.cells !== undefined) {
       if (!Array.isArray(node.cells) || node.cells.length > 40 || node.cells.some(row => !Array.isArray(row) || row.length > 20)) throw Error('Tables support up to 40 rows and 20 columns.');
       result.cells = node.cells.map(row => row.map(cell => str(cell, 200)));
+      if (node.type === 'table') {
+        const columns = Math.max(0, ...result.cells.map(row => row.length));
+        if (!result.cells.length || !columns) throw Error('A table needs at least one row and one column.');
+        result.cells = result.cells.map(row => Array.from({ length: columns }, (_, index) => row[index] || ''));
+      }
     }
     if (node.points !== undefined) {
       if (!Array.isArray(node.points) || node.points.length > 5000) throw Error('Drawing has too many points.');

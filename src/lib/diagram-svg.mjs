@@ -68,7 +68,7 @@ export function nodeSvg(node, palette = diagramPalette('light')) {
     if (type === 'and' || type === 'nand') shape = path(`M 18 8 H ${w / 2} A ${w / 2 - 18} ${h / 2 - 8} 0 0 1 ${w / 2} ${h - 8} H 18 Z`);else if (['or', 'nor', 'xor', 'xnor'].includes(type)) {
       shape = path(`M 14 8 Q ${w * .58} 8 ${w - 18} ${h / 2} Q ${w * .58} ${h - 8} 14 ${h - 8} Q 42 ${h / 2} 14 8 Z`);
       if (['xor', 'xnor'].includes(type)) shape += path(`M 5 8 Q 33 ${h / 2} 5 ${h - 8}`).replace('/>', ' fill="none"/>');
-    } else shape = path(`M 18 8 L ${w - 22} ${h / 2} L 18 ${h - 8} Z`);
+    } else shape = path(`M 18 8 L ${inverted ? w - 17 : w - 18} ${h / 2} L 18 ${h - 8} Z`);
     for (const port of ports.filter(port => port.side === 'left')) {
       const y = port.y,
         ratio = Math.max(0, Math.min(1, (y - 8) / (h - 16))),
@@ -83,10 +83,10 @@ export function nodeSvg(node, palette = diagramPalette('light')) {
     shape = `<circle cx="${w / 2}" cy="${h / 2}" r="${Math.min(w, h) / 2}" fill="${ink}"/>`;
     label = false;
   } else if (type === 'input') shape = path(`M 0 8 H ${w - 22} L ${w - 7} ${h / 2} L ${w - 22} ${h - 8} H 0 Z`) + line(w - 7, h / 2, w, h / 2);else if (type === 'output') shape = path(`M 12 8 H ${w} V ${h - 8} H 12 L 0 ${h / 2} Z`);else if (type === 'clock') {
-    shape = path(`M 10 ${h * .7} H ${w * .25} V ${h * .3} H ${w * .5} V ${h * .7} H ${w * .7} V ${h * .3} H ${w - 10}`).replace('/>', ' fill="none"/>') + line(w - 10, h / 2, w, h / 2);
+    shape = path(`M 10 ${h * .7} H ${w * .25} V ${h * .3} H ${w * .5} V ${h * .7} H ${w * .7} V ${h * .3} H ${w - 10} V ${h / 2} H ${w}`).replace('/>', ' fill="none"/>');
     label = false;
   } else if (type === 'ground') {
-    shape = line(0, h / 2, w / 2, h / 2) + line(w / 2, h / 2, w / 2, h * .68) + line(w * .25, h * .68, w * .75, h * .68) + line(w * .32, h * .8, w * .68, h * .8) + line(w * .41, h * .9, w * .59, h * .9);
+    shape = line(w / 2, 0, w / 2, h * .6) + line(w * .2, h * .6, w * .8, h * .6) + line(w * .3, h * .75, w * .7, h * .75) + line(w * .4, h * .9, w * .6, h * .9);
     label = false;
   } else if (type === 'resistor') {
     shape = path(`M 0 ${h / 2} H ${w * .18} L ${w * .26} ${h * .25} L ${w * .38} ${h * .75} L ${w * .5} ${h * .25} L ${w * .62} ${h * .75} L ${w * .74} ${h * .25} L ${w * .82} ${h / 2} H ${w}`).replace('/>', ' fill="none"/>');

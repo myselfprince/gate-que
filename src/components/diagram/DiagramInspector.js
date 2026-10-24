@@ -16,7 +16,7 @@ export default function DiagramInspector({
   const edge = selected.length === 1 ? project.edges.find(edge => edge.id === selected[0]) : null;
   const num = (label, key, value, min, max, change, step = 1) => <label key={key}>{label}<input aria-label={label} type="number" value={value} min={min} max={max} step={step} onChange={event => {
       const n = Number(event.target.value);
-      if (event.target.value !== '' && Number.isFinite(n) && n >= min && n <= max) change({
+      if (event.target.value !== '' && Number.isFinite(n) && n >= min && n <= max && (step !== 1 || Number.isInteger(n))) change({
         [key]: n
       });
     }} /></label>;
