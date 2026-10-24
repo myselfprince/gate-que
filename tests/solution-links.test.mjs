@@ -13,9 +13,9 @@ test('solution links round-trip through question metadata with video timestamps'
   for (const url of ['javascript:alert(1)', 'https://youtube.com.evil.test/watch?v=dQw4w9WgXcQ', 'https://youtube.com/playlist?list=123', 'https://youtu.be/dQw4w9WgXcQ?t=bad']) assert.throws(() => normalizeSolutionUrl(url));
 });
 
-test('question PDFs print clickable website and solution footers without leaking answers', () => {
-  const tex = buildQuestionPages({ subject: 'CN', chapter: 'LAN', questions: [{ text: 'Question', solutionUrl: 'https://youtu.be/dQw4w9WgXcQ?t=90', natAnswer: 'secret' }] });
-  assert.match(tex, /\\href\{https:\/\/g4gate\.com\}\{g4gate\.com\}/);
-  assert.match(tex, /watch\?v=dQw4w9WgXcQ&t=90s\}\{Watch video solution\}/);
+test('question PDFs print configured website and YouTube solution links without leaking answers', () => {
+  const tex = buildQuestionPages({ subject: 'CN', chapter: 'LAN', pdfSettings: { showWebsite: true }, questions: [{ text: 'Question', solutionUrl: 'https://youtu.be/dQw4w9WgXcQ?t=90', natAnswer: 'secret' }] });
+  assert.match(tex, /\\href\{https:\/\/g4gate\.com\/\}\{g4gate\.com\}/);
+  assert.match(tex, /watch\?v=dQw4w9WgXcQ&t=90s\}\{\\gateyoutubeicon\\hspace\{5pt\}Video sol\.\}/);
   assert.doesNotMatch(tex, /secret/);
 });

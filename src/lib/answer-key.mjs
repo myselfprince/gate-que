@@ -1,5 +1,6 @@
 import { escapeLatex, latexText } from './latex-source.mjs';
 import { normalizePdfSettings } from './pdf-settings.mjs';
+import { latexLink } from './pdf-decorations.mjs';
 
 export function buildAnswerKey({ subject, chapter, questions, pdfSettings }) {
   const settings = normalizePdfSettings(pdfSettings);
@@ -29,7 +30,7 @@ Only available stored answers are included. Missing answers are marked explicitl
 ${entries || '\\item No non-blank questions selected.'}
 \\end{enumerate}
 \\vfill
-${settings.showWebsite ? '\\href{https://g4gate.com}{g4gate.com}' : ''}
+${settings.showWebsite && settings.websiteUrl ? latexLink(settings.websiteUrl, escapeLatex(settings.websiteLabel || settings.websiteUrl)) : ''}
 \\end{document}
 `;
 }

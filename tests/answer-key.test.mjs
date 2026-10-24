@@ -10,5 +10,5 @@ test('a separate answer key retains source labels, MSQ answers, NAT math and una
   const questions = buildQuestionPages(payload);
   assert.doesNotMatch(questions, /\\frac\{1\}\{2\}|Answer not available/);
   assert.match(questions, /Working space/);
-  assert.match(questions, /textheight-22pt-70pt/);
+  assert.match(questions, /textheight-32pt-[^\n]+-70pt/);
 });

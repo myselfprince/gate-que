@@ -19,7 +19,7 @@ test('chapter design and per-question sizes reach the final LaTeX with bounded f
   assert.match(tex, /\\pagecolor\{white\}/);
   assert.match(tex, /\\color\{black\}/);
   assert.match(tex, /\\fontsize\{20\}\{30\.00\}/);
-  assert.doesNotMatch(tex, /youtube.com|\\resizebox\*/);
+  assert.doesNotMatch(tex, /youtube.com|\\resizebox\*\{!\}\{\\questionheight\}/);
   assert.match(tex, /does not fit at minimum font 16pt/);
   assert.match(buildQuestionPages({ ...payload, pdfSettings: { ...payload.pdfSettings, overflow: 'warn' } }), /GATEFITWARNING/);
 });

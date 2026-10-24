@@ -9,7 +9,7 @@ import { load } from 'cheerio';
 import { buildQuestionPages } from './question-pages.mjs';
 import { collectLatexImages } from './latex-source.mjs';
 import { normalizePdfSettings } from './pdf-settings.mjs';
-import { normalizeSolutionUrl } from './solution-links.mjs';
+import { expectedWebsiteLinks, visibleSolutionUrl } from './pdf-decorations.mjs';
 import { addQuestionBookmarks } from './pdf-bookmarks.mjs';
 import { buildAnswerKey } from './answer-key.mjs';
 
@@ -140,11 +140,12 @@ export async function exportQuestionPdf(payload, { projectRoot = process.cwd(), 
         const action = annotation.lookup(PDFName.of('A'));
         if (action?.lookup(PDFName.of('S'))?.toString() === '/URI') urls.push(action.lookup(PDFName.of('URI')).decodeText());
       }
-      if (settings.showWebsite) {
-        if (!urls.includes('https://g4gate.com')) throw new PdfExportError(`Website link missing on page ${index + 1}.`);
-        websiteLinks++;
+      const websiteCount = expectedWebsiteLinks(settings);
+      if (websiteCount) {
+        if (urls.filter(url => url === settings.websiteUrl).length < websiteCount) throw new PdfExportError(`Website link missing on page ${index + 1}.`);
+        websiteLinks += websiteCount;
       }
-      const solution = settings.showSolutions && !questions[index].isBlank && normalizeSolutionUrl(questions[index].solutionUrl);
+      const solution = visibleSolutionUrl(questions[index], settings);
       if (solution) {
         if (!urls.includes(solution)) throw new PdfExportError(`Solution link missing on page ${index + 1}.`);
         solutionLinks++;
@@ -177,7 +178,7 @@ export async function exportQuestionPdf(payload, { projectRoot = process.cwd(), 
       try { await inspectTextBounds(path.join(directory, 'answer-key.pdf'), answerKeyPages, signal); answerKeyBoundsChecked = true; }
       catch (error) { if (error instanceof PdfExportError || signal?.aborted) throw error; warnings.push({ message: 'Answer-key text bounds could not be checked. Install Poppler pdftotext and retry.' }); }
     }
-    return { pdf, parts, answerKey, report: { questions: questions.length, pages: questions.length, batches: parts.length, reusedBatches, warnings, pageCountVerified: true, textBoundsChecked, linksVerified: true, websiteLinks, solutionLinks, ...(answerKey ? { answerKeyPages, answerKeyBoundsChecked } : {}) } };
+    return { pdf, parts, answerKey, report: { questions: questions.length, pages: questions.length, batches: parts.length, reusedBatches, warnings, pageCountVerified: true, textBoundsChecked, linksVerified: true, websiteLinks, solutionLinks, openLinksInNewTab: settings.openLinksInNewTab, ...(answerKey ? { answerKeyPages, answerKeyBoundsChecked } : {}) } };
   } finally {
     await fs.rm(directory, { recursive: true, force: true });
   }

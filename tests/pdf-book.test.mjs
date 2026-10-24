@@ -21,7 +21,7 @@ test('subject books retain chapter order, source PDF links and question destinat
       addQuestionBookmarks(document, [{ source: { questionNumber: `${number}.1` } }]);
       const bytes = await document.save(), file = `${number}.pdf`;
       await fs.writeFile(path.join(directory, 'chapters', file), bytes);
-      chapters.push({ file, sha256: createHash('sha256').update(bytes).digest('hex'), sourceId: String(number), chapter: `Chapter ${number}`, pages: 1, questionIds: ['same-id'], report: { warnings: [], textBoundsChecked: true } });
+      chapters.push({ file, sha256: createHash('sha256').update(bytes).digest('hex'), sourceId: String(number), chapter: `Chapter ${number}`, pages: 1, questionIds: ['same-id'], report: { warnings: [], textBoundsChecked: true, websiteLinks: 1, solutionLinks: 0 } });
     }
     const payload = { subject: 'Test', chapter: 'Book', total: 2, chapters };
     const result = await exportPdfBook(payload, { directory });

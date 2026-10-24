@@ -51,7 +51,7 @@ test('long code is captured once outside fitting conditionals while prose keeps 
   const tex=buildQuestionPages({subject:'COA',chapter:'CPU',questions:[question]});
   assert.equal((tex.match(/a\[i\] = b\[i\] \* 8;/g)||[]).length,1);
   assert.equal((tex.match(/Prose before/g)||[]).length,1);
-  assert.ok(tex.indexOf('\\end{lstlisting}')<tex.indexOf('\\ifdim'));
+  assert.ok(tex.indexOf('\\end{lstlisting}')<tex.indexOf('\\ifdim\\dimexpr\\ht\\questionbox'));
   assert.match(tex,/\\scalebox\{\\questioncodescale\}\{\\usebox\{\\questioncodebox\}\}/);
   assert.match(tex,/\\renewcommand\{\\questioncodescale\}\{0\.722\}/);
   assert.match(tex,/\\begin\{minipage\}\[t\]\{\\textwidth\}/);

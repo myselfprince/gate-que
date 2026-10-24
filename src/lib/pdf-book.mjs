@@ -16,7 +16,7 @@ const linkUrls = page => {
 
 export async function exportPdfBook(payload, { directory, signal, onProgress = async () => {} }) {
   const book = await PDFDocument.create();
-  const parts = [], bookmarks = [], expectedLinks = [], warnings = [];
+  const parts = [], bookmarks = [], warnings = [];
   const seenQuestions = new Set(), repeatedQuestions = new Set();
   let completed = 0;
   for (const [index, chapter] of payload.chapters.entries()) {
@@ -34,7 +34,6 @@ export async function exportPdfBook(payload, { directory, signal, onProgress = a
     copied.forEach((page, pageIndex) => {
       const expected = linkUrls(source.getPage(pageIndex));
       if (JSON.stringify(linkUrls(page)) !== JSON.stringify(expected)) throw new Error('A chapter link was not preserved.');
-      expectedLinks.push(...expected);
       book.addPage(page);
     });
     const pageIndices = new Map(source.getPages().map((page, index) => [page.ref.toString(), index]));
@@ -58,5 +57,5 @@ export async function exportPdfBook(payload, { directory, signal, onProgress = a
   addPdfBookmarks(book, bookmarks);
   if (repeatedQuestions.size) warnings.push({ message: `This book contains ${repeatedQuestions.size} repeated question IDs across the selected exports. Review overlapping chapter selections.` });
   book.setTitle(`${payload.subject} - ${payload.chapter}`); book.setAuthor('G4Gate');
-  return { pdf: Buffer.from(await book.save()), parts, report: { questions: payload.total, pages: payload.total, chapters: payload.chapters.length, repeatedQuestionIds: repeatedQuestions.size, batches: payload.chapters.length, warnings, pageCountVerified: true, linksVerified: true, websiteLinks: expectedLinks.filter(url => url === 'https://g4gate.com').length, solutionLinks: expectedLinks.filter(url => url.startsWith('https://www.youtube.com/watch?')).length, textBoundsChecked: payload.chapters.every(chapter => chapter.report.textBoundsChecked), textBoundsBasis: 'Source chapter PDFs copied without reflow', sourceJobs: payload.chapters.map(chapter => chapter.sourceId) } };
+  return { pdf: Buffer.from(await book.save()), parts, report: { questions: payload.total, pages: payload.total, chapters: payload.chapters.length, repeatedQuestionIds: repeatedQuestions.size, batches: payload.chapters.length, warnings, pageCountVerified: true, linksVerified: true, websiteLinks: payload.chapters.reduce((sum, chapter) => sum + (chapter.report.websiteLinks || 0), 0), solutionLinks: payload.chapters.reduce((sum, chapter) => sum + (chapter.report.solutionLinks || 0), 0), openLinksInNewTab: payload.chapters[0]?.report.openLinksInNewTab !== false, textBoundsChecked: payload.chapters.every(chapter => chapter.report.textBoundsChecked), textBoundsBasis: 'Source chapter PDFs copied without reflow', sourceJobs: payload.chapters.map(chapter => chapter.sourceId) } };
 }
