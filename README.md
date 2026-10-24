@@ -23,6 +23,16 @@ Each question can store an optional YouTube solution URL, including a timestamp.
 PDF and editable LaTeX exports include clickable solution and `g4gate.com` footers.
 The TeX installation must include `hyperref` and its dependencies.
 
+The editor creates background PDF jobs with progress, cancel/retry, and download
+history. Questions and diagram bytes are snapshotted when the job starts; retries
+reuse completed batches only when their source and asset hashes still match.
+Jobs survive editor refreshes and Next.js restarts. A stopped worker is shown as
+failed and can be retried. One local worker compiles at a time, with up to eight
+queued/running jobs. Keep the full `scripts/` directory when deploying.
+Install Poppler `pdftotext` for automatic text-bound checks. If unavailable the QA
+report explicitly marks that check incomplete. Jobs and snapshots remain in
+`output/pdf-jobs/` (or `PDF_EXPORT_DIR`); protect and back up this local directory.
+
 ## Production requirements
 
 This application performs browser screenshots, LaTeX compilation, ZIP generation, and database writes. Deploy it to a Node.js server or container with a writable temporary directory, `pdflatex`, and Chrome/Puppeteer support; it is not suitable for a filesystem-restricted serverless runtime.
