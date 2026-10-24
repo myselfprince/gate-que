@@ -7,7 +7,7 @@ Welcome to the **GATE CSE PYQ Pipeline**! This is a full-stack Next.js applicati
 
 ## Run locally
 
-1. Install Node.js 20.9 or later, MongoDB access, a TeX installation that provides `pdflatex`, and the browser dependencies required by Puppeteer.
+1. Install Node.js 22.13 or later, MongoDB access, a TeX installation that provides `pdflatex`, and the browser dependencies required by Puppeteer.
 2. Copy `.env.example` to `.env.local` and enter your two MongoDB connection strings. For local development, authentication is disabled by default to preserve the existing one-user workflow.
 3. Run `npm ci`, then `npm run dev`.
 

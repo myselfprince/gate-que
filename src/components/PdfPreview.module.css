@@ -1,0 +1,21 @@
+.viewer { margin-top: 16px; border: 1px solid #45475a; border-radius: 8px; overflow: hidden; background: #11111b; }
+.toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; padding: 12px; background: #242438; }
+.toolbar label { display: flex; align-items: center; gap: 6px; margin: 0; }
+.toolbar input, .toolbar select { margin: 0; width: auto; }
+.layout { display: flex; height: 650px; }
+.thumbnails { width: 165px; flex-shrink: 0; overflow-y: auto; padding: 10px; border-right: 1px solid #45475a; }
+.thumbnail { width: 100%; padding: 7px; margin-bottom: 10px; background: #313244; color: #cdd6f4; border: 2px solid transparent; cursor: pointer; }
+.thumbnail[aria-current="page"] { border-color: #cba6f7; }
+.thumbnail canvas { display: block; width: 128px; max-width: 100%; margin: 0 auto 5px; background: #000; }
+.viewport { flex: 1; min-width: 0; overflow: auto; padding: 16px; }
+.page { position: relative; margin: 0 auto; background: #fff; box-shadow: 0 4px 18px #0008; }
+.page canvas { display: block; }
+.link { position: absolute; z-index: 3; cursor: pointer; }
+.link:hover, .link:focus-visible { outline: 2px solid #89dceb; background: #89dceb22; }
+.message { margin: 12px; color: #bac2de; }
+.textLayer { position: absolute; inset: 0; overflow: clip; line-height: 1; text-size-adjust: none; forced-color-adjust: none; transform-origin: 0 0; --min-font-size: 1; --text-scale-factor: calc(var(--total-scale-factor) * var(--min-font-size)); --min-font-size-inv: calc(1 / var(--min-font-size)); }
+.textLayer :is(span, br) { color: transparent; position: absolute; white-space: pre; cursor: text; transform-origin: 0 0; user-select: text; }
+.textLayer > :not(:global(.markedContent)), .textLayer :global(.markedContent) span:not(:global(.markedContent)) { font-size: calc(var(--text-scale-factor) * var(--font-height, 0)); transform: rotate(var(--rotate, 0deg)) scaleX(var(--scale-x, 1)) scale(var(--min-font-size-inv)); }
+.textLayer :global(.markedContent) { display: contents; }
+.textLayer ::selection { background: #89b4fa88; }
+@media (max-width: 700px) { .thumbnails { display: none; } .layout { height: 480px; } }

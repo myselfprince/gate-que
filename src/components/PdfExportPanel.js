@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
+import PdfPreview from './PdfPreview';
 
 const active = job => job && ['queued', 'running'].includes(job.status);
 export default function PdfExportPanel({ payload }) {
@@ -69,6 +70,7 @@ export default function PdfExportPanel({ payload }) {
         </div>
         <p style={{ fontSize: 13, color: '#bac2de' }}>{job.report?.textBoundsChecked ? 'Text bounds checked.' : 'Text bounds were not checked.'} Content still needs source review.{snapshot && snapshot !== signature ? ' Your draft or PDF settings changed. Build a new PDF to include them.' : ' Downloads contain the saved export snapshot.'}</p>
         {Boolean(job.report?.warnings?.length) && <details><summary style={{ color: '#f9e2af' }}>{job.report.warnings.length} layout/readability warnings</summary><ul>{job.report.warnings.map((warning, index) => <li key={index}>{warning.message}</li>)}</ul></details>}
+        <PdfPreview key={job.id + '-' + job.attempt} url={`/api/pdf-jobs/${job.id}/download?inline=1`} />
       </div>}
     </div>}
   </section>;

@@ -17,7 +17,7 @@ export async function GET(request, { params }) {
     const files = { pdf: ['complete.pdf', 'application/pdf'], zip: ['parts.zip', 'application/zip'], report: ['report.json', 'application/json'] };
     if (!Object.hasOwn(files, kind)) return jsonError('Unknown download format.');
     const [file, type] = files[kind];
-    const bytes = await fs.readFile(/* turbopackIgnore: true */ path.join(jobDirectory(id), file));
+    const bytes = await fs.readFile(/* turbopackIgnore: true */ path.join(/* turbopackIgnore: true */ jobDirectory(id), file));
     const inline = kind === 'pdf' && new URL(request.url).searchParams.get('inline') === '1';
     return new NextResponse(new Uint8Array(bytes), { headers: { 'Content-Type': type, 'Content-Disposition': `${inline ? 'inline' : 'attachment'}; filename="G4Gate-${job.total}-questions.${kind === 'report' ? 'json' : kind}"`, 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' } });
   } catch { return jsonError('Export file unavailable.', 404); }
