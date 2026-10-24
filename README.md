@@ -59,7 +59,7 @@ This application performs browser screenshots, LaTeX compilation, ZIP generation
 
 Production authentication is enabled by default. Set both `JWT_SECRET` and `APP_PASSWORD` to long, unique values before starting the service, then sign in at `/login`. The existing API and UI remain available after sign-in.
 
-Question diagrams live in `public/` and are intentionally versioned so a fresh clone and production deployment contain the same images. If the asset library grows substantially, move it to object storage and store stable URLs in question records.
+Question diagrams live in `public/`, which this repository currently excludes from Git. Copy the matching chapter image library when setting up another machine or deploying. A source-only clone does not include these diagrams. For a larger asset library, use object storage with stable references.
 
 Instead of manually typing math equations, formatting code, and organizing chapters, this system handles the heavy lifting through automated web scraping, smart text parsing, and a highly interactive workspace.
 

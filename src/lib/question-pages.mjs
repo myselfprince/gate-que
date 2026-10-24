@@ -39,6 +39,9 @@ export function buildQuestionPages({ subject, chapter, questions, pdfSettings },
 `;
   questions.forEach((q, index) => {
     const style = questionPdfSettings(settings, q.pdfStyle);
+    // A larger listing is scaled after capture. Reserve a narrower source box
+    // so its scaled frame never grows beyond the full text width.
+    const codeWidth = style.fontSize > 18 ? `${(1 / Number((style.fontSize / 18).toFixed(3))).toFixed(6)}\\textwidth` : '\\textwidth';
     const solutionUrl = q.isBlank || !settings.showSolutions ? '' : normalizeSolutionUrl(q.solutionUrl);
     if (index) source += '\\clearpage\n';
     const number = q.source?.questionNumber || q.exportNumber || String(startIndex + index + 1);
@@ -71,7 +74,7 @@ export function buildQuestionPages({ subject, chapter, questions, pdfSettings },
     };
     source += `\n% Question page ${number}\n\\typeout{GATEQUESTION:${startIndex + index + 1}}\n`;
     if (q.code && !q.isBlank) source += `\\begin{lrbox}{\\questioncodebox}
-\\begin{minipage}{\\textwidth}
+\\begin{minipage}{${codeWidth}}
 ${renderSourceQuestion({ text: '[CODE]', code: q.code })}
 \\end{minipage}
 \\end{lrbox}

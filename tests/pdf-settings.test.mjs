@@ -23,3 +23,9 @@ test('chapter design and per-question sizes reach the final LaTeX with bounded f
   assert.match(tex, /does not fit at minimum font 16pt/);
   assert.match(buildQuestionPages({ ...payload, pdfSettings: { ...payload.pdfSettings, overflow: 'warn' } }), /GATEFITWARNING/);
 });
+
+test('large teaching fonts keep the scaled code frame inside the text width', () => {
+  const tex = buildQuestionPages({ subject: 'Test', chapter: 'Code', pdfSettings: { fontSize: 24, minFontSize: 16 }, questions: [{ text: 'Read this program. [CODE]', code: 'for (int i=0; i<n; i++) {\n    total += i;\n}' }] });
+  assert.match(tex, /\\begin\{minipage\}\{0\.750188\\textwidth\}/);
+  assert.match(tex, /questioncodescale\}\{1\.333\}/);
+});
