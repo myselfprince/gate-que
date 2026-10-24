@@ -100,6 +100,70 @@ const TOPIC_MAPPING = {
   "Numerical Method": "3. Calculus"
 };
 
+const GROUP_COPY_PROMPT_STORAGE_KEY = 'gate_scraper_group_copy_prompt';
+const GROUP_COPY_PROMPT_ENABLED_STORAGE_KEY = 'gate_scraper_group_copy_prompt_enabled';
+
+// This default is only used the first time the browser opens the scraper. After
+// that, the editable localStorage value is the source of truth for group copies.
+const DEFAULT_GROUP_COPY_PROMPT = String.raw`Act as a precise formatter for GATE Computer Science questions.
+
+Your only task is to convert the scraped input into the exact plain-text format below so it can be parsed automatically.
+
+STRICT OUTPUT RULES
+
+1. Output only the formatted result. Do not add explanations, greetings, notes, markdown fences, or separators such as ---.
+
+2. Use these labels exactly, in this exact order:
+QUESTION:
+CODE:
+OPTIONS:
+
+3. One input question must produce exactly one block.
+
+4. QUESTION text:
+- Preserve the full meaning of the original question.
+- Remove question numbering such as Q.1, 1., or Question 1.
+- Preserve image placeholders exactly if present: [IMG_1], [IMG_2], or [DIAGRAM_PLACEHOLDER].
+- If code occurs within the question, remove the code from the prose and insert exactly one [CODE] tag at that same logical location.
+- If there is no code, do not include [CODE].
+- Put metadata at the very end of the QUESTION text in exactly this format:
+  [YYYY : N M]
+  Example: [1987 : 1 M]
+
+5. CODE text:
+- Put extracted source code only after CODE:.
+- Preserve programming syntax and operators exactly.
+- Add sensible line breaks and indentation for C, C++, Pascal, SQL, pseudocode, algorithms, etc.
+- Do not use LaTex inside CODE.
+- Do not escape underscores, braces, backslashes, or operators in code.
+- If there is no code, leave the CODE value empty.
+
+6. Math and logic:
+- Use inline LaTex only in normal QUESTION or OPTIONS text.
+- Wrap every mathematical expression in single dollar delimiters: $...$
+- Examples: $n^2$, $\lfloor \sqrt{N} \rfloor$, $A \land B$, $x \in S$
+- Do not use $$...$$.
+- Do not convert ordinary prose or programming code into LaTex.
+
+7. OPTIONS:
+- If the source has four options, output exactly four options in A, B, C, D order.
+- Separate options using exactly: space-semicolon-space
+- Example: OPTIONS: Option A ; Option B ; Option C ; Option D
+- Do not include labels such as (A), (B), (C), or (D).
+- Never use a semicolon inside an option. Replace it with a comma or colon if needed.
+- If the source has no options, output only:
+  OPTIONS:
+
+8. Never invent missing code, options, metadata, formulas, or answers.
+
+REQUIRED FORMAT
+
+QUESTION: <cleaned question text, with [CODE] only when code exists> [YYYY : N M]
+CODE: <formatted code, or empty>
+OPTIONS: <option A> ; <option B> ; <option C> ; <option D>
+
+NOW FORMAT THE FOLLOWING SCRAPED TEXT:`;
+
 export default function ScraperPage() {
   const [url, setUrl] = useState('');
   const [isScraping, setIsScraping] = useState(false);
@@ -115,6 +179,8 @@ export default function ScraperPage() {
   const [lastCopied, setLastCopied] = useState(null);
   const [clickedRanges, setClickedRanges] = useState(new Set());
   const [chunkSizes, setChunkSizes] = useState({});
+  const [prependGroupCopyPrompt, setPrependGroupCopyPrompt] = useState(true);
+  const [groupCopyPrompt, setGroupCopyPrompt] = useState(DEFAULT_GROUP_COPY_PROMPT);
   
   // NEW: Scraper Filter Year State
   const [filterYear, setFilterYear] = useState('All');
@@ -190,6 +256,25 @@ export default function ScraperPage() {
   }, []);
 
   useEffect(() => {
+    queueMicrotask(() => {
+      const savedPrompt = localStorage.getItem(GROUP_COPY_PROMPT_STORAGE_KEY);
+      const savedEnabled = localStorage.getItem(GROUP_COPY_PROMPT_ENABLED_STORAGE_KEY);
+
+      if (savedPrompt === null) {
+        localStorage.setItem(GROUP_COPY_PROMPT_STORAGE_KEY, DEFAULT_GROUP_COPY_PROMPT);
+      } else {
+        setGroupCopyPrompt(savedPrompt);
+      }
+
+      if (savedEnabled === null) {
+        localStorage.setItem(GROUP_COPY_PROMPT_ENABLED_STORAGE_KEY, 'true');
+      } else {
+        setPrependGroupCopyPrompt(savedEnabled === 'true');
+      }
+    });
+  }, []);
+
+  useEffect(() => {
     if (typeof window !== 'undefined' && !window.MathJax) {
       window.MathJax = {
         tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
@@ -261,17 +346,23 @@ export default function ScraperPage() {
     }
   };
 
+  const formatQuestionForCopy = (q) => {
+    let qString = `QUESTION: ${q.text.trim()} [${q.year} : ${q.marks} M]\n`;
+    if (q.code) qString += `CODE: ${q.code}\n`;
+    if (q.optA || q.optB || q.optC || q.optD) {
+      qString += `OPTIONS: ${q.optA || ''} ; ${q.optB || ''} ; ${q.optC || ''} ; ${q.optD || ''}\n`;
+    }
+    return qString.trim();
+  };
+
+  const formatGroupCopy = (questionsArray) => {
+    const questionsText = questionsArray.map(formatQuestionForCopy).join('\n\n');
+    const prompt = groupCopyPrompt.trim();
+    return prependGroupCopyPrompt && prompt ? `${prompt}\n\n${questionsText}` : questionsText;
+  };
+
   const handleCopyGroup = (questionsArray, chapterName) => {
-    let bulkString = "";
-    questionsArray.forEach(q => {
-      bulkString += `QUESTION: ${q.text.trim()} [${q.year} : ${q.marks} M]\n`;
-      if (q.code) bulkString += `CODE: ${q.code}\n`;
-      if (q.optA || q.optB || q.optC || q.optD) {
-        bulkString += `OPTIONS: ${q.optA || ''} ; ${q.optB || ''} ; ${q.optC || ''} ; ${q.optD || ''}\n`;
-      }
-      bulkString += `\n`;
-    });
-    navigator.clipboard.writeText(bulkString.trim());
+    navigator.clipboard.writeText(formatGroupCopy(questionsArray));
     setLastCopied({ chapter: chapterName, range: filterYear === 'All' ? `ALL (${questionsArray.length})` : `ALL VISIBLE (${questionsArray.length})` });
     showToast(`📋 Copied ${questionsArray.length} questions for ${chapterName}!`);
   };
@@ -299,17 +390,7 @@ export default function ScraperPage() {
       return showToast("❌ No questions found in that range matching the active filter.", "error");
     }
 
-    let bulkString = "";
-    slicedQs.forEach(q => {
-      bulkString += `QUESTION: ${q.text.trim()} [${q.year} : ${q.marks} M]\n`;
-      if (q.code) bulkString += `CODE: ${q.code}\n`;
-      if (q.optA || q.optB || q.optC || q.optD) {
-        bulkString += `OPTIONS: ${q.optA || ''} ; ${q.optB || ''} ; ${q.optC || ''} ; ${q.optD || ''}\n`;
-      }
-      bulkString += `\n`;
-    });
-    
-    navigator.clipboard.writeText(bulkString.trim());
+    navigator.clipboard.writeText(formatGroupCopy(slicedQs));
     const actualRange = `${start}-${end}`;
     setLastCopied({ chapter: chapterName, range: actualRange });
     setClickedRanges(prev => {
@@ -354,12 +435,7 @@ export default function ScraperPage() {
   };
 
   const handleCopySingleQuestion = (q) => {
-    let qString = `QUESTION: ${q.text.trim()} [${q.year} : ${q.marks} M]\n`;
-    if (q.code) qString += `CODE: ${q.code}\n`;
-    if (q.optA || q.optB || q.optC || q.optD) {
-      qString += `OPTIONS: ${q.optA || ''} ; ${q.optB || ''} ; ${q.optC || ''} ; ${q.optD || ''}\n`;
-    }
-    navigator.clipboard.writeText(qString.trim());
+    navigator.clipboard.writeText(formatQuestionForCopy(q));
     showToast(`📋 Copied Question to clipboard!`);
   };
 
@@ -424,6 +500,55 @@ export default function ScraperPage() {
         <button onClick={startScraping} disabled={isScraping || !url} style={{ background: isScraping ? '#6c7086' : '#89b4fa', color: '#11111b', padding: '12px 25px', borderRadius: '6px', fontWeight: 'bold', border: 'none', cursor: isScraping ? 'not-allowed' : 'pointer' }}>
           {isScraping ? `Scraping Page ${progress.current} of ${progress.total}...` : '🚀 Start Scraping & Auto-Group'}
         </button>
+      </div>
+
+      <div className="card" style={{ background: '#181825', padding: '15px 20px', borderRadius: '10px', marginBottom: '20px', border: '1px solid #cba6f7' }}>
+        <label style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#cdd6f4', fontWeight: 'bold', cursor: 'pointer' }}>
+          <input
+            type="checkbox"
+            checked={prependGroupCopyPrompt}
+            onChange={(e) => {
+              const enabled = e.target.checked;
+              setPrependGroupCopyPrompt(enabled);
+              localStorage.setItem(GROUP_COPY_PROMPT_ENABLED_STORAGE_KEY, String(enabled));
+            }}
+            style={{ width: '16px', height: '16px', accentColor: '#cba6f7' }}
+          />
+          Prepend formatting prompt to group copies
+          <span style={{ color: prependGroupCopyPrompt ? '#a6e3a1' : '#a6adc8', fontSize: '12px' }}>
+            {prependGroupCopyPrompt ? 'Enabled' : 'Disabled'}
+          </span>
+        </label>
+        <details style={{ marginTop: '12px' }}>
+          <summary style={{ color: '#89b4fa', cursor: 'pointer', fontWeight: 'bold' }}>Edit copied prompt (saved locally)</summary>
+          <p style={{ color: '#bac2de', fontSize: '13px', margin: '10px 0' }}>
+            This prompt is placed before questions copied with Copy All, a typed range, or a generated batch button. Single-question copies remain unchanged.
+          </p>
+          <textarea
+            value={groupCopyPrompt}
+            onChange={(e) => {
+              const prompt = e.target.value;
+              setGroupCopyPrompt(prompt);
+              localStorage.setItem(GROUP_COPY_PROMPT_STORAGE_KEY, prompt);
+            }}
+            rows={14}
+            spellCheck={false}
+            aria-label="Group copy formatting prompt"
+            style={{ boxSizing: 'border-box', width: '100%', padding: '12px', borderRadius: '6px', border: '1px solid #45475a', background: '#11111b', color: '#cdd6f4', fontFamily: 'monospace', lineHeight: 1.45, resize: 'vertical' }}
+          />
+          <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '10px' }}>
+            <button
+              type="button"
+              onClick={() => {
+                setGroupCopyPrompt(DEFAULT_GROUP_COPY_PROMPT);
+                localStorage.setItem(GROUP_COPY_PROMPT_STORAGE_KEY, DEFAULT_GROUP_COPY_PROMPT);
+              }}
+              style={{ background: '#45475a', color: '#cdd6f4', padding: '7px 10px', borderRadius: '4px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}
+            >
+              Restore default prompt
+            </button>
+          </div>
+        </details>
       </div>
 
       {Object.keys(groupedQuestions).length > 0 && (
