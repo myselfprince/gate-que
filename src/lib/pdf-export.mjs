@@ -63,6 +63,7 @@ export async function exportQuestionPdf(payload, { projectRoot = process.cwd(), 
         const markers = [...(error.stdout || '').matchAll(/GATEQUESTION:(\d+)/g)];
         const questionIndex = markers.length ? Number(markers.at(-1)[1]) : index + 1;
         const reason = error.code === 'ENOENT' ? 'pdflatex is not installed or PDFLATEX_BIN is incorrect.'
+          : /Access is denied/i.test(error.stdout || '') ? 'The TeX installation cannot access its configuration folders.'
           : error.killed ? 'Compilation timed out.' : 'Check this question’s math, code and image references.';
         throw new PdfExportError(`PDF failed near question ${questionIndex}. ${reason}`, { questionIndex, questionId: questions[questionIndex - 1]?.id, part: number }, error);
       }

@@ -19,6 +19,9 @@ exports, use `npm run export:pdf -- chapter.json output.pdf` with the `chapter.j
 from an extracted LaTeX ZIP. The command also writes an adjacent `.qa.json` report.
 Install `pdflatex` (or set `PDFLATEX_BIN`) and keep chapter diagrams in `public/`.
 Layout warnings require review; successful compilation is not content verification.
+Each question can store an optional YouTube solution URL, including a timestamp.
+PDF and editable LaTeX exports include clickable solution and `g4gate.com` footers.
+The TeX installation must include `hyperref` and its dependencies.
 
 ## Production requirements
 

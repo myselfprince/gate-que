@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { v4 as uuidv4 } from 'uuid';
 import { GATE_SYLLABUS } from '@/lib/syllabus';
+import { safeSolutionUrl } from '@/lib/solution-links.mjs';
 
 const shouldUseTwoCols = (q) => {
   if (!q.optA && !q.optB && !q.optC && !q.optD) return false;
@@ -572,7 +573,7 @@ export default function Home() {
     saveHistory();
     setQuestions(questions.map(q => {
       if (q.id === id) {
-        return { ...q, isBlank: true, optLayout: "auto", isPosLocked: true, text: "", code: "", diagram: "", ext: ".png", optA: "", optB: "", optC: "", optD: "", natAnswer: "", tempPaste: "" };
+        return { ...q, isBlank: true, optLayout: "auto", isPosLocked: true, text: "", code: "", diagram: "", ext: ".png", optA: "", optB: "", optC: "", optD: "", natAnswer: "", tempPaste: "", solutionUrl: "" };
       }
       return q;
     }));
@@ -1582,6 +1583,10 @@ const handleExportAllImages = async () => {
                   
                   <label>Code Snippet</label>
                   <textarea disabled={isBulkLocked} value={q.code || ""} onChange={(e) => updateQ(q.id, 'code', e.target.value)} className="code-text" />
+
+                  <label htmlFor={`solution-${q.id}`}>Video solution URL (optional; YouTube timestamps supported)</label>
+                  <input id={`solution-${q.id}`} type="url" disabled={isBulkLocked} value={q.solutionUrl || ''} onChange={e => updateQ(q.id, 'solutionUrl', e.target.value)} placeholder="https://www.youtube.com/watch?v=...&t=90s" aria-invalid={Boolean(q.solutionUrl?.trim() && !safeSolutionUrl(q.solutionUrl))} />
+                  {q.solutionUrl?.trim() && !safeSolutionUrl(q.solutionUrl) && <small style={{ color: '#f38ba8' }}>Enter a YouTube video URL with a valid timestamp.</small>}
                   
                   <div className="grid-meta" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 2fr', gap: '10px' }}>
                     <div><label>Year</label><select disabled={isBulkLocked} value={q.year} onChange={(e) => updateQ(q.id, 'year', e.target.value)}>{getYearOptions().map(y => <option key={y} value={y}>{y}</option>)}</select></div>
@@ -1633,6 +1638,7 @@ const handleExportAllImages = async () => {
                 
                 <div id={`preview-${q.id}`} className="preview-pane" style={{ paddingLeft: '20px', width: '50%', minWidth: 0, boxSizing: 'border-box', overflowWrap: 'anywhere' }}>
                   <div style={{ color: '#a6e3a1', fontWeight: 'bold', marginBottom: '10px' }}>[GATE {q.year}{q.setNum ? ` (Set-${q.setNum})` : ''} | {q.marks} Mark{q.questionType ? ` | ${q.questionType}` : ''}]{q.source?.questionNumber ? ` · Book Q${q.source.questionNumber}` : ''}</div>
+                  {safeSolutionUrl(q.solutionUrl) && <a href={safeSolutionUrl(q.solutionUrl)} target="_blank" rel="noopener noreferrer" style={{ color: '#89dceb' }}>Watch video solution ↗</a>}
                   <div>{preview.content}</div>
 
                   {q.code && !preview.containsCodeTag && <div style={{ background: '#181825', padding: '10px', border: '1px solid #45475a', fontFamily: 'monospace', whiteSpace: 'pre-wrap', margin: '10px 0' }}>{q.code}</div>}

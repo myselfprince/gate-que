@@ -1,5 +1,11 @@
+import { normalizeSolutionUrl } from './solution-links.mjs';
+
 export function normalizeQuestionMetadata(value, fail = (message) => { throw new Error(message); }) {
   const metadata = {};
+  if (value.solutionUrl !== undefined) {
+    try { metadata.solutionUrl = normalizeSolutionUrl(value.solutionUrl); }
+    catch (error) { fail(error.message); }
+  }
   if (value.questionType !== undefined) {
     if (!['MCQ', 'MSQ', 'NAT', 'SUBJECTIVE'].includes(value.questionType)) fail('Question type is invalid.');
     metadata.questionType = value.questionType;

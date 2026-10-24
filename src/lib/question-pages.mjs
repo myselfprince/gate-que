@@ -1,4 +1,5 @@
 import { collectLatexImages, escapeLatex, renderSourceQuestion, LISTINGS_UNICODE } from './latex-source.mjs';
+import { normalizeSolutionUrl } from './solution-links.mjs';
 
 // Both PDF and editable-source exports use this layout. Each complete question
 // is measured first. Long prose is reflowed at a smaller font while the box
@@ -14,6 +15,7 @@ export function buildQuestionPages({ subject, chapter, questions }, {
 \\usepackage{lmodern}
 \\usepackage[margin=14mm]{geometry}
 \\usepackage{amsmath,amssymb,graphicx,listings,xcolor}
+\\usepackage[hidelinks]{hyperref}
 \\pagecolor{black}
 \\color{white}
 \\pagestyle{empty}
@@ -32,6 +34,7 @@ export function buildQuestionPages({ subject, chapter, questions }, {
 \\begin{document}
 `;
   questions.forEach((q, index) => {
+    const solutionUrl = q.isBlank ? '' : normalizeSolutionUrl(q.solutionUrl);
     if (index) source += '\\clearpage\n';
     const number = q.source?.questionNumber || String(startIndex + index + 1);
     const meta = `GATE ${q.year || ''}${q.setNum ? ` (Set-${q.setNum})` : ''} | ${q.marks || '1'} Mark${q.questionType ? ` | ${q.questionType}` : ''}`;
@@ -81,7 +84,7 @@ ${renderSourceQuestion({ text: '[CODE]', code: q.code })}
   \\usebox{\\questionbox}
 \\fi
 \\par\\vfill
-{\\fontsize{9}{12}\\selectfont\\color{white!55}\\hfill ${startIndex + index + 1} / ${totalQuestions}\\par}
+{\\fontsize{9}{12}\\selectfont\\color{white!75}\\href{https://g4gate.com}{g4gate.com}\\hfill ${solutionUrl ? `\\href{${solutionUrl}}{Watch video solution}\\hfill ` : ''}${startIndex + index + 1} / ${totalQuestions}\\par}
 `;
   });
   return source + '\\end{document}\n';
