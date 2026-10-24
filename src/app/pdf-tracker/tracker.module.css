@@ -1,0 +1,84 @@
+.page {
+  --panel: #141c30;
+  --line: #2a3652;
+  --muted: #aab6d0;
+  --green: #55d6a2;
+  --accent: #8aa7ff;
+  color-scheme: dark;
+  min-height: 100vh;
+  background: linear-gradient(145deg, #0b1020, #10182b);
+  color: #edf2ff;
+  font: 15px/1.5 system-ui, -apple-system, 'Segoe UI', sans-serif;
+  padding: 34px max(20px, calc((100% - 1080px) / 2)) 60px;
+  margin: -8px;
+}
+.page, .page * { box-sizing: border-box; }
+.header { display: flex; justify-content: space-between; gap: 24px; margin-bottom: 24px; }
+.eyebrow { color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .14em; }
+.page h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.2; margin: 8px 0 10px; letter-spacing: -.035em; }
+.page p { color: var(--muted); margin: 6px 0; }
+.links { display: flex; align-items: flex-start; flex-wrap: wrap; gap: 10px; padding-top: 7px; }
+.links a { color: #c5d4ff; text-decoration: none; font-size: 13px; white-space: nowrap; padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px; }
+.links a:hover { background: #24314e; }
+.overview { background: var(--panel); border: 1px solid var(--line); padding: 20px; border-radius: 14px; }
+.paths { display: grid; gap: 10px; }
+.paths > div { display: flex; align-items: baseline; gap: 14px; }
+.paths span { color: #91a4ca; font-size: 10px; letter-spacing: .1em; min-width: 80px; }
+.paths code { font: 12px/1.5 ui-monospace, monospace; color: #d1ddfa; overflow-wrap: anywhere; }
+.toolbar { display: flex; gap: 9px; flex-wrap: wrap; margin: 20px 0; }
+.page button { border: 1px solid #405074; background: #1b2640; color: #edf2ff; padding: 9px 13px; border-radius: 8px; cursor: pointer; font-family: inherit; font-size: 13px; line-height: 1.4; font-weight: 650; }
+.page button:hover:not(:disabled) { filter: brightness(1.15); }
+.page button:disabled { opacity: .5; cursor: default; }
+.page button:focus-visible, .page a:focus-visible, .page input:focus-visible, .page summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.page .primary { background: var(--accent); border-color: var(--accent); color: #0b1020; }
+.stats { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--muted); }
+.stats strong { color: #f3f6ff; font-size: 22px; }
+.stats strong span { color: var(--muted); font-size: 13px; font-weight: 400; }
+.progress { height: 8px; border-radius: 99px; background: #26324b; overflow: hidden; margin: 10px 0 12px; }
+.progress > div { height: 100%; background: var(--green); transition: width .2s; }
+.page .hint { font-size: 12px; line-height: 1.7; }
+.page .notice { min-height: 22px; color: #a8e8d0; font-size: 13px; margin: 14px 0; }
+.page .warning { color: #ffe2a3; background: #3b3020; padding: 12px; border-radius: 8px; margin-top: 12px; font-size: 13px; }
+.warning button { margin-left: 8px; }
+.subject { background: var(--panel); border: 1px solid var(--line); border-radius: 13px; margin-bottom: 14px; overflow: hidden; }
+.current { border-color: #7695eb; box-shadow: 0 0 0 1px #7695eb; }
+.subjectHead { display: flex; gap: 12px; align-items: center; padding: 14px 18px; background: #19243c; }
+.subjectHead h2 { font-size: 17px; font-weight: 700; margin: 0; flex: 1; }
+.page input[type='checkbox'] { width: 18px; height: 18px; accent-color: var(--green); flex-shrink: 0; cursor: pointer; margin: 0; }
+.page input:disabled { cursor: default; }
+.count { color: var(--muted); font-size: 12px; white-space: nowrap; }
+.pdfList { padding: 2px 18px 6px; }
+.pdf { display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--line); padding: 14px 0; }
+.pdf:last-child { border-bottom: 0; }
+.pdf label { margin: 0; flex: 1; min-width: 0; cursor: pointer; color: #e0e8ff; font-weight: 400; }
+.filename { display: block; font-size: 14px; font-weight: 600; }
+.fullpath { display: block; color: #8f9fbd; font: 11px/1.5 ui-monospace, monospace; overflow-wrap: anywhere; margin-top: 4px; }
+.dbStatus { display: block; font-size: 11px; color: #aab6d0; margin-top: 5px; }
+.dbComplete { color: #80d9b4; }
+.done .filename { color: #94a3c0; text-decoration: line-through; }
+.page .copy { font-size: 12px; padding: 8px 10px; white-space: nowrap; }
+.sectionTitle { display: flex; gap: 12px; flex-wrap: wrap; align-items: baseline; font-size: 18px; margin: 30px 0 14px; color: #a8e8d0; }
+.sectionTitle span { font-size: 12px; font-weight: 400; color: var(--muted); }
+.completeSubject { border-color: #294c47; }
+.completeTag { color: #80d9b4; font-size: 11px; white-space: nowrap; }
+.preview { border: 1px solid var(--line); padding: 16px 18px; border-radius: 12px; margin-top: 26px; background: var(--panel); }
+.preview summary { cursor: pointer; font-weight: 600; color: #c5d4ff; }
+.preview label { color: var(--muted); font-weight: 500; }
+.preview select { margin-bottom: 12px; }
+.preview textarea { font: 12px/1.7 ui-monospace, monospace; min-height: 360px; margin-bottom: 12px; resize: vertical; }
+.page .footer { font-size: 12px; margin-top: 18px; }
+@media (max-width: 720px) {
+  .page { padding: 24px 16px 40px; }
+  .header { flex-direction: column; gap: 4px; }
+  .paths > div { flex-direction: column; gap: 2px; }
+  .overview { padding: 16px; }
+  .subjectHead { padding: 13px; gap: 9px; flex-wrap: wrap; }
+  .subjectHead h2 { font-size: 15px; }
+  .pdfList { padding: 2px 13px 6px; }
+  .pdf { flex-wrap: wrap; gap: 10px; align-items: flex-start; }
+  .pdf label { flex-basis: calc(100% - 32px); }
+  .pdf > input { margin-top: 2px; }
+  .page .copy { margin-left: 28px; }
+  .stats { flex-wrap: wrap; gap: 0; }
+  .completeTag { display: none; }
+}

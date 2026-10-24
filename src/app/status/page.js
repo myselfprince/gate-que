@@ -3,14 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { GATE_SYLLABUS } from '@/lib/syllabus';
-
-// Optional: Pre-fill the targets you provided so you don't have to type them manually
-const INITIAL_TARGETS = {
-  "1. Discrete Maths|1. Mathematical Logic": 59,
-  "1. Discrete Maths|2. Set Theory and Algebra": 100,
-  "1. Discrete Maths|3. Combinatorics": 42,
-  "1. Discrete Maths|4. Graph Theory": 65,
-};
+import { INITIAL_TARGETS, chapterProgress, sortCompletedLast } from '@/lib/chapter-progress.mjs';
 
 export default function StatusPage() {
   const [actualCounts, setActualCounts] = useState({});
@@ -75,8 +68,11 @@ export default function StatusPage() {
     return <div style={{ color: '#a6e3a1', padding: '50px', textAlign: 'center', fontSize: '24px' }}>Loading DB Status...</div>;
   }
 
-  let grandTotalTarget = 0;
-  let grandTotalAdded = 0;
+  const chapterTotals = Object.entries(GATE_SYLLABUS).flatMap(([subject, chapters]) =>
+    chapters.map(chapter => chapterProgress(subject, chapter, actualCounts, targetCounts))
+  );
+  const grandTotalTarget = chapterTotals.reduce((total, chapter) => total + chapter.target, 0);
+  const grandTotalAdded = chapterTotals.reduce((total, chapter) => total + chapter.added, 0);
 
   return (
     <div style={{ maxWidth: '1200px', margin: 'auto', padding: '20px', color: '#cdd6f4', fontFamily: 'sans-serif' }}>
@@ -95,12 +91,19 @@ export default function StatusPage() {
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #89b4fa', paddingBottom: '15px', marginBottom: '30px' }}>
         <h1 style={{ color: '#89b4fa', margin: 0 }}>📊 Database Progress Tracker</h1>
-        <Link href="/" style={{ background: '#45475a', color: '#cdd6f4', padding: '10px 20px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold' }}>
-          ⬅ Back to Editor
-        </Link>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+          <Link href="/pdf-tracker" style={{ background: '#89b4fa', color: '#11111b', padding: '10px 20px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold' }}>
+            📋 PDF Import Prompts
+          </Link>
+          <Link href="/" style={{ background: '#45475a', color: '#cdd6f4', padding: '10px 20px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold' }}>
+            ⬅ Back to Editor
+          </Link>
+        </div>
       </div>
 
-      {Object.entries(GATE_SYLLABUS).map(([subject, chapters]) => {
+      {sortCompletedLast(Object.entries(GATE_SYLLABUS), ([subject, chapters]) =>
+        chapters.length > 0 && chapters.every(chapter => chapterProgress(subject, chapter, actualCounts, targetCounts).complete)
+      ).map(([subject, chapters]) => {
         let subjectTotalTarget = 0;
         let subjectTotalAdded = 0;
 
@@ -153,9 +156,6 @@ export default function StatusPage() {
             </tr>
           );
         });
-
-        grandTotalTarget += subjectTotalTarget;
-        grandTotalAdded += subjectTotalAdded;
 
         return (
           <div key={subject} style={{ background: '#1e1e2e', borderRadius: '10px', padding: '20px', marginBottom: '25px', boxShadow: '0 4px 6px rgba(0,0,0,0.3)' }}>
