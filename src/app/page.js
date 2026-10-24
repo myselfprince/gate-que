@@ -1276,7 +1276,7 @@ const handleExportAllImages = async () => {
       </section>
       <section id="panel-youtube" role="tabpanel" aria-labelledby="tab-youtube" hidden={activeTab !== 'youtube'}>
         <div className={styles.sectionTitle}><div><h2>YouTube studio</h2><p>Prepare your upload data and question images for this chapter.</p></div></div>
-        <YouTubeStudio ref={youtubeStudioRef} key={`youtube-${subject}|${chapter}`} subject={subject} chapter={chapter} questions={questions} notify={showToast}>
+        <YouTubeStudio ref={youtubeStudioRef} key={`youtube-${subject}|${chapter}`} subject={subject} chapter={chapter} questions={questions} notify={showToast} active={activeTab === 'youtube'}>
           <details className={styles.panel}><summary>Question image export</summary><p className={styles.subtitle}>Download the original question-card images for this chapter.</p><label>Question text width: {imageTextWidth}%<input type="range" min="40" max="100" value={imageTextWidth} onChange={e => setImageTextWidth(Number(e.target.value))} /></label><button style={{ background: '#89dceb' }} onClick={handleExportAllImages}>Question images ZIP</button></details>
         </YouTubeStudio>
       </section>

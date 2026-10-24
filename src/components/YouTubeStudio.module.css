@@ -1,4 +1,7 @@
 .studio { display: grid; grid-template-columns: minmax(240px, .72fr) minmax(0, 1.7fr); gap: 20px; align-items: start; }
+.switcher { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 20px; }
+.switcher button { background: #191d2a; color: #a6adc8; border: 1px solid #353a50; border-radius: 8px; }
+.switcher button[aria-selected="true"] { background: #263a40; color: #89dceb; border-color: #41636d; }
 .panel { background: #191d2a; border: 1px solid #353a50; border-radius: 12px; padding: 22px; margin-bottom: 18px; min-width: 0; }
 .panel h3 { color: #f1f3fa; margin: 0 0 8px; font-size: 17px; }
 .muted { color: #a6adc8; font-size: 12px; line-height: 1.65; }

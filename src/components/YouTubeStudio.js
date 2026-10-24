@@ -3,6 +3,7 @@
 import { useEffect, useImperativeHandle, useState } from 'react';
 import { DEFAULT_YOUTUBE_SETTINGS, buildYouTubeExport, normalizeTags, tagCost, youtubeCopyText, youtubeCsv } from '@/lib/youtube-metadata.mjs';
 import styles from './YouTubeStudio.module.css';
+import ThumbnailStudio from './ThumbnailStudio';
 
 export function downloadFile(content, filename, type = 'text/plain;charset=utf-8') {
   const url = URL.createObjectURL(new Blob([content], { type }));
@@ -10,13 +11,14 @@ export function downloadFile(content, filename, type = 'text/plain;charset=utf-8
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-export default function YouTubeStudio({ ref, subject, chapter, questions, notify, children }) {
+export default function YouTubeStudio({ ref, subject, chapter, questions, notify, active, children }) {
   const [settings, setSettings] = useState({ ...DEFAULT_YOUTUBE_SETTINGS });
   const [drafts, setDrafts] = useState({});
   const [selectedId, setSelectedId] = useState('');
   const [format, setFormat] = useState('json');
   const [exportScope, setExportScope] = useState('all');
   const [notice, setNotice] = useState('');
+  const [studioView, setStudioView] = useState('metadata');
   const [ready, setReady] = useState(false);
   const storageKey = `gate-youtube-drafts-v1:${subject}:${chapter}`;
   useEffect(() => {
@@ -53,7 +55,7 @@ export default function YouTubeStudio({ ref, subject, chapter, questions, notify
       if (!item || item.warnings.length) return notify(item?.warnings[0] || 'Question not found.', 'error');
       return copy(youtubeCopyText(item), `Copied title, description and tags for Q${item.index}.`);
     },
-    openQuestion(id) { setSelectedId(id); },
+    openQuestion(id) { setSelectedId(id); setStudioView('metadata'); },
   }));
   function exportData() {
     const selected = exportScope === 'current' ? [entry].filter(Boolean) : entries;
@@ -67,7 +69,8 @@ export default function YouTubeStudio({ ref, subject, chapter, questions, notify
   }
   if (!entries.length) return <div className={styles.empty}><h3>No questions to prepare yet</h3><p>Load or add questions in the editor, then return here. Blank placeholders are skipped.</p></div>;
   return <>
-    <div className={styles.studio}>
+    <div className={styles.switcher} role="tablist" aria-label="YouTube tool"><button id="yt-metadata-tab" role="tab" aria-selected={studioView === 'metadata'} aria-controls="yt-metadata-panel" onClick={() => setStudioView('metadata')}>Title & description</button><button id="yt-thumbnail-tab" role="tab" aria-selected={studioView === 'thumbnails'} aria-controls="yt-thumbnail-panel" onClick={() => setStudioView('thumbnails')}>Thumbnails & cutout</button></div>
+    <div id="yt-metadata-panel" role="tabpanel" aria-labelledby="yt-metadata-tab" hidden={studioView !== 'metadata'} className={styles.studio}>
       <aside>
         <section className={styles.panel} aria-label="YouTube defaults">
           <h3>Upload defaults</h3><p className={styles.muted}>Used for every question. Your settings and custom edits are saved in this browser.</p>
@@ -106,6 +109,9 @@ export default function YouTubeStudio({ ref, subject, chapter, questions, notify
         {notice && <p role="status" className={styles.notice}>{notice}</p>}
       </section>
     </div>
-    {children}
+    <div id="yt-thumbnail-panel" role="tabpanel" aria-labelledby="yt-thumbnail-tab" hidden={studioView !== 'thumbnails'}>
+      <ThumbnailStudio subject={subject} chapter={chapter} questions={questions} metadata={entries} selectedId={entry.question_id} onSelect={setSelectedId} active={active && studioView === 'thumbnails'} notify={notify} />
+      {children}
+    </div>
   </>;
 }

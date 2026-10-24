@@ -13,6 +13,40 @@ Welcome to the **GATE CSE PYQ Pipeline**! This is a full-stack Next.js applicati
 
 Run `npm run lint` and `npm run build` before deployment.
 
+The workspace separates **Question editor**, **PDF & LaTeX**, and **YouTube
+studio** into tabs. Use **Save to database** to save question edits. YouTube
+studio has separate **Title & description** and **Thumbnails & cutout** views.
+
+For YouTube, choose a question and enter a specific focus topic to generate
+three title choices, a unique description, and relevant tags. Customize channel
+branding, website/playlist links, a footer, and whether to include the question
+or its stored NAT answer. Copy the title, description, tags, or the full upload
+pack. Export the current question or chapter as JSON, CSV, or TXT. JSON retains
+`video_title`, `timestamp_title`, and `index`, and adds description, tags, stable
+question IDs and matching thumbnail filenames. Blank placeholders are skipped
+without renumbering the remaining questions. Generated titles fit 100 characters;
+descriptions fit 5,000. Custom copy over the limit is flagged before exporting.
+Descriptions contain no invented timestamps or links. Review the generated copy
+against the actual video before publishing; keywords do not guarantee rankings.
+
+In **Thumbnails & cutout**, choose a full-question or large-topic layout, theme,
+accent, branding, text position and width. Upload a transparent PNG cutout, then
+drag it in the preview or use the position/size/opacity controls. Arrow keys move
+the focused cutout; flip and left/right presets are available. Presets position
+the text opposite the cutout. This placement applies to all chapter thumbnails.
+Download one PNG or a chapter ZIP at 1280×720, 1920×1080 or 3840×2160. Filenames
+match the YouTube metadata export. Blank placeholders and stored NAT answers are
+optional. Long questions auto-fit, with a warning if text becomes small. Preview
+and exports use the same renderer; missing diagrams stop export with an error.
+The existing variable-height question-card ZIP remains under **Question image
+export**. Thumbnail generation needs Chrome/Puppeteer and access to the existing
+MathJax CDN, just like the question preview.
+
+YouTube copy, defaults and thumbnail design are saved in this browser's local
+storage; the resized PNG cutout is saved in IndexedDB with transparency intact.
+These creator settings are separate from **Save to database** and do not sync
+between browsers. Use the downloadable metadata and PNG/ZIP files for backups.
+
 PDF export offers a complete chapter PDF and a ZIP of 20-question parts. Both
 compile in bounded batches and verify page counts before delivery. For terminal
 exports, use `npm run export:pdf -- chapter.json output.pdf` with the `chapter.json`
