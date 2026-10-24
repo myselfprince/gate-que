@@ -1,4 +1,4 @@
-export const DEFAULT_PDF_SETTINGS = Object.freeze({ fontSize: 18, minFontSize: 8, lineSpacing: 26 / 18, marginMm: 14, imageScale: 1, theme: 'dark', overflow: 'error', showSolutions: true, showWebsite: true });
+export const DEFAULT_PDF_SETTINGS = Object.freeze({ fontSize: 18, minFontSize: 8, lineSpacing: 26 / 18, marginMm: 14, imageScale: 1, theme: 'dark', overflow: 'error', showSolutions: true, showWebsite: true, includePageImages: false });
 export const PDF_PRESETS = Object.freeze({
   Classic: DEFAULT_PDF_SETTINGS,
   Teaching: { ...DEFAULT_PDF_SETTINGS, fontSize: 24, minFontSize: 16 },
@@ -22,7 +22,7 @@ export function normalizePdfSettings(value = {}, { partial = false } = {}) {
     if (!allowed.includes(value[key])) throw new Error(`PDF ${key} is invalid.`);
     result[key] = value[key];
   }
-  for (const key of ['showSolutions', 'showWebsite']) {
+  for (const key of ['showSolutions', 'showWebsite', 'includePageImages']) {
     if (partial) continue;
     if (value[key] === undefined) continue;
     if (typeof value[key] !== 'boolean') throw new Error(`PDF ${key} must be a checkbox value.`);

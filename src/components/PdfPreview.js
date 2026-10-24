@@ -39,6 +39,7 @@ export default function PdfPreview({ url }) {
   const [matches, setMatches] = useState([]);
   const [finding, setFinding] = useState(false);
   const [findMessage, setFindMessage] = useState('');
+  const [bookmarks, setBookmarks] = useState([]);
   const canvas = useRef(null), viewportRef = useRef(null), textRef = useRef(null), rootRef = useRef(null);
   useEffect(() => {
     let disposed = false, task;
@@ -47,7 +48,9 @@ export default function PdfPreview({ url }) {
       library.GlobalWorkerOptions.workerSrc = `/api/pdf-viewer/build/pdf.worker.min.mjs?v=${library.version}`;
       task = library.getDocument({ url, withCredentials: true, isEvalSupported: false, cMapUrl: '/api/pdf-viewer/cmaps/', cMapPacked: true, standardFontDataUrl: '/api/pdf-viewer/standard_fonts/', wasmUrl: '/api/pdf-viewer/wasm/' });
       const pdf = await task.promise;
-      if (!disposed) { setLoaded({ pdf, library }); setPageNumber(1); setError(''); }
+      const outline = await pdf.getOutline();
+      const bookmarks = await Promise.all((outline || []).map(async item => ({ title: item.title, page: typeof item.dest?.[0] === 'object' ? (await pdf.getPageIndex(item.dest[0])) + 1 : 1 })));
+      if (!disposed) { setLoaded({ pdf, library }); setBookmarks(bookmarks); setPageNumber(1); setError(''); }
     }).catch(error => { if (!disposed) setError(error.message); });
     return () => { disposed = true; task?.destroy(); };
   }, [url]);
@@ -119,6 +122,7 @@ export default function PdfPreview({ url }) {
         <label>Page <input aria-label="PDF page number" type="number" min="1" max={loaded.pdf.numPages} value={pageNumber} onChange={event => setPageNumber(Math.max(1, Math.min(loaded.pdf.numPages, Number(event.target.value) || 1)))} style={{ width: 70 }} /> / {loaded.pdf.numPages}</label>
         <button type="button" aria-label="Next PDF page" disabled={pageNumber >= loaded.pdf.numPages} onClick={() => setPageNumber(pageNumber + 1)}>→</button>
         <label>Zoom<select aria-label="PDF zoom" value={zoom} onChange={event => setZoom(event.target.value)}><option value="fit">Fit width</option>{[0.75, 1, 1.25, 1.5, 2, 3].map(scale => <option key={scale} value={scale}>{scale * 100}%</option>)}</select></label>
+        {Boolean(bookmarks.length) && <label>Question<select aria-label="Jump to PDF question" value={pageNumber} onChange={event => setPageNumber(Number(event.target.value))} style={{ maxWidth: 240 }}>{bookmarks.map((item, index) => <option key={index} value={item.page}>{item.title}</option>)}</select></label>}
         <button type="button" onClick={() => rootRef.current.requestFullscreen?.()}>Full screen</button>
         <form onSubmit={find} style={{ display: 'flex', gap: 6 }}><input aria-label="Find text in PDF" value={query} onChange={event => setQuery(event.target.value)} placeholder="Find in PDF" style={{ width: 150 }} /><button disabled={finding} type="submit">Find</button></form>
         {Boolean(matches.length) && <button type="button" onClick={() => setPageNumber(matches.find(number => number > pageNumber) || matches[0])}>Next match</button>}

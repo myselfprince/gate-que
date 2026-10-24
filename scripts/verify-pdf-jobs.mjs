@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
 import { PDFDocument } from 'pdf-lib';
+import AdmZip from 'adm-zip';
 
 const input = process.argv[2];
 if (!input) throw new Error('Provide a chapter JSON with more than 20 questions.');
@@ -59,6 +60,15 @@ try {
   const bytes = new Uint8Array(await response.arrayBuffer());
   assert.equal((await PDFDocument.load(bytes)).getPageCount(), payload.questions.length);
   await fs.writeFile(path.join(root, 'verified-complete.pdf'), bytes);
+  if (payload.pdfSettings?.includePageImages) {
+    const imagesResponse = await fetch(`${origin}/api/pdf-jobs/${created.id}/download?kind=images`);
+    assert.equal(imagesResponse.status, 200);
+    const images = new AdmZip(Buffer.from(await imagesResponse.arrayBuffer()));
+    assert.equal(images.getEntries().length, payload.questions.length);
+    const image = images.readFile('Question_001.png');
+    assert.equal(image.readUInt32BE(16), 1920);
+    await fs.writeFile(path.join(root, 'matched-page-001.png'), image);
+  }
   const missing = await fetch(`${origin}/api/pdf-jobs/not-a-job/download`);
   assert.equal(missing.status, 404);
   console.log(JSON.stringify({ acceptanceMs, pages: payload.questions.length, cancelledAndRetried: cancelled.status === 'cancelled', reusedBatches: finalJob.report.reusedBatches, report: finalJob.report }, null, 2));

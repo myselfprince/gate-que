@@ -38,6 +38,10 @@ Use the one-question preview before building a chapter. When a reviewed source
 version exists, choose it explicitly; current edits remain the default and are
 never overwritten by exporting. PDF.js previews render the downloadable artifact
 with lazy thumbnails, selectable text, search, zoom, and external links.
+Complete PDFs include question bookmarks. Enable **Matching page images ZIP**
+to render 1920-pixel page PNGs directly from the final PDF using Poppler
+`pdftoppm` (or `PDFTOPPM_BIN`). This is separate from the editor's existing
+thumbnail-image export, which has its own presentation layout.
 
 ## Production requirements
 

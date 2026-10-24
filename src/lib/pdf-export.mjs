@@ -10,6 +10,7 @@ import { buildQuestionPages } from './question-pages.mjs';
 import { collectLatexImages } from './latex-source.mjs';
 import { normalizePdfSettings } from './pdf-settings.mjs';
 import { normalizeSolutionUrl } from './solution-links.mjs';
+import { addQuestionBookmarks } from './pdf-bookmarks.mjs';
 
 const run = promisify(execFile);
 export const PDF_BATCH_SIZE = 20;
@@ -18,7 +19,7 @@ export class PdfExportError extends Error {
   constructor(message, details = {}, cause) { super(message, { cause }); this.name = 'PdfExportError'; this.details = details; }
 }
 
-export async function mergeQuestionPdfs(parts, expectedPages, title = 'G4Gate questions') {
+export async function mergeQuestionPdfs(parts, expectedPages, title = 'G4Gate questions', questions = []) {
   const merged = await PDFDocument.create();
   for (const part of parts) {
     const document = await PDFDocument.load(part.bytes);
@@ -28,6 +29,7 @@ export async function mergeQuestionPdfs(parts, expectedPages, title = 'G4Gate qu
   if (merged.getPageCount() !== expectedPages) throw new PdfExportError('The completed PDF has an unexpected page count.');
   merged.setTitle(title);
   merged.setAuthor('G4Gate');
+  addQuestionBookmarks(merged, questions);
   return Buffer.from(await merged.save());
 }
 
@@ -104,7 +106,8 @@ export async function exportQuestionPdf(payload, { projectRoot = process.cwd(), 
       parts.push({ number, count: batch.length, bytes });
       await onProgress({ completed: Math.min(index + batch.length, questions.length), total: questions.length, part: number });
     }
-    const pdf = await mergeQuestionPdfs(parts, questions.length, `${subject} - ${chapter}`);
+    await onProgress({ completed: questions.length, total: questions.length, phase: 'checking' });
+    const pdf = await mergeQuestionPdfs(parts, questions.length, `${subject} - ${chapter}`, questions);
     const document = await PDFDocument.load(pdf);
     const settings = normalizePdfSettings(payload.pdfSettings);
     let websiteLinks = 0, solutionLinks = 0;

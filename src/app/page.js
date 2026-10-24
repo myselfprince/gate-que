@@ -1359,7 +1359,7 @@ const handleExportAllImages = async () => {
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
           <button className="btn-export" style={{ background: '#a6e3a1', color: '#11111b', padding: '10px 15px' }} onClick={() => saveToMongoDB(null, false)}>💾 Save DB</button>
           <button className="btn-export" style={{ background: '#f5c2e7', color: '#11111b', padding: '10px 15px' }} onClick={handleExportYTData}>▶️ Export YT Data</button>
-          <button className="btn-export" style={{ background: '#89dceb', color: '#11111b', padding: '10px 15px' }} onClick={handleExportAllImages}>📸 Export All Images (ZIP)</button>
+          <button className="btn-export" style={{ background: '#89dceb', color: '#11111b', padding: '10px 15px' }} onClick={handleExportAllImages}>📸 Thumbnail images ZIP</button>
               <button className="btn-export" style={{ background: '#f9e2af', color: '#11111b', padding: '10px 15px', fontWeight: 'bold' }} onClick={handleExportForAI}>🤖 Export for AI</button>
 
           <button className="btn-clear" style={{ padding: '10px 15px' }} onClick={clearWorkspace}>🗑️ Clear</button>

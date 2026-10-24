@@ -92,7 +92,7 @@ export async function retryJob(id, root = jobsRoot()) {
   if (!['failed', 'cancelled'].includes(job.status)) throw new Error('Only failed or cancelled exports can be retried.');
   const directory = jobDirectory(id, root);
   for (const file of ['cancel', 'ready']) await fs.rm(path.join(/* turbopackIgnore: true */ directory, file), { force: true });
-  await writeJobStatus(directory, { ...job, status: 'queued', completed: 0, attempt: job.attempt + 1, error: undefined, pid: undefined, cancelRequested: undefined });
+  await writeJobStatus(directory, { ...job, status: 'queued', completed: 0, attempt: job.attempt + 1, error: undefined, pid: undefined, cancelRequested: undefined, phase: undefined, finishedAt: undefined, report: undefined });
   await launchJob(id, root);
   return readJob(id, root);
 }

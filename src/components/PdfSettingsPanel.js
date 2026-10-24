@@ -48,6 +48,7 @@ export default function PdfSettingsPanel({ settings, onChange }) {
     <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap' }}>
       <label><input type="checkbox" checked={settings.showSolutions} onChange={e => update('showSolutions', e.target.checked)} /> Video solution links</label>
       <label><input type="checkbox" checked={settings.showWebsite} onChange={e => update('showWebsite', e.target.checked)} /> g4gate.com footer</label>
+      <label><input type="checkbox" checked={settings.includePageImages} onChange={e => update('includePageImages', e.target.checked)} /> Matching page images ZIP</label>
     </div>
     <p style={{ color: '#bac2de', fontSize: 13 }}>Auto-fit reflows each question down to the minimum size. Large questions may need a smaller font or diagram. Use the PDF preview to check the result.</p>
     <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
