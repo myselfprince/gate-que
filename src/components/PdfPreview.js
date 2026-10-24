@@ -27,7 +27,7 @@ function Thumbnail({ pdf, number, current, select }) {
   return <button type="button" ref={element} className={styles.thumbnail} aria-label={`Preview page ${number}`} aria-current={current ? 'page' : undefined} onClick={() => select(number)}><canvas ref={canvas} width="128" height="90" />{number}</button>;
 }
 
-export default function PdfPreview({ url }) {
+export default function PdfPreview({ url, openLinksInNewTab = true }) {
   const [loaded, setLoaded] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [zoom, setZoom] = useState('fit');
@@ -135,7 +135,7 @@ export default function PdfPreview({ url }) {
           <div className={styles.page} style={pageSize} data-pdf-page={pageNumber}>
             <canvas aria-label={`PDF page ${pageNumber}`} ref={canvas} />
             <div ref={textRef} className={styles.textLayer} />
-            {links.map(link => <a key={link.id} className={styles.link} style={{ left: link.left, top: link.top, width: link.width, height: link.height }} href={link.url} target="_blank" rel="noopener noreferrer" aria-label={`Open ${link.url}`} />)}
+            {links.map(link => <a key={link.id} className={styles.link} style={{ left: link.left, top: link.top, width: link.width, height: link.height }} href={link.url} target={openLinksInNewTab ? '_blank' : '_self'} rel="noopener noreferrer" aria-label={`Open ${link.url}`} />)}
           </div>
         </div>
       </div>

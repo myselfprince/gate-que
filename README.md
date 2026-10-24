@@ -20,8 +20,21 @@ from an extracted LaTeX ZIP. The command also writes an adjacent `.qa.json` repo
 Install `pdflatex` (or set `PDFLATEX_BIN`) and keep chapter diagrams in `public/`.
 Layout warnings require review; successful compilation is not content verification.
 Each question can store an optional YouTube solution URL, including a timestamp.
-PDF and editable LaTeX exports include clickable solution and `g4gate.com` footers.
+PDF and editable LaTeX exports place a red YouTube **Video sol.** link at the
+top right. The default branding is a faint, centred `g4gate.com` background
+watermark; the subject/chapter title appears on the first page only.
 The TeX installation must include `hyperref` and its dependencies.
+
+Open **PDF design settings** to hide or replace the watermark, adjust its opacity,
+size, angle and position, or make it clickable. Configure the website URL and an
+optional separate website link; choose positions and labels for solution links
+and page numbers, numbering formats, title frequency/alignment, and question
+headings. These settings are included in saved templates and terminal exports.
+Previous browser settings keep their font choices and migrate to the new layout.
+Items sharing a header/footer position stack; their height is reserved before
+fitting the question. The app preview opens external links in a new tab by default
+and offers a toggle. Downloaded PDF web links follow the PDF reader's settings;
+the PDF format cannot require a browser tab for an HTTP/HTTPS link.
 
 The editor creates background PDF jobs with progress, cancel/retry, and download
 history. Questions and diagram bytes are snapshotted when the job starts; retries

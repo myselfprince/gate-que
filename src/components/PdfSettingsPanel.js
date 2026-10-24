@@ -1,19 +1,30 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { DEFAULT_PDF_SETTINGS, PDF_PRESETS, normalizePdfSettings } from '@/lib/pdf-settings.mjs';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { DEFAULT_PDF_SETTINGS, PDF_PRESETS, normalizePdfSettings, migrateLegacyPdfSettings } from '@/lib/pdf-settings.mjs';
+import PdfDecorationSettings from './PdfDecorationSettings';
 
-const storageKey = 'gate-pdf-settings-v1';
-export default function PdfSettingsPanel({ settings, onChange }) {
+const storageKey = 'gate-pdf-settings-v2';
+export default function PdfSettingsPanel({ settings, onChange, onValidityChange }) {
   const [templates, setTemplates] = useState({});
   const [name, setName] = useState('');
   const [notice, setNotice] = useState('');
+  const [invalid, setInvalid] = useState(false);
+  const [revision, setRevision] = useState(0);
+  const invalidFields = useRef(new Set());
+  const report = useCallback((key, valid) => {
+    if (valid) invalidFields.current.delete(key); else invalidFields.current.add(key);
+    setInvalid(invalidFields.current.size > 0);
+    onValidityChange?.(invalidFields.current.size === 0);
+  }, [onValidityChange]);
   useEffect(() => {
     const timer = setTimeout(() => {
       try {
-        const saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
-        if (saved?.settings) onChange(normalizePdfSettings(saved.settings));
-        if (saved?.templates) setTemplates(Object.fromEntries(Object.entries(saved.templates).map(([key, value]) => [key, normalizePdfSettings(value)])));
+        const current = localStorage.getItem(storageKey);
+        const saved = JSON.parse(current || localStorage.getItem('gate-pdf-settings-v1') || 'null');
+        const normalize = current ? normalizePdfSettings : migrateLegacyPdfSettings;
+        if (saved?.settings) onChange(normalize(saved.settings));
+        if (saved?.templates) setTemplates(Object.fromEntries(Object.entries(saved.templates).map(([key, value]) => [key, normalize(value)])));
       } catch { setNotice('Saved PDF settings could not be restored. Defaults are active.'); }
     }, 0);
     return () => clearTimeout(timer);
@@ -28,11 +39,14 @@ export default function PdfSettingsPanel({ settings, onChange }) {
     if (key === 'fontSize') next.minFontSize = Math.min(next.minFontSize, value);
     save(normalizePdfSettings(next));
   }
+  function applyPreset(value) {
+    save({ ...value }); invalidFields.current.clear(); setInvalid(false); onValidityChange?.(true); setRevision(value => value + 1);
+  }
   return <details style={{ margin: '14px 0', background: '#181825', border: '1px solid #45475a', borderRadius: 8, padding: 14 }}>
     <summary style={{ cursor: 'pointer', color: '#cba6f7', fontWeight: 'bold' }}>PDF design settings · {settings.fontSize}pt · {settings.theme}</summary>
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 14 }}>
-      {Object.entries({ ...PDF_PRESETS, ...templates }).map(([key, value]) => <button type="button" key={key} onClick={() => save({ ...value })}>{key}</button>)}
-      <button type="button" onClick={() => save({ ...DEFAULT_PDF_SETTINGS })}>Reset</button>
+      {Object.entries({ ...PDF_PRESETS, ...templates }).map(([key, value]) => <button type="button" key={key} onClick={() => applyPreset(value)}>{key}</button>)}
+      <button type="button" onClick={() => applyPreset(DEFAULT_PDF_SETTINGS)}>Reset</button>
     </div>
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(190px,1fr))', gap: 18 }}>
       {[
@@ -47,15 +61,14 @@ export default function PdfSettingsPanel({ settings, onChange }) {
       <label>If the question still does not fit<select value={settings.overflow} onChange={e => update('overflow', e.target.value)}><option value="error">Stop and show the question</option><option value="warn">Shrink further and warn</option></select></label>
     </div>
     <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap' }}>
-      <label><input type="checkbox" checked={settings.showSolutions} onChange={e => update('showSolutions', e.target.checked)} /> Video solution links</label>
-      <label><input type="checkbox" checked={settings.showWebsite} onChange={e => update('showWebsite', e.target.checked)} /> g4gate.com footer</label>
       <label><input type="checkbox" checked={settings.includePageImages} onChange={e => update('includePageImages', e.target.checked)} /> Matching page images ZIP</label>
       <label><input type="checkbox" checked={settings.includeAnswerKey} onChange={e => update('includeAnswerKey', e.target.checked)} /> Separate answer-key PDF</label>
     </div>
+    <PdfDecorationSettings key={revision} settings={settings} update={update} report={report} />
     <p style={{ color: '#bac2de', fontSize: 13 }}>Auto-fit reflows each question down to the minimum size. Large questions may need a smaller font or diagram. Use the PDF preview to check the result.</p>
     <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
       <input aria-label="Template name" maxLength={40} placeholder="My template name" value={name} onChange={e => setName(e.target.value)} style={{ maxWidth: 240 }} />
-      <button type="button" disabled={!name.trim()} onClick={() => { const next = { ...templates, [name.trim()]: { ...settings } }; setTemplates(next); save(settings, next); setName(''); }}>Save template</button>
+      <button type="button" disabled={!name.trim() || invalid} onClick={() => { const next = { ...templates, [name.trim()]: { ...settings } }; setTemplates(next); save(settings, next); setName(''); }}>Save template</button>
       <span role="status" style={{ color: '#a6adc8', fontSize: 12 }}>{notice}</span>
     </div>
   </details>;

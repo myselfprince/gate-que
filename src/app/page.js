@@ -80,6 +80,7 @@ export default function Home() {
   const [inlinePasteText, setInlinePasteText] = useState("");
   const [imageTextWidth, setImageTextWidth] = useState(70);
   const [pdfSettings, setPdfSettings] = useState({ ...DEFAULT_PDF_SETTINGS });
+  const [pdfSettingsValid, setPdfSettingsValid] = useState(true);
   const [toast, setToast] = useState(null);
   const [isReviving, setIsReviving] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -1403,8 +1404,8 @@ const handleExportAllImages = async () => {
       
       
       
-      <PdfSettingsPanel settings={pdfSettings} onChange={setPdfSettings} />
-      <PdfExportPanel key={`${subject}|${chapter}`} payload={{ subject, chapter, questions, pdfSettings }} />
+      <PdfSettingsPanel settings={pdfSettings} onChange={setPdfSettings} onValidityChange={setPdfSettingsValid} />
+      <PdfExportPanel key={`${subject}|${chapter}`} payload={{ subject, chapter, questions, pdfSettings }} settingsValid={pdfSettingsValid} />
       <div id="questions_container">
         {questions.map((q, idx) => {
           const qNum = idx + 1;

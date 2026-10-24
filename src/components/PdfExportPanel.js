@@ -5,7 +5,7 @@ import PdfPreview from './PdfPreview';
 import { selectPdfQuestions } from '@/lib/pdf-selection.mjs';
 
 const active = job => job && ['queued', 'running'].includes(job.status);
-export default function PdfExportPanel({ payload }) {
+export default function PdfExportPanel({ payload, settingsValid = true }) {
   const [jobs, setJobs] = useState([]);
   const [selected, setSelected] = useState('');
   const [busy, setBusy] = useState(false);
@@ -44,6 +44,7 @@ export default function PdfExportPanel({ payload }) {
   const job = jobs.find(job => job.id === selected) || jobs[0];
   const bookCandidates = jobs.filter(job => job.status === 'completed' && job.kind !== 'book' && job.subject === payload.subject);
   async function start(candidate = exportPayload) {
+    if (!settingsValid) return setError('Fix the invalid PDF design settings before exporting.');
     setBusy(true); setError('');
     try {
       const response = await fetch('/api/pdf-jobs', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(candidate) });
@@ -55,6 +56,7 @@ export default function PdfExportPanel({ payload }) {
     finally { setBusy(false); }
   }
   async function sourceZip() {
+    if (!settingsValid) return setError('Fix the invalid PDF design settings before exporting.');
     setBusy(true); setError('');
     try {
       const response = await fetch('/api/export-latex', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(exportPayload) });
@@ -98,14 +100,14 @@ export default function PdfExportPanel({ payload }) {
     {selectionError && <p role="alert" style={{ color: '#f38ba8' }}>{selectionError}</p>}
     <p style={{ color: '#bac2de', fontSize: 13 }}>Selected: {selection.length} / {payload.questions.length}. Printed question numbers are preserved. Editor view filters do not change this export selection.</p>
     <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
-      <button type="button" disabled={busy || !selection.length || Boolean(selectionError)} onClick={() => start()} style={{ background: '#cba6f7', color: '#11111b', fontWeight: 'bold', padding: '10px 18px' }}>{busy ? 'Please wait...' : `Build PDF · ${selection.length} questions`}</button>
-      <button type="button" disabled={busy || !selection.length || Boolean(selectionError)} onClick={sourceZip}>Editable LaTeX ZIP</button>
+      <button type="button" disabled={busy || !selection.length || Boolean(selectionError) || !settingsValid} onClick={() => start()} style={{ background: '#cba6f7', color: '#11111b', fontWeight: 'bold', padding: '10px 18px' }}>{busy ? 'Please wait...' : `Build PDF · ${selection.length} questions`}</button>
+      <button type="button" disabled={busy || !selection.length || Boolean(selectionError) || !settingsValid} onClick={sourceZip}>Editable LaTeX ZIP</button>
       <span style={{ color: '#bac2de', fontSize: 13 }}>Your export continues in the background. Refreshing this page keeps its progress.</span>
       <button type="button" disabled={busy} onClick={() => refresh().catch(error => setError(error.message))}>Refresh history</button>
     </div>
     <div style={{ display: 'flex', alignItems: 'end', gap: 12, marginTop: 12, flexWrap: 'wrap' }}>
       <label>Quick preview: question #<input aria-label="Sample PDF question" type="number" min="1" max={payload.questions.length || 1} value={sampleNumber} onChange={e => setSampleNumber(Math.max(1, Math.min(payload.questions.length || 1, Number(e.target.value) || 1)))} style={{ width: 90 }} /></label>
-      <button type="button" disabled={busy || !payload.questions.length} onClick={() => start({ ...payload, questions: selectPdfQuestions(payload.questions, { scope: 'range', range: String(sampleNumber), sourceMode }) })}>Preview one question</button>
+      <button type="button" disabled={busy || !payload.questions.length || !settingsValid} onClick={() => start({ ...payload, questions: selectPdfQuestions(payload.questions, { scope: 'range', range: String(sampleNumber), sourceMode }) })}>Preview one question</button>
     </div>
     <details style={{ marginTop: 16 }}>
       <summary style={{ cursor: 'pointer', color: '#89b4fa' }}>Combine saved exports into a subject book</summary>
@@ -132,7 +134,7 @@ export default function PdfExportPanel({ payload }) {
         </div>
         <p style={{ fontSize: 13, color: '#bac2de' }}>{job.report?.textBoundsChecked ? job.kind === 'book' ? 'Source chapter text bounds checked; pages copied without reflow.' : 'Text bounds checked.' : 'Text bounds were not checked.'} Content still needs source review.{snapshot && snapshot !== signature ? ' Your draft or PDF settings changed. Build a new PDF to include them.' : ' Downloads contain the saved export snapshot.'}</p>
         {Boolean(job.report?.warnings?.length) && <details><summary style={{ color: '#f9e2af' }}>{job.report.warnings.length} layout/readability warnings</summary><ul>{job.report.warnings.map((warning, index) => <li key={index}>{warning.message}</li>)}</ul></details>}
-        <PdfPreview key={job.id + '-' + job.attempt} url={`/api/pdf-jobs/${job.id}/download?inline=1`} />
+        <PdfPreview key={job.id + '-' + job.attempt} url={`/api/pdf-jobs/${job.id}/download?inline=1`} openLinksInNewTab={job.report?.openLinksInNewTab !== false} />
       </div>}
     </div>}
   </section>;
