@@ -2,6 +2,8 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
     background: #1a1a1b; 
     color: #cdd6f4; 
+    margin: 0;
+    background: #10131c;
 }
 .card { 
     background: #000000; 
@@ -20,3 +22,12 @@ button { color: #11111b; border: none; padding: 12px 20px; border-radius: 4px; c
 .btn-export { background: #f38ba8; }
 .btn-autofill { background: #89b4fa; }
 .btn-clear { background: #f38ba8; }
+input[type="number"], input[type="url"], input:not([type]) { padding: 10px; border: 1px solid #45475a; border-radius: 6px; background: #181825; color: #cdd6f4; box-sizing: border-box; max-width: 100%; }
+input[type="url"], input:not([type]) { width: 100%; }
+button, input, select, textarea { font: inherit; }
+button { font-size: 13px; font-weight: 600; transition: filter .15s, background .15s; }
+button:hover:not(:disabled) { filter: brightness(1.08); }
+button:disabled { cursor: not-allowed; opacity: .5; }
+:is(button, a, input, select, textarea, summary):focus-visible { outline: 2px solid #89b4fa; outline-offset: 3px; }
+input[type="checkbox"], input[type="radio"], input[type="range"] { accent-color: #89b4fa; }
+summary { line-height: 1.6; }

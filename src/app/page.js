@@ -8,6 +8,7 @@ import { safeSolutionUrl } from '@/lib/solution-links.mjs';
 import { DEFAULT_PDF_SETTINGS } from '@/lib/pdf-settings.mjs';
 import PdfSettingsPanel from '@/components/PdfSettingsPanel';
 import PdfExportPanel from '@/components/PdfExportPanel';
+import styles from './workspace.module.css';
 
 const shouldUseTwoCols = (q) => {
   if (!q.optA && !q.optB && !q.optC && !q.optD) return false;
@@ -61,6 +62,7 @@ const formatOptionsIndent = (opt) => {
 };
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState('editor');
   const [questions, setQuestions] = useState([]);
   const [history, setHistory] = useState([]);
   const [bulkText, setBulkText] = useState("");
@@ -1205,13 +1207,13 @@ const handleExportAllImages = async () => {
   };
 
   return (
-    <div style={{ maxWidth: '98%', margin: 'auto', padding: '20px' }}>
+    <main className={styles.workspace}>
       {toast && (
         <div style={{
           position: 'fixed', bottom: '30px', right: '30px',
           background: toast.type === 'error' ? '#f38ba8' : toast.type === 'info' ? '#89b4fa' : '#a6e3a1',
           color: '#11111b', padding: '15px 25px', borderRadius: '8px', zIndex: 9999, fontWeight: 'bold', boxShadow: '0 8px 15px rgba(0,0,0,0.5)', transition: 'all 0.3s ease-in-out'
-        }}>{toast.message}</div>
+        }} role="status" aria-live="polite">{toast.message}</div>
       )}
       
       {isReviving && (
@@ -1222,41 +1224,27 @@ const handleExportAllImages = async () => {
         </div>
       )}
 
-      <div className="card" style={{ display: 'flex', flexWrap: 'wrap', gap: '15px', alignItems: 'center', padding: '15px', position: 'sticky', top: '0', zIndex: '100', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.5)', borderBottom: '2px solid #89b4fa', margin: '-20px -20px 20px -20px', borderRadius: '0 0 8px 8px' }}>
+      <header className={styles.heading}>
+        <div><p className={styles.eyebrow}>G4Gate · Creator workspace</p><h1>From question to publication.</h1><p className={styles.subtitle}>Edit your PYQs, prepare PDFs, and create your next YouTube upload.</p></div>
+        <nav className={styles.links} aria-label="Workspace tools"><Link href="/scraper" target="_blank">Scraper ↗</Link><Link href="/status" target="_blank">Chapter status ↗</Link><Link href="/kmap-maker" target="_blank">K-Map maker ↗</Link></nav>
+      </header>
+      <section className={styles.chapterBar} aria-label="Current chapter">
         <div style={{ flex: '1 1 200px' }}>
-          <label style={{ marginTop: 0 }}>Subject</label>
-          <select value={subject} onChange={handleSubjectChange} style={{ cursor: 'pointer', width: '100%' }}>
+          <label htmlFor="workspace-subject">Subject</label>
+          <select id="workspace-subject" value={subject} onChange={handleSubjectChange} style={{ cursor: 'pointer', width: '100%' }}>
             {availableSubjects.map(sub => <option key={sub} value={sub}>{sub}</option>)}
           </select>
         </div>
         
         <div style={{ flex: '1 1 200px' }}>
-          <label style={{ marginTop: 0 }}>Chapter</label>
-          <select value={chapter} onChange={handleChapterChange} style={{ cursor: 'pointer', width: '100%' }}>
+          <label htmlFor="workspace-chapter">Chapter</label>
+          <select id="workspace-chapter" value={chapter} onChange={handleChapterChange} style={{ cursor: 'pointer', width: '100%' }}>
             {GATE_SYLLABUS[subject].map(chap => <option key={chap} value={chap}>{chap}</option>)}
           </select>
         </div>
 
-        <div style={{ flex: '1 1 120px' }}>
-          <label style={{ marginTop: 0 }}>Year Filter</label>
-          <select value={filterYear} onChange={(e) => setFilterYear(e.target.value)} style={{ cursor: 'pointer', width: '100%' }}>
-            {availableYears.map(y => <option key={y} value={y}>{y}</option>)}
-          </select>
-        </div>
 
-        {/* --- NEW: LOCK VISIBILITY TOGGLES --- */}
-        <div style={{ flex: '1 1 150px', display: 'flex', flexDirection: 'column', gap: '5px', background: '#181825', padding: '5px 10px', borderRadius: '6px', border: '1px solid #45475a' }}>
-          <label style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '12px', color: '#cdd6f4', cursor: 'pointer', margin: 0 }}>
-            <input type="checkbox" checked={hideBulkLocked} onChange={(e) => setHideBulkLocked(e.target.checked)} />
-            Hide Bulk Locked
-          </label>
-          <label style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '12px', color: '#cdd6f4', cursor: 'pointer', margin: 0 }}>
-            <input type="checkbox" checked={hidePosLocked} onChange={(e) => setHidePosLocked(e.target.checked)} />
-            Hide Pos Locked
-          </label>
-        </div>
-
-        <div style={{ flex: '1 1 250px', textAlign: 'center', padding: '10px', background: '#181825', borderRadius: '4px', border: `1px solid ${isDirty ? '#f9e2af' : (questions.length > 0 ? '#a6e3a1' : '#45475a')}` }}>
+        <div className={styles.sync}>
           {questions.length === 0 ? (<span style={{ color: '#6c7086', fontWeight: 'bold' }}>No Questions Found</span>) : isDirty ? (<span style={{ color: '#f9e2af', fontWeight: 'bold' }}>⚠️ {syncedCount}/{questions.length} Synced (Unsaved)</span>) : (<span style={{ color: '#a6e3a1', fontWeight: 'bold' }}>✅ All {questions.length} Synced</span>)}
           
           <div style={{ display: 'flex', justifyContent: 'center', gap: '15px', flexWrap: 'wrap', marginTop: '5px' }}>
@@ -1351,22 +1339,48 @@ const handleExportAllImages = async () => {
               )}
             </div>
         </div>
-        
-        <div style={{ flex: '1 1 150px', display: 'flex', flexDirection: 'column', padding: '0 10px' }}>
+        <button className={styles.primary} onClick={() => saveToMongoDB(null, false)} disabled={isReviving}>Save to database</button>
+      </section>
+      <div className={styles.tabs} role="tablist" aria-label="Workspace view">
+        {[['editor', 'Question editor'], ['pdf', 'PDF & LaTeX'], ['youtube', 'YouTube studio']].map(([id, title]) => <button key={id} id={`tab-${id}`} role="tab" aria-selected={activeTab === id} aria-controls={`panel-${id}`} onClick={() => setActiveTab(id)}>{title}</button>)}
+      </div>
+      <section id="panel-pdf" role="tabpanel" aria-labelledby="tab-pdf" hidden={activeTab !== 'pdf'}>
+        <div className={styles.sectionTitle}><div><h2>Publish your question book</h2><p>Choose questions, adjust the design, then preview and download your PDF.</p></div></div>
+        <PdfSettingsPanel settings={pdfSettings} onChange={setPdfSettings} onValidityChange={setPdfSettingsValid} />
+        <PdfExportPanel key={`${subject}|${chapter}`} payload={{ subject, chapter, questions, pdfSettings }} settingsValid={pdfSettingsValid} />
+      </section>
+      <section id="panel-youtube" role="tabpanel" aria-labelledby="tab-youtube" hidden={activeTab !== 'youtube'}>
+        <div className={styles.sectionTitle}><div><h2>YouTube studio</h2><p>Prepare your upload data and question images for this chapter.</p></div></div>
+        <div className={styles.panel}><div className={styles.actions}><button style={{ background: '#f5c2e7' }} onClick={handleExportYTData}>Export YT Data</button><button style={{ background: '#89dceb' }} onClick={handleExportAllImages}>Thumbnail images ZIP</button></div>        <div style={{ flex: '1 1 150px', display: 'flex', flexDirection: 'column', padding: '0 10px' }}>
           <label style={{ marginTop: 0, fontSize: '13px', color: '#cdd6f4' }}>Thumbnail Text Width: <strong>{imageTextWidth}%</strong></label>
           <input type="range" min="40" max="100" value={imageTextWidth} onChange={(e) => setImageTextWidth(e.target.value)} style={{ cursor: 'pointer', marginTop: '5px' }} />
         </div>
 
-        <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
-          <button className="btn-export" style={{ background: '#a6e3a1', color: '#11111b', padding: '10px 15px' }} onClick={() => saveToMongoDB(null, false)}>💾 Save DB</button>
-          <button className="btn-export" style={{ background: '#f5c2e7', color: '#11111b', padding: '10px 15px' }} onClick={handleExportYTData}>▶️ Export YT Data</button>
-          <button className="btn-export" style={{ background: '#89dceb', color: '#11111b', padding: '10px 15px' }} onClick={handleExportAllImages}>📸 Thumbnail images ZIP</button>
-              <button className="btn-export" style={{ background: '#f9e2af', color: '#11111b', padding: '10px 15px', fontWeight: 'bold' }} onClick={handleExportForAI}>🤖 Export for AI</button>
+</div>
+      </section>
+      <section id="panel-editor" role="tabpanel" aria-labelledby="tab-editor" hidden={activeTab !== 'editor'}>
+        <div className={styles.toolbar}>
+        <div style={{ flex: '1 1 120px' }}>
+          <label style={{ marginTop: 0 }}>View year</label>
+          <select aria-label="Filter editor by year" value={filterYear} onChange={(e) => setFilterYear(e.target.value)} style={{ cursor: 'pointer', width: '100%' }}>
+            {availableYears.map(y => <option key={y} value={y}>{y}</option>)}
+          </select>
+        </div>
 
-          <button className="btn-clear" style={{ padding: '10px 15px' }} onClick={clearWorkspace}>🗑️ Clear</button>
-          <button className="btn-export" style={{ background: history.length > 0 ? '#fab387' : '#45475a', color: history.length > 0 ? '#11111b' : '#6c7086', padding: '10px 15px', cursor: history.length > 0 ? 'pointer' : 'not-allowed' }} onClick={handleUndo} disabled={history.length === 0}>⏪ Undo</button>
-          
-          <div style={{ display: 'flex', gap: '5px', marginLeft: 'auto' }}>
+        {/* --- NEW: LOCK VISIBILITY TOGGLES --- */}
+        <div style={{ flex: '1 1 150px', display: 'flex', flexDirection: 'column', gap: '5px', background: '#181825', padding: '5px 10px', borderRadius: '6px', border: '1px solid #45475a' }}>
+          <label style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '12px', color: '#cdd6f4', cursor: 'pointer', margin: 0 }}>
+            <input type="checkbox" checked={hideBulkLocked} onChange={(e) => setHideBulkLocked(e.target.checked)} />
+            Hide Bulk Locked
+          </label>
+          <label style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '12px', color: '#cdd6f4', cursor: 'pointer', margin: 0 }}>
+            <input type="checkbox" checked={hidePosLocked} onChange={(e) => setHidePosLocked(e.target.checked)} />
+            Hide Pos Locked
+          </label>
+        </div>
+
+
+          <div className={styles.tools}>          <div style={{ display: 'flex', gap: '5px', marginLeft: 'auto' }}>
             <form onSubmit={handleLock} style={{ display: 'flex', gap: '5px', marginRight: '10px' }}>
               <input type="number" min="0" max={questions.length} ref={lockInputRef} placeholder="Bulk Lock #" title="Bulk lock questions 1 through N" style={{ width: '80px', padding: '8px', borderRadius: '4px', border: '1px solid #f9e2af', background: '#181825', color: '#cdd6f4', textAlign: 'center', outline: 'none' }} />
               <button type="submit" style={{ background: '#f9e2af', color: '#11111b', border: 'none', padding: '8px 12px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>🔒 Lock</button>
@@ -1392,20 +1406,10 @@ const handleExportAllImages = async () => {
             <button onClick={forceRefreshPreview} style={{ background: '#a6e3a1', color: '#11111b', border: 'none', padding: '8px 12px', borderRadius: '4px', cursor: 'pointer', fontSize: '16px' }} title="Force Refresh Preview">🔄</button>
             <button onClick={scrollToTop} style={{ background: '#45475a', color: '#cdd6f4', border: 'none', padding: '8px 12px', borderRadius: '4px', cursor: 'pointer', fontSize: '16px' }}>⬆️</button>
             <button onClick={scrollToBottom} style={{ background: '#45475a', color: '#cdd6f4', border: 'none', padding: '8px 12px', borderRadius: '4px', cursor: 'pointer', fontSize: '16px' }}>⬇️</button>
-          </div>
+          </div></div>
+          <details className={styles.advanced}><summary>More editor actions</summary><div><button onClick={handleUndo} disabled={!history.length}>Undo last edit</button><button style={{ background: '#f9e2af' }} onClick={handleExportForAI}>Export for AI</button><button className="btn-clear" onClick={clearWorkspace}>Clear workspace</button></div></details>
         </div>
-      </div>
-      <div>
-
-            <Link href="/scraper" style={{ background: '#3ac04e', color: '#11111b', padding: '10px 15px', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold', marginTop: '10px' }} target="_blank">Go to scraper</Link>
-            <Link href="/status" style={{ background: '#f38ba8', color: '#11111b', padding: '10px 15px', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold', marginTop: '10px' , marginLeft: '10px'}} target="_blank">Check Status</Link>
-            <Link href="/kmap-maker" style={{ background: '#89b4fa', color: '#11111b', padding: '10px 15px', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold', marginTop: '10px' , marginLeft: '10px'}} target="_blank">K-Map Maker</Link>
-      </div>
-      
-      
-      
-      <PdfSettingsPanel settings={pdfSettings} onChange={setPdfSettings} onValidityChange={setPdfSettingsValid} />
-      <PdfExportPanel key={`${subject}|${chapter}`} payload={{ subject, chapter, questions, pdfSettings }} settingsValid={pdfSettingsValid} />
+        {!questions.length && <div className={styles.empty}><h2>Your chapter starts here</h2><p>Choose a chapter above, or paste questions below to start editing.</p><a href="#paste_section" style={{ color: '#89b4fa' }}>Add questions ↓</a></div>}
       <div id="questions_container">
         {questions.map((q, idx) => {
           const qNum = idx + 1;
@@ -1624,11 +1628,12 @@ const handleExportAllImages = async () => {
         })}
       </div>
       
-      <div className="card" id="paste_section" style={{ marginTop: '20px', border: '2px solid #89b4fa' }}>
-        <label style={{ fontSize: '16px' }}>⚡ Bulk Quick Paste (Appends directly to End)</label>
+      <div className={styles.panel} id="paste_section" style={{ marginTop: 24 }}>
+        <label style={{ fontSize: '16px' }}>Add questions with quick paste</label>
         <textarea value={bulkText} onChange={(e) => setBulkText(e.target.value)} style={{ minHeight: '120px', marginTop: '10px' }}></textarea>
         <button className="btn-autofill" style={{ marginTop: '15px' }} onClick={parseAllPastedText}>⚡ Extract & Append to End</button>
       </div>
-    </div>
+      </section>
+    </main>
   );
 }
