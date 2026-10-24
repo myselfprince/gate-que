@@ -26,10 +26,11 @@ export default function DiagramInspector({
     {!selected.length && <div className={styles.emptyInspector}><div className={styles.emptyIcon}>↖</div><h3>Make it yours</h3><p>Select a symbol or wire to edit its label, pins, colours and layout.</p><p>Double-click a symbol to edit. Click or drag between the small pin circles to connect.</p><div className={styles.shortcutList}><span>V · select</span><span>C · connect</span><span>P · draw</span><span>T · text</span><span>Space + drag · pan</span><span>Ctrl/Cmd + Z · undo</span><span>Delete · remove</span></div></div>}
     {node && <>
       <p className={styles.muted}>{SYMBOLS.find(symbol => symbol.type === node.type)?.label || node.type}</p>
-      <label>Label / text<textarea aria-label="Symbol label" rows={3} value={node.label} onChange={e => updateNode({
+      {node.type !== 'kmap' && <label>Label / text<textarea aria-label="Symbol label" rows={3} value={node.label} onChange={e => updateNode({
           label: e.target.value.slice(0, 2000)
-        })} /></label>
-      <button className={styles.secondary} onClick={() => edit(node)}>Edit {node.type === 'table' ? 'table cells' : 'label'}…</button>
+        })} /></label>}
+      <button className={styles.secondary} onClick={() => edit(node)}>Edit {node.type === 'table' ? 'table cells' : node.type === 'kmap' ? 'K-Map cells' : 'label'}…</button>
+      {node.type === 'kmap' && <p className={styles.muted}>Edit this map in K-Map studio, then send the updated vector back to this diagram.</p>}
       {node.type === 'table' && <p className={styles.muted}>{node.cells?.length || 0} rows · {Math.max(0, ...(node.cells || []).map(row => row.length))} columns. Add/remove rows in the cell editor.</p>}
       {isState(node) && <><label className={styles.check}><input type="checkbox" checked={node.initial || node.type === 'start'} onChange={e => updateNode({
             initial: e.target.checked,

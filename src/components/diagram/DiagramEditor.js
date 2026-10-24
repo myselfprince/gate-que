@@ -2,6 +2,7 @@
 
 import { memo, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { GRID, SYMBOLS, MATH_SYMBOLS, clone, contentBounds, createEdge, createNode, duplicateItems, edgeGeometry, emptyDiagram, isState, nodeBounds, nodePorts, portPosition, removeItems, resizeNode, snap, uid, validateDiagram } from '@/lib/diagram-model.mjs';
 import { diagramPalette, edgeSvg, nodeSvg } from '@/lib/diagram-svg.mjs';
 import { exportDiagram } from '@/lib/diagram-export.mjs';
@@ -17,6 +18,7 @@ const NodeArtwork = memo(function NodeArtwork({ node, theme }) {
   return <g dangerouslySetInnerHTML={{ __html: nodeSvg(node, diagramPalette(theme)) }} />;
 });
 export default function DiagramEditor() {
+  const router = useRouter();
   const [project, setProject] = useState(() => emptyDiagram());
   const projectRef = useRef(project),
     undoRef = useRef([]),
@@ -146,6 +148,15 @@ export default function DiagramEditor() {
         const saved = transfer || localStorage.getItem(STORAGE_KEY);
         if (saved) {
           const doc = validateDiagram(JSON.parse(saved));
+          if (transfer) {
+            const original = localStorage.getItem(STORAGE_KEY);
+            if (original) {
+              undoRef.current = [validateDiagram(JSON.parse(original))];
+              redoRef.current = [];
+              setHistoryCounts({ undo: 1, redo: 0 });
+              setHistoryVersion(value => value + 1);
+            }
+          }
           stage(doc);
           fit(doc);
           if (transfer) sessionStorage.removeItem('gate-diagram-transfer');
@@ -779,6 +790,15 @@ export default function DiagramEditor() {
     notify('Template loaded. Undo returns to your previous canvas.');
   }
   function edit(node) {
+    if (node.type === 'kmap') {
+      try {
+        localStorage.setItem('gate-kmap-v2', JSON.stringify(node.kmap));
+        sessionStorage.setItem('gate-kmap-edit-node', node.id);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(projectRef.current));
+        router.push('/kmap-maker');
+      } catch { notify('K-Map editor could not be opened. Export a project JSON backup.'); }
+      return;
+    }
     setModal(node.type === 'table' ? {
       kind: 'table',
       id: node.id,

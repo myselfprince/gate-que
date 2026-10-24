@@ -47,6 +47,48 @@ storage; the resized PNG cutout is saved in IndexedDB with transparency intact.
 These creator settings are separate from **Save to database** and do not sync
 between browsers. Use the downloadable metadata and PNG/ZIP files for backups.
 
+Open **Diagram studio** from the editor, or visit `/diagram-maker`. Its SVG
+canvas includes 48 symbols: AND/OR/NOT/NAND/NOR/XOR/XNOR gates, buffers,
+MUX/DEMUX, encoders/decoders, adders, multipliers, ALUs, registers, counters,
+flip-flops, memory, clock/ground, DFA/NFA and graph states, flowchart shapes,
+tables, linked-list nodes, stacks and electrical symbols. Multi-input gates,
+MUX/DEMUX and bus widths are configurable up to 64. Drag a library symbol onto
+the canvas or click to add it. Click/drag between pin circles to connect; wires
+stay attached when symbols move or rotate. Use **Connect** and click states
+to add labelled transitions, including self-loops. Select wires to choose
+straight, right-angle or curved routes, arrowheads, labels, colours and bends.
+
+Ready templates include half/full adders, a DFA, an epsilon-NFA, MUX/DEMUX,
+multiplier, flip-flop, flowchart, truth table, linked list and binary tree.
+Double-click a symbol to edit its label or table cells. Tables also accept
+tab-separated clipboard data. The Math/epsilon library inserts logic, set,
+Greek and arrow symbols. Freehand, rectangle, ellipse, line, arrow, text and
+erase tools support annotations. Shift-click or drag a selection box to select
+several symbols; move, duplicate, align or distribute them together. Wheel
+zooms, Space-drag pans, arrow keys nudge, and Ctrl/Cmd-Z undoes changes.
+
+Export cropped artwork or a full artboard as editable SVG, high-resolution PNG,
+clipboard PNG or project JSON. Choose a theme, white or transparent background;
+editing handles/grid dots are omitted. Browser autosave preserves the active
+draft; **Save project** keeps up to 20 local snapshots. JSON import/export moves
+projects between browsers and provides backups. The project format supports
+500 symbols, 1,500 connections and bounded tables/drawing data. Creator drafts
+and snapshots are local to this browser, separate from the question database.
+
+**K-Map studio** at `/kmap-maker` supports 2–6 variables, with Gray-code axes
+and separate 4-variable panels for 5/6-variable maps. Enter minterms/maxterms
+and don't-cares, paint or drag across cells, edit the truth table, undo a paint
+stroke, and display minterm numbers or variable expressions. Manual groups are
+checked for power-of-two size, Boolean adjacency, compatible cell values and
+wrap-around/panel membership. SOP/POS simplification uses prime implicants and
+a bounded minimum-cover search; a capped search is labelled explicitly. Fill
+all blank cells before simplifying. Suggested groups can be displayed on the
+map; copy the resulting expression or LaTeX. Export SVG, PNG, standalone TikZ
+source, editable JSON or a truth-table CSV. Browser drafts restore on refresh.
+**Add to diagram studio** places the map alongside the existing artwork as a
+vector object. Double-click that object to edit its cells in K-Map studio, then
+send it back to update the same object; the diagram's other artwork is kept.
+
 PDF export offers a complete chapter PDF and a ZIP of 20-question parts. Both
 compile in bounded batches and verify page counts before delivery. For terminal
 exports, use `npm run export:pdf -- chapter.json output.pdf` with the `chapter.json`

@@ -21,7 +21,7 @@ export function kmapArtwork(input, {
     panelVars = names.slice(0, layout.panelBits),
     rowVars = names.slice(layout.panelBits, layout.panelBits + layout.rowBits),
     colVars = names.slice(layout.panelBits + layout.rowBits);
-  let body = `<g font-family="Arial,Segoe UI Symbol,sans-serif" fill="#172438">`;
+  let body = `<g font-family="Arial,Segoe UI Symbol,sans-serif" fill="#172438" stroke="none">`;
   if (data.showTitle) body += text(layout.width / 2, 27, `${data.title} · F(${names.split('').join(', ')})`, 21, 'font-weight="700"');
   for (const panel of layout.panels) {
     if (layout.panelBits) body += text(panel.gridX + layout.cols.length * cell / 2, panel.y + 6, `${panelVars} = ${panel.code}`, 17, 'font-weight="700" fill="#466990"');
