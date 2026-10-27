@@ -11,7 +11,7 @@ const STORAGE_KEY = 'g4gate-mock-active-v1';
 const hasResponse = value => Array.isArray(value) ? value.length > 0 : Boolean(value);
 async function api(url, options = {}) {
   const response = await fetch(url, { ...options, headers: { 'Content-Type': 'application/json', ...options.headers }, cache: 'no-store' });
-  const data = await response.json(); if (!response.ok) throw new Error(data.error || 'Request failed.'); return data;
+  const data = await response.json(); if (!response.ok) { const error = new Error(data.error || 'Request failed.'); error.status = response.status; throw error; } return data;
 }
 
 export default function GateMock() {
@@ -34,7 +34,7 @@ export default function GateMock() {
     api('/api/gatemock/catalog').then(data => { if (active) { setCatalog(data); setSubject(data.subjects[0]?.subject || ''); } }).catch(error => { if (active) setError(error.message); });
     try {
       const draft = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
-      if (draft?.id && draft?.token) api(`/api/gatemock/attempts/${draft.id}`, { headers: { Authorization: `Bearer ${draft.token}` } }).then(data => { if (active) accept(data.attempt, draft.token, draft); }).catch(error => { if (active) { setError(`Previous attempt could not resume: ${error.message}`); localStorage.removeItem(STORAGE_KEY); } });
+      if (draft?.id && draft?.token) api(`/api/gatemock/attempts/${draft.id}`, { headers: { Authorization: `Bearer ${draft.token}` } }).then(data => { if (active) accept(data.attempt, draft.token, draft); }).catch(error => { if (active) { setError(`Previous attempt could not resume: ${error.message} Refresh to retry.`); if (error.status === 404) localStorage.removeItem(STORAGE_KEY); } });
     } catch { /* No valid browser draft. */ }
     return () => { active = false; };
   }, []);

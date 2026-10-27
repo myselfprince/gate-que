@@ -86,6 +86,16 @@ try {
   await page.click('input[type=radio]');
   await page.waitForFunction(() => [...document.querySelectorAll('[role=status]')].some(el => el.textContent === 'Saved'));
   await page.screenshot({ path: 'tmp/gatemock-qa/exam.png', fullPage: true });
+  let failResume = true;
+  await page.setRequestInterception(true);
+  page.on('request', request => {
+    if (failResume && request.url().endsWith(`/api/gatemock/attempts/${browserAttempt.attempt.id}`) && request.method() === 'GET') return request.respond({ status: 503, contentType: 'application/json', body: JSON.stringify({ error: 'Temporary connection failure' }) });
+    return request.continue();
+  });
+  await page.reload({ waitUntil: 'networkidle2' });
+  await page.waitForFunction(() => document.body.textContent.includes('Previous attempt could not resume'));
+  assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem('g4gate-mock-active-v1')).id), browserAttempt.attempt.id);
+  failResume = false;
   await page.reload({ waitUntil: 'networkidle2' }); await page.waitForSelector('input[type=radio]:checked');
   assert.ok(await page.evaluate(() => document.body.textContent.includes('Question 2 · Original Q2')));
   await page.evaluate(() => [...document.querySelectorAll('button')].find(b => b.textContent === 'Submit test').click());
