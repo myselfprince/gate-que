@@ -12,6 +12,7 @@ import PdfSettingsPanel from '@/components/PdfSettingsPanel';
 import PdfExportPanel from '@/components/PdfExportPanel';
 import styles from './workspace.module.css';
 import YouTubeStudio from '@/components/YouTubeStudio';
+import QuestionAnswerFields from '@/components/QuestionAnswerFields';
 
 const shouldUseTwoCols = (q) => {
   if (!q.optA && !q.optB && !q.optC && !q.optD) return false;
@@ -631,7 +632,7 @@ export default function Home() {
     saveHistory();
     setQuestions(questions.map(q => {
       if (q.id === id) {
-        return { ...q, isBlank: true, optLayout: "auto", isPosLocked: true, text: "", code: "", diagram: "", ext: ".png", optA: "", optB: "", optC: "", optD: "", natAnswer: "", tempPaste: "", solutionUrl: "" };
+        return { ...q, isBlank: true, optLayout: "auto", isPosLocked: true, text: "", code: "", diagram: "", ext: ".png", optA: "", optB: "", optC: "", optD: "", natAnswer: "", correctOptions: [], natRange: null, questionType: undefined, paperQuestionNumber: '', source: undefined, tempPaste: "", solutionUrl: "" };
       }
       return q;
     }));
@@ -932,6 +933,7 @@ optA: autoReplaceOpt(q.isCodeOptions ? formatCCode(parts[0]?.trim() || "") : for
 optB: autoReplaceOpt(q.isCodeOptions ? formatCCode(parts[1]?.trim() || "") : formatOptionsIndent(parts[1]?.trim() || ""), 'b'),
 optC: autoReplaceOpt(q.isCodeOptions ? formatCCode(parts[2]?.trim() || "") : formatOptionsIndent(parts[2]?.trim() || ""), 'c'),
 optD: autoReplaceOpt(q.isCodeOptions ? formatCCode(parts[3]?.trim() || "") : formatOptionsIndent(parts[3]?.trim() || ""), 'd'),
+correctOptions: [], natRange: null,
 natAnswer: ""
 };
 }
@@ -1551,16 +1553,8 @@ const handleExportAllImages = async () => {
                     <textarea disabled={isBulkLocked} value={q.optD || ""} onChange={(e) => updateQ(q.id, 'optD', e.target.value)} placeholder="Option D" style={{ minHeight: '60px', padding: '8px', borderRadius: '4px', border: '1px solid #45475a', background: '#181825', color: '#cdd6f4', resize: 'vertical' }} />
                   </div>
                   
+                  <QuestionAnswerFields question={q} disabled={isBulkLocked} onChange={patch => { setQuestions(current => current.map(item => item.id === q.id ? { ...item, ...patch } : item)); setIsDirty(true); }} />
                   <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center', gap: '15px', flexWrap: 'wrap' }}>
-                    {!hasOptions && (
-                      <>
-                        {!q.isProof && (<input disabled={isBulkLocked} type="text" value={q.natAnswer || ""} onChange={(e) => updateQ(q.id, 'natAnswer', e.target.value)} placeholder="NAT Answer" style={{ border: '1px solid #f38ba8', flex: 1 }} />)}
-                        <label style={{ display: 'flex', alignItems: 'center', gap: '5px', color: '#bac2de', cursor: 'pointer', fontSize: '13px', fontWeight: 'bold' }}>
-                          <input disabled={isBulkLocked} type="checkbox" checked={q.isProof || false} onChange={(e) => updateQ(q.id, 'isProof', e.target.checked)} />
-                          {q.isProof ? '📝 Proof/Subjective (NAT Hidden)' : 'Hide NAT'}
-                        </label>
-                      </>
-                    )}
                     {hasOptions && (
                       <div style={{ display: 'flex', gap: '12px', alignItems: 'center', background: '#313244', padding: '6px 12px', borderRadius: '4px' }}>
                         <span style={{ fontSize: '12px', color: '#bac2de', fontWeight: 'bold' }}>Options Layout:</span>

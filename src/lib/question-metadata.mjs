@@ -3,6 +3,12 @@ import { normalizePdfSettings } from './pdf-settings.mjs';
 
 export function normalizeQuestionMetadata(value, fail = (message) => { throw new Error(message); }) {
   const metadata = {};
+  if (value.natRange !== undefined) {
+    const range = value.natRange;
+    if (range !== null && (!range || typeof range !== 'object' || Array.isArray(range)
+      || !Number.isFinite(range.min) || !Number.isFinite(range.max) || range.min > range.max)) fail('NAT range needs finite minimum and maximum values, with minimum ≤ maximum.');
+    metadata.natRange = range === null ? null : { min: range.min, max: range.max };
+  }
   if (value.examPaper !== undefined) {
     if (!['CS', 'IT'].includes(value.examPaper)) fail('Exam paper must be CS or IT.');
     metadata.examPaper = value.examPaper;
@@ -32,6 +38,8 @@ export function normalizeQuestionMetadata(value, fail = (message) => { throw new
       || value.correctOptions.some((option) => !['A', 'B', 'C', 'D'].includes(option))
       || new Set(value.correctOptions).size !== value.correctOptions.length) fail('Correct options are invalid.');
     metadata.correctOptions = [...value.correctOptions];
+    if (value.questionType === 'MCQ' && value.correctOptions.length > 1) fail('MCQ accepts one correct option.');
+    if (value.questionType === 'NAT' && value.correctOptions.length) fail('NAT cannot have correct option letters.');
   }
   if (value.source !== undefined) {
     const source = value.source;
@@ -69,7 +77,7 @@ export function normalizeQuestionMetadata(value, fail = (message) => { throw new
         result[key] = printed[key];
       }
       if (!result.text.trim() || !['.png', '.jpg', '.jpeg', '.webp', '.gif'].includes(result.ext)) fail('Verified source content is incomplete.');
-      const answer = normalizeQuestionMetadata({ questionType: printed.questionType, correctOptions: printed.correctOptions, examPaper: printed.examPaper, paperQuestionNumber: printed.paperQuestionNumber }, fail);
+      const answer = normalizeQuestionMetadata({ questionType: printed.questionType, correctOptions: printed.correctOptions, natRange: printed.natRange, examPaper: printed.examPaper, paperQuestionNumber: printed.paperQuestionNumber }, fail);
       if (!answer.questionType || !answer.correctOptions) fail('Verified source answer is incomplete.');
       const options = [result.optA, result.optB, result.optC, result.optD];
       if (answer.questionType === 'NAT' ? options.some(Boolean) || !result.natAnswer || answer.correctOptions.length

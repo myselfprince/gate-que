@@ -1,6 +1,7 @@
 import { escapeLatex, latexText } from './latex-source.mjs';
 import { normalizePdfSettings } from './pdf-settings.mjs';
 import { latexLink } from './pdf-decorations.mjs';
+import { storedAnswerText } from './question-answers.mjs';
 
 export function buildAnswerKey({ subject, chapter, questions, pdfSettings }) {
   const settings = normalizePdfSettings(pdfSettings);
@@ -8,7 +9,7 @@ export function buildAnswerKey({ subject, chapter, questions, pdfSettings }) {
   const entries = questions.flatMap((question, index) => {
     if (question.isBlank) return [];
     const number = question.source?.questionNumber || question.exportNumber || String(index + 1);
-    const answer = question.correctOptions?.length ? question.correctOptions.map(option => `(${option})`).join(', ') : question.natAnswer?.trim();
+    const answer = storedAnswerText(question);
     return [`\\typeout{GATEANSWER:${index + 1}}\n\\item[\\textbf{Q${escapeLatex(number)}}] ${answer ? latexText(answer) : '\\textit{Answer not available}'}\n`];
   }).join('');
   return `\\documentclass[12pt,a4paper]{article}
