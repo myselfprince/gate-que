@@ -40,6 +40,7 @@ export default function PdfPreview({ url, data, compact = false, openLinksInNewT
   const [finding, setFinding] = useState(false);
   const [findMessage, setFindMessage] = useState('');
   const [bookmarks, setBookmarks] = useState([]);
+  const [layerRevision, setLayerRevision] = useState(0);
   const canvas = useRef(null), viewportRef = useRef(null), textRef = useRef(null), rootRef = useRef(null);
   useEffect(() => {
     let disposed = false, task;
@@ -49,9 +50,10 @@ export default function PdfPreview({ url, data, compact = false, openLinksInNewT
       task = library.getDocument({ ...(data ? { data: new Uint8Array(data.slice(0)) } : { url }), withCredentials: true, isEvalSupported: false, cMapUrl: '/api/pdf-viewer/cmaps/', cMapPacked: true, standardFontDataUrl: '/api/pdf-viewer/standard_fonts/', wasmUrl: '/api/pdf-viewer/wasm/' });
       const pdf = await task.promise;
       const outline = await pdf.getOutline();
+      const optionalContentConfig = await pdf.getOptionalContentConfig();
       const flatten = entries => entries.flatMap(item => [item, ...flatten(item.items || [])]);
       const bookmarks = await Promise.all(flatten(outline || []).map(async item => ({ title: item.title, page: typeof item.dest?.[0] === 'object' ? (await pdf.getPageIndex(item.dest[0])) + 1 : 1 })));
-      if (!disposed) { setLoaded({ pdf, library }); setBookmarks(bookmarks); setPageNumber(1); setError(''); }
+      if (!disposed) { setLoaded({ pdf, library, optionalContentConfig }); setBookmarks(bookmarks); setPageNumber(1); setError(''); }
     }).catch(error => { if (!disposed) setError(error.message); });
     return () => { disposed = true; task?.destroy(); };
   }, [url, data]);
@@ -82,15 +84,15 @@ export default function PdfPreview({ url, data, compact = false, openLinksInNewT
       textContainer.style.setProperty('--total-scale-factor', String(scale));
       textContainer.style.setProperty('--scale-round-x', '1px'); textContainer.style.setProperty('--scale-round-y', '1px');
       setPageSize({ width: viewport.width, height: viewport.height });
-      render = page.render({ canvas: target, viewport, transform: ratio === 1 ? undefined : [ratio, 0, 0, ratio, 0, 0] });
+      render = page.render({ canvas: target, viewport, optionalContentConfigPromise: Promise.resolve(loaded.optionalContentConfig), transform: ratio === 1 ? undefined : [ratio, 0, 0, ratio, 0, 0] });
       await render.promise;
       if (disposed) return;
       const annotations = await page.getAnnotations();
       if (disposed) return;
-      setLinks(annotations.filter(annotation => annotation.subtype === 'Link' && /^https?:\/\//i.test(annotation.url || '')).map(annotation => {
+      setLinks(annotations.filter(annotation => annotation.subtype === 'Link' && (annotation.setOCGState || /^https?:\/\//i.test(annotation.url || ''))).map(annotation => {
         const [x1, y1] = viewport.convertToViewportPoint(annotation.rect[0], annotation.rect[1]);
         const [x2, y2] = viewport.convertToViewportPoint(annotation.rect[2], annotation.rect[3]);
-        return { id: annotation.id, url: annotation.url, left: Math.min(x1, x2), top: Math.min(y1, y2), width: Math.abs(x2 - x1), height: Math.abs(y2 - y1) };
+        return { id: annotation.id, url: annotation.url, setOCGState: annotation.setOCGState, left: Math.min(x1, x2), top: Math.min(y1, y2), width: Math.abs(x2 - x1), height: Math.abs(y2 - y1) };
       }));
       const content = await page.getTextContent();
       if (disposed) return;
@@ -99,7 +101,7 @@ export default function PdfPreview({ url, data, compact = false, openLinksInNewT
       if (!disposed) { target.dataset.renderedPage = String(pageNumber); target.dataset.renderedWidth = String(viewport.width); }
     })().catch(error => { if (!disposed && error.name !== 'RenderingCancelledException') setError(error.message); });
     return () => { disposed = true; render?.cancel(); textLayer?.cancel(); };
-  }, [loaded, pageNumber, zoom, width]);
+  }, [loaded, pageNumber, zoom, width, layerRevision]);
   async function find(event) {
     event.preventDefault();
     if (!loaded || !query.trim()) return;
@@ -138,7 +140,7 @@ export default function PdfPreview({ url, data, compact = false, openLinksInNewT
           <div className={styles.page} style={pageSize} data-pdf-page={compact ? undefined : pageNumber} data-sample-pdf-page={compact ? pageNumber : undefined}>
             <canvas aria-label={`PDF page ${pageNumber}`} ref={canvas} />
             <div ref={textRef} className={styles.textLayer} />
-            {links.map(link => <a key={link.id} className={styles.link} style={{ left: link.left, top: link.top, width: link.width, height: link.height }} href={link.url} target={openLinksInNewTab ? '_blank' : '_self'} rel="noopener noreferrer" aria-label={`Open ${link.url}`} />)}
+            {links.map(link => link.setOCGState ? <button key={link.id} className={styles.link} style={{ left: link.left, top: link.top, width: link.width, height: link.height, padding: 0, border: 0, background: 'transparent' }} aria-label="Show / hide answer" onClick={() => { loaded.optionalContentConfig.setOCGState(link.setOCGState); setLayerRevision(value => value + 1); }} /> : <a key={link.id} className={styles.link} style={{ left: link.left, top: link.top, width: link.width, height: link.height }} href={link.url} target={openLinksInNewTab ? '_blank' : '_self'} rel="noopener noreferrer" aria-label={`Open ${link.url}`} />)}
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { collectLatexImages, escapeLatex, renderSourceQuestion, LISTINGS_UNICODE } from './latex-source.mjs';
 import { normalizePdfSettings, questionPdfSettings } from './pdf-settings.mjs';
 import { documentTitle, pageDecorations, watermarkTex, YOUTUBE_ICON_TEX } from './pdf-decorations.mjs';
+import { answerLayerSetup, ANSWER_TOGGLE_PREAMBLE, ANSWER_TOGGLE_CATALOG } from './pdf-answers.mjs';
 
 // Both PDF and editable-source exports use this layout. Each complete question
 // is measured first. Long prose is reflowed at a smaller font while the box
@@ -36,6 +37,7 @@ export function buildQuestionPages({ subject, chapter, questions, pdfSettings },
 \\newlength{\\gatewatermarkx}
 \\newlength{\\gatewatermarky}
 ${YOUTUBE_ICON_TEX}
+${settings.answerMode === 'toggle' ? ANSWER_TOGGLE_PREAMBLE : ''}
 \\newcommand{\\questioncodescale}{1}
 \\newlength{\\questionheight}
 \\newlength{\\questionimageheight}
@@ -48,6 +50,7 @@ ${YOUTUBE_ICON_TEX}
     // so its scaled frame never grows beyond the full text width.
     const codeWidth = style.fontSize > 18 ? `${(1 / Number((style.fontSize / 18).toFixed(3))).toFixed(6)}\\textwidth` : '\\textwidth';
     if (index) source += '\\clearpage\n';
+    source += answerLayerSetup(q, settings, startIndex + index);
     const decorations = pageDecorations({ settings, question: q, page: startIndex + index + 1, total: totalQuestions, foreground });
     const showTitle = settings.titleMode === 'every' || (settings.titleMode === 'first' && startIndex + index === 0);
     const box = (name, content) => content ? `\\begin{lrbox}{\\${name}}\\begin{minipage}{\\textwidth}\n${content}\\par\\end{minipage}\\end{lrbox}\n` : `\\sbox{\\${name}}{}\n`;
@@ -105,5 +108,5 @@ ${workingSpace}
 ${decorations.bottom ? '\\noindent\\usebox{\\pagefooterbox}\\par' : ''}
 `;
   });
-  return source + '\\end{document}\n';
+  return source + (settings.answerMode === 'toggle' ? ANSWER_TOGGLE_CATALOG + '\n' : '') + '\\end{document}\n';
 }

@@ -3,6 +3,7 @@ import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { PDFDocument, PDFName } from 'pdf-lib';
 import { addPdfBookmarks } from './pdf-bookmarks.mjs';
+import { registerAnswerLayers } from './pdf-answers.mjs';
 
 const linkUrls = page => {
   const annotations = page.node.Annots();
@@ -55,6 +56,7 @@ export async function exportPdfBook(payload, { directory, signal, onProgress = a
   }
   if (book.getPageCount() !== payload.total) throw new Error('The combined book has an unexpected page count.');
   addPdfBookmarks(book, bookmarks);
+  registerAnswerLayers(book);
   if (repeatedQuestions.size) warnings.push({ message: `This book contains ${repeatedQuestions.size} repeated question IDs across the selected exports. Review overlapping chapter selections.` });
   book.setTitle(`${payload.subject} - ${payload.chapter}`); book.setAuthor('G4Gate');
   return { pdf: Buffer.from(await book.save()), parts, report: { questions: payload.total, pages: payload.total, chapters: payload.chapters.length, repeatedQuestionIds: repeatedQuestions.size, batches: payload.chapters.length, warnings, pageCountVerified: true, linksVerified: true, websiteLinks: payload.chapters.reduce((sum, chapter) => sum + (chapter.report.websiteLinks || 0), 0), solutionLinks: payload.chapters.reduce((sum, chapter) => sum + (chapter.report.solutionLinks || 0), 0), openLinksInNewTab: payload.chapters[0]?.report.openLinksInNewTab !== false, textBoundsChecked: payload.chapters.every(chapter => chapter.report.textBoundsChecked), textBoundsBasis: 'Source chapter PDFs copied without reflow', sourceJobs: payload.chapters.map(chapter => chapter.sourceId) } };

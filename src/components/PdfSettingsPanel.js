@@ -61,9 +61,11 @@ export default function PdfSettingsPanel({ settings, onChange, onValidityChange 
       <label>If the question still does not fit<select value={settings.overflow} onChange={e => update('overflow', e.target.value)}><option value="error">Stop and show the question</option><option value="warn">Shrink further and warn</option></select></label>
     </div>
     <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap' }}>
+      <label>Answers in question PDF<select aria-label="PDF answer display" value={settings.answerMode || 'none'} onChange={e => update('answerMode', e.target.value)}><option value="none">Hide answers</option><option value="toggle">Show / hide answer on click</option><option value="footer">Small answer in page footer</option></select></label>
       <label><input type="checkbox" checked={settings.includePageImages} onChange={e => update('includePageImages', e.target.checked)} /> Matching page images ZIP</label>
       <label><input type="checkbox" checked={settings.includeAnswerKey} onChange={e => update('includeAnswerKey', e.target.checked)} /> Separate answer-key PDF</label>
     </div>
+    {settings.answerMode === 'toggle' && <p style={{ color: '#bac2de', fontSize: 13 }}>Answers start hidden. Click Show / hide answer in the app preview or a PDF reader that supports layers. Use footer answers for printing or readers without layer support. Only questions with stored answers get a toggle.</p>}
     <PdfDecorationSettings key={revision} settings={settings} update={update} report={report} />
     <p style={{ color: '#bac2de', fontSize: 13 }}>Auto-fit reflows each question down to the minimum size. Large questions may need a smaller font or diagram. Use the PDF preview to check the result.</p>
     <div style={{ display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>

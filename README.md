@@ -145,7 +145,21 @@ snapshots the source PDFs, verifies page counts and preserved links, and adds
 chapter/question bookmarks. Pages retain their chapter numbering and layout;
 chapter answer keys remain separate. No questions are recompiled or reflowed.
 
-## Production requirements
+## GATE Mock Lab and paper coverage
+
+Visit `/gatemock` for timed subject tests, topic/chapter tests, editable subject-weighted mocks, and year/set papers. Questions come from the editor database; blanks are excluded. CS is the default exam paper. The editor can change a question to historical IT, assign its set/session, and record its **original paper question number** independently of book/source numbering. MCQ/MSQ correct options and NAT answers or inclusive numeric ranges are editable and saved with the chapter.
+
+The default mock blueprint is a practice distribution of 30 one-mark and 35 two-mark questions over 180 minutes. Subject quotas are editable; they are not fixed official subject weightages. Missing subjects or mark categories stop creation unless the student explicitly allows a smaller practice test. The [current official pattern](https://gate2026.iitg.ac.in/question-paper-pattern.html) is linked in the builder. MCQ penalties use a fraction of the question's marks; MSQ needs the complete correct option set and NAT uses the stored inclusive range. Unknown/non-numeric keys and subjective questions are left ungraded.
+
+Use `/gatemock/admin` with the existing workspace admin login to define an official paper's count, marks, duration and MCQ penalty, and map questions to original positions. Coverage reports missing positions, duplicate assignments, unassigned questions, out-of-range positions, missing answers and mark totals. A year paper is offered as complete only after its original positions, totals and admin verification agree. Otherwise it is labeled available-question practice. Older linked-answer or special marking rules require manual review; the configured automatic MCQ penalty is uniform. No counts or original numbering are inferred from a chapter or book index.
+
+The mock page and its catalog/attempt endpoints are public. Admin and editor endpoints retain the existing `AUTH_REQUIRED` / `APP_PASSWORD` authentication. Attempts use independent random bearer tokens; correct keys stay on the server until submission. Responses and navigation save with revision checks, a server-enforced deadline, and refresh/resume in the same browser. Attempts expire from storage after 30 days.
+
+In PDF design settings, **Answers in question PDF** offers hidden answers (default), **Show / hide answer on click**, or a small answer in each page footer. Only stored answers appear. Toggle PDFs use native optional-content layers, start hidden, and work in the app preview; downloaded PDFs require a reader with layer support. Footer mode is suitable for print or readers without layer toggling. Batch and book exports retain the answer layers, and the separate answer-key PDF remains independently available.
+
+Regression checks: `node --test tests/gatemock.test.mjs tests/question-paper.test.mjs tests/question-answers.test.mjs tests/pdf-answers.test.mjs`. With a local server on port 3100, `node scripts/verify-gatemock.mjs` verifies temporary database fixtures and browser attempts, and `node scripts/verify-pdf-answers.mjs` compiles/render-checks the PDF variants. Both scripts use the configured admin login without printing credentials. Mock fixtures are removed in cleanup. PDF checks require the existing TeX/Poppler/Chrome runtimes.
+
+## Production deployment
 
 This application performs browser screenshots, LaTeX compilation, ZIP generation, and database writes. Deploy it to a Node.js server or container with a writable temporary directory, `pdflatex`, and Chrome/Puppeteer support; it is not suitable for a filesystem-restricted serverless runtime.
 

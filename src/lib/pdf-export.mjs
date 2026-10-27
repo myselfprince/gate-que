@@ -12,6 +12,7 @@ import { normalizePdfSettings } from './pdf-settings.mjs';
 import { expectedWebsiteLinks, visibleSolutionUrl } from './pdf-decorations.mjs';
 import { addQuestionBookmarks } from './pdf-bookmarks.mjs';
 import { buildAnswerKey } from './answer-key.mjs';
+import { registerAnswerLayers } from './pdf-answers.mjs';
 
 const run = promisify(execFile);
 export const PDF_BATCH_SIZE = 20;
@@ -47,6 +48,7 @@ export async function mergeQuestionPdfs(parts, expectedPages, title = 'G4Gate qu
   merged.setTitle(title);
   merged.setAuthor('G4Gate');
   addQuestionBookmarks(merged, questions);
+  registerAnswerLayers(merged);
   return Buffer.from(await merged.save());
 }
 
