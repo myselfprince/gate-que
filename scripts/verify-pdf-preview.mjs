@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
 import puppeteer from 'puppeteer';
+import { loadWorkspaceQuestions } from './helpers/load-workspace.mjs';
 
 const payload = JSON.parse(await fs.readFile(process.argv[2], 'utf8'));
 const root = path.resolve('tmp/pdfs/export-upgrade/jobs-check');
@@ -32,6 +33,7 @@ try {
     return request.continue();
   });
   await page.goto(origin, { waitUntil: 'networkidle0' });
+  await loadWorkspaceQuestions(page);
   const { jobs } = await (await fetch(origin + '/api/pdf-jobs')).json();
   const large = jobs.find(job => job.total === payload.questions.length && job.status === 'completed');
   assert.ok(large, 'Run the background job verification first.');

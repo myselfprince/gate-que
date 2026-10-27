@@ -5,6 +5,7 @@ import { spawn } from 'node:child_process';
 import { randomUUID } from 'node:crypto';
 import { performance } from 'node:perf_hooks';
 import puppeteer from 'puppeteer';
+import { loadWorkspaceQuestions } from './helpers/load-workspace.mjs';
 import { PDFDocument } from 'pdf-lib';
 import { createJob, jobDirectory, writeJobStatus } from '../src/lib/pdf-jobs.mjs';
 const output = path.resolve('tmp/pdfs/live-preview-check'); await fs.mkdir(output, { recursive: true });
@@ -52,6 +53,7 @@ try {
   const checkbox = (text, checked) => page.evaluate(({ text, checked }) => { const input = [...document.querySelectorAll('label')].find(node => node.textContent.trim() === text)?.querySelector('input'); if (!input) throw Error('Missing ' + text); if (input.checked !== checked) input.click(); }, { text, checked });
   const sampleBackground = () => page.$eval('[aria-label="Live PDF sample viewer"] canvas', canvas => [...canvas.getContext('2d').getImageData(5, 5, 1, 1).data]);
   await page.goto(origin, { waitUntil: 'networkidle2' }); assert.equal(previews.length, 0, 'hidden PDF tab must not compile previews');
+  await loadWorkspaceQuestions(page);
   await activate('#tab-pdf'); await sampleReady();
   assert.equal(previews.length, 1); assert.equal(previews[0].body.questions.length, 1); assert.equal(previews[0].body.questions[0].id, 'pdf-preview-math'); assert.equal(previews[0].body.questions[0].exportNumber, '2');
   assert.equal((await PDFDocument.load(lastBytes)).getPageCount(), 1); assert.equal(jobPosts.length, 0);

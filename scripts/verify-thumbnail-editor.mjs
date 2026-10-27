@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import puppeteer from 'puppeteer';
+import { loadWorkspaceQuestions } from './helpers/load-workspace.mjs';
 import AdmZip from 'adm-zip';
 const origin = process.env.EDITOR_TEST_ORIGIN || 'http://127.0.0.1:3120';
 const output = path.resolve('tmp/thumbnail-editor');
@@ -44,6 +45,7 @@ try {
   const value = label => page.$eval(`[aria-label="${label}"]`, input => Number(input.value));
   const open = async () => {
     await page.goto(origin, { waitUntil: 'networkidle2' });
+    await loadWorkspaceQuestions(page);
     await page.waitForSelector('#tab-youtube'); await activate('#tab-youtube'); await activate('#yt-thumbnail-tab');
     await page.waitForFunction(() => document.querySelector('[aria-label="Upload images"]') && ![...document.querySelectorAll('button')].find(b => b.textContent === '+ Upload images')?.disabled);
     await page.waitForFunction(() => [...document.querySelectorAll('button')].some(b => b.textContent === 'Download Q1 PNG' && !b.disabled), { timeout: 70000 });

@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import puppeteer from 'puppeteer';
+import { loadWorkspaceQuestions } from './helpers/load-workspace.mjs';
 import AdmZip from 'adm-zip';
 const origin = process.env.EDITOR_TEST_ORIGIN || 'http://127.0.0.1:3120';
 const output = path.resolve('tmp/thumbnail-questions');
@@ -55,7 +56,7 @@ try {
   const choose = async id => { await page.select('[aria-label="Thumbnail question"]', id); await page.waitForFunction(id => document.querySelector('[aria-label="Thumbnail question"]').value === id, {}, id); };
   const saved = () => page.waitForFunction(() => [...document.querySelectorAll('[role="status"]')].some(node => node.textContent === 'Saved in this browser'));
   const readyPreview = () => page.waitForFunction(() => [...document.querySelectorAll('button')].some(button => /^Download Q\d+ PNG$/.test(button.textContent) && !button.disabled), { timeout: 70000 });
-  const open = async () => { await page.goto(origin, { waitUntil: 'networkidle2' }); await activate('#tab-youtube'); await activate('#yt-thumbnail-tab'); await readyPreview(); };
+  const open = async () => { await page.goto(origin, { waitUntil: 'networkidle2' }); await loadWorkspaceQuestions(page); await activate('#tab-youtube'); await activate('#yt-thumbnail-tab'); await readyPreview(); };
   await page.goto(origin, { waitUntil: 'networkidle2' });
   // Migrate an existing shared cutout rather than replacing the user's saved format.
   await page.evaluate(async () => {

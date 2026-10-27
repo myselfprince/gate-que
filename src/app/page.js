@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { GATE_SYLLABUS } from '@/lib/syllabus';
 import { safeSolutionUrl } from '@/lib/solution-links.mjs';
 import { DEFAULT_PDF_SETTINGS } from '@/lib/pdf-settings.mjs';
+import { QUESTION_LOAD_OPTIONS } from '@/lib/chapter-loading.mjs';
 import PdfSettingsPanel from '@/components/PdfSettingsPanel';
 import PdfExportPanel from '@/components/PdfExportPanel';
 import styles from './workspace.module.css';
@@ -87,6 +88,12 @@ export default function Home() {
   const [pdfSettingsValid, setPdfSettingsValid] = useState(true);
   const [toast, setToast] = useState(null);
   const [isReviving, setIsReviving] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [questionLimit, setQuestionLimit] = useState('10');
+  const [databaseState, setDatabaseState] = useState(null);
+  const [draftReady, setDraftReady] = useState(false);
+  const databaseRequestRef = useRef(0);
+  const selectionChangedRef = useRef(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [currentSearchIndex, setCurrentSearchIndex] = useState(0);
@@ -127,11 +134,13 @@ export default function Home() {
       setSyncedCount(parsed.syncedCount || 0);
       setLockCount(parsed.lockCount || 0);
       setIsDirty(parsed.isDirty || false);
+      setDatabaseState(parsed.databaseState || null);
     } else {
       setQuestions([]);
       setSyncedCount(0);
       setLockCount(0);
       setIsDirty(false);
+      setDatabaseState(null);
     }
     setHistory([]);
     setSearchQuery("");
@@ -139,61 +148,83 @@ export default function Home() {
     setFilterYear('All');
     setHideBulkLocked(false);
     setHidePosLocked(false);
+    setShowMissingDropdown(false);
+    setShowBlankDropdown(false);
+    setImageErrors(new Set());
+    setDraftReady(true);
   };
 
-  const loadFromMongoDB = async (sub, chap) => {
+  const loadFromMongoDB = async (sub, chap, { append = false } = {}) => {
+    if (!append && isDirty && !confirm('Load from the database and replace your unsaved changes in this chapter?')) return;
+    selectionChangedRef.current = true;
+    const requestId = ++databaseRequestRef.current;
+    setDraftReady(true);
     setIsReviving(true);
     try {
-      const res = await fetch(`/api/chapters?subject=${encodeURIComponent(sub)}&chapter=${encodeURIComponent(chap)}`);
+      const params = new URLSearchParams({ subject: sub, chapter: chap, limit: questionLimit });
+      if (append) params.set('offset', String(databaseState.loadedCount));
+      const res = await fetch(`/api/chapters?${params}`, { cache: 'no-store' });
       const data = await res.json();
-      if (data.success && data.data && data.data.questions && data.data.questions.length > 0) {
-        setQuestions(data.data.questions);
-        setSyncedCount(data.data.questions.length);
-        setLockCount(data.data.lockCount || 0);
-        setIsDirty(false);
+      if (requestId !== databaseRequestRef.current) return;
+      if (!res.ok || !data.success) throw new Error(data.error || 'Could not load questions from the database.');
+      if (data.data && Array.isArray(data.data.questions)) {
+        if (append && data.data.updatedAt !== databaseState.updatedAt) {
+          throw new Error('This chapter changed in the database. Reload the chapter before loading more.');
+        }
+        const loaded = data.data.questions;
+        const loadedCount = (append ? databaseState.loadedCount : 0) + loaded.length;
+        const totalQuestions = data.data.totalQuestions ?? loadedCount;
+        setQuestions(prev => append ? [...prev, ...loaded] : loaded);
+        setSyncedCount(prev => append ? prev + loaded.length : loaded.length);
+        if (!append) {
+          setLockCount(Math.min(data.data.lockCount || 0, loaded.length));
+          setIsDirty(false);
+          setImageErrors(new Set());
+        } else if (data.data.lockCount > databaseState.loadedCount) {
+          setLockCount(questions.length + Math.min(loaded.length, data.data.lockCount - databaseState.loadedCount));
+        }
+        setDatabaseState({ loadedCount, totalQuestions, updatedAt: data.data.updatedAt });
         setHistory([]);
-        showToast(`✅ Revived ${data.data.questions.length} questions!`, 'success');
+        showToast(`✅ Loaded ${loadedCount} of ${totalQuestions} questions.`, 'success');
       } else {
         showToast("ℹ️ No DB data found. Loaded local draft.", "info");
         loadChapterState(sub, chap);
       }
     } catch (error) {
-      showToast("❌ Error auto-loading from DB", "error");
-      loadChapterState(sub, chap);
+      if (requestId === databaseRequestRef.current) showToast(`❌ ${error.message}`, 'error');
     } finally {
-      setIsReviving(false);
-      setSearchQuery("");
-      setHasJumped(false);
-      setFilterYear('All');
-      setHideBulkLocked(false);
-      setHidePosLocked(false);
+      if (requestId === databaseRequestRef.current) {
+        setIsReviving(false);
+        setSearchQuery("");
+        setHasJumped(false);
+        setFilterYear('All');
+        setHideBulkLocked(false);
+        setHidePosLocked(false);
+      }
     }
   };
 
   useEffect(() => {
+    let active = true;
+    const restoreSelection = (savedSub, savedChap) => {
+      if (!active || selectionChangedRef.current) return;
+      const sub = GATE_SYLLABUS[savedSub] ? savedSub : availableSubjects[0];
+      const chap = GATE_SYLLABUS[sub].includes(savedChap) ? savedChap : GATE_SYLLABUS[sub][0];
+      setSubject(sub);
+      setChapter(chap);
+      loadChapterState(sub, chap);
+    };
     fetch('/api/preferences')
       .then(res => res.json())
       .then(data => {
-        if (data.success && data.data) {
-          const savedSub = data.data.lastSubject;
-          const savedChap = data.data.lastChapter;
-          if (GATE_SYLLABUS[savedSub]) {
-            setSubject(savedSub);
-            const chap = GATE_SYLLABUS[savedSub].includes(savedChap) ? savedChap : GATE_SYLLABUS[savedSub][0];
-            setChapter(chap);
-            loadFromMongoDB(savedSub, chap);
-          } else {
-            loadFromMongoDB(availableSubjects[0], GATE_SYLLABUS[availableSubjects[0]][0]);
-          }
-        } else {
-          loadFromMongoDB(availableSubjects[0], GATE_SYLLABUS[availableSubjects[0]][0]);
-        }
+        restoreSelection(data.data?.lastSubject, data.data?.lastChapter);
       })
       .catch(err => {
         console.error("Failed to load preferences", err);
-        loadFromMongoDB(availableSubjects[0], GATE_SYLLABUS[availableSubjects[0]][0]);
+        restoreSelection();
       });
-  // The initial restore intentionally runs once; later chapter changes are handled by the select controls.
+    return () => { active = false; };
+  // Restore the selection and local draft once. Database questions load only on button clicks.
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
@@ -240,21 +271,23 @@ export default function Home() {
   };
 
   const handleSubjectChange = (e) => {
+    selectionChangedRef.current = true;
+    databaseRequestRef.current++;
     const selectedSubject = e.target.value;
     const defaultChapter = GATE_SYLLABUS[selectedSubject][0];
     setSubject(selectedSubject);
     setChapter(defaultChapter);
-    setLockCount(0);
     syncPreferences(selectedSubject, defaultChapter);
-    loadFromMongoDB(selectedSubject, defaultChapter);
+    loadChapterState(selectedSubject, defaultChapter);
   };
 
   const handleChapterChange = (e) => {
+    selectionChangedRef.current = true;
+    databaseRequestRef.current++;
     const selectedChapter = e.target.value;
     setChapter(selectedChapter);
-    setLockCount(0);
     syncPreferences(subject, selectedChapter);
-    loadFromMongoDB(subject, selectedChapter);
+    loadChapterState(subject, selectedChapter);
   };
 
   useEffect(() => {
@@ -269,13 +302,14 @@ export default function Home() {
   }, [isDirty]);
 
   useEffect(() => {
+    if (!draftReady || isReviving) return;
     const draftKey = `gate_draft_${subject}_${chapter}`;
     if (isDirty) {
-      localStorage.setItem(draftKey, JSON.stringify({ questions, syncedCount, isDirty, lockCount }));
+      localStorage.setItem(draftKey, JSON.stringify({ questions, syncedCount, isDirty, lockCount, databaseState }));
     } else {
       localStorage.removeItem(draftKey);
     }
-  }, [questions, syncedCount, isDirty, subject, chapter, lockCount]);
+  }, [questions, syncedCount, isDirty, subject, chapter, lockCount, databaseState, draftReady, isReviving]);
 
   useEffect(() => {
     if (typeof window !== 'undefined' && !window.MathJax) {
@@ -319,12 +353,18 @@ export default function Home() {
   const scrollToBottom = () => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
 
   const saveToMongoDB = async (overrideLockCount = null, isSilent = false) => {
+    if (isReviving || isSaving) return false;
     const lockVal = overrideLockCount !== null ? overrideLockCount : lockCount;
+    const isPartial = databaseState && databaseState.loadedCount < databaseState.totalQuestions;
     if (!isSilent) {
-      if (!confirm(`🚨 DATABASE OVERWRITE CONFIRMATION 🚨\n\nAre you sure you want to SAVE to DB?\n\nThis will permanently overwrite the database for "${subject} - ${chapter}" with the ${questions.length} questions currently on your screen.`)) {
+      const details = isPartial
+        ? `Save the ${questions.length} questions on screen to "${subject} - ${chapter}"? The ${databaseState.totalQuestions - databaseState.loadedCount} questions not yet loaded will be preserved.`
+        : `This will overwrite "${subject} - ${chapter}" with the ${questions.length} questions currently on your screen. Continue?`;
+      if (!confirm(details)) {
         return false;
       }
     }
+    setIsSaving(true);
     try {
       if (!isSilent) showToast("Saving to DB...", "info");
 
@@ -336,18 +376,21 @@ export default function Home() {
 
       const res = await fetch('/api/chapters', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ subject, chapter, questions: cleanQuestions, lockCount: lockVal })
+        body: JSON.stringify({ subject, chapter, questions: cleanQuestions, lockCount: lockVal,
+          ...(databaseState ? { loadedCount: databaseState.loadedCount, expectedUpdatedAt: databaseState.updatedAt } : {}) })
       });
       const data = await res.json();
       if (data.success) {
         setSyncedCount(questions.length);
         setIsDirty(false);
+        setDatabaseState({ loadedCount: questions.length, totalQuestions: data.data.totalQuestions ?? questions.length, updatedAt: data.data.updatedAt });
+        setLockCount(Math.min(data.data.lockCount ?? lockVal, questions.length));
         
         // Refresh the dropdown UI by removing the _justFilled tags locally
         setQuestions(prev => prev.map(q => ({ ...q, _justFilled: false })));
         
         if (!isSilent) showToast(`✅ Saved successfully!`);
-        return true;
+        return data.data;
       } else {
         showToast("❌ Error saving to DB: " + data.error, "error");
         return false;
@@ -355,6 +398,8 @@ export default function Home() {
     } catch (error) {
       showToast("❌ Error connecting to database", "error");
       return false;
+    } finally {
+      setIsSaving(false);
     }
   };
   const handleLock = async (e) => {
@@ -365,8 +410,12 @@ export default function Home() {
     }
     setLockCount(val);
     showToast("Saving lock state to DB...", "info");
-    const success = await saveToMongoDB(val, true);
-    if (success) {
+    const saved = await saveToMongoDB(val, true);
+    if (saved) {
+      if (saved.lockCount > val) {
+        showToast('Questions beyond this batch are bulk-locked. Load all questions to change the chapter-wide lock.', 'info');
+        return;
+      }
       if (val === 0) showToast("🔓 All questions bulk-unlocked & Saved!");
       else showToast(`🔒 Bulk Locked Qs 1 to ${val} & Saved!`);
     }
@@ -1156,21 +1205,32 @@ const handleExportAllImages = async () => {
       <section className={styles.chapterBar} aria-label="Current chapter">
         <div style={{ flex: '1 1 200px' }}>
           <label htmlFor="workspace-subject">Subject</label>
-          <select id="workspace-subject" value={subject} onChange={handleSubjectChange} style={{ cursor: 'pointer', width: '100%' }}>
+          <select id="workspace-subject" value={subject} onChange={handleSubjectChange} disabled={isReviving || isSaving} style={{ cursor: 'pointer', width: '100%' }}>
             {availableSubjects.map(sub => <option key={sub} value={sub}>{sub}</option>)}
           </select>
         </div>
         
         <div style={{ flex: '1 1 200px' }}>
           <label htmlFor="workspace-chapter">Chapter</label>
-          <select id="workspace-chapter" value={chapter} onChange={handleChapterChange} style={{ cursor: 'pointer', width: '100%' }}>
+          <select id="workspace-chapter" value={chapter} onChange={handleChapterChange} disabled={isReviving || isSaving} style={{ cursor: 'pointer', width: '100%' }}>
             {GATE_SYLLABUS[subject].map(chap => <option key={chap} value={chap}>{chap}</option>)}
           </select>
         </div>
 
+        <div className={styles.databaseControls}>
+          <label htmlFor="workspace-question-limit">Questions to load</label>
+          <div className={styles.loadActions}>
+            <select id="workspace-question-limit" value={questionLimit} onChange={e => setQuestionLimit(e.target.value)} disabled={isReviving || isSaving}>
+              {QUESTION_LOAD_OPTIONS.map(count => <option key={count} value={count}>{count === 'all' ? 'All questions' : `${count} questions`}</option>)}
+            </select>
+            <button id="workspace-load-database" onClick={() => loadFromMongoDB(subject, chapter)} disabled={isReviving || isSaving}>Load Database</button>
+          </div>
+        </div>
 
         <div className={styles.sync}>
-          {questions.length === 0 ? (<span style={{ color: '#6c7086', fontWeight: 'bold' }}>No Questions Found</span>) : isDirty ? (<span style={{ color: '#f9e2af', fontWeight: 'bold' }}>⚠️ {syncedCount}/{questions.length} Synced (Unsaved)</span>) : (<span style={{ color: '#a6e3a1', fontWeight: 'bold' }}>✅ All {questions.length} Synced</span>)}
+          {questions.length === 0 ? (<span style={{ color: '#a6adc8', fontWeight: 'bold' }}>{databaseState ? 'No questions in this chapter' : 'Click Load Database to load questions'}</span>) : isDirty ? (<span style={{ color: '#f9e2af', fontWeight: 'bold' }}>⚠️ {syncedCount}/{questions.length} Synced (Unsaved)</span>) : (<span style={{ color: '#a6e3a1', fontWeight: 'bold' }}>✅ All {questions.length} Synced</span>)}
+          {databaseState && <p className={styles.loadStatus} role="status">{databaseState.loadedCount} of {databaseState.totalQuestions} database questions loaded</p>}
+          {databaseState && databaseState.loadedCount < databaseState.totalQuestions && <button className={styles.loadMore} disabled={isReviving || isSaving} onClick={() => loadFromMongoDB(subject, chapter, { append: true })}>{questionLimit === 'all' ? 'Load remaining questions' : `Load ${Math.min(Number(questionLimit), databaseState.totalQuestions - databaseState.loadedCount)} more`}</button>}
           
           <div style={{ display: 'flex', justifyContent: 'center', gap: '15px', flexWrap: 'wrap', marginTop: '5px' }}>
               {missingIndices.length > 0 && (
@@ -1264,7 +1324,7 @@ const handleExportAllImages = async () => {
               )}
             </div>
         </div>
-        <button className={styles.primary} onClick={() => saveToMongoDB(null, false)} disabled={isReviving}>Save to database</button>
+        <button className={styles.primary} onClick={() => saveToMongoDB(null, false)} disabled={isReviving || isSaving}>{isSaving ? 'Saving…' : 'Save to database'}</button>
       </section>
       <div className={styles.tabs} role="tablist" aria-label="Workspace view">
         {[['editor', 'Question editor'], ['pdf', 'PDF & LaTeX'], ['youtube', 'YouTube studio']].map(([id, title]) => <button key={id} id={`tab-${id}`} role="tab" aria-selected={activeTab === id} aria-controls={`panel-${id}`} onClick={() => setActiveTab(id)}>{title}</button>)}
@@ -1304,7 +1364,7 @@ const handleExportAllImages = async () => {
           <div className={styles.tools}>          <div style={{ display: 'flex', gap: '5px', marginLeft: 'auto' }}>
             <form onSubmit={handleLock} style={{ display: 'flex', gap: '5px', marginRight: '10px' }}>
               <input type="number" min="0" max={questions.length} ref={lockInputRef} placeholder="Bulk Lock #" title="Bulk lock questions 1 through N" style={{ width: '80px', padding: '8px', borderRadius: '4px', border: '1px solid #f9e2af', background: '#181825', color: '#cdd6f4', textAlign: 'center', outline: 'none' }} />
-              <button type="submit" style={{ background: '#f9e2af', color: '#11111b', border: 'none', padding: '8px 12px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>🔒 Lock</button>
+              <button type="submit" disabled={isReviving || isSaving} style={{ background: '#f9e2af', color: '#11111b', border: 'none', padding: '8px 12px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>🔒 Lock</button>
             </form>
             
             <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginRight: '10px', background: '#181825', border: '1px solid #74c7ec', borderRadius: '4px', padding: '0 5px' }}>
@@ -1330,7 +1390,7 @@ const handleExportAllImages = async () => {
           </div></div>
           <details className={styles.advanced}><summary>More editor actions</summary><div><button onClick={handleUndo} disabled={!history.length}>Undo last edit</button><button style={{ background: '#f9e2af' }} onClick={handleExportForAI}>Export for AI</button><button className="btn-clear" onClick={clearWorkspace}>Clear workspace</button></div></details>
         </div>
-        {!questions.length && <div className={styles.empty}><h2>Your chapter starts here</h2><p>Choose a chapter above, or paste questions below to start editing.</p><a href="#paste_section" style={{ color: '#89b4fa' }}>Add questions ↓</a></div>}
+        {!questions.length && <div className={styles.empty}><h2>Your chapter starts here</h2><p>Choose a subject, chapter, and question count above, then click Load Database. You can also paste questions below to start editing.</p><a href="#paste_section" style={{ color: '#89b4fa' }}>Add questions ↓</a></div>}
       <div id="questions_container">
         {questions.map((q, idx) => {
           const qNum = idx + 1;

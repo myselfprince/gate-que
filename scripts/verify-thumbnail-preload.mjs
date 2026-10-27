@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import puppeteer from 'puppeteer';
+import { loadWorkspaceQuestions } from './helpers/load-workspace.mjs';
 import { buildThumbnailHtml } from '../src/lib/thumbnail-render.mjs';
 const origin = process.env.EDITOR_TEST_ORIGIN || 'http://127.0.0.1:3120';
 const output = path.resolve('tmp/thumbnail-preload'); await fs.mkdir(output, { recursive: true });
@@ -30,6 +31,7 @@ try {
   const activate = selector => page.$eval(selector, node => node.click());
   const current = () => page.$eval('[aria-label="Thumbnail question"]', select => select.value);
   await page.goto(origin, { waitUntil: 'networkidle2' });
+  await loadWorkspaceQuestions(page);
   // Preloading starts while the main question editor is still selected.
   await page.waitForFunction(() => document.querySelector('[aria-label="Question preload progress"]')?.textContent.startsWith('All 100 questions ready'), { timeout: 180000 });
   const allReadyMs = Math.round(performance.now() - begin);

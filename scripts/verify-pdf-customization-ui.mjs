@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
 import puppeteer from 'puppeteer';
+import { loadWorkspaceQuestions } from './helpers/load-workspace.mjs';
 import AdmZip from 'adm-zip';
 
 const root = path.resolve('tmp/pdfs/pdf-customization/ui');
@@ -38,6 +39,7 @@ try {
     if (!localStorage.getItem('gate-pdf-settings-v2')) localStorage.setItem('gate-pdf-settings-v1', JSON.stringify({ settings: { fontSize: 24, minFontSize: 12, showWebsite: false } }));
   });
   await page.goto(origin, { waitUntil: 'networkidle0' });
+  await loadWorkspaceQuestions(page);
   await page.waitForFunction(() => document.querySelector('[aria-label="Preferred text size"]')?.value === '24');
   const openSettings = () => page.evaluate(() => { document.querySelector('#tab-pdf')?.click(); [...document.querySelectorAll('details')].find(node => node.querySelector('summary')?.textContent.includes('PDF design settings')).open = true; });
   const clickButton = text => page.evaluate(text => [...document.querySelectorAll('button')].find(button => button.textContent === text).click(), text);
@@ -85,6 +87,7 @@ try {
   assert.equal(JSON.parse(zip.readAsText('chapter.json')).pdfSettings.watermarkText, 'Custom Academy');
   assert.ok(zip.readAsText('main.tex').includes('Study resources'));
   await page.reload({ waitUntil: 'networkidle0' });
+  await loadWorkspaceQuestions(page);
   await page.waitForFunction(() => document.querySelector('[aria-label="Watermark text"]')?.value === 'Custom Academy');
   await openSettings();
   assert.ok(await page.evaluate(() => [...document.querySelectorAll('button')].some(button => button.textContent === 'Custom teaching')));
