@@ -3,7 +3,7 @@ import { questionType, numericAnswerRange, storedAnswerText } from './question-a
 export const PAPER_PATTERN_SOURCE = 'https://gate2026.iitg.ac.in/question-paper-pattern.html';
 // Editable practice quotas, not an assertion of fixed official subject weightage.
 export const DEFAULT_MOCK_BLUEPRINT = [
-  ['General Aptitude', 5, 5], ['1. Discrete Maths', 2, 2], ['11. Engg. Maths', 3, 2],
+  ['13. General Aptitude', 5, 5], ['1. Discrete Maths', 2, 2], ['11. Engg. Maths', 3, 2],
   ['4. COA', 2, 3], ['5. Operating Systems', 2, 3], ['12. DBMS', 2, 4],
   ['3. Computer Networks', 2, 3], ['2. TOC', 2, 3], ['10. Compiler Design', 2, 2],
   ['9. Digital Logic', 2, 2], ['6. Data Structures', 3, 3], ['7. Algorithms', 2, 2], ['8. C Prog', 1, 1],
