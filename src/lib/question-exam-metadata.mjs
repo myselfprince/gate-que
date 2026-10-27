@@ -1,18 +1,18 @@
 const CONTENT_FIELDS = ['text', 'code', 'optA', 'optB', 'optC', 'optD'];
 // Require a complete exam label; years in formulas, URLs and code are content.
-const EXAM_LABEL = /\[\s*(?:GATE\s*)?((?:19|20)\d{2})(?:\s*\(?\s*Set\s*[-:]?\s*(\d+)\s*\)?)?\s*[:|]\s*([12])\s*M(?:arks?)?\s*(?:\|\s*(MCQ|MSQ|NAT|SUBJECTIVE)\s*)?\]/gi;
+const EXAM_LABEL = /\[\s*(?:GATE\s*(?:(CS|IT)\s*)?)?((?:19|20)\d{2})(?:\s*\(?\s*Set\s*[-:]?\s*(\d+)\s*\)?)?\s*[:|]\s*([12])\s*M(?:arks?)?\s*(?:\|\s*(MCQ|MSQ|NAT|SUBJECTIVE)\s*)?\]/gi;
 
 export function reconcileQuestionExamMetadata(question) {
   const labels = [];
   for (const field of CONTENT_FIELDS) {
     if (typeof question[field] !== 'string') continue;
     for (const match of question[field].matchAll(EXAM_LABEL)) {
-      labels.push({ field, label: match[0], index: match.index, year: match[1], setNum: match[2], marks: match[3], questionType: match[4]?.toUpperCase() });
+      labels.push({ field, label: match[0], index: match.index, examPaper: match[1]?.toUpperCase(), year: match[2], setNum: match[3], marks: match[4], questionType: match[5]?.toUpperCase() });
     }
   }
   if (!labels.length) return { question, labels, conflict: false };
   const metadata = {};
-  for (const key of ['year', 'marks', 'setNum', 'questionType']) {
+  for (const key of ['examPaper', 'year', 'marks', 'setNum', 'questionType']) {
     const values = new Set(labels.map(label => label[key]).filter(Boolean));
     // Keep all evidence intact when two inline labels disagree.
     if (values.size > 1) return { question, labels, conflict: true };

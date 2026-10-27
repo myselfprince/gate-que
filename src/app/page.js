@@ -763,7 +763,7 @@ export default function Home() {
   };
 
   const generateId = () => uuidv4();
-  const getYearOptions = () => { let opts = []; for (let y = 2026; y >= 1990; y--) opts.push(y); return opts; };
+  const getYearOptions = () => { let opts = []; for (let y = Math.max(2026, new Date().getFullYear()); y >= 1983; y--) opts.push(y); return opts; };
 
   const availableYears = ['All', ...Array.from(new Set(questions.filter(q => !q.isBlank && q.year).map(q => q.year))).sort((a, b) => parseInt(b) - parseInt(a))];
 
@@ -1528,6 +1528,9 @@ const handleExportAllImages = async () => {
                   </details>
                   
                   <div className="grid-meta" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 2fr', gap: '10px' }}>
+                    <label>GATE paper<select aria-label={`Paper for question ${qNum}`} disabled={isBulkLocked} value={q.examPaper || 'CS'} onChange={e => updateQ(q.id, 'examPaper', e.target.value)}><option value="CS">CS — Computer Science</option><option value="IT">IT — Information Technology</option></select></label>
+                    <label>Paper set / session<input aria-label={`Set for question ${qNum}`} disabled={isBulkLocked} value={q.setNum || ''} onChange={e => updateQ(q.id, 'setNum', e.target.value)} maxLength={16} placeholder="Blank for single paper" /></label>
+                    <label>Original paper question number<input aria-label={`Original number for question ${qNum}`} type="number" min="1" max="999" disabled={isBulkLocked} value={q.paperQuestionNumber || ''} onChange={e => updateQ(q.id, 'paperQuestionNumber', e.target.value)} placeholder="From official paper, not book numbering" /></label>
                     <div><label>Year</label><select disabled={isBulkLocked} value={q.year} onChange={(e) => updateQ(q.id, 'year', e.target.value)}>{getYearOptions().map(y => <option key={y} value={y}>{y}</option>)}</select></div>
                     <div><label>Marks</label><div className="radio-group" style={{ display: 'flex', gap: '5px' }}><input disabled={isBulkLocked} type="radio" checked={q.marks === "1"} onChange={() => updateQ(q.id, 'marks', "1")} /> 1M <input disabled={isBulkLocked} type="radio" checked={q.marks === "2"} onChange={() => updateQ(q.id, 'marks', "2")} style={{ marginLeft: '10px' }} /> 2M</div></div>
                     <div><label>Images</label><div className="input-group" style={{ display: 'flex' }}><input disabled={isBulkLocked} type="text" value={q.diagram || ""} onChange={(e) => updateQ(q.id, 'diagram', e.target.value)} placeholder="e.g. 1a, 1b" style={{ borderRadius: '4px 0 0 4px' }} /><select disabled={isBulkLocked} value={q.ext} onChange={(e) => updateQ(q.id, 'ext', e.target.value)} style={{ width: '60px' }}><option value=".png">.png</option><option value=".jpg">.jpg</option></select></div></div>
@@ -1576,7 +1579,7 @@ const handleExportAllImages = async () => {
                 </div>
                 
                 <div id={`preview-${q.id}`} className="preview-pane" style={{ paddingLeft: '20px', width: '50%', minWidth: 0, boxSizing: 'border-box', overflowWrap: 'anywhere' }}>
-                  <div style={{ color: '#a6e3a1', fontWeight: 'bold', marginBottom: '10px' }}>[GATE {q.year}{q.setNum ? ` (Set-${q.setNum})` : ''} | {q.marks} Mark{q.questionType ? ` | ${q.questionType}` : ''}]{q.source?.questionNumber ? ` · Book Q${q.source.questionNumber}` : ''}</div>
+                  <div style={{ color: '#a6e3a1', fontWeight: 'bold', marginBottom: '10px' }}>[GATE {q.examPaper || 'CS'} {q.year}{q.setNum ? ` (Set-${q.setNum})` : ''} | {q.marks} Mark{q.questionType ? ` | ${q.questionType}` : ''}]{q.source?.questionNumber ? ` · Book Q${q.source.questionNumber}` : ''}</div>
                   {safeSolutionUrl(q.solutionUrl) && <a href={safeSolutionUrl(q.solutionUrl)} target="_blank" rel="noopener noreferrer" style={{ color: '#89dceb' }}>Watch video solution ↗</a>}
                   <div>{preview.content}</div>
 

@@ -3,6 +3,14 @@ import { normalizePdfSettings } from './pdf-settings.mjs';
 
 export function normalizeQuestionMetadata(value, fail = (message) => { throw new Error(message); }) {
   const metadata = {};
+  if (value.examPaper !== undefined) {
+    if (!['CS', 'IT'].includes(value.examPaper)) fail('Exam paper must be CS or IT.');
+    metadata.examPaper = value.examPaper;
+  }
+  if (value.paperQuestionNumber !== undefined) {
+    if (typeof value.paperQuestionNumber !== 'string' || (value.paperQuestionNumber !== '' && !/^[1-9]\d{0,2}$/.test(value.paperQuestionNumber))) fail('Original paper question number must be from 1 to 999.');
+    metadata.paperQuestionNumber = value.paperQuestionNumber;
+  }
   if (value.exportNumber !== undefined) {
     if (typeof value.exportNumber !== 'string' || !/^[1-9]\d{0,5}$/.test(value.exportNumber)) fail('Export question number is invalid.');
     metadata.exportNumber = value.exportNumber;
@@ -61,7 +69,7 @@ export function normalizeQuestionMetadata(value, fail = (message) => { throw new
         result[key] = printed[key];
       }
       if (!result.text.trim() || !['.png', '.jpg', '.jpeg', '.webp', '.gif'].includes(result.ext)) fail('Verified source content is incomplete.');
-      const answer = normalizeQuestionMetadata({ questionType: printed.questionType, correctOptions: printed.correctOptions }, fail);
+      const answer = normalizeQuestionMetadata({ questionType: printed.questionType, correctOptions: printed.correctOptions, examPaper: printed.examPaper, paperQuestionNumber: printed.paperQuestionNumber }, fail);
       if (!answer.questionType || !answer.correctOptions) fail('Verified source answer is incomplete.');
       const options = [result.optA, result.optB, result.optC, result.optD];
       if (answer.questionType === 'NAT' ? options.some(Boolean) || !result.natAnswer || answer.correctOptions.length

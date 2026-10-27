@@ -45,7 +45,7 @@ test('malformed source and answer metadata are rejected', () => {
 test('LaTeX keeps source numbering, sets, math, blanks and the answer key', () => {
   const tex = buildLatexSource(LAN_IMPORT);
   assert.equal((tex.match(/\\item\[\\textbf\{2\./g) || []).length, 35);
-  assert.match(tex, /GATE 2024 \(Set-2\)/);
+  assert.match(tex, /GATE CS 2024 \(Set-2\)/);
   assert.match(tex, /\\times10\^8/);
   assert.match(tex, /\\rule\{2cm\}/);
   assert.match(tex, /\\section\*\{Answer key\}/);

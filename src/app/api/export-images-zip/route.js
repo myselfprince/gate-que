@@ -54,7 +54,7 @@ const renderQuestion = (question, index, origin, subject, chapter, contentWidth)
     ? `<div style="margin-top: 20px;"><div><strong>(A)</strong> ${renderOption(question.optA)}</div><div><strong>(B)</strong> ${renderOption(question.optB)}</div><div><strong>(C)</strong> ${renderOption(question.optC)}</div><div><strong>(D)</strong> ${renderOption(question.optD)}</div></div>`
     : (question.isProof ? '' : `<div style="margin-top:20px; color:#f38ba8;"><strong>NAT Answer:</strong> ${escapeHtml(question.natAnswer || '_________________')}</div>`);
 
-  return `<div class="export-card" id="q-${index}"><div style="width: ${contentWidth}%;"><div class="meta">GATE ${escapeHtml(question.year)} | ${escapeHtml(question.marks)} Mark</div><div class="question-text">${text}</div>${options}</div></div><br/>`;
+  return `<div class="export-card" id="q-${index}"><div style="width: ${contentWidth}%;"><div class="meta">GATE ${escapeHtml(question.examPaper || 'CS')} ${escapeHtml(question.year)} | ${escapeHtml(question.marks)} Mark</div><div class="question-text">${text}</div>${options}</div></div><br/>`;
 };
 
 export async function POST(request) {

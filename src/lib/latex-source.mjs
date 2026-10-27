@@ -109,7 +109,7 @@ export function buildLatexSource({ subject, chapter, questions }) {
 `;
   for (const q of questions) {
     const number = q.source?.questionNumber;
-    const meta = `GATE ${q.year}${q.setNum ? ` (Set-${q.setNum})` : ''} | ${q.marks} Mark${q.questionType ? ` | ${q.questionType}` : ''}`;
+    const meta = `GATE ${q.examPaper || 'CS'} ${q.year}${q.setNum ? ` (Set-${q.setNum})` : ''} | ${q.marks} Mark${q.questionType ? ` | ${q.questionType}` : ''}`;
     source += `\n\\item${number ? `[\\textbf{${escapeLatex(number)}}]` : ''} \\begin{minipage}[t]{\\linewidth}\n\\textbf{[${escapeLatex(meta)}]}\\par\\smallskip\n`;
     source += `${renderSourceQuestion(q)}\n\\end{minipage}\n\\par\\bigskip\n`;
   }

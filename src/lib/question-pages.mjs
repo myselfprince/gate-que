@@ -55,7 +55,7 @@ ${YOUTUBE_ICON_TEX}
     source += box('pageheaderbox', decorations.top) + box('pagefooterbox', decorations.bottom);
     source += `\\setlength{\\questionheight}{\\dimexpr\\textheight-32pt-\\ht\\pageheaderbox-\\dp\\pageheaderbox-\\ht\\pagefooterbox-\\dp\\pagefooterbox-${settings.workingLines ? (settings.workingLines + 1) * 14 : 0}pt\\relax}\n`;
     const number = q.source?.questionNumber || q.exportNumber || String(startIndex + index + 1);
-    const meta = `GATE ${q.year || ''}${q.setNum ? ` (Set-${q.setNum})` : ''} | ${q.marks || '1'} Mark${q.questionType ? ` | ${q.questionType}` : ''}`;
+    const meta = `GATE ${q.examPaper || 'CS'} ${q.year || ''}${q.setNum ? ` (Set-${q.setNum})` : ''} | ${q.marks || '1'} Mark${q.questionType ? ` | ${q.questionType}` : ''}`;
     // Capture verbatim code once outside conditionals. The measured question
     // can then reflow at full width, independently scaling the saved listing.
     const codeReference = '\n\\par\\medskip\\noindent\\scalebox{\\questioncodescale}{\\usebox{\\questioncodebox}}\\par\\medskip\n';

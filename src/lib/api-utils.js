@@ -65,7 +65,7 @@ export const validateQuestion = (value) => {
   if (!['auto', '1col', '2col'].includes(optLayout)) throw new ValidationError('Options layout is invalid.');
 
   return {
-    ...normalizeQuestionMetadata(value, (message) => { throw new ValidationError(message); }),
+    ...normalizeQuestionMetadata({ ...value, examPaper: value.examPaper ?? 'CS' }, (message) => { throw new ValidationError(message); }),
     id: readString(value.id || randomUUID(), 'Question id', { required: true, maxLength: 100, trim: true }),
     text: readString(value.text || '', 'Question text'),
     code: readString(value.code || '', 'Code'),

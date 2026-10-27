@@ -202,7 +202,7 @@ export default function ScrapedViewer() {
 
               <div style={{ flex: 1, paddingLeft: '20px' }}>
                 <div style={{ color: '#a6e3a1', fontWeight: 'bold', marginBottom: '10px' }}>
-                    [GATE {q.year} {q.setNum ? `Set-${q.setNum} ` : ''}| {q.marks} Mark]
+                    [GATE {q.examPaper || 'CS'} {q.year} {q.setNum ? `Set-${q.setNum} ` : ''}| {q.marks} Mark]
                 </div>
                 <div style={{ whiteSpace: 'pre-wrap' }}>{q.text}</div>
                 <div style={{ marginTop: '15px' }}>

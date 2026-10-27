@@ -81,11 +81,13 @@ export async function GET(request) {
       
       const metaLinks = $(el).find('.year_sub_chap_link a');
       let year = "2026";
+      let examPaper = 'CS';
       let setNum = "";
       let rawTopic = "Unknown Topic"; // <--- NEW: Grab the raw topic
 
       if (metaLinks.length > 0) {
         const metaText = $(metaLinks[0]).text();
+        if (/\bIT\b/i.test(metaText)) examPaper = 'IT';
         const yearMatch = metaText.match(/\d{4}/);
         if (yearMatch) year = yearMatch[0];
         const setMatch = metaText.match(/SET\s*[-_]?\s*(\d+)/i);
@@ -128,6 +130,7 @@ export async function GET(request) {
         text,
         code: "",
         year,
+        examPaper,
         setNum,
         rawTopic, // <--- NEW: Send the raw topic to the frontend
         marks,

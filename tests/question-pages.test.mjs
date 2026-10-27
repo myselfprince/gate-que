@@ -12,7 +12,7 @@ test('question-page layout uses full width, a dark theme and one page boundary p
   assert.equal((tex.match(/\\clearpage/g) || []).length, 34);
   assert.match(tex, /\\PackageError\{G4Gate\}/);
   assert.doesNotMatch(tex, /multicols|\\begin\{questions\}|Answer key|\\\\n\\end\{tabular\}/);
-  assert.match(tex, /GATE 2024 \(Set-2\)/);
+  assert.match(tex, /GATE CS 2024 \(Set-2\)/);
   assert.match(tex, /35 \/ 35/);
 });
 

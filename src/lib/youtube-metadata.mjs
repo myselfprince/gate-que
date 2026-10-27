@@ -65,7 +65,8 @@ export function buildYouTubeMetadata(question, { subject, chapter, number = 1, s
   const subjectName = cleanLabel(subject), chapterName = cleanLabel(chapter);
   const topic = cleanLabel(draft.topic || question.rawTopic || chapterName) || chapterName || 'Previous Year Question';
   const year = cleanLatexForYoutube(question.year), marks = cleanLatexForYoutube(question.marks);
-  const exam = `GATE CSE${year ? ` ${year}` : ''}`;
+  const examName = question.examPaper === 'IT' ? 'GATE IT' : 'GATE CSE';
+  const exam = `${examName}${year ? ` ${year}` : ''}`;
   const identity = `Q${number}${question.setNum ? ` · Set ${cleanLatexForYoutube(question.setNum)}` : ''}`;
   const suffix = ` | ${identity}`;
   const titles = [
@@ -83,7 +84,7 @@ export function buildYouTubeMetadata(question, { subject, chapter, number = 1, s
   if (question.diagram?.trim() && question.diagram !== 'auto' || /\[IMG_|\[DIAGRAM_PLACEHOLDER\]/.test(question.text || '')) questionParts.push('Refer to the question diagram in the video.');
   if (options.length) questionParts.push(`Options:\n${options.join('\n')}`);
   if (config.includeAnswer && question.natAnswer?.trim()) questionParts.push(`Answer: ${cleanLatexForYoutube(question.natAnswer)}`);
-  const hashtags = [...new Set(['GATECSE', 'GATEPYQ', hashtag(topic)].filter(Boolean))].map(tag => `#${tag}`);
+  const hashtags = [...new Set([question.examPaper === 'IT' ? 'GATEIT' : 'GATECSE', 'GATEPYQ', hashtag(topic)].filter(Boolean))].map(tag => `#${tag}`);
   const opening = `${topic} — ${exam} previous year question${marks ? ` (${marks} ${marks === '1' ? 'mark' : 'marks'})` : ''}.\nPractice ${subjectName}: ${chapterName} with this PYQ solution${config.channelName?.trim() ? ` from ${plain(config.channelName).trim()}` : ''}.`;
   const links = [safeLink(config.website) && `More GATE practice: ${safeLink(config.website)}`, safeLink(config.playlistUrl) && `Chapter playlist: ${safeLink(config.playlistUrl)}`].filter(Boolean);
   const tail = [links.join('\n'), plain(config.footer).trim(), hashtags.join(' ')].filter(Boolean).join('\n\n');
@@ -91,7 +92,7 @@ export function buildYouTubeMetadata(question, { subject, chapter, number = 1, s
   const bodyBudget = Math.max(0, YOUTUBE_LIMITS.description - opening.length - tail.length - 4);
   const body = config.includeQuestion ? shorten(questionParts.join('\n\n'), bodyBudget) : '';
   const description = shorten([opening, body, tail].filter(Boolean).join('\n\n'), YOUTUBE_LIMITS.description);
-  const tags = normalizeTags(['GATE CSE', `${exam} PYQ`, topic, chapterName, subjectName, `${topic} GATE questions`, 'GATE previous year questions', config.channelName]);
+  const tags = normalizeTags([examName, `${exam} PYQ`, topic, chapterName, subjectName, `${topic} GATE questions`, 'GATE previous year questions', config.channelName]);
   const title = draft.title !== undefined ? plain(draft.title) : titles[config.titleStyle === 'exam' ? 1 : config.titleStyle === 'question' ? 2 : 0];
   const finalDescription = draft.description !== undefined ? plain(draft.description) : description;
   const finalTags = draft.tags !== undefined ? normalizeTags(draft.tags) : tags;

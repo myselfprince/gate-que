@@ -1,7 +1,7 @@
 import { createHash } from 'node:crypto';
 
 const fingerprint = (q) => createHash('sha256').update(JSON.stringify([
-  q.text, q.code, q.year, q.setNum, q.optA, q.optB, q.optC, q.optD,
+  q.text, q.code, q.year, q.examPaper || 'CS', q.setNum, q.optA, q.optB, q.optC, q.optD,
 ].map((value) => String(value || '').replace(/\s+/g, ' ').trim()))).digest('hex');
 
 export function mergeChapterImport(existing, incoming) {
