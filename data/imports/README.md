@@ -1,5 +1,88 @@
 # Reviewed chapter imports
 
+## Algorithm Analysis and Asymptotic Notations (68 source questions)
+
+`algorithms-analysis.mjs` covers Q1.1-Q1.68 from all five visually inspected
+scanned spreads of `7. Algorithms/1. Algo. Analysis and Asymptotic Notations.pdf`,
+book pages 417-424. All answers come from PDF page 5 / book page 425; the
+explanations below the key are excluded. Source SHA-256:
+`b626ea3c6f9591e887dc07217525a86f18e041edef3adfe2ecd42324a56e6492`.
+
+There are 60 MCQs, 4 MSQs (1.1, 1.62-1.64) and 4 NATs (1.41, 1.48, 1.54,
+1.67). The printed formal-language question 1.64 remains in this chapter's
+original order. Shared code accompanies Q1.20/21 and Q1.32/33; Q1.48 spans book
+pages 421-422 and has one checksum-guarded flowchart-only crop. Tables and
+formulas remain editable LaTeX, and programs have separate code fields.
+
+Source caveats are retained in per-question notes: the malformed Q1.21 opening,
+uninitialized Z[0] in Q1.32/33, and overlapping base/recursive conditions in
+Q1.66. No text or answer has been invented to repair these printed defects.
+
+The inspected main chapter was absent and the existing completion target was
+68. The adapted importer uses the existing reviewed merge, stable IDs,
+checksum-guarded source, EJSON backup with checksum, a unique chapter index,
+transaction and compare-and-set protection. It rejects newly introduced
+unreviewed records. Repeat imports preserve existing edits and locks.
+
+```powershell
+node scripts/import-algorithms-analysis.mjs
+node scripts/import-algorithms-analysis.mjs --apply --backup-dir data/backups/algorithms-analysis
+node scripts/verify-algorithms-analysis-export.mjs data/backups/algorithms-analysis/verified-source-from-database.json output/pdf/algorithms-analysis
+python scripts/verify-algorithms-analysis-pdfs.py output/pdf/algorithms-analysis
+```
+
+## Memory Organization (74 source questions)
+
+`coa-memory-organization.mjs` covers Q4.1-Q4.74 from all five scanned spreads
+of `4. COA/4. Memory Organization.pdf`, book pages 281-289. The previous
+chapter's explanations on book page 280 are excluded. Source SHA-256:
+`e1b88198e1018531aee17191441bfe1c70efd30be87a44b1f08a771b14af5bfd`.
+
+The supplied PDF ends at Q4.74 and contains no answer key for this chapter.
+All 74 answer fields are intentionally empty and carry the existing validated
+`answerKeyStatus: not-supplied` metadata with a null answer-key page. There are
+50 MCQs, 4 MSQs (4.3, 4.68, 4.70, 4.73) and 20 NATs. No question text is
+unresolved. MSQ classification follows the printed multiple-selection wording.
+
+The main chapter was absent: 74 records were added, with no existing matches.
+The existing target of 74 was preserved. Stable IDs, source identities,
+checksum-protected EJSON backups, exact revision/content checks, a unique
+chapter index and a transaction protect imports. Unexpected legacy records
+stop for review; repeat import preserves edits and locks and adds zero records.
+
+Shared programs are separate code fields and accompany every dependent question.
+Q4.12 crosses PDF spreads; Q4.20/21 continue across book pages; Q4.30/31 require
+the shared program on the previous spread. Q4.40, Q4.45, Q4.55, Q4.64 and Q4.70
+have page/column continuations. Both tables are editable LaTeX. Three
+checksum-guarded, figure-only crops serve Q4.35/36, Q4.52 and Q4.71. Printed
+anomalies and the redundant table transcription in Q4.16 are documented in
+source notes. All prose remains editable. The Q4.16 closing-math-delimiter
+correction was separately backed up and applied only to the exact reviewed
+record; its ID, metadata, locks and all other questions were preserved.
+
+```powershell
+python scripts/extract-coa-memory-diagrams.py
+node scripts/import-coa-memory-organization.mjs
+node scripts/import-coa-memory-organization.mjs --apply --backup-dir 'data/backups/coa-memory-organization'
+node --test tests/coa-memory-organization-import.test.mjs
+node scripts/verify-coa-memory-export.mjs '<verified-source-from-database.json>' '<output-dir>'
+python scripts/verify-coa-memory-pdfs.py '<output-dir>'
+```
+
+The actual database read-back passed full source/content coverage and repeat
+import added zero records. All 74 editor previews passed (215 MathJax
+expressions; no errors, raw math, broken images or overflow). Actual export
+routes produced four parts (20 + 20 + 20 + 14 pages). Every page was rendered
+and visually reviewed; independent compilation of the portable LaTeX ZIP is
+pixel-identical on all 74 pages. Black backgrounds, white text, full-width
+question bodies and one complete question per page use the existing export
+helpers. The current default title appears on the first page. No export
+format or application schema changes were required.
+
+Artifacts and preview captures: `output/pdf/coa-memory-organization/`.
+Backups, database read-back and correction audit:
+`data/backups/coa-memory-organization-2026-10-27/`.
+
 ## CPU Architecture and Addressing Modes (45 source questions)
 
 `coa-cpu-addressing.mjs` covers Q1.1-Q1.45 from all four scanned spreads of
