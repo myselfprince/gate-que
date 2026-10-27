@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { DEFAULT_MOCK_BLUEPRINT, PAPER_PATTERN_SOURCE } from '@/lib/gatemock.mjs';
 import { safeSolutionUrl } from '@/lib/solution-links.mjs';
 import MockQuestion, { MockOption } from './MockQuestion';
-import MockCalculator from './MockCalculator';
+import GateExamScreen from './GateExamScreen';
 import styles from './mock.module.css';
 
 const STORAGE_KEY = 'g4gate-mock-active-v1';
@@ -114,31 +114,15 @@ export default function GateMock() {
     </main>;
   }
   if (attempt && testState) {
-    const q = attempt.questions[testState.currentIndex];
-    const responseMap = new Map(testState.responses.map(response => [response.key, response.value]));
-    const response = responseMap.get(q.key), answered = testState.responses.filter(response => hasResponse(response.value)).length;
-    return <main className={styles.page}>{header}<div className={styles.examTop}><div><h2>{attempt.title}</h2><p>{attempt.questions.length} questions · {attempt.questions.reduce((s, q) => s + Number(q.marks), 0)} marks</p></div><div className={styles.timer} role="timer">{seconds === null ? '…' : `${Math.floor(seconds / 3600).toString().padStart(2, '0')}:${Math.floor(seconds % 3600 / 60).toString().padStart(2, '0')}:${(seconds % 60).toString().padStart(2, '0')}`}<small>Time remaining</small></div></div>
-      {alert}{attempt.warnings.map(warning => <p key={warning} className={styles.warning}>{warning}</p>)}
-      <div className={styles.examLayout}><section className={styles.questionCard}><div className={styles.questionBar}><strong>Question {testState.currentIndex + 1}{q.paperQuestionNumber ? ` · Original Q${q.paperQuestionNumber}` : ''}</strong><span>{q.questionType} · +{q.marks} / {q.questionType === 'MCQ' ? `−${(Number(q.marks) * attempt.negativeFraction).toFixed(2)}` : '0'} marks</span></div>
-        <p className={styles.questionOrigin}>GATE {q.examPaper} {q.year}{q.setNum ? ` · Set ${q.setNum}` : ''} · {q.subject} · {q.chapter}</p>
-        <MockQuestion key={q.key} question={q}>
-          <fieldset disabled={busy || seconds === 0} className={styles.responseFields}><legend>{q.questionType === 'MSQ' ? 'Select all correct options' : q.questionType === 'MCQ' ? 'Select one option' : 'Enter your numerical answer'}</legend>
-            {['MCQ', 'MSQ'].includes(q.questionType) ? ['A', 'B', 'C', 'D'].filter(letter => q[`opt${letter}`]).map(letter => <label key={letter} className={styles.option}>
-              <input type={q.questionType === 'MCQ' ? 'radio' : 'checkbox'} name={`response-${q.key}`} checked={response?.includes(letter) || false} onChange={event => respond(q.questionType === 'MCQ' ? [letter] : event.target.checked ? [...(response || []), letter] : response.filter(value => value !== letter))} />
-              <strong>({letter})</strong><MockOption question={q} text={q[`opt${letter}`]} />
-            </label>) : q.questionType === 'SUBJECTIVE' ? <p>This historical subjective question requires manual review. Work it out separately.</p> : <input aria-label="Numerical response" inputMode="decimal" value={response || ''} maxLength={100} onChange={e => respond(e.target.value.trim())} placeholder="Enter a number" />}
-          </fieldset>
-        </MockQuestion>
-        <div className={styles.examActions}><button disabled={busy || seconds === 0} onClick={() => { const marked = testState.marked.includes(q.key); setTestState(state => ({ ...state, marked: marked ? state.marked.filter(key => key !== q.key) : [...state.marked, q.key] })); }}> {testState.marked.includes(q.key) ? 'Unmark review' : 'Mark for review'}</button><button disabled={busy || seconds === 0} onClick={() => respond([])}>Clear response</button><button disabled={!testState.currentIndex} onClick={() => move(testState.currentIndex - 1)}>Previous</button><button className={styles.primary} disabled={testState.currentIndex === attempt.questions.length - 1} onClick={() => move(testState.currentIndex + 1)}>Save & next →</button></div>
-      </section><aside className={styles.panel}><h3>Question palette</h3><p>{answered} answered · {testState.marked.length} marked</p><div className={styles.palette}>{attempt.questions.map((question, index) => {
-        const marked = testState.marked.includes(question.key), answered = hasResponse(responseMap.get(question.key)), visited = testState.visited.includes(question.key);
-        const status = marked ? answered ? 'answeredReview' : 'review' : answered ? 'answered' : visited ? 'visited' : 'unvisited';
-        return <button key={question.key} className={`${styles[status]} ${index === testState.currentIndex ? styles.current : ''}`} aria-current={index === testState.currentIndex ? 'step' : undefined} aria-label={`Question ${index + 1}, ${marked ? 'marked for review, ' : ''}${answered ? 'answered' : visited ? 'not answered' : 'not visited'}`} onClick={() => move(index)}>{index + 1}</button>;
-      })}</div><p className={styles.legend}>Green: answered · Red: visited, unanswered · Purple: review · Purple + dot: answered and review · Grey: not visited</p>
-        <p role="status">{saveStatus}</p><button disabled={busy} onClick={() => save(testState).catch(error => setError(error.message))}>Save now</button><MockCalculator /><button onClick={() => { if (!document.fullscreenElement) document.documentElement.requestFullscreen?.().catch(() => setError('Fullscreen is unavailable in this browser.')); else document.exitFullscreen?.(); }}>Toggle full screen</button><button className={styles.primary} disabled={busy} onClick={() => setConfirmSubmit(true)}>Submit test</button>
-      </aside></div>
-      {confirmSubmit && <div className={styles.overlay}><div role="alertdialog" aria-modal="true" aria-labelledby="submit-title" className={styles.panel}><h2 id="submit-title">Submit this test?</h2><p>{answered} answered · {attempt.questions.length - answered} unanswered · {testState.marked.length} marked for review</p><p>Answered questions marked for review are evaluated. You cannot change responses after submission.</p><button onClick={() => setConfirmSubmit(false)}>Continue test</button><button className={styles.primary} onClick={submit}>Confirm submit</button></div></div>}
-    </main>;
+    return <GateExamScreen attempt={attempt} state={testState} seconds={seconds} busy={busy} error={error} saveStatus={saveStatus}
+      confirmSubmit={confirmSubmit} onRespond={respond} onMove={move} onSubmit={() => setConfirmSubmit(true)} onCancelSubmit={() => setConfirmSubmit(false)} onConfirmSubmit={submit}
+      onCommitNext={(marked, nextIndex) => {
+        const key = attempt.questions[testState.currentIndex].key;
+        const nextState = { ...testState, currentIndex: nextIndex, visited: [...new Set([...testState.visited, attempt.questions[nextIndex].key])],
+          marked: marked ? [...new Set([...testState.marked, key])] : testState.marked.filter(value => value !== key) };
+        setTestState(nextState);
+        save(nextState).catch(error => setSaveStatus(`Not saved: ${error.message}`));
+      }} />;
   }
   const topics = catalog?.subjects.find(value => value.subject === subject)?.topics || [];
   const yearPapers = catalog?.years.filter(paper => paper.examPaper === examPaper) || [];

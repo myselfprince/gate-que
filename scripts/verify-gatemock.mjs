@@ -80,9 +80,8 @@ try {
   await page.evaluate(() => [...document.querySelectorAll('button')].find(b => b.textContent === 'Start timed test →').click());
   const browserAttempt = await (await attemptResponse).json(); assert.ok(browserAttempt.attempt); attempts.push(browserAttempt.attempt.id);
   await page.waitForSelector('input[type=radio]'); await page.click('input[type=radio]');
-  await page.evaluate(() => [...document.querySelectorAll('button')].find(b => b.textContent.trim() === 'Mark for review').click());
-  await page.evaluate(() => [...document.querySelectorAll('button')].find(b => b.textContent === 'Save & next →').click());
-  await page.waitForFunction(() => document.body.textContent.includes('Question 2 · Original Q2'));
+  await page.evaluate(() => [...document.querySelectorAll('button')].find(b => b.textContent.trim() === 'Mark for Review & Next').click());
+  await page.waitForFunction(() => document.body.textContent.includes('Question No. 2'));
   await page.click('input[type=radio]');
   await page.waitForFunction(() => [...document.querySelectorAll('[role=status]')].some(el => el.textContent === 'Saved'));
   await page.screenshot({ path: 'tmp/gatemock-qa/exam.png', fullPage: true });
@@ -97,8 +96,8 @@ try {
   assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem('g4gate-mock-active-v1')).id), browserAttempt.attempt.id);
   failResume = false;
   await page.reload({ waitUntil: 'networkidle2' }); await page.waitForSelector('input[type=radio]:checked');
-  assert.ok(await page.evaluate(() => document.body.textContent.includes('Question 2 · Original Q2')));
-  await page.evaluate(() => [...document.querySelectorAll('button')].find(b => b.textContent === 'Submit test').click());
+  assert.ok(await page.evaluate(() => document.body.textContent.includes('Question No. 2')));
+  await page.click('[aria-label="Submit test"]');
   await page.evaluate(() => [...document.querySelectorAll('button')].find(b => b.textContent === 'Confirm submit').click());
   await page.waitForFunction(() => document.body.textContent.includes('Your review starts here.'));
   assert.ok(await page.evaluate(() => document.body.textContent.includes('0.67 / 2')));
