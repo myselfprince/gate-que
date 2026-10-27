@@ -39,7 +39,7 @@ try {
   });
   await page.goto(origin, { waitUntil: 'networkidle0' });
   await page.waitForFunction(() => document.querySelector('[aria-label="Preferred text size"]')?.value === '24');
-  const openSettings = () => page.evaluate(() => { [...document.querySelectorAll('details')].find(node => node.querySelector('summary')?.textContent.includes('PDF design settings')).open = true; });
+  const openSettings = () => page.evaluate(() => { document.querySelector('#tab-pdf')?.click(); [...document.querySelectorAll('details')].find(node => node.querySelector('summary')?.textContent.includes('PDF design settings')).open = true; });
   const clickButton = text => page.evaluate(text => [...document.querySelectorAll('button')].find(button => button.textContent === text).click(), text);
   const checkbox = (label, checked) => page.evaluate(({ label, checked }) => { const input = [...document.querySelectorAll('label')].find(node => node.textContent.trim() === label)?.querySelector('input'); if (!input) throw new Error(`Missing ${label}`); if (input.checked !== checked) input.click(); }, { label, checked });
   const fill = async (label, value) => { await page.locator(`[aria-label="${label}"]`).fill(value); await page.$eval(`[aria-label="${label}"]`, input => input.blur()); };
@@ -89,10 +89,9 @@ try {
   await openSettings();
   assert.ok(await page.evaluate(() => [...document.querySelectorAll('button')].some(button => button.textContent === 'Custom teaching')));
   await checkbox('Open PDF links in a new tab in the app preview', false);
-  await clickButton('Preview one question');
-  await waitPreview(1);
-  await page.waitForSelector('[aria-label="Actual PDF preview"] a[href^="https://www.youtube.com"]');
-  assert.equal(await page.$eval('[aria-label="Actual PDF preview"] a', node => node.target), '_self');
+  await page.waitForFunction(() => document.querySelector('[aria-label="Live PDF design preview"] [data-preview-current="true"] canvas')?.dataset.renderedPage === '1', { timeout: 70000 });
+  await page.waitForSelector('[aria-label="Live PDF sample viewer"] a[href^="https://www.youtube.com"]');
+  assert.equal(await page.$eval('[aria-label="Live PDF sample viewer"] a', node => node.target), '_self');
   await fill('Website URL', 'invalid');
   await page.waitForSelector('[aria-label="Website URL"][aria-invalid="true"]');
   await clickButton('Reset');

@@ -1151,7 +1151,7 @@ const handleExportAllImages = async () => {
 
       <header className={styles.heading}>
         <div><p className={styles.eyebrow}>G4Gate · Creator workspace</p><h1>From question to publication.</h1><p className={styles.subtitle}>Edit your PYQs, prepare PDFs, and create your next YouTube upload.</p></div>
-        <nav className={styles.links} aria-label="Workspace tools"><Link href="/scraper" target="_blank">Scraper ↗</Link><Link href="/status" target="_blank">Chapter status ↗</Link><Link href="/diagram-maker" target="_blank">Diagram studio ↗</Link><Link href="/kmap-maker" target="_blank">K-Map studio ↗</Link></nav>
+        <nav className={styles.links} aria-label="Workspace tools"><Link href="/scraper" target="_blank">Scraper ↗</Link><Link href="/scraped-view" target="_blank">Scraped questions ↗</Link><Link href="/status" target="_blank">Chapter status ↗</Link><Link href="/pdf-tracker" target="_blank">PDF tracker ↗</Link><Link href="/diagram-maker" target="_blank">Diagram studio ↗</Link><Link href="/kmap-maker" target="_blank">K-Map studio ↗</Link></nav>
       </header>
       <section className={styles.chapterBar} aria-label="Current chapter">
         <div style={{ flex: '1 1 200px' }}>
@@ -1271,8 +1271,7 @@ const handleExportAllImages = async () => {
       </div>
       <section id="panel-pdf" role="tabpanel" aria-labelledby="tab-pdf" hidden={activeTab !== 'pdf'}>
         <div className={styles.sectionTitle}><div><h2>Publish your question book</h2><p>Choose questions, adjust the design, then preview and download your PDF.</p></div></div>
-        <PdfSettingsPanel settings={pdfSettings} onChange={setPdfSettings} onValidityChange={setPdfSettingsValid} />
-        <PdfExportPanel key={`${subject}|${chapter}`} payload={{ subject, chapter, questions, pdfSettings }} settingsValid={pdfSettingsValid} />
+        <PdfExportPanel key={`${subject}|${chapter}`} payload={{ subject, chapter, questions, pdfSettings }} settingsValid={pdfSettingsValid} active={activeTab === 'pdf'} settingsControls={<PdfSettingsPanel settings={pdfSettings} onChange={setPdfSettings} onValidityChange={setPdfSettingsValid} />} />
       </section>
       <section id="panel-youtube" role="tabpanel" aria-labelledby="tab-youtube" hidden={activeTab !== 'youtube'}>
         <div className={styles.sectionTitle}><div><h2>YouTube studio</h2><p>Prepare your upload data and question images for this chapter.</p></div></div>

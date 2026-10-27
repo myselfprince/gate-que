@@ -1,0 +1,25 @@
+.designer { display: grid; grid-template-columns: minmax(0, 1fr) minmax(380px, .95fr); gap: 20px; align-items: start; }
+.controls { min-width: 0; }
+.livePreview { background: #181e2b; border: 1px solid #44435e; border-radius: 12px; padding: 20px; margin: 14px 0; position: sticky; top: 80px; min-width: 0; }
+.previewHeading { display: flex; align-items: start; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.eyebrow { color: #baa6e8; font-size: 10px; text-transform: uppercase; letter-spacing: .13em; margin: 0 0 7px; font-weight: 700; }
+.previewHeading h3 { color: #ecedf7; font-size: 17px; margin: 0; letter-spacing: -.02em; }
+.previewState { font-size: 10px; color: #addbc9; background: #243b38; border: 1px solid #36544b; padding: 7px 10px; border-radius: 20px; }
+.previewHint { color: #a3acc3; font-size: 12px; line-height: 1.7; margin: 12px 0; }
+.livePreview > label { font-size: 11px; color: #acbbd7; margin: 14px 0; }
+.livePreview select { margin-top: 7px; font-size: 12px; }
+.previewSurface { position: relative; border-radius: 8px; overflow: hidden; border: 1px solid #39445a; background: #0c1018; }
+.previewEmpty { display: grid; place-items: center; text-align: center; aspect-ratio: 1.414; padding: 30px; color: #92a2be; font-size: 13px; line-height: 1.8; }
+.updatingBadge { position: absolute; right: 14px; top: 64px; padding: 8px 12px; border: 1px solid #566078; color: #e5dcf6; background: #263048ed; border-radius: 6px; font-size: 11px; pointer-events: none; }
+.previewActions, .savedActions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.previewActions button, .savedActions button { font-size: 11px; padding: 9px 12px; }
+.previewActions > span { display: block; width: 100%; color: #8194b0; font-size: 10px; line-height: 1.6; }
+.secondary { background: #333e56; color: #d9e3f4; }
+.textButton { background: transparent; color: #b6a5dc; }
+.danger { background: #4a2a39; color: #ffc0d1; border: 1px solid #764355; }
+.deleteHint { color: #9ea9c1; font-size: 12px; line-height: 1.7; }
+.notice { color: #a6e3be; background: #1d342f; border: 1px solid #35534b; padding: 10px 14px; font-size: 12px; line-height: 1.6; border-radius: 7px; }
+.error { color: #f4a7bc; font-size: 12px; line-height: 1.7; }
+.warning { color: #efd3a0; font-size: 11px; line-height: 1.7; }
+@media (max-width: 1050px) { .designer { grid-template-columns: minmax(0, 1fr); } .livePreview { position: static; margin-top: 0; } }
+@media (max-width: 600px) { .livePreview { padding: 14px; } }

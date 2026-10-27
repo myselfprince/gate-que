@@ -19,3 +19,8 @@
 .textLayer :global(.markedContent) { display: contents; }
 .textLayer ::selection { background: #89b4fa88; }
 @media (max-width: 700px) { .thumbnails { display: none; } .layout { height: 480px; } }
+.compact .layout { height: clamp(260px, 34vw, 480px); }
+.compact .toolbar { padding: 8px; gap: 8px; }
+.compact .toolbar label { margin: 0; font-size: 11px; }
+.compact .toolbar button, .compact .toolbar select { padding: 7px 9px; font-size: 11px; }
+.compact .viewport { padding: 16px; }

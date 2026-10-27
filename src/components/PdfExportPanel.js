@@ -1,15 +1,19 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import PdfPreview from './PdfPreview';
+import PdfLivePreview from './PdfLivePreview';
 import { selectPdfQuestions } from '@/lib/pdf-selection.mjs';
+import styles from './PdfExportPanel.module.css';
 
 const active = job => job && ['queued', 'running'].includes(job.status);
-export default function PdfExportPanel({ payload, settingsValid = true }) {
+export default function PdfExportPanel({ payload, settingsValid = true, active: panelActive = true, settingsControls }) {
   const [jobs, setJobs] = useState([]);
   const [selected, setSelected] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+  const [notice, setNotice] = useState('');
+  const removedIds = useRef(new Set());
   const [snapshot, setSnapshot] = useState('');
   const [scope, setScope] = useState('all');
   const [year, setYear] = useState('');
@@ -17,7 +21,6 @@ export default function PdfExportPanel({ payload, settingsValid = true }) {
   const [selectedIds, setSelectedIds] = useState([]);
   const [includeBlanks, setIncludeBlanks] = useState(true);
   const [sourceMode, setSourceMode] = useState('editable');
-  const [sampleNumber, setSampleNumber] = useState(1);
   const [bookIds, setBookIds] = useState([]);
   const [bookTitle, setBookTitle] = useState('Subject book');
   let selection = [], selectionError = '';
@@ -29,7 +32,7 @@ export default function PdfExportPanel({ payload, settingsValid = true }) {
     const response = await fetch('/api/pdf-jobs', { cache: 'no-store' });
     const data = await response.json();
     if (!response.ok) throw new Error(data.error || 'Export history could not be loaded.');
-    setJobs(data.jobs);
+    setJobs(data.jobs.filter(job => !removedIds.current.has(job.id)));
   }, []);
   useEffect(() => {
     const timer = setTimeout(() => { refresh().catch(error => setError(error.message)); }, 0);
@@ -87,7 +90,34 @@ export default function PdfExportPanel({ payload, settingsValid = true }) {
     } catch (error) { setError(error.message); }
     finally { setBusy(false); }
   }
-  return <section aria-label="PDF exports" style={{ padding: 18, margin: '16px 0', border: '1px solid #cba6f7', borderRadius: 10, background: '#181825' }}>
+  async function removeGenerated(downloadFirst = false) {
+    if (!job || active(job)) return;
+    const id = job.id;
+    setBusy(true); setError(''); setNotice('');
+    let downloadStarted = false;
+    try {
+      if (downloadFirst) {
+        const response = await fetch(`/api/pdf-jobs/${id}/download`);
+        if (!response.ok) throw Error((await response.json()).error || 'The PDF could not be downloaded.');
+        const url = URL.createObjectURL(await response.blob());
+        const link = document.createElement('a'); link.href = url; link.download = `G4Gate-${job.total}-questions.pdf`; link.click();
+        downloadStarted = true; setTimeout(() => URL.revokeObjectURL(url), 1000);
+      }
+      const response = await fetch(`/api/pdf-jobs/${id}`, { method: 'DELETE' });
+      if (!response.ok && response.status !== 404) throw Error((await response.json()).error || 'The saved export could not be deleted.');
+      removedIds.current.add(id);
+      setJobs(previous => previous.filter(item => item.id !== id));
+      setSelected(previous => previous === id ? '' : previous); setBookIds(previous => previous.filter(item => item !== id)); setSnapshot('');
+      setNotice(downloadFirst ? 'PDF download started. The saved export and its generated files were removed.' : 'Saved export and generated files deleted.');
+    } catch (error) { setError(`${downloadStarted ? 'PDF download started, but the saved export could not be removed. ' : ''}${error.message}`); }
+    finally { setBusy(false); }
+  }
+  return <>
+  <div className={settingsControls ? styles.designer : undefined}>
+    {settingsControls && <div className={styles.controls}>{settingsControls}</div>}
+    <PdfLivePreview payload={payload} sourceMode={sourceMode} settingsValid={settingsValid} active={panelActive} />
+  </div>
+  <section aria-label="PDF exports" style={{ padding: 18, margin: '16px 0', border: '1px solid #cba6f7', borderRadius: 10, background: '#181825' }}>
     <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', alignItems: 'end', marginBottom: 14 }}>
       <label>Export questions<select aria-label="Export question selection" value={scope} onChange={e => setScope(e.target.value)}><option value="all">All questions</option><option value="year">By year</option><option value="range">Question ranges</option><option value="selected">Choose questions</option></select></label>
       {scope === 'year' && <label>Year<select aria-label="Export year" value={year} onChange={e => setYear(e.target.value)}><option value="">Choose year</option>{[...new Set(payload.questions.map(q => q.year).filter(Boolean))].sort().map(year => <option key={year} value={year}>{year}</option>)}</select></label>}
@@ -105,10 +135,6 @@ export default function PdfExportPanel({ payload, settingsValid = true }) {
       <span style={{ color: '#bac2de', fontSize: 13 }}>Your export continues in the background. Refreshing this page keeps its progress.</span>
       <button type="button" disabled={busy} onClick={() => refresh().catch(error => setError(error.message))}>Refresh history</button>
     </div>
-    <div style={{ display: 'flex', alignItems: 'end', gap: 12, marginTop: 12, flexWrap: 'wrap' }}>
-      <label>Quick preview: question #<input aria-label="Sample PDF question" type="number" min="1" max={payload.questions.length || 1} value={sampleNumber} onChange={e => setSampleNumber(Math.max(1, Math.min(payload.questions.length || 1, Number(e.target.value) || 1)))} style={{ width: 90 }} /></label>
-      <button type="button" disabled={busy || !payload.questions.length || !settingsValid} onClick={() => start({ ...payload, questions: selectPdfQuestions(payload.questions, { scope: 'range', range: String(sampleNumber), sourceMode }) })}>Preview one question</button>
-    </div>
     <details style={{ marginTop: 16 }}>
       <summary style={{ cursor: 'pointer', color: '#89b4fa' }}>Combine saved exports into a subject book</summary>
       <p style={{ color: '#bac2de', fontSize: 13 }}>Choose completed exports from {payload.subject}. Pages keep their layouts, links and chapter numbering. Order the exports below; chapter answer keys remain separate downloads.</p>
@@ -118,11 +144,18 @@ export default function PdfExportPanel({ payload, settingsValid = true }) {
       <button type="button" disabled={busy || bookIds.length < 2 || !bookTitle.trim()} onClick={buildBook}>Build subject book · {bookIds.length} exports</button>
     </details>
     {error && <p role="alert" style={{ color: '#f38ba8' }}>{error}</p>}
-    {jobs.length > 0 && <label>Export history<select aria-label="Export history" value={job?.id || ''} onChange={e => { setSelected(e.target.value); setSnapshot(''); }}>{jobs.map(item => <option key={item.id} value={item.id}>{item.subject} / {item.chapter} · {item.total} questions · {item.status} · {new Date(item.createdAt).toLocaleString()}</option>)}</select></label>}
+    {notice && <p role="status" className={styles.notice}>{notice}</p>}
+    {jobs.length === 0 && <p className={styles.deleteHint}>No saved PDF exports. Build a PDF when your design is ready.</p>}
+    {jobs.length > 0 && <label>Export history<select aria-label="Export history" disabled={busy} value={job?.id || ''} onChange={e => { setSelected(e.target.value); setSnapshot(''); setNotice(''); }}>{jobs.map(item => <option key={item.id} value={item.id}>{item.subject} / {item.chapter} · {item.total} questions · {item.status} · {new Date(item.createdAt).toLocaleString()}</option>)}</select></label>}
     {job && <div>
       <p role="status">{job.status === 'queued' ? 'Waiting for the active export to finish' : job.status === 'running' ? job.phase === 'combining' ? `Combining saved PDFs: ${job.completed} / ${job.total}` : job.phase === 'answers' ? 'Building separate answer key...' : job.phase === 'images' ? 'Rendering matching page images...' : job.phase === 'checking' ? 'Checking PDF pages and links...' : `Compiling: ${job.completed} / ${job.total}` : job.status === 'completed' ? `${job.total} pages ready · page count and links verified` : job.error || job.status}{job.cancelRequested && active(job) ? ' · Cancelling...' : ''}</p>
       {active(job) && <><progress aria-label="PDF export progress" max={job.total} value={job.completed} style={{ width: 'min(100%,600px)' }} /><button type="button" disabled={busy || job.cancelRequested} onClick={() => action('cancel')}>Cancel export</button></>}
       {['failed', 'cancelled'].includes(job.status) && <button type="button" disabled={busy} onClick={() => action('retry')}>Retry saved snapshot</button>}
+      <div className={styles.savedActions}>
+        <button type="button" className={styles.danger} disabled={busy || active(job)} onClick={() => removeGenerated(false)}>Delete generated PDF</button>
+        {job.status === 'completed' && <button type="button" className={styles.secondary} disabled={busy} onClick={() => removeGenerated(true)}>Download & remove saved PDF</button>}
+      </div>
+      <p className={styles.deleteHint}>{active(job) ? 'Cancel the export and wait for it to stop before deleting it.' : 'Delete removes this saved PDF, ZIPs, report and export-history entry. Files already downloaded remain on your computer.'}</p>
       {job.status === 'completed' && <div>
         <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap', marginBottom: 12 }}>
           <a href={`/api/pdf-jobs/${job.id}/download`} style={{ color: '#a6e3a1' }}>Download complete PDF</a>
@@ -137,5 +170,6 @@ export default function PdfExportPanel({ payload, settingsValid = true }) {
         <PdfPreview key={job.id + '-' + job.attempt} url={`/api/pdf-jobs/${job.id}/download?inline=1`} openLinksInNewTab={job.report?.openLinksInNewTab !== false} />
       </div>}
     </div>}
-  </section>;
+  </section>
+  </>;
 }

@@ -42,7 +42,7 @@ export default function PdfSettingsPanel({ settings, onChange, onValidityChange 
   function applyPreset(value) {
     save({ ...value }); invalidFields.current.clear(); setInvalid(false); onValidityChange?.(true); setRevision(value => value + 1);
   }
-  return <details style={{ margin: '14px 0', background: '#181825', border: '1px solid #45475a', borderRadius: 8, padding: 14 }}>
+  return <details open style={{ margin: '14px 0', background: '#181825', border: '1px solid #45475a', borderRadius: 8, padding: 14 }}>
     <summary style={{ cursor: 'pointer', color: '#cba6f7', fontWeight: 'bold' }}>PDF design settings · {settings.fontSize}pt · {settings.theme}</summary>
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 14 }}>
       {Object.entries({ ...PDF_PRESETS, ...templates }).map(([key, value]) => <button type="button" key={key} onClick={() => applyPreset(value)}>{key}</button>)}

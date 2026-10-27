@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { readJob, cancelJob, retryJob } from '@/lib/pdf-jobs.mjs';
+import { readJob, cancelJob, retryJob, deleteJob, PdfJobConflictError } from '@/lib/pdf-jobs.mjs';
 import { jsonError, parseJson, rateLimit, requireMutationAccess, requireReadAccess } from '@/lib/api-utils';
 
 export const runtime = 'nodejs';
@@ -23,5 +23,16 @@ export async function POST(request, { params }) {
     if (!['cancel', 'retry'].includes(action)) return jsonError('Choose cancel or retry.');
     const job = await (action === 'cancel' ? cancelJob(id) : retryJob(id));
     return job ? NextResponse.json({ job }) : jsonError('Export not found.', 404);
-  } catch (error) { return jsonError(error.message, 400); }
+  } catch (error) { return jsonError(error.message, error instanceof PdfJobConflictError ? 409 : 400); }
+}
+export async function DELETE(request, { params }) {
+  const denied = requireMutationAccess(request);
+  if (denied) return denied;
+  const limited = rateLimit(request, 'pdf-job-delete', { limit: 30, windowMs: 60_000 });
+  if (limited) return limited;
+  try {
+    const { id } = await params;
+    const job = await deleteJob(id);
+    return job ? NextResponse.json({ success: true, id }, { headers: { 'Cache-Control': 'no-store' } }) : jsonError('Export not found.', 404);
+  } catch (error) { return jsonError(error.message, error instanceof PdfJobConflictError ? 409 : 400); }
 }

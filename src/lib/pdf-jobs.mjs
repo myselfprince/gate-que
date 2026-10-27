@@ -21,6 +21,43 @@ export const isProcessAlive = pid => {
   if (!Number.isInteger(pid) || pid < 1) return false;
   try { process.kill(pid, 0); return true; } catch (error) { return error.code === 'EPERM'; }
 };
+export class PdfJobConflictError extends Error {
+  constructor(message) { super(message); this.name = 'PdfJobConflictError'; }
+}
+async function withJobMutation(id, root, action) {
+  jobDirectory(id, root);
+  const lockPath = path.join(path.resolve(root), `.action-${id}.lock`);
+  let lock;
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try { lock = await fs.open(lockPath, 'wx'); await lock.writeFile(JSON.stringify({ pid: process.pid })); break; }
+    catch (error) {
+      if (lock) { await lock.close(); await fs.rm(lockPath, { force: true }); throw error; }
+      if (error.code === 'ENOENT') return action();
+      if (error.code !== 'EEXIST') throw error;
+      let owner;
+      try { owner = JSON.parse(await fs.readFile(lockPath, 'utf8')); } catch { /* a concurrent action is acquiring the lock */ }
+      if (attempt === 0 && owner?.pid && !isProcessAlive(owner.pid)) { await fs.rm(lockPath, { force: true }); continue; }
+      throw new PdfJobConflictError('Another action is using this export. Please try again.');
+    }
+  }
+  try { return await action(); }
+  finally { if (lock) { await lock.close(); await fs.rm(lockPath, { force: true }); } }
+}
+export async function deleteJob(id, root = jobsRoot()) {
+  return withJobMutation(id, root, async () => {
+    // Delete only a validated, real UUID directory directly inside the configured exports root.
+    const rootPath = path.resolve(root), directory = path.resolve(jobDirectory(id, rootPath));
+    if (path.dirname(directory) !== rootPath || directory === rootPath) throw new Error('Export location is invalid.');
+    let info;
+    try { info = await fs.lstat(directory); } catch (error) { if (error.code === 'ENOENT') return null; throw error; }
+    if (!info.isDirectory() || info.isSymbolicLink() || path.dirname(await fs.realpath(directory)) !== await fs.realpath(rootPath)) throw new Error('Export location is invalid.');
+    const job = await readJob(id, rootPath);
+    if (!job) return null;
+    if (['queued', 'running'].includes(job.status)) throw new PdfJobConflictError('Cancel the export and wait for it to stop before deleting it.');
+    await fs.rm(directory, { recursive: true, force: true });
+    return job;
+  });
+}
 export async function readJob(id, root = jobsRoot()) {
   const directory = jobDirectory(id, root);
   let status;
@@ -113,12 +150,14 @@ export async function createBookJob(ids, title, { root = jobsRoot(), launch = tr
   } catch (error) { await fs.rm(directory, { recursive: true, force: true }); throw error; }
 }
 export async function retryJob(id, root = jobsRoot()) {
-  const job = await readJob(id, root);
-  if (!job) return null;
-  if (!['failed', 'cancelled'].includes(job.status)) throw new Error('Only failed or cancelled exports can be retried.');
-  const directory = jobDirectory(id, root);
-  for (const file of ['cancel', 'ready']) await fs.rm(path.join(/* turbopackIgnore: true */ directory, file), { force: true });
-  await writeJobStatus(directory, { ...job, status: 'queued', completed: 0, attempt: job.attempt + 1, error: undefined, pid: undefined, cancelRequested: undefined, phase: undefined, finishedAt: undefined, report: undefined });
-  await launchJob(id, root);
-  return readJob(id, root);
+  return withJobMutation(id, root, async () => {
+    const job = await readJob(id, root);
+    if (!job) return null;
+    if (!['failed', 'cancelled'].includes(job.status)) throw new Error('Only failed or cancelled exports can be retried.');
+    const directory = jobDirectory(id, root);
+    for (const file of ['cancel', 'ready']) await fs.rm(path.join(/* turbopackIgnore: true */ directory, file), { force: true });
+    await writeJobStatus(directory, { ...job, status: 'queued', completed: 0, attempt: job.attempt + 1, error: undefined, pid: undefined, cancelRequested: undefined, phase: undefined, finishedAt: undefined, report: undefined });
+    await launchJob(id, root);
+    return readJob(id, root);
+  });
 }

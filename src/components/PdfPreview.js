@@ -27,7 +27,7 @@ function Thumbnail({ pdf, number, current, select }) {
   return <button type="button" ref={element} className={styles.thumbnail} aria-label={`Preview page ${number}`} aria-current={current ? 'page' : undefined} onClick={() => select(number)}><canvas ref={canvas} width="128" height="90" />{number}</button>;
 }
 
-export default function PdfPreview({ url, openLinksInNewTab = true }) {
+export default function PdfPreview({ url, data, compact = false, openLinksInNewTab = true }) {
   const [loaded, setLoaded] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [zoom, setZoom] = useState('fit');
@@ -46,7 +46,7 @@ export default function PdfPreview({ url, openLinksInNewTab = true }) {
     import('pdfjs-dist/build/pdf.mjs').then(async library => {
       if (disposed) return;
       library.GlobalWorkerOptions.workerSrc = `/api/pdf-viewer/build/pdf.worker.min.mjs?v=${library.version}`;
-      task = library.getDocument({ url, withCredentials: true, isEvalSupported: false, cMapUrl: '/api/pdf-viewer/cmaps/', cMapPacked: true, standardFontDataUrl: '/api/pdf-viewer/standard_fonts/', wasmUrl: '/api/pdf-viewer/wasm/' });
+      task = library.getDocument({ ...(data ? { data: new Uint8Array(data.slice(0)) } : { url }), withCredentials: true, isEvalSupported: false, cMapUrl: '/api/pdf-viewer/cmaps/', cMapPacked: true, standardFontDataUrl: '/api/pdf-viewer/standard_fonts/', wasmUrl: '/api/pdf-viewer/wasm/' });
       const pdf = await task.promise;
       const outline = await pdf.getOutline();
       const flatten = entries => entries.flatMap(item => [item, ...flatten(item.items || [])]);
@@ -54,7 +54,7 @@ export default function PdfPreview({ url, openLinksInNewTab = true }) {
       if (!disposed) { setLoaded({ pdf, library }); setBookmarks(bookmarks); setPageNumber(1); setError(''); }
     }).catch(error => { if (!disposed) setError(error.message); });
     return () => { disposed = true; task?.destroy(); };
-  }, [url]);
+  }, [url, data]);
   useEffect(() => {
     if (!loaded || !viewportRef.current) return;
     const observer = new ResizeObserver(entries => setWidth(entries[0].contentRect.width));
@@ -115,10 +115,13 @@ export default function PdfPreview({ url, openLinksInNewTab = true }) {
     } catch (error) { setFindMessage(error.message); }
     finally { setFinding(false); }
   }
-  return <div ref={rootRef} className={styles.viewer} aria-label="Actual PDF preview">
+  return <div ref={rootRef} className={`${styles.viewer} ${compact ? styles.compact : ''}`} aria-label={compact ? 'Live PDF sample viewer' : 'Actual PDF preview'}>
     {error && <p role="alert" className={styles.message}>PDF preview: {error}</p>}
     {!loaded ? <p className={styles.message}>Loading PDF preview...</p> : <>
-      <div className={styles.toolbar}>
+      {compact ? <div className={styles.toolbar}>
+        <label>Zoom<select aria-label="Live PDF zoom" value={zoom} onChange={event => setZoom(event.target.value)}><option value="fit">Fit width</option>{[0.75, 1, 1.25, 1.5, 2, 3].map(scale => <option key={scale} value={scale}>{scale * 100}%</option>)}</select></label>
+        <button type="button" onClick={() => rootRef.current.requestFullscreen?.()}>Full screen</button>
+      </div> : <div className={styles.toolbar}>
         <button type="button" aria-label="Previous PDF page" disabled={pageNumber <= 1} onClick={() => setPageNumber(pageNumber - 1)}>←</button>
         <label>Page <input aria-label="PDF page number" type="number" min="1" max={loaded.pdf.numPages} value={pageNumber} onChange={event => setPageNumber(Math.max(1, Math.min(loaded.pdf.numPages, Number(event.target.value) || 1)))} style={{ width: 70 }} /> / {loaded.pdf.numPages}</label>
         <button type="button" aria-label="Next PDF page" disabled={pageNumber >= loaded.pdf.numPages} onClick={() => setPageNumber(pageNumber + 1)}>→</button>
@@ -128,11 +131,11 @@ export default function PdfPreview({ url, openLinksInNewTab = true }) {
         <form onSubmit={find} style={{ display: 'flex', gap: 6 }}><input aria-label="Find text in PDF" value={query} onChange={event => setQuery(event.target.value)} placeholder="Find in PDF" style={{ width: 150 }} /><button disabled={finding} type="submit">Find</button></form>
         {Boolean(matches.length) && <button type="button" onClick={() => setPageNumber(matches.find(number => number > pageNumber) || matches[0])}>Next match</button>}
         <small role="status">{findMessage}</small>
-      </div>
+      </div>}
       <div className={styles.layout}>
-        <aside className={styles.thumbnails} aria-label="PDF page thumbnails">{Array.from({ length: loaded.pdf.numPages }, (_, index) => <Thumbnail key={index + 1} pdf={loaded.pdf} number={index + 1} current={pageNumber === index + 1} select={setPageNumber} />)}</aside>
+        {!compact && <aside className={styles.thumbnails} aria-label="PDF page thumbnails">{Array.from({ length: loaded.pdf.numPages }, (_, index) => <Thumbnail key={index + 1} pdf={loaded.pdf} number={index + 1} current={pageNumber === index + 1} select={setPageNumber} />)}</aside>}
         <div className={styles.viewport} ref={viewportRef}>
-          <div className={styles.page} style={pageSize} data-pdf-page={pageNumber}>
+          <div className={styles.page} style={pageSize} data-pdf-page={compact ? undefined : pageNumber} data-sample-pdf-page={compact ? pageNumber : undefined}>
             <canvas aria-label={`PDF page ${pageNumber}`} ref={canvas} />
             <div ref={textRef} className={styles.textLayer} />
             {links.map(link => <a key={link.id} className={styles.link} style={{ left: link.left, top: link.top, width: link.width, height: link.height }} href={link.url} target={openLinksInNewTab ? '_blank' : '_self'} rel="noopener noreferrer" aria-label={`Open ${link.url}`} />)}
