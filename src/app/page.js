@@ -7,6 +7,7 @@ import { GATE_SYLLABUS } from '@/lib/syllabus';
 import { safeSolutionUrl } from '@/lib/solution-links.mjs';
 import { DEFAULT_PDF_SETTINGS } from '@/lib/pdf-settings.mjs';
 import { QUESTION_LOAD_OPTIONS } from '@/lib/chapter-loading.mjs';
+import { reconcileQuestionExamMetadata } from '@/lib/question-exam-metadata.mjs';
 import PdfSettingsPanel from '@/components/PdfSettingsPanel';
 import PdfExportPanel from '@/components/PdfExportPanel';
 import styles from './workspace.module.css';
@@ -783,9 +784,6 @@ export default function Home() {
       if (codeMatch) { codeText = codeMatch[1].trim(); qText = qText.replace(/CODE:\s*(.*)/is, '').trim(); }
       
       qText = qText.replace(/^([Q]?[\d\.]+)\s*/i, '');
-      const metaMatch = qText.match(/\[\s*(\d{4})[^:]*:\s*(\d+)\s*M\s*\]/i);
-      let year = "2026"; let marks = "1";
-      if (metaMatch) { year = metaMatch[1]; marks = metaMatch[2]; qText = qText.replace(metaMatch[0], '').trim(); }
       
       let hasDiagram = qText.includes('[DIAGRAM_PLACEHOLDER]') || qText.includes('[IMG_1]');
       let rawOptionsArray = optionsText.split(';');
@@ -802,17 +800,18 @@ export default function Home() {
         finalOptD = formatOptionsIndent(rawOptionsArray[3] ? rawOptionsArray[3].trim() : "");
       }
       
-      newQuestions.push({
+      const { question: extractedQuestion } = reconcileQuestionExamMetadata({
         id: generateId(),
         isBlank: false, isPosLocked: false, needsManualOptionFix, isCodeOptions: false,
         text: qText.trim(),
         code: formatCCode(codeText),
-        year, marks,
+        year: "2026", marks: "1",
         diagram: hasDiagram ? "auto" : "", ext: ".png",
         optA: finalOptA, optB: finalOptB, optC: finalOptC, optD: finalOptD,
         natAnswer: "",
         optLayout: "auto"
       });
+      newQuestions.push(extractedQuestion);
     });
 
     return newQuestions.map((q, idx) => {

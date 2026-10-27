@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server';
 import * as cheerio from 'cheerio';
 import { randomUUID } from 'crypto';
 import { jsonError, rateLimit, requireReadAccess, unexpectedError, ValidationError } from '@/lib/api-utils';
+import { reconcileQuestionExamMetadata } from '@/lib/question-exam-metadata.mjs';
 
 export const runtime = 'nodejs';
 const MAX_SCRAPE_PAGES = Number(process.env.MAX_SCRAPE_PAGES) || 100;
@@ -122,7 +123,7 @@ export async function GET(request) {
         optD = cleanText($(rows[3]).find('.option_data').text());
       }
 
-      questions.push({
+      const { question: extractedQuestion } = reconcileQuestionExamMetadata({
         id: randomUUID(),
         text,
         code: "",
@@ -138,6 +139,7 @@ export async function GET(request) {
         optD,
         natAnswer: rows.length === 0 ? "NAT" : ""
       });
+      questions.push(extractedQuestion);
     });
 
     return NextResponse.json({ success: true, totalPages, currentPage: pageNo, questions });
