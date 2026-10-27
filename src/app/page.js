@@ -1201,7 +1201,7 @@ const handleExportAllImages = async () => {
 
       <header className={styles.heading}>
         <div><p className={styles.eyebrow}>G4Gate · Creator workspace</p><h1>From question to publication.</h1><p className={styles.subtitle}>Edit your PYQs, prepare PDFs, and create your next YouTube upload.</p></div>
-        <nav className={styles.links} aria-label="Workspace tools"><Link href="/scraper" target="_blank">Scraper ↗</Link><Link href="/scraped-view" target="_blank">Scraped questions ↗</Link><Link href="/status" target="_blank">Chapter status ↗</Link><Link href="/pdf-tracker" target="_blank">PDF tracker ↗</Link><Link href="/diagram-maker" target="_blank">Diagram studio ↗</Link><Link href="/kmap-maker" target="_blank">K-Map studio ↗</Link></nav>
+        <nav className={styles.links} aria-label="Workspace tools"><Link href="/gatemock" target="_blank">GATE Mock ↗</Link><Link href="/gatemock/admin" target="_blank">Paper coverage ↗</Link><Link href="/scraper" target="_blank">Scraper ↗</Link><Link href="/scraped-view" target="_blank">Scraped questions ↗</Link><Link href="/status" target="_blank">Chapter status ↗</Link><Link href="/pdf-tracker" target="_blank">PDF tracker ↗</Link><Link href="/diagram-maker" target="_blank">Diagram studio ↗</Link><Link href="/kmap-maker" target="_blank">K-Map studio ↗</Link></nav>
       </header>
       <section className={styles.chapterBar} aria-label="Current chapter">
         <div style={{ flex: '1 1 200px' }}>
