@@ -1,24 +1,23 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
-import { DEFAULT_MOCK_BLUEPRINT, PAPER_PATTERN_SOURCE } from '@/lib/gatemock.mjs';
-import { safeSolutionUrl, safeGateOverflowUrl } from '@/lib/solution-links.mjs';
-import MockQuestion, { MockOption } from './MockQuestion';
 import GateExamScreen from './GateExamScreen';
-import styles from './mock.module.css';
+import MockLobby from './MockLobby';
+import MockReview from './MockReview';
+import MockLayout from './MockLayout';
+import styles from './GatePractice.module.css';
 
 const STORAGE_KEY = 'g4gate-mock-active-v1';
 const hasResponse = value => Array.isArray(value) ? value.length > 0 : Boolean(value);
 async function api(url, options = {}) {
   const response = await fetch(url, { ...options, headers: { 'Content-Type': 'application/json', ...options.headers }, cache: 'no-store' });
-  const data = await response.json(); if (!response.ok) { const error = new Error(data.error || 'Request failed.'); error.status = response.status; throw error; } return data;
+  const data = await response.json();
+  if (!response.ok) { const error = new Error(data.error || 'Request failed.'); error.status = response.status; throw error; }
+  return data;
 }
 
 export default function GateMock() {
-  const [catalog, setCatalog] = useState(null), [error, setError] = useState(''), [busy, setBusy] = useState(false);
-  const [mode, setMode] = useState('subject'), [examPaper, setExamPaper] = useState('CS'), [subject, setSubject] = useState(''), [chapter, setChapter] = useState('');
-  const [count, setCount] = useState(20), [duration, setDuration] = useState(30), [paperId, setPaperId] = useState(''), [allowPartial, setAllowPartial] = useState(false);
-  const [blueprint, setBlueprint] = useState(DEFAULT_MOCK_BLUEPRINT), [attempt, setAttempt] = useState(null), [testState, setTestState] = useState(null);
+  const [catalog, setCatalog] = useState(null), [error, setError] = useState(''), [busy, setBusy] = useState(false), [loading, setLoading] = useState(true);
+  const [requestedPaper, setRequestedPaper] = useState(''), [attempt, setAttempt] = useState(null), [testState, setTestState] = useState(null);
   const [seconds, setSeconds] = useState(null), [saveStatus, setSaveStatus] = useState(''), [confirmSubmit, setConfirmSubmit] = useState(false);
   const token = useRef(''), revision = useRef(0), stateRef = useRef(null), queue = useRef(Promise.resolve()), clockOffset = useRef(0), submitting = useRef(false);
   useEffect(() => { stateRef.current = testState; }, [testState]);
@@ -26,16 +25,25 @@ export default function GateMock() {
   function accept(value, secret, localDraft) {
     token.current = secret; revision.current = value.revision; clockOffset.current = new Date(value.serverNow).getTime() - Date.now();
     const state = !value.finishedAt && localDraft?.revision === value.revision && localDraft.state ? localDraft.state : value.state;
-    setAttempt(value); setTestState(state); setError('');
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ id: value.id, token: secret, revision: value.revision, state })); } catch { setSaveStatus('Browser resume storage unavailable; server autosave is active.'); }
+    stateRef.current = state; setAttempt(value); setTestState(state); setError('');
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ id: value.id, token: secret, revision: value.revision, state })); }
+    catch { setSaveStatus('Browser resume storage unavailable; server autosave is active.'); }
   }
   useEffect(() => {
     let active = true;
-    api('/api/gatemock/catalog').then(data => { if (active) { setCatalog(data); setSubject(data.subjects[0]?.subject || ''); const requested = new URLSearchParams(window.location.search).get('paper'); const copied = data.years.find(p => p.paper?.slug === requested) || data.years.find(p => p.paper?.datasetId); if (copied) { setMode('year'); setExamPaper(copied.examPaper); setPaperId(copied.id); } } }).catch(error => { if (active) setError(error.message); });
+    const catalogRequest = api('/api/gatemock/catalog').then(data => {
+      if (active) { setCatalog(data); setRequestedPaper(new URLSearchParams(window.location.search).get('paper') || ''); }
+    }).catch(error => { if (active) setError(error.message); });
+    let resumeRequest;
     try {
       const draft = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
-      if (draft?.id && draft?.token) api(`/api/gatemock/attempts/${draft.id}`, { headers: { Authorization: `Bearer ${draft.token}` } }).then(data => { if (active) accept(data.attempt, draft.token, draft); }).catch(error => { if (active) { setError(`Previous attempt could not resume: ${error.message} Refresh to retry.`); if (error.status === 404) localStorage.removeItem(STORAGE_KEY); } });
+      if (draft?.id && draft?.token) resumeRequest = api(`/api/gatemock/attempts/${draft.id}`, { headers: { Authorization: `Bearer ${draft.token}` } }).then(data => {
+        if (active) accept(data.attempt, draft.token, draft);
+      }).catch(error => {
+        if (active) { setError(`Previous attempt could not resume: ${error.message} Refresh to retry.`); if (error.status === 404) localStorage.removeItem(STORAGE_KEY); }
+      });
     } catch { /* No valid browser draft. */ }
+    Promise.allSettled([catalogRequest, resumeRequest]).then(() => { if (active) setLoading(false); });
     return () => { active = false; };
   }, []);
   useEffect(() => {
@@ -80,13 +88,11 @@ export default function GateMock() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [seconds, attempt?.finishedAt]);
 
-  async function start() {
+  async function start(config) {
     setBusy(true); setError('');
-    const yearPaper = catalog.years.find(p => p.id === paperId);
     try {
-      const data = await api('/api/gatemock/attempts', { method: 'POST', body: JSON.stringify({ mode, examPaper, subject, chapter, count, durationMinutes: mode === 'full' ? 180 : duration, blueprint,
-        year: yearPaper?.year, setNum: yearPaper?.setNum || '', allowPartial }) });
-      accept(data.attempt, data.token); setSeconds(null);
+      const data = await api('/api/gatemock/attempts', { method: 'POST', body: JSON.stringify(config) });
+      accept(data.attempt, data.token); setSeconds(null); setSaveStatus('');
     } catch (error) { setError(error.message); } finally { setBusy(false); }
   }
   function move(index) {
@@ -100,59 +106,25 @@ export default function GateMock() {
   async function assess(key, marks) {
     setBusy(true); setError('');
     try {
-      const data = await api(`/api/gatemock/attempts/${attempt.id}/assessment`, {method:'POST',headers:{Authorization:`Bearer ${token.current}`},body:JSON.stringify({revision:revision.current,key,marks})});
-      revision.current=data.attempt.revision; setAttempt(data.attempt);
-    } catch(error) { setError(error.message); } finally { setBusy(false); }
+      const data = await api(`/api/gatemock/attempts/${attempt.id}/assessment`, { method: 'POST', headers: { Authorization: `Bearer ${token.current}` }, body: JSON.stringify({ revision: revision.current, key, marks }) });
+      revision.current = data.attempt.revision; setAttempt(data.attempt);
+    } catch (error) { setError(error.message); } finally { setBusy(false); }
   }
-  const header = <header className={styles.header}><Link href="/gatemock" className={styles.logo}>G4Gate <span>Mock lab</span></Link><nav><Link href="/">Question editor</Link><Link href="/gatemock/admin">Paper coverage admin</Link></nav></header>;
-  const alert = error && <p className={styles.error} role="alert">{error}</p>;
-  if (attempt?.finishedAt && attempt.result) {
-    const result = attempt.result;
-    return <main className={styles.page}>{header}<section className={styles.hero}><p className={styles.eyebrow}>ATTEMPT COMPLETE</p><h1>Your review starts here.</h1><p>{attempt.title}</p></section>{alert}
-      <div className={styles.stats}><div><strong>{result.score.toFixed(2)} / {result.gradableMarks}</strong><span>Score on gradable questions</span></div><div><strong>{result.correct}</strong><span>Correct</span></div><div><strong>{result.wrong}</strong><span>Wrong</span></div><div><strong>{result.unanswered}</strong><span>Unanswered</span></div><div><strong>{result.ungraded}</strong><span>Key unavailable / manual review</span></div></div>
-      <p>Paper maximum: {result.totalMarks} marks. {result.selfAssessed || 0} responses self-assessed. Written answers and disputed keys are excluded until you assess them below.</p>
-      <button onClick={() => { localStorage.removeItem(STORAGE_KEY); setAttempt(null); setTestState(null); setSeconds(null); }}>Build another test</button>
-      <div className={styles.reviewList}>{result.entries.map(entry => <details key={entry.question.key} className={styles.panel}><summary>Q{entry.question.number} · {entry.status} · {entry.earned.toFixed(2)} marks · {entry.question.subject}</summary>
-        <div className={styles.questionCard}><MockQuestion question={entry.question}>
-          {['A', 'B', 'C', 'D'].filter(letter => entry.question[`opt${letter}`]).map(letter => <p key={letter}>({letter}) <MockOption question={entry.question} text={entry.question[`opt${letter}`]} /></p>)}
-        </MockQuestion></div><p className={styles.writtenReview}>Your response: {Array.isArray(entry.response) ? entry.response.join(', ') || 'Not answered' : entry.response || 'Not answered'}</p><p>{entry.manualReview && entry.question.questionType === 'MCQ' ? 'Conventional key for disputed item' : 'Correct answer'}: {entry.answer || 'Not available'}</p>
-        {entry.referenceAnswer && <div className={styles.reference}><strong>{entry.verificationStatus ? 'Authored worked reference' : 'Reference solution'}</strong><MockQuestion question={{...entry.question,key:entry.question.key+'-reference',text:entry.referenceAnswer,code:'',diagram:''}} />{entry.verificationStatus && <p>Verification: {entry.verificationStatus}. {entry.sourceIssues.join(' ')}</p>}{entry.answerSources?.filter(s=>s.kind==='made-easy-key').map(s=><p key={s.file}>Made Easy comparison: {s.file.split('/').at(-1)}, PDF page {s.pdfPage}, item {s.question}, printed key {s.printed}.</p>)}</div>}
-        {safeGateOverflowUrl(entry.gateOverflowUrl) && <p><a href={safeGateOverflowUrl(entry.gateOverflowUrl)} target="_blank" rel="noreferrer">GATE Overflow discussion ↗</a></p>}
-        {entry.manualReview && hasResponse(entry.response) && <form className={styles.assessment} onSubmit={event=>{event.preventDefault();assess(entry.question.key,Number(new FormData(event.currentTarget).get('marks')));}}><label>Self-assessed marks (0–{entry.question.marks})<input name="marks" aria-label={`Self-assessed marks Q${entry.question.number}`} type="number" min="0" max={entry.question.marks} step="0.5" required defaultValue={result.manualScores?.find(s=>s.key===entry.question.key)?.marks ?? ''} /></label><button disabled={busy}>Save self-assessment</button><small>Your assessment is stored separately from automatic grading.</small></form>}
-        {safeSolutionUrl(entry.solutionUrl) && <a href={safeSolutionUrl(entry.solutionUrl)} target="_blank" rel="noreferrer">Watch video solution ↗</a>}
-      </details>)}</div>
-    </main>;
+  function newTest() {
+    try { localStorage.removeItem(STORAGE_KEY); } catch { /* The current view can still be reset. */ }
+    setAttempt(null); setTestState(null); setSeconds(null); setError(''); setSaveStatus(''); setConfirmSubmit(false);
+    window.scrollTo({ top: 0 });
   }
-  if (attempt && testState) {
-    return <GateExamScreen attempt={attempt} state={testState} seconds={seconds} busy={busy} error={error} saveStatus={saveStatus}
-      confirmSubmit={confirmSubmit} onRespond={respond} onMove={move} onSubmit={() => setConfirmSubmit(true)} onCancelSubmit={() => setConfirmSubmit(false)} onConfirmSubmit={submit}
-      onCommitNext={(marked, nextIndex) => {
-        const key = attempt.questions[testState.currentIndex].key;
-        const nextState = { ...testState, currentIndex: nextIndex, visited: [...new Set([...testState.visited, attempt.questions[nextIndex].key])],
-          marked: marked ? [...new Set([...testState.marked, key])] : testState.marked.filter(value => value !== key) };
-        setTestState(nextState);
-        save(nextState).catch(error => setSaveStatus(`Not saved: ${error.message}`));
-      }} />;
-  }
-  const topics = catalog?.subjects.find(value => value.subject === subject)?.topics || [];
-  const yearPapers = catalog?.years.filter(paper => paper.examPaper === examPaper) || [];
-  const chosenPaper = yearPapers.find(paper => paper.id === paperId);
-  const one = blueprint.reduce((n, row) => n + (row.one || 0), 0), two = blueprint.reduce((n, row) => n + (row.two || 0), 0);
-  return <main className={styles.page}>{header}<section className={styles.hero}><p className={styles.eyebrow}>YOUR QUESTION BANK. YOUR NEXT ATTEMPT.</p><h1>Practice with a plan.<br /><span>Test under pressure.</span></h1><p>Build a focused test, mix subjects, or work through a year’s paper in a timed computer exam.</p></section>{alert}
-    <div className={styles.builderLayout}><section className={styles.panel}><div className={styles.modeTabs}>{[['subject', 'Subject test'], ['topic', 'Topic test'], ['full', 'Weighted mock'], ['year', 'Year paper']].map(([value, label]) => <button key={value} aria-pressed={mode === value} className={mode === value ? styles.primary : ''} onClick={() => { setMode(value); setAllowPartial(false); }}>{label}</button>)}</div>
-      <label>Exam paper<select value={examPaper} onChange={e => { setExamPaper(e.target.value); setPaperId(''); }}><option value="CS">GATE CS</option><option value="IT">GATE IT (historical papers)</option></select></label>
-      {(mode === 'subject' || mode === 'topic') && <><label>Subject<select value={subject} onChange={e => { setSubject(e.target.value); setChapter(''); }}>{catalog?.subjects.map(value => <option key={value.subject} value={value.subject}>{value.subject} · {value.count} in bank</option>)}</select></label>
-        {mode === 'topic' && <label>Topic / chapter<select value={chapter} onChange={e => setChapter(e.target.value)}><option value="">Choose a topic</option>{topics.map(topic => <option key={topic}>{topic}</option>)}</select></label>}
-        <div className={styles.formRow}><label>Questions<input type="number" min="1" max="250" value={count} onChange={e => setCount(Number(e.target.value))} /></label><label>Duration (minutes)<input type="number" min="1" max="360" value={duration} onChange={e => setDuration(Number(e.target.value))} /></label></div>
-      </>}
-      {mode === 'full' && <><p>Editable practice weightage. Default: 65 questions, 100 marks, 180 minutes. Official GATE does not fix every subject’s yearly weightage.</p><div className={styles.tableScroll}><table><thead><tr><th>Subject</th><th>1-mark questions</th><th>2-mark questions</th></tr></thead><tbody>{blueprint.map((row, index) => <tr key={row.subject}><td>{row.subject}</td>{['one', 'two'].map(key => <td key={key}><input aria-label={`${row.subject} ${key}-mark quota`} type="number" min="0" max="100" value={row[key]} onChange={event => setBlueprint(values => values.map((item, i) => index === i ? { ...item, [key]: Number(event.target.value) } : item))} /></td>)}</tr>)}</tbody></table></div><p><strong>{one + two} questions · {one + 2 * two} marks · 180 minutes</strong></p></>}
-      {mode === 'year' && <><label>Year / set<select value={paperId} onChange={e => setPaperId(e.target.value)}><option value="">Choose a paper</option>{yearPapers.map(paper => <option key={paper.id} value={paper.id}>{paper.year}{paper.setNum ? ` · Set ${paper.setNum}` : ''} · {paper.available} available · {paper.coverage?.ready ? 'Verified complete' : 'Incomplete / unverified'}</option>)}</select></label>
-        {chosenPaper && <div className={styles.warning}>{chosenPaper.coverage ? <><strong>{chosenPaper.coverage.mapped} / {chosenPaper.coverage.expected} original positions mapped.</strong><p>Missing: {chosenPaper.coverage.missing.join(', ') || 'None'} · Duplicate positions: {chosenPaper.coverage.duplicates.map(item => item.number).join(', ') || 'None'} · Unassigned: {chosenPaper.coverage.unassigned.length}.</p><p>{chosenPaper.paper.verified ? 'Order reviewed by admin.' : 'Official paper review pending.'} {chosenPaper.coverage.marks} / {chosenPaper.coverage.expectedMarks} marks.</p></> : <p>Official question count and original numbering have not been configured. Available questions can be used for practice.</p>}</div>}
-        {chosenPaper?.paper?.datasetId && <div className={styles.paperDetails}><p className={styles.eyebrow}>SEPARATE YEAR PAPER</p><h2>{chosenPaper.paper.title}</h2><p>{chosenPaper.paper.questionCount} questions · {chosenPaper.paper.totalMarks} maximum marks · {chosenPaper.paper.durationMinutes} minutes</p>{chosenPaper.paper.instructions.map(text=><p key={text}>{text}</p>)}<div className={styles.downloads}><a href={`/api/gatemock/papers/${chosenPaper.paper.slug}/export?format=pdf&theme=dark`}>Question PDF · dark</a><a href={`/api/gatemock/papers/${chosenPaper.paper.slug}/export?format=pdf&theme=light`}>Question PDF · print</a><a href={`/api/gatemock/papers/${chosenPaper.paper.slug}/export?format=key`}>Answers &amp; solutions PDF</a><a href={`/api/gatemock/papers/${chosenPaper.paper.slug}/export?format=zip`}>Download paper + solutions ZIP</a></div></div>}
-      </>}
-      <label className={styles.check}><input type="checkbox" checked={allowPartial} onChange={e => setAllowPartial(e.target.checked)} />{mode === 'year' ? 'Use available questions as practice if the original paper is incomplete' : 'Allow a smaller practice test if the bank has shortages'}</label>
-      <button className={styles.primary} disabled={busy || !catalog || (mode === 'year' && !paperId) || (mode === 'topic' && !chapter)} onClick={start}>{busy ? 'Preparing test…' : 'Start timed test →'}</button>
-    </section><aside className={styles.panel}><p className={styles.eyebrow}>BEFORE YOU BEGIN</p><h2>Space to think.<br />A clock to respect.</h2><p>MCQ: one answer. MSQ: all correct answers, no partial credit. NAT: a numerical answer.</p><p>Default practice penalty: ⅓ of the question’s marks for a wrong MCQ; none for MSQ or NAT. Verified historical papers use their admin-configured MCQ penalty.</p><p>Progress saves automatically. Refresh to resume in this browser. Attempts are kept for 30 days.</p><p>Only stored answers are used for grading. Missing keys remain ungraded.</p><a href={PAPER_PATTERN_SOURCE} target="_blank" rel="noreferrer">Official current GATE pattern ↗</a><hr /><p>{catalog ? `${catalog.count} questions in the editor bank` : 'Loading question bank…'}</p></aside></div>
-    <section className={styles.yearSection}><h2>Explore by year</h2><p>CS and historical IT papers stay separate. A complete paper also needs its original question order.</p><div className={styles.yearGrid}>{yearPapers.map(paper => <button key={paper.id} className={styles.yearTile} onClick={() => { setMode('year'); setPaperId(paper.id); setAllowPartial(!paper.coverage?.ready); window.scrollTo({ top: 0, behavior: 'smooth' }); }}><strong>{paper.year}{paper.examPaper === 'IT' ? ' · IT' : ''}{paper.setNum ? ` · ${paper.setNum}` : ''}</strong><span>{paper.available} available</span><small>{paper.coverage?.ready ? 'Verified complete' : paper.coverage ? `${paper.coverage.mapped}/${paper.coverage.expected} mapped` : 'Coverage not configured'}</small></button>)}</div></section>
-  </main>;
+  if (attempt?.finishedAt && attempt.result) return <MockReview attempt={attempt} busy={busy} error={error} onAssess={assess} onNewTest={newTest} />;
+  if (attempt && testState) return <GateExamScreen attempt={attempt} state={testState} seconds={seconds} busy={busy} error={error} saveStatus={saveStatus}
+    confirmSubmit={confirmSubmit} onRespond={respond} onMove={move} onSubmit={() => setConfirmSubmit(true)} onCancelSubmit={() => setConfirmSubmit(false)} onConfirmSubmit={submit}
+    onCommitNext={(marked, nextIndex) => {
+      const key = attempt.questions[testState.currentIndex].key;
+      const nextState = { ...testState, currentIndex: nextIndex, visited: [...new Set([...testState.visited, attempt.questions[nextIndex].key])],
+        marked: marked ? [...new Set([...testState.marked, key])] : testState.marked.filter(value => value !== key) };
+      setTestState(nextState); stateRef.current = nextState;
+      save(nextState).catch(error => setSaveStatus(`Not saved: ${error.message}`));
+    }} />;
+  if (loading || !catalog) return <MockLayout><section className={styles.empty} aria-busy={loading}><h1>{loading ? 'Loading your test centre…' : 'Could not load papers'}</h1><p>{loading ? 'Checking available papers and saved progress.' : 'Refresh to try again.'}</p>{error && <p className={styles.error} role="alert">{error}</p>}{!loading && <button onClick={() => window.location.reload()}>Retry loading papers</button>}</section></MockLayout>;
+  return <MockLobby catalog={catalog} requestedPaper={requestedPaper} busy={busy} error={error} onStart={start} />;
 }

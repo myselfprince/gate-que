@@ -68,16 +68,20 @@ try {
   if (adminCookie) { const at = adminCookie.indexOf('='); await browser.setCookie({ name: adminCookie.slice(0, at), value: adminCookie.slice(at + 1), url: origin }); }
   await page.setViewport({ width: 1440, height: 1000 });
   await page.goto(origin + '/gatemock', { waitUntil: 'networkidle2' });
-  await page.waitForFunction(() => [...document.querySelectorAll('button')].some(button => button.textContent === 'Start timed test →' && !button.disabled));
+  await page.waitForSelector('[aria-label="Previous-year papers"] button');
   await fs.mkdir('tmp/gatemock-qa', { recursive: true });
   await page.screenshot({ path: 'tmp/gatemock-qa/builder.png', fullPage: true });
-  await page.evaluate(() => [...document.querySelectorAll('button')].find(b => b.textContent === 'Year paper').click());
   await page.evaluate(value => {
-    const select = [...document.querySelectorAll('label')].find(label => label.textContent.startsWith('Year / set')).querySelector('select');
+    const select = [...document.querySelectorAll('label')].find(label => label.textContent.startsWith('Year')).querySelector('select');
     select.value = value; select.dispatchEvent(new Event('change', { bubbles: true }));
-  }, `2098|CS|${setNum}`);
+  }, '2098');
+  await page.waitForFunction(value => [...document.querySelectorAll('[aria-label="Previous-year papers"] button')].some(button => button.textContent.includes(value) && button.getAttribute('aria-pressed') === 'true'), {}, setNum);
+  await page.evaluate(() => [...document.querySelectorAll('button')].find(b => b.textContent === 'Read instructions & continue →').click());
+  await page.waitForSelector('dialog[open]');
+  assert.equal(await page.$eval('dialog[open] footer button:last-child', button => button.disabled), true);
+  await page.click('dialog[open] input[type=checkbox]');
   const attemptResponse = page.waitForResponse(response => response.url().endsWith('/api/gatemock/attempts') && response.request().method() === 'POST');
-  await page.evaluate(() => [...document.querySelectorAll('button')].find(b => b.textContent === 'Start timed test →').click());
+  await page.evaluate(() => [...document.querySelectorAll('button')].find(b => b.textContent === 'Begin test →').click());
   const browserAttempt = await (await attemptResponse).json(); assert.ok(browserAttempt.attempt); attempts.push(browserAttempt.attempt.id);
   await page.waitForSelector('input[type=radio]'); await page.click('input[type=radio]');
   await page.evaluate(() => [...document.querySelectorAll('button')].find(b => b.textContent.trim() === 'Mark for Review & Next').click());
@@ -99,8 +103,11 @@ try {
   assert.ok(await page.evaluate(() => document.body.textContent.includes('Question No. 2')));
   await page.click('[aria-label="Submit test"]');
   await page.evaluate(() => [...document.querySelectorAll('button')].find(b => b.textContent === 'Confirm submit').click());
-  await page.waitForFunction(() => document.body.textContent.includes('Your review starts here.'));
-  assert.ok(await page.evaluate(() => document.body.textContent.includes('0.67 / 2')));
+  await page.waitForFunction(() => document.body.textContent.includes('Your result & solutions'));
+  assert.ok(await page.evaluate(() => document.body.textContent.includes('0.67')));
+  await page.click('[role=tab][id=video-tab]');
+  assert.ok(await page.evaluate(() => document.body.textContent.includes('No video solution yet')));
+  await page.click('[role=tab][id=written-tab]');
   await page.screenshot({ path: 'tmp/gatemock-qa/results.png', fullPage: true });
   await page.goto(origin + '/gatemock/admin', { waitUntil: 'networkidle2' });
   await page.waitForFunction(() => document.body.textContent.includes('Map questions to this paper'));

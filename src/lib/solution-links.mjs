@@ -28,6 +28,15 @@ export function safeSolutionUrl(value) {
   try { return normalizeSolutionUrl(value); } catch { return ''; }
 }
 
+// Use the same validated per-question link for review playback, including timestamps.
+export function solutionEmbedUrl(value) {
+  const safe = safeSolutionUrl(value);
+  if (!safe) return '';
+  const url = new URL(safe);
+  const seconds = Number((url.searchParams.get('t') || '0').replace(/s$/, ''));
+  return `https://www.youtube-nocookie.com/embed/${url.searchParams.get('v')}${seconds ? `?start=${seconds}` : ''}`;
+}
+
 export function normalizeGateOverflowUrl(value) {
   if (value === undefined || value === '') return '';
   if (typeof value !== 'string' || value.length > 2000) throw new Error('GateOverflow link must be a URL up to 2000 characters.');

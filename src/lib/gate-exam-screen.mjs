@@ -39,6 +39,12 @@ export function nextExamQuestion(sections, currentIndex, direction = 1) {
   return indices[Math.max(0, Math.min(indices.length - 1, position + direction))] ?? currentIndex;
 }
 
+// Number questions in the same order as Next/Previous, across every section.
+// The original paper number remains separate on the question itself.
+export function examQuestionNumber(sections, questionIndex) {
+  return sections.flatMap(section => section.indices).indexOf(questionIndex) + 1;
+}
+
 export function numericKeypadValue(value, key) {
   const text = typeof value === 'string' ? value : '';
   if (key === 'Backspace') return text.slice(0, -1);

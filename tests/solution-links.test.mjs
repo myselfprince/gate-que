@@ -1,10 +1,16 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { normalizeSolutionUrl, normalizeGateOverflowUrl, safeGateOverflowUrl } from '../src/lib/solution-links.mjs';
+import { normalizeSolutionUrl, normalizeGateOverflowUrl, safeGateOverflowUrl, solutionEmbedUrl } from '../src/lib/solution-links.mjs';
 import { normalizeQuestionMetadata } from '../src/lib/question-metadata.mjs';
 import { buildQuestionPages } from '../src/lib/question-pages.mjs';
 import { normalizePdfSettings } from '../src/lib/pdf-settings.mjs';
 import { pageDecorations } from '../src/lib/pdf-decorations.mjs';
+
+test('review videos use validated IDs and preserve timestamps in privacy-enhanced embeds', () => {
+  assert.equal(solutionEmbedUrl('https://youtu.be/dQw4w9WgXcQ?t=1m30s'), 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?start=90');
+  assert.equal(solutionEmbedUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ'), 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ');
+  for (const value of ['', undefined, 'javascript:alert(1)', 'https://youtube.com.evil.test/watch?v=dQw4w9WgXcQ']) assert.equal(solutionEmbedUrl(value), '');
+});
 
 test('solution links round-trip through question metadata with video timestamps', () => {
   const expected = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&t=3723s';

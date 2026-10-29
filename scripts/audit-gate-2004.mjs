@@ -1,0 +1,15 @@
+import fs from 'node:fs/promises';
+import {bookMap} from '../data/papers/gate-cs-2004-supplement.mjs';
+const base='data/backups/gate-2004';
+const book=JSON.parse(await fs.readFile(`${base}/book-2004.json`,'utf8'));
+const all=JSON.parse(await fs.readFile(`${base}/book-search.json`,'utf8'));
+const refs=JSON.parse(await fs.readFile(`${base}/reference-2004.json`,'utf8')).filter(q=>q.title.startsWith('GATE CSE 2004 | Question:'));
+const paper=JSON.parse(await fs.readFile('data/papers/gate-cs-2004.json','utf8'));
+const text=q=>['text','code','optA','optB','optC','optD'].map(k=>q[k]||'').join(' ');
+const tokens=s=>new Set(s.toLowerCase().replace(/[^a-z0-9]/g,' ').split(' ').filter(t=>t.length>2));
+const sim=(x,y)=>[...x].filter(t=>y.has(t)).length/Math.max(1,new Set([...x,...y]).size);
+const corpus=all.map(q=>({q,t:tokens(text(q))}));
+const search=refs.map(r=>{const n=Number(r.title.match(/Question:\s*(\d+)/)[1]),q=book[bookMap[n]],t=tokens(text(paper.questions[n-1]));return {n,selected:q?.id,candidates:corpus.map(b=>({id:b.q.id,year:b.q.year,score:sim(t,b.t),text:b.q.text.slice(0,160)})).sort((a,b)=>b.score-a.score).slice(0,5)};}).sort((a,b)=>a.n-b.n);
+await fs.writeFile(`${base}/full-book-search.json`,JSON.stringify(search,null,2));
+await fs.writeFile('tmp/gate2004/mapped-book.txt',Object.entries(bookMap).map(([n,i])=>{const q=book[i];return `Q${n} [book index ${i}]\n${q.text}\n${q.code}\nA ${q.optA}\nB ${q.optB}\nC ${q.optC}\nD ${q.optD}\nKEY ${q.correctOptions} SOURCE ${JSON.stringify(q.source)}`;}).join('\n\n'));
+console.log(JSON.stringify(search.filter(q=>!q.selected),null,2));

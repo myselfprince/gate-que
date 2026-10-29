@@ -80,7 +80,14 @@ export function renderSourceQuestion(q, { imageRoot = 'images', maxImageHeight, 
       : q.isCodeOptions ? `\\texttt{${escapeLatex(option)}}` : latexText(option, { fitTables: true });
     const twoCols = q.optLayout === '2col' || (q.optLayout !== '1col'
       && options.every((option) => (option || '').length <= 65 && !(option || '').includes('\n') && !(option || '').includes('$$')));
-    if (twoCols) {
+    if (q.optLayout === '3col') {
+      // Three diagram choices and a final text choice fit historical papers
+      // without shrinking all four figures below readable print dimensions.
+      body += '\n\\par\\smallskip\\noindent\\begin{tabular}{@{}p{0.31\\linewidth}@{\\hspace{0.035\\linewidth}}p{0.31\\linewidth}@{\\hspace{0.035\\linewidth}}p{0.31\\linewidth}@{}}\n';
+      body += ['A', 'B', 'C'].map(letter => `\\textbf{(${letter})} ${renderOption(q[`opt${letter}`])}`).join(' & ');
+      body += '\\\\\n\\end{tabular}\\par\\smallskip\n';
+      if (q.optD) body += `\\textbf{(D)} ${renderOption(q.optD)}\\par\n`;
+    } else if (twoCols) {
       body += '\n\\par\\smallskip\\noindent\\begin{tabular}{@{}p{0.46\\linewidth}@{\\hspace{0.08\\linewidth}}p{0.46\\linewidth}@{}}\n';
       body += `\\textbf{(A)} ${renderOption(q.optA)} & \\textbf{(B)} ${renderOption(q.optB)} \\\\[0.6em]\n`;
       body += `\\textbf{(C)} ${renderOption(q.optC)} & \\textbf{(D)} ${renderOption(q.optD)} \\\\\n\\end{tabular}\n`;

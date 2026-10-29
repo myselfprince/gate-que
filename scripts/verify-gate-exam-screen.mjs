@@ -87,7 +87,7 @@ try {
   await page.evaluate(() => [...document.querySelectorAll('button')].find(button => button.textContent.includes('Instructions')).click());
   await page.waitForSelector('dialog[open]'); assert.ok(await page.evaluate(() => document.querySelector('dialog').textContent.includes('General Instructions'))); await page.click('[aria-label="Close dialog"]');
   await page.evaluate(() => [...document.querySelectorAll('button')].find(button => button.textContent.includes('Question Paper')).click());
-  await page.waitForSelector('dialog[open]'); assert.ok(await page.evaluate(() => document.querySelector('dialog').textContent.includes('Question No. 80'))); await page.click('[aria-label="Close dialog"]');
+  await page.waitForSelector('dialog[open]'); assert.ok(await page.evaluate(() => document.querySelector('dialog').textContent.includes('Question No. 90'))); await page.click('[aria-label="Close dialog"]');
   await page.setViewport({ width: 390, height: 844 });
   if (await page.$('[aria-label="Collapse question palette"]')) await page.click('[aria-label="Collapse question palette"]');
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));

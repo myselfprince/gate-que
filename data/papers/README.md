@@ -1,6 +1,10 @@
 # Independent year-paper datasets
 
-GATE CS 2000 is stored in MongoDB's `yearpapers` collection. The `chapters`, `targets`, and original question assets are never written by the year-paper importer. Timed attempts continue to use `mockattempts` and snapshot the separate paper questions. A later book edit cannot change an existing year paper or attempt.
+Independent year papers are stored in MongoDB's `yearpapers` collection. The `chapters`, `targets`, and original question assets are never written by the year-paper importer. Timed attempts continue to use `mockattempts` and snapshot the separate paper questions. A later book edit cannot change an existing year paper or attempt.
+
+GATE IT 2004 is available as `gate-it-2004`: 90 MCQs, two sections, 150 marks, with disclosed 180-minute/zero-penalty practice settings. It contains 71 independent book copies and 19 source transcriptions. All questions have authored references; 13 source-defective or disputed items require self-assessment. See [the IT 2004 verification report](gate-it-2004-verification.md) for provenance, source differences, preservation checks, exports and test results.
+
+GATE CS 2004 is available as `gate-cs-2004`: 90 MCQs, two mark-based sections, 150 marks, with explicitly disclosed 180-minute/zero-penalty practice settings. It contains 86 independent book copies and four source transcriptions. See [the 2004 verification report](gate-cs-2004-verification.md) for source differences, answer coverage, manual-review positions, preservation checks and actual test results. The catalog and downloads use its own dataset identity; the previously completed 2000–2003 papers remain separate.
 
 ## GATE CS 2000
 

@@ -1,3 +1,4 @@
+import { selectYearPaper, beginSelectedPaper, reviewQuestion, saveSelfAssessment } from './mock-browser-helpers.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import {createRequire} from 'node:module';
@@ -51,10 +52,10 @@ try{
  await page.setViewport({width:1440,height:1000});
  const pageErrors=[];page.on('pageerror',e=>pageErrors.push(e.message));
  await page.goto(origin+'/gatemock',{waitUntil:'networkidle2'});
- await page.waitForFunction(()=>document.body.textContent.includes('SEPARATE YEAR PAPER'));
+ await selectYearPaper(page, '2000');
  await page.screenshot({path:'tmp/gate2000/browser/builder.png',fullPage:true});
  const startResponse=page.waitForResponse(r=>r.url().endsWith('/api/gatemock/attempts')&&r.request().method()==='POST');
- await page.evaluate(()=>[...document.querySelectorAll('button')].find(b=>b.textContent==='Start timed test →').click());
+ await beginSelectedPaper(page);
  const live=await(await startResponse).json();attempts.push(live.attempt.id);
  await page.waitForSelector('input[type=radio]');await page.click('input[type=radio]');
  await page.waitForFunction(()=>[...document.querySelectorAll('[role=status]')].some(e=>e.textContent==='Saved'));
@@ -69,14 +70,14 @@ try{
  await page.click('[aria-label="Open scientific calculator"]');await page.waitForSelector('[aria-label="Close calculator"]');await page.click('[aria-label="Close calculator"]');
  await page.click('[aria-label="Submit test"]');await page.waitForSelector('dialog[open]');
  await page.evaluate(()=>[...document.querySelectorAll('dialog button')].find(b=>b.textContent==='Confirm submit').click());
- await page.waitForFunction(()=>document.body.textContent.includes('ATTEMPT COMPLETE'));
- await page.evaluate(()=>{const row=[...document.querySelectorAll('details')].find(e=>e.querySelector('summary').textContent.startsWith('Q50 '));row.open=true;row.scrollIntoView();});
+ await page.waitForFunction(()=>document.body.textContent.includes('Your result & solutions'));
+ await reviewQuestion(page, 50);
  await page.waitForSelector('[aria-label="Self-assessed marks Q50"]');
  await page.type('[aria-label="Self-assessed marks Q50"]','4');
- await page.evaluate(()=>{const row=[...document.querySelectorAll('details')].find(e=>e.querySelector('summary').textContent.startsWith('Q50 '));row.querySelector('button').click();});
+ await saveSelfAssessment(page);
  await page.waitForFunction(()=>document.body.textContent.includes('1 responses self-assessed'));
  await page.screenshot({path:'tmp/gate2000/browser/review.png',fullPage:true});
- await page.evaluate(()=>[...document.querySelectorAll('button')].find(b=>b.textContent==='Build another test').click());
+ await page.evaluate(()=>[...document.querySelectorAll('button')].find(b=>b.textContent==='Choose another paper →').click());
  await page.setViewport({width:390,height:844});await page.screenshot({path:'tmp/gate2000/browser/mobile.png',fullPage:true});
  assert.deepEqual(pageErrors,[]);
  console.log('Browser: MCQ response, written response, refresh/resume, calculator, submission and self-assessment passed; desktop and mobile screenshots saved.');
