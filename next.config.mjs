@@ -31,6 +31,14 @@ const nextConfig = {
         ]
       },
       {
+        source: '/gatemock',
+        headers: [{ key: 'Content-Security-Policy', value: `${contentSecurityPolicy}; frame-src 'self' https://www.youtube-nocookie.com` }]
+      },
+      {
+        source: '/gatemock/admin/:path*',
+        headers: [{ key: 'Content-Security-Policy', value: contentSecurityPolicy.replace("img-src 'self' data: blob:", "img-src 'self' data: blob: https://gateoverflow.in https://*.gateoverflow.in") }]
+      },
+      {
         source: '/api/:path*',
         headers: [{ key: 'Cache-Control', value: 'no-store, max-age=0' }]
       }

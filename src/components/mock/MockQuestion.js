@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './mock.module.css';
 
-function loadMath() {
+export function loadMath() {
   if (window.MathJax?.typesetPromise) return Promise.resolve(window.MathJax.startup?.promise).then(() => window.MathJax);
   if (!window.gateMockMathPromise) window.gateMockMathPromise = new Promise((resolve, reject) => {
     window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }, startup: { typeset: false } };

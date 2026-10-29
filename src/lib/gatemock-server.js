@@ -9,7 +9,7 @@ export const tokenHash = token => createHash('sha256').update(token).digest('hex
 export async function readMockBank() {
   const [chapters, legacyPapers, yearPapers] = await Promise.all([Chapter.find({}).lean(), MockPaper.find({}).lean(), YearPaper.find({}).lean()]);
   const papers = [...yearPapers.map(publicPaper), ...legacyPapers.filter(p => !yearPapers.some(y => paperKey(y) === paperKey(p)))];
-  return { bank: [...questionBank(chapters), ...yearPapers.flatMap(p => p.questions)], papers };
+  return { bank: [...questionBank(chapters), ...yearPapers.flatMap(p => p.questions)], papers, yearPapers };
 }
 export function mockCatalog(bank, papers) {
   const books = bank.filter(q => !q.datasetId);

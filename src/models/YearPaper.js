@@ -6,7 +6,7 @@ const schema = new mongoose.Schema({
   year: String, examPaper: String, setNum: String, questionCount: Number,
   totalMarks: Number, availableMarks: Number, durationMinutes: Number,
   negativeFraction: Number, verified: Boolean, sourceUrl: String, sourceSha256: String,
-  instructions: [String], questions: Array,
+  instructions: [String], questions: Array, assetManifest: mongoose.Schema.Types.Mixed,
 }, { timestamps: true });
 schema.index({ year: 1, examPaper: 1, setNum: 1 }, { unique: true });
 export default mongoose.models.YearPaper || mongoose.model('YearPaper', schema);
