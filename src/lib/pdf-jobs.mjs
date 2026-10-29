@@ -24,7 +24,7 @@ export const isProcessAlive = pid => {
 export class PdfJobConflictError extends Error {
   constructor(message) { super(message); this.name = 'PdfJobConflictError'; }
 }
-async function withJobMutation(id, root, action) {
+export async function withJobMutation(id, root, action) {
   jobDirectory(id, root);
   const lockPath = path.join(path.resolve(root), `.action-${id}.lock`);
   let lock;
@@ -43,14 +43,20 @@ async function withJobMutation(id, root, action) {
   try { return await action(); }
   finally { if (lock) { await lock.close(); await fs.rm(lockPath, { force: true }); } }
 }
+export async function resolveStoredJobDirectory(id, root = jobsRoot()) {
+  const rootPath = path.resolve(root), directory = path.resolve(jobDirectory(id, rootPath));
+  if (path.dirname(directory) !== rootPath || directory === rootPath) throw new Error('Export location is invalid.');
+  let info;
+  try { info = await fs.lstat(directory); } catch (error) { if (error.code === 'ENOENT') return null; throw error; }
+  if (!info.isDirectory() || info.isSymbolicLink() || path.dirname(await fs.realpath(directory)) !== await fs.realpath(rootPath)) throw new Error('Export location is invalid.');
+  return directory;
+}
 export async function deleteJob(id, root = jobsRoot()) {
   return withJobMutation(id, root, async () => {
     // Delete only a validated, real UUID directory directly inside the configured exports root.
-    const rootPath = path.resolve(root), directory = path.resolve(jobDirectory(id, rootPath));
-    if (path.dirname(directory) !== rootPath || directory === rootPath) throw new Error('Export location is invalid.');
-    let info;
-    try { info = await fs.lstat(directory); } catch (error) { if (error.code === 'ENOENT') return null; throw error; }
-    if (!info.isDirectory() || info.isSymbolicLink() || path.dirname(await fs.realpath(directory)) !== await fs.realpath(rootPath)) throw new Error('Export location is invalid.');
+    const directory = await resolveStoredJobDirectory(id, root);
+    if (!directory) return null;
+    const rootPath = path.resolve(root);
     const job = await readJob(id, rootPath);
     if (!job) return null;
     if (['queued', 'running'].includes(job.status)) throw new PdfJobConflictError('Cancel the export and wait for it to stop before deleting it.');

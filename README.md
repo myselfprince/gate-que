@@ -16,6 +16,8 @@ Run `npm run lint` and `npm run build` before deployment.
 The workspace separates **Question editor**, **PDF & LaTeX**, and **YouTube
 studio** into tabs. Use **Save to database** to save question edits. YouTube
 studio has separate **Title & description** and **Thumbnails & cutout** views.
+**Questions to load** defaults to **All questions**. Click **Load Database** to
+load the full chapter, or choose a smaller batch when needed.
 
 For YouTube, choose a question and enter a specific focus topic to generate
 three title choices, a unique description, and relevant tags. Customize channel
@@ -98,17 +100,23 @@ exports, use `npm run export:pdf -- chapter.json output.pdf` with the `chapter.j
 from an extracted LaTeX ZIP. The command also writes an adjacent `.qa.json` report.
 Install `pdflatex` (or set `PDFLATEX_BIN`) and keep chapter diagrams in `public/`.
 Layout warnings require review; successful compilation is not content verification.
-Each question can store an optional YouTube solution URL, including a timestamp.
-PDF and editable LaTeX exports place a red YouTube **Video sol.** link at the
-top right. The default branding is a faint, centred `g4gate.com` background
+Each question can store an optional YouTube solution URL, including a timestamp,
+and an optional **GateOverflow solution URL** (`gateOverflowUrl`) for a question
+or answer on `gateoverflow.in`. PDF and editable LaTeX exports show both available
+links at the top right by default: red YouTube **Video sol.** and **GateOverflow sol.**
+Each has its own visibility, label, position and size in PDF design settings.
+Questions without a URL omit that link. The default branding is a faint, centred `g4gate.com` background
 watermark; the subject/chapter title appears on the first page only.
 The TeX installation must include `hyperref` and its dependencies.
 
-Open **PDF design settings** to hide or replace the watermark, adjust its opacity,
-size, angle and position, or make it clickable. Configure the website URL and an
-optional separate website link; choose positions and labels for solution links
-and page numbers, numbering formats, title frequency/alignment, and question
-headings. These settings are included in saved templates and terminal exports.
+The **PDF & LaTeX** tab keeps PDF and LaTeX export buttons at the top. Choose
+questions, then use a preset, theme, text size and answer options in **Choose a
+look**. The live preview follows the selected export questions. Detailed settings
+open one section at a time: **Solution & website links**, **Branding & page
+labels**, **Page layout**, and **Saved styles & extra files**. These include
+watermark styling, link positions and labels, page numbers, titles, fitting and
+saved templates. Previous PDFs and book combining are under **Saved exports**;
+saved PDF previews open on request. Settings also apply to terminal exports.
 Previous browser settings keep their font choices and migrate to the new layout.
 Items sharing a header/footer position stack; their height is reserved before
 fitting the question. The app preview opens external links in a new tab by default
@@ -124,6 +132,12 @@ queued/running jobs. Keep the full `scripts/` directory when deploying.
 Install Poppler `pdftotext` for automatic text-bound checks. If unavailable the QA
 report explicitly marks that check incomplete. Jobs and snapshots remain in
 `output/pdf-jobs/` (or `PDF_EXPORT_DIR`); protect and back up this local directory.
+Under **Saved exports → Storage cleanup**, delete all saved PDF exports across
+subjects, or remove only generated page-image PNGs and image ZIPs while keeping
+PDFs. Storage totals show the space eligible for cleanup. Queued/running exports
+and exports being used by another action are skipped. Questions, original chapter
+diagrams, retry source images and downloaded copies are kept by image-only cleanup;
+deleting full exports removes their export folders and snapshots as well.
 The export panel has its own explicit all/year/range/checkbox selection and blank
 placeholder toggle. The editable-source ZIP uses the same selection and settings.
 Use the one-question preview before building a chapter. When a reviewed source
@@ -286,6 +300,16 @@ Once your chapter is perfect, the app can export it in three distinct ways:
 A built-in dashboard that compares your *Actual* Questions in the DB against your *Target* Questions (from your physical book). It shows a chapter-by-chapter breakdown of completion status (In Progress, Completed) so you always know exactly how much work is left.
 
 ---
+
+## Year-paper prompt tracker (`/gateyearpaperpdf`)
+
+Scans `D:\Gate PYQs Year Wise - PDFs` for question-paper PDFs and prepares a complete, ready-to-copy build prompt for each exact file. Supports search, CS/IT/DA and status filters, editable prompt inputs, copy-next-pending, full preview, manual clipboard fallback and `.txt` downloads. Copy history and prompt-input changes stay in this browser.
+
+Completion comes from verified, independently stored `yearpapers` documents matched to the source PDF's SHA-256. Copying a prompt never marks a paper complete. The tracker only reads source PDFs and database records; it never edits book questions or year papers. It remains usable for prompt copying when database status is unavailable. Archives are excluded.
+
+The checksum-guarded identity correction for `DA 2025 set 2.pdf` targets CS 2025 Set 2, as shown by its actual CS2 header. New files are discovered on refresh; their prompts require verifying the actual PDF header before import. The reusable prompt and status rules are in `src/lib/gate-year-paper-tracker.mjs`.
+
+Verify with `node --test tests/gate-year-paper-tracker.test.mjs` and, against the running local app, `node scripts/verify-gate-year-paper-tracker.mjs`.
 
 ## 💻 Tech Stack Summary
 

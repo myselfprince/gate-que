@@ -2,7 +2,7 @@ import { PDFName, PDFHexString } from 'pdf-lib';
 
 export function addQuestionBookmarks(document, questions) {
   const entries = questions.map((question, index) => {
-    const number = question.source?.questionNumber || question.exportNumber || String(index + 1);
+    const number = String(index + 1);
     const title = `Q${number}${question.year ? ` - GATE ${question.year}` : ''}${question.questionType ? ` - ${question.questionType}` : ''}`;
     return { title, page: index };
   });

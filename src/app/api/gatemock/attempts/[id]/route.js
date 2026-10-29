@@ -17,7 +17,7 @@ async function handle(request, context, action) {
     if (!attempt) return jsonError('Attempt not found.', 404);
     attempt = await finishExpired(MockAttempt, attempt);
     if (action === 'read' || attempt.finishedAt) return NextResponse.json({ success: true, attempt: publicAttempt(attempt) });
-    const body = await parseJson(request, 100000);
+    const body = await parseJson(request, 200000);
     if (!Number.isInteger(body.revision) || body.revision !== attempt.revision) return jsonError('This attempt changed in another tab. Reload before continuing.', 409);
     let state; try { state = validateAttemptState(body.state, attempt.questions); } catch (error) { return jsonError(error.message); }
     // Check the deadline again after parsing; never accept answers arriving late.

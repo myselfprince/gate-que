@@ -1,0 +1,115 @@
+{
+  "sourceSHA256": "aab96c4034d58b63448c7e115b78a124483163c42875a59c7c4b4dab2a917991",
+  "crops": [
+    {
+      "file": "er-model-1-1.png",
+      "pdfPage": 1,
+      "bookPage": 597,
+      "boundsAt2400pxSpread": [
+        1308,
+        874,
+        1780,
+        1022
+      ],
+      "figureRegionsAt2400pxSpread": null,
+      "size": [
+        944,
+        296
+      ],
+      "sha256": "1d2b53164716d724306743dbe78407f70c1b8a67d1e108823e8f2aed6ab15d29"
+    },
+    {
+      "file": "er-model-1-2.png",
+      "pdfPage": 1,
+      "bookPage": 597,
+      "boundsAt2400pxSpread": [
+        1368,
+        1268,
+        1715,
+        1318
+      ],
+      "figureRegionsAt2400pxSpread": null,
+      "size": [
+        694,
+        100
+      ],
+      "sha256": "afb5d9527538b037d1be50ee219d4a9384cd658a6aad69ad894c32df18776b37"
+    },
+    {
+      "file": "er-model-1-3.png",
+      "pdfPage": 1,
+      "bookPage": 597,
+      "boundsAt2400pxSpread": [
+        1903,
+        458,
+        2290,
+        536
+      ],
+      "figureRegionsAt2400pxSpread": null,
+      "size": [
+        774,
+        156
+      ],
+      "sha256": "ad6026b2cca9574efdadb84c2b2c65116e6454b59b9a4c82ad5ad78e18b03183"
+    },
+    {
+      "file": "er-model-1-6-7.png",
+      "pdfPage": 2,
+      "bookPage": 598,
+      "boundsAt2400pxSpread": [
+        110,
+        217,
+        632,
+        352
+      ],
+      "figureRegionsAt2400pxSpread": null,
+      "size": [
+        1044,
+        270
+      ],
+      "sha256": "82a32604a88ff742db12bc6a7265a86b16c51e460de96afcccdc167de2289c06"
+    },
+    {
+      "file": "er-model-1-13.png",
+      "pdfPage": 2,
+      "bookPage": 599,
+      "boundsAt2400pxSpread": [
+        1310,
+        216,
+        2220,
+        798
+      ],
+      "figureRegionsAt2400pxSpread": [
+        [
+          1310,
+          216,
+          1770,
+          510
+        ],
+        [
+          1780,
+          264,
+          2220,
+          512
+        ],
+        [
+          1310,
+          525,
+          1770,
+          798
+        ],
+        [
+          1780,
+          532,
+          2220,
+          798
+        ]
+      ],
+      "size": [
+        1880,
+        1220
+      ],
+      "sha256": "ec16349f2344400872d40d0bf6adc31b3f63311c6c3abdc934fdbdde0ef35067"
+    }
+  ]
+}

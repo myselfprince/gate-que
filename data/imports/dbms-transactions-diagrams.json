@@ -1,0 +1,21 @@
+{
+  "sourceSHA256": "16985def50bfc94418b62c19aad1798a920288316c047092fa39f73bb3584cec",
+  "crops": [
+    {
+      "file": "transactions-5-22.png",
+      "pdfPage": 2,
+      "bookPage": 647,
+      "boundsAt2400pxSpread": [
+        1900,
+        1160,
+        2260,
+        1340
+      ],
+      "size": [
+        720,
+        360
+      ],
+      "sha256": "06731017b9efdd6f438e360a9e7e2b9467ed7557651075efc1e710ca13487503"
+    }
+  ]
+}

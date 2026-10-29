@@ -1,0 +1,175 @@
+{
+  "sourceSHA256": "b5fc5757b77aca121115807eeeed9846c69768c0112ce5d241c400a40b007b0e",
+  "crops": [
+    {
+      "file": "compiler-4-4-A.png",
+      "pdfPage": 1,
+      "bookPage": 512,
+      "half": 1,
+      "boundsAt3Point5x": [
+        650,
+        290,
+        810,
+        578
+      ],
+      "size": [
+        320,
+        576
+      ],
+      "sha256": "7ebda2f08ab10316184504173f5560f99a8532f3d55a410bd9f33f79d907636e"
+    },
+    {
+      "file": "compiler-4-4-B.png",
+      "pdfPage": 1,
+      "bookPage": 512,
+      "half": 1,
+      "boundsAt3Point5x": [
+        850,
+        310,
+        1010,
+        580
+      ],
+      "size": [
+        320,
+        540
+      ],
+      "sha256": "e419ca6a640da1f10486f94229063c0c8193cead7e7b95dbd90b07333e213356"
+    },
+    {
+      "file": "compiler-4-4-C.png",
+      "pdfPage": 1,
+      "bookPage": 512,
+      "half": 1,
+      "boundsAt3Point5x": [
+        655,
+        580,
+        815,
+        886
+      ],
+      "size": [
+        320,
+        612
+      ],
+      "sha256": "5a7e5976bb1274cbfcc901741908ded9e44edc46d815d8f48959998a03d36ccc"
+    },
+    {
+      "file": "compiler-4-4-D.png",
+      "pdfPage": 1,
+      "bookPage": 512,
+      "half": 1,
+      "boundsAt3Point5x": [
+        850,
+        583,
+        1030,
+        890
+      ],
+      "size": [
+        360,
+        614
+      ],
+      "sha256": "7a5c32f82e284957787ea4949b8edbca19b492df566843fd70df054323f3c1bd"
+    },
+    {
+      "file": "compiler-4-5-A.png",
+      "pdfPage": 1,
+      "bookPage": 513,
+      "half": 2,
+      "boundsAt3Point5x": [
+        120,
+        175,
+        355,
+        390
+      ],
+      "size": [
+        470,
+        430
+      ],
+      "sha256": "81845daf9658672d25eefda763ea5d7691d6ee2660a10a9f57a996c722829a3a"
+    },
+    {
+      "file": "compiler-4-5-B.png",
+      "pdfPage": 1,
+      "bookPage": 513,
+      "half": 2,
+      "boundsAt3Point5x": [
+        120,
+        390,
+        355,
+        604
+      ],
+      "size": [
+        470,
+        428
+      ],
+      "sha256": "f25fb88ba52bfaf71c2bb7dad4afd8b8009d945666826fc107d0f21bef2bca47"
+    },
+    {
+      "file": "compiler-4-5-C.png",
+      "pdfPage": 1,
+      "bookPage": 513,
+      "half": 2,
+      "boundsAt3Point5x": [
+        120,
+        604,
+        355,
+        772
+      ],
+      "size": [
+        470,
+        336
+      ],
+      "sha256": "3030d69bd37860b681ab9f3acd6109deeb16d1d8a5916058f5bb99c15ce32aab"
+    },
+    {
+      "file": "compiler-4-5-D.png",
+      "pdfPage": 1,
+      "bookPage": 513,
+      "half": 2,
+      "boundsAt3Point5x": [
+        120,
+        772,
+        355,
+        978
+      ],
+      "size": [
+        470,
+        412
+      ],
+      "sha256": "dd898ea5cc2f44915bddbb67507533cf57162464dace7fc17e8a2505ad126f6c"
+    },
+    {
+      "file": "compiler-4-13-flow.png",
+      "pdfPage": 2,
+      "bookPage": 514,
+      "half": 1,
+      "boundsAt3Point5x": [
+        185,
+        914,
+        475,
+        1120
+      ],
+      "size": [
+        580,
+        412
+      ],
+      "sha256": "21ed2549a27ff25456dd405214a5c7c6594a790506849ca90e8dc47cb3182caa"
+    },
+    {
+      "file": "compiler-4-26-flow.png",
+      "pdfPage": 3,
+      "bookPage": 516,
+      "half": 1,
+      "boundsAt3Point5x": [
+        145,
+        627,
+        465,
+        1053
+      ],
+      "size": [
+        640,
+        852
+      ],
+      "sha256": "e701ef18cb6e4f77f44e700958080090235a7666456016fd3a8774b3f815f13c"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "sourceSHA256": "d470dc8e1e5d08893ef10af72258c910f1637e9720b89683bfaf125af85154c8",
+  "crops": [
+    {
+      "file": "stacks-queues-3-10.png",
+      "pdfPage": 1,
+      "bookPage": 369,
+      "half": 2,
+      "boundsAt3x": [
+        148,
+        226,
+        410,
+        313
+      ],
+      "sha256": "4952d9ab40b565b1d9eedbbcf057f834e8e5bb8748332da914301c0e7ea948ab"
+    },
+    {
+      "file": "stacks-queues-3-26.png",
+      "pdfPage": 2,
+      "bookPage": 371,
+      "half": 2,
+      "boundsAt3x": [
+        502,
+        445,
+        875,
+        548
+      ],
+      "sha256": "b02ebc7bd98c34f78657ba4877e1e457f24e887b8ee18f82ddee67440e818a65"
+    },
+    {
+      "file": "stacks-queues-3-28.png",
+      "pdfPage": 3,
+      "bookPage": 372,
+      "half": 1,
+      "boundsAt3x": [
+        82,
+        121,
+        453,
+        296
+      ],
+      "sha256": "ea9cc7bbbbc6c812fa3f072c1b554b7831a94a1eb1860eb0fe155d8deb702009"
+    },
+    {
+      "file": "stacks-queues-3-30.png",
+      "pdfPage": 3,
+      "bookPage": 372,
+      "half": 1,
+      "boundsAt3x": [
+        608,
+        192,
+        810,
+        323
+      ],
+      "sha256": "80ee7122a4d580128f9ae0ae9e38a10df6e11749154f23cfc5aff6ff93ee86a3"
+    }
+  ]
+}

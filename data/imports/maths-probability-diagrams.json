@@ -1,0 +1,21 @@
+{
+  "sourceSHA256": "e90e2db4cee3877cc55b5300d274bb84ec09928c74008fc6cacce3621a3233c2",
+  "crops": [
+    {
+      "file": "probability-5-61.png",
+      "pdfPage": 4,
+      "bookPage": 80,
+      "boundsAt2400pxSpread": [
+        798,
+        1130,
+        1069,
+        1278
+      ],
+      "size": [
+        542,
+        296
+      ],
+      "sha256": "083111b8b725491e7eb53759775fa71a2839a510bcb71c3bd10b3a52353f1db2"
+    }
+  ]
+}

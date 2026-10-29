@@ -1,0 +1,249 @@
+[
+  {
+    "file": "digital-logic-1-5.png",
+    "pdfPage": 1,
+    "pixelBounds": [
+      1580,
+      1710,
+      1970,
+      1835
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "sha256": "a78bba6195dd6a0feb7ee2a1d10b0f9677b89e123646478c7a15248ab31a1008"
+  },
+  {
+    "file": "digital-logic-1-15.png",
+    "pdfPage": 2,
+    "pixelBounds": [
+      945,
+      365,
+      1420,
+      520
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "sha256": "27fd0c353f0062822a1fb6f41599fe7711d51fda7db8eb7a833aa00f344c4edc"
+  },
+  {
+    "file": "digital-logic-1-17.png",
+    "pdfPage": 2,
+    "pixelBounds": [
+      985,
+      1063,
+      1310,
+      1245
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "sha256": "ea2cfb651acfdd0065ff6bf9ec95954d8a2a291cf9339b0814a7e72816c6ca9c"
+  },
+  {
+    "file": "digital-logic-1-19-circuit.png",
+    "pdfPage": 2,
+    "pixelBounds": [
+      1540,
+      325,
+      2065,
+      452
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [
+      [
+        0,
+        0,
+        525,
+        8
+      ],
+      [
+        0,
+        119,
+        45,
+        127
+      ]
+    ],
+    "sha256": "773521712fec661189084259362b96a9618f35b0f96c3316595942f947d9ea79"
+  },
+  {
+    "file": "digital-logic-1-19-waveform.png",
+    "pdfPage": 2,
+    "pixelBounds": [
+      1510,
+      715,
+      2080,
+      845
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "sha256": "b34cd3a7cf931362b8b5729056b45d9123ed2b23bc55e8872729a05d511f3ef5"
+  },
+  {
+    "file": "digital-logic-1-25.png",
+    "pdfPage": 2,
+    "pixelBounds": [
+      2230,
+      460,
+      2600,
+      625
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "sha256": "084356ed396430e4f811fbd86b2e207de05b5ef879fae250c7e39f785b8d6a08"
+  },
+  {
+    "file": "digital-logic-1-26.png",
+    "pdfPage": 2,
+    "pixelBounds": [
+      2280,
+      855,
+      2590,
+      1000
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "sha256": "d4593f0eb1a47a95c1e598681f1c6329835f095f1e681b62913e4429aef39562"
+  },
+  {
+    "file": "digital-logic-1-38.png",
+    "pdfPage": 3,
+    "pixelBounds": [
+      1620,
+      495,
+      2005,
+      665
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "sha256": "4152f41476aaea363424f2c82eaa87d152f29c0424d46985d8e3bf390cf6fb8b"
+  },
+  {
+    "file": "digital-logic-1-40.png",
+    "pdfPage": 3,
+    "pixelBounds": [
+      1635,
+      1375,
+      1910,
+      1485
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "sha256": "96358ddf0a305c6aed71a886faa7d4ee37f900bfad4382e0e8b1e2e540f0f2f0"
+  },
+  {
+    "file": "digital-logic-1-47.png",
+    "pdfPage": 3,
+    "pixelBounds": [
+      2175,
+      1515,
+      2600,
+      1825
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "sha256": "0c0623470d9ff9179168d2bae15c9444b243b702e82c8cd20b1ff2111ffc1799"
+  },
+  {
+    "file": "digital-logic-1-48-a.png",
+    "pdfPage": 4,
+    "pixelBounds": [
+      335,
+      375,
+      505,
+      445
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "sha256": "8bce11a78670498ebdd947a38865d57afeb5fe9b1d32e67f4c3129a303deda4f"
+  },
+  {
+    "file": "digital-logic-1-48-b.png",
+    "pdfPage": 4,
+    "pixelBounds": [
+      335,
+      445,
+      505,
+      515
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "sha256": "b305e687bff2903c0190c1239090f659ddf30410557eb8ea10504ce7e426ed28"
+  },
+  {
+    "file": "digital-logic-1-48-c.png",
+    "pdfPage": 4,
+    "pixelBounds": [
+      335,
+      520,
+      535,
+      585
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "sha256": "22644eea55d234b81c40e98352d790b8e63800552ed88453e413210b00fa9884"
+  },
+  {
+    "file": "digital-logic-1-48-d.png",
+    "pdfPage": 4,
+    "pixelBounds": [
+      335,
+      590,
+      665,
+      745
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "sha256": "dc7562bcc754cab691eafe1f8d4ca16a8a568af866e1e290565b47bcc001ee00"
+  },
+  {
+    "file": "digital-logic-1-69.png",
+    "pdfPage": 5,
+    "pixelBounds": [
+      355,
+      270,
+      740,
+      440
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "sha256": "095320f861109d28e86b83cde84ff617f2db2485fea4bf0afa903ffa576d0e86"
+  },
+  {
+    "file": "digital-logic-1-70.png",
+    "pdfPage": 5,
+    "pixelBounds": [
+      315,
+      625,
+      715,
+      780
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "sha256": "4c947f0ba6eb7464108c26e03adede2d582ecb7b1c4db9ac695dd14bc207e699"
+  },
+  {
+    "file": "digital-logic-1-73.png",
+    "pdfPage": 5,
+    "pixelBounds": [
+      325,
+      1712,
+      735,
+      1855
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "sha256": "379fe0713d66482dcdeaeba2e4e4cf1ebad4d40d9e67c43fbbf860c2ed876204"
+  },
+  {
+    "file": "digital-logic-1-76.png",
+    "pdfPage": 5,
+    "pixelBounds": [
+      895,
+      1355,
+      1380,
+      1580
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "sha256": "ca46371294c341342ff8ce0326bcd05c1dd2da978cb8c97ba5d670d42f3803ea"
+  }
+]

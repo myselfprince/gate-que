@@ -1,0 +1,22 @@
+{
+  "sourceSHA256": "db82237929f2ad56a350754384712fa8e74edf893fb7cc827830d06e9bcd9337",
+  "crops": [
+    {
+      "file": "linear-algebra-6-65-graph.png",
+      "pdfPage": 4,
+      "bookPage": 101,
+      "half": 2,
+      "boundsAt6x": [
+        980,
+        470,
+        1440,
+        770
+      ],
+      "size": [
+        460,
+        300
+      ],
+      "sha256": "97f92c4b8bfb2c562225457ed0254960cd2f73fda9ca656fac46077fe89db3b3"
+    }
+  ]
+}

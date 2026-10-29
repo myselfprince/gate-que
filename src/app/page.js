@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { v4 as uuidv4 } from 'uuid';
 import { GATE_SYLLABUS } from '@/lib/syllabus';
-import { safeSolutionUrl } from '@/lib/solution-links.mjs';
+import { safeSolutionUrl, safeGateOverflowUrl } from '@/lib/solution-links.mjs';
 import { DEFAULT_PDF_SETTINGS } from '@/lib/pdf-settings.mjs';
 import { QUESTION_LOAD_OPTIONS } from '@/lib/chapter-loading.mjs';
 import { reconcileQuestionExamMetadata } from '@/lib/question-exam-metadata.mjs';
@@ -91,7 +91,7 @@ export default function Home() {
   const [toast, setToast] = useState(null);
   const [isReviving, setIsReviving] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
-  const [questionLimit, setQuestionLimit] = useState('10');
+  const [questionLimit, setQuestionLimit] = useState('all');
   const [databaseState, setDatabaseState] = useState(null);
   const [draftReady, setDraftReady] = useState(false);
   const databaseRequestRef = useRef(0);
@@ -632,7 +632,7 @@ export default function Home() {
     saveHistory();
     setQuestions(questions.map(q => {
       if (q.id === id) {
-        return { ...q, isBlank: true, optLayout: "auto", isPosLocked: true, text: "", code: "", diagram: "", ext: ".png", optA: "", optB: "", optC: "", optD: "", natAnswer: "", correctOptions: [], natRange: null, questionType: undefined, paperQuestionNumber: '', source: undefined, tempPaste: "", solutionUrl: "" };
+        return { ...q, isBlank: true, optLayout: "auto", isPosLocked: true, text: "", code: "", diagram: "", ext: ".png", optA: "", optB: "", optC: "", optD: "", natAnswer: "", correctOptions: [], natRange: null, questionType: undefined, paperQuestionNumber: '', source: undefined, tempPaste: "", solutionUrl: "", gateOverflowUrl: "" };
       }
       return q;
     }));
@@ -1146,7 +1146,7 @@ const handleExportAllImages = async () => {
     const imageName = optText.slice(4).trim();
     const imagePath = buildImagePath(imageName, ext);
     const isMissing = imageErrors.has(imagePath);
-    return <img src={`${imagePath}?t=${imgCacheBuster}`} onError={() => reportImageStatus(imagePath, true)} onLoad={() => reportImageStatus(imagePath, false)} alt="Option diagram" style={{ maxHeight: '60px', verticalAlign: 'middle', border: `2px solid ${isMissing ? '#f38ba8' : '#45475a'}`, borderRadius: '4px', marginLeft: '10px' }} />;
+    return <img src={`${imagePath}?t=${imgCacheBuster}`} onError={() => reportImageStatus(imagePath, true)} onLoad={() => reportImageStatus(imagePath, false)} alt="Option diagram" style={{ maxWidth: 'calc(100% - 44px)', maxHeight: '60px', height: 'auto', objectFit: 'contain', boxSizing: 'border-box', verticalAlign: 'middle', border: `2px solid ${isMissing ? '#f38ba8' : '#45475a'}`, borderRadius: '4px', marginLeft: '10px' }} />;
   };
 
   
@@ -1201,7 +1201,7 @@ const handleExportAllImages = async () => {
 
       <header className={styles.heading}>
         <div><p className={styles.eyebrow}>G4Gate · Creator workspace</p><h1>From question to publication.</h1><p className={styles.subtitle}>Edit your PYQs, prepare PDFs, and create your next YouTube upload.</p></div>
-        <nav className={styles.links} aria-label="Workspace tools"><Link href="/gatemock" target="_blank">GATE Mock ↗</Link><Link href="/gatemock/admin" target="_blank">Paper coverage ↗</Link><Link href="/scraper" target="_blank">Scraper ↗</Link><Link href="/scraped-view" target="_blank">Scraped questions ↗</Link><Link href="/status" target="_blank">Chapter status ↗</Link><Link href="/pdf-tracker" target="_blank">PDF tracker ↗</Link><Link href="/diagram-maker" target="_blank">Diagram studio ↗</Link><Link href="/kmap-maker" target="_blank">K-Map studio ↗</Link></nav>
+        <nav className={styles.links} aria-label="Workspace tools"><Link href="/gatemock" target="_blank">GATE Mock ↗</Link><Link href="/gatemock/admin" target="_blank">Paper coverage ↗</Link><Link href="/scraper" target="_blank">Scraper ↗</Link><Link href="/scraped-view" target="_blank">Scraped questions ↗</Link><Link href="/status" target="_blank">Chapter status ↗</Link><Link href="/pdf-tracker" target="_blank">PDF tracker ↗</Link><Link href="/gateyearpaperpdf" target="_blank">Year paper prompts ↗</Link><Link href="/diagram-maker" target="_blank">Diagram studio ↗</Link><Link href="/kmap-maker" target="_blank">K-Map studio ↗</Link></nav>
       </header>
       <section className={styles.chapterBar} aria-label="Current chapter">
         <div style={{ flex: '1 1 200px' }}>
@@ -1331,7 +1331,7 @@ const handleExportAllImages = async () => {
         {[['editor', 'Question editor'], ['pdf', 'PDF & LaTeX'], ['youtube', 'YouTube studio']].map(([id, title]) => <button key={id} id={`tab-${id}`} role="tab" aria-selected={activeTab === id} aria-controls={`panel-${id}`} onClick={() => setActiveTab(id)}>{title}</button>)}
       </div>
       <section id="panel-pdf" role="tabpanel" aria-labelledby="tab-pdf" hidden={activeTab !== 'pdf'}>
-        <div className={styles.sectionTitle}><div><h2>Publish your question book</h2><p>Choose questions, adjust the design, then preview and download your PDF.</p></div></div>
+        <div className={styles.sectionTitle}><div><h2>Create your PDF</h2><p>Choose questions, pick a look and export.</p></div></div>
         <PdfExportPanel key={`${subject}|${chapter}`} payload={{ subject, chapter, questions, pdfSettings }} settingsValid={pdfSettingsValid} active={activeTab === 'pdf'} settingsControls={<PdfSettingsPanel settings={pdfSettings} onChange={setPdfSettings} onValidityChange={setPdfSettingsValid} />} />
       </section>
       <section id="panel-youtube" role="tabpanel" aria-labelledby="tab-youtube" hidden={activeTab !== 'youtube'}>
@@ -1520,6 +1520,9 @@ const handleExportAllImages = async () => {
                   <label htmlFor={`solution-${q.id}`}>Video solution URL (optional; YouTube timestamps supported)</label>
                   <input id={`solution-${q.id}`} type="url" disabled={isBulkLocked} value={q.solutionUrl || ''} onChange={e => updateQ(q.id, 'solutionUrl', e.target.value)} placeholder="https://www.youtube.com/watch?v=...&t=90s" aria-invalid={Boolean(q.solutionUrl?.trim() && !safeSolutionUrl(q.solutionUrl))} />
                   {q.solutionUrl?.trim() && !safeSolutionUrl(q.solutionUrl) && <small style={{ color: '#f38ba8' }}>Enter a YouTube video URL with a valid timestamp.</small>}
+                  <label htmlFor={`gateoverflow-${q.id}`}>GateOverflow solution URL (optional)</label>
+                  <input id={`gateoverflow-${q.id}`} type="url" maxLength={2000} disabled={isBulkLocked} value={q.gateOverflowUrl || ''} onChange={e => updateQ(q.id, 'gateOverflowUrl', e.target.value)} placeholder="https://gateoverflow.in/..." aria-invalid={Boolean(q.gateOverflowUrl?.trim() && !safeGateOverflowUrl(q.gateOverflowUrl))} />
+                  {q.gateOverflowUrl?.trim() && !safeGateOverflowUrl(q.gateOverflowUrl) && <small style={{ color: '#f38ba8' }}>Enter a https://gateoverflow.in/ question or answer URL.</small>}
                   <details style={{ margin: '12px 0', color: '#bac2de' }}>
                     <summary style={{ cursor: 'pointer' }}>PDF settings for this question</summary>
                     <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
@@ -1574,7 +1577,10 @@ const handleExportAllImages = async () => {
                 
                 <div id={`preview-${q.id}`} className="preview-pane" style={{ paddingLeft: '20px', width: '50%', minWidth: 0, boxSizing: 'border-box', overflowWrap: 'anywhere' }}>
                   <div style={{ color: '#a6e3a1', fontWeight: 'bold', marginBottom: '10px' }}>[GATE {q.examPaper || 'CS'} {q.year}{q.setNum ? ` (Set-${q.setNum})` : ''} | {q.marks} Mark{q.questionType ? ` | ${q.questionType}` : ''}]{q.source?.questionNumber ? ` · Book Q${q.source.questionNumber}` : ''}</div>
-                  {safeSolutionUrl(q.solutionUrl) && <a href={safeSolutionUrl(q.solutionUrl)} target="_blank" rel="noopener noreferrer" style={{ color: '#89dceb' }}>Watch video solution ↗</a>}
+                  <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+                    {safeSolutionUrl(q.solutionUrl) && <a href={safeSolutionUrl(q.solutionUrl)} target="_blank" rel="noopener noreferrer" style={{ color: '#89dceb' }}>Watch video solution ↗</a>}
+                    {safeGateOverflowUrl(q.gateOverflowUrl) && <a href={safeGateOverflowUrl(q.gateOverflowUrl)} target="_blank" rel="noopener noreferrer" style={{ color: '#a6e3a1' }}>GateOverflow solution ↗</a>}
+                  </div>
                   <div>{preview.content}</div>
 
                   {q.code && !preview.containsCodeTag && <div style={{ background: '#181825', padding: '10px', border: '1px solid #45475a', fontFamily: 'monospace', whiteSpace: 'pre-wrap', margin: '10px 0' }}>{q.code}</div>}
@@ -1585,7 +1591,7 @@ const handleExportAllImages = async () => {
                       return (
                         <div style={{
                           display: isTwoCol ? 'grid' : 'block',
-                          gridTemplateColumns: isTwoCol ? '1fr 1fr' : 'none',
+                          gridTemplateColumns: isTwoCol ? 'minmax(0, 1fr) minmax(0, 1fr)' : 'none',
                           gap: isTwoCol ? '10px 20px' : '0'
                         }}>
                           <div style={{ marginBottom: '8px' }}><strong>(A)</strong> <span style={{ whiteSpace: 'pre-wrap', fontFamily: q.isCodeOptions ? 'monospace' : 'inherit', display: q.isCodeOptions ? 'inline-block' : 'inline', verticalAlign: 'top' }}>{renderOptionText(q.optA, q.ext)}</span></div>

@@ -1,0 +1,53 @@
+{
+  "sourceSHA256": "fae38049bc4f47e237f9ba4378bc2182f7eb8815c95f306f4666689e6df95bb0",
+  "crops": [
+    {
+      "file": "miscellaneous-6-6-graph.png",
+      "pdfPage": 1,
+      "bookPage": 478,
+      "boundsPdfPoints": [
+        181,
+        122,
+        271,
+        165
+      ],
+      "size": [
+        540,
+        258
+      ],
+      "sha256": "1b640d114146ca6247309b7404ab10b18b2eb51c5027c97aa6a2a97840eb84e0"
+    },
+    {
+      "file": "miscellaneous-6-17-graph.png",
+      "pdfPage": 1,
+      "bookPage": 479,
+      "boundsPdfPoints": [
+        474,
+        220,
+        570,
+        275
+      ],
+      "size": [
+        576,
+        330
+      ],
+      "sha256": "827755715f012e0defdefcf84612fb9eb70881f2095ab95cc4147083595295c8"
+    },
+    {
+      "file": "miscellaneous-6-20-graph.png",
+      "pdfPage": 2,
+      "bookPage": 480,
+      "boundsPdfPoints": [
+        67,
+        46,
+        110,
+        80
+      ],
+      "size": [
+        258,
+        204
+      ],
+      "sha256": "2dea2fc5d97f8a6ae90e262d0f7e762f616c460494051d5b62a4b45516710206"
+    }
+  ]
+}

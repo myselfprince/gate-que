@@ -1,0 +1,53 @@
+{
+  "sourceSHA256": "6a32ebac6bd3897877038afddbe516d8f9df745c2ea467fcd54fd78eb57653d2",
+  "crops": [
+    {
+      "file": "file-structures-6-12-13.png",
+      "pdfPage": 1,
+      "bookPage": 657,
+      "boundsAt2400pxSpread": [
+        1320,
+        755,
+        1740,
+        923
+      ],
+      "size": [
+        840,
+        336
+      ],
+      "sha256": "3b1a84d28cef63c93d8524e0ccc1eb403102c9377efdb18367c8f8075751fe80"
+    },
+    {
+      "file": "file-structures-6-19.png",
+      "pdfPage": 2,
+      "bookPage": 658,
+      "boundsAt2400pxSpread": [
+        110,
+        218,
+        540,
+        374
+      ],
+      "size": [
+        860,
+        312
+      ],
+      "sha256": "1f5277899bb8a503e8f6868c98ec2d2df5dfb2c281f0f2813cd12c08dde8175b"
+    },
+    {
+      "file": "file-structures-6-26.png",
+      "pdfPage": 2,
+      "bookPage": 658,
+      "boundsAt2400pxSpread": [
+        625,
+        915,
+        1140,
+        1415
+      ],
+      "size": [
+        1030,
+        1000
+      ],
+      "sha256": "989217490814ef5ece0fb0cdd50e3b4b16b60fcfd17599118502dd73ed6e72e8"
+    }
+  ]
+}

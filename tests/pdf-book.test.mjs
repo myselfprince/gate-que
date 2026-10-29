@@ -31,7 +31,7 @@ test('subject books retain chapter order, source PDF links and question destinat
     const pdf = await PDFDocument.load(result.pdf);
     const first = pdf.catalog.lookup(PDFName.of('Outlines')).lookup(PDFName.of('First'));
     assert.equal(first.lookup(PDFName.of('Title')).decodeText(), 'Chapter 1');
-    assert.equal(first.lookup(PDFName.of('First')).lookup(PDFName.of('Title')).decodeText(), 'Q1.1');
+    assert.equal(first.lookup(PDFName.of('First')).lookup(PDFName.of('Title')).decodeText(), 'Q1');
     assert.equal(first.lookup(PDFName.of('Next')).lookup(PDFName.of('Dest')).get(0).toString(), pdf.getPage(1).ref.toString());
     await fs.writeFile(path.join(directory, 'chapters', '1.pdf'), 'changed');
     await assert.rejects(exportPdfBook(payload, { directory }), /changed/);

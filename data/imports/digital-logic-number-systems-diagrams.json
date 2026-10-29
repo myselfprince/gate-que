@@ -1,0 +1,57 @@
+[
+  {
+    "file": "number-systems-4-4.png",
+    "pdfPage": 1,
+    "rect": [
+      346,
+      215,
+      416,
+      236
+    ],
+    "sha256": "48679532b1743c4706f5f56f7f417de8e8a84caedc9e461b37d6485788c5eea2"
+  },
+  {
+    "file": "number-systems-4-16.png",
+    "pdfPage": 2,
+    "rect": [
+      64,
+      106,
+      155,
+      127
+    ],
+    "sha256": "b0e6965c24e70ef92de45449dc698f6955a16549593f78a92e4676b7226984f8"
+  },
+  {
+    "file": "number-systems-4-25-26.png",
+    "pdfPage": 2,
+    "rect": [
+      178,
+      188,
+      287,
+      218
+    ],
+    "sha256": "1f0ff44ca88cf4aa5f2a000f8cbbddbbc8f88307a69ef52e2374b121aabf26fc"
+  },
+  {
+    "file": "number-systems-4-53.png",
+    "pdfPage": 3,
+    "rect": [
+      211,
+      341,
+      276,
+      353
+    ],
+    "sha256": "be46fa5826c69c8938c0ae82dd3846b7809c1b29aa75a5c90e4b66f7c865767b"
+  },
+  {
+    "file": "number-systems-4-61.png",
+    "pdfPage": 3,
+    "rect": [
+      456,
+      199,
+      551,
+      219
+    ],
+    "sha256": "ea316f01baa743f370402fa265949bb13ae4336663f2d187e2ac8a8baae53745"
+  }
+]

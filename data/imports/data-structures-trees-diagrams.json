@@ -1,0 +1,124 @@
+{
+  "sourceSHA256": "020037cef32681b1eb3bd79141978cfd1888f9c5bab76f7d69095077189a4e92",
+  "crops": [
+    {
+      "file": "trees-5-2-3.png",
+      "pdfPage": 1,
+      "bookPage": 385,
+      "half": 2,
+      "boundsAt4x": [
+        209,
+        523,
+        397,
+        701
+      ],
+      "size": [
+        282,
+        268
+      ],
+      "sha256": "abd58b4ffb88cf5120085aac50d5a83802dca90992fffec23b0ba88dd7e3ab38"
+    },
+    {
+      "file": "trees-5-19-A.png",
+      "pdfPage": 2,
+      "bookPage": 386,
+      "half": 1,
+      "boundsAt4x": [
+        714,
+        1260,
+        873,
+        1418
+      ],
+      "size": [
+        239,
+        237
+      ],
+      "sha256": "796d75a9dac392a7fcf5d5eec3f894c23ab175e8bf4c62688fc6fce91016c77c"
+    },
+    {
+      "file": "trees-5-19-B.png",
+      "pdfPage": 2,
+      "bookPage": 386,
+      "half": 1,
+      "boundsAt4x": [
+        935,
+        1280,
+        1088,
+        1415
+      ],
+      "size": [
+        230,
+        202
+      ],
+      "sha256": "c764105e3db7ee2fea5353aad857f1c29a39b6b45acb2afd635465adc3a8517d"
+    },
+    {
+      "file": "trees-5-19-C.png",
+      "pdfPage": 2,
+      "bookPage": 386,
+      "half": 1,
+      "boundsAt4x": [
+        718,
+        1425,
+        836,
+        1543
+      ],
+      "size": [
+        177,
+        176
+      ],
+      "sha256": "a9d4841cb96657ea59c1463fd40638abc91d8953ea64ccca935bc488cb962f8a"
+    },
+    {
+      "file": "trees-5-19-D.png",
+      "pdfPage": 2,
+      "bookPage": 386,
+      "half": 1,
+      "boundsAt4x": [
+        938,
+        1422,
+        1077,
+        1560
+      ],
+      "size": [
+        209,
+        207
+      ],
+      "sha256": "5e5d7771bc1161f93b866c0c1d3a822157e48962c2040afd6eb641192f2d4bac"
+    },
+    {
+      "file": "trees-5-46.png",
+      "pdfPage": 3,
+      "bookPage": 389,
+      "half": 2,
+      "boundsAt4x": [
+        795,
+        380,
+        1044,
+        582
+      ],
+      "size": [
+        374,
+        303
+      ],
+      "sha256": "8e6e6123ba695f544797ab831dab104ea593cab7d3a145b2ba1ca0bce242a8ad"
+    },
+    {
+      "file": "trees-5-62.png",
+      "pdfPage": 4,
+      "bookPage": 391,
+      "half": 2,
+      "boundsAt4x": [
+        422,
+        630,
+        605,
+        787
+      ],
+      "size": [
+        275,
+        235
+      ],
+      "sha256": "3685984c58051d12a28d718a0067c8bbab44ebb05e96e1dfdf2f0c78f44afab0"
+    }
+  ]
+}

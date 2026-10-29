@@ -11,7 +11,7 @@ export async function GET(request) {
   const denied = requireReadAccess(request); if (denied) return denied;
   try {
     await dbConnect(); const { bank, papers } = await readMockBank();
-    return NextResponse.json({ success: true, ...mockCatalog(bank, papers), records: bank.map(q => ({
+    return NextResponse.json({ success: true, ...mockCatalog(bank, papers), records: bank.filter(q => !q.datasetId).map(q => ({
       key: q.key, chapterId: q.chapterId, questionId: q.id, subject: q.subject, chapter: q.chapter, text: q.text.slice(0, 240),
       year: q.year, examPaper: q.examPaper, setNum: q.setNum || '', paperQuestionNumber: q.paperQuestionNumber || '',
       marks: q.marks, chapterUpdatedAt: q.chapterUpdatedAt,

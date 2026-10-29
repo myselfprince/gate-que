@@ -1,5 +1,52 @@
 # Reviewed chapter imports
 
+## Dynamic Programming (14 source questions)
+
+`algorithms-dynamic.mjs` covers Q4.1-Q4.14 from
+`7. Algorithms/4. Dynamic Prog.pdf`, SHA-256
+`938e1832c310c1ec6db3b9f95fa54c67db0c15817df326c3467b55f52ee81e61`.
+Both scanned PDF pages were visually inspected, with all four columns of the
+first spread reviewed at higher resolution. Only PDF page 1 / book pages
+472-473 belongs to this chapter. PDF page 2 / book pages 476-477 is P and NP
+Concepts, including that chapter's answers and explanations, and is excluded.
+The supplied PDF contains no Dynamic Programming answer key. All 11 MCQ and
+3 NAT answers are intentionally empty and carry validated `not-supplied`
+metadata; there are no unresolved question or option transcriptions.
+
+Shared data accompanies Q4.5/6 and Q4.7/8; the latter includes the preceding
+recurrence needed by Q4.8. Q4.8 starts on book page 472 and its options continue
+on page 473. The matrix and recurrences remain editable LaTeX. No diagrams or
+program listings occur in this chapter. The printed Y/X and W-1 inconsistencies,
+Q4.6 option D, Q4.7 X[n]/x notation, and Q4.9 L_(n+1) are preserved with source
+notes. The B-tree question Q4.3 stays in its printed chapter and order.
+
+The main chapter was initially absent. The adapted reviewed importer added 14
+records and preserved the existing target of 14. Stable IDs, source identity
+checks, checksum-protected EJSON backups, unique chapter/target indexes and a
+transaction protect the update. Existing source edits/locks survive repeats;
+unreviewed legacy records or conflicts stop rather than overwrite. The actual
+database read-back passed coverage, metadata, answer state and uniqueness
+checks; the live repeat-import dry-run added zero. All other chapters and
+targets were unchanged during this import.
+
+```powershell
+node scripts/import-algorithms-dynamic.mjs
+node scripts/import-algorithms-dynamic.mjs --apply --backup-dir data/backups/algorithms-dynamic-2026-10-27
+node --test tests/algorithms-dynamic-import.test.mjs
+node scripts/verify-algorithms-dynamic-export.mjs data/backups/algorithms-dynamic-2026-10-27/verified-source-from-database.json output/pdf/algorithms-dynamic
+python scripts/verify-algorithms-dynamic-pdfs.py output/pdf/algorithms-dynamic
+```
+
+The export checks use the existing PDF and editable LaTeX routes and a local
+preview server. Browser persistence is intercepted so preview verification
+cannot save questions or preferences to the database.
+All 14 editor previews passed with 180 MathJax expressions, no raw math,
+overflow, broken images or rendering errors. All 14 PDF pages were rendered
+and visually inspected. The portable LaTeX ZIP compiles independently and is
+pixel-identical to the exported PDF on all 14 pages. Black backgrounds, white
+text, full-width prose and one question per page use the existing layout.
+Artifacts and the local preview gallery are in `output/pdf/algorithms-dynamic/`.
+
 ## Algorithm Analysis and Asymptotic Notations (68 source questions)
 
 `algorithms-analysis.mjs` covers Q1.1-Q1.68 from all five visually inspected

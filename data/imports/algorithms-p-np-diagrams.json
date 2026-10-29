@@ -1,0 +1,69 @@
+{
+  "sourceSHA256": "207c753b90a883fe8a900313be8145b832bf0355cdb70e3f7992f64d8ca64b73",
+  "crops": [
+    {
+      "file": "p-np-5-5-A.png",
+      "pdfPage": 1,
+      "bookPage": 476,
+      "boundsAt300DPI": [
+        181,
+        1545,
+        318,
+        1673
+      ],
+      "size": [
+        137,
+        128
+      ],
+      "sha256": "d307717aefe7dda8ef16a2393d18a2cf3912944791a4c61b77d7c930cd721ae4"
+    },
+    {
+      "file": "p-np-5-5-B.png",
+      "pdfPage": 1,
+      "bookPage": 476,
+      "boundsAt300DPI": [
+        410,
+        1541,
+        610,
+        1702
+      ],
+      "size": [
+        200,
+        161
+      ],
+      "sha256": "73ae03dff13587143c061891bdad1ad71c8a66baa531f367befd3c15d2e67407"
+    },
+    {
+      "file": "p-np-5-5-C.png",
+      "pdfPage": 1,
+      "bookPage": 476,
+      "boundsAt300DPI": [
+        763,
+        271,
+        930,
+        403
+      ],
+      "size": [
+        167,
+        132
+      ],
+      "sha256": "4ce39d67f47beaa7335538404a8d2562db05707425cdd8456432b239fede8bad"
+    },
+    {
+      "file": "p-np-5-5-D.png",
+      "pdfPage": 1,
+      "bookPage": 476,
+      "boundsAt300DPI": [
+        995,
+        269,
+        1223,
+        407
+      ],
+      "size": [
+        228,
+        138
+      ],
+      "sha256": "598f4e141ce4d08d8830032941aa6422043643e3eda9f0bed7d4f799e9fc831d"
+    }
+  ]
+}

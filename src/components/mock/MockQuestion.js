@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './mock.module.css';
 
 function loadMath() {
-  if (window.MathJax?.typesetPromise) return Promise.resolve(window.MathJax);
+  if (window.MathJax?.typesetPromise) return Promise.resolve(window.MathJax.startup?.promise).then(() => window.MathJax);
   if (!window.gateMockMathPromise) window.gateMockMathPromise = new Promise((resolve, reject) => {
     window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] }, startup: { typeset: false } };
-    const script = document.createElement('script'); script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'; script.async = true;
+    const script = document.createElement('script'); script.src = '/vendor/mathjax/tex-mml-chtml.js'; script.async = true;
     script.onload = () => window.MathJax.startup.promise.then(() => resolve(window.MathJax), reject);
     script.onerror = () => { window.gateMockMathPromise = null; reject(new Error('Math rendering unavailable.')); };
     document.head.appendChild(script);
@@ -23,7 +23,7 @@ function Diagram({ question, name }) {
   const [failed, setFailed] = useState(false);
   if (!name || !/^[A-Za-z0-9 .()_-]+$/.test(name) || failed) return <span role="alert">[Diagram unavailable — report this question]</span>;
   const ext = /^\.(png|jpe?g|webp|gif)$/.test(question.ext) ? question.ext : '.png';
-  const src = '/' + [question.subject, question.chapter, name + ext].map(encodeURIComponent).join('/');
+  const src = '/' + [question.assetSubject || question.subject, question.assetChapter || question.chapter, name + ext].map(encodeURIComponent).join('/');
   return <img className={styles.diagram} src={src} alt={`Question diagram ${name}`} onError={() => setFailed(true)} />;
 }
 export default function MockQuestion({ question, children }) {
@@ -32,7 +32,7 @@ export default function MockQuestion({ question, children }) {
   useEffect(() => {
     let disposed = false;
     const node = ref.current;
-    loadMath().then(math => { if (!disposed && node) return math.typesetPromise([node]); }).catch(() => { if (!disposed) setMathError('Math renderer could not load; formula source is shown.'); });
+    loadMath().then(async math => { if (!disposed && node) { await math.typesetPromise([node]); if (!disposed) node.dataset.mathReady = 'true'; } }).catch(() => { if (!disposed) setMathError('Math renderer could not load; formula source is shown.'); });
     return () => { disposed = true; if (node && window.MathJax?.typesetClear) window.MathJax.typesetClear([node]); };
   }, [question.key]);
   const names = (question.diagram || '').split(',').map(name => name.trim()).filter(Boolean);

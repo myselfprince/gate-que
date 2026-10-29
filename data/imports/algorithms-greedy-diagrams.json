@@ -1,0 +1,379 @@
+{
+  "sourceSHA256": "a92eb7d6acfa00d9f6891c2b63110e4f284f3cef99be07ce127ec4910b55b91a",
+  "crops": [
+    {
+      "file": "greedy-3-4-graph.png",
+      "pdfPage": 1,
+      "bookPage": 447,
+      "half": 2,
+      "boundsAt4x": [
+        110,
+        1004,
+        480,
+        1256
+      ],
+      "size": [
+        555,
+        378
+      ],
+      "sha256": "9b73ce5b8b6645d67ab92fac2260fdb937ef3bffc1bbabfdd70d8e66416eeff6"
+    },
+    {
+      "file": "greedy-3-6-graph.png",
+      "pdfPage": 1,
+      "bookPage": 447,
+      "half": 2,
+      "boundsAt4x": [
+        756,
+        472,
+        1050,
+        676
+      ],
+      "size": [
+        441,
+        306
+      ],
+      "sha256": "5fbd8d02cb38bb8bd0062d9f6b39f05321534383ddcbe3536ff1bdf2ba8dbd1d"
+    },
+    {
+      "file": "greedy-3-7-graph.png",
+      "pdfPage": 1,
+      "bookPage": 447,
+      "half": 2,
+      "boundsAt4x": [
+        678,
+        882,
+        1078,
+        1111
+      ],
+      "size": [
+        600,
+        343
+      ],
+      "sha256": "66311650dc0ccf9ec9a15f91cdea83a4f258fe6fe3a44d3f48d49a64ce58d334"
+    },
+    {
+      "file": "greedy-3-9-A.png",
+      "pdfPage": 2,
+      "bookPage": 448,
+      "half": 1,
+      "boundsAt4x": [
+        164,
+        326,
+        438,
+        456
+      ],
+      "size": [
+        411,
+        195
+      ],
+      "sha256": "0fc99153070add76dae4f010a8ed90030361fd4fb5ad9a667a21714f5d74f6a7"
+    },
+    {
+      "file": "greedy-3-9-B.png",
+      "pdfPage": 2,
+      "bookPage": 448,
+      "half": 1,
+      "boundsAt4x": [
+        164,
+        458,
+        438,
+        582
+      ],
+      "size": [
+        411,
+        186
+      ],
+      "sha256": "4c31372142ef8632f03926dd25d15a5fabf59301a159510ac0f8fad8b6d3ac89"
+    },
+    {
+      "file": "greedy-3-9-C.png",
+      "pdfPage": 2,
+      "bookPage": 448,
+      "half": 1,
+      "boundsAt4x": [
+        164,
+        586,
+        438,
+        710
+      ],
+      "size": [
+        411,
+        186
+      ],
+      "sha256": "167556535827cfed1c7612c7c1823f7c183f76e2cc13ad61c378349a54820827"
+    },
+    {
+      "file": "greedy-3-9-D.png",
+      "pdfPage": 2,
+      "bookPage": 448,
+      "half": 1,
+      "boundsAt4x": [
+        168,
+        710,
+        442,
+        834
+      ],
+      "size": [
+        411,
+        186
+      ],
+      "sha256": "baf75d0d89676c3097f04d90b9dd145e67670ed556a0561570363e32d4e4f8cb"
+    },
+    {
+      "file": "greedy-3-21-graph.png",
+      "pdfPage": 2,
+      "bookPage": 449,
+      "half": 2,
+      "boundsAt4x": [
+        170,
+        1080,
+        400,
+        1295
+      ],
+      "size": [
+        345,
+        322
+      ],
+      "sha256": "c7a7ce61ec3efb37ad1c83aa8df8031ac1eff62bd4be31039f52f06022a27357"
+    },
+    {
+      "file": "greedy-3-31-graph.png",
+      "pdfPage": 3,
+      "bookPage": 450,
+      "half": 1,
+      "boundsAt4x": [
+        201,
+        1370,
+        592,
+        1546
+      ],
+      "size": [
+        586,
+        264
+      ],
+      "sha256": "7c9bd4e8482f26aeb4ece345c7e742ed530494ab2a31ee909663693c2e62bfb8"
+    },
+    {
+      "file": "greedy-3-33-graph.png",
+      "pdfPage": 3,
+      "bookPage": 450,
+      "half": 1,
+      "boundsAt4x": [
+        710,
+        745,
+        1193,
+        924
+      ],
+      "size": [
+        725,
+        268
+      ],
+      "sha256": "bf3f3a1c94f0e83d69d7c4acd57ca9d888168883284e51f7aeaeaa2b58244e33"
+    },
+    {
+      "file": "greedy-3-35-graph.png",
+      "pdfPage": 3,
+      "bookPage": 450,
+      "half": 1,
+      "boundsAt4x": [
+        725,
+        1367,
+        1175,
+        1530
+      ],
+      "size": [
+        674,
+        245
+      ],
+      "sha256": "249102bd9e5ddec0af726cc640d7d29f806766e50a39033fe2d4956e38247081"
+    },
+    {
+      "file": "greedy-3-41-A.png",
+      "pdfPage": 3,
+      "bookPage": 451,
+      "half": 2,
+      "boundsAt4x": [
+        710,
+        450,
+        902,
+        705
+      ],
+      "size": [
+        288,
+        383
+      ],
+      "sha256": "db8ef3f7d56394abade930613cfe313719f7966464b7376dda0e86d651ae59f4"
+    },
+    {
+      "file": "greedy-3-41-B.png",
+      "pdfPage": 3,
+      "bookPage": 451,
+      "half": 2,
+      "boundsAt4x": [
+        934,
+        450,
+        1118,
+        661
+      ],
+      "size": [
+        276,
+        317
+      ],
+      "sha256": "3dfaba491dcd1198a518b3b1f66b404522021cfb110870f433457096ad850db1"
+    },
+    {
+      "file": "greedy-3-41-C.png",
+      "pdfPage": 3,
+      "bookPage": 451,
+      "half": 2,
+      "boundsAt4x": [
+        714,
+        700,
+        895,
+        919
+      ],
+      "size": [
+        271,
+        328
+      ],
+      "sha256": "ed43fc82254c1d693aad9b0005de9ee62cb47148a8f88b9c633869821c9f73f6"
+    },
+    {
+      "file": "greedy-3-41-D.png",
+      "pdfPage": 3,
+      "bookPage": 451,
+      "half": 2,
+      "boundsAt4x": [
+        929,
+        700,
+        1122,
+        907
+      ],
+      "size": [
+        289,
+        310
+      ],
+      "sha256": "585d41372533eb1a3d3b0bb008650d45a7211588a99d22a1214ded0468c48142"
+    },
+    {
+      "file": "greedy-3-42-43-graph.png",
+      "pdfPage": 3,
+      "bookPage": 451,
+      "half": 2,
+      "boundsAt4x": [
+        744,
+        1108,
+        1040,
+        1312
+      ],
+      "size": [
+        444,
+        306
+      ],
+      "sha256": "a72a6c8d31f452d45e4e15a51b05428eeef1abdfd386742877a919246f753709"
+    },
+    {
+      "file": "greedy-3-45-graph.png",
+      "pdfPage": 4,
+      "bookPage": 452,
+      "half": 1,
+      "boundsAt4x": [
+        179,
+        656,
+        595,
+        910
+      ],
+      "size": [
+        624,
+        381
+      ],
+      "sha256": "2005c6ff8e8a492c22844906971a512ee09121394c54f02f778f58ede2660c49"
+    },
+    {
+      "file": "greedy-3-50-graph.png",
+      "pdfPage": 4,
+      "bookPage": 452,
+      "half": 1,
+      "boundsAt4x": [
+        748,
+        812,
+        1098,
+        988
+      ],
+      "size": [
+        525,
+        264
+      ],
+      "sha256": "e2a1e6a5c99938a0fb8f309e9ba6544aca9934f254e4dbedf01b3d3287a8f9ab"
+    },
+    {
+      "file": "greedy-3-61-graph.png",
+      "pdfPage": 5,
+      "bookPage": 454,
+      "half": 1,
+      "boundsAt4x": [
+        251,
+        179,
+        451,
+        350
+      ],
+      "size": [
+        300,
+        257
+      ],
+      "sha256": "3921ef3df00cfb0668501b90412d55c2a37eccb2e15d5b90abcd9204d7a2d129"
+    },
+    {
+      "file": "greedy-3-68-graph.png",
+      "pdfPage": 5,
+      "bookPage": 454,
+      "half": 1,
+      "boundsAt4x": [
+        750,
+        1020,
+        1154,
+        1243
+      ],
+      "size": [
+        606,
+        334
+      ],
+      "sha256": "0ff09bf718addb5c743130640de9a153819cb3613ebdad29b819ea24b646098b"
+    },
+    {
+      "file": "greedy-3-69-graph.png",
+      "pdfPage": 5,
+      "bookPage": 455,
+      "half": 2,
+      "boundsAt4x": [
+        114,
+        150,
+        542,
+        400
+      ],
+      "size": [
+        642,
+        375
+      ],
+      "sha256": "a16b1331ff59c17757d010b868fa39c3b6f6c2ce9c4a9fefa6e2d5d040e7c4cf"
+    },
+    {
+      "file": "greedy-3-71-graph.png",
+      "pdfPage": 5,
+      "bookPage": 455,
+      "half": 2,
+      "boundsAt4x": [
+        193,
+        758,
+        408,
+        976
+      ],
+      "size": [
+        322,
+        327
+      ],
+      "sha256": "9f6986cd3d55447c68bef2f7df0b795a5b45d75c6319ad4d70b937985980e56a"
+    }
+  ]
+}

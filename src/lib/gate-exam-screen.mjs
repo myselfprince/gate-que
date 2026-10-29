@@ -1,6 +1,15 @@
 const cleanSubject = value => value.replace(/^\d+\.\s*/, '');
 
 export function examSections(questions) {
+  if (questions.some(q => q.sectionId)) {
+    const sections = new Map();
+    questions.forEach((q,index) => {
+      const id = q.sectionId || 'subject';
+      if (!sections.has(id)) sections.set(id, {id, name:q.sectionName || 'Computer Science', indices:[], limit:q.sectionLimit});
+      sections.get(id).indices.push(index);
+    });
+    return [...sections.values()];
+  }
   const aptitude = [], technical = [];
   questions.forEach((question, index) => (/general aptitude/i.test(question.subject) ? aptitude : technical).push(index));
   const subjects = [...new Set(technical.map(index => questions[index].subject))];

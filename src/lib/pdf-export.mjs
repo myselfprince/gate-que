@@ -9,7 +9,7 @@ import { load } from 'cheerio';
 import { buildQuestionPages } from './question-pages.mjs';
 import { collectLatexImages } from './latex-source.mjs';
 import { normalizePdfSettings } from './pdf-settings.mjs';
-import { expectedWebsiteLinks, visibleSolutionUrl } from './pdf-decorations.mjs';
+import { expectedWebsiteLinks, visibleSolutionUrl, visibleGateOverflowUrl } from './pdf-decorations.mjs';
 import { addQuestionBookmarks } from './pdf-bookmarks.mjs';
 import { buildAnswerKey } from './answer-key.mjs';
 import { registerAnswerLayers } from './pdf-answers.mjs';
@@ -112,7 +112,7 @@ export async function exportQuestionPdf(payload, { projectRoot = process.cwd(), 
           : /does not fit at minimum font/.test(error.stdout || '') ? 'This question does not fit at the minimum font size. Reduce its text or diagram size in PDF settings.'
           : error.killed ? 'Compilation timed out.' : 'Check this question’s math, code and image references.';
         const question = questions[questionIndex - 1];
-        const label = question?.source?.questionNumber || question?.exportNumber || String(questionIndex);
+        const label = String(questionIndex);
         throw new PdfExportError(`PDF failed near export question ${questionIndex} (Q${label}). ${reason}`, { questionIndex, questionId: question?.id, questionNumber: label, part: number }, error);
       }
       const batchWarnings = output.split(/\r?\n/).filter(line => /Overfull|GATEFITWARNING/.test(line)).map(message => ({ part: number, message }));
@@ -147,8 +147,8 @@ export async function exportQuestionPdf(payload, { projectRoot = process.cwd(), 
         if (urls.filter(url => url === settings.websiteUrl).length < websiteCount) throw new PdfExportError(`Website link missing on page ${index + 1}.`);
         websiteLinks += websiteCount;
       }
-      const solution = visibleSolutionUrl(questions[index], settings);
-      if (solution) {
+      const solutions = [visibleSolutionUrl(questions[index], settings), visibleGateOverflowUrl(questions[index], settings)].filter(Boolean);
+      for (const solution of solutions) {
         if (!urls.includes(solution)) throw new PdfExportError(`Solution link missing on page ${index + 1}.`);
         solutionLinks++;
       }

@@ -49,15 +49,15 @@ export default function PdfLivePreview({ payload, sourceMode, settingsValid, act
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
   return <aside className={styles.livePreview} aria-label="Live PDF design preview" aria-busy={updating}>
-    <div className={styles.previewHeading}><div><p className={styles.eyebrow}>Live design preview</p><h3>See your settings on a real PDF.</h3></div><span role="status" className={styles.previewState}>{!settingsValid ? 'Fix settings to update' : !sample ? 'Add a question' : error ? 'Preview needs attention' : updating ? 'Updating…' : current ? 'Up to date' : 'Updating…'}</span></div>
-    <p className={styles.previewHint}>Changes update automatically after a short pause. The example uses your PDF layout, maths, diagrams and decorations.</p>
+    <div className={styles.previewHeading}><h3>Live preview</h3><span role="status" className={styles.previewState}>{!settingsValid ? 'Fix settings to update' : !sample ? 'Choose questions' : error ? 'Preview needs attention' : updating ? 'Updating…' : current ? 'Up to date' : 'Updating…'}</span></div>
+    <p className={styles.previewHint}>Updates automatically as you change your design.</p>
     <label>Example question<select aria-label="Live PDF example question" value={sample?.questions[0].id || ''} disabled={!examples.length} onChange={event => setExampleId(event.target.value)}>{examples.map(question => <option key={question.id} value={question.id}>Q{question.exportNumber} · {question.year || 'No year'} · {question.isBlank ? 'Blank placeholder' : question.text?.slice(0, 70)}</option>)}</select></label>
     <div className={styles.previewSurface} data-preview-current={current ? 'true' : 'false'}>
-      {display ? <PdfPreview key={display.key} data={display.data} compact openLinksInNewTab={payload.pdfSettings?.openLinksInNewTab !== false} /> : <div className={styles.previewEmpty}>{!sample ? 'Load a chapter to preview an example question.' : !settingsValid ? 'Correct the highlighted settings to generate a preview.' : error ? 'Preview unavailable. You can retry below.' : 'Preparing your example PDF…'}</div>}
+      {display && sample ? <PdfPreview key={display.key} data={display.data} compact openLinksInNewTab={payload.pdfSettings?.openLinksInNewTab !== false} /> : <div className={styles.previewEmpty}>{!sample ? 'Choose questions to see a preview.' : !settingsValid ? 'Correct the highlighted settings to generate a preview.' : error ? 'Preview unavailable. You can retry below.' : 'Preparing your example PDF…'}</div>}
       {display && updating && <div className={styles.updatingBadge} role="status">Updating preview…</div>}
     </div>
     {error && <p role="alert" className={styles.error}>{error} <button className={styles.textButton} onClick={() => setRetry(value => value + 1)}>Retry preview</button></p>}
     {current && display.warnings.map((warning, index) => <p key={index} className={styles.warning}>{warning.message}</p>)}
-    <div className={styles.previewActions}><button className={styles.secondary} disabled={!display || !current || !settingsValid} onClick={downloadSample}>Download sample PDF</button><button className={styles.textButton} disabled={updating || !sample || !settingsValid} onClick={() => { cache.current.delete(request); setAttempt({ key: request, error: '' }); setRetry(value => value + 1); }}>Refresh preview</button><span>Temporary sample · export history stays clean</span></div>
+    <div className={styles.previewActions}><button className={styles.secondary} disabled={!display || !current || !settingsValid || !sample} onClick={downloadSample}>Download sample PDF</button><button className={styles.textButton} disabled={updating || !sample || !settingsValid} onClick={() => { cache.current.delete(request); setAttempt({ key: request, error: '' }); setRetry(value => value + 1); }}>Refresh preview</button><span>One-page sample of your selected questions</span></div>
   </aside>;
 }

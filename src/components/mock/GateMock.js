@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { DEFAULT_MOCK_BLUEPRINT, PAPER_PATTERN_SOURCE } from '@/lib/gatemock.mjs';
-import { safeSolutionUrl } from '@/lib/solution-links.mjs';
+import { safeSolutionUrl, safeGateOverflowUrl } from '@/lib/solution-links.mjs';
 import MockQuestion, { MockOption } from './MockQuestion';
 import GateExamScreen from './GateExamScreen';
 import styles from './mock.module.css';
@@ -31,7 +31,7 @@ export default function GateMock() {
   }
   useEffect(() => {
     let active = true;
-    api('/api/gatemock/catalog').then(data => { if (active) { setCatalog(data); setSubject(data.subjects[0]?.subject || ''); } }).catch(error => { if (active) setError(error.message); });
+    api('/api/gatemock/catalog').then(data => { if (active) { setCatalog(data); setSubject(data.subjects[0]?.subject || ''); const requested = new URLSearchParams(window.location.search).get('paper'); const copied = data.years.find(p => p.paper?.slug === requested) || data.years.find(p => p.paper?.datasetId); if (copied) { setMode('year'); setExamPaper(copied.examPaper); setPaperId(copied.id); } } }).catch(error => { if (active) setError(error.message); });
     try {
       const draft = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
       if (draft?.id && draft?.token) api(`/api/gatemock/attempts/${draft.id}`, { headers: { Authorization: `Bearer ${draft.token}` } }).then(data => { if (active) accept(data.attempt, draft.token, draft); }).catch(error => { if (active) { setError(`Previous attempt could not resume: ${error.message} Refresh to retry.`); if (error.status === 404) localStorage.removeItem(STORAGE_KEY); } });
@@ -97,18 +97,28 @@ export default function GateMock() {
     const key = attempt.questions[testState.currentIndex].key;
     setTestState(state => ({ ...state, responses: [...state.responses.filter(response => response.key !== key), ...(hasResponse(value) ? [{ key, value }] : [])] }));
   }
+  async function assess(key, marks) {
+    setBusy(true); setError('');
+    try {
+      const data = await api(`/api/gatemock/attempts/${attempt.id}/assessment`, {method:'POST',headers:{Authorization:`Bearer ${token.current}`},body:JSON.stringify({revision:revision.current,key,marks})});
+      revision.current=data.attempt.revision; setAttempt(data.attempt);
+    } catch(error) { setError(error.message); } finally { setBusy(false); }
+  }
   const header = <header className={styles.header}><Link href="/gatemock" className={styles.logo}>G4Gate <span>Mock lab</span></Link><nav><Link href="/">Question editor</Link><Link href="/gatemock/admin">Paper coverage admin</Link></nav></header>;
   const alert = error && <p className={styles.error} role="alert">{error}</p>;
   if (attempt?.finishedAt && attempt.result) {
     const result = attempt.result;
     return <main className={styles.page}>{header}<section className={styles.hero}><p className={styles.eyebrow}>ATTEMPT COMPLETE</p><h1>Your review starts here.</h1><p>{attempt.title}</p></section>{alert}
       <div className={styles.stats}><div><strong>{result.score.toFixed(2)} / {result.gradableMarks}</strong><span>Score on gradable questions</span></div><div><strong>{result.correct}</strong><span>Correct</span></div><div><strong>{result.wrong}</strong><span>Wrong</span></div><div><strong>{result.unanswered}</strong><span>Unanswered</span></div><div><strong>{result.ungraded}</strong><span>Key unavailable / manual review</span></div></div>
-      <p>Paper total: {result.totalMarks} marks. Unavailable keys and nonnumeric reference answers are excluded from automatic scoring.</p>
+      <p>Paper maximum: {result.totalMarks} marks. {result.selfAssessed || 0} responses self-assessed. Written answers and disputed keys are excluded until you assess them below.</p>
       <button onClick={() => { localStorage.removeItem(STORAGE_KEY); setAttempt(null); setTestState(null); setSeconds(null); }}>Build another test</button>
       <div className={styles.reviewList}>{result.entries.map(entry => <details key={entry.question.key} className={styles.panel}><summary>Q{entry.question.number} · {entry.status} · {entry.earned.toFixed(2)} marks · {entry.question.subject}</summary>
         <div className={styles.questionCard}><MockQuestion question={entry.question}>
           {['A', 'B', 'C', 'D'].filter(letter => entry.question[`opt${letter}`]).map(letter => <p key={letter}>({letter}) <MockOption question={entry.question} text={entry.question[`opt${letter}`]} /></p>)}
-        </MockQuestion></div><p>Your response: {Array.isArray(entry.response) ? entry.response.join(', ') || 'Not answered' : entry.response || 'Not answered'}</p><p>Correct answer: {entry.answer || 'Not available'}</p>
+        </MockQuestion></div><p className={styles.writtenReview}>Your response: {Array.isArray(entry.response) ? entry.response.join(', ') || 'Not answered' : entry.response || 'Not answered'}</p><p>{entry.manualReview && entry.question.questionType === 'MCQ' ? 'Conventional key for disputed item' : 'Correct answer'}: {entry.answer || 'Not available'}</p>
+        {entry.referenceAnswer && <div className={styles.reference}><strong>{entry.verificationStatus ? 'Authored worked reference' : 'Reference solution'}</strong><MockQuestion question={{...entry.question,key:entry.question.key+'-reference',text:entry.referenceAnswer,code:'',diagram:''}} />{entry.verificationStatus && <p>Verification: {entry.verificationStatus}. {entry.sourceIssues.join(' ')}</p>}{entry.answerSources?.filter(s=>s.kind==='made-easy-key').map(s=><p key={s.file}>Made Easy comparison: {s.file.split('/').at(-1)}, PDF page {s.pdfPage}, item {s.question}, printed key {s.printed}.</p>)}</div>}
+        {safeGateOverflowUrl(entry.gateOverflowUrl) && <p><a href={safeGateOverflowUrl(entry.gateOverflowUrl)} target="_blank" rel="noreferrer">GATE Overflow discussion ↗</a></p>}
+        {entry.manualReview && hasResponse(entry.response) && <form className={styles.assessment} onSubmit={event=>{event.preventDefault();assess(entry.question.key,Number(new FormData(event.currentTarget).get('marks')));}}><label>Self-assessed marks (0–{entry.question.marks})<input name="marks" aria-label={`Self-assessed marks Q${entry.question.number}`} type="number" min="0" max={entry.question.marks} step="0.5" required defaultValue={result.manualScores?.find(s=>s.key===entry.question.key)?.marks ?? ''} /></label><button disabled={busy}>Save self-assessment</button><small>Your assessment is stored separately from automatic grading.</small></form>}
         {safeSolutionUrl(entry.solutionUrl) && <a href={safeSolutionUrl(entry.solutionUrl)} target="_blank" rel="noreferrer">Watch video solution ↗</a>}
       </details>)}</div>
     </main>;
@@ -138,6 +148,7 @@ export default function GateMock() {
       {mode === 'full' && <><p>Editable practice weightage. Default: 65 questions, 100 marks, 180 minutes. Official GATE does not fix every subject’s yearly weightage.</p><div className={styles.tableScroll}><table><thead><tr><th>Subject</th><th>1-mark questions</th><th>2-mark questions</th></tr></thead><tbody>{blueprint.map((row, index) => <tr key={row.subject}><td>{row.subject}</td>{['one', 'two'].map(key => <td key={key}><input aria-label={`${row.subject} ${key}-mark quota`} type="number" min="0" max="100" value={row[key]} onChange={event => setBlueprint(values => values.map((item, i) => index === i ? { ...item, [key]: Number(event.target.value) } : item))} /></td>)}</tr>)}</tbody></table></div><p><strong>{one + two} questions · {one + 2 * two} marks · 180 minutes</strong></p></>}
       {mode === 'year' && <><label>Year / set<select value={paperId} onChange={e => setPaperId(e.target.value)}><option value="">Choose a paper</option>{yearPapers.map(paper => <option key={paper.id} value={paper.id}>{paper.year}{paper.setNum ? ` · Set ${paper.setNum}` : ''} · {paper.available} available · {paper.coverage?.ready ? 'Verified complete' : 'Incomplete / unverified'}</option>)}</select></label>
         {chosenPaper && <div className={styles.warning}>{chosenPaper.coverage ? <><strong>{chosenPaper.coverage.mapped} / {chosenPaper.coverage.expected} original positions mapped.</strong><p>Missing: {chosenPaper.coverage.missing.join(', ') || 'None'} · Duplicate positions: {chosenPaper.coverage.duplicates.map(item => item.number).join(', ') || 'None'} · Unassigned: {chosenPaper.coverage.unassigned.length}.</p><p>{chosenPaper.paper.verified ? 'Order reviewed by admin.' : 'Official paper review pending.'} {chosenPaper.coverage.marks} / {chosenPaper.coverage.expectedMarks} marks.</p></> : <p>Official question count and original numbering have not been configured. Available questions can be used for practice.</p>}</div>}
+        {chosenPaper?.paper?.datasetId && <div className={styles.paperDetails}><p className={styles.eyebrow}>SEPARATE YEAR PAPER</p><h2>{chosenPaper.paper.title}</h2><p>{chosenPaper.paper.questionCount} questions · {chosenPaper.paper.totalMarks} maximum marks · {chosenPaper.paper.durationMinutes} minutes</p>{chosenPaper.paper.instructions.map(text=><p key={text}>{text}</p>)}<div className={styles.downloads}><a href={`/api/gatemock/papers/${chosenPaper.paper.slug}/export?format=pdf&theme=dark`}>Question PDF · dark</a><a href={`/api/gatemock/papers/${chosenPaper.paper.slug}/export?format=pdf&theme=light`}>Question PDF · print</a><a href={`/api/gatemock/papers/${chosenPaper.paper.slug}/export?format=key`}>Answers &amp; solutions PDF</a><a href={`/api/gatemock/papers/${chosenPaper.paper.slug}/export?format=zip`}>Download paper + solutions ZIP</a></div></div>}
       </>}
       <label className={styles.check}><input type="checkbox" checked={allowPartial} onChange={e => setAllowPartial(e.target.checked)} />{mode === 'year' ? 'Use available questions as practice if the original paper is incomplete' : 'Allow a smaller practice test if the bank has shortages'}</label>
       <button className={styles.primary} disabled={busy || !catalog || (mode === 'year' && !paperId) || (mode === 'topic' && !chapter)} onClick={start}>{busy ? 'Preparing test…' : 'Start timed test →'}</button>

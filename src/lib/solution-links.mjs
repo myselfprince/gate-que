@@ -27,3 +27,21 @@ export function normalizeSolutionUrl(value) {
 export function safeSolutionUrl(value) {
   try { return normalizeSolutionUrl(value); } catch { return ''; }
 }
+
+export function normalizeGateOverflowUrl(value) {
+  if (value === undefined || value === '') return '';
+  if (typeof value !== 'string' || value.length > 2000) throw new Error('GateOverflow link must be a URL up to 2000 characters.');
+  if (!value.trim()) return '';
+  let url;
+  try { url = new URL(value.trim()); } catch { throw new Error('Enter a complete GateOverflow solution URL.'); }
+  const host = url.hostname.toLowerCase().replace(/^www\./, '');
+  if (!['https:', 'http:'].includes(url.protocol) || host !== 'gateoverflow.in' || url.username || url.password || url.port
+    || /[\x00-\x1f]/.test(value.trim())) throw new Error('Use a https://gateoverflow.in/ question or answer URL.');
+  url.protocol = 'https:';
+  url.hostname = 'gateoverflow.in';
+  return url.href.replace(/[\\{}<>"^`]/g, character => encodeURIComponent(character));
+}
+
+export function safeGateOverflowUrl(value) {
+  try { return normalizeGateOverflowUrl(value); } catch { return ''; }
+}

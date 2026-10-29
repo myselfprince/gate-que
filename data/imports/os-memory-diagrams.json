@@ -1,0 +1,26 @@
+[
+  {
+    "question": "4.11",
+    "pdfPage": 1,
+    "boundsNormalized": [
+      0.7652505446623094,
+      0.7856025039123631,
+      0.9776688453159041,
+      0.9741784037558685
+    ],
+    "file": "os-memory-11-overlay.png",
+    "sha256": "ebe56ef6ae0b0a153b48ff37a6f93798ba5874b7f6e306006f9163de39bfc21b"
+  },
+  {
+    "question": "4.67",
+    "pdfPage": 4,
+    "boundsNormalized": [
+      0.7919389978213508,
+      0.8091123330714847,
+      0.9765795206971678,
+      0.8782403770620582
+    ],
+    "file": "os-memory-67-address.png",
+    "sha256": "09b989b7ebc3ed93565a618063b1bc631fcd615b4411a9845ab0004294eabef3"
+  }
+]

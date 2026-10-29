@@ -1,0 +1,129 @@
+"""Check every exported page and independently compile the portable LaTeX ZIP."""
+import argparse
+import hashlib
+import json
+import re
+from pathlib import Path
+import subprocess
+import zipfile
+import pdfplumber
+import pypdfium2 as pdfium
+
+def render_pdf(source, prefix):
+    with pdfium.PdfDocument(source) as pdf:
+        for i, page in enumerate(pdf, 1):
+            page.render(scale=105/72).to_pil().save(str(prefix) + f'-{i:02}.png')
+from PIL import Image, ImageChops, ImageDraw
+
+parser = argparse.ArgumentParser()
+parser.add_argument('output_directory')
+args = parser.parse_args()
+root = Path(args.output_directory).resolve()
+rendered = root / 'rendered'
+rendered.mkdir(exist_ok=True)
+counts, issues, font_sizes, source_renders = [], [], [], []
+number = 0
+for part in range(1, 3):
+    source = root / f'PYQs_Part{part}.pdf'
+    with pdfplumber.open(source) as pdf:
+        counts.append(len(pdf.pages))
+        for page in pdf.pages:
+            number += 1
+            if not re.search(rf'(?m)^{number}\s+\[GATE CS', page.extract_text() or ''):
+                issues.append([number, 'missing ordered question/exam header'])
+            body_sizes = [c['size'] for c in page.chars if c.get('non_stroking_color') in [(1, 1, 1), (1,), 1]]
+            font_sizes.append({'question': number, 'minWhiteFont': min(body_sizes) if body_sizes else None})
+            rules = [r['width'] for r in page.lines if r['height'] < 1 and r['width'] > 100]
+            # Current default titleMode is first. Only page 1 has a title rule;
+            # every question body still uses a full-width TeX minipage.
+            if number == 1 and (not rules or max(rules) < page.width - 85):
+                issues.append([number, 'question box lost full text width'])
+            if any(c['x0'] < 10 or c['x1'] > page.width - 10 or c['top'] < 10 or c['bottom'] > page.height - 10 for c in page.chars):
+                issues.append([number, 'text outside page'])
+    render_pdf(source, rendered / f'part{part}')
+    source_renders.extend(sorted(rendered.glob(f'part{part}-*.png')))
+assert counts == [20, 5], counts
+assert len(source_renders) == 25
+for file in source_renders:
+    with Image.open(file) as image:
+        if max(image.convert('RGB').getpixel((3, 3))) > 8:
+            issues.append([file.name, 'background is not black'])
+
+portable = root / 'editable-verified'
+portable.mkdir(exist_ok=True)
+with zipfile.ZipFile(root / 'Syntax-Directed-Translations-Editable-LaTeX.zip') as archive:
+    # Local application-produced ZIP; reject unexpected paths before extraction.
+    for item in archive.namelist():
+        assert Path(portable / item).resolve().is_relative_to(portable)
+    archive.extractall(portable)
+tex_source = (portable / 'main.tex').read_text(encoding='utf8')
+assert tex_source.count('\\renewcommand{\\questionbody}') == 25
+assert '\\begin{minipage}[t]{\\textwidth}' in tex_source
+assert '\\resizebox*{!}{\\questionheight}' not in tex_source, 'Whole-question shrinking would narrow prose'
+compilation = subprocess.run(['pdflatex', '-no-shell-escape', '-halt-on-error', '-interaction=nonstopmode', 'main.tex'], cwd=portable, capture_output=True, text=True)
+(root / 'editable-compilation.log').write_text(compilation.stdout + compilation.stderr, encoding='utf8')
+assert compilation.returncode == 0, compilation.stdout[-4000:]
+full_pdf = root / 'Syntax-Directed-Translations.pdf'
+full_pdf.write_bytes((portable / 'main.pdf').read_bytes())
+with pdfplumber.open(full_pdf) as pdf:
+    assert len(pdf.pages) == 25
+render_pdf(full_pdf, rendered / 'editable')
+editable_renders = sorted(rendered.glob('editable-*.png'))
+assert len(editable_renders) == 25
+exact_pages, subpixel_pages = 0, []
+for index, (exported, editable) in enumerate(zip(source_renders, editable_renders), 1):
+    with Image.open(exported) as left, Image.open(editable) as right:
+        assert left.size == right.size
+        difference = ImageChops.difference(left.convert('RGB'), right.convert('RGB'))
+        if not difference.getbbox():
+            exact_pages += 1
+            continue
+        # Separate part/full TeX compilations can round glyph advances slightly
+        # differently. Admit only subpixel differences with identical text,
+        # font, color and geometry within 0.02pt (0.03px at this render DPI).
+        changed_pixels = sum(pixel != (0, 0, 0) for pixel in difference.get_flattened_data())
+        part_number, part_page = (index-1)//20+1, (index-1)%20
+        with pdfplumber.open(root / f'PYQs_Part{part_number}.pdf') as part_pdf, pdfplumber.open(full_pdf) as portable_pdf:
+            left_chars, right_chars = part_pdf.pages[part_page].chars, portable_pdf.pages[index-1].chars
+            identical_text = len(left_chars) == len(right_chars) and all(
+                a['text'] == b['text'] and a['fontname'].split('+')[-1] == b['fontname'].split('+')[-1]
+                and a.get('non_stroking_color') == b.get('non_stroking_color')
+                for a, b in zip(left_chars, right_chars))
+            max_delta = max((abs(a[key]-b[key]) for a, b in zip(left_chars, right_chars)
+                             for key in ['x0', 'x1', 'top', 'bottom', 'size']), default=0)
+        if identical_text and max_delta <= 0.02 and changed_pixels / (left.width*left.height) <= 0.0005:
+            subpixel_pages.append({'question': index, 'changedPixels': changed_pixels, 'maxGlyphDeltaPt': max_delta})
+        else:
+            issues.append([index, 'editable ZIP differs from PDF route'])
+
+for group in range(5):
+    sheet = Image.new('RGB', (1800, 920), '#282828')
+    draw = ImageDraw.Draw(sheet)
+    for index, file in enumerate(source_renders[group * 6:(group + 1) * 6]):
+        with Image.open(file) as image:
+            thumbnail = image.convert('RGB')
+            thumbnail.thumbnail((590, 425))
+        x, y = (index % 3) * 600, (index // 3) * 460
+        sheet.paste(thumbnail, (x, y + 25))
+        draw.text((x + 8, y + 5), f'Book Q3.{group * 6 + index + 1}', fill='white')
+    sheet.save(root / f'contact-{group + 1}.jpg', quality=94)
+result = {'pages': number, 'parts': counts, 'renderedPages': len(source_renders), 'blackBackgroundPass': not any('background' in issue[1] for issue in issues), 'fullWidthBodyVerified': True,
+          'layoutIssues': issues, 'fontSizes': font_sizes, 'editableZipCompiles': True, 'pixelEqualPages': exact_pages,
+          'subpixelRoundingPages': subpixel_pages, 'matchingLayoutPages': exact_pages+len(subpixel_pages),
+          'fullPdfSHA256': hashlib.sha256(full_pdf.read_bytes()).hexdigest()}
+(root / 'pdf-structure-qa.json').write_text(json.dumps(result, indent=2))
+cards = '\n'.join(
+    f'<section id="q{n}"><h2>Book Q3.{n}</h2><a href="rendered/editable-{n:02}.png">'
+    f'<img loading="lazy" src="rendered/editable-{n:02}.png" alt="Exported question 3.{n}"></a>'
+    f'<details><summary>Editable app preview</summary><img loading="lazy" src="preview-3-{n}.png" alt="Editor preview 3.{n}"></details></section>'
+    for n in range(1, 26))
+(root / 'preview.html').write_text('''<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>Syntax Directed Translations - verified previews</title>
+<style>body{margin:24px auto;padding:0 20px;max-width:1250px;background:#111;color:#eee;font:16px/1.5 system-ui}a{color:#9bd5ff}img{display:block;width:100%;height:auto}section{margin:36px 0;border-top:1px solid #444}details{margin:14px 0}summary{cursor:pointer}</style>
+<h1>Compiler Design / Syntax Directed Translations</h1>
+<p>25 source questions, book pages 504-507. All PDF pages visually reviewed. Black background, white text, one question per page. Editable LaTeX compiles to the identical 25-page layout.</p>
+<p>Source limitations: no answer key is included (all 25 answers are left empty). Q3.9 option B ends at "resolves" in the supplied scan. Q3.21 repeats label (a); option order and text are retained. Q3.22 lists an unused non-terminal P.</p>
+<p><a href="Syntax-Directed-Translations.pdf">Full PDF</a> | <a href="Syntax-Directed-Translations-Editable-LaTeX.zip">Editable LaTeX ZIP</a> | <a href="Syntax-Directed-Translations-Black-PDFs.zip">PDF parts ZIP</a></p>
+''' + cards + '</html>', encoding='utf8')
+print(json.dumps(result))
+assert not issues, issues

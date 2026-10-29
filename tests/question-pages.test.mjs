@@ -14,12 +14,16 @@ test('question-page layout uses full width, a dark theme and one page boundary p
   assert.doesNotMatch(tex, /multicols|\\begin\{questions\}|Answer key|\\\\n\\end\{tabular\}/);
   assert.match(tex, /GATE CS 2024 \(Set-2\)/);
   assert.match(tex, /35 \/ 35/);
+  assert.deepEqual([...tex.matchAll(/% Question page ([^\n]+)/g)].map(match => match[1]), Array.from({ length: 35 }, (_, index) => String(index + 1)));
+  assert.doesNotMatch(tex, /\\bfseries 2\.1\\quad/);
 });
 
 test('chunks retain global numbering without a separate title page', () => {
   const tex = buildQuestionPages({ ...LAN_IMPORT, questions: LAN_IMPORT.questions.slice(20) }, { startIndex: 20, totalQuestions: 35 });
   assert.match(tex, /21 \/ 35/);
   assert.match(tex, /35 \/ 35/);
+  assert.match(tex, /\\bfseries 21\\quad/);
+  assert.match(tex, /\\bfseries 35\\quad/);
   assert.equal((tex.match(/\\clearpage/g) || []).length, 14);
   assert.doesNotMatch(tex, /Part 2|\\maketitle/);
 });

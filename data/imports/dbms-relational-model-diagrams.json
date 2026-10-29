@@ -1,0 +1,21 @@
+{
+  "sourceSHA256": "1556421d5e7360aec7b13f66076ab2cdd803e4318e11e6755763b6ded4208ec7",
+  "crops": [
+    {
+      "file": "relational-model-4-13.png",
+      "pdfPage": 1,
+      "bookPage": 633,
+      "boundsAt2400pxSpread": [
+        1850,
+        1340,
+        2380,
+        1650
+      ],
+      "size": [
+        1060,
+        620
+      ],
+      "sha256": "2ff255bf86403b1d28d92bd76a1ca4a5cce01fec038efeec5f9774ea1950bafa"
+    }
+  ]
+}

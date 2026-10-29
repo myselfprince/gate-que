@@ -8,7 +8,7 @@ export function buildAnswerKey({ subject, chapter, questions, pdfSettings }) {
   const foreground = settings.theme === 'dark' ? 'white' : 'black';
   const entries = questions.flatMap((question, index) => {
     if (question.isBlank) return [];
-    const number = question.source?.questionNumber || question.exportNumber || String(index + 1);
+    const number = String(index + 1);
     const answer = storedAnswerText(question);
     return [`\\typeout{GATEANSWER:${index + 1}}\n\\item[\\textbf{Q${escapeLatex(number)}}] ${answer ? latexText(answer) : '\\textit{Answer not available}'}\n`];
   }).join('');

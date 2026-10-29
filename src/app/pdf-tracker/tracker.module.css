@@ -44,13 +44,13 @@
 .current { border-color: #7695eb; box-shadow: 0 0 0 1px #7695eb; }
 .subjectHead { display: flex; gap: 12px; align-items: center; padding: 14px 18px; background: #19243c; }
 .subjectHead h2 { font-size: 17px; font-weight: 700; margin: 0; flex: 1; }
-.page input[type='checkbox'] { width: 18px; height: 18px; accent-color: var(--green); flex-shrink: 0; cursor: pointer; margin: 0; }
+.page input[type='checkbox'] { width: 18px; height: 18px; accent-color: var(--green); flex-shrink: 0; cursor: default; margin: 0; }
 .page input:disabled { cursor: default; }
 .count { color: var(--muted); font-size: 12px; white-space: nowrap; }
 .pdfList { padding: 2px 18px 6px; }
 .pdf { display: flex; align-items: center; gap: 12px; border-bottom: 1px solid var(--line); padding: 14px 0; }
 .pdf:last-child { border-bottom: 0; }
-.pdf label { margin: 0; flex: 1; min-width: 0; cursor: pointer; color: #e0e8ff; font-weight: 400; }
+.pdf label { margin: 0; flex: 1; min-width: 0; color: #e0e8ff; font-weight: 400; }
 .filename { display: block; font-size: 14px; font-weight: 600; }
 .fullpath { display: block; color: #8f9fbd; font: 11px/1.5 ui-monospace, monospace; overflow-wrap: anywhere; margin-top: 4px; }
 .dbStatus { display: block; font-size: 11px; color: #aab6d0; margin-top: 5px; }

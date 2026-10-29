@@ -1,4 +1,5 @@
 import { questionType, numericAnswerRange, storedAnswerText } from './question-answers.mjs';
+import { maximumPaperMarks } from './year-papers.mjs';
 
 export const PAPER_PATTERN_SOURCE = 'https://gate2026.iitg.ac.in/question-paper-pattern.html';
 // Editable practice quotas, not an assertion of fixed official subject weightage.
@@ -37,7 +38,7 @@ export function validatePaper(value) {
 }
 
 export function paperCoverage(bank, paper) {
-  const candidates = bank.filter(q => paperKey(q) === paperKey(paper));
+  const candidates = bank.filter(q => paperKey(q) === paperKey(paper) && (paper.datasetId ? q.datasetId === paper.datasetId : !q.datasetId));
   const slots = new Map();
   const unassigned = [], outOfRange = [];
   for (const q of candidates) {
@@ -49,9 +50,9 @@ export function paperCoverage(bank, paper) {
   const missing = Array.from({ length: paper.questionCount }, (_, i) => i + 1).filter(number => !slots.has(number));
   const duplicates = [...slots].filter(([, questions]) => questions.length > 1).map(([number, questions]) => ({ number, keys: questions.map(q => q.key) }));
   const ordered = [...slots].sort(([a], [b]) => a - b).flatMap(([, questions]) => questions.length === 1 ? questions : []);
-  const marks = ordered.reduce((sum, q) => sum + (Number(q.marks) || 0), 0);
+  const marks = maximumPaperMarks(ordered);
   return { available: candidates.length, mapped: slots.size, expected: paper.questionCount, missing, duplicates, unassigned, outOfRange,
-    marks, expectedMarks: paper.totalMarks, missingAnswers: ordered.filter(q => !storedAnswerText(q)).length,
+    marks, expectedMarks: paper.totalMarks, missingAnswers: ordered.filter(q => !storedAnswerText(q) && !q.referenceAnswer).length,
     ready: paper.verified && !missing.length && !duplicates.length && !outOfRange.length && marks === paper.totalMarks };
 }
 
@@ -71,7 +72,7 @@ function deduplicate(bank) {
 
 export function buildMock(bank, config, papers = [], random = Math.random) {
   if (!['subject', 'topic', 'full', 'year'].includes(config.mode) || !['CS', 'IT'].includes(config.examPaper || 'CS')) throw new Error('Choose a valid test mode and paper.');
-  const pool = deduplicate(bank.filter(q => q.examPaper === (config.examPaper || 'CS')));
+  const pool = deduplicate(bank.filter(q => !q.datasetId && q.examPaper === (config.examPaper || 'CS')));
   const warnings = [];
   let questions, title, durationMinutes, negativeFraction = 1 / 3, exact = false;
   if (config.mode === 'year') {
@@ -79,11 +80,13 @@ export function buildMock(bank, config, papers = [], random = Math.random) {
     const paper = papers.find(value => paperKey(value) === paperKey(identity));
     const coverage = paper && paperCoverage(bank, paper);
     if (coverage?.ready) {
-      questions = bank.filter(q => paperKey(q) === paperKey(identity) && q.paperQuestionNumber).sort((a, b) => Number(a.paperQuestionNumber) - Number(b.paperQuestionNumber));
+      questions = bank.filter(q => paperKey(q) === paperKey(identity) && q.paperQuestionNumber && (paper.datasetId ? q.datasetId === paper.datasetId : !q.datasetId)).sort((a, b) => Number(a.paperQuestionNumber) - Number(b.paperQuestionNumber));
       durationMinutes = paper.durationMinutes; negativeFraction = paper.negativeFraction; exact = true;
+      warnings.push(...(paper.instructions || []));
     } else {
       if (!config.allowPartial) throw new Error('This paper is incomplete or its official order has not been verified. Check paper coverage or choose available-question practice.');
-      questions = pool.filter(q => paperKey(q) === paperKey(identity)).sort((a, b) => (Number(a.paperQuestionNumber) || 10000) - (Number(b.paperQuestionNumber) || 10000) || a.key.localeCompare(b.key));
+      const yearPool = paper?.datasetId ? deduplicate(bank.filter(q => q.datasetId === paper.datasetId)) : pool;
+      questions = yearPool.filter(q => paperKey(q) === paperKey(identity)).sort((a, b) => (Number(a.paperQuestionNumber) || 10000) - (Number(b.paperQuestionNumber) || 10000) || a.key.localeCompare(b.key));
       warnings.push('Available-question practice: this is not the complete original paper. Missing questions and unverified ordering are shown in paper coverage.');
       durationMinutes = paper?.durationMinutes || 180;
       negativeFraction = paper?.negativeFraction ?? 1 / 3;
@@ -126,7 +129,7 @@ export function buildMock(bank, config, papers = [], random = Math.random) {
   if (!questions.length) throw new Error('No questions are available for this selection.');
   if (questions.length > 250) throw new Error('This practice paper has more than 250 questions. Narrow the selection.');
   if (questions.some(q => !Number.isFinite(Number(q.marks)) || Number(q.marks) <= 0)) throw new Error('Some questions have invalid marks. Correct them in the editor first.');
-  return { title, questions, warnings, durationMinutes, negativeFraction, exact, totalMarks: questions.reduce((sum, q) => sum + Number(q.marks), 0) };
+  return { title, questions, warnings, durationMinutes, negativeFraction, exact, totalMarks: maximumPaperMarks(questions) };
 }
 
 export function publicQuestion(q, index) {
@@ -134,6 +137,8 @@ export function publicQuestion(q, index) {
     key: q.key, number: index + 1, paperQuestionNumber: q.paperQuestionNumber || '', subject: q.subject, chapter: q.chapter,
     text: q.text, code: q.code || '', year: q.year, marks: q.marks, examPaper: q.examPaper || 'CS', setNum: q.setNum || '',
     questionType: questionType(q), diagram: q.diagram || '', ext: q.ext || '.png', isCodeOptions: Boolean(q.isCodeOptions),
+    assetSubject: q.assetSubject, assetChapter: q.assetChapter, originalLabel: q.originalLabel,
+    sectionId: q.sectionId, sectionName: q.sectionName, sectionLimit: q.sectionLimit,
     optA: q.optA || '', optB: q.optB || '', optC: q.optC || '', optD: q.optD || '',
   }));
 }
@@ -151,9 +156,17 @@ export function validateAttemptState(value, questions) {
         || new Set(response.value).size !== response.value.length || response.value.some(letter => !['A', 'B', 'C', 'D'].includes(letter) || !question[`opt${letter}`])) throw new Error('Invalid option response.');
       return { key: response.key, value: [...response.value].sort() };
     }
+    if (questionType(question) === 'SUBJECTIVE') {
+      if (typeof response.value !== 'string' || response.value.length > 6000) throw new Error('Written responses must be at most 6000 characters.');
+      return { key: response.key, value: response.value.trim() };
+    }
     if (typeof response.value !== 'string' || response.value.length > 100 || (response.value && !/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?$/i.test(response.value))) throw new Error('Enter a valid numerical answer.');
     return { key: response.key, value: response.value };
   });
+  for (const q of questions.filter(q => q.sectionLimit)) {
+    const answered = responses.filter(r => questions.find(item => item.key === r.key)?.sectionId === q.sectionId && (Array.isArray(r.value) ? r.value.length : r.value.trim()));
+    if (answered.length > q.sectionLimit) throw new Error(`Attempt at most ${q.sectionLimit} questions in ${q.sectionName}. Clear a response before choosing another.`);
+  }
   const keys = key => {
     if (!Array.isArray(value[key]) || value[key].length > questions.length || value[key].some(item => !byKey.has(item))) throw new Error('Invalid question navigation state.');
     return [...new Set(value[key])];
@@ -162,8 +175,9 @@ export function validateAttemptState(value, questions) {
   return { responses, marked: keys('marked'), visited: keys('visited'), currentIndex: value.currentIndex };
 }
 
-export function gradeAttempt(questions, state, negativeFraction = 1 / 3) {
+export function gradeAttempt(questions, state, negativeFraction = 1 / 3, manualScores = []) {
   const responses = new Map(state.responses.map(response => [response.key, response.value]));
+  const assessments = new Map(manualScores.map(item => [item.key, item.marks]));
   let score = 0, gradableMarks = 0;
   const entries = questions.map((q, index) => {
     const type = questionType(q), response = responses.get(q.key);
@@ -171,8 +185,8 @@ export function gradeAttempt(questions, state, negativeFraction = 1 / 3) {
     const range = type === 'NAT' && numericAnswerRange(q);
     const optionsValid = ['MCQ', 'MSQ'].includes(type) && q.correctOptions?.length
       && (type !== 'MCQ' || q.correctOptions.length === 1) && q.correctOptions.every(letter => q[`opt${letter}`]);
-    const gradable = Boolean(range || optionsValid);
-    let status = gradable ? 'unanswered' : 'ungraded', earned = 0;
+    const gradable = !q.manualReview && Boolean(range || optionsValid);
+    let status = gradable || (type === 'SUBJECTIVE' && !answered) ? 'unanswered' : 'ungraded', earned = 0;
     if (gradable) {
       gradableMarks += Number(q.marks);
       if (answered) {
@@ -182,10 +196,17 @@ export function gradeAttempt(questions, state, negativeFraction = 1 / 3) {
         earned = correct ? Number(q.marks) : type === 'MCQ' ? -Number(q.marks) * negativeFraction : 0;
       }
     }
+    if (!gradable && answered && assessments.has(q.key)) {
+      earned = assessments.get(q.key); gradableMarks += Number(q.marks); status = 'self-assessed';
+    }
     score += earned;
-    return { question: publicQuestion(q, index), response: response ?? null, status, earned, answer: storedAnswerText(q) || null, solutionUrl: q.solutionUrl || '' };
+    return { question: publicQuestion(q, index), response: response ?? null, status, earned, answer: storedAnswerText(q) || (q.referenceAnswer ? 'See reference solution below' : null),
+      referenceAnswer: q.referenceAnswer || '', gateOverflowUrl: q.gateOverflowUrl || '', manualReview: !gradable,
+      ...(q.verificationStatus ? { verificationStatus: q.verificationStatus, answerSources: q.answerSources, sourceIssues: q.source?.issues || [] } : {}),
+      solutionUrl: q.solutionUrl || '' };
   });
-  return { score: Math.round(score * 10000) / 10000, gradableMarks, totalMarks: questions.reduce((sum, q) => sum + Number(q.marks), 0),
+  return { score: Math.round(score * 10000) / 10000, gradableMarks, totalMarks: maximumPaperMarks(questions), manualScores,
+    selfAssessed: entries.filter(e => e.status === 'self-assessed').length,
     correct: entries.filter(e => e.status === 'correct').length, wrong: entries.filter(e => e.status === 'wrong').length,
     unanswered: entries.filter(e => e.status === 'unanswered').length, ungraded: entries.filter(e => e.status === 'ungraded').length, entries };
 }

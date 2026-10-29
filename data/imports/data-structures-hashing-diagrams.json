@@ -1,0 +1,21 @@
+{
+  "sourceSHA256": "092c3a0695e1d58164b0b96215e94d84350eb9290d59f056a0da7fbbb0c215fa",
+  "crops": [
+    {
+      "file": "hashing-7-16.png",
+      "pdfPage": 2,
+      "bookPage": 411,
+      "boundsAt2400pxSpread": [
+        1304,
+        211,
+        1768,
+        357
+      ],
+      "size": [
+        928,
+        292
+      ],
+      "sha256": "1e4f0584bc51b180e2a20a3bc6ddc652c64396f690a8b5b24a0c841f3cbc2e5a"
+    }
+  ]
+}

@@ -3,6 +3,7 @@ export const WATERMARK_POSITIONS = [...PAGE_POSITIONS, 'center'];
 export const DEFAULT_PDF_SETTINGS = Object.freeze({
   fontSize: 18, minFontSize: 8, lineSpacing: 26 / 18, marginMm: 14, imageScale: 1, workingLines: 0, theme: 'dark', overflow: 'error', answerMode: 'none',
   showSolutions: true, solutionPosition: 'top-right', solutionLabel: 'Video sol.', solutionFontSize: 10, showSolutionIcon: true,
+  showGateOverflow: true, gateOverflowPosition: 'top-right', gateOverflowLabel: 'GateOverflow sol.', gateOverflowFontSize: 10,
   showWatermark: true, watermarkText: 'g4gate.com', watermarkOpacity: 0.06, watermarkFontSize: 48, watermarkAngle: 0, watermarkPosition: 'center', watermarkClickable: false,
   showWebsite: false, websiteUrl: 'https://g4gate.com/', websiteLabel: 'g4gate.com', websitePosition: 'bottom-center',
   showPageNumbers: true, pageNumberPosition: 'bottom-right', pageNumberTemplate: '{page} / {total}', pageNumberFontSize: 9,
@@ -16,9 +17,9 @@ export const PDF_PRESETS = Object.freeze({
   Print: { ...DEFAULT_PDF_SETTINGS, fontSize: 16, minFontSize: 12, theme: 'light', lineSpacing: 1.35, marginMm: 18 },
 });
 
-const ranges = { fontSize: [8, 32], minFontSize: [8, 32], lineSpacing: [1.1, 1.8], marginMm: [8, 25], imageScale: [0.5, 1.5], workingLines: [0, 10], watermarkOpacity: [0, 1], watermarkFontSize: [16, 96], watermarkAngle: [-90, 90], solutionFontSize: [8, 16], pageNumberFontSize: [8, 16], titleFontSize: [8, 20] };
+const ranges = { fontSize: [8, 32], minFontSize: [8, 32], lineSpacing: [1.1, 1.8], marginMm: [8, 25], imageScale: [0.5, 1.5], workingLines: [0, 10], watermarkOpacity: [0, 1], watermarkFontSize: [16, 96], watermarkAngle: [-90, 90], solutionFontSize: [8, 16], gateOverflowFontSize: [8, 16], pageNumberFontSize: [8, 16], titleFontSize: [8, 20] };
 const questionStyleKeys = new Set(['fontSize', 'minFontSize', 'lineSpacing', 'imageScale', 'overflow']);
-const integerKeys = new Set(['fontSize', 'minFontSize', 'marginMm', 'workingLines', 'watermarkFontSize', 'watermarkAngle', 'solutionFontSize', 'pageNumberFontSize', 'titleFontSize']);
+const integerKeys = new Set(['fontSize', 'minFontSize', 'marginMm', 'workingLines', 'watermarkFontSize', 'watermarkAngle', 'solutionFontSize', 'gateOverflowFontSize', 'pageNumberFontSize', 'titleFontSize']);
 
 export function normalizeWebsiteUrl(value) {
   if (typeof value !== 'string' || value.length > 2000) throw new Error('Website link must be a URL up to 2000 characters.');
@@ -38,20 +39,20 @@ export function normalizePdfSettings(value = {}, { partial = false } = {}) {
     if (typeof value[key] !== 'number' || !Number.isFinite(value[key]) || value[key] < min || value[key] > max || (integerKeys.has(key) && !Number.isInteger(value[key]))) throw new Error(`PDF ${key} must be between ${min} and ${max}.`);
     result[key] = value[key];
   }
-  for (const [key, allowed] of Object.entries({ answerMode: ['none', 'toggle', 'footer'], theme: ['dark', 'light'], overflow: ['error', 'warn'], solutionPosition: PAGE_POSITIONS, websitePosition: PAGE_POSITIONS, pageNumberPosition: PAGE_POSITIONS, watermarkPosition: WATERMARK_POSITIONS, titleMode: ['first', 'every', 'none'], titleAlignment: ['left', 'center', 'right'] })) {
+  for (const [key, allowed] of Object.entries({ answerMode: ['none', 'toggle', 'footer'], theme: ['dark', 'light'], overflow: ['error', 'warn'], solutionPosition: PAGE_POSITIONS, gateOverflowPosition: PAGE_POSITIONS, websitePosition: PAGE_POSITIONS, pageNumberPosition: PAGE_POSITIONS, watermarkPosition: WATERMARK_POSITIONS, titleMode: ['first', 'every', 'none'], titleAlignment: ['left', 'center', 'right'] })) {
     if (partial && !questionStyleKeys.has(key)) continue;
     if (value[key] === undefined) continue;
     if (!allowed.includes(value[key])) throw new Error(`PDF ${key} is invalid.`);
     result[key] = value[key];
   }
-  for (const key of ['showSolutions', 'showWebsite', 'showSolutionIcon', 'showWatermark', 'watermarkClickable', 'showPageNumbers', 'stripTitleNumbers', 'showQuestionNumber', 'showQuestionMeta', 'openLinksInNewTab', 'includePageImages', 'includeAnswerKey']) {
+  for (const key of ['showSolutions', 'showGateOverflow', 'showWebsite', 'showSolutionIcon', 'showWatermark', 'watermarkClickable', 'showPageNumbers', 'stripTitleNumbers', 'showQuestionNumber', 'showQuestionMeta', 'openLinksInNewTab', 'includePageImages', 'includeAnswerKey']) {
     if (partial) continue;
     if (value[key] === undefined) continue;
     if (typeof value[key] !== 'boolean') throw new Error(`PDF ${key} must be a checkbox value.`);
     result[key] = value[key];
   }
   if (!partial) {
-    for (const [key, max] of Object.entries({ watermarkText: 80, websiteLabel: 80, solutionLabel: 40, pageNumberTemplate: 80, titleText: 240 })) {
+    for (const [key, max] of Object.entries({ watermarkText: 80, websiteLabel: 80, solutionLabel: 40, gateOverflowLabel: 40, pageNumberTemplate: 80, titleText: 240 })) {
       if (value[key] === undefined) continue;
       if (typeof value[key] !== 'string' || value[key].length > max || /[\x00-\x1f]/.test(value[key])) throw new Error(`PDF ${key} must be a single line up to ${max} characters.`);
       result[key] = value[key];

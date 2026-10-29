@@ -3,8 +3,6 @@ import { chapterProgress, sortCompletedLast } from './chapter-progress.mjs';
 
 export const PROJECT_PATH = String.raw`E:\All Projects and Data\gate-pyq-YT-app`;
 export const PDF_ROOT = String.raw`C:\Users\Prince\Desktop\MadeEasy PYQ PDF`;
-export const PROGRESS_KEY = 'madeeasy-pyq-progress-v2';
-export const LEGACY_PROGRESS_KEY = 'madeeasy-pyq-progress-v1';
 
 // These are the on-disk filenames, including the book's spelling and both DP PDFs.
 const fileOverrides = {
@@ -25,21 +23,11 @@ export const PDF_SUBJECTS = Object.entries(GATE_SYLLABUS).map(([name, chapters])
 
 export const ALL_PDFS = PDF_SUBJECTS.flatMap(subject => subject.files);
 
-export function parseProgress(raw) {
-  const parsed = JSON.parse(raw || '{}');
-  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return {};
-  const validPaths = new Set(ALL_PDFS.map(file => file.path));
-  return Object.fromEntries(Object.entries(parsed)
-    .map(([path, value]) => [path.replace(/\\+/g, '\\'), value])
-    .filter(([path, value]) => validPaths.has(path) && typeof value === 'boolean'));
-}
-
-export function trackerSubjects(overrides = {}, actualCounts = {}, targetCounts = {}) {
+export function trackerSubjects(actualCounts = {}, targetCounts = {}) {
   const subjects = PDF_SUBJECTS.map(subject => {
     const files = subject.files.map(file => {
       const database = chapterProgress(file.subject, file.chapter, actualCounts, targetCounts);
-      const checked = Object.hasOwn(overrides, file.path) ? overrides[file.path] : database.complete;
-      return { ...file, database, checked };
+      return { ...file, database, checked: database.complete };
     });
     const checkedCount = files.filter(file => file.checked).length;
     return { ...subject, files, checkedCount, complete: files.length > 0 && checkedCount === files.length };

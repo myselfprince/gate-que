@@ -5,11 +5,14 @@ import { normalizeQuestionMetadata } from '../src/lib/question-metadata.mjs';
 import { buildQuestionPages } from '../src/lib/question-pages.mjs';
 
 test('PDF settings reject invalid dimensions and preserve only supported numeric values', () => {
-  for (const value of [{ fontSize: '20' }, { fontSize: NaN }, { fontSize: 50 }, { marginMm: 0 }, { minFontSize: 20 }, { theme: 'unknown' }, { showSolutions: 'false' }]) assert.throws(() => normalizePdfSettings(value));
+  for (const value of [{ fontSize: '20' }, { fontSize: NaN }, { fontSize: 50 }, { marginMm: 0 }, { minFontSize: 20 }, { theme: 'unknown' }, { showSolutions: 'false' }, { showGateOverflow: 'false' }, { gateOverflowPosition: 'outside' }, { gateOverflowFontSize: 17 }, { gateOverflowLabel: 'Invalid\nlabel' }]) assert.throws(() => normalizePdfSettings(value));
   const value = normalizePdfSettings({ fontSize: 24, minFontSize: 14, theme: 'light' });
   assert.deepEqual(normalizePdfSettings(value), value);
   assert.equal(questionPdfSettings(value, { fontSize: 12 }).minFontSize, 12);
   assert.deepEqual(normalizeQuestionMetadata({ pdfStyle: { fontSize: 20, imageScale: 0.75 } }).pdfStyle, { fontSize: 20, imageScale: 0.75 });
+  assert.equal(value.showGateOverflow, true);
+  const links = normalizePdfSettings({ showGateOverflow: false, gateOverflowPosition: 'bottom-center', gateOverflowLabel: 'Read solution', gateOverflowFontSize: 12 });
+  assert.deepEqual(normalizePdfSettings(links), links);
 });
 
 test('chapter design and per-question sizes reach the final LaTeX with bounded fitting', () => {

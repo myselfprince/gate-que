@@ -1,4 +1,4 @@
-import { normalizeSolutionUrl } from './solution-links.mjs';
+import { normalizeSolutionUrl, normalizeGateOverflowUrl } from './solution-links.mjs';
 import { normalizePdfSettings } from './pdf-settings.mjs';
 
 export function normalizeQuestionMetadata(value, fail = (message) => { throw new Error(message); }) {
@@ -27,6 +27,10 @@ export function normalizeQuestionMetadata(value, fail = (message) => { throw new
   }
   if (value.solutionUrl !== undefined) {
     try { metadata.solutionUrl = normalizeSolutionUrl(value.solutionUrl); }
+    catch (error) { fail(error.message); }
+  }
+  if (value.gateOverflowUrl !== undefined) {
+    try { metadata.gateOverflowUrl = normalizeGateOverflowUrl(value.gateOverflowUrl); }
     catch (error) { fail(error.message); }
   }
   if (value.questionType !== undefined) {

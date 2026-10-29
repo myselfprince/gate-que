@@ -1,0 +1,37 @@
+{
+  "sourceSHA256": "a763257c9796c375d591a6be074d495f2287a0ab620069d0f1dd32c5f669bc90",
+  "crops": [
+    {
+      "file": "syntax-3-13.png",
+      "pdfPage": 1,
+      "bookPage": 505,
+      "boundsAt4x": [
+        1880,
+        1315,
+        2367,
+        1558
+      ],
+      "size": [
+        730,
+        365
+      ],
+      "sha256": "d933a4bda4c66e2092f64cf3aafecdd9e911e4d73a4d0ff6b3cfaeebf719f3f4"
+    },
+    {
+      "file": "syntax-3-18.png",
+      "pdfPage": 2,
+      "bookPage": 506,
+      "boundsAt4x": [
+        258,
+        1403,
+        493,
+        1631
+      ],
+      "size": [
+        353,
+        342
+      ],
+      "sha256": "c909dd1b660ce6b4afb456299d8b6d3f8e808c92c1abedf42b42a8ea12165acd"
+    }
+  ]
+}

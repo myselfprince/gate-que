@@ -1,0 +1,124 @@
+{
+  "sourceSHA256": "4e81d5c512edbe016342f79be6bcde4e2c53124be6af9db2a1c6b439f84417b3",
+  "crops": [
+    {
+      "file": "graphs-6-1.png",
+      "pdfPage": 1,
+      "bookPage": 402,
+      "half": 1,
+      "boundsAt4x": [
+        225,
+        405,
+        440,
+        658
+      ],
+      "size": [
+        322,
+        379
+      ],
+      "sha256": "cd089da5ddd29badc00daf2fa2e2ec13ed2ac516a71bbb030fc3e12b6d0f507f"
+    },
+    {
+      "file": "graphs-6-4.png",
+      "pdfPage": 1,
+      "bookPage": 402,
+      "half": 1,
+      "boundsAt4x": [
+        190,
+        1377,
+        482,
+        1592
+      ],
+      "size": [
+        438,
+        322
+      ],
+      "sha256": "4b2ab178c8dfa355cd11c779d4cc0fd75e66105b38ceb118e650fb7ba50721c1"
+    },
+    {
+      "file": "graphs-6-14.png",
+      "pdfPage": 1,
+      "bookPage": 403,
+      "half": 2,
+      "boundsAt4x": [
+        755,
+        586,
+        1025,
+        733
+      ],
+      "size": [
+        406,
+        221
+      ],
+      "sha256": "9bc76172f7862f3cd7793ffabdc7e5b563ffaca14e7658d9f20b7e936e467698"
+    },
+    {
+      "file": "graphs-6-15.png",
+      "pdfPage": 1,
+      "bookPage": 403,
+      "half": 2,
+      "boundsAt4x": [
+        702,
+        898,
+        1068,
+        1128
+      ],
+      "size": [
+        549,
+        345
+      ],
+      "sha256": "76dad511654e8f85627177609322244fee4ec7127cb63c0a0d6b146e8ac5f452"
+    },
+    {
+      "file": "graphs-6-17.png",
+      "pdfPage": 2,
+      "bookPage": 404,
+      "half": 1,
+      "boundsAt4x": [
+        138,
+        320,
+        510,
+        443
+      ],
+      "size": [
+        558,
+        184
+      ],
+      "sha256": "284ed7263f6a8dc078d666a9d42480692b194d746c05903c8675070d7122b721"
+    },
+    {
+      "file": "graphs-6-18.png",
+      "pdfPage": 2,
+      "bookPage": 404,
+      "half": 1,
+      "boundsAt4x": [
+        184,
+        518,
+        463,
+        658
+      ],
+      "size": [
+        418,
+        210
+      ],
+      "sha256": "907cb7da6e576352cd1261d2ab689e827e94db207327b01c3cdb95025e08f187"
+    },
+    {
+      "file": "graphs-6-21.png",
+      "pdfPage": 2,
+      "bookPage": 404,
+      "half": 1,
+      "boundsAt4x": [
+        225,
+        1405,
+        458,
+        1548
+      ],
+      "size": [
+        349,
+        214
+      ],
+      "sha256": "9a3e799a4b4b483f7c51bb18516ac67ff99a11ec61202d81f28535092bf7394b"
+    }
+  ]
+}

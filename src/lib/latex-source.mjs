@@ -34,7 +34,7 @@ export const latexText = (text = '', { fitTables = false } = {}) => latexSegment
     ? '\\rule{2cm}{0.4pt}' : escapeProse(run).replace(/\r?\n/g, '\\par\n')).join(''))
   .join('');
 
-export const LISTINGS_UNICODE = String.raw`literate={≥}{{$\geq$}}1 {≤}{{$\leq$}}1 {≠}{{$\neq$}}1 {←}{{$\leftarrow$}}1 {→}{{$\rightarrow$}}1`;
+export const LISTINGS_UNICODE = String.raw`literate={≥}{{$\geq$}}1 {≤}{{$\leq$}}1 {≠}{{$\neq$}}1 {←}{{$\leftarrow$}}1 {→}{{$\rightarrow$}}1 {²}{{$^2$}}1 {×}{{$\times$}}1`;
 
 const safeImage = (name) => /^[A-Za-z0-9 .()_-]+$/.test(name) && name !== '.' && name !== '..';
 const imageNames = (question) => (question.diagram || '').split(',').map((name) => name.trim()).filter(Boolean);

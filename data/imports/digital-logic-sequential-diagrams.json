@@ -1,0 +1,633 @@
+[
+  {
+    "file": "sequential-3-1.png",
+    "pdfPage": 1,
+    "pixelBounds": [
+      1548,
+      468,
+      2117,
+      756
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [
+      [
+        [
+          0,
+          264
+        ],
+        [
+          160,
+          268
+        ],
+        [
+          490,
+          288
+        ],
+        [
+          0,
+          288
+        ]
+      ]
+    ],
+    "sha256": "4fafd725bc49e1f781a59538c62cfd2fa9fab0e101447f87b3295206edfd5f4b"
+  },
+  {
+    "file": "sequential-3-2.png",
+    "pdfPage": 1,
+    "pixelBounds": [
+      1600,
+      1270,
+      1959,
+      1460
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [],
+    "sha256": "7cd5c67911659c3ca69049a4dee1a86a56d448f1816e776053453b5235ac063f"
+  },
+  {
+    "file": "sequential-3-3-circuit.png",
+    "pdfPage": 1,
+    "pixelBounds": [
+      2215,
+      462,
+      2760,
+      712
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [],
+    "sha256": "ee07bdc12570b7f75cb3a3e9f0a140631e300966121bdde487062edf677d13c8"
+  },
+  {
+    "file": "sequential-3-3-timing.png",
+    "pdfPage": 1,
+    "pixelBounds": [
+      2215,
+      840,
+      2662,
+      978
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [],
+    "sha256": "b04c51a43dc748a915b1a5bdd3b431c95b072dd79b5b552cf3af82a1e4fd6a90"
+  },
+  {
+    "file": "sequential-3-3-a.png",
+    "pdfPage": 1,
+    "pixelBounds": [
+      2230,
+      997,
+      2655,
+      1052
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [],
+    "sha256": "4c578db9278b89215c1d22d4845bcf60f7647bbe4c23f89480d5c2aab9bca306"
+  },
+  {
+    "file": "sequential-3-3-b.png",
+    "pdfPage": 1,
+    "pixelBounds": [
+      2230,
+      1057,
+      2655,
+      1111
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [],
+    "sha256": "a9d297720d5c90defd38476a93c6c3e362614e7b5d4f3759471673b4f3f58954"
+  },
+  {
+    "file": "sequential-3-3-c.png",
+    "pdfPage": 1,
+    "pixelBounds": [
+      2230,
+      1116,
+      2655,
+      1173
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [],
+    "sha256": "c10949a95e2bb2d0b51ab5111532de0dbf1731c7d0ed7fa09667ca5c229a7c00"
+  },
+  {
+    "file": "sequential-3-3-d.png",
+    "pdfPage": 1,
+    "pixelBounds": [
+      2230,
+      1181,
+      2655,
+      1244
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [],
+    "sha256": "facd5e2579de503d2f0e0d5fc6719ecd1ff3e64b6a03938eb8319938d44e15e1"
+  },
+  {
+    "file": "sequential-3-4.png",
+    "pdfPage": 1,
+    "pixelBounds": [
+      2160,
+      1392,
+      2700,
+      1635
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [],
+    "sha256": "9b7f91ddb7cfd7d7d8740540dfbc3e07d9c354758c9396ebb6838f6f23478a65"
+  },
+  {
+    "file": "sequential-3-5.png",
+    "pdfPage": 2,
+    "pixelBounds": [
+      410,
+      322,
+      824,
+      470
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [
+      [
+        0,
+        142,
+        50,
+        148
+      ]
+    ],
+    "excludedExteriorPolygons": [],
+    "sha256": "f9104a04206bce7ba7dcf0c70edddbca2d66336d0488efe7d82bdae7502759d9"
+  },
+  {
+    "file": "sequential-3-8.png",
+    "pdfPage": 2,
+    "pixelBounds": [
+      276,
+      1465,
+      773,
+      1670
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [],
+    "sha256": "64126a85abb52fe474c01a115cd25b4c91d187a5e25cf8146fab357703e14e4d"
+  },
+  {
+    "file": "sequential-3-9.png",
+    "pdfPage": 2,
+    "pixelBounds": [
+      1063,
+      300,
+      1335,
+      438
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [],
+    "sha256": "9234bf1bf3ae8fe24d30314ddafceab466db339178d029454405b8b8d4cf9cbc"
+  },
+  {
+    "file": "sequential-3-11.png",
+    "pdfPage": 2,
+    "pixelBounds": [
+      954,
+      963,
+      1425,
+      1193
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [
+      [
+        0,
+        222,
+        180,
+        230
+      ]
+    ],
+    "excludedExteriorPolygons": [],
+    "sha256": "234e328767032cf03a64214119281f2afdb7444c026d14c7da96bbb630bac360"
+  },
+  {
+    "file": "sequential-3-12-circuit.png",
+    "pdfPage": 2,
+    "pixelBounds": [
+      943,
+      1545,
+      1398,
+      1753
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [
+      [
+        [
+          0,
+          194
+        ],
+        [
+          45,
+          194
+        ],
+        [
+          240,
+          208
+        ],
+        [
+          0,
+          208
+        ]
+      ]
+    ],
+    "sha256": "a819cce366328d8c145e81247cb3755b2379bad62fb18ef93f1f7a14c1180647"
+  },
+  {
+    "file": "sequential-3-12-timing.png",
+    "pdfPage": 2,
+    "pixelBounds": [
+      1605,
+      202,
+      2053,
+      356
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [
+      [
+        0,
+        126,
+        350,
+        154
+      ]
+    ],
+    "excludedExteriorPolygons": [],
+    "sha256": "c721325674ce11bc14faf44dba350388a53eb5b4dd4a0c98612c636906a626f6"
+  },
+  {
+    "file": "sequential-3-13.png",
+    "pdfPage": 2,
+    "pixelBounds": [
+      1604,
+      648,
+      2030,
+      830
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [
+      [
+        145,
+        0,
+        426,
+        8
+      ]
+    ],
+    "excludedExteriorPolygons": [],
+    "sha256": "b77813632214b0d1312862356b451fd1c2dd86863adffc93ff0c6d2c53c3dddd"
+  },
+  {
+    "file": "sequential-3-14.png",
+    "pdfPage": 2,
+    "pixelBounds": [
+      1490,
+      1308,
+      2070,
+      1550
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [
+      [
+        [
+          0,
+          220
+        ],
+        [
+          80,
+          225
+        ],
+        [
+          270,
+          242
+        ],
+        [
+          0,
+          242
+        ]
+      ]
+    ],
+    "sha256": "4039a77672a0581ed05f0f88a365f565f3c0c17be9b20171a9da35f08babc300"
+  },
+  {
+    "file": "sequential-3-15-a.png",
+    "pdfPage": 2,
+    "pixelBounds": [
+      2276,
+      275,
+      2645,
+      402
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [
+      [
+        0,
+        35,
+        18,
+        80
+      ]
+    ],
+    "excludedExteriorPolygons": [],
+    "sha256": "80c209a54a32b0e9556e1f48518e140762e3b931e26870181ac8f9b4c3f82670"
+  },
+  {
+    "file": "sequential-3-15-b.png",
+    "pdfPage": 2,
+    "pixelBounds": [
+      2276,
+      407,
+      2645,
+      529
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [],
+    "sha256": "97e4898b26d69ec666e159d64a53ad3e1cd9e8a4b2ab5760d37f64ab8d954a9c"
+  },
+  {
+    "file": "sequential-3-15-c.png",
+    "pdfPage": 2,
+    "pixelBounds": [
+      2276,
+      534,
+      2645,
+      650
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [],
+    "sha256": "a147a6a800f2d68aff3140b771bf71aee2733996c1aca2e8ebf52b13ed462cf6"
+  },
+  {
+    "file": "sequential-3-15-d.png",
+    "pdfPage": 2,
+    "pixelBounds": [
+      2256,
+      650,
+      2645,
+      773
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [
+      [
+        0,
+        35,
+        28,
+        85
+      ]
+    ],
+    "excludedExteriorPolygons": [],
+    "sha256": "fdbd1f17390a2d5d3ccc058737c51312eb05cbd7fd08d189eb98665cd882feac"
+  },
+  {
+    "file": "sequential-3-16.png",
+    "pdfPage": 2,
+    "pixelBounds": [
+      2268,
+      942,
+      2655,
+      1106
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [],
+    "sha256": "f9b1647229207a5dc1b07ef5ca64c377756529633200da6a4fdc0b117eb95086"
+  },
+  {
+    "file": "sequential-3-18.png",
+    "pdfPage": 2,
+    "pixelBounds": [
+      2200,
+      1492,
+      2583,
+      1589
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [],
+    "sha256": "2de095cfda300f37ecc1a6d2ece9f85d328c826d33c215760556ece1559da0de"
+  },
+  {
+    "file": "sequential-3-19.png",
+    "pdfPage": 3,
+    "pixelBounds": [
+      395,
+      230,
+      794,
+      467
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [],
+    "sha256": "a78c1613579d4d1176ef358db908671701face1eb0e11655a880005bf3f3db7c"
+  },
+  {
+    "file": "sequential-3-20.png",
+    "pdfPage": 3,
+    "pixelBounds": [
+      406,
+      727,
+      812,
+      875
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [
+      [
+        0,
+        143,
+        180,
+        148
+      ]
+    ],
+    "excludedExteriorPolygons": [],
+    "sha256": "0e8beaa0600aae3a7bc43c0799057dd22d6e5fcccd47bc0397fdd237a3f185b3"
+  },
+  {
+    "file": "sequential-3-22.png",
+    "pdfPage": 3,
+    "pixelBounds": [
+      977,
+      202,
+      1436,
+      397
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [
+      [
+        0,
+        182,
+        390,
+        195
+      ]
+    ],
+    "excludedExteriorPolygons": [],
+    "sha256": "3d178925ddf9df2c3830573f23e9a5d48036fcdc1f233257084bb3af38099225"
+  },
+  {
+    "file": "sequential-3-24-25.png",
+    "pdfPage": 3,
+    "pixelBounds": [
+      996,
+      717,
+      1361,
+      1194
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [
+      [
+        [
+          0,
+          0
+        ],
+        [
+          365,
+          0
+        ],
+        [
+          365,
+          20
+        ],
+        [
+          315,
+          10
+        ],
+        [
+          90,
+          2
+        ]
+      ]
+    ],
+    "sha256": "1bfd80ae1e245b5e2c0af63ccd4430ae5bde4ddc11c3f91827b9e202ce59c386"
+  },
+  {
+    "file": "sequential-3-27.png",
+    "pdfPage": 3,
+    "pixelBounds": [
+      1635,
+      203,
+      2074,
+      385
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [
+      [
+        0,
+        0,
+        10,
+        35
+      ]
+    ],
+    "excludedExteriorPolygons": [
+      [
+        [
+          0,
+          148
+        ],
+        [
+          325,
+          174
+        ],
+        [
+          325,
+          182
+        ],
+        [
+          0,
+          182
+        ]
+      ]
+    ],
+    "sha256": "4a343c3f8b53bd12e1ecd487ec15f44bbf874ef7903ad0b981a779c0fa4185b7"
+  },
+  {
+    "file": "sequential-3-32.png",
+    "pdfPage": 3,
+    "pixelBounds": [
+      2256,
+      375,
+      2785,
+      587
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [
+      [
+        0,
+        205,
+        125,
+        212
+      ]
+    ],
+    "excludedExteriorPolygons": [],
+    "sha256": "2027f7b6dd8c7c0f75ab66c4601536a1b756c80f682f709c05d05f82ceae706a"
+  },
+  {
+    "file": "sequential-3-34.png",
+    "pdfPage": 3,
+    "pixelBounds": [
+      2214,
+      1624,
+      2627,
+      1775
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [],
+    "sha256": "99b0e9013314bf2f3c3600e0c9bab2dbbdcd3682b4f2719995357d5ac8a78246"
+  },
+  {
+    "file": "sequential-3-35.png",
+    "pdfPage": 4,
+    "pixelBounds": [
+      296,
+      309,
+      844,
+      517
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [],
+    "sha256": "cb26cd7c63e09915890a20a261fd38d1252825e700bd4f1ea36a038d29627db3"
+  },
+  {
+    "file": "sequential-3-36.png",
+    "pdfPage": 4,
+    "pixelBounds": [
+      448,
+      764,
+      742,
+      1006
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [],
+    "sha256": "15e66d5ab27cfb4177f9ec4da46c71068be2d29467010b7b682d0055aa387720"
+  },
+  {
+    "file": "sequential-3-37.png",
+    "pdfPage": 4,
+    "pixelBounds": [
+      890,
+      386,
+      1464,
+      604
+    ],
+    "renderWidth": 3000,
+    "excludedExteriorPixels": [],
+    "excludedExteriorPolygons": [],
+    "sha256": "f03e2d489c43907becc4ed366e0aa5a94f107071347a335822cba789ed3d0da8"
+  }
+]
