@@ -77,3 +77,7 @@ node scripts/export-g4gate-paper-packages.mjs
 ```
 
 This reads saved JSON and image files only and writes to ignored `output/g4gate-paper-packages/`; it never connects to a database. The G4Gate admin can import a package through **Add previous-year paper**, or use the prepared packages supplied with the tracker. Existing paper identities are refused, and image checksums are verified before publishing.
+
+The `/gateyearpaperpdf` prompt tracker now has an **AI chat project** selector. Use **G4Gate project** when pasting into `E:\g4gate_tracker_latest`; it generates a destination-specific prompt for `lib/gate`, `/admin/gate`, `/gate` and the protected package workflow. The original editor mode remains available. Copy history and completion checks are separate for each destination.
+
+G4Gate mode checks the destination's local `data/gate-imports/` packages, manifest metadata and image hashes without loading its environment or contacting any database. A verified package is ready for the live admin's add-only import; it is not a claim that it has already been imported in production. The destination's `docs/gate-paper-authoring.md` and `tools/validate-gate-paper-package.mjs` describe and validate that workflow. Previously copied editor prompts must be copied again in G4Gate mode before use in the destination chat.

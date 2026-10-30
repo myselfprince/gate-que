@@ -1,9 +1,15 @@
 import { maximumPaperMarks } from './year-papers.mjs';
 import { questionType, storedAnswerText } from './question-answers.mjs';
 import { needsQuestionReview } from './question-review.mjs';
+import { buildG4GatePaperPrompt } from './gate-year-paper-g4gate-prompt.mjs';
 
 export const YEAR_PDF_ROOT = String.raw`D:\Gate PYQs Year Wise - PDFs`;
 export const YEAR_PROJECT_PATH = String.raw`E:\All Projects and Data\gate-pyq-YT-app`;
+export const G4GATE_PROJECT_PATH = String.raw`E:\g4gate_tracker_latest`;
+export const YEAR_PROMPT_TARGETS = {
+  g4gate: { label: 'G4Gate project', projectPath: G4GATE_PROJECT_PATH },
+  editor: { label: 'Current editor project', projectPath: YEAR_PROJECT_PATH },
+};
 export const HEADER_CORRECTIONS = {
   'DA 2025 set 2.pdf': {
     sha256: '6ed18668acb46b636ca0badf132d904756e4377a9972e8484a05eaebe9f17ddd',
@@ -50,7 +56,7 @@ export function yearPaperProgress(file, papers) {
   const answers = questions.every(q => {
     const type = questionType(q);
     if (needsQuestionReview(q) || type === 'SUBJECTIVE' || (q.awardMarksToAll === true && q.datasetId)) return Boolean(q.referenceAnswer?.trim() || q.specialNote?.trim());
-    if (type === 'MCQ' || type === 'MSQ') return Boolean(Array.isArray(q.correctOptions) && q.correctOptions.length && (type !== 'MCQ' || q.correctOptions.length === 1) && q.correctOptions.every(letter => ['A','B','C','D'].includes(letter) && typeof q[`opt${letter}`] === 'string' && q[`opt${letter}`].trim()));
+    if (type === 'MCQ' || type === 'MSQ') return Boolean(Array.isArray(q.correctOptions) && q.correctOptions.length && (type !== 'MCQ' || q.correctOptions.length === 1) && q.correctOptions.every(letter => ['A','B','C','D','E'].includes(letter) && typeof q[`opt${letter}`] === 'string' && q[`opt${letter}`].trim()));
     try { return Boolean(storedAnswerText(q)); } catch { return false; }
   });
   const marks = maximumPaperMarks(questions.map((q,i) => ({...q, key:q.key || q.id || `position-${i}`})));
@@ -67,10 +73,13 @@ export function compareYearPdfs(a,b) {
     || Number(a.setNum || 0) - Number(b.setNum || 0) || a.filename.localeCompare(b.filename,undefined,{numeric:true});
 }
 
-export function buildYearPaperPrompt(file, changes = {}) {
+export function buildYearPaperPrompt(file, changes = {}, target = 'editor') {
+  if (!Object.hasOwn(YEAR_PROMPT_TARGETS, target)) throw new Error('Choose a valid destination project.');
+  if(file.sha256&&(typeof file.sha256!=='string'||!/^[a-f0-9]{64}$/.test(file.sha256)))throw new Error('Use a valid source PDF SHA-256.');
   const identity = { year: String(changes.year ?? file.year).trim(), examPaper: changes.examPaper ?? file.examPaper, setNum: String(changes.setNum ?? file.setNum ?? '').trim() };
   if (!/^(19|20)\d{2}$/.test(identity.year) || !['CS','IT','DA'].includes(identity.examPaper) || !/^[\w -]{0,16}$/.test(identity.setNum)) throw new Error('Choose a valid year, paper code and set/session.');
   const source = identifyYearPdf(file.filename,file.sha256);
+  if (target === 'g4gate') return buildG4GatePaperPrompt({ identity, source, file, projectPath: G4GATE_PROJECT_PATH, editorPath: YEAR_PROJECT_PATH });
   return `Build a complete, independently stored GATE previous-year question paper in the existing project. Process ONLY the PDF specified below in this task.
 
 INPUTS
