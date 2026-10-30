@@ -1,0 +1,11 @@
+.panel{margin:22px 0;padding:20px;border:1px solid #d5b66b;border-left:4px solid #b88a2f;border-radius:6px;scroll-margin-top:20px}
+.heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px;flex-wrap:wrap}
+.heading h3{margin:0;font-size:17px;color:inherit}
+.heading span{padding:3px 8px;border:1px solid #d5b66b;border-radius:4px;font-size:11px}
+.panel>p{font-size:12px;margin:0 0 16px;opacity:.8}
+.panel .note{display:block;width:100%;box-sizing:border-box;min-height:110px;resize:vertical;border:1px solid #b5c8d6;border-radius:4px;background:transparent;color:inherit;font:inherit;line-height:1.6;padding:11px;margin:8px 0;white-space:pre-wrap}
+.note:focus-visible{outline:2px solid #247ba5;outline-offset:2px}
+.panel>small{display:block;opacity:.8;font-size:11px;line-height:1.6}
+.actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:16px}
+.actions small{font-size:11px;opacity:.8}
+@media(max-width:540px){.panel{padding:15px}.heading h3{font-size:15px}.actions{align-items:start;flex-direction:column}}

@@ -1,0 +1,10 @@
+import fs from 'node:fs/promises';
+const base='data/backups/gate-2006',all=JSON.parse(await fs.readFile(base+'/book-search.json','utf8'));
+const paper=JSON.parse(await fs.readFile('data/papers/gate-cs-2006.json','utf8'));
+const tokens=s=>new Set(s.toLowerCase().replace(/[^a-z0-9]/g,' ').split(' ').filter(t=>t.length>2));
+const text=q=>['text','code','optA','optB','optC','optD'].map(k=>q[k]||'').join(' ');
+const corpus=all.map(q=>({q,t:tokens(text(q))}));
+const search=paper.questions.map(q=>{const t=tokens(text(q));return {number:q.paperQuestionNumber,selected:q.source.copiedFrom?.questionId||null,candidates:corpus.map(b=>({id:b.q.id,year:b.q.year,score:[...t].filter(w=>b.t.has(w)).length/Math.max(1,new Set([...t,...b.t]).size),text:b.q.text.slice(0,200)})).sort((a,b)=>b.score-a.score).slice(0,5)};});
+await fs.writeFile(base+'/full-book-search.json',JSON.stringify(search,null,2));
+await fs.writeFile('tmp/gate2006/mapped.txt',paper.questions.map(q=>`Q${q.paperQuestionNumber}\n${q.text}\n${q.code||''}\n${['A','B','C','D'].map(k=>k+' '+q['opt'+k]).join('\n')}\nKEY ${q.correctOptions} MANUAL ${q.manualReview}`).join('\n\n'));
+console.log(JSON.stringify({searched:all.length,missing:search.filter(q=>!q.selected).map(q=>({number:q.number,candidates:q.candidates.slice(0,2)})),duplicates:search.filter(q=>q.candidates.filter(c=>c.score>.8).length>1).map(q=>q.number)},null,2));

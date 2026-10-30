@@ -3,7 +3,7 @@ import dbConnect from '@/lib/mongodb';
 import Chapter from '@/models/Chapter';
 import MockPaper from '@/models/MockPaper';
 import YearPaper from '@/models/YearPaper';
-import { adminQuestionRecord, validateAdminAnswer, validateAdminLinks } from '@/lib/mock-admin.mjs';
+import { adminQuestionRecord, validateAdminAnswer, validateAdminLinks, validateAdminReview, verifyAdminAnswer } from '@/lib/mock-admin.mjs';
 import { publicPaper } from '@/lib/year-papers.mjs';
 import { readMockBank, mockCatalog } from '@/lib/gatemock-server';
 import { validatePaper } from '@/lib/gatemock.mjs';
@@ -30,7 +30,7 @@ export async function GET(request) {
 export async function PUT(request) {
   const denied = requireMutationAccess(request); if (denied) return denied;
   try {
-    const body = await parseJson(request, 10000);
+    const body = await parseJson(request, 24000);
     if (!body || typeof body.questionId !== 'string' || typeof body.expectedUpdatedAt !== 'string'
       || !Number.isFinite(Date.parse(body.expectedUpdatedAt))) return jsonError('Question identity and revision are required.');
     const isPaper = typeof body.datasetId === 'string' && /^[a-z0-9-]{1,100}$/.test(body.datasetId);
@@ -44,7 +44,7 @@ export async function PUT(request) {
     const question = before.questions.find(q => q.id === body.questionId && !q.isBlank && (!isPaper || q.key === body.key));
     if (!question) return jsonError('Question not found.', 404);
     let answer;
-    try { answer = body.action === 'links' ? validateAdminLinks(body) : validateAdminAnswer(body, question); } catch (error) { return jsonError(error.message); }
+    try { answer = body.action === 'links' ? validateAdminLinks(body) : body.action === 'review' ? validateAdminReview(body, question) : body.action === 'verify' ? verifyAdminAnswer(body, question) : validateAdminAnswer(body, question); } catch (error) { return jsonError(error.message); }
     const questions = before.questions.map(q => q === question ? { ...q, ...answer,
       [body.action === 'links' ? 'linksUpdatedAt' : 'answerReviewedAt']: new Date().toISOString() } : q);
     const saved = await Model.findOneAndUpdate({ _id: before._id, updatedAt: before.updatedAt }, { $set: { questions } }, { new: true }).select('updatedAt').lean();

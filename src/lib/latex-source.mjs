@@ -42,7 +42,7 @@ const imageNames = (question) => (question.diagram || '').split(',').map((name) 
 export function collectLatexImages(questions) {
   const files = new Set();
   for (const q of questions) {
-    const names = [...imageNames(q), ...[q.optA, q.optB, q.optC, q.optD]
+    const names = [...imageNames(q), ...[q.optA, q.optB, q.optC, q.optD, q.optE]
       .filter((option) => option?.startsWith('IMG:')).map((option) => option.slice(4).trim())];
     for (const name of names) {
       if (!safeImage(name)) throw new Error('An image reference is invalid.');
@@ -74,13 +74,17 @@ export function renderSourceQuestion(q, { imageRoot = 'images', maxImageHeight, 
   names.forEach((name, i) => { if (!used.has(i)) body += image(name); });
   if (!codeUsed) body += code;
 
-  const options = [q.optA, q.optB, q.optC, q.optD];
+  const options = [q.optA, q.optB, q.optC, q.optD, ...(q.optE ? [q.optE] : [])];
   if (options.some(Boolean)) {
     const renderOption = (option = '') => option.startsWith('IMG:') ? image(option.slice(4).trim())
       : q.isCodeOptions ? `\\texttt{${escapeLatex(option)}}` : latexText(option, { fitTables: true });
-    const twoCols = q.optLayout === '2col' || (q.optLayout !== '1col'
-      && options.every((option) => (option || '').length <= 65 && !(option || '').includes('\n') && !(option || '').includes('$$')));
-    if (q.optLayout === '3col') {
+    const twoCols = !q.optE && (q.optLayout === '2col' || (q.optLayout !== '1col'
+      && options.every((option) => (option || '').length <= 65 && !(option || '').includes('\n') && !(option || '').includes('$$'))));
+    if (q.optLayout === '4col' && !q.optE) {
+      body += '\n\\par\\smallskip\\noindent\\begin{tabular}{@{}p{0.22\\linewidth}@{\\hspace{0.04\\linewidth}}p{0.22\\linewidth}@{\\hspace{0.04\\linewidth}}p{0.22\\linewidth}@{\\hspace{0.04\\linewidth}}p{0.22\\linewidth}@{}}\n';
+      body += ['A','B','C','D'].map(letter => `\\textbf{(${letter})} ${renderOption(q[`opt${letter}`])}`).join(' & ');
+      body += '\\\\\n\\end{tabular}\\par\n';
+    } else if (q.optLayout === '3col') {
       // Three diagram choices and a final text choice fit historical papers
       // without shrinking all four figures below readable print dimensions.
       body += '\n\\par\\smallskip\\noindent\\begin{tabular}{@{}p{0.31\\linewidth}@{\\hspace{0.035\\linewidth}}p{0.31\\linewidth}@{\\hspace{0.035\\linewidth}}p{0.31\\linewidth}@{}}\n';

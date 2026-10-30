@@ -1,5 +1,6 @@
 import { maximumPaperMarks } from './year-papers.mjs';
 import { questionType, storedAnswerText } from './question-answers.mjs';
+import { needsQuestionReview } from './question-review.mjs';
 
 export const YEAR_PDF_ROOT = String.raw`D:\Gate PYQs Year Wise - PDFs`;
 export const YEAR_PROJECT_PATH = String.raw`E:\All Projects and Data\gate-pyq-YT-app`;
@@ -48,7 +49,7 @@ export function yearPaperProgress(file, papers) {
   const unique = keys.every(key => typeof key === 'string' && key) && new Set(keys).size === questions.length;
   const answers = questions.every(q => {
     const type = questionType(q);
-    if (q.manualReview || type === 'SUBJECTIVE') return Boolean(typeof q.referenceAnswer === 'string' && q.referenceAnswer.trim());
+    if (needsQuestionReview(q) || type === 'SUBJECTIVE' || (q.awardMarksToAll === true && q.datasetId)) return Boolean(q.referenceAnswer?.trim() || q.specialNote?.trim());
     if (type === 'MCQ' || type === 'MSQ') return Boolean(Array.isArray(q.correctOptions) && q.correctOptions.length && (type !== 'MCQ' || q.correctOptions.length === 1) && q.correctOptions.every(letter => ['A','B','C','D'].includes(letter) && typeof q[`opt${letter}`] === 'string' && q[`opt${letter}`].trim()));
     try { return Boolean(storedAnswerText(q)); } catch { return false; }
   });

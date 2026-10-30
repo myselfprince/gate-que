@@ -1,8 +1,16 @@
 import { normalizeSolutionUrl, normalizeGateOverflowUrl } from './solution-links.mjs';
 import { normalizePdfSettings } from './pdf-settings.mjs';
+import { normalizeQuestionReview } from './question-review.mjs';
 
 export function normalizeQuestionMetadata(value, fail = (message) => { throw new Error(message); }) {
   const metadata = {};
+  if (value.answerDisposition !== undefined || value.specialNote !== undefined) {
+    try { Object.assign(metadata, normalizeQuestionReview(value)); } catch (error) { fail(error.message); }
+  }
+  if (value.manualReview !== undefined) {
+    if (typeof value.manualReview !== 'boolean') fail('Manual review must be a checkbox.');
+    metadata.manualReview = value.manualReview;
+  }
   if (value.natRange !== undefined) {
     const range = value.natRange;
     if (range !== null && (!range || typeof range !== 'object' || Array.isArray(range)

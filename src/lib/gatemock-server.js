@@ -3,13 +3,19 @@ import Chapter from '@/models/Chapter';
 import MockPaper from '@/models/MockPaper';
 import YearPaper from '@/models/YearPaper';
 import { publicPaper, maximumPaperMarks } from './year-papers.mjs';
+import { withPaperAssetIds } from './year-paper-assets.mjs';
 import { questionBank, publicQuestion, paperKey, paperCoverage, gradeAttempt } from './gatemock.mjs';
+import { synchronizeReviewedAttempt } from './reviewed-attempt.mjs';
+
+export async function refreshAttemptAnswers(Model, attempt) {
+  return synchronizeReviewedAttempt(Model, attempt, async () => (await readMockBank()).bank);
+}
 
 export const tokenHash = token => createHash('sha256').update(token).digest('hex');
 export async function readMockBank() {
   const [chapters, legacyPapers, yearPapers] = await Promise.all([Chapter.find({}).lean(), MockPaper.find({}).lean(), YearPaper.find({}).lean()]);
   const papers = [...yearPapers.map(publicPaper), ...legacyPapers.filter(p => !yearPapers.some(y => paperKey(y) === paperKey(p)))];
-  return { bank: [...questionBank(chapters), ...yearPapers.flatMap(p => p.questions)], papers, yearPapers };
+  return { bank: [...questionBank(chapters), ...yearPapers.flatMap(p => withPaperAssetIds(p).questions)], papers, yearPapers };
 }
 export function mockCatalog(bank, papers) {
   const books = bank.filter(q => !q.datasetId);
@@ -32,7 +38,8 @@ export function publicAttempt(attempt) {
   return { id: attempt._id, title: attempt.title, questions: attempt.questions.map(publicQuestion), warnings: attempt.warnings,
     exact: attempt.exact, startedAt: attempt.startedAt, expiresAt: attempt.expiresAt, finishedAt: attempt.finishedAt || null,
     durationMinutes: attempt.durationMinutes, negativeFraction: attempt.negativeFraction, state: attempt.state,
-    totalMarks: maximumPaperMarks(attempt.questions), revision: attempt.revision, result: attempt.finishedAt ? attempt.result : null, serverNow: new Date() };
+    totalMarks: maximumPaperMarks(attempt.questions), revision: attempt.revision, result: attempt.finishedAt ? attempt.result : null,
+    reviewSyncUnavailable: Boolean(attempt.reviewSyncUnavailable), serverNow: new Date() };
 }
 export async function finishExpired(Model, attempt) {
   if (!attempt.finishedAt && Date.now() >= new Date(attempt.expiresAt).getTime()) {

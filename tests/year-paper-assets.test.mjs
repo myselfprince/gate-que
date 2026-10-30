@@ -4,14 +4,24 @@ import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
-import { paperAssetFiles, paperAssetAvailability, questionAssetPaths, withPaperAssetIds } from '../src/lib/year-paper-assets.mjs';
-import { preparePaperAssets, publishPaperAssets } from '../src/lib/year-paper-assets-server.mjs';
+import { paperAssetFiles, paperAssetAvailability, questionAssetPaths, withPaperAssetIds, questionDiagramUrl } from '../src/lib/year-paper-assets.mjs';
+import { preparePaperAssets, publishPaperAssets, readPaperAsset } from '../src/lib/year-paper-assets-server.mjs';
 
 const png = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jDPsAAAAASUVORK5CYII=', 'base64');
 const assetPath = 'Year Papers/GATE CS 2005/diagram.png';
 const question = () => ({ subject: 'Year Papers', chapter: 'GATE CS 2005', diagram: 'diagram', optA: 'IMG:diagram' });
 const file = () => ({ path: assetPath, id: createHash('sha256').update(png).digest('hex'), byteLength: png.length, contentType: 'image/png' });
 const paper = () => ({ questions: [question()], assetManifest: { version: 1, files: [file()] } });
+
+test('attempt diagrams use frozen uploaded versions and never silently fall back to another image',async()=>{
+ const q=withPaperAssetIds(paper()).questions[0];assert.equal(questionDiagramUrl(q,'diagram'),'/api/gatemock/assets/'+file().id);
+ assert.equal(questionDiagramUrl(question(),'diagram'),'/Year%20Papers/GATE%20CS%202005/diagram.png');
+ assert.equal(questionDiagramUrl({...q,assetIds:{}},'diagram'),null);
+ const collection={async findOne(){return {data:png,contentType:'image/png',byteLength:png.length};}};
+ assert.deepEqual((await readPaperAsset(collection,file().id)).data,png);
+ assert.equal(await readPaperAsset(collection,'a'.repeat(64)),null);assert.equal(await readPaperAsset(collection,'../invalid'),null);
+ assert.deepEqual((await readPaperAsset({async findOne(){return {data:{buffer:png},contentType:'image/png',byteLength:png.length};}},file().id)).data,png);
+});
 
 test('manifests require every referenced diagram exactly once and reject traversal or invalid metadata', () => {
   assert.deepEqual(questionAssetPaths(question()), [assetPath]);

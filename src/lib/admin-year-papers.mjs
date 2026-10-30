@@ -29,7 +29,7 @@ export function validatePreparedYearPaper(value) {
     if (!q || typeof q !== 'object' || Array.isArray(q) || q.isBlank) throw new Error(`Question ${index + 1} is missing or blank.`);
     if (q.paperQuestionNumber && String(q.paperQuestionNumber) !== String(index + 1)) throw new Error('Questions must be in their original paper order, numbered 1 onwards.');
     const type = questionType(q);
-    const normalized = normalizeQuestionMetadata({ questionType: type, correctOptions: q.correctOptions || [], natRange: q.natRange ?? null,
+    const normalized = normalizeQuestionMetadata({ answerDisposition: q.answerDisposition, specialNote: q.specialNote, questionType: type, correctOptions: q.correctOptions || [], natRange: q.natRange ?? null,
       gateOverflowUrl: q.gateOverflowUrl || '', solutionUrl: q.solutionUrl || '' });
     const result = { ...q, ...normalized, id: text(q.id || `${slug}-q${index + 1}`, 'Question ID', 150),
       key: `yearpaper:${slug}:${index + 1}`, datasetId: slug, year: metadata.year, examPaper: metadata.examPaper,
@@ -40,7 +40,7 @@ export function validatePreparedYearPaper(value) {
     if (!result.text.trim() || !Number.isFinite(Number(result.marks)) || Number(result.marks) <= 0 || Number(result.marks) > 100) throw new Error(`Question ${index + 1} needs question text and valid marks.`);
     if (normalized.correctOptions.some(letter => !result[`opt${letter}`].trim())) throw new Error(`Question ${index + 1} has a key for an empty option.`);
     const hasKey = type === 'NAT' ? Boolean(numericAnswerRange(result)) : ['MCQ', 'MSQ'].includes(type) && normalized.correctOptions.length > 0;
-    result.manualReview = q.manualReview === true || !hasKey;
+    result.manualReview = q.manualReview === true || normalized.answerDisposition === 'none-correct' || normalized.answerDisposition === 'disputed' || !hasKey;
     return result;
   });
   if (new Set(questions.map(q => q.id)).size !== questions.length) throw new Error('Question IDs must be unique within a paper.');

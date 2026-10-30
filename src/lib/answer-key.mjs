@@ -10,7 +10,7 @@ export function buildAnswerKey({ subject, chapter, questions, pdfSettings }) {
     if (question.isBlank) return [];
     const number = String(index + 1);
     const answer = storedAnswerText(question);
-    return [`\\typeout{GATEANSWER:${index + 1}}\n\\item[\\textbf{Q${escapeLatex(number)}}] ${answer ? latexText(answer) : '\\textit{Answer not available}'}\n`];
+    return [`\\typeout{GATEANSWER:${index + 1}}\n\\item[\\textbf{Q${escapeLatex(number)}}] ${answer ? latexText(answer) : '\\textit{Answer not available}'}${question.specialNote ? `\\par\\smallskip\\textbf{Admin special note:} ${latexText(question.specialNote)}` : ''}\n`];
   }).join('');
   return `\\documentclass[12pt,a4paper]{article}
 \\usepackage[utf8]{inputenc}

@@ -124,6 +124,7 @@
 .unanswered{color:#647782;background:#eef2f5}
 .ungraded{color:#92702d;background:#fff5dc}
 .self-assessed{color:#70539a;background:#f0eaf7}
+.awarded{color:#226478;background:#e4f3f8}
 .reviewGrid{display:grid;grid-template-columns:260px minmax(0,1fr);gap:24px;align-items:start;margin-top:24px}
 .reviewNav{position:sticky;top:20px}
 .reviewNavBody{padding:18px}
@@ -133,6 +134,7 @@
 .page .reviewPalette>.wrong{background:#fbece9;color:#af4840}
 .page .reviewPalette>.ungraded{background:#fff5dc;color:#92702d}
 .page .reviewPalette>.self-assessed{background:#f0eaf7;color:#70539a}
+.page .reviewPalette>.awarded{background:#e4f3f8;color:#226478}
 .page .reviewPalette>[aria-current=step]{outline:2px solid #347ca7;outline-offset:1px}
 .reviewLegend{display:flex;gap:10px 15px;flex-wrap:wrap;font-size:10px;color:#6c7f8d;border-top:1px solid #dbe5ed;padding-top:15px;margin-top:20px}
 .reviewLegend>span{display:flex;align-items:center;gap:6px}

@@ -1,0 +1,86 @@
+import {selectYearPaper,beginSelectedPaper,reviewQuestion,saveSelfAssessment} from './mock-browser-helpers.mjs';
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import {createRequire} from 'node:module';
+import puppeteer from 'puppeteer';
+import AdmZip from 'adm-zip';
+import {questionAssetPaths} from '../src/lib/year-paper-assets.mjs';
+const require=createRequire(import.meta.url);require('@next/env').loadEnvConfig(process.cwd(),true,{info(){},error(){}});
+const {MongoClient}=require('mongoose').mongo,origin='http://127.0.0.1:3000',slug='gate-cs-2007';
+const paper=JSON.parse(await fs.readFile(`data/papers/${slug}.json`,'utf8')),attempts=[];
+const secret=/correctOptions|referenceAnswer|answerSources|copiedFrom|natAnswer|tokenHash|gateOverflowUrl/;
+let cookie='',browser;
+async function api(url,{method='GET',body,token,status=200}={}){
+ const r=await fetch(origin+url,{method,headers:{'Content-Type':'application/json',...(cookie?{Cookie:cookie}:{}),...(token?{Authorization:`Bearer ${token}`}:{})},...(body?{body:JSON.stringify(body)}:{})});
+ const data=await r.json();assert.equal(r.status,status,JSON.stringify(data));return data;
+}
+const create=async(year='2007')=>{const r=await api('/api/gatemock/attempts',{method:'POST',body:{mode:'year',year,examPaper:'CS'}});attempts.push(r.attempt.id);return r;};
+try {
+ const check=await fetch(origin+'/api/gatemock/admin');
+ if(check.status===401){const r=await fetch(origin+'/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:process.env.APP_PASSWORD})});assert.equal(r.status,200);cookie=r.headers.get('set-cookie').split(';')[0];}
+ const catalog=await api('/api/gatemock/catalog');assert.equal(catalog.count,2647);assert.doesNotMatch(JSON.stringify(catalog),secret);
+ for(const [year,count] of [['2000',69],['2001',70],['2002',70],['2003',90],['2004',90],['2005',90],['2006',85],['2007',85]]){const p=catalog.years.find(p=>p.id===`${year}|CS|`);assert.equal(p.available,count);assert.equal(p.coverage.ready,true);}
+ const live=await create(),{id}=live.attempt,token=live.token;
+ assert.equal(live.attempt.totalMarks,150);assert.equal(live.attempt.durationMinutes,180);assert.equal(live.attempt.negativeFraction,.25);assert.equal(live.attempt.questions.length,85);assert.equal(live.attempt.exact,true);assert.doesNotMatch(JSON.stringify(live.attempt),secret);
+ await api(`/api/gatemock/attempts/${id}`,{token:'0'.repeat(64),status:404});
+ await api(`/api/gatemock/attempts/${id}/assessment`,{method:'POST',token,body:{revision:0,key:paper.questions[3].key,marks:1},status:400});
+ const state={...live.attempt.state,responses:paper.questions.map(q=>({key:q.key,value:q.correctOptions})),marked:[paper.questions[0].key],currentIndex:84};
+ await api(`/api/gatemock/attempts/${id}`,{method:'PUT',token,body:{revision:0,state:{...state,responses:[{key:paper.questions[0].key,value:'written'}]}},status:400});
+ await api(`/api/gatemock/attempts/${id}`,{method:'PUT',token,body:{revision:0,state:{...state,responses:[{key:paper.questions[0].key,value:['A','B']}]}},status:400});
+ await api(`/api/gatemock/attempts/${id}`,{method:'PUT',token,body:{revision:0,state}});
+ await api(`/api/gatemock/attempts/${id}`,{method:'PUT',token,body:{revision:0,state},status:409});
+ const resume=await api(`/api/gatemock/attempts/${id}`,{token});assert.deepEqual(resume.attempt.state,state);assert.doesNotMatch(JSON.stringify(resume.attempt),secret);
+ const result=await api(`/api/gatemock/attempts/${id}`,{method:'POST',token,body:{revision:1,state}});
+ assert.equal(result.attempt.result.score,128);assert.equal(result.attempt.result.ungraded,12);assert.ok(result.attempt.result.entries.every(e=>e.referenceAnswer));
+ const assessed=await api(`/api/gatemock/attempts/${id}/assessment`,{method:'POST',token,body:{revision:2,key:paper.questions[3].key,marks:.5}});assert.equal(assessed.attempt.result.score,128.5);
+ await api(`/api/gatemock/attempts/${id}/assessment`,{method:'POST',token,body:{revision:3,key:paper.questions[3].key,marks:2},status:400});
+ // A manually pending linked prerequisite cannot be bypassed on the server.
+ await api(`/api/gatemock/attempts/${id}/assessment`,{method:'POST',token,body:{revision:3,key:paper.questions[80].key,marks:2},status:400});
+ const prerequisite=await api(`/api/gatemock/attempts/${id}/assessment`,{method:'POST',token,body:{revision:3,key:paper.questions[79].key,marks:2}});assert.equal(prerequisite.attempt.result.score,130.5);
+ const second=await api(`/api/gatemock/attempts/${id}/assessment`,{method:'POST',token,body:{revision:4,key:paper.questions[80].key,marks:2}});assert.equal(second.attempt.result.score,132.5);
+ const frozen=await api(`/api/gatemock/attempts/${id}`,{method:'PUT',token,body:{revision:5,state:{...state,responses:[]}}});assert.equal(frozen.attempt.state.responses.length,85);
+ const linked=await create(),ls={...linked.attempt.state,responses:[{key:paper.questions[0].key,value:['B']},{key:paper.questions[20].key,value:['B']},{key:paper.questions[75].key,value:['B']},{key:paper.questions[76].key,value:['D']}]};
+ const lr=await api(`/api/gatemock/attempts/${linked.attempt.id}`,{method:'POST',token:linked.token,body:{revision:0,state:ls}});assert.equal(lr.attempt.result.score,-1.25);assert.equal(lr.attempt.result.entries[76].status,'linked-ineligible');
+ const expired=await create();const db=new MongoClient(process.env.MONGODB_URI);try{await db.connect();await db.db().collection('mockattempts').updateOne({_id:expired.attempt.id},{$set:{expiresAt:new Date(Date.now()-1000)}});}finally{await db.close();}
+ const ex=await api(`/api/gatemock/attempts/${expired.attempt.id}`,{token:expired.token});assert.ok(ex.attempt.finishedAt);assert.equal(ex.attempt.result.score,0);
+ const older=JSON.parse(await fs.readFile('data/papers/gate-cs-2000.json','utf8')),old=await create('2000');
+ const written={...old.attempt.state,responses:older.questions.slice(49,64).map(q=>({key:q.key,value:'Saved proof\n  with indentation.'}))};
+ for(const method of ['PUT','POST'])await api(`/api/gatemock/attempts/${old.attempt.id}`,{method,token:old.token,body:{revision:0,state:{...written,responses:[...written.responses,{key:older.questions[64].key,value:'sixteenth'}]}},status:400});
+ await api(`/api/gatemock/attempts/${old.attempt.id}`,{method:'PUT',token:old.token,body:{revision:0,state:written}});
+ const or=await api(`/api/gatemock/attempts/${old.attempt.id}`,{token:old.token});assert.deepEqual(or.attempt.state.responses,written.responses);assert.doesNotMatch(JSON.stringify(or.attempt),secret);
+ for(const [query,file] of [['format=pdf&theme=dark','dark.pdf'],['format=pdf&theme=light','print.pdf'],['format=key','solutions.pdf'],['format=zip','zip']]){
+  const r=await fetch(origin+`/api/gatemock/papers/${slug}/export?`+query,{headers:cookie?{Cookie:cookie}:{}});assert.equal(r.status,200);const bytes=Buffer.from(await r.arrayBuffer());
+  if(file==='zip'){const zip=new AdmZip(bytes);assert.equal(zip.getEntries().length,2);assert.deepEqual(zip.readFile('GATE-CS-2007-Questions.pdf'),await fs.readFile(`output/pdf/${slug}.dark.pdf`));assert.deepEqual(zip.readFile('GATE-CS-2007-Answers-and-Solutions.pdf'),await fs.readFile(`output/pdf/${slug}.solutions.pdf`));}
+  else assert.deepEqual(bytes,await fs.readFile(`output/pdf/${slug}.${file}`));
+ }
+ console.log('API passed: full source coverage, answer secrecy, saved responses, resume, submission, documented penalties, linked policy, bounded self-assessment, expiry, legacy written/choice limits and matching downloads.');
+ await fs.mkdir('tmp/gate2007/browser',{recursive:true});browser=await puppeteer.launch({headless:true});const page=await browser.newPage();page.setDefaultTimeout(60000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ if(cookie){const i=cookie.indexOf('=');await browser.setCookie({name:cookie.slice(0,i),value:cookie.slice(i+1),url:origin});}
+ await page.setViewport({width:1440,height:1000});await page.goto(origin+`/gatemock?paper=${slug}`,{waitUntil:'domcontentloaded'});await selectYearPaper(page,'2007');
+ await page.screenshot({path:'tmp/gate2007/browser/catalog.png',fullPage:true});
+ const response=page.waitForResponse(r=>r.url().endsWith('/api/gatemock/attempts')&&r.request().method()==='POST');await beginSelectedPaper(page);const ui=await(await response).json();attempts.push(ui.attempt.id);
+ await page.waitForSelector('input[type=radio]');await page.click('input[type=radio]');await page.evaluate(()=>[...document.querySelectorAll('button')].find(b=>b.textContent==='Mark for Review & Next').click());
+ for(let n=1;n<=85;n++){
+  const tab={21:'Two-mark',71:'Common',76:'Linked'}[n];if(tab)await page.evaluate(t=>[...document.querySelectorAll('[role=tab]')].find(e=>e.textContent.includes(t)).click(),tab);
+  await page.evaluate(n=>document.querySelector(`button[aria-label^="Question ${n},"]`).click(),n);
+  await page.waitForFunction(key=>{const e=document.querySelector(`[data-question-key="${key}"]`);return e&&e.querySelector('[data-math-ready="true"]');},{},paper.questions[n-1].key);
+  assert.equal(await page.$$eval('mjx-merror',es=>es.length),0,'Math Q'+n);
+  await page.waitForFunction(()=>[...document.querySelectorAll('[data-question-key] img')].every(im=>im.complete&&im.naturalWidth>0));
+  assert.doesNotMatch(await page.$eval('[data-question-key]',e=>e.textContent),/Diagram unavailable/,'Diagram placeholder Q'+n);
+  assert.equal(await page.$$eval('[data-question-key] img',es=>es.length),questionAssetPaths(paper.questions[n-1]).length,'Missing diagram Q'+n);
+  if([1,5,12,15,21,25,26,27,28,31,32,33,35,36,37,42,44,46,51,54,59,60,61,69,71,74,75,76,77,78,79,80,81,82,83,85].includes(n))await page.screenshot({path:`tmp/gate2007/browser/q${n}.png`});
+ }
+ await page.evaluate(()=>[...document.querySelectorAll('[role=tab]')].find(e=>e.textContent.includes('One-mark')).click());
+ await page.evaluate(()=>document.querySelector('button[aria-label^="Question 4,"]').click());await page.waitForFunction(()=>document.querySelector('[data-question-key="yearpaper:gate-cs-2007:4"]'));
+ await page.click('input[type=radio]');await page.waitForFunction(()=>[...document.querySelectorAll('[role=status]')].some(e=>e.textContent==='Saved'));
+ await page.reload({waitUntil:'domcontentloaded'});await page.waitForSelector('input[type=radio]:checked');assert.equal(await page.$eval('[data-question-key]',e=>e.dataset.questionKey),'yearpaper:gate-cs-2007:4');
+ await page.click('[aria-label="Open scientific calculator"]');await page.waitForSelector('[aria-label="Close calculator"]');await page.screenshot({path:'tmp/gate2007/browser/calculator.png'});await page.click('[aria-label="Close calculator"]');
+ await page.click('[aria-label="Submit test"]');await page.waitForSelector('dialog[open]');await page.evaluate(()=>[...document.querySelectorAll('dialog button')].find(e=>e.textContent==='Confirm submit').click());await page.waitForFunction(()=>document.body.textContent.includes('Your result & solutions'));
+ await reviewQuestion(page,4);await page.type('[aria-label="Self-assessed marks Q4"]','0.5');await saveSelfAssessment(page);await page.waitForFunction(()=>document.body.textContent.includes('1 responses self-assessed'));
+ await page.screenshot({path:'tmp/gate2007/browser/review.png',fullPage:true});
+ await page.evaluate(()=>[...document.querySelectorAll('button')].find(e=>e.textContent==='Choose another paper →').click());await page.setViewport({width:390,height:844});await page.screenshot({path:'tmp/gate2007/browser/mobile.png',fullPage:true});assert.deepEqual(errors,[]);
+ await fs.writeFile('data/backups/gate-2007/live-verification.json',JSON.stringify({apiPassed:true,browserPassed:true,allQuestionScreens:85,questionMathErrors:0,imageErrors:0,pageErrors:errors,downloadsMatched:4,automaticMaximum:128,manualReview:12},null,2));
+ console.log('Browser passed: all 85 questions, math, images, review markers, autosave, refresh/resume, calculator, submission, self-assessment, desktop and mobile.');
+} finally {
+ if(browser)await browser.close();const db=new MongoClient(process.env.MONGODB_URI);try{await db.connect();await db.db().collection('mockattempts').deleteMany({_id:{$in:attempts}});}finally{await db.close();}
+}

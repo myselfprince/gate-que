@@ -39,3 +39,12 @@ export async function publishPaperAssets(collection, documents) {
     await collection.updateOne({ _id: document._id }, { $setOnInsert: document }, { upsert: true });
   }
 }
+
+export async function readPaperAsset(collection, id) {
+  if(!/^[a-f0-9]{64}$/.test(id||''))return null;
+  const doc=await collection.findOne({_id:id});if(!doc)return null;
+  const data=Buffer.isBuffer(doc.data)?Buffer.from(doc.data):Buffer.from(doc.data?.buffer||doc.data||[]);
+  if(data.length!==doc.byteLength||data.length>MAX_PAPER_ASSET_BYTES||!isPaperImage(data,doc.contentType)
+    ||createHash('sha256').update(data).digest('hex')!==id)return null;
+  return {data,contentType:doc.contentType};
+}

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongodb';
 import MockAttempt from '@/models/MockAttempt';
-import { tokenHash, publicAttempt, finishExpired } from '@/lib/gatemock-server';
+import { tokenHash, publicAttempt, finishExpired, refreshAttemptAnswers } from '@/lib/gatemock-server';
 import { gradeAttempt, validateAttemptState } from '@/lib/gatemock.mjs';
 import { parseJson, rateLimit, isSameOrigin, jsonError, unexpectedError } from '@/lib/api-utils';
 export const runtime = 'nodejs';
@@ -16,6 +16,7 @@ async function handle(request, context, action) {
     await dbConnect(); let attempt = await MockAttempt.findOne({ _id: id, tokenHash: tokenHash(token) }).lean();
     if (!attempt) return jsonError('Attempt not found.', 404);
     attempt = await finishExpired(MockAttempt, attempt);
+    attempt = await refreshAttemptAnswers(MockAttempt, attempt);
     if (action === 'read' || attempt.finishedAt) return NextResponse.json({ success: true, attempt: publicAttempt(attempt) });
     const body = await parseJson(request, 200000);
     if (!Number.isInteger(body.revision) || body.revision !== attempt.revision) return jsonError('This attempt changed in another tab. Reload before continuing.', 409);
@@ -23,13 +24,13 @@ async function handle(request, context, action) {
     // Check the deadline again after parsing; never accept answers arriving late.
     if (Date.now() >= new Date(attempt.expiresAt).getTime()) {
       attempt = await finishExpired(MockAttempt, attempt);
-      return NextResponse.json({ success: true, attempt: publicAttempt(attempt) });
+      return NextResponse.json({ success: true, attempt: publicAttempt(await refreshAttemptAnswers(MockAttempt, attempt)) });
     }
     const finished = action === 'submit' ? { finishedAt: new Date(), result: gradeAttempt(attempt.questions, state, attempt.negativeFraction) } : {};
     const saved = await MockAttempt.findOneAndUpdate({ _id: id, tokenHash: tokenHash(token), revision: body.revision, finishedAt: null },
       { $set: { state, ...finished }, $inc: { revision: 1 } }, { new: true }).lean();
     if (!saved) return jsonError('This attempt changed in another tab. Reload before continuing.', 409);
-    return NextResponse.json({ success: true, attempt: publicAttempt(saved) });
+    return NextResponse.json({ success: true, attempt: publicAttempt(await refreshAttemptAnswers(MockAttempt, saved)) });
   } catch (error) { if (error.name === 'ValidationError') return jsonError(error.message); console.error('Mock attempt failed:', error.name); return unexpectedError(); }
 }
 export const GET = (request, context) => handle(request, context, 'read');

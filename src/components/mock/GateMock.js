@@ -110,12 +110,19 @@ export default function GateMock() {
       revision.current = data.attempt.revision; setAttempt(data.attempt);
     } catch (error) { setError(error.message); } finally { setBusy(false); }
   }
+  async function refreshResults() {
+    setBusy(true); setError('');
+    try {
+      const data = await api(`/api/gatemock/attempts/${attempt.id}`, { headers: { Authorization: `Bearer ${token.current}` } });
+      accept(data.attempt, token.current);
+    } catch (error) { setError(error.message); } finally { setBusy(false); }
+  }
   function newTest() {
     try { localStorage.removeItem(STORAGE_KEY); } catch { /* The current view can still be reset. */ }
     setAttempt(null); setTestState(null); setSeconds(null); setError(''); setSaveStatus(''); setConfirmSubmit(false);
     window.scrollTo({ top: 0 });
   }
-  if (attempt?.finishedAt && attempt.result) return <MockReview attempt={attempt} busy={busy} error={error} onAssess={assess} onNewTest={newTest} />;
+  if (attempt?.finishedAt && attempt.result) return <MockReview attempt={attempt} busy={busy} error={error} onAssess={assess} onNewTest={newTest} onRefreshResults={refreshResults} />;
   if (attempt && testState) return <GateExamScreen attempt={attempt} state={testState} seconds={seconds} busy={busy} error={error} saveStatus={saveStatus}
     confirmSubmit={confirmSubmit} onRespond={respond} onMove={move} onSubmit={() => setConfirmSubmit(true)} onCancelSubmit={() => setConfirmSubmit(false)} onConfirmSubmit={submit}
     onCommitNext={(marked, nextIndex) => {

@@ -1,5 +1,6 @@
 import { questionType, numericAnswerRange, storedAnswerText } from './question-answers.mjs';
 import { maximumPaperMarks } from './year-papers.mjs';
+import { needsQuestionReview, awardsMarksToAll } from './question-review.mjs';
 
 export const PAPER_PATTERN_SOURCE = 'https://gate2026.iitg.ac.in/question-paper-pattern.html';
 // Editable practice quotas, not an assertion of fixed official subject weightage.
@@ -137,9 +138,12 @@ export function publicQuestion(q, index) {
     key: q.key, number: index + 1, paperQuestionNumber: q.paperQuestionNumber || '', subject: q.subject, chapter: q.chapter,
     text: q.text, code: q.code || '', year: q.year, marks: q.marks, examPaper: q.examPaper || 'CS', setNum: q.setNum || '',
     questionType: questionType(q), diagram: q.diagram || '', ext: q.ext || '.png', isCodeOptions: Boolean(q.isCodeOptions),
-    assetSubject: q.assetSubject, assetChapter: q.assetChapter, originalLabel: q.originalLabel,
+    assetSubject: q.assetSubject, assetChapter: q.assetChapter, originalLabel: q.originalLabel, assetIds: q.assetIds,
     sectionId: q.sectionId, sectionName: q.sectionName, sectionLimit: q.sectionLimit,
     optA: q.optA || '', optB: q.optB || '', optC: q.optC || '', optD: q.optD || '',
+    ...(q.optE ? {optE:q.optE} : {}),
+    ...(q.negativeFraction !== undefined ? {negativeFraction:q.negativeFraction} : {}),
+    ...(q.dependsOnKey ? {dependsOnKey:q.dependsOnKey} : {}),
   }));
 }
 
@@ -152,8 +156,8 @@ export function validateAttemptState(value, questions) {
     if (!question || seen.has(response.key)) throw new Error('Response question is invalid or repeated.');
     seen.add(response.key);
     if (['MCQ', 'MSQ'].includes(questionType(question))) {
-      if (!Array.isArray(response.value) || response.value.length > (questionType(question) === 'MCQ' ? 1 : 4)
-        || new Set(response.value).size !== response.value.length || response.value.some(letter => !['A', 'B', 'C', 'D'].includes(letter) || !question[`opt${letter}`])) throw new Error('Invalid option response.');
+      if (!Array.isArray(response.value) || response.value.length > (questionType(question) === 'MCQ' ? 1 : 5)
+        || new Set(response.value).size !== response.value.length || response.value.some(letter => !['A', 'B', 'C', 'D', 'E'].includes(letter) || !question[`opt${letter}`])) throw new Error('Invalid option response.');
       return { key: response.key, value: [...response.value].sort() };
     }
     if (questionType(question) === 'SUBJECTIVE') {
@@ -178,6 +182,7 @@ export function validateAttemptState(value, questions) {
 export function gradeAttempt(questions, state, negativeFraction = 1 / 3, manualScores = []) {
   const responses = new Map(state.responses.map(response => [response.key, response.value]));
   const assessments = new Map(manualScores.map(item => [item.key, item.marks]));
+  const outcomes = new Map();
   let score = 0, gradableMarks = 0;
   const entries = questions.map((q, index) => {
     const type = questionType(q), response = responses.get(q.key);
@@ -185,28 +190,46 @@ export function gradeAttempt(questions, state, negativeFraction = 1 / 3, manualS
     const range = type === 'NAT' && numericAnswerRange(q);
     const optionsValid = ['MCQ', 'MSQ'].includes(type) && q.correctOptions?.length
       && (type !== 'MCQ' || q.correctOptions.length === 1) && q.correctOptions.every(letter => q[`opt${letter}`]);
-    const gradable = !q.manualReview && Boolean(range || optionsValid);
+    const awardAll = awardsMarksToAll(q);
+    const gradable = awardAll || (!needsQuestionReview(q) && Boolean(range || optionsValid));
     let status = gradable || (type === 'SUBJECTIVE' && !answered) ? 'unanswered' : 'ungraded', earned = 0;
     if (gradable) {
       gradableMarks += Number(q.marks);
-      if (answered) {
+      if (awardAll) {
+        status = 'awarded'; earned = Number(q.marks);
+      } else if (answered) {
         const correct = type === 'NAT' ? Number(response) >= range.min && Number(response) <= range.max
           : JSON.stringify([...response].sort()) === JSON.stringify([...q.correctOptions].sort());
         status = correct ? 'correct' : 'wrong';
-        earned = correct ? Number(q.marks) : type === 'MCQ' ? -Number(q.marks) * negativeFraction : 0;
+        earned = correct ? Number(q.marks) : type === 'MCQ' ? (-Number(q.marks) * (q.negativeFraction ?? negativeFraction) || 0) : 0;
       }
     }
     if (!gradable && answered && assessments.has(q.key)) {
       earned = assessments.get(q.key); gradableMarks += Number(q.marks); status = 'self-assessed';
     }
+    // Historical linked part (b) earns marks only after a correct part (a).
+    // Missing manual assessment of the prerequisite leaves the result pending.
+    let linkedEligible;
+    if (q.dependsOnKey) {
+      const previous = outcomes.get(q.dependsOnKey);
+      linkedEligible = previous?.answered && previous.status === 'ungraded' ? null : Boolean(previous && previous.earned === previous.marks);
+      if (linkedEligible !== true) {
+        if (!gradable && answered && assessments.has(q.key)) gradableMarks -= Number(q.marks);
+        earned = 0; status = linkedEligible === null ? 'ungraded' : 'linked-ineligible';
+      }
+    }
+    outcomes.set(q.key, {status,earned,answered,marks:Number(q.marks)});
     score += earned;
     return { question: publicQuestion(q, index), response: response ?? null, status, earned, answer: storedAnswerText(q) || (q.referenceAnswer ? 'See reference solution below' : null),
       referenceAnswer: q.referenceAnswer || '', gateOverflowUrl: q.gateOverflowUrl || '', manualReview: !gradable,
+      specialNote: q.specialNote || '', answerDisposition: q.answerDisposition || 'standard', answerReviewedAt: q.answerReviewedAt || null,
+      ...(q.dependsOnKey ? {linkedEligible} : {}),
       ...(q.verificationStatus ? { verificationStatus: q.verificationStatus, answerSources: q.answerSources, sourceIssues: q.source?.issues || [] } : {}),
       solutionUrl: q.solutionUrl || '' };
   });
   return { score: Math.round(score * 10000) / 10000, gradableMarks, totalMarks: maximumPaperMarks(questions), manualScores,
     selfAssessed: entries.filter(e => e.status === 'self-assessed').length,
+    awarded: entries.filter(e => e.status === 'awarded').length,
     correct: entries.filter(e => e.status === 'correct').length, wrong: entries.filter(e => e.status === 'wrong').length,
     unanswered: entries.filter(e => e.status === 'unanswered').length, ungraded: entries.filter(e => e.status === 'ungraded').length, entries };
 }

@@ -1,3 +1,5 @@
+import { reviewAnswerText, awardsMarksToAll } from './question-review.mjs';
+
 export function questionType(question) {
   if (question.questionType) return question.questionType;
   if (question.isProof) return 'SUBJECTIVE';
@@ -8,6 +10,8 @@ export function questionType(question) {
 
 export function storedAnswerText(question) {
   if (question.isBlank) return '';
+  if (awardsMarksToAll(question)) return 'Marks to All';
+  if (reviewAnswerText(question)) return reviewAnswerText(question);
   const type = questionType(question);
   if (type === 'MCQ' || type === 'MSQ') return (question.correctOptions || []).map(option => `(${option})`).join(', ');
   if (question.natRange) return `${question.natRange.min} to ${question.natRange.max}`;

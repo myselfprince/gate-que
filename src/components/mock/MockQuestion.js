@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element -- Runtime PYQ diagram paths. */
 import { useEffect, useRef, useState } from 'react';
 import styles from './mock.module.css';
+import { questionDiagramUrl } from '@/lib/year-paper-assets.mjs';
 
 export function loadMath() {
   if (window.MathJax?.typesetPromise) return Promise.resolve(window.MathJax.startup?.promise).then(() => window.MathJax);
@@ -21,9 +22,8 @@ export function MockOption({ question, text }) {
 }
 function Diagram({ question, name }) {
   const [failed, setFailed] = useState(false);
-  if (!name || !/^[A-Za-z0-9 .()_-]+$/.test(name) || failed) return <span role="alert">[Diagram unavailable — report this question]</span>;
-  const ext = /^\.(png|jpe?g|webp|gif)$/.test(question.ext) ? question.ext : '.png';
-  const src = '/' + [question.assetSubject || question.subject, question.assetChapter || question.chapter, name + ext].map(encodeURIComponent).join('/');
+  const src = questionDiagramUrl(question,name);
+  if (!src || failed) return <span role="alert">[Diagram unavailable — report this question]</span>;
   return <img className={styles.diagram} src={src} alt={`Question diagram ${name}`} onError={() => setFailed(true)} />;
 }
 export default function MockQuestion({ question, children }) {

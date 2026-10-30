@@ -5,7 +5,7 @@ const safeSegment = value => typeof value === 'string' && value.length > 0 && va
 
 export function questionAssetPaths(question) {
   const names = (question.diagram || '').split(',').map(name => name.trim()).filter(Boolean);
-  const optionImages = ['A', 'B', 'C', 'D'].map(letter => question[`opt${letter}`]).filter(text => /^IMG:/i.test(text || '')).map(text => text.slice(4).trim());
+  const optionImages = ['A', 'B', 'C', 'D', 'E'].map(letter => question[`opt${letter}`]).filter(text => /^IMG:/i.test(text || '')).map(text => text.slice(4).trim());
   if (!names.length && !optionImages.length) return [];
   const subject = question.assetSubject || question.subject, chapter = question.assetChapter || question.chapter;
   const ext = question.ext || '.png';
@@ -15,6 +15,19 @@ export function questionAssetPaths(question) {
 
 export function assetContentType(path) {
   return types[path.split('.').at(-1)];
+}
+
+// Frozen attempts use immutable uploaded versions; old book/legacy paths remain valid.
+export function questionDiagramUrl(question, name) {
+  const subject=question.assetSubject||question.subject,chapter=question.assetChapter||question.chapter;
+  const ext=question.ext||'.png';
+  if(![subject,chapter,name].every(safeSegment)||!/^\.(png|jpe?g|webp|gif)$/.test(ext))return null;
+  const parts=[subject,chapter,name+ext],assetPath=parts.join('/');
+  if(question.assetIds!==undefined){
+    const id=question.assetIds?.[assetPath];
+    return /^[a-f0-9]{64}$/.test(id||'')?`/api/gatemock/assets/${id}`:null;
+  }
+  return '/'+parts.map(encodeURIComponent).join('/');
 }
 
 // Absent manifests identify legacy papers whose diagrams are bundled with the tracker.
