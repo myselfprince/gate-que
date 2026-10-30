@@ -65,3 +65,15 @@ The inspection snapshot and import checksum reports are in ignored `data/backups
 Exports are in ignored `output/pdf/`: a 69-page dark paper, a 69-page print paper, a worked-solutions PDF, and a ZIP. They use the existing landscape, one-question-per-page LaTeX renderer. All 69 question pages and solution labels are read back and checked for text outside page boundaries. Downloads are available beside the selected year in `/gatemock`.
 
 Verification covers source counts, frozen-copy isolation, answer secrecy, section limits, scoring, assets, API authorization, browser refresh/resume, calculator, submission, self-assessment, and all PDF/ZIP downloads. `node --test tests/*.test.mjs` passes 248 tests, including an exhaustive check of all 27,720 arrangements in descriptive Q64. `next build --webpack` succeeds; the default Turbopack production build encountered an environment CSS-worker process-launch failure.
+
+## Manage papers from G4Gate
+
+The production paper library and editor are available at `/admin/gate` in the tracker project. Existing G4Gate admin login is required. The library uses read-only source papers and stores admin corrections separately; imports never replace existing papers or student attempts.
+
+To prepare portable paper packages, including the original diagrams, run:
+
+```powershell
+node scripts/export-g4gate-paper-packages.mjs
+```
+
+This reads saved JSON and image files only and writes to ignored `output/g4gate-paper-packages/`; it never connects to a database. The G4Gate admin can import a package through **Add previous-year paper**, or use the prepared packages supplied with the tracker. Existing paper identities are refused, and image checksums are verified before publishing.
