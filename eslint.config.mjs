@@ -10,6 +10,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Generated exports, verification fixtures and copied third-party scripts.
+    "output/**",
+    "tmp/**",
+    "public/vendor/**",
   ]),
 ]);
 

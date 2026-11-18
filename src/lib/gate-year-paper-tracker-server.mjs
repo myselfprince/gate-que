@@ -29,7 +29,8 @@ export function verifiedG4GatePackage(value) {
 
 // Read prepared content only. Never load another project's env or connect to its database.
 export async function readG4GatePreparedPapers(root=path.join(G4GATE_PROJECT_PATH,'data','gate-imports')){
-  const entries=await fs.readdir(root,{withFileTypes:true}),papers=[];
+  // Packages live in a runtime-supplied external folder, outside the server bundle.
+  const entries=await fs.readdir(/* turbopackIgnore: true */ root,{withFileTypes:true}),papers=[];
   const manifest=JSON.parse(await fs.readFile(path.join(root,'manifest.json'),'utf8'));
   if(manifest.version!==1||!Array.isArray(manifest.papers)||new Set(manifest.papers.map(paper=>paper.slug)).size!==manifest.papers.length)throw new Error('Invalid prepared-paper manifest.');
   const indexed=new Map(manifest.papers.map(paper=>[paper.slug,paper]));
