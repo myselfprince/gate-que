@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { DEFAULT_PDF_SETTINGS, PDF_PRESETS, normalizePdfSettings, migrateLegacyPdfSettings } from '@/lib/pdf-settings.mjs';
+import { DEFAULT_PDF_SETTINGS, PDF_PAGE_SIZES, PDF_PRESETS, normalizePdfSettings, migrateLegacyPdfSettings } from '@/lib/pdf-settings.mjs';
 import PdfDecorationSettings from './PdfDecorationSettings';
 import styles from './PdfSettingsPanel.module.css';
 
@@ -53,8 +53,11 @@ export default function PdfSettingsPanel({ settings, onChange, onValidityChange 
       {Object.entries(PDF_PRESETS).map(([key, value]) => <button className={styles.preset} type="button" key={key} aria-pressed={matchesPreset(value)} onClick={() => applyPreset(value)}>{key}<small>{value.fontSize}pt · {value.theme === 'dark' ? 'Black' : 'White'}</small></button>)}
     </div>
     <div className={styles.grid}>
+      <label>Page size<select aria-label="Page size" value={settings.pageSize} onChange={e => update('pageSize', e.target.value)}>
+        {Object.entries(PDF_PAGE_SIZES).map(([key, { label }]) => <option key={key} value={key}>{label}</option>)}
+      </select></label>
       <label>Page theme<select aria-label="Page theme" value={settings.theme} onChange={e => update('theme', e.target.value)}><option value="dark">Black / white text</option><option value="light">White / black text</option></select></label>
-      <label>Text size: {settings.fontSize}pt<input aria-label="Preferred text size" type="range" min={8} max={32} step={1} value={settings.fontSize} onChange={e => update('fontSize', Number(e.target.value))} /></label>
+      <label className={styles.fullWidth}>Text size: {settings.fontSize}pt<input aria-label="Preferred text size" type="range" min={8} max={32} step={1} value={settings.fontSize} onChange={e => update('fontSize', Number(e.target.value))} /></label>
     </div>
     <div className={styles.answer}>
       <label>Answers in PDF<select aria-label="PDF answer display" value={settings.answerMode || 'none'} onChange={e => update('answerMode', e.target.value)}><option value="none">Hide answers</option><option value="toggle">Show / hide on click</option><option value="footer">Show in page footer</option></select></label>

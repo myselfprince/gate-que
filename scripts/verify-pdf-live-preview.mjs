@@ -8,10 +8,11 @@ import puppeteer from 'puppeteer';
 import { loadWorkspaceQuestions } from './helpers/load-workspace.mjs';
 import { PDFDocument } from 'pdf-lib';
 import { createJob, jobDirectory, writeJobStatus } from '../src/lib/pdf-jobs.mjs';
-const output = path.resolve('tmp/pdfs/live-preview-check'); await fs.mkdir(output, { recursive: true });
+const output = path.resolve(process.argv[2] || 'tmp/pdfs/live-preview-check'); await fs.mkdir(output, { recursive: true });
 const jobs = path.join(output, `jobs-${randomUUID()}`);
 const origin = 'http://127.0.0.1:3121';
 const figureName = `codex-pdf-preview-${randomUUID()}`;
+const pageSizeSelector = '[aria-label="Page size"]';
 const fixture = { subject: '1. Discrete Maths', chapter: '1. Mathematical Logic', questions: [
   { id: 'pdf-preview-blank', isBlank: true, text: '', year: '2024', marks: '1' },
   { id: 'pdf-preview-math', text: 'Let $p \\implies q$. Which proposition is equivalent to $\\neg p \\lor q$?', year: '2024', marks: '2', optA: '$p \\implies q$', optB: '$p \\land q$', optC: '$\\neg q$', optD: '$p \\lor q$', solutionUrl: 'https://youtu.be/dQw4w9WgXcQ?t=90' },
@@ -22,6 +23,12 @@ const server = spawn(process.execPath, ['node_modules/next/dist/bin/next', 'star
 let logs = '', browser, page;
 server.stdout.on('data', chunk => { logs = (logs + chunk).slice(-6000); }); server.stderr.on('data', chunk => { logs = (logs + chunk).slice(-6000); });
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+function assertPageSize(pdf, width, height) {
+  for (const page of pdf.getPages()) {
+    assert.ok(Math.abs(page.getWidth() - width) < 0.01);
+    assert.ok(Math.abs(page.getHeight() - height) < 0.01);
+  }
+}
 try {
   for (let i = 0; ; i++) { try { if ((await fetch(origin + '/api/auth/session')).ok) break; } catch { /* startup */ } if (i > 100) throw Error(logs); await delay(100); }
   browser = await puppeteer.launch({ headless: true, args: ['--disable-dev-shm-usage', '--disable-gpu'] });
@@ -56,9 +63,16 @@ try {
   await loadWorkspaceQuestions(page);
   await activate('#tab-pdf'); await sampleReady();
   assert.equal(previews.length, 1); assert.equal(previews[0].body.questions.length, 1); assert.equal(previews[0].body.questions[0].id, 'pdf-preview-math'); assert.equal(previews[0].body.questions[0].exportNumber, '2');
-  assert.equal((await PDFDocument.load(lastBytes)).getPageCount(), 1); assert.equal(jobPosts.length, 0);
+  assert.equal(await page.$eval(pageSizeSelector, select => select.value), 'widescreen');
+  const initialPreview = await PDFDocument.load(lastBytes);
+  assert.equal(initialPreview.getPageCount(), 1); assert.equal(jobPosts.length, 0);
+  assertPageSize(initialPreview, 1056, 594);
   assert.deepEqual((await (await fetch(origin + '/api/pdf-jobs')).json()).jobs, []);
   const initialMs = lastDuration, dark = await sampleBackground(); assert.ok(dark[0] < 30 && dark[1] < 30 && dark[2] < 30);
+  await page.select(pageSizeSelector, 'a4-landscape'); await sampleReady();
+  assertPageSize(await PDFDocument.load(lastBytes), 841.89, 595.276);
+  assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem('gate-pdf-settings-v2')).settings.pageSize), 'a4-landscape');
+  await page.select(pageSizeSelector, 'widescreen'); await sampleReady();
   const count = previews.length;
   await range('Preferred text size', 20); await range('Preferred text size', 22); await range('Preferred text size', 24);
   assert.ok(await page.$('[aria-label="Live PDF sample viewer"] canvas'), 'previous preview remains visible while updating');
@@ -89,7 +103,9 @@ try {
   await page.waitForFunction(() => !document.querySelector('[aria-label="Export history"]'), { timeout: 15000 });
   let downloaded;
   for (let i = 0; i < 100; i++) { try { downloaded = await fs.readFile(downloadedName); if (downloaded.length > 32) break; } catch { /* download */ } await delay(100); }
-  assert.equal((await PDFDocument.load(downloaded)).getPageCount(), 3);
+  const downloadedPdf = await PDFDocument.load(downloaded);
+  assert.equal(downloadedPdf.getPageCount(), 3);
+  assertPageSize(downloadedPdf, 1056, 594);
   assert.equal((await fetch(origin + '/api/pdf-jobs/' + exported.id)).status, 404); assert.equal((await fetch(origin + '/api/pdf-jobs/' + exported.id + '/download')).status, 404);
   await assert.rejects(fs.access(jobDirectory(exported.id, jobs)), { code: 'ENOENT' });
   // Also exercise the standalone delete action with a completed, independently saved fixture.
@@ -107,7 +123,7 @@ try {
   await page.setViewport({ width: 390, height: 844 }); await page.screenshot({ path: path.join(output, 'mobile.png'), fullPage: true });
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'mobile layout has no horizontal overflow');
   assert.deepEqual(errors, []);
-  const result = { passed: true, initialPreviewMs: initialMs, settingsCompileMs: settingsUpdateMs, previewRequests: previews.length, persistedExportsCreated: jobPosts.length, checks: ['automatic one-question example', 'no compilation while hidden', 'actual PDF bytes and canvas', 'slider debounce', 'old preview stays visible', 'dark/light layout', 'cached presets', 'no answer/image side artifacts', 'diagram example', 'clean export history', 'full export still works', 'download then remove saved export', 'standalone deletion', 'download survives deletion', 'cross-origin deletion blocked', 'preview remains after deletion', 'mobile layout'], output };
+  const result = { passed: true, initialPreviewMs: initialMs, settingsCompileMs: settingsUpdateMs, previewRequests: previews.length, persistedExportsCreated: jobPosts.length, checks: ['automatic one-question example', 'no compilation while hidden', 'actual PDF bytes and canvas', 'widescreen default and A4 selection', 'slider debounce', 'old preview stays visible', 'dark/light layout', 'cached presets', 'no answer/image side artifacts', 'diagram example', 'clean export history', 'full export still works', 'download then remove saved export', 'standalone deletion', 'download survives deletion', 'cross-origin deletion blocked', 'preview remains after deletion', 'mobile layout'], output };
   await fs.writeFile(path.join(output, 'results.json'), JSON.stringify(result, null, 2)); console.log(JSON.stringify(result, null, 2));
 } catch (error) { await page?.screenshot({ path: path.join(output, 'error.png'), fullPage: true }).catch(() => {}); console.log(logs); throw error; }
 finally { await browser?.close(); server.kill(); await fs.rm(figure, { force: true }); }

@@ -16,7 +16,7 @@ const run=promisify(execFile), active=new Map();
 export async function exportYearPaper(paper,theme='dark') {
   validateYearPaper(paper);
   if(!['dark','light'].includes(theme))throw new Error('Choose a valid PDF theme.');
-  const digest=createHash('sha256').update('year-paper-layout-v4').update(JSON.stringify(paper)).digest('hex');
+  const digest=createHash('sha256').update('year-paper-layout-v7').update(JSON.stringify(paper)).digest('hex');
   const key=`${paper.slug}-${theme}-${digest}`;
   if(active.has(key))return active.get(key);
   const job=build(paper,theme,digest);

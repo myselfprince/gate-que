@@ -1,7 +1,12 @@
 export const PAGE_POSITIONS = ['top-left', 'top-center', 'top-right', 'bottom-left', 'bottom-center', 'bottom-right'];
 export const WATERMARK_POSITIONS = [...PAGE_POSITIONS, 'center'];
+const pointsPerMm = 72 / 25.4;
+export const PDF_PAGE_SIZES = Object.freeze({
+  widescreen: { label: 'Widescreen (16:9)', widthPt: 1056, heightPt: 594 },
+  'a4-landscape': { label: 'A4 landscape', widthPt: 297 * pointsPerMm, heightPt: 210 * pointsPerMm },
+});
 export const DEFAULT_PDF_SETTINGS = Object.freeze({
-  fontSize: 18, minFontSize: 8, lineSpacing: 26 / 18, marginMm: 14, imageScale: 1, workingLines: 0, theme: 'dark', overflow: 'error', answerMode: 'none',
+  pageSize: 'widescreen', fontSize: 18, minFontSize: 8, lineSpacing: 26 / 18, marginMm: 14, imageScale: 1, workingLines: 0, theme: 'dark', overflow: 'error', answerMode: 'none',
   showSolutions: true, solutionPosition: 'top-right', solutionLabel: 'Video sol.', solutionFontSize: 10, showSolutionIcon: true,
   showGateOverflow: true, gateOverflowPosition: 'top-right', gateOverflowLabel: 'GateOverflow sol.', gateOverflowFontSize: 10,
   showWatermark: true, watermarkText: 'g4gate.com', watermarkOpacity: 0.06, watermarkFontSize: 48, watermarkAngle: 0, watermarkPosition: 'center', watermarkClickable: false,
@@ -39,7 +44,7 @@ export function normalizePdfSettings(value = {}, { partial = false } = {}) {
     if (typeof value[key] !== 'number' || !Number.isFinite(value[key]) || value[key] < min || value[key] > max || (integerKeys.has(key) && !Number.isInteger(value[key]))) throw new Error(`PDF ${key} must be between ${min} and ${max}.`);
     result[key] = value[key];
   }
-  for (const [key, allowed] of Object.entries({ answerMode: ['none', 'toggle', 'footer'], theme: ['dark', 'light'], overflow: ['error', 'warn'], solutionPosition: PAGE_POSITIONS, gateOverflowPosition: PAGE_POSITIONS, websitePosition: PAGE_POSITIONS, pageNumberPosition: PAGE_POSITIONS, watermarkPosition: WATERMARK_POSITIONS, titleMode: ['first', 'every', 'none'], titleAlignment: ['left', 'center', 'right'] })) {
+  for (const [key, allowed] of Object.entries({ pageSize: Object.keys(PDF_PAGE_SIZES), answerMode: ['none', 'toggle', 'footer'], theme: ['dark', 'light'], overflow: ['error', 'warn'], solutionPosition: PAGE_POSITIONS, gateOverflowPosition: PAGE_POSITIONS, websitePosition: PAGE_POSITIONS, pageNumberPosition: PAGE_POSITIONS, watermarkPosition: WATERMARK_POSITIONS, titleMode: ['first', 'every', 'none'], titleAlignment: ['left', 'center', 'right'] })) {
     if (partial && !questionStyleKeys.has(key)) continue;
     if (value[key] === undefined) continue;
     if (!allowed.includes(value[key])) throw new Error(`PDF ${key} is invalid.`);

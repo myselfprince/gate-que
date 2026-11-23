@@ -4,6 +4,7 @@ import path from 'node:path';
 import { randomUUID, createHash } from 'node:crypto';
 import { spawn } from 'node:child_process';
 import { collectLatexImages } from './latex-source.mjs';
+import { normalizePdfSettings } from './pdf-settings.mjs';
 
 const jobIdPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 // Runtime exports are intentionally outside the traced application bundle.
@@ -111,6 +112,7 @@ export async function createJob(payload, { root = jobsRoot(), launch = true } = 
       images[file] = createHash('sha256').update(buffer).digest('hex');
     }
     const snapshot = structuredClone(payload);
+    snapshot.pdfSettings = normalizePdfSettings(snapshot.pdfSettings);
     await fs.writeFile(path.join(directory, 'request.json'), JSON.stringify(snapshot));
     await fs.writeFile(path.join(directory, 'assets.json'), JSON.stringify(images));
     const status = { id, status: 'queued', subject: payload.subject, chapter: payload.chapter, total: payload.questions.length, completed: 0, createdAt: new Date().toISOString(), attempt: 1 };

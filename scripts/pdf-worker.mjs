@@ -47,7 +47,12 @@ try {
   await writeJobStatus(directory, status);
   poll = setInterval(async () => { if (await cancelled()) controller.abort(); }, 500);
   const payload = JSON.parse(await fs.readFile(path.join(directory, 'request.json'), 'utf8'));
-  const result = await (payload.kind === 'book' ? exportPdfBook : exportQuestionPdf)(payload, {
+  const isBook = payload.kind === 'book';
+  if (!isBook && payload.pdfSettings?.pageSize === undefined) {
+    // Snapshots saved before page sizes were configurable compiled as A4 landscape.
+    payload.pdfSettings = { ...payload.pdfSettings, pageSize: 'a4-landscape' };
+  }
+  const result = await (isBook ? exportPdfBook : exportQuestionPdf)(payload, {
     directory,
     assetDirectory: path.join(directory, 'images'), checkpointDirectory: path.join(directory, 'parts'), signal: controller.signal,
     onProgress: async progress => { status = { ...status, ...progress, phase: progress.phase || 'compiling' }; await writeJobStatus(directory, status); },

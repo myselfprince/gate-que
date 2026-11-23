@@ -5,10 +5,12 @@ import { normalizeQuestionMetadata } from '../src/lib/question-metadata.mjs';
 import { buildQuestionPages } from '../src/lib/question-pages.mjs';
 
 test('PDF settings reject invalid dimensions and preserve only supported numeric values', () => {
-  for (const value of [{ fontSize: '20' }, { fontSize: NaN }, { fontSize: 50 }, { marginMm: 0 }, { minFontSize: 20 }, { theme: 'unknown' }, { showSolutions: 'false' }, { showGateOverflow: 'false' }, { gateOverflowPosition: 'outside' }, { gateOverflowFontSize: 17 }, { gateOverflowLabel: 'Invalid\nlabel' }]) assert.throws(() => normalizePdfSettings(value));
+  for (const value of [{ fontSize: '20' }, { fontSize: NaN }, { fontSize: 50 }, { marginMm: 0 }, { minFontSize: 20 }, { pageSize: 'unknown' }, { theme: 'unknown' }, { showSolutions: 'false' }, { showGateOverflow: 'false' }, { gateOverflowPosition: 'outside' }, { gateOverflowFontSize: 17 }, { gateOverflowLabel: 'Invalid\nlabel' }]) assert.throws(() => normalizePdfSettings(value));
   const value = normalizePdfSettings({ fontSize: 24, minFontSize: 14, theme: 'light' });
+  assert.equal(value.pageSize, 'widescreen');
   assert.deepEqual(normalizePdfSettings(value), value);
   assert.equal(questionPdfSettings(value, { fontSize: 12 }).minFontSize, 12);
+  assert.equal(questionPdfSettings(value, { pageSize: 'a4-landscape' }).pageSize, 'widescreen');
   assert.deepEqual(normalizeQuestionMetadata({ pdfStyle: { fontSize: 20, imageScale: 0.75 } }).pdfStyle, { fontSize: 20, imageScale: 0.75 });
   assert.equal(value.showGateOverflow, true);
   const links = normalizePdfSettings({ showGateOverflow: false, gateOverflowPosition: 'bottom-center', gateOverflowLabel: 'Read solution', gateOverflowFontSize: 12 });
@@ -18,6 +20,8 @@ test('PDF settings reject invalid dimensions and preserve only supported numeric
 test('chapter design and per-question sizes reach the final LaTeX with bounded fitting', () => {
   const payload = { subject: 'COA', chapter: 'CPU', pdfSettings: { fontSize: 22, minFontSize: 16, marginMm: 20, theme: 'light', lineSpacing: 1.5, showSolutions: false }, questions: [{ text: 'Question', solutionUrl: 'https://youtu.be/dQw4w9WgXcQ', pdfStyle: { fontSize: 20 } }] };
   const tex = buildQuestionPages(payload);
+  assert.match(tex, /paperwidth=1056\.000bp,paperheight=594\.000bp/);
+  assert.match(buildQuestionPages({ ...payload, pdfSettings: { ...payload.pdfSettings, pageSize: 'a4-landscape' } }), /paperwidth=841\.890bp,paperheight=595\.276bp/);
   assert.match(tex, /margin=20mm/);
   assert.match(tex, /\\pagecolor\{white\}/);
   assert.match(tex, /\\color\{black\}/);

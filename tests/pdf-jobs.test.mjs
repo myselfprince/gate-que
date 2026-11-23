@@ -16,6 +16,7 @@ test('export jobs freeze question snapshots, persist history and cancel without 
     assert.equal(snapshot.questions[0].text, 'Original');
     assert.equal(snapshot.questions[0].solutionUrl, 'https://youtu.be/dQw4w9WgXcQ');
     assert.equal(snapshot.questions[0].gateOverflowUrl, 'https://gateoverflow.in/12345');
+    assert.equal(snapshot.pdfSettings.pageSize, 'widescreen');
     assert.equal((await listJobs(root))[0].id, job.id);
     assert.equal((await cancelJob(job.id, root)).cancelRequested, true);
     assert.equal((await readJob(job.id, root)).status, 'queued');

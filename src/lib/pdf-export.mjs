@@ -8,7 +8,7 @@ import { PDFDocument, PDFName } from 'pdf-lib';
 import { load } from 'cheerio';
 import { buildQuestionPages } from './question-pages.mjs';
 import { collectLatexImages } from './latex-source.mjs';
-import { normalizePdfSettings } from './pdf-settings.mjs';
+import { normalizePdfSettings, PDF_PAGE_SIZES } from './pdf-settings.mjs';
 import { expectedWebsiteLinks, visibleSolutionUrl, visibleGateOverflowUrl } from './pdf-decorations.mjs';
 import { addQuestionBookmarks } from './pdf-bookmarks.mjs';
 import { buildAnswerKey } from './answer-key.mjs';
@@ -132,9 +132,10 @@ export async function exportQuestionPdf(payload, { projectRoot = process.cwd(), 
     const pdf = await mergeQuestionPdfs(parts, questions.length, `${subject} - ${chapter}`, questions);
     const document = await PDFDocument.load(pdf);
     const settings = normalizePdfSettings(payload.pdfSettings);
+    const { widthPt, heightPt } = PDF_PAGE_SIZES[settings.pageSize];
     let websiteLinks = 0, solutionLinks = 0;
     for (const [index, page] of document.getPages().entries()) {
-      if (Math.abs(page.getWidth() - 841.89) > 1 || Math.abs(page.getHeight() - 595.28) > 1) throw new PdfExportError(`Question ${index + 1} has unexpected page dimensions.`);
+      if (Math.abs(page.getWidth() - widthPt) > 1 || Math.abs(page.getHeight() - heightPt) > 1) throw new PdfExportError(`Question ${index + 1} has unexpected page dimensions.`);
       const annotations = page.node.Annots();
       const urls = [];
       for (let i = 0; annotations && i < annotations.size(); i++) {

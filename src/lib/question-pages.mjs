@@ -1,5 +1,5 @@
 import { collectLatexImages, escapeLatex, renderSourceQuestion, LISTINGS_UNICODE } from './latex-source.mjs';
-import { normalizePdfSettings, questionPdfSettings } from './pdf-settings.mjs';
+import { normalizePdfSettings, PDF_PAGE_SIZES, questionPdfSettings } from './pdf-settings.mjs';
 import { documentTitle, pageDecorations, watermarkTex, YOUTUBE_ICON_TEX } from './pdf-decorations.mjs';
 import { answerLayerSetup, ANSWER_TOGGLE_PREAMBLE, ANSWER_TOGGLE_CATALOG } from './pdf-answers.mjs';
 
@@ -11,14 +11,15 @@ export function buildQuestionPages({ subject, chapter, questions, pdfSettings },
 } = {}) {
   collectLatexImages(questions);
   const settings = normalizePdfSettings(pdfSettings);
+  const { widthPt, heightPt } = PDF_PAGE_SIZES[settings.pageSize];
   const foreground = settings.theme === 'dark' ? 'white' : 'black';
   const workingSpace = settings.workingLines ? `{\\color{${foreground}!35}\\vbox{\\offinterlineskip{\\fontsize{9}{12}\\selectfont Working space\\strut}\\vskip2pt\n${'\\hrule height0.3pt\\vskip13.7pt\n'.repeat(settings.workingLines)}}}\\par\n` : '';
   const title = escapeLatex(documentTitle(subject, chapter, settings));
-  let source = `\\documentclass[12pt,a4paper,landscape]{article}
+  let source = `\\documentclass[12pt]{article}
 \\usepackage[utf8]{inputenc}
 \\usepackage[T1]{fontenc}
 \\usepackage{lmodern}
-\\usepackage[margin=${settings.marginMm}mm]{geometry}
+\\usepackage[paperwidth=${widthPt.toFixed(3)}bp,paperheight=${heightPt.toFixed(3)}bp,margin=${settings.marginMm}mm]{geometry}
 \\usepackage{amsmath,amssymb,graphicx,listings,xcolor}
 \\usepackage[hidelinks]{hyperref}
 \\pagecolor{${settings.theme === 'dark' ? 'black' : 'white'}}
