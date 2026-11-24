@@ -5,6 +5,7 @@ import PdfPreview from './PdfPreview';
 import PdfLivePreview from './PdfLivePreview';
 import PdfStorageCleanup from './PdfStorageCleanup';
 import { selectPdfQuestions } from '@/lib/pdf-selection.mjs';
+import { DEFAULT_PDF_SETTINGS, PDF_PAGE_SIZES } from '@/lib/pdf-settings.mjs';
 import styles from './PdfExportPanel.module.css';
 
 const active = job => job && ['queued', 'running'].includes(job.status);
@@ -138,7 +139,7 @@ export default function PdfExportPanel({ payload, settingsValid = true, active: 
   }
   return <>
   <section className={styles.exportBar} aria-label="PDF exports">
-    <div><h3>Your PDF</h3><p>{selection.length} of {payload.questions.length} questions · {payload.pdfSettings?.theme === 'light' ? 'White' : 'Black'} pages · {payload.pdfSettings?.fontSize || 18}pt</p></div>
+    <div><h3>Your PDF</h3><p>{selection.length} of {payload.questions.length} questions · {(PDF_PAGE_SIZES[payload.pdfSettings?.pageSize] || PDF_PAGE_SIZES[DEFAULT_PDF_SETTINGS.pageSize]).label} · {payload.pdfSettings?.theme === 'light' ? 'White' : 'Black'} pages · {payload.pdfSettings?.fontSize || 18}pt</p></div>
     <div className={styles.exportActions}>
       <button type="button" className={styles.primary} disabled={busy || !selection.length || Boolean(selectionError) || !settingsValid} onClick={() => start()}>{busy ? 'Please wait...' : `Build PDF · ${selection.length} questions`}</button>
       <button type="button" className={styles.secondary} disabled={busy || !selection.length || Boolean(selectionError) || !settingsValid} onClick={sourceZip}>LaTeX ZIP</button>

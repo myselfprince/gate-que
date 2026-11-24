@@ -6,6 +6,7 @@ import AdmZip from 'adm-zip';
 import { exportQuestionPdf } from '../src/lib/pdf-export.mjs';
 import { exportPdfBook } from '../src/lib/pdf-book.mjs';
 import { jobDirectory, jobsRoot, writeJobStatus, isProcessAlive } from '../src/lib/pdf-jobs.mjs';
+import { snapshotPageSize } from '../src/lib/pdf-settings.mjs';
 
 const id = process.argv[2];
 const root = jobsRoot();
@@ -48,10 +49,8 @@ try {
   poll = setInterval(async () => { if (await cancelled()) controller.abort(); }, 500);
   const payload = JSON.parse(await fs.readFile(path.join(directory, 'request.json'), 'utf8'));
   const isBook = payload.kind === 'book';
-  if (!isBook && payload.pdfSettings?.pageSize === undefined) {
-    // Snapshots saved before page sizes were configurable compiled as A4 landscape.
-    payload.pdfSettings = { ...payload.pdfSettings, pageSize: 'a4-landscape' };
-  }
+  // A retried pre-page-size snapshot keeps the A4 layout it was requested with.
+  if (!isBook) payload.pdfSettings = { ...payload.pdfSettings, pageSize: snapshotPageSize(payload.pdfSettings) };
   const result = await (isBook ? exportPdfBook : exportQuestionPdf)(payload, {
     directory,
     assetDirectory: path.join(directory, 'images'), checkpointDirectory: path.join(directory, 'parts'), signal: controller.signal,

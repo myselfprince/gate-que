@@ -40,17 +40,18 @@ export default function PdfSettingsPanel({ settings, onChange, onValidityChange 
     if (key === 'fontSize') next.minFontSize = Math.min(next.minFontSize, value);
     save(normalizePdfSettings(next));
   }
-  function applyPreset(value) {
-    save({ ...value }); invalidFields.current.clear(); setInvalid(false); onValidityChange?.(true); setRevision(value => value + 1);
+  // Presets change the look only; Reset and saved templates also restore a page size.
+  function applyPreset(value, { keepPageSize = false } = {}) {
+    save({ ...value, ...(keepPageSize && { pageSize: settings.pageSize }) }); invalidFields.current.clear(); setInvalid(false); onValidityChange?.(true); setRevision(value => value + 1);
   }
-  const matchesPreset = value => Object.keys(DEFAULT_PDF_SETTINGS).every(key => settings[key] === value[key]);
+  const matchesPreset = value => Object.keys(DEFAULT_PDF_SETTINGS).every(key => key === 'pageSize' || settings[key] === value[key]);
   return <section className={styles.panel} aria-label="PDF design settings">
     <div className={styles.heading}>
       <div><h3>Choose a look</h3><p className={styles.hint}>Start with a preset, then adjust what you need.</p></div>
       <button className={styles.reset} type="button" onClick={() => applyPreset(DEFAULT_PDF_SETTINGS)}>Reset</button>
     </div>
     <div className={styles.presets}>
-      {Object.entries(PDF_PRESETS).map(([key, value]) => <button className={styles.preset} type="button" key={key} aria-pressed={matchesPreset(value)} onClick={() => applyPreset(value)}>{key}<small>{value.fontSize}pt · {value.theme === 'dark' ? 'Black' : 'White'}</small></button>)}
+      {Object.entries(PDF_PRESETS).map(([key, value]) => <button className={styles.preset} type="button" key={key} aria-pressed={matchesPreset(value)} onClick={() => applyPreset(value, { keepPageSize: true })}>{key}<small>{value.fontSize}pt · {value.theme === 'dark' ? 'Black' : 'White'}</small></button>)}
     </div>
     <div className={styles.grid}>
       <label>Page size<select aria-label="Page size" value={settings.pageSize} onChange={e => update('pageSize', e.target.value)}>

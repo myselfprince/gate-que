@@ -16,7 +16,7 @@ const run=promisify(execFile), active=new Map();
 export async function exportYearPaper(paper,theme='dark') {
   validateYearPaper(paper);
   if(!['dark','light'].includes(theme))throw new Error('Choose a valid PDF theme.');
-  const digest=createHash('sha256').update('year-paper-layout-v7').update(JSON.stringify(paper)).digest('hex');
+  const digest=createHash('sha256').update('year-paper-layout-v8').update(JSON.stringify(paper)).digest('hex');
   const key=`${paper.slug}-${theme}-${digest}`;
   if(active.has(key))return active.get(key);
   const job=build(paper,theme,digest);
@@ -33,7 +33,8 @@ async function build(paper,theme,digest){
   }catch{/* Compile missing or changed exports. */}
   const exportQuestions=paper.questions.map(q=>q.exportInstruction?{...q,text:q.exportInstruction+'\n\n'+q.text}:q);
   const result=await exportQuestionPdf({subject:'Year Papers',chapter:paper.title,questions:exportQuestions,
-    pdfSettings:{theme,fontSize:18,minFontSize:10,titleText:`${paper.title} - ${paper.totalMarks} marks - ${paper.durationMinutes} minutes`,titleMode:'first',showSolutions:false,showGateOverflow:false,includeAnswerKey:false,workingLines:2,showWatermark:true}},
+    // The white "print" paper uses A4 so it prints at full size; the dark screen paper stays 16:9.
+    pdfSettings:{theme,pageSize:theme==='light'?'a4-landscape':'widescreen',fontSize:18,minFontSize:10,titleText:`${paper.title} - ${paper.totalMarks} marks - ${paper.durationMinutes} minutes`,titleMode:'first',showSolutions:false,showGateOverflow:false,includeAnswerKey:false,workingLines:2,showWatermark:true}},
     {checkpointDirectory:path.resolve('tmp/year-paper-export',paper.slug,theme)});
   const temp=await fs.mkdtemp(path.join(os.tmpdir(),'gate-year-key-'));
   let answerKey;

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import PdfPreview from './PdfPreview';
 import { pdfPreviewExamples, pdfPreviewPayload } from '@/lib/pdf-live-preview.mjs';
+import { DEFAULT_PDF_SETTINGS, PDF_PAGE_SIZES } from '@/lib/pdf-settings.mjs';
 import styles from './PdfExportPanel.module.css';
 
 export default function PdfLivePreview({ payload, sourceMode, settingsValid, active }) {
@@ -15,6 +16,7 @@ export default function PdfLivePreview({ payload, sourceMode, settingsValid, act
   const sample = pdfPreviewPayload(payload, exampleId, sourceMode);
   const request = sample ? JSON.stringify(sample) : '';
   const current = display?.key === request;
+  const page = PDF_PAGE_SIZES[payload.pdfSettings?.pageSize] || PDF_PAGE_SIZES[DEFAULT_PDF_SETTINGS.pageSize];
   const error = attempt.key === request ? attempt.error : '';
   const updating = Boolean(active && settingsValid && request && (!current || attempt.key === request && attempt.pending) && !error);
   useEffect(() => {
@@ -53,7 +55,7 @@ export default function PdfLivePreview({ payload, sourceMode, settingsValid, act
     <p className={styles.previewHint}>Updates automatically as you change your design.</p>
     <label>Example question<select aria-label="Live PDF example question" value={sample?.questions[0].id || ''} disabled={!examples.length} onChange={event => setExampleId(event.target.value)}>{examples.map(question => <option key={question.id} value={question.id}>Q{question.exportNumber} · {question.year || 'No year'} · {question.isBlank ? 'Blank placeholder' : question.text?.slice(0, 70)}</option>)}</select></label>
     <div className={styles.previewSurface} data-preview-current={current ? 'true' : 'false'}>
-      {display && sample ? <PdfPreview key={display.key} data={display.data} compact openLinksInNewTab={payload.pdfSettings?.openLinksInNewTab !== false} /> : <div className={styles.previewEmpty}>{!sample ? 'Choose questions to see a preview.' : !settingsValid ? 'Correct the highlighted settings to generate a preview.' : error ? 'Preview unavailable. You can retry below.' : 'Preparing your example PDF…'}</div>}
+      {display && sample ? <PdfPreview key={display.key} data={display.data} compact openLinksInNewTab={payload.pdfSettings?.openLinksInNewTab !== false} /> : <div className={styles.previewEmpty} style={{ aspectRatio: `${page.widthPt} / ${page.heightPt}` }}>{!sample ? 'Choose questions to see a preview.' : !settingsValid ? 'Correct the highlighted settings to generate a preview.' : error ? 'Preview unavailable. You can retry below.' : 'Preparing your example PDF…'}</div>}
       {display && updating && <div className={styles.updatingBadge} role="status">Updating preview…</div>}
     </div>
     {error && <p role="alert" className={styles.error}>{error} <button className={styles.textButton} onClick={() => setRetry(value => value + 1)}>Retry preview</button></p>}

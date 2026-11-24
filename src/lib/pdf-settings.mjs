@@ -5,6 +5,11 @@ export const PDF_PAGE_SIZES = Object.freeze({
   widescreen: { label: 'Widescreen (16:9)', widthPt: 1056, heightPt: 594 },
   'a4-landscape': { label: 'A4 landscape', widthPt: 297 * pointsPerMm, heightPt: 210 * pointsPerMm },
 });
+// Export snapshots saved before page sizes were configurable have no pageSize
+// and were compiled as A4 landscape.
+export function snapshotPageSize(pdfSettings) {
+  return pdfSettings?.pageSize ?? 'a4-landscape';
+}
 export const DEFAULT_PDF_SETTINGS = Object.freeze({
   pageSize: 'widescreen', fontSize: 18, minFontSize: 8, lineSpacing: 26 / 18, marginMm: 14, imageScale: 1, workingLines: 0, theme: 'dark', overflow: 'error', answerMode: 'none',
   showSolutions: true, solutionPosition: 'top-right', solutionLabel: 'Video sol.', solutionFontSize: 10, showSolutionIcon: true,

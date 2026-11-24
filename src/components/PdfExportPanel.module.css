@@ -56,7 +56,7 @@
 .livePreview > label { font-size: 11px; color: #acbbd7; margin: 14px 0; }
 .livePreview select { margin-top: 7px; font-size: 12px; }
 .previewSurface { position: relative; border-radius: 8px; overflow: hidden; border: 1px solid #39445a; background: #0c1018; }
-.previewEmpty { display: grid; place-items: center; text-align: center; aspect-ratio: 1.414; padding: 30px; color: #92a2be; font-size: 13px; line-height: 1.8; }
+.previewEmpty { display: grid; place-items: center; text-align: center; aspect-ratio: 16 / 9; padding: 30px; color: #92a2be; font-size: 13px; line-height: 1.8; }
 .updatingBadge { position: absolute; right: 14px; top: 64px; padding: 8px 12px; border: 1px solid #566078; color: #e5dcf6; background: #263048ed; border-radius: 6px; font-size: 11px; pointer-events: none; }
 .previewActions, .savedActions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
 .previewActions button, .savedActions button { font-size: 11px; padding: 9px 12px; }

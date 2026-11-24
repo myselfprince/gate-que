@@ -4,7 +4,7 @@ import path from 'node:path';
 import { randomUUID, createHash } from 'node:crypto';
 import { spawn } from 'node:child_process';
 import { collectLatexImages } from './latex-source.mjs';
-import { normalizePdfSettings } from './pdf-settings.mjs';
+import { normalizePdfSettings, PDF_PAGE_SIZES, snapshotPageSize } from './pdf-settings.mjs';
 
 const jobIdPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 // Runtime exports are intentionally outside the traced application bundle.
@@ -139,6 +139,10 @@ export async function createBookJob(ids, title, { root = jobsRoot(), launch = tr
   if (chapters.some(job => job.subject !== chapters[0].subject)) throw new Error('Choose exports from the same subject.');
   const total = chapters.reduce((sum, job) => sum + job.total, 0);
   if (total > 2000) throw new Error('A subject book can contain up to 2000 question pages.');
+  const requests = await Promise.all(chapters.map(async job => JSON.parse(await fs.readFile(path.join(jobDirectory(job.id, root), 'request.json'), 'utf8'))));
+  const sizes = new Map();
+  chapters.forEach((job, index) => { const size = snapshotPageSize(requests[index].pdfSettings); sizes.set(size, [...(sizes.get(size) || []), job.chapter]); });
+  if (sizes.size > 1) throw new Error(`These exports use different page sizes (${[...sizes].map(([size, names]) => `${PDF_PAGE_SIZES[size]?.label || size}: ${names.join(', ')}`).join('; ')}). Build them again with one page size, then combine them.`);
   if ((await listJobs(root)).filter(job => ['queued', 'running'].includes(job.status)).length >= 8) throw new Error('The export queue is full.');
   const id = randomUUID(), directory = jobDirectory(id, root);
   await fs.mkdir(path.join(directory, 'chapters'), { recursive: true });
@@ -146,7 +150,7 @@ export async function createBookJob(ids, title, { root = jobsRoot(), launch = tr
     const snapshots = [];
     for (const [index, job] of chapters.entries()) {
       const bytes = await fs.readFile(path.join(jobDirectory(job.id, root), 'complete.pdf'));
-      const request = JSON.parse(await fs.readFile(path.join(jobDirectory(job.id, root), 'request.json'), 'utf8'));
+      const request = requests[index];
       const file = `chapter-${index + 1}.pdf`;
       await fs.writeFile(path.join(directory, 'chapters', file), bytes);
       snapshots.push({ file, sha256: createHash('sha256').update(bytes).digest('hex'), sourceId: job.id, chapter: job.chapter, pages: job.total, report: job.report, questionIds: request.questions.map(question => question.id) });

@@ -72,6 +72,11 @@ try {
   await page.select(pageSizeSelector, 'a4-landscape'); await sampleReady();
   assertPageSize(await PDFDocument.load(lastBytes), 841.89, 595.276);
   assert.equal(await page.evaluate(() => JSON.parse(localStorage.getItem('gate-pdf-settings-v2')).settings.pageSize), 'a4-landscape');
+  assert.match(await page.$eval('[aria-label="PDF exports"] p', node => node.textContent), /A4 landscape/);
+  // The Classic look still matches while A4 is selected, and choosing it keeps A4.
+  await page.waitForFunction(() => [...document.querySelectorAll('button[aria-pressed]')].find(button => button.textContent.startsWith('Classic'))?.getAttribute('aria-pressed') === 'true', { timeout: 5000 });
+  await page.evaluate(() => [...document.querySelectorAll('button[aria-pressed]')].find(button => button.textContent.startsWith('Classic')).click());
+  assert.equal(await page.$eval(pageSizeSelector, select => select.value), 'a4-landscape', 'presets keep the chosen page size');
   await page.select(pageSizeSelector, 'widescreen'); await sampleReady();
   const count = previews.length;
   await range('Preferred text size', 20); await range('Preferred text size', 22); await range('Preferred text size', 24);
@@ -123,7 +128,7 @@ try {
   await page.setViewport({ width: 390, height: 844 }); await page.screenshot({ path: path.join(output, 'mobile.png'), fullPage: true });
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'mobile layout has no horizontal overflow');
   assert.deepEqual(errors, []);
-  const result = { passed: true, initialPreviewMs: initialMs, settingsCompileMs: settingsUpdateMs, previewRequests: previews.length, persistedExportsCreated: jobPosts.length, checks: ['automatic one-question example', 'no compilation while hidden', 'actual PDF bytes and canvas', 'widescreen default and A4 selection', 'slider debounce', 'old preview stays visible', 'dark/light layout', 'cached presets', 'no answer/image side artifacts', 'diagram example', 'clean export history', 'full export still works', 'download then remove saved export', 'standalone deletion', 'download survives deletion', 'cross-origin deletion blocked', 'preview remains after deletion', 'mobile layout'], output };
+  const result = { passed: true, initialPreviewMs: initialMs, settingsCompileMs: settingsUpdateMs, previewRequests: previews.length, persistedExportsCreated: jobPosts.length, checks: ['automatic one-question example', 'no compilation while hidden', 'actual PDF bytes and canvas', 'widescreen default and A4 selection', 'presets keep page size','slider debounce', 'old preview stays visible', 'dark/light layout', 'cached presets', 'no answer/image side artifacts', 'diagram example', 'clean export history', 'full export still works', 'download then remove saved export', 'standalone deletion', 'download survives deletion', 'cross-origin deletion blocked', 'preview remains after deletion', 'mobile layout'], output };
   await fs.writeFile(path.join(output, 'results.json'), JSON.stringify(result, null, 2)); console.log(JSON.stringify(result, null, 2));
 } catch (error) { await page?.screenshot({ path: path.join(output, 'error.png'), fullPage: true }).catch(() => {}); console.log(logs); throw error; }
 finally { await browser?.close(); server.kill(); await fs.rm(figure, { force: true }); }
