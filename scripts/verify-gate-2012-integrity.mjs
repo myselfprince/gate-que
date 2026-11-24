@@ -7,17 +7,19 @@ const require=createRequire(import.meta.url);require('@next/env').loadEnvConfig(
 const {MongoClient,BSON}=require('mongoose').mongo;
 const hash=v=>createHash('sha256').update(BSON.EJSON.stringify(v)).digest('hex');
 const dir='data/backups/gate-2012',slug='gate-cs-2012';
+const baselineDir=process.argv.find(arg=>arg.startsWith('--baseline-dir='))?.slice('--baseline-dir='.length)||dir;
+if(!/^data\/backups\/[a-zA-Z0-9/-]+$/.test(baselineDir))throw new Error('Invalid baseline directory.');
 const client=new MongoClient(process.env.MONGODB_URI,{serverSelectionTimeoutMS:10000});
 try{
  await client.connect();const db=client.db();
  const chapters=await db.collection('chapters').find({}).sort({_id:1}).toArray(),baseline=BSON.EJSON.parse(await fs.readFile(dir+'/chapters-before.ejson','utf8'));
- const papers=await db.collection('yearpapers').find({}).sort({_id:1}).toArray(),previous=BSON.EJSON.parse(await fs.readFile(dir+'/yearpapers-before.ejson','utf8'));
- const attempts=await db.collection('mockattempts').find({}).sort({_id:1}).toArray(),oldAttempts=BSON.EJSON.parse(await fs.readFile(dir+'/mockattempts-before.ejson','utf8'));
+ const papers=await db.collection('yearpapers').find({}).sort({_id:1}).toArray(),previous=BSON.EJSON.parse(await fs.readFile(baselineDir+'/yearpapers-before.ejson','utf8'));
+ const attempts=await db.collection('mockattempts').find({}).sort({_id:1}).toArray(),oldAttempts=BSON.EJSON.parse(await fs.readFile(baselineDir+'/mockattempts-before.ejson','utf8'));
  const selected=papers.filter(p=>p.slug===slug);assert.equal(selected.length,1);
  const disk=JSON.parse(await fs.readFile('data/papers/'+slug+'.json','utf8'));
  const sourceSha256=createHash('sha256').update(await fs.readFile('D:/Gate PYQs Year Wise - PDFs/2012.pdf')).digest('hex');assert.equal(sourceSha256,disk.sourceSha256);
  const {_id,createdAt,updatedAt,...content}=selected[0];
- const report={bookBefore:hash(baseline),bookAfter:hash(chapters),bookUnchanged:hash(baseline)===hash(chapters),bookDocuments:chapters.length,bookQuestions:chapters.reduce((n,c)=>n+c.questions.length,0),sourceSha256,
+ const report={baselineDir,bookBefore:hash(baseline),bookAfter:hash(chapters),bookUnchanged:hash(baseline)===hash(chapters),bookDocuments:chapters.length,bookQuestions:chapters.reduce((n,c)=>n+c.questions.length,0),sourceSha256,
  otherPapers:previous.filter(p=>p.slug!==slug).map(p=>({slug:p.slug,unchanged:hash(p)===hash(papers.find(q=>String(q._id)===String(p._id)))})),
  existingAttempts:oldAttempts.length,existingAttemptsUnchanged:oldAttempts.every(p=>hash(p)===hash(attempts.find(q=>String(q._id)===String(p._id)))),
  selectedDatasets:selected.length,persistedEqualsDisk:hash(content)===hash(disk),tracker:yearPaperProgress(identifyYearPdf('2012.pdf',sourceSha256),papers)};

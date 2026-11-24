@@ -18,6 +18,7 @@ export function publicPaper(paper) {
 }
 
 export function validateYearPaper(paper) {
+  if (paper.reviewNotes !== undefined && (!Array.isArray(paper.reviewNotes) || paper.reviewNotes.length>30 || paper.reviewNotes.some(note=>typeof note!=='string'||note.length>4000))) throw new Error('Invalid private paper review notes.');
   if (!/^[a-z0-9-]+$/.test(paper.slug) || paper.datasetId !== paper.slug || !paper.verified) throw new Error('Invalid separate paper identity.');
   const q = paper.questions;
   if (!Array.isArray(q) || q.length !== paper.questionCount) throw new Error('Incomplete paper.');

@@ -16,8 +16,14 @@ for variant,expected in [('dark',65),('print',65),('solutions',None)]:
    if x0<-1 or y0<-1 or x1>page.rect.width+1 or y1>page.rect.height+1:issues.append([variant,i+1,'bounds',word])
   page.get_pixmap(matrix=fitz.Matrix(1.2,1.2)).save(str(root/f'{variant}-{i+1:02}.png'))
  if variant=='solutions':
+  full='\n'.join(texts)
   for n in range(1,66):
-   if not re.search(rf'\bQ{n}\b','\n'.join(texts)):issues.append([variant,'missing answer',n])
+   entry=re.search(rf'^Q{n}\s+(?=\(|Marks to All|Disputed item)(.*?)(?=^Q{n+1}\s+(?:\(|Marks to All|Disputed item)|\Z)',full,re.S|re.M)
+   if not entry:issues.append([variant,'missing answer',n])
+   elif len(re.findall(r'\w+',entry[1]))<25:issues.append([variant,'missing worked explanation',n])
+  normalized=re.sub(r'\s+',' ',full)
+  for phrase in ['editable transcription retains that space','two-vertex','none equals 45','rationale for cancellation','conventional RTT trace','natural restrictive relative pronoun']:
+   if phrase not in normalized:issues.append([variant,'missing cancelled-item explanation',phrase])
  report[variant]={'pages':len(doc),'rendered':len(doc)}
  for start in range(0,len(doc),12):
   canvas=Image.new('RGB',(1800,1480),'#b8b8b8');draw=ImageDraw.Draw(canvas)

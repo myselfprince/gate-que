@@ -77,7 +77,9 @@ export function renderSourceQuestion(q, { imageRoot = 'images', maxImageHeight, 
   const options = [q.optA, q.optB, q.optC, q.optD, ...(q.optE ? [q.optE] : [])];
   if (options.some(Boolean)) {
     const renderOption = (option = '') => option.startsWith('IMG:') ? image(option.slice(4).trim())
-      : q.isCodeOptions ? `\\texttt{${escapeLatex(option)}}` : latexText(option, { fitTables: true });
+      : q.isCodeOptions ? (option.includes('\n')
+        ? `\\begin{tabular}[t]{@{}l@{}}${option.split(/\r?\n/).map(line=>`\\texttt{${escapeLatex(line)}}`).join('\\\\')}\\end{tabular}`
+        : `\\texttt{${escapeLatex(option)}}`) : latexText(option, { fitTables: true });
     const twoCols = !q.optE && (q.optLayout === '2col' || (q.optLayout !== '1col'
       && options.every((option) => (option || '').length <= 65 && !(option || '').includes('\n') && !(option || '').includes('$$'))));
     if (q.optLayout === '4col' && !q.optE) {

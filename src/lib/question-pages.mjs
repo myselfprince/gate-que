@@ -49,7 +49,8 @@ ${settings.answerMode === 'toggle' ? ANSWER_TOGGLE_PREAMBLE : ''}
     const style = questionPdfSettings(settings, q.pdfStyle);
     // A larger listing is scaled after capture. Reserve a narrower source box
     // so its scaled frame never grows beyond the full text width.
-    const codeWidth = style.fontSize > 18 ? `${(1 / Number((style.fontSize / 18).toFixed(3))).toFixed(6)}\\textwidth` : '\\textwidth';
+    const codeAndDiagramColumns = q.optLayout === '4col' && q.code && ['optA','optB','optC','optD'].every(k=>q[k]?.startsWith('IMG:'));
+    const codeWidth = codeAndDiagramColumns ? '0.43\\textwidth' : style.fontSize > 18 ? `${(1 / Number((style.fontSize / 18).toFixed(3))).toFixed(6)}\\textwidth` : '\\textwidth';
     if (index) source += '\\clearpage\n';
     source += answerLayerSetup(q, settings, startIndex + index);
     const decorations = pageDecorations({ settings, question: q, page: startIndex + index + 1, total: totalQuestions, foreground });
@@ -64,6 +65,12 @@ ${settings.answerMode === 'toggle' ? ANSWER_TOGGLE_PREAMBLE : ''}
     // can then reflow at full width, independently scaling the saved listing.
     const codeReference = '\n\\par\\medskip\\noindent\\scalebox{\\questioncodescale}{\\usebox{\\questioncodebox}}\\par\\medskip\n';
     let content = renderSourceQuestion(q, { imageRoot, maxImageHeight: '\\questionimageheight', codeRenderer: () => codeReference });
+    if (codeAndDiagramColumns) {
+      const [intro,...tail] = q.text.split('[CODE]');
+      const prompt = renderSourceQuestion({text:intro});
+      const choices = renderSourceQuestion({...q,text:tail.join('[CODE]'),code:'',optLayout:'2col'}, {imageRoot,maxImageHeight:'\\questionimageheight'});
+      content = `${prompt}\\par\\medskip\\noindent\\begin{minipage}[t]{0.43\\textwidth}\\vspace{0pt}${codeReference}\\end{minipage}\\hfill\\begin{minipage}[t]{0.53\\textwidth}\\vspace{0pt}${choices}\\end{minipage}\\par`;
+    }
     if (!q.isBlank && !q.isProof && ![q.optA, q.optB, q.optC, q.optD].some(Boolean)
       && !/_{3,}/.test(q.text || '')) content += '\n\\par\\medskip\\textbf{Answer:} \\rule{3cm}{0.4pt}\n';
     const measure = (fontSize) => {

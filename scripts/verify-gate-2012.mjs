@@ -6,9 +6,9 @@ import puppeteer from 'puppeteer';
 import AdmZip from 'adm-zip';
 import {questionAssetPaths} from '../src/lib/year-paper-assets.mjs';
 const require=createRequire(import.meta.url);require('@next/env').loadEnvConfig(process.cwd(),true,{info(){},error(){}});
-const {MongoClient}=require('mongoose').mongo,origin='http://127.0.0.1:3000',slug='gate-cs-2012';
+const {MongoClient}=require('mongoose').mongo,origin=process.env.MOCK_ORIGIN||'http://localhost:3000',slug='gate-cs-2012';
 const paper=JSON.parse(await fs.readFile(`data/papers/${slug}.json`,'utf8')),attempts=[];
-const secret=/correctOptions|referenceAnswer|answerSources|copiedFrom|natAnswer|tokenHash|gateOverflowUrl/;
+const secret=/correctOptions|referenceAnswer|answerSources|copiedFrom|natAnswer|tokenHash|gateOverflowUrl|awardMarksToAll|reviewNotes|Marks to All for Q|Q9 \(endpoint convention\)/;
 let cookie='',browser;
 async function api(url,{method='GET',body,token,status=200}={}){
  const r=await fetch(origin+url,{method,headers:{'Content-Type':'application/json',...(cookie?{Cookie:cookie}:{}),...(token?{Authorization:`Bearer ${token}`}:{})},...(body?{body:JSON.stringify(body)}:{})});
@@ -53,6 +53,7 @@ try {
  await fs.mkdir('tmp/gate2012/browser',{recursive:true});browser=await puppeteer.launch({headless:true});const page=await browser.newPage();page.setDefaultTimeout(60000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
  if(cookie){const i=cookie.indexOf('=');await browser.setCookie({name:cookie.slice(0,i),value:cookie.slice(i+1),url:origin});}
  page.on('console',message=>{if(message.type()==='error')console.log('Browser console:',message.text());});
+ page.on('response',response=>{if(response.status()>=400)console.log('Browser HTTP:',response.status(),new URL(response.url()).pathname);});
  await page.setViewport({width:1440,height:1000});await page.goto(origin+`/gatemock?paper=${slug}`,{waitUntil:'domcontentloaded'});
  try{await selectYearPaper(page,'2012');}catch(error){await page.screenshot({path:'tmp/gate2012/browser/start-failure.png',fullPage:true});console.log('Browser start:',await page.evaluate(()=>({url:location.href,text:document.body.innerText.slice(0,3000)})),errors);throw error;}
  await page.screenshot({path:'tmp/gate2012/browser/catalog.png',fullPage:true});
@@ -72,7 +73,7 @@ try {
  await page.evaluate(()=>[...document.querySelectorAll('[role=tab]')].find(e=>e.textContent.includes('One-mark')).click());
  await page.evaluate(()=>document.querySelector('button[aria-label^="Question 9,"]').click());await page.waitForFunction(()=>document.querySelector('[data-question-key="yearpaper:gate-cs-2012:9"]'));
  await page.click('input[type=radio]');await page.waitForFunction(()=>[...document.querySelectorAll('[role=status]')].some(e=>e.textContent==='Saved'));
- await page.reload({waitUntil:'domcontentloaded'});await page.waitForSelector('input[type=radio]:checked');assert.equal(await page.$eval('[data-question-key]',e=>e.dataset.questionKey),'yearpaper:gate-cs-2012:2');
+ await page.reload({waitUntil:'domcontentloaded'});await page.waitForSelector('input[type=radio]:checked');assert.equal(await page.$eval('[data-question-key]',e=>e.dataset.questionKey),'yearpaper:gate-cs-2012:9');
  await page.click('[aria-label="Open scientific calculator"]');await page.waitForSelector('[aria-label="Close calculator"]');await page.screenshot({path:'tmp/gate2012/browser/calculator.png'});await page.click('[aria-label="Close calculator"]');
  await page.click('[aria-label="Submit test"]');await page.waitForSelector('dialog[open]');await page.evaluate(()=>[...document.querySelectorAll('dialog button')].find(e=>e.textContent==='Confirm submit').click());await page.waitForFunction(()=>document.body.textContent.includes('Your result & solutions'));
  await reviewQuestion(page,9);await page.type('[aria-label="Self-assessed marks Q9"]','0.5');await saveSelfAssessment(page);await page.waitForFunction(()=>document.body.textContent.includes('1 responses self-assessed'));

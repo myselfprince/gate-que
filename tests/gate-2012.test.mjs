@@ -2,7 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-import {validateYearPaper} from '../src/lib/year-papers.mjs';
+import {validateYearPaper,publicPaper} from '../src/lib/year-papers.mjs';
+import {validatePreparedYearPaper} from '../src/lib/admin-year-papers.mjs';
 import {buildMock,paperCoverage,publicQuestion,gradeAttempt,validateAttemptState} from '../src/lib/gatemock.mjs';
 import {yearPaperProgress,identifyYearPdf} from '../src/lib/gate-year-paper-tracker.mjs';
 import {questionAssetPaths} from '../src/lib/year-paper-assets.mjs';
@@ -18,6 +19,8 @@ test('2012 booklet A has complete original coverage, rules and provenance',()=>{
  assert.ok(qs.every((q,i)=>q.paperQuestionNumber===String(i+1)&&q.originalLabel===String(i+1)&&q.examPaper==='CS'&&!q.setNum&&!q.sectionLimit&&q.source.bookletCode==='A'&&q.referenceAnswer));
  assert.ok(qs.every(q=>q.answerSources.find(s=>s.kind==='historical-key-mirror')?.printed===(q.awardMarksToAll?'Marks to All':q.correctOptions[0])));
  assert.equal(paperCoverage(qs,paper).ready,true);assert.equal(yearPaperProgress(identifyYearPdf('2012.pdf',paper.sourceSha256),[paper]).complete,true);
+ assert.doesNotMatch(JSON.stringify(publicPaper(paper)),/reviewNotes|Marks to All for Q|Q9 \(endpoint convention\)/);
+ const portable=validatePreparedYearPaper(paper);assert.equal(validateYearPaper(portable),portable);assert.deepEqual(portable.reviewNotes,paper.reviewNotes);assert.equal(portable.questions.filter(q=>q.awardMarksToAll&&!q.manualReview).length,6);
 });
 test('2012 literal corrections and independent assets do not leak answers',async()=>{
  assert.deepEqual(qs.filter(q=>q.manualReview).map(q=>q.paperQuestionNumber),['9','15','63']);

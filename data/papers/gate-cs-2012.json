@@ -18,9 +18,7 @@
     "Source page 1 specifies three hours, 65 single-answer objective questions and 100 marks. Q1-25 carry one mark and Q26-55 two marks. General Aptitude is Q56-65, with five one-mark and five two-mark questions: ten questions totaling 15 marks.",
     "Original navigation blocks: one-mark technical Q1-25; two-mark technical Q26-47; common data Q48-51; linked pairs Q52-55; General Aptitude Q56-65. Attempt all; no optional-section limits, descriptive answers, NAT or MSQ in this paper.",
     "Documented penalties: wrong one-mark responses lose 1/3 mark; wrong two-mark responses lose 2/3 mark, except Q53 and Q55 which have no penalty. Ordinary blanks earn zero. Q53 is evaluated only if Q52 is correct, and Q55 only if Q54 is correct. The server enforces the source linked-credit rule.",
-    "All 65 entries have authored worked references and comparison with a downloaded historical booklet-A key. All 65 key entries agree with the indexed IIT Kanpur official GATE archive. The official archive host could not be downloaded directly (DNS/502); the locally retained PDF is a gatecse.in mirror and is not labeled an authenticated original download. Seventeen supplied Made Easy key entries and eleven relevant discussion pages/indexed discussions were checked separately; remaining discussion links are cache mappings.",
-    "The historical booklet-A key awards Marks to All for Q3, Q29, Q38, Q39, Q45 and Q60 (10 marks). This practice implements that wording as full marks for every candidate, including blanks. Those questions remain intact; their intended worked answers are explanatory and do not replace the award. Awards appear separately after submission and are hidden in active-attempt question data.",
-    "Q9 (endpoint convention), Q15 (published SQL key versus semantics) and Q63 (defective numeric approximation), totaling four marks, require post-submission self-assessment. Automatic maximum is 96 marks including the ten all-candidate award marks. Self-assessed marks are stored separately. Published key letters are reference provenance, not definite automatic grades for these disputes.",
+    "Historical answer-key defects have documented review or award policies, shown with the worked solutions after submission. Any self-assessed marks are saved separately.",
     "Question copies have independent IDs and keys, complete source-page provenance and independent diagram files. Original book records, prior papers and existing attempts are preserved. This dataset is excluded from book-based subject and weighted mocks."
   ],
   "questions": [
@@ -3862,7 +3860,7 @@
         "fontSize": 17,
         "minFontSize": 10,
         "lineSpacing": 1.12,
-        "imageScale": 0.5
+        "imageScale": 1
       },
       "source": {
         "file": "D:/Gate PYQs Year Wise - PDFs/2012.pdf",
@@ -4927,7 +4925,7 @@
         "fontSize": 17,
         "minFontSize": 10,
         "lineSpacing": 1.12,
-        "imageScale": 0.65
+        "imageScale": 1
       },
       "source": {
         "file": "D:/Gate PYQs Year Wise - PDFs/2012.pdf",
@@ -5519,7 +5517,7 @@
       "isCodeOptions": false,
       "isProof": false,
       "needsManualOptionFix": false,
-      "optLayout": "auto",
+      "optLayout": "2col",
       "subject": "10. Compiler Design",
       "chapter": "Linked answer pairs",
       "key": "yearpaper:gate-cs-2012:52",
@@ -5641,7 +5639,7 @@
       "isCodeOptions": false,
       "isProof": false,
       "needsManualOptionFix": false,
-      "optLayout": "auto",
+      "optLayout": "2col",
       "subject": "10. Compiler Design",
       "chapter": "Linked answer pairs",
       "key": "yearpaper:gate-cs-2012:53",
@@ -6722,6 +6720,11 @@
         "issues": []
       }
     }
+  ],
+  "reviewNotes": [
+    "All 65 entries have authored worked references and comparison with a downloaded historical booklet-A key. All 65 key entries agree with the indexed IIT Kanpur official GATE archive. The official archive host could not be downloaded directly (DNS/502); the locally retained PDF is a gatecse.in mirror and is not labeled an authenticated original download. Seventeen supplied Made Easy key entries and eleven relevant discussion pages/indexed discussions were checked separately; remaining discussion links are cache mappings.",
+    "The historical booklet-A key awards Marks to All for Q3, Q29, Q38, Q39, Q45 and Q60 (10 marks). This practice implements that wording as full marks for every candidate, including blanks. Those questions remain intact; their intended worked answers are explanatory and do not replace the award. Awards appear separately after submission and are hidden in active-attempt question data.",
+    "Q9 (endpoint convention), Q15 (published SQL key versus semantics) and Q63 (defective numeric approximation), totaling four marks, require post-submission self-assessment. Automatic maximum is 96 marks including the ten all-candidate award marks. Self-assessed marks are stored separately. Published key letters are reference provenance, not definite automatic grades for these disputes."
   ],
   "assetManifest": {
     "version": 1,

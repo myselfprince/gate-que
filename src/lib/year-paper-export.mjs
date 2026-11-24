@@ -39,10 +39,10 @@ async function build(paper,theme,digest){
   const temp=await fs.mkdtemp(path.join(os.tmpdir(),'gate-year-key-'));
   let answerKey;
   try{
-    const questions=paper.questions.map(q=>({...q,questionType:'SUBJECTIVE',isProof:true,correctOptions:[],answerDisposition:'standard',natAnswer:
+    const questions=paper.questions.map(q=>({...q,questionType:'SUBJECTIVE',isProof:true,correctOptions:[],answerDisposition:'standard',awardMarksToAll:false,natAnswer:
       `${q.awardMarksToAll?'Marks to All - ':q.answerDisposition==='none-correct'?'None of the options is correct - ':q.manualReview?`Disputed item${q.correctOptions.length?`; conventional key (${q.correctOptions.join(', ')})`:''} - `:q.correctOptions.length?`(${q.correctOptions.join(', ')}) - `:''}${q.referenceAnswer || ''}`}));
     const tex=buildAnswerKey({subject:paper.title,chapter:'Answers and worked reference solutions',questions,pdfSettings:{theme:'light'}})
-      .replace('Only available stored answers are included. Missing answers are marked explicitly.',paper.instructions.map(t=>escapeLatex(t)+'\\par\\smallskip').join('\n'))
+      .replace('Only available stored answers are included. Missing answers are marked explicitly.',[...paper.instructions,...(paper.reviewNotes||[])].map(t=>escapeLatex(t)+'\\par\\smallskip').join('\n'))
       .replace(/(\\item\[\\textbf\{Q(\d+)\}\]\s)([\s\S]*?)(?=\\typeout\{GATEANSWER:|\\end\{enumerate\})/g,(match,start,number,body)=>{
         const q=paper.questions[Number(number)-1];
         if(!q.answerSources)return match;
