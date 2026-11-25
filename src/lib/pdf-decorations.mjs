@@ -32,7 +32,7 @@ export function pageDecorations({ settings, question, page, total, foreground })
   if (gateOverflow) put(settings.gateOverflowPosition, `{\\fontsize{${settings.gateOverflowFontSize}}{${settings.gateOverflowFontSize + 4}}\\selectfont${latexLink(gateOverflow, escapeLatex(settings.gateOverflowLabel))}}`);
   if (settings.showWebsite && settings.websiteUrl) put(settings.websitePosition, `{\\fontsize{9}{13}\\selectfont\\color{${foreground}!70}${latexLink(settings.websiteUrl, escapeLatex(settings.websiteLabel || settings.websiteUrl))}}`);
   if (settings.showPageNumbers && settings.pageNumberTemplate) put(settings.pageNumberPosition, `{\\fontsize{${settings.pageNumberFontSize}}{${settings.pageNumberFontSize + 4}}\\selectfont\\color{${foreground}!65}${escapeLatex(settings.pageNumberTemplate.replaceAll('{page}', String(page)).replaceAll('{total}', String(total)))}}`);
-  return { top: decorationRow(top), bottom: [decorationRow(bottom), answerFooter(question, settings)].filter(Boolean).join('\\par\\vspace{6pt}\n') };
+  return { top: decorationRow(top), bottom: [decorationRow(bottom), answerFooter(question, settings, page)].filter(Boolean).join('\\par\\vspace{6pt}\n') };
 }
 
 export function watermarkTex(settings, foreground) {

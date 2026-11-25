@@ -9,7 +9,7 @@ import { PDFDocument, PDFName } from 'pdf-lib';
 import puppeteer from 'puppeteer';
 import { exportQuestionPdf } from '../src/lib/pdf-export.mjs';
 import { exportPdfBook } from '../src/lib/pdf-book.mjs';
-import { registerAnswerLayers } from '../src/lib/pdf-answers.mjs';
+import { ANSWER_FIELD_PREFIX, registerAnswerLayers } from '../src/lib/pdf-answers.mjs';
 import { loadWorkspaceQuestions } from './helpers/load-workspace.mjs';
 const require = createRequire(import.meta.url);
 require('@next/env').loadEnvConfig(process.cwd(), true, { info() {}, error() {} });
@@ -19,14 +19,18 @@ const questions = Array.from({ length: 21 }, (_, i) => ({ id: `answer-qa-${i + 1
 questions[2] = { ...questions[2], text: 'Find the value of $1/2$.', optA: '', optB: '', optC: '', optD: '', correctOptions: [], questionType: 'NAT', natAnswer: '$\\frac{1}{2}$' };
 const payload = { subject: 'PDF QA', chapter: 'Answer modes', questions, pdfSettings: { theme: 'light', showWatermark: false } };
 const samples = {};
+// Answer checkboxes registered as form fields, and the answer field names on one page.
+const answerFields = doc => doc.catalog.lookup(PDFName.of('AcroForm'))?.lookup(PDFName.of('Fields'))?.size() || 0;
+const pageFieldNames = page => (page.node.Annots()?.asArray() || []).map(ref => page.doc.context.lookup(ref).lookup(PDFName.of('T'))?.decodeText() || '').filter(name => name.startsWith(ANSWER_FIELD_PREFIX));
 for (const mode of ['none', 'footer', 'toggle']) {
   const result = await exportQuestionPdf({ ...payload, questions: mode === 'toggle' ? questions : questions.slice(0, 3), pdfSettings: { ...payload.pdfSettings, answerMode: mode } });
   await fs.writeFile(path.join(dir, `${mode}.pdf`), result.pdf);
   const doc = await PDFDocument.load(result.pdf);
   if (mode === 'toggle') {
     assert.equal(result.parts.length, 2);
-    assert.equal(doc.catalog.lookup(PDFName.of('OCProperties')).lookup(PDFName.of('OCGs')).size(), 20);
-    assert.equal(doc.getPage(1).node.Resources().lookup(PDFName.of('Properties')), undefined);
+    assert.equal(answerFields(doc), 20);
+    assert.deepEqual(pageFieldNames(doc.getPage(1)), []);
+    assert.equal(doc.catalog.lookup(PDFName.of('OCProperties')), undefined);
   }
   const sample = await PDFDocument.create(); const [page] = await sample.copyPages(doc, [0]); sample.addPage(page); registerAnswerLayers(sample); samples[mode] = Buffer.from(await sample.save());
 }
@@ -37,7 +41,9 @@ for (const mode of ['toggle', 'footer']) {
   chapters.push({ file: `${mode}.pdf`, sha256: createHash('sha256').update(bytes).digest('hex'), sourceId: mode, chapter: mode, pages: mode === 'toggle' ? 21 : 3, questionIds: [], report: { warnings: [], textBoundsChecked: true } });
 }
 const book = await exportPdfBook({ subject: 'PDF QA', chapter: 'Book', total: 24, chapters }, { directory: dir });
-assert.equal((await PDFDocument.load(book.pdf)).catalog.lookup(PDFName.of('OCProperties')).lookup(PDFName.of('OCGs')).size(), 20);
+const bookDoc = await PDFDocument.load(book.pdf);
+assert.equal(answerFields(bookDoc), 20);
+assert.equal(new Set(bookDoc.getPages().flatMap(pageFieldNames)).size, 20);
 const poppler = 'C:/Users/Prince/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/Library/bin/pdftoppm.exe';
 for (const mode of ['footer', 'toggle']) await run(poppler, ['-png', '-f', '1', '-l', '1', '-scale-to', '1400', path.join(dir, `${mode}.pdf`), path.join(dir, mode)], { windowsHide: true });
 let browser;
@@ -73,6 +79,6 @@ try {
   await page.waitForFunction(before => document.querySelector('[data-preview-current="true"] canvas')?.toDataURL() === before, {}, hidden);
   await page.select('[aria-label="PDF answer display"]', 'footer'); await ready();
   await page.waitForFunction(() => !document.querySelector('button[aria-label="Show / hide answer"]'));
-  console.log('PDF answer modes compiled; two-batch and book layers retained; app preview hides, reveals and re-hides the stored answer.');
-  await fs.writeFile(path.join(dir, 'report.json'), JSON.stringify({ passed: true, modes: ['none', 'footer', 'toggle'], togglePages: 21, initiallyHiddenGroups: 20, bookLayersPreserved: true, previewToggle: true, unknownAnswersOmitted: true }, null, 2));
+  console.log('PDF answer modes compiled; two-batch and book answer fields retained; app preview hides, reveals and re-hides the stored answer.');
+  await fs.writeFile(path.join(dir, 'report.json'), JSON.stringify({ passed: true, modes: ['none', 'footer', 'toggle'], togglePages: 21, initiallyHiddenFields: 20, bookFieldsPreserved: true, previewToggle: true, unknownAnswersOmitted: true }, null, 2));
 } finally { await browser?.close(); }

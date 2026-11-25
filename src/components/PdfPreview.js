@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './PdfPreview.module.css';
 
-function Thumbnail({ pdf, number, current, select }) {
+function Thumbnail({ pdf, number, current, select, annotationMode }) {
   const element = useRef(null);
   const canvas = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -19,11 +19,11 @@ function Thumbnail({ pdf, number, current, select }) {
       if (cancelled) return;
       const viewport = page.getViewport({ scale: 128 / page.getViewport({ scale: 1 }).width });
       canvas.current.width = Math.ceil(viewport.width); canvas.current.height = Math.ceil(viewport.height);
-      render = page.render({ canvas: canvas.current, viewport });
+      render = page.render({ canvas: canvas.current, viewport, annotationMode });
       return render.promise;
     }).catch(error => { if (error.name !== 'RenderingCancelledException') console.error('PDF thumbnail:', error); });
     return () => { cancelled = true; render?.cancel(); };
-  }, [pdf, number, visible]);
+  }, [pdf, number, visible, annotationMode]);
   return <button type="button" ref={element} className={styles.thumbnail} aria-label={`Preview page ${number}`} aria-current={current ? 'page' : undefined} onClick={() => select(number)}><canvas ref={canvas} width="128" height="90" />{number}</button>;
 }
 
@@ -84,15 +84,17 @@ export default function PdfPreview({ url, data, compact = false, openLinksInNewT
       textContainer.style.setProperty('--total-scale-factor', String(scale));
       textContainer.style.setProperty('--scale-round-x', '1px'); textContainer.style.setProperty('--scale-round-y', '1px');
       setPageSize({ width: viewport.width, height: viewport.height });
-      render = page.render({ canvas: target, viewport, optionalContentConfigPromise: Promise.resolve(loaded.optionalContentConfig), transform: ratio === 1 ? undefined : [ratio, 0, 0, ratio, 0, 0] });
+      // Storage mode draws each answer checkbox in its current state (hidden until clicked).
+      render = page.render({ canvas: target, viewport, annotationMode: loaded.library.AnnotationMode.ENABLE_STORAGE, optionalContentConfigPromise: Promise.resolve(loaded.optionalContentConfig), transform: ratio === 1 ? undefined : [ratio, 0, 0, ratio, 0, 0] });
       await render.promise;
       if (disposed) return;
       const annotations = await page.getAnnotations();
       if (disposed) return;
-      setLinks(annotations.filter(annotation => annotation.subtype === 'Link' && (annotation.setOCGState || /^https?:\/\//i.test(annotation.url || ''))).map(annotation => {
+      const answerField = annotation => annotation.subtype === 'Widget' && annotation.checkBox && annotation.fieldName?.startsWith('gate-answer-');
+      setLinks(annotations.filter(annotation => answerField(annotation) || annotation.subtype === 'Link' && (annotation.setOCGState || /^https?:\/\//i.test(annotation.url || ''))).map(annotation => {
         const [x1, y1] = viewport.convertToViewportPoint(annotation.rect[0], annotation.rect[1]);
         const [x2, y2] = viewport.convertToViewportPoint(annotation.rect[2], annotation.rect[3]);
-        return { id: annotation.id, url: annotation.url, setOCGState: annotation.setOCGState, left: Math.min(x1, x2), top: Math.min(y1, y2), width: Math.abs(x2 - x1), height: Math.abs(y2 - y1) };
+        return { id: annotation.id, url: annotation.url, setOCGState: annotation.setOCGState, answerField: answerField(annotation), checked: annotation.fieldValue === annotation.exportValue, left: Math.min(x1, x2), top: Math.min(y1, y2), width: Math.abs(x2 - x1), height: Math.abs(y2 - y1) };
       }));
       const content = await page.getTextContent();
       if (disposed) return;
@@ -102,6 +104,12 @@ export default function PdfPreview({ url, data, compact = false, openLinksInNewT
     })().catch(error => { if (!disposed && error.name !== 'RenderingCancelledException') setError(error.message); });
     return () => { disposed = true; render?.cancel(); textLayer?.cancel(); };
   }, [loaded, pageNumber, zoom, width, layerRevision]);
+  // Answer checkboxes keep their state in pdf.js annotation storage, like a PDF reader would.
+  function toggleAnswer(field) {
+    const storage = loaded.pdf.annotationStorage;
+    storage.setValue(field.id, { value: !storage.getValue(field.id, { value: field.checked }).value });
+    setLayerRevision(value => value + 1);
+  }
   async function find(event) {
     event.preventDefault();
     if (!loaded || !query.trim()) return;
@@ -135,12 +143,12 @@ export default function PdfPreview({ url, data, compact = false, openLinksInNewT
         <small role="status">{findMessage}</small>
       </div>}
       <div className={styles.layout}>
-        {!compact && <aside className={styles.thumbnails} aria-label="PDF page thumbnails">{Array.from({ length: loaded.pdf.numPages }, (_, index) => <Thumbnail key={index + 1} pdf={loaded.pdf} number={index + 1} current={pageNumber === index + 1} select={setPageNumber} />)}</aside>}
+        {!compact && <aside className={styles.thumbnails} aria-label="PDF page thumbnails">{Array.from({ length: loaded.pdf.numPages }, (_, index) => <Thumbnail key={index + 1} pdf={loaded.pdf} number={index + 1} current={pageNumber === index + 1} select={setPageNumber} annotationMode={loaded.library.AnnotationMode.ENABLE_STORAGE} />)}</aside>}
         <div className={styles.viewport} ref={viewportRef}>
           <div className={styles.page} style={pageSize} data-pdf-page={compact ? undefined : pageNumber} data-sample-pdf-page={compact ? pageNumber : undefined}>
             <canvas aria-label={`PDF page ${pageNumber}`} ref={canvas} />
             <div ref={textRef} className={styles.textLayer} />
-            {links.map(link => link.setOCGState ? <button key={link.id} className={styles.link} style={{ left: link.left, top: link.top, width: link.width, height: link.height, padding: 0, border: 0, background: 'transparent' }} aria-label="Show / hide answer" onClick={() => { loaded.optionalContentConfig.setOCGState(link.setOCGState); setLayerRevision(value => value + 1); }} /> : <a key={link.id} className={styles.link} style={{ left: link.left, top: link.top, width: link.width, height: link.height }} href={link.url} target={openLinksInNewTab ? '_blank' : '_self'} rel="noopener noreferrer" aria-label={`Open ${link.url}`} />)}
+            {links.map(link => link.answerField ? <button key={link.id} className={styles.link} style={{ left: link.left, top: link.top, width: link.width, height: link.height, padding: 0, border: 0, background: 'transparent' }} aria-label="Show / hide answer" onClick={() => toggleAnswer(link)} /> : link.setOCGState ? <button key={link.id} className={styles.link} style={{ left: link.left, top: link.top, width: link.width, height: link.height, padding: 0, border: 0, background: 'transparent' }} aria-label="Show / hide answer" onClick={() => { loaded.optionalContentConfig.setOCGState(link.setOCGState); setLayerRevision(value => value + 1); }} /> : <a key={link.id} className={styles.link} style={{ left: link.left, top: link.top, width: link.width, height: link.height }} href={link.url} target={openLinksInNewTab ? '_blank' : '_self'} rel="noopener noreferrer" aria-label={`Open ${link.url}`} />)}
           </div>
         </div>
       </div>

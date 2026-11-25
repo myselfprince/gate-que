@@ -1,7 +1,7 @@
 import { collectLatexImages, escapeLatex, renderSourceQuestion, LISTINGS_UNICODE } from './latex-source.mjs';
 import { normalizePdfSettings, PDF_PAGE_SIZES, questionPdfSettings } from './pdf-settings.mjs';
 import { documentTitle, pageDecorations, watermarkTex, YOUTUBE_ICON_TEX } from './pdf-decorations.mjs';
-import { answerLayerSetup, ANSWER_TOGGLE_PREAMBLE, ANSWER_TOGGLE_CATALOG } from './pdf-answers.mjs';
+import { answerTogglePreamble, ANSWER_TOGGLE_CATALOG } from './pdf-answers.mjs';
 
 // Both PDF and editable-source exports use this layout. Each complete question
 // is measured first. Long prose is reflowed at a smaller font while the box
@@ -38,7 +38,7 @@ export function buildQuestionPages({ subject, chapter, questions, pdfSettings },
 \\newlength{\\gatewatermarkx}
 \\newlength{\\gatewatermarky}
 ${YOUTUBE_ICON_TEX}
-${settings.answerMode === 'toggle' ? ANSWER_TOGGLE_PREAMBLE : ''}
+${settings.answerMode === 'toggle' ? answerTogglePreamble(foreground) : ''}
 \\newcommand{\\questioncodescale}{1}
 \\newlength{\\questionheight}
 \\newlength{\\questionimageheight}
@@ -52,7 +52,6 @@ ${settings.answerMode === 'toggle' ? ANSWER_TOGGLE_PREAMBLE : ''}
     const codeAndDiagramColumns = q.optLayout === '4col' && q.code && ['optA','optB','optC','optD'].every(k=>q[k]?.startsWith('IMG:'));
     const codeWidth = codeAndDiagramColumns ? '0.43\\textwidth' : style.fontSize > 18 ? `${(1 / Number((style.fontSize / 18).toFixed(3))).toFixed(6)}\\textwidth` : '\\textwidth';
     if (index) source += '\\clearpage\n';
-    source += answerLayerSetup(q, settings, startIndex + index);
     const decorations = pageDecorations({ settings, question: q, page: startIndex + index + 1, total: totalQuestions, foreground });
     const showTitle = settings.titleMode === 'every' || (settings.titleMode === 'first' && startIndex + index === 0);
     const box = (name, content) => content ? `\\begin{lrbox}{\\${name}}\\begin{minipage}{\\textwidth}\n${content}\\par\\end{minipage}\\end{lrbox}\n` : `\\sbox{\\${name}}{}\n`;
