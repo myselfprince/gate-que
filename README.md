@@ -323,6 +323,18 @@ The checksum-guarded identity correction for `DA 2025 set 2.pdf` targets CS 2025
 
 Verify with `node --test tests/gate-year-paper-tracker.test.mjs` and, against the running local app, `node scripts/verify-gate-year-paper-tracker.mjs`.
 
+## Topic-wise answer keys (`data/topic-answers/`)
+
+Book chapters get verified answers one topic at a time. Open `/gatetopicanswers` (linked from the editor toolbar as **Topic answer prompts**) to see every topic's live answer coverage from the database, copy the next pending topic's prompt, and paste it into an AI chat rooted at this project. The page only reads; copy history stays in this browser. The workflow the prompt follows:
+
+1. `python -I scripts/topic-answers/gateoverflow-index.py` indexes the GATE Overflow PDFs in `G:\GateOverflow PYQ PDF all years` (question ids, pages, URLs, answer-key entries) into `tmp/gateoverflow/index.json`. It only reads the PDFs.
+2. `node scripts/topic-answers/worksheet.mjs --topic 1.1` (or `--subject … --chapter …`) is read-only. It backs up the chapter to `data/backups/topic-answers/` and writes a worksheet with each question's content hash, GATE Overflow candidates and any verified year-paper copy mapped to the book's option letters.
+3. The reviewed key is saved as `data/topic-answers/<slug>.json` (`gate-topic-answers-v1`, validated by `src/lib/topic-answers.mjs`). Each entry records the answer, a short derivation, its sources and whether they agree. Sources often order options differently, so keys are mapped by option text.
+4. `node scripts/topic-answers/apply.mjs data/topic-answers/<slug>.json` is a dry run; add `--write` to apply. It writes only `questionType`, `correctOptions`, `natAnswer`/`natRange` (and documented `answerDisposition`/`specialNote`). It refuses if a question's text, options, diagram, position or id changed since review, or if a different answer is already stored. The update is guarded by `updatedAt`; afterwards it re-reads the chapter to confirm nothing else changed and prints the chapter's new coverage. The bumped `updatedAt` makes an editor tab that loaded the chapter earlier reload before saving.
+5. `node scripts/topic-answers/coverage.mjs` prints every chapter's answer coverage (read-only), matching the `/gatetopicanswers` page.
+
+`python -I scripts/topic-answers/render-pdf-pages.py <pdf> <dir> <dpi> <page> [--crop x0 y0 x1 y1]` renders formula pages and scanned Made Easy answer tables. Tests: `node --test tests/topic-answers.test.mjs`.
+
 ## 💻 Tech Stack Summary
 
 * **Framework:** Next.js (App Router)

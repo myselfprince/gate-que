@@ -1,0 +1,2121 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "1. Discrete Maths",
+  "chapter": "1. Mathematical Logic",
+  "slug": "1-discrete-maths--1-mathematical-logic",
+  "reviewedAt": "2026-11-24",
+  "reviewer": "Claude (AI-assisted review; spot-check before publishing)",
+  "sources": {
+    "gateOverflowPdf": {
+      "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume1.pdf",
+      "sha256": "e42a70646bdbc4f86edff44b97555a94c866deda508c761da40c20d95b493a2d",
+      "chapter": "3 Discrete Mathematics: Mathematical Logic (78)",
+      "answerKeyPage": 81
+    },
+    "madeEasyPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\1. Discrete Maths\\1. Mathematical Logic.pdf",
+      "sha256": "030afec9184db63262bead4616f447fbda57d69b49642c49837f1d66038b6b62",
+      "answerKeyPage": 4
+    },
+    "yearPapers": "data/papers/*.json (verified copies linked by source.copiedFrom.questionId)"
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "2dl5ucs76",
+      "contentSha256": "7fdc13ec4d85b3e7c7cd12ad65573f37a204c7f2ec61ba3b9e3dd05a40f8f55a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The given proposition reduces to ¬p∨q. With ¬p⇒q (p∨q) true, p=T,q=F gives false while p=F gives true, so the value is not determined.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.12, Propositional Logic: GATE CSE 1995 | Question: 2.19, p.75 (key p.81); https://gateoverflow.in/2631/gate-cse-1995-question-2-19",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.1 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "yqtv9zla5",
+      "contentSha256": "07df96fe428b463f4b57fa958af60c5c08d827bb39d8fdcba316c9376342bc4f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "(x∨y)↔(¬x→¬y) is (x∨y)↔(x∨¬y), which is false for x=F. A is modus ponens, B reduces to x→x and C is addition; all three are tautologies (truth-table checked).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.13, Propositional Logic: GATE CSE 1996 | Question: 2.3, p.75 (key p.81); https://gateoverflow.in/2732/gate-cse-1996-question-2-3",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.2 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "0wqwn4icw",
+      "contentSha256": "d21d11cf203d4936777390fac496a42256a1075cc2b1b04aed3a9cf6372a8e1d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "a is always true and b≡c, so (a∧b)→((a∧c)∨d) becomes b→(b∨d), which is always true.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.17, Propositional Logic: GATE CSE 2000 | Question: 2.7, p.76 (key p.81); https://gateoverflow.in/654/gate-cse-2000-question-2-7",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.3 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q30",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "m77o58dpr",
+      "contentSha256": "a6b9b254935d79d0678e43170242e391ce2c6725ebdcc194af43978b07826060",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "\"I stay only if you go\" is stay→go; its converse go→stay reads \"I stay if you go\".",
+      "note": "GATE Overflow lists this question as GATE CSE 1998 Q1.5; the book record is tagged 2001. The answer is unaffected.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.15, Propositional Logic: GATE CSE 1998 | Question: 1.5, p.75 (key p.81); https://gateoverflow.in/1642/gate-cse-1998-question-1-5",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.4 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "zm7xkp6no",
+      "contentSha256": "38abd70d8388f88f48b84c84a2b44df2ef2ebd2ada8485acb65d4ef2c40d29a0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "F1 ≡ ¬P is satisfiable but not valid; F2 ≡ ¬P∨P is valid.",
+      "note": "Option D is also literally true because every valid formula is satisfiable; A is the intended key in every source.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.18, Propositional Logic: GATE CSE 2001 | Question: 1.3, p.76 (key p.81); https://gateoverflow.in/696/gate-cse-2001-question-1-3",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.5 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q3",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "48nz7c2yp",
+      "contentSha256": "dadc3cda53c36e3c38a3068aa38239e80cbcf935060b1b8f027079380eb73fc1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "\"If X then Y unless Z\" means Y follows from X when Z does not hold: (X∧¬Z)→Y.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.19, Propositional Logic: GATE CSE 2002 | Question: 1.8, p.76 (key p.81); https://gateoverflow.in/812/gate-cse-2002-question-1-8",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.6 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q8",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "f3wh2j1ao",
+      "contentSha256": "b31654305ed724836143f7ab8a7917addb7b50f80c2423a10aca23d68c617595",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "∀x(α⇒β) gives α(c)⇒β(c) for every c, so ∀xα implies ∀xβ. A is the invalid converse; B and C fail when β or α is false somewhere.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.4, First Order Logic: GATE CSE 2003 | Question: 32, p.64 (key p.81); https://gateoverflow.in/922/gate-cse-2003-question-32",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.7 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q32",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "hr2zwi11j",
+      "contentSha256": "a2c303e2a8cadc291af2ae6d9b5e2c6ce08ef6dd71a021549cc45afbb46d8d2b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "With y=x, ∀y[Qxy⇔¬Qyy] would need Qxx⇔¬Qxx, so it is false for every x. The antecedent therefore reduces to ∀x¬Px, α is valid and both interpretations satisfy it.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.5, First Order Logic: GATE CSE 2003 | Question: 33, p.64 (key p.81); https://gateoverflow.in/923/gate-cse-2003-question-33",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.8 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q33",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "qjobep824",
+      "contentSha256": "59f42595432d7afc8e4e96fd4cf15b89a3807f3b1b3d11c4f3c03498ac02b82c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "(P∨Q)⇒(P∨R)∧(Q∨¬R) fails for P=T,Q=F,R=T, so B is the false statement. A is resolution soundness; C and D hold.",
+      "note": "The year-wise scan prints OR inside option B; the book (and the conventional version) prints AND, for which B is uniquely false.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.21, Propositional Logic: GATE CSE 2003 | Question: 72, p.76 (key p.81); https://gateoverflow.in/959/gate-cse-2003-question-72",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.9 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q72 (option text differs; mapped by content)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "4v58n5qa6",
+      "contentSha256": "dbbc1fd0d492773218cf091944e0198927329cc04c92207d84391dcb9f3b8410",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Some x is a boy and, for every y, y being a girl implies x is taller than y.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.6, First Order Logic: GATE CSE 2004 | Question: 23, ISRO2007-32, p.65 (key p.81); https://gateoverflow.in/1020/gate-cse-2004-question-23-isro2007-32",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.10 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q23",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "e4fjdydmc",
+      "contentSha256": "f5d0f1efebc49ee71e6727428ef93b783f5506407d550c42905fc2a9d0b43255",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "(∃x)(∀y)[(a∧b)∧¬c] ≡ ¬(∀x)(∃y)¬[(a∧b)∧¬c] ≡ ¬(∀x)(∃y)[(a∧b)→c].",
+      "note": "This is GATE IT 2004 Q3.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.30, First Order Logic: GATE IT 2004 | Question: 3, p.71 (key p.81); https://gateoverflow.in/3644/gate-it-2004-question-3",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.11 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q3",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "kuli13j3p",
+      "contentSha256": "f0113cfedb397a67b0af6fc50f4d00cf87686c75729e33befb17df67c032d4d3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "P: resolving (¬p∨q),(p∨r) gives q∨r, and with ¬r∨s gives q∨s ≡ ¬s→q, so P is valid. S: p and p→r give r, so q∨¬r forces q; S is valid. Q fails at p=F,q=T,r=T and R fails at p=T,q=F,r=F.",
+      "note": "GATE IT 2004 Q31. The book writes (¬q∨p) in R where the paper has (¬q∧p); R is invalid either way, so the key is unchanged.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.40, Propositional Logic: GATE IT 2004 | Question: 31, p.81 (key p.81); https://gateoverflow.in/3674/gate-it-2004-question-31",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.12 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q31 (option text differs; mapped by content)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "tdzg7kpip",
+      "contentSha256": "4e3bba30162ff18a6642e84ac7026d76c8dec8b75c97fd041e748e832d7ac6d1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "P=T,Q=T,R=F makes the antecedent true and the consequent false; any assignment with R=T satisfies it. It is satisfiable but not valid.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.22, Propositional Logic: GATE CSE 2004 | Question: 70, p.77 (key p.81); https://gateoverflow.in/1064/gate-cse-2004-question-70",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.13 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q70",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "qhsah35ms",
+      "contentSha256": "1440b1cd5c2da021f004bc1c5263b70c258de509c79ef1404e5f1c705f4c12ab",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "X ≡ (P→R)∧(Q→R), so X→Y is a tautology; Y→X fails for P=T,Q=F,R=F (truth-table checked).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.23, Propositional Logic: GATE CSE 2005 | Question: 40, p.77 (key p.81); https://gateoverflow.in/1165/gate-cse-2005-question-40",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.14 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q40",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "m1kkismxs",
+      "contentSha256": "151c7c192eb4520d563651181d3ec10ddbb686e459e791409b159f7f1c2f38cd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "For every teacher x there exists a y who is a student and likes x.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.7, First Order Logic: GATE CSE 2005 | Question: 41, p.65 (key p.81); https://gateoverflow.in/1166/gate-cse-2005-question-41",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.15 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q41",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "2iqn6g4zc",
+      "contentSha256": "08b69b02146b7ada0c680c94d89759cece543d562973608df168d205235c0513",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "∀x(P(x)⇒Q(x)) gives Q(c) whenever P(c), so ∀xP implies ∀xQ. A and D fail on simple two-element models.",
+      "note": "GATE IT 2005 Q36. Book option C is mis-parenthesised as ∀x(P(x)⇒(∀xQ(x)))⇒∀x(P(x)⇒Q(x)), which is also valid as printed. The paper reads (∀xP(x)⇒∀xQ(x))⇒∀x(P(x)⇒Q(x)), which is not valid; correct option C to make B unique.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.31, First Order Logic: GATE IT 2005 | Question: 36, p.71 (key p.81); https://gateoverflow.in/3783/gate-it-2005-question-36",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.16 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "xhhikomau",
+      "contentSha256": "62c640e300c367a87dae1d5bd438a0ed2364082904aac5c426a5c629d45b9a03",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Symmetric relations satisfy the formula and non-symmetric relations satisfy its negation, so both are satisfiable and neither is valid.",
+      "note": "This is GATE IT 2006 Q21.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.32, First Order Logic: GATE IT 2006 | Question: 21, p.71 (key p.81); https://gateoverflow.in/3560/gate-it-2006-question-21",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.17 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "ujv6a5zjz",
+      "contentSha256": "ffa6c20f9e0373249f3a2e4a065e5c47703fbc0c937c7cf2dfaf7d61ad17a9fa",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "For any x that is a tiger or a lion, (hungry ∨ threatened) → attacks.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.8, First Order Logic: GATE CSE 2006 | Question: 26, p.65 (key p.81); https://gateoverflow.in/989/gate-cse-2006-question-26",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.18 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q26 (option text differs; mapped by content)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 19,
+      "id": "uiz7lh6fg",
+      "contentSha256": "a875f9b7ad0fd3c3e02926b204d5ba1a46adef22400a157863208facd376f9f3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "(A∧B)→C is not (A→C)∧(B→C) = (A∨B)→C, and (A∨B)→C is not (A→C)∨(B→C) = (A∧B)→C. Both fail, e.g. at A=T,B=F,C=F.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.24, Propositional Logic: GATE CSE 2006 | Question: 27, p.77 (key p.81); https://gateoverflow.in/990/gate-cse-2006-question-27",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.19 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q27",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "20a2d8ec0",
+      "contentSha256": "95ecba28286f8fbd74776b09f58e30fd46a780438204a014aa6e0c8b569d56f5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The table gives A⊙B = A∨¬B, so ~(~A⊙B) = ¬(¬A∨¬B) = A∧B (truth-table checked against the diagram).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.1.4, Binary Operation: GATE CSE 2006 | Question: 28, p.93 (key p.126); https://gateoverflow.in/991/gate-cse-2006-question-28",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.20 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q28",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "xjiuekift",
+      "contentSha256": "562e903128e7bfd5023ebe3771daaab1adfc0b3fc5953cb4d73326f868cc057a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "\"Not every graph is connected\" is ∃x(Graph(x)∧¬Connected(x)). A, B and C are equivalent forms; D says that no graph is connected.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.9, First Order Logic: GATE CSE 2007 | Question: 22, p.66 (key p.81); https://gateoverflow.in/1220/gate-cse-2007-question-22",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.21 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q22",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 22,
+      "id": "b0a0512zu",
+      "contentSha256": "a75199b48a436395b2ec55e2aa728570dfacfda82afa369e61a70f397a55fd05",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "A uniformly random assignment satisfies each non-empty clause with probability at least 1/2, so some assignment satisfies at least half the clauses. Contradictory formulas rule out B.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.10.1, Conjunctive Normal Form: GATE CSE 2007 | Question: 48, p.315 (key p.362); https://gateoverflow.in/1246/gate-cse-2007-question-48",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.22 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q48 (option text differs; mapped by content)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 23,
+      "id": "6ghezppeh",
+      "contentSha256": "b51262a24e3b9b87bad036484fea80e2895ddd64d3e634e2bf035390054c4a90",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "∀x(P⇒Q) gives ∀xP⇒∀xQ. B and C fail in one direction and D swaps the quantifiers.",
+      "note": "This is GATE IT 2007 Q21.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.33, First Order Logic: GATE IT 2007 | Question: 21, p.71 (key p.81); https://gateoverflow.in/3454/gate-it-2007-question-21",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.23 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 24,
+      "id": "im2tcgr5q",
+      "contentSha256": "7666c867ceb5a10f4c3bca6b9502bd8e2bf0833a4b6fb84928303e8c7d01793b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Each FSA x has some PDA y equivalent to it: ∀x(fsa(x)⇒∃y(pda(y)∧equivalent(x,y))).",
+      "note": "The GATE Overflow answer table shows X (no recorded key) for this question; A is supported by the Made Easy key, the verified GATE CS 2008 paper and the derivation.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.10, First Order Logic: GATE CSE 2008 | Question: 30, p.66 (key p.81); https://gateoverflow.in/441/gate-cse-2008-question-30",
+          "answer": "X",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.24 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q30",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 25,
+      "id": "x6gf1g5m1",
+      "contentSha256": "083d90395af58ac1ba5bb540c550ea9644fc54c4c8848a292afe82c04f426b75",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "If (∃xα(x))→β, then each α(x) implies ∃xα(x) and hence β, giving ∀x(α(x)→β).",
+      "note": "This is GATE IT 2008 Q21.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.34, First Order Logic: GATE IT 2008 | Question: 21, p.71 (key p.81); https://gateoverflow.in/3282/gate-it-2008-question-21",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.25 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 26,
+      "id": "0xjqd3umb",
+      "contentSha256": "f0c5d614a01dbc8b97ff53deedd77008561bbbe27fcbd44d4a006bbdb997c118",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Negating ∀x[α→∃y[β→∀u∃vγ]] gives ∃x[α∧∀y[β∧∃u∀v¬γ]], which is option D in the paper.",
+      "note": "GATE IT 2008 Q22. Book option D is transcribed with swapped quantifiers, [∀x,α∧(∃y,β∧(∃u,∀v,¬γ))]. The paper reads [∃x,α∧(∀y,β∧(∃u,∀v,¬γ))]. Correct option D so that the key matches its text.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.35, First Order Logic: GATE IT 2008 | Question: 22, p.72 (key p.81); https://gateoverflow.in/3283/gate-it-2008-question-22",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.26 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 27,
+      "id": "vibcbjzx8",
+      "contentSha256": "91fc7758f514cab0fbc17ca2ee21e551c86ecfd96b68dc6214ac24ddc590ec25",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "1 and 2 are P∨¬Q by De Morgan; 3 simplifies to P∨(¬P∧¬Q) = P∨¬Q; 4 is P∨Q. So only 1, 2 and 3 (truth-table checked).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.25, Propositional Logic: GATE CSE 2008 | Question: 31, p.77 (key p.81); https://gateoverflow.in/442/gate-cse-2008-question-31",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.27 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q31 (option text differs; mapped by content)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 28,
+      "id": "nh5i81o64",
+      "contentSha256": "f16af16916ebbd4491b2ca01c7ff36d2ba3a8dd8a4cc5bf2b14aac190e8bb526",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Every ornament that is gold or silver is precious: ∀x((G(x)∨S(x))→P(x)).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.11, First Order Logic: GATE CSE 2009 | Question: 23, p.66 (key p.81); https://gateoverflow.in/800/gate-cse-2009-question-23",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.28 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q23 (option text differs; mapped by content)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 29,
+      "id": "h1xlprsjj",
+      "contentSha256": "820dfc3a63b65600ff11431811f6b5752eda8c5a80e27b8ecea6296c1653cc20",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The table gives P□Q = P∨¬Q, so P□¬Q = P∨Q (truth-table checked against the diagram).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.26, Propositional Logic: GATE CSE 2009 | Question: 24, p.77 (key p.81); https://gateoverflow.in/801/gate-cse-2009-question-24",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.29 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q24",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 30,
+      "id": "q3x5ah2e7",
+      "contentSha256": "ab599fc2a84786795a10425b3a4a5351d637c957378473231916f1f2bf12d914",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "¬∀xP(x) ≡ ∃x¬P(x), so I and IV; II ≡ ∀x¬P(x) and III ≡ ∀xP(x).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.12, First Order Logic: GATE CSE 2009 | Question: 26, p.66 (key p.81); https://gateoverflow.in/803/gate-cse-2009-question-26",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.30 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q26",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 31,
+      "id": "kswcjvspt",
+      "contentSha256": "c336d41fa272ddd600f6a84df33b620dca3c65a90e01ad43064b5de5680455c8",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "∀x∃y∃t¬F(x,y,t): for every person there is someone they cannot fool at some time, i.e. no one can fool everyone all the time.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.13, First Order Logic: GATE CSE 2010 | Question: 30, p.67 (key p.81); https://gateoverflow.in/1156/gate-cse-2010-question-30",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.31 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q30",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 32,
+      "id": "o76paz1d5",
+      "contentSha256": "1436ad8e329d5bf55d7ef9b897017ec38bc34e293628de74f2a03a5a825458d5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "x≠1 and every factor y of x is 1 or x, so x is prime.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.14, First Order Logic: GATE CSE 2011 | Question: 30, p.67 (key p.81); https://gateoverflow.in/2132/gate-cse-2011-question-30",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.32 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q30",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 33,
+      "id": "upx0ek4al",
+      "contentSha256": "33815b737ed608df12d1c23ad4be620e07135639ff63c782aea3ed75625e8338",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "I1 is modus tollens and is valid; I2 denies the antecedent and is invalid.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.2.1, Logical Reasoning: GATE CSE 2012 | Question: 1, p.72 (key p.81); https://gateoverflow.in/33/gate-cse-2012-question-1",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.33 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q1",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 34,
+      "id": "1alghakjw",
+      "contentSha256": "12b745b4541e7a91eb98aceca11d59ed006ce17b2271ea33440d51f5fe094b03",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Some x is both real and rational: ∃x(real(x)∧rational(x)).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.15, First Order Logic: GATE CSE 2012 | Question: 13, p.67 (key p.81); https://gateoverflow.in/45/gate-cse-2012-question-13",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.34 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q13",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 35,
+      "id": "4vqika8ek",
+      "contentSha256": "70d81bf8e53c4fb007862ae1ed430d7e4bf4a4dc995157d729fa8c5b7cb44acd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "No x is both a friend and perfect: ¬∃x(F(x)∧P(x)).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.16, First Order Logic: GATE CSE 2013 | Question: 27, p.67 (key p.81); https://gateoverflow.in/1538/gate-cse-2013-question-27",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.35 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 36,
+      "id": "5dj9jbxt9",
+      "contentSha256": "6cd0e88303b85c0971bc4779ea5e64256d934fad01dbeb9eb9c72a7e3879c638",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "¬∃x(∀yα∧∀zβ) ≡ ∀x(∃y¬α∨∃z¬β) ≡ ∀x(∀zβ→∃y¬α) ≡ ∀x(∀yα→∃z¬β), matching B, C and D. A, ∀x(∃z¬β→∀yα), is not equivalent.",
+      "note": "GATE CSE 2013 Q47 originally had D = ∀x(∃y(¬α)→∃z(¬β)), which is also not equivalent, so marks were awarded to all (GATE Overflow key X). The book edits D to an equivalent formula, leaving A as the unique answer.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.17, First Order Logic: GATE CSE 2013 | Question: 47, p.67 (key p.81); https://gateoverflow.in/80/gate-cse-2013-question-47",
+          "answer": "X",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.36 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 37,
+      "id": "z0g4fpywe",
+      "contentSha256": "729c20747e00731cd5978a972fae4640de46b1faaf054267a1504161b855cce5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Something glitters and is not gold: ∃x(glitters(x)∧¬gold(x)).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.18, First Order Logic: GATE CSE 2014 | Set 1 | Question: 1, p.68 (key p.81); https://gateoverflow.in/769/gate-cse-2014-set-1-question-1",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.37 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 38,
+      "id": "z4bh27wor",
+      "contentSha256": "9d7a6425969dc40f9dced497e57f449329c47e14d56d40d895310ee6cb13e4ae",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "(¬(p↔q)∧r) covers the two cases with r true and (p∧q∧¬r) covers the third (truth-table checked).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.27, Propositional Logic: GATE CSE 2014 | Set 1 | Question: 53, p.78 (key p.81); https://gateoverflow.in/1933/gate-cse-2014-set-1-question-53",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.38 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 39,
+      "id": "ak2zpi7ij",
+      "contentSha256": "d118c6b17f3947d350344b7e6bc014e8d71aeb535541c102f0e98d83af0bd7b7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "a=c=F, b=F makes (a↔c) and ¬b true but a∧c false; A, C and D are tautologies.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.28, Propositional Logic: GATE CSE 2014 | Set 2 | Question: 53, p.78 (key p.81); https://gateoverflow.in/2020/gate-cse-2014-set-2-question-53",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.39 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 40,
+      "id": "p64qzsm2i",
+      "contentSha256": "ea6ed1685b85960a6fb04effa4529f132f2ebc71a86a865ac82ab4dd3849f2e7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "P is good→¬cheap and Q is cheap→¬good. These are contrapositives, so L, M and N all hold.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.29, Propositional Logic: GATE CSE 2014 | Set 3 | Question: 1, p.78 (key p.81); https://gateoverflow.in/2035/gate-cse-2014-set-3-question-1",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.40 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 41,
+      "id": "zoz3qubrd",
+      "contentSha256": "dc84b0cc6ae23b7cc103abb6d660be4721d1b6ded1edfd3b68e4befb946c7c59",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Some rainy day is not cold: ∃d(Rainy(d)∧¬Cold(d)).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.19, First Order Logic: GATE CSE 2014 | Set 3 | Question: 53, p.68 (key p.81); https://gateoverflow.in/2087/gate-cse-2014-set-3-question-53",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.41 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 42,
+      "id": "wuwm5rft6",
+      "contentSha256": "3a70d3563d1764783a36d300b7b948dafa681b8189a9e2bb40f63ace96a7edcb",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "(¬p∧q)∨(p∧¬q) is exclusive OR, the negation of p↔q; A, B and D are equivalent to p↔q.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.30, Propositional Logic: GATE CSE 2015 | Set 1 | Question: 14, p.78 (key p.81); https://gateoverflow.in/8209/gate-cse-2015-set-1-question-1-4",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.42 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 43,
+      "id": "kbgpx9gfb",
+      "contentSha256": "5ca35548f81155b8493b710b4d674a0cc7d5327d8f50a01c9f488081a4fe9d5a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The diagram table (0,0→0; 0,1→1; 1,0→1; 1,1→0) is exclusive OR, which is commutative and associative.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.1.6, Binary Operation: GATE CSE 2015 | Set 1 | Question: 28, p.93 (key p.126); https://gateoverflow.in/8226/gate-cse-2015-set-1-question-28",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.43 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 44,
+      "id": "enidbp431",
+      "contentSha256": "cf1615f4c8c29ac0ebab9969085ad421d11f686a90588eb3ecf292a2f5936eff",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Kind→elected (S2) and elected→not known corrupt (contrapositive of S1), so kind→not known corrupt.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.2.2, Logical Reasoning: GATE CSE 2015 | Set 2 | Question: 3, p.72 (key p.81); https://gateoverflow.in/8049/gate-cse-2015-set-2-question-3",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.44 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 45,
+      "id": "t8uoodzcf",
+      "contentSha256": "e7d2252e96ba00339cbba91f2ccc726eb024ac887ae0711f598575f306e08eae",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "P→R ≡ ¬P∨R, so C is a biconditional of equivalent formulas. A swaps quantifiers and B fails.",
+      "note": "As printed, option D, ∀x∀yP(x,y)→∀x∀yP(y,x), is also a tautology (bound variables are only renamed). C is the key in GATE Overflow and Made Easy.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.20, First Order Logic: GATE CSE 2015 | Set 2 | Question: 55, p.68 (key p.81); https://gateoverflow.in/8259/gate-cse-2015-set-2-question-55",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.45 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 46,
+      "id": "ut7qpf30l",
+      "contentSha256": "87fef05e2fb5ffb65d467ba2d8d3c5e218756a4c627a827348c4cf6f9a3e2d21",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "A truth-teller's statement is true, so the result is head. A liar's statement \"head iff I am telling the truth\" is false while its right side is false, so head again. The result is head either way.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.2.3, Logical Reasoning: GATE CSE 2015 | Set 3 | Question: 24, p.73 (key p.81); https://gateoverflow.in/8427/gate-cse-2015-set-3-question-24",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.46 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 47,
+      "id": "yz5d60apm",
+      "contentSha256": "7e4f4b38a9f05e4a9cea0cee27e539d97b475a82b96c263efad671b3ce901308",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "11",
+      "status": "verified",
+      "reason": "¬((p⇒q)∧(¬r∨¬s)) = (p∧¬q)∨(r∧s). No prime is a perfect square, so x must be in {8,…,12} and not composite: x = 11 (checked for 2 ≤ x ≤ 201).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.31, Propositional Logic: GATE CSE 2016 | Set 1 | Question: 1, p.79 (key p.81); https://gateoverflow.in/39663/gate-cse-2016-set-1-question-1",
+          "answer": "11",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.47 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "11",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "11",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 48,
+      "id": "ed0ti4l9f",
+      "contentSha256": "5c8c91a64ae4f28ac0aa671210b29736f4c9a4d6ce9d79dd59d09eaefd016505",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "4",
+      "status": "verified",
+      "reason": "P∧(P→Q) ≡ P∧Q implies Q, True, P∨Q and ¬Q∨P, but not False: 4 expressions (truth-table checked).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.32, Propositional Logic: GATE CSE 2016 | Set 2 | Question: 01, p.79 (key p.81); https://gateoverflow.in/39568/gate-cse-2016-set-2-question-01",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.48 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "4",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 49,
+      "id": "5uy8rwz4i",
+      "contentSha256": "79b1bf2432650d886e8f294cc39c4538d6d61b70eeac4bd247459d0400873d2f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "∀x(p∨q) does not imply ∀xp∨∀xq (p on part of the domain, q on the rest); A, B and C are valid.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.21, First Order Logic: GATE CSE 2016 | Set 2 | Question: 27, p.68 (key p.81); https://gateoverflow.in/39618/gate-cse-2016-set-2-question-27",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.49 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 50,
+      "id": "x6ub5v1xg",
+      "contentSha256": "b565d9d91ed59eb2b0e8b3aad61e74c92aebcdda44740eb1a042550321d89d01",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "I follows in a non-empty domain and IV is ∀x∃yR(x,y), which is F itself. II and III need different quantifier orders.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.22, First Order Logic: GATE CSE 2017 | Set 1 | Question: 02, p.68 (key p.81); https://gateoverflow.in/118701/gate-cse-2017-set-1-question-02",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.50 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 51,
+      "id": "0jg2dgpph",
+      "contentSha256": "b1a8c017d43bc174fdc4490b6cc3f1be071e71c7b876c7120c6760847ac5dc0e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "¬p⇒¬q ≡ p∨¬q ≡ q⇒p, so II and III (truth-table checked).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.33, Propositional Logic: GATE CSE 2017 | Set 1 | Question: 01, p.79 (key p.81); https://gateoverflow.in/118698/gate-cse-2017-set-1-question-01",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.51 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 52,
+      "id": "stucpjvfb",
+      "contentSha256": "52144e9af8427923ca1566cd5afd6276f18f66b7da51c9f2827f582b96deaeb7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A contradiction forces p→q true and r false. Then r→p is true, so (r→p)→q has the value of q and is true exactly when q is true.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.34, Propositional Logic: GATE CSE 2017 | Set 1 | Question: 29, p.79 (key p.81); https://gateoverflow.in/118310/gate-cse-2017-set-1-question-29",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.52 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 53,
+      "id": "qc8duetc2",
+      "contentSha256": "f4d460fc15a443eee6c674a7c10eda31d223aab5685c50f8bc08b9b512a8f59e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "\"It is not raining and it is pleasant\" is ¬p∧r; \"not pleasant only if raining and cold\" is ¬r→(p∧q).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.35, Propositional Logic: GATE CSE 2017 | Set 2 | Question: 11, p.79 (key p.81); https://gateoverflow.in/118151/gate-cse-2017-set-2-question-11",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.53 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 54,
+      "id": "o3uxwzctf",
+      "contentSha256": "ddb82794ecaaed703bec4f9de5ecf2df59a10960e20f3cb03f90b95fa08bc8ee",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "φ says every prime in the domain has a larger prime in the domain. That holds in the infinite sets S2 and S3 but fails in S1 at 97.",
+      "note": "Option order differs: GATE Overflow lists A S1,S2 / B S1,S3 / C S2,S3 / D S1,S2,S3. Its key C is \"S2 and S3\", which is book option B.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.24, First Order Logic: GATE CSE 2019 | Question: 35, p.69 (key p.81); https://gateoverflow.in/302813/gate-cse-2019-question-35",
+          "answer": "C — GATE Overflow option C (S2 and S3) is book option B.",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.54 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 55,
+      "id": "ojqx54qc8",
+      "contentSha256": "4a07a2000f48d59ea2f7a1b56485bd3e21ec2324b65e4f84f0ca6fb44523eab2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "∀x(p(x)→W) ≡ ∃xp(x)→W, not ∀xp(x)→W. The other three are valid prenex rules when x is not free in W.",
+      "note": "Option order differs from GATE Overflow, whose key C is the ∀x(p(x)→W) formula, book option B.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.25, First Order Logic: GATE CSE 2020 | Question: 39, p.69 (key p.81); https://gateoverflow.in/333192/gate-cse-2020-question-39",
+          "answer": "C — GATE Overflow option C, ∀x(p(x)→W)≡∀xp(x)→W, is book option B.",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.55 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 56,
+      "id": "7zvruiopl",
+      "contentSha256": "a44db6f3b83d871cc7c04d1d57271b794a02f1bbd7387959e70e4c26a6c68133",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "¬p∧(p∨q) ≡ ¬p∧q, so S1 is a tautology; S2 fails for p=q=T (truth-table checked).",
+      "note": "Option order differs from GATE Overflow, whose key B is \"S1 is a tautology but S2 is not\", book option C.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.36, Propositional Logic: GATE CSE 2021 | Set 1 | Question: 7, p.80 (key p.81); https://gateoverflow.in/357445/gate-cse-2021-set-1-question-7",
+          "answer": "B — GATE Overflow option B (S1 tautology, S2 not) is book option C.",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.56 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 57,
+      "id": "vh4rgqfnb",
+      "contentSha256": "4331889c9c9ee16d9de77b5b7b77f027c8ae1dd538b50112c9c5f5bc1ad62916",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "(P∧Q)→(Q→R) ≡ ¬P∨¬Q∨R ≡ (P∧Q)→R. Antecedent and consequent are equivalent, so S is a tautology (truth-table checked).",
+      "note": "Multiple-select question. Option order differs from GATE Overflow, whose key B;D maps to book options A and C.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.37, Propositional Logic: GATE CSE 2021 | Set 2 | Question: 15, p.80 (key p.81); https://gateoverflow.in/357525/gate-cse-2021-set-2-question-15",
+          "answer": "B;D — GATE Overflow options B (tautology) and D (antecedent ≡ consequent) are book options A and C.",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.57 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "a, c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "A;C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 58,
+      "id": "53saqwoqm",
+      "contentSha256": "900ac68905714c47bcaf3952af8ceca720aaf2ebf037f84273d423944ef6d408",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "∀x∀yQ(x,y) and ∃y∀x(P(x)⇒Q(x,y)) each imply ∀x(P(x)⇒∃yQ(x,y)); A and D constrain only one x.",
+      "note": "Multiple-select question.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.26, First Order Logic: GATE CSE 2023 | Question: 16, p.69 (key p.81); https://gateoverflow.in/399295/gate-cse-2023-question-16",
+          "answer": "B;C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.58 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "b, c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "B;C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 59,
+      "id": "oajw7zpxh",
+      "contentSha256": "7db8e145cf4249aee9bcad13d635091f546b219e5c792ce0cd0b8f3ca5aeed9c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "When the student scores more than 50% (q), a fail grade cannot be given (¬p): q→¬p.",
+      "note": "Option order differs from GATE Overflow, whose key A is q→¬p, book option B.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.3.38, Propositional Logic: GATE CSE 2024 | Set 2 | Question: 2, p.80 (key p.81); https://gateoverflow.in/422895/gate-cse-2024-set-2-question-2",
+          "answer": "A — GATE Overflow option A (q→¬p) is book option B.",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Mathematical Logic answer table Q1.59 (1. Discrete Maths/1. Mathematical Logic.pdf p.4)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 60,
+      "id": "mumhlid19",
+      "contentSha256": "39f257ce8912a91a9fc4492d9ab03300636358cecab5eeefaffed2db1eec2a4a",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "B and D assert some mother y of x and that no different z is a mother of x. A only needs a non-mother, and C never asserts that a mother exists.",
+      "note": "Multiple-select question; not in the Made Easy book (2025).",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.27, First Order Logic: GATE CSE 2025 | Set 1 | Question: 38, p.70 (key p.81); https://gateoverflow.in/460042/gate-cse-2025-set-1-question-38",
+          "answer": "B;D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "B;D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 61,
+      "id": "3hzahav6l",
+      "contentSha256": "d85f88fb7fc500b6ae52c07e617274121a6a99bc9dc97542c26de7a1a3d04b65",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "This is mathematical induction from P(0) with P(x)⇒P(x+1). Downward chains, or chains starting at 1000, do not cover every natural number.",
+      "note": "Not in the Made Easy book (2025).",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 3.1.28, First Order Logic: GATE CSE 2025 | Set 2 | Question: 5, p.70 (key p.81); https://gateoverflow.in/460830/gate-cse-2025-set-2-question-5",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (propositional items brute-forced by truth table)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}
