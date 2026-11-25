@@ -13,6 +13,12 @@ import PdfExportPanel from '@/components/PdfExportPanel';
 import styles from './workspace.module.css';
 import YouTubeStudio from '@/components/YouTubeStudio';
 import QuestionAnswerFields from '@/components/QuestionAnswerFields';
+import PreviewAnswerKey from '@/components/PreviewAnswerKey';
+import { answerKeyComplete } from '@/lib/question-answers.mjs';
+import { isLargeRemoval, planChapterSync, syncBaseline } from '@/lib/chapter-sync.mjs';
+import { useChapterAutosave } from '@/lib/use-chapter-autosave';
+
+const WORKSPACE_TABS = [['editor', 'Question editor'], ['pdf', 'PDF & LaTeX'], ['youtube', 'YouTube studio']];
 
 const shouldUseTwoCols = (q) => {
   if (!q.optA && !q.optB && !q.optC && !q.optD) return false;
@@ -71,7 +77,6 @@ export default function Home() {
   const [questions, setQuestions] = useState([]);
   const [history, setHistory] = useState([]);
   const [bulkText, setBulkText] = useState("");
-  const jumpInputRef = useRef(null);
   const [lockCount, setLockCount] = useState(0);
   const lockInputRef = useRef(null);
   const availableSubjects = Object.keys(GATE_SYLLABUS);
@@ -107,6 +112,37 @@ export default function Home() {
   const [filterYear, setFilterYear] = useState('All');
   const [hideBulkLocked, setHideBulkLocked] = useState(false);
   const [hidePosLocked, setHidePosLocked] = useState(false);
+  // REVIEW VIEW: compact preview-only cards for fast answer checking
+  const [previewOnly, setPreviewOnly] = useState(false);
+  const [previewColumns, setPreviewColumns] = useState(1);
+  const [editingIds, setEditingIds] = useState(() => new Set());
+  const [answerFilter, setAnswerFilter] = useState('all');
+  const [answerFilterIds, setAnswerFilterIds] = useState(() => new Set());
+  const lastMissingJumpRef = useRef(0);
+  // PINNED TOOLBAR: a slim copy appears under the tabs once the full toolbar scrolls away.
+  const [toolsCompact, setToolsCompact] = useState(false);
+  const toolsRef = useRef(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      try {
+        const saved = JSON.parse(localStorage.getItem('gate-review-view') || 'null');
+        if (saved?.previewOnly === true) setPreviewOnly(true);
+        if (saved?.previewColumns === 2) setPreviewColumns(2);
+      } catch { /* The layout preference is optional. */ }
+    }, 0);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const tools = toolsRef.current;
+    if (!tools || activeTab !== 'editor') return;
+    const observer = new IntersectionObserver(([entry]) => {
+      setToolsCompact(!entry.isIntersecting && entry.boundingClientRect.bottom < 64);
+    }, { rootMargin: '-64px 0px 0px 0px' });
+    observer.observe(tools);
+    return () => observer.disconnect();
+  }, [activeTab]);
 
   const showToast = (message, type = 'success') => {
     setToast({ message, type });
@@ -157,7 +193,11 @@ export default function Home() {
   };
 
   const loadFromMongoDB = async (sub, chap, { append = false } = {}) => {
-    if (!append && isDirty && !confirm('Load from the database and replace your unsaved changes in this chapter?')) return;
+    if (!append && isDirty) {
+      // Save pending edits first; ask only if they cannot be saved (for example after a conflict).
+      const flushed = databaseState?.baseline ? await autosave.flush() : { ok: false };
+      if (!flushed.ok && !confirm('Load from the database and replace your unsaved changes in this chapter?')) return;
+    }
     selectionChangedRef.current = true;
     const requestId = ++databaseRequestRef.current;
     setDraftReady(true);
@@ -178,19 +218,31 @@ export default function Home() {
         const totalQuestions = data.data.totalQuestions ?? loadedCount;
         setQuestions(prev => append ? [...prev, ...loaded] : loaded);
         setSyncedCount(prev => append ? prev + loaded.length : loaded.length);
+        let nextLock = lockCount;
         if (!append) {
-          setLockCount(Math.min(data.data.lockCount || 0, loaded.length));
+          nextLock = Math.min(data.data.lockCount || 0, loaded.length);
           setIsDirty(false);
           setImageErrors(new Set());
         } else if (data.data.lockCount > databaseState.loadedCount) {
-          setLockCount(questions.length + Math.min(loaded.length, data.data.lockCount - databaseState.loadedCount));
+          nextLock = questions.length + Math.min(loaded.length, data.data.lockCount - databaseState.loadedCount);
         }
-        setDatabaseState({ loadedCount, totalQuestions, updatedAt: data.data.updatedAt });
+        setLockCount(nextLock);
+        // Autosave compares against this snapshot of what the database holds. Appending to a
+        // screen that was never linked (an old draft) cannot be compared, so it stays unlinked.
+        const baseline = !append ? syncBaseline(loaded) : databaseState.baseline && [...databaseState.baseline, ...syncBaseline(loaded)];
+        setDatabaseState({ loadedCount, totalQuestions, updatedAt: data.data.updatedAt, ...(baseline && { baseline, savedLockCount: append ? (databaseState.savedLockCount ?? 0) + (nextLock - lockCount) : nextLock }) });
+        autosave.resetStatus();
         setHistory([]);
         showToast(`✅ Loaded ${loadedCount} of ${totalQuestions} questions.`, 'success');
       } else {
-        showToast("ℹ️ No DB data found. Loaded local draft.", "info");
+        showToast("ℹ️ No DB data found. Loaded local draft; it will be saved as a new chapter.", "info");
         loadChapterState(sub, chap);
+        // Nothing is stored for this chapter yet, so autosave may create it from what is on screen.
+        let draftQuestions = [];
+        try { draftQuestions = JSON.parse(localStorage.getItem(`gate_draft_${sub}_${chap}`) || 'null')?.questions || []; } catch { /* No usable draft. */ }
+        setDatabaseState({ loadedCount: 0, totalQuestions: 0, updatedAt: null, baseline: [], savedLockCount: 0 });
+        if (draftQuestions.length) setIsDirty(true);
+        autosave.resetStatus();
       }
     } catch (error) {
       if (requestId === databaseRequestRef.current) showToast(`❌ ${error.message}`, 'error');
@@ -272,24 +324,36 @@ export default function Home() {
     }
   };
 
-  const handleSubjectChange = (e) => {
+  // Before another topic loads, send this chapter's pending edits. If that fails they stay
+  // in this browser's draft and are saved when you come back to the chapter.
+  const leaveChapter = async () => {
+    if (!isDirty || !databaseState?.baseline) return;
+    const result = await autosave.flush();
+    if (!result.ok) showToast('Some changes in this chapter are not saved to the database yet. They are kept in this browser and will be saved when you come back.', 'info');
+  };
+
+  const handleSubjectChange = async (e) => {
+    const selectedSubject = e.target.value;
+    await leaveChapter();
     selectionChangedRef.current = true;
     databaseRequestRef.current++;
-    const selectedSubject = e.target.value;
     const defaultChapter = GATE_SYLLABUS[selectedSubject][0];
     setSubject(selectedSubject);
     setChapter(defaultChapter);
     syncPreferences(selectedSubject, defaultChapter);
     loadChapterState(selectedSubject, defaultChapter);
+    autosave.resetStatus();
   };
 
-  const handleChapterChange = (e) => {
+  const handleChapterChange = async (e) => {
+    const selectedChapter = e.target.value;
+    await leaveChapter();
     selectionChangedRef.current = true;
     databaseRequestRef.current++;
-    const selectedChapter = e.target.value;
     setChapter(selectedChapter);
     syncPreferences(subject, selectedChapter);
     loadChapterState(subject, selectedChapter);
+    autosave.resetStatus();
   };
 
   useEffect(() => {
@@ -385,8 +449,9 @@ export default function Home() {
       if (data.success) {
         setSyncedCount(questions.length);
         setIsDirty(false);
-        setDatabaseState({ loadedCount: questions.length, totalQuestions: data.data.totalQuestions ?? questions.length, updatedAt: data.data.updatedAt });
-        setLockCount(Math.min(data.data.lockCount ?? lockVal, questions.length));
+        const savedLock = Math.min(data.data.lockCount ?? lockVal, questions.length);
+        setDatabaseState({ loadedCount: questions.length, totalQuestions: data.data.totalQuestions ?? questions.length, updatedAt: data.data.updatedAt, baseline: syncBaseline(cleanQuestions), savedLockCount: savedLock });
+        setLockCount(savedLock);
         
         // Refresh the dropdown UI by removing the _justFilled tags locally
         setQuestions(prev => prev.map(q => ({ ...q, _justFilled: false })));
@@ -404,6 +469,32 @@ export default function Home() {
       setIsSaving(false);
     }
   };
+  const autosave = useChapterAutosave({
+    subject, chapter, questions, lockCount, databaseState, setDatabaseState, isDirty, setIsDirty,
+    enabled: draftReady && !isReviving && !isSaving,
+    onFullSave: () => saveToMongoDB(null, true),
+    onLockCorrected: (shown, stored) => {
+      setLockCount(shown);
+      if (stored > shown) showToast('Questions beyond this batch are bulk-locked. Load all questions to change the chapter-wide lock.', 'info');
+    },
+  });
+
+  // "Save to database": with autosave on, this only sends pending changes now. The first save of
+  // a chapter that was never loaded from the database still asks before overwriting it.
+  const saveNow = async ({ lockCount: lockOverride, quiet = false } = {}) => {
+    if (!databaseState?.baseline) return saveToMongoDB(lockOverride ?? null, quiet);
+    const plan = planChapterSync({ baseline: databaseState.baseline, lockCount: databaseState.savedLockCount ?? 0 }, questions, lockOverride ?? lockCount);
+    let allowLargeRemoval = false;
+    if (!plan.needsFullSave && isLargeRemoval(plan, databaseState.baseline.length)) {
+      if (!confirm(`Save this change? It removes ${plan.removed} question${plan.removed === 1 ? '' : 's'} from "${subject} - ${chapter}" in the database.`)) return false;
+      allowLargeRemoval = true;
+    }
+    const result = await autosave.flush({ allowLargeRemoval, ...(lockOverride !== undefined && { lockCount: lockOverride }) });
+    if (result.ok && !quiet) showToast('✅ All changes saved.');
+    if (!result.ok && result.message) showToast(`❌ ${result.message}`, 'error');
+    return result.ok ? (result.data || true) : false;
+  };
+
   const handleLock = async (e) => {
     e.preventDefault();
     const val = parseInt(lockInputRef.current?.value || 0, 10);
@@ -412,7 +503,7 @@ export default function Home() {
     }
     setLockCount(val);
     showToast("Saving lock state to DB...", "info");
-    const saved = await saveToMongoDB(val, true);
+    const saved = await saveNow({ lockCount: val, quiet: true });
     if (saved) {
       if (saved.lockCount > val) {
         showToast('Questions beyond this batch are bulk-locked. Load all questions to change the chapter-wide lock.', 'info');
@@ -425,7 +516,9 @@ export default function Home() {
 
   const handleJump = (e) => {
     e.preventDefault();
-    const jumpValue = jumpInputRef.current?.value;
+    // Read from the submitted form: the full toolbar and the pinned compact bar each have one.
+    const jumpInput = e.currentTarget.elements.namedItem('jump');
+    const jumpValue = jumpInput?.value;
     if (!jumpValue) return;
     const targetQNum = parseInt(jumpValue, 10);
     const target = document.getElementById(`question-${targetQNum}`);
@@ -440,6 +533,7 @@ export default function Home() {
             if (filterYear !== 'All' && (targetQ.isBlank || targetQ.year !== filterYear)) reasons.push("Year Filter");
             if (hideBulkLocked && jumpIndex < lockCount) reasons.push("Hide Bulk Locked");
             if (hidePosLocked && targetQ.isPosLocked) reasons.push("Hide Pos Locked");
+            if (answerFilter !== 'all') reasons.push("Answer filter");
             
             if (reasons.length > 0) {
                 showToast(`❌ Question ${jumpValue} exists but is hidden by: ${reasons.join(' & ')}`, "error");
@@ -450,7 +544,7 @@ export default function Home() {
             showToast(`❌ Question ${jumpValue} does not exist.`, "error");
         }
     }
-    jumpInputRef.current.value = "";
+    if (jumpInput) jumpInput.value = "";
   };
 
   const jumpToMatch = (index) => {
@@ -1161,6 +1255,45 @@ const handleExportAllImages = async () => {
       }
   }
 
+  const changeReviewView = (patch) => {
+    const next = { previewOnly, previewColumns, ...patch };
+    if (next.previewOnly !== previewOnly) setEditingIds(new Set());
+    setPreviewOnly(next.previewOnly);
+    setPreviewColumns(next.previewColumns);
+    try { localStorage.setItem('gate-review-view', JSON.stringify(next)); } catch { /* Layout still changes for this visit. */ }
+  };
+  const toggleEditing = (id, editing) => setEditingIds(current => {
+    const next = new Set(current);
+    if (editing) next.add(id); else next.delete(id);
+    return next;
+  });
+  const reviewableCount = questions.filter(q => !q.isBlank).length;
+  const answeredCount = questions.filter(answerKeyComplete).length;
+  const missingAnswerCount = reviewableCount - answeredCount;
+  // Questions listed when a filter is chosen stay visible after you mark them, so a
+  // card does not vanish mid-check. Choosing the filter again refreshes the list.
+  const chooseAnswerFilter = (value) => {
+    setAnswerFilter(value);
+    setAnswerFilterIds(new Set(questions.filter(q => !q.isBlank && (value === 'missing' ? !answerKeyComplete(q) : answerKeyComplete(q))).map(q => q.id)));
+  };
+  const jumpToNextMissingAnswer = () => {
+    const missing = questions.flatMap((q, idx) => (!q.isBlank && !answerKeyComplete(q)) ? [idx + 1] : []);
+    if (!missing.length) return showToast('Every question has an answer key.', 'info');
+    const shown = missing.filter(qNum => document.getElementById(`question-${qNum}`));
+    if (!shown.length) return showToast('Questions without an answer key are hidden by your filters.', 'error');
+    const rect = qNum => document.getElementById(`question-${qNum}`)?.getBoundingClientRect();
+    // Continue after the last jump while it is on screen; otherwise from the first card on screen.
+    let pivot = lastMissingJumpRef.current;
+    const pivotRect = pivot ? rect(pivot) : null;
+    if (!pivotRect || pivotRect.bottom <= 0 || pivotRect.top >= window.innerHeight) {
+      const firstOnScreen = questions.findIndex((q, idx) => (rect(idx + 1)?.bottom ?? 0) > 0);
+      pivot = Math.max(0, firstOnScreen);
+    }
+    const next = shown.find(qNum => qNum > pivot) ?? shown[0];
+    lastMissingJumpRef.current = next;
+    jumpToSpecificQuestion(next, 'blank');
+  };
+
   const jumpToSpecificQuestion = (qNum, type) => {
     const targetEl = document.getElementById(`question-${qNum}`);
     if (targetEl) {
@@ -1180,6 +1313,60 @@ const handleExportAllImages = async () => {
       showToast(`Question ${qNum} is hidden by your active filters.`, "error");
     }
   };
+
+  // Tab switch from the pinned bar: the editor may be scrolled far down, so another tab opens at its top.
+  const openTabFromPinnedBar = (id) => {
+    setActiveTab(id);
+    if (id === 'editor') return;
+    requestAnimationFrame(() => {
+      const panel = document.getElementById(`panel-${id}`);
+      if (panel) window.scrollTo({ top: Math.max(0, panel.getBoundingClientRect().top + window.scrollY - 90) });
+    });
+  };
+  const renderSearchBox = () => (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '5px', background: '#181825', border: '1px solid #74c7ec', borderRadius: '4px', padding: '0 5px' }}>
+      <input type="text" aria-label="Search questions" placeholder="🔍 Search (Enter)" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} onKeyDown={handleSearchKeyDown} style={{ width: '130px', padding: '8px', border: 'none', background: 'transparent', color: '#cdd6f4', outline: 'none' }} />
+      {searchQuery && (<span style={{ fontSize: '12px', color: '#a6adc8', fontWeight: 'bold', minWidth: '35px', textAlign: 'center' }}>{searchResults.length > 0 ? `${currentSearchIndex + 1}/${searchResults.length}` : '0/0'}</span>)}
+      {searchResults.length > 0 && (
+        <div style={{ display: 'flex', gap: '2px', borderLeft: '1px solid #45475a', paddingLeft: '5px', marginLeft: '2px' }}>
+          <button type="button" onClick={handlePrevMatch} style={{ background: 'transparent', color: '#cdd6f4', border: 'none', cursor: 'pointer', padding: '0 4px', fontSize: '12px' }}>▲</button>
+          <button type="button" onClick={handleNextMatch} style={{ background: 'transparent', color: '#cdd6f4', border: 'none', cursor: 'pointer', padding: '0 4px', fontSize: '12px' }}>▼</button>
+        </div>
+      )}
+      {searchQuery && (<button type="button" onClick={() => { setSearchQuery(''); setSearchResults([]); setHasJumped(false); }} style={{ background: 'transparent', color: '#f38ba8', border: 'none', padding: '0 5px', cursor: 'pointer', fontWeight: 'bold', fontSize: '14px', marginLeft: '2px' }}>✕</button>)}
+    </div>
+  );
+  const renderJumpForm = () => (
+    <form onSubmit={handleJump} style={{ display: 'flex', gap: '5px' }}>
+      <input type="number" name="jump" aria-label="Question number" min="1" max={questions.length || 1} placeholder="Q#" style={{ width: '55px', padding: '8px', borderRadius: '4px', border: '1px solid #45475a', background: '#181825', color: '#cdd6f4', textAlign: 'center', outline: 'none' }} />
+      <button type="submit" style={{ background: '#89b4fa', color: '#11111b', border: 'none', padding: '8px 12px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>Go</button>
+    </form>
+  );
+  const renderScrollButtons = () => <>
+    <button onClick={forceRefreshPreview} style={{ background: '#a6e3a1', color: '#11111b', border: 'none', padding: '8px 12px', borderRadius: '4px', cursor: 'pointer', fontSize: '16px' }} title="Force Refresh Preview">🔄</button>
+    <button onClick={scrollToTop} style={{ background: '#45475a', color: '#cdd6f4', border: 'none', padding: '8px 12px', borderRadius: '4px', cursor: 'pointer', fontSize: '16px' }} title="Scroll to top">⬆️</button>
+    <button onClick={scrollToBottom} style={{ background: '#45475a', color: '#cdd6f4', border: 'none', padding: '8px 12px', borderRadius: '4px', cursor: 'pointer', fontSize: '16px' }} title="Scroll to bottom">⬇️</button>
+  </>;
+  const renderReviewControls = (compact) => <>
+    <div className={styles.segmented} role="group" aria-label="Layout">
+      <button type="button" aria-pressed={!previewOnly} onClick={() => changeReviewView({ previewOnly: false })}>{compact ? 'Editor' : 'Editor + preview'}</button>
+      <button type="button" aria-pressed={previewOnly} onClick={() => changeReviewView({ previewOnly: true })}>Preview only</button>
+    </div>
+    {previewOnly && <div className={styles.segmented} role="group" aria-label="Cards per row">
+      {[1, 2].map(count => <button key={count} type="button" aria-pressed={previewColumns === count} onClick={() => changeReviewView({ previewColumns: count })}>{compact ? `${count}×` : `${count} per row`}</button>)}
+    </div>}
+    <label className={styles.reviewFilter}>{!compact && 'Show'}<select aria-label="Filter by answer key" value={answerFilter} onChange={e => chooseAnswerFilter(e.target.value)}>
+      <option value="all">All questions</option>
+      <option value="missing">Missing answer ({missingAnswerCount})</option>
+      <option value="answered">Answer recorded ({answeredCount})</option>
+    </select></label>
+    <button type="button" className={styles.reviewNext} disabled={!missingAnswerCount} onClick={jumpToNextMissingAnswer}>{compact ? 'Next missing ↓' : 'Next missing answer ↓'}</button>
+    <span className={styles.reviewProgress} title="Questions with a recorded answer, a review flag, or subjective type">
+      {!compact && <span className={styles.reviewMeter}><span style={{ width: `${reviewableCount ? Math.round(answeredCount / reviewableCount * 100) : 0}%` }} /></span>}
+      <strong>{answeredCount}/{reviewableCount}</strong> {compact ? 'keys' : 'answer keys'}
+    </span>
+    <span className={styles.reviewSave}>{!isDirty ? '✅ Saved' : !databaseState?.baseline || ['paused', 'confirm', 'error'].includes(autosave.status.state) ? <button type="button" className={styles.primary} onClick={() => saveNow()} disabled={isReviving || isSaving}>{isSaving ? 'Saving…' : 'Save to database'}</button> : '💾 Saving…'}</span>
+  </>;
 
   return (
     <main className={styles.workspace}>
@@ -1229,7 +1416,12 @@ const handleExportAllImages = async () => {
         </div>
 
         <div className={styles.sync}>
-          {questions.length === 0 ? (<span style={{ color: '#a6adc8', fontWeight: 'bold' }}>{databaseState ? 'No questions in this chapter' : 'Click Load Database to load questions'}</span>) : isDirty ? (<span style={{ color: '#f9e2af', fontWeight: 'bold' }}>⚠️ {syncedCount}/{questions.length} Synced (Unsaved)</span>) : (<span style={{ color: '#a6e3a1', fontWeight: 'bold' }}>✅ All {questions.length} Synced</span>)}
+          {questions.length === 0 && !isDirty ? (<span style={{ color: '#a6adc8', fontWeight: 'bold' }}>{databaseState ? 'No questions in this chapter' : 'Click Load Database to load questions'}</span>) : !databaseState?.baseline ? (<span style={{ color: '#f9e2af', fontWeight: 'bold' }}>⚠️ Unsaved — click Save to database once; after that every change saves automatically.</span>)
+            : autosave.status.state === 'paused' ? (<span style={{ color: '#f38ba8', fontWeight: 'bold' }}>⚠️ Autosave paused: {autosave.status.message}</span>)
+            : autosave.status.state === 'confirm' ? (<span style={{ color: '#f9e2af', fontWeight: 'bold' }}>⚠️ This change removes {autosave.status.removed} questions from the database. Click Save to database to confirm.</span>)
+            : autosave.status.state === 'error' ? (<span style={{ color: '#f9e2af', fontWeight: 'bold' }}>⚠️ {autosave.status.message}</span>)
+            : (isDirty || autosave.status.state === 'saving') ? (<span style={{ color: '#89b4fa', fontWeight: 'bold' }}>💾 Saving changes…</span>)
+            : (<span style={{ color: '#a6e3a1', fontWeight: 'bold' }}>✅ All changes saved automatically{databaseState.totalQuestions > databaseState.loadedCount ? ` · ${databaseState.loadedCount} of ${databaseState.totalQuestions} loaded` : ''}</span>)}
           {databaseState && <p className={styles.loadStatus} role="status">{databaseState.loadedCount} of {databaseState.totalQuestions} database questions loaded</p>}
           {databaseState && databaseState.loadedCount < databaseState.totalQuestions && <button className={styles.loadMore} disabled={isReviving || isSaving} onClick={() => loadFromMongoDB(subject, chapter, { append: true })}>{questionLimit === 'all' ? 'Load remaining questions' : `Load ${Math.min(Number(questionLimit), databaseState.totalQuestions - databaseState.loadedCount)} more`}</button>}
           
@@ -1325,10 +1517,10 @@ const handleExportAllImages = async () => {
               )}
             </div>
         </div>
-        <button className={styles.primary} onClick={() => saveToMongoDB(null, false)} disabled={isReviving || isSaving}>{isSaving ? 'Saving…' : 'Save to database'}</button>
+        <button className={styles.primary} onClick={() => saveNow()} disabled={isReviving || isSaving} title="Changes save automatically. This sends anything pending right now.">{isSaving ? 'Saving…' : 'Save to database'}</button>
       </section>
-      <div className={styles.tabs} role="tablist" aria-label="Workspace view">
-        {[['editor', 'Question editor'], ['pdf', 'PDF & LaTeX'], ['youtube', 'YouTube studio']].map(([id, title]) => <button key={id} id={`tab-${id}`} role="tab" aria-selected={activeTab === id} aria-controls={`panel-${id}`} onClick={() => setActiveTab(id)}>{title}</button>)}
+      <div className={`${styles.tabs} ${activeTab === 'editor' && toolsCompact ? styles.tabsReleased : ''}`} role="tablist" aria-label="Workspace view">
+        {WORKSPACE_TABS.map(([id, title]) => <button key={id} id={`tab-${id}`} role="tab" aria-selected={activeTab === id} aria-controls={`panel-${id}`} onClick={() => setActiveTab(id)}>{title}</button>)}
       </div>
       <section id="panel-pdf" role="tabpanel" aria-labelledby="tab-pdf" hidden={activeTab !== 'pdf'}>
         <div className={styles.sectionTitle}><div><h2>Create your PDF</h2><p>Choose questions, pick a look and export.</p></div></div>
@@ -1341,6 +1533,24 @@ const handleExportAllImages = async () => {
         </YouTubeStudio>
       </section>
       <section id="panel-editor" role="tabpanel" aria-labelledby="tab-editor" hidden={activeTab !== 'editor'}>
+        <div className={styles.compactDock}>
+          <div className={styles.compactBar} role="toolbar" aria-label="Pinned editor tools" hidden={!toolsCompact}>
+            <select aria-label="View year" value={filterYear} onChange={(e) => setFilterYear(e.target.value)}>
+              {availableYears.map(y => <option key={y} value={y}>{y === 'All' ? 'All years' : y}</option>)}
+            </select>
+            {renderSearchBox()}
+            {renderJumpForm()}
+            {renderScrollButtons()}
+            <div className={styles.compactTabs} role="group" aria-label="Workspace view">
+              {WORKSPACE_TABS.map(([id, title]) => <button key={id} type="button" aria-current={activeTab === id ? 'page' : undefined} onClick={() => openTabFromPinnedBar(id)}>{title}</button>)}
+            </div>
+            {questions.length > 0 && <>
+              <span className={styles.compactDivider} aria-hidden="true" />
+              {renderReviewControls(true)}
+            </>}
+          </div>
+        </div>
+        <div ref={toolsRef}>
         <div className={styles.toolbar}>
         <div style={{ flex: '1 1 120px' }}>
           <label style={{ marginTop: 0 }}>View year</label>
@@ -1368,31 +1578,18 @@ const handleExportAllImages = async () => {
               <button type="submit" disabled={isReviving || isSaving} style={{ background: '#f9e2af', color: '#11111b', border: 'none', padding: '8px 12px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>🔒 Lock</button>
             </form>
             
-            <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginRight: '10px', background: '#181825', border: '1px solid #74c7ec', borderRadius: '4px', padding: '0 5px' }}>
-              <input type="text" placeholder="🔍 Search (Enter)" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} onKeyDown={handleSearchKeyDown} style={{ width: '130px', padding: '8px', border: 'none', background: 'transparent', color: '#cdd6f4', outline: 'none' }} />
-              {searchQuery && (<span style={{ fontSize: '12px', color: '#a6adc8', fontWeight: 'bold', minWidth: '35px', textAlign: 'center' }}>{searchResults.length > 0 ? `${currentSearchIndex + 1}/${searchResults.length}` : '0/0'}</span>)}
-              {searchResults.length > 0 && (
-                <div style={{ display: 'flex', gap: '2px', borderLeft: '1px solid #45475a', paddingLeft: '5px', marginLeft: '2px' }}>
-                  <button type="button" onClick={handlePrevMatch} style={{ background: 'transparent', color: '#cdd6f4', border: 'none', cursor: 'pointer', padding: '0 4px', fontSize: '12px' }}>▲</button>
-                  <button type="button" onClick={handleNextMatch} style={{ background: 'transparent', color: '#cdd6f4', border: 'none', cursor: 'pointer', padding: '0 4px', fontSize: '12px' }}>▼</button>
-                </div>
-              )}
-              {searchQuery && (<button type="button" onClick={() => { setSearchQuery(''); setSearchResults([]); setHasJumped(false); }} style={{ background: 'transparent', color: '#f38ba8', border: 'none', padding: '0 5px', cursor: 'pointer', fontWeight: 'bold', fontSize: '14px', marginLeft: '2px' }}>✕</button>)}
-            </div>
-            
-            <form onSubmit={handleJump} style={{ display: 'flex', gap: '5px', marginRight: '5px' }}>
-              <input type="number" min="1" max={questions.length || 1} ref={jumpInputRef} placeholder="Q#" style={{ width: '55px', padding: '8px', borderRadius: '4px', border: '1px solid #45475a', background: '#181825', color: '#cdd6f4', textAlign: 'center', outline: 'none' }} />
-              <button type="submit" style={{ background: '#89b4fa', color: '#11111b', border: 'none', padding: '8px 12px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>Go</button>
-            </form>
-            
-            <button onClick={forceRefreshPreview} style={{ background: '#a6e3a1', color: '#11111b', border: 'none', padding: '8px 12px', borderRadius: '4px', cursor: 'pointer', fontSize: '16px' }} title="Force Refresh Preview">🔄</button>
-            <button onClick={scrollToTop} style={{ background: '#45475a', color: '#cdd6f4', border: 'none', padding: '8px 12px', borderRadius: '4px', cursor: 'pointer', fontSize: '16px' }}>⬆️</button>
-            <button onClick={scrollToBottom} style={{ background: '#45475a', color: '#cdd6f4', border: 'none', padding: '8px 12px', borderRadius: '4px', cursor: 'pointer', fontSize: '16px' }}>⬇️</button>
+            {renderSearchBox()}
+            {renderJumpForm()}
+            {renderScrollButtons()}
           </div></div>
           <details className={styles.advanced}><summary>More editor actions</summary><div><button onClick={handleUndo} disabled={!history.length}>Undo last edit</button><button style={{ background: '#f9e2af' }} onClick={handleExportForAI}>Export for AI</button><button className="btn-clear" onClick={clearWorkspace}>Clear workspace</button></div></details>
         </div>
+        {questions.length > 0 && <div className={styles.reviewBar} role="group" aria-label="Answer review">
+          {renderReviewControls(false)}
+        </div>}
+        </div>
         {!questions.length && <div className={styles.empty}><h2>Your chapter starts here</h2><p>Choose a subject, chapter, and question count above, then click Load Database. You can also paste questions below to start editing.</p><a href="#paste_section" style={{ color: '#89b4fa' }}>Add questions ↓</a></div>}
-      <div id="questions_container">
+      <div id="questions_container" className={previewOnly && previewColumns === 2 ? styles.reviewGrid : undefined}>
         {questions.map((q, idx) => {
           const qNum = idx + 1;
           const isBulkLocked = idx < lockCount;
@@ -1412,10 +1609,32 @@ const handleExportAllImages = async () => {
           // 2. Check Lock Filters
           if (hideBulkLocked && isBulkLocked) return null;
           if (hidePosLocked && q.isPosLocked) return null;
+          // 3. Check Answer-Key Filter
+          if (answerFilter !== 'all') {
+            if (q.isBlank) return null;
+            const matches = answerFilter === 'missing' ? !answerKeyComplete(q) : answerKeyComplete(q);
+            if (!matches && !answerFilterIds.has(q.id)) return null;
+          }
+
+          // Preview-only mode shows compact cards; Edit opens the full editor for one question.
+          const isEditing = !previewOnly || editingIds.has(q.id);
+          const doneEditingButton = previewOnly && <button type="button" onClick={() => toggleEditing(q.id, false)} style={{ background: '#a6e3a1', color: '#11111b', padding: '4px 10px', fontSize: '12px' }} title="Close the editor and return to the compact preview">✓ Done editing</button>;
+
+          if (q.isBlank && !isEditing) {
+            return (
+              <div key={q.id} id={`question-${qNum}`} className={styles.reviewBlank} style={{ scrollMarginTop: '160px' }}>
+                <span>{(isBulkLocked || q.isPosLocked) && '🔒 '}<strong>Q{qNum}</strong> · Blank placeholder</span>
+                <span className={styles.reviewActions}>
+                  <button type="button" className={styles.reviewEdit} onClick={() => toggleEditing(q.id, true)}>✏️ Fill / edit</button>
+                  <button type="button" disabled={isBulkLocked} onClick={() => addBlankAt(idx)}>＋ Blank above</button>
+                </span>
+              </div>
+            );
+          }
 
           if (q.isBlank) {
             return (
-              <div key={q.id} id={`question-${qNum}`} style={{ scrollMarginTop: '160px', opacity: isBulkLocked ? 0.85 : 1 }}>
+              <div key={q.id} id={`question-${qNum}`} style={{ scrollMarginTop: '160px', opacity: isBulkLocked ? 0.85 : 1, gridColumn: '1 / -1' }}>
                 <div style={{ textAlign: 'center', margin: '5px 0 10px 0', display: 'flex', justifyContent: 'center', gap: '10px' }}>
                   <button className="btn-autofill" disabled={isBulkLocked} onClick={() => addBlankAt(idx)} style={{ background: '#89b4fa', color: '#11111b', padding: '4px 12px', fontSize: '12px' }}>➕ Insert Blank Above</button>
                 </div>
@@ -1423,6 +1642,7 @@ const handleExportAllImages = async () => {
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
                     <h3 style={{ margin: 0, color: '#a6adc8' }}>{isBulkLocked || q.isPosLocked ? "🔒 " : ""}Question {qNum} (Blank Placeholder)</h3>
                     <div style={{ display: 'flex', gap: '8px' }}>
+                      {doneEditingButton}
                       <button className="btn-export" disabled={isBulkLocked} style={{ background: q.isPosLocked ? '#f9e2af' : '#45475a', color: q.isPosLocked ? '#11111b' : '#cdd6f4', padding: '4px 10px', fontSize: '12px' }} onClick={() => togglePosLock(q.id)} title={q.isPosLocked ? "Unlock Position" : "Lock Position"}>
                         {q.isPosLocked ? '🔓 Pos Locked' : '🔒 Lock Pos'}
                       </button>
@@ -1447,18 +1667,64 @@ const handleExportAllImages = async () => {
           const imageList = q.diagram ? q.diagram.split(',').map(s => s.trim()).filter(Boolean) : [];
           const hasOptions = q.optA || q.optB || q.optC || q.optD;
           const preview = renderQuestionPreview(q, imageList);
+          const updateAnswer = patch => { setQuestions(current => current.map(item => item.id === q.id ? { ...item, ...patch } : item)); setIsDirty(true); };
+          const previewMeta = `[GATE ${q.examPaper || 'CS'} ${q.year}${q.setNum ? ` (Set-${q.setNum})` : ''} | ${q.marks} Mark${q.questionType ? ` | ${q.questionType}` : ''}]${q.source?.questionNumber ? ` · Book Q${q.source.questionNumber}` : ''}`;
+          const previewLinks = <>
+            {safeSolutionUrl(q.solutionUrl) && <a href={safeSolutionUrl(q.solutionUrl)} target="_blank" rel="noopener noreferrer" style={{ color: '#89dceb' }}>Watch video solution ↗</a>}
+            {safeGateOverflowUrl(q.gateOverflowUrl) && <a href={safeGateOverflowUrl(q.gateOverflowUrl)} target="_blank" rel="noopener noreferrer" style={{ color: '#a6e3a1' }}>GateOverflow solution ↗</a>}
+          </>;
+          const previewMain = <>
+            <div>{preview.content}</div>
+
+            {q.code && !preview.containsCodeTag && <div style={{ background: '#181825', padding: '10px', border: '1px solid #45475a', fontFamily: 'monospace', whiteSpace: 'pre-wrap', margin: '10px 0' }}>{q.code}</div>}
+
+            <PreviewAnswerKey
+              question={q}
+              disabled={isBulkLocked}
+              hasOptions={Boolean(hasOptions)}
+              isTwoCol={q.optLayout === '2col' || (q.optLayout !== '1col' && shouldUseTwoCols(q))}
+              renderOption={letter => renderOptionText(q[`opt${letter}`], q.ext)}
+              onChange={updateAnswer}
+            />
+          </>;
+          const inlinePasteBox = (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', background: '#181825', padding: '15px', borderRadius: '8px', border: '1px dashed #cba6f7', width: '80%', margin: '0 auto 10px' }}>
+              <textarea value={inlinePasteText} onChange={(e) => setInlinePasteText(e.target.value)} placeholder="Paste QUESTION: ... OPTIONS: ... here to displace and insert at this index" style={{ width: '100%', minHeight: '80px' }}></textarea>
+              <div>
+                <button onClick={() => handleInlinePaste(idx)} style={{ background: '#a6e3a1', padding: '6px 15px', fontWeight: 'bold', color: '#11111b', borderRadius: '4px', border: 'none', cursor: 'pointer' }}>⚡ Extract & Insert Here</button>
+                <button onClick={() => setActivePasteIndex(null)} style={{ background: '#f38ba8', padding: '6px 15px', fontWeight: 'bold', color: '#11111b', borderRadius: '4px', marginLeft: '10px', border: 'none', cursor: 'pointer' }}>Cancel</button>
+              </div>
+            </div>
+          );
+
+          if (!isEditing) {
+            const insertLocked = isBulkLocked || q.isPosLocked;
+            return (
+              <div key={q.id} id={`question-${qNum}`} className={styles.reviewItem} style={{ scrollMarginTop: '160px', gridColumn: activePasteIndex === idx ? '1 / -1' : undefined }}>
+                {activePasteIndex === idx && inlinePasteBox}
+                <article className={`${styles.reviewCard} ${answerKeyComplete(q) ? styles.reviewDone : styles.reviewMissing}`} style={{ opacity: isBulkLocked ? 0.85 : 1 }}>
+                  <header className={styles.reviewHeader}>
+                    <strong className={styles.reviewNumber}>{(isBulkLocked || q.isPosLocked) && '🔒 '}Q{qNum}</strong>
+                    <span className={styles.reviewMeta}>{previewMeta}</span>
+                    {previewLinks}
+                    <span className={styles.reviewActions}>
+                      <button type="button" className={styles.reviewEdit} onClick={() => toggleEditing(q.id, true)} title="Open the full editor for this question">✏️ Edit</button>
+                      <button type="button" disabled={insertLocked} onClick={() => setActivePasteIndex(idx)} title={insertLocked ? 'Locked' : 'Paste new questions above this one'}>⚡ Paste above</button>
+                      <button type="button" disabled={insertLocked} onClick={() => addBlankAt(idx)} title={insertLocked ? 'Locked' : 'Insert an empty placeholder above this one'}>＋ Blank above</button>
+                    </span>
+                  </header>
+                  {q.needsManualOptionFix && <p className={styles.reviewWarning}>Options need a manual fix — click Edit.</p>}
+                  <div className={styles.reviewBody}>{previewMain}</div>
+                </article>
+              </div>
+            );
+          }
 
           return (
-            <div key={q.id} id={`question-${qNum}`} style={{ scrollMarginTop: '160px', opacity: isBulkLocked ? 0.85 : 1 }}>
+            <div key={q.id} id={`question-${qNum}`} style={{ scrollMarginTop: '160px', opacity: isBulkLocked ? 0.85 : 1, gridColumn: '1 / -1' }}>
               <div style={{ textAlign: 'center', margin: '5px 0 10px 0', display: 'flex', justifyContent: 'center', gap: '10px' }}>
                 {activePasteIndex === idx ? (
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', background: '#181825', padding: '15px', borderRadius: '8px', border: '1px dashed #cba6f7', width: '80%' }}>
-                    <textarea value={inlinePasteText} onChange={(e) => setInlinePasteText(e.target.value)} placeholder="Paste QUESTION: ... OPTIONS: ... here to displace and insert at this index" style={{ width: '100%', minHeight: '80px' }}></textarea>
-                    <div>
-                      <button onClick={() => handleInlinePaste(idx)} style={{ background: '#a6e3a1', padding: '6px 15px', fontWeight: 'bold', color: '#11111b', borderRadius: '4px', border: 'none', cursor: 'pointer' }}>⚡ Extract & Insert Here</button>
-                      <button onClick={() => setActivePasteIndex(null)} style={{ background: '#f38ba8', padding: '6px 15px', fontWeight: 'bold', color: '#11111b', borderRadius: '4px', marginLeft: '10px', border: 'none', cursor: 'pointer' }}>Cancel</button>
-                    </div>
-                  </div>
+                  inlinePasteBox
                 ) : (
                   <>
                     <button className="btn-autofill" disabled={isBulkLocked || q.isPosLocked} style={{ padding: '4px 12px', fontSize: '12px', background: '#45475a', color: '#cdd6f4', opacity: (isBulkLocked || q.isPosLocked) ? 0.5 : 1, cursor: (isBulkLocked || q.isPosLocked) ? 'not-allowed' : 'pointer' }} onClick={() => setActivePasteIndex(idx)}>⚡ Quick Paste Flow Here</button>
@@ -1487,6 +1753,7 @@ const handleExportAllImages = async () => {
                       </h3>
                       <button className="btn-export" style={{ background: '#f9e2af', color: '#11111b', padding: '4px 10px', marginLeft: '10px', fontSize: '12px' }} onClick={() => youtubeStudioRef.current?.copyQuestion(q.id)}>📋 Copy for YT</button><button style={{ background: '#30384e', color: '#cdd6f4', padding: '4px 10px', fontSize: '12px' }} onClick={() => { youtubeStudioRef.current?.openQuestion(q.id); setActiveTab('youtube'); scrollToTop(); }}>Edit YouTube copy ↗</button>
                       <button className="btn-export" disabled={isBulkLocked} style={{ background: '#f5a97f', color: '#11111b', padding: '4px 10px', marginLeft: '10px', fontSize: '12px', opacity: isBulkLocked ? 0.5 : 1, cursor: isBulkLocked ? 'not-allowed' : 'pointer' }} onClick={() => handleFormatSingleLatexSpaces(q.id)} title="Format Math Spacing">✨ Format $ $</button>
+                      {doneEditingButton}
                     </div>
                     <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
                       <button
@@ -1556,7 +1823,7 @@ const handleExportAllImages = async () => {
                     <textarea disabled={isBulkLocked} value={q.optD || ""} onChange={(e) => updateQ(q.id, 'optD', e.target.value)} placeholder="Option D" style={{ minHeight: '60px', padding: '8px', borderRadius: '4px', border: '1px solid #45475a', background: '#181825', color: '#cdd6f4', resize: 'vertical' }} />
                   </div>
                   
-                  <QuestionAnswerFields question={q} disabled={isBulkLocked} onChange={patch => { setQuestions(current => current.map(item => item.id === q.id ? { ...item, ...patch } : item)); setIsDirty(true); }} />
+                  <QuestionAnswerFields question={q} disabled={isBulkLocked} onChange={updateAnswer} />
                   <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center', gap: '15px', flexWrap: 'wrap' }}>
                     {hasOptions && (
                       <div style={{ display: 'flex', gap: '12px', alignItems: 'center', background: '#313244', padding: '6px 12px', borderRadius: '4px' }}>
@@ -1576,34 +1843,9 @@ const handleExportAllImages = async () => {
                 </div>
                 
                 <div id={`preview-${q.id}`} className="preview-pane" style={{ paddingLeft: '20px', width: '50%', minWidth: 0, boxSizing: 'border-box', overflowWrap: 'anywhere' }}>
-                  <div style={{ color: '#a6e3a1', fontWeight: 'bold', marginBottom: '10px' }}>[GATE {q.examPaper || 'CS'} {q.year}{q.setNum ? ` (Set-${q.setNum})` : ''} | {q.marks} Mark{q.questionType ? ` | ${q.questionType}` : ''}]{q.source?.questionNumber ? ` · Book Q${q.source.questionNumber}` : ''}</div>
-                  <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-                    {safeSolutionUrl(q.solutionUrl) && <a href={safeSolutionUrl(q.solutionUrl)} target="_blank" rel="noopener noreferrer" style={{ color: '#89dceb' }}>Watch video solution ↗</a>}
-                    {safeGateOverflowUrl(q.gateOverflowUrl) && <a href={safeGateOverflowUrl(q.gateOverflowUrl)} target="_blank" rel="noopener noreferrer" style={{ color: '#a6e3a1' }}>GateOverflow solution ↗</a>}
-                  </div>
-                  <div>{preview.content}</div>
-
-                  {q.code && !preview.containsCodeTag && <div style={{ background: '#181825', padding: '10px', border: '1px solid #45475a', fontFamily: 'monospace', whiteSpace: 'pre-wrap', margin: '10px 0' }}>{q.code}</div>}
-                  
-                  <div style={{ marginTop: '15px' }}>
-                    {hasOptions ? (() => {
-                      const isTwoCol = q.optLayout === '2col' || (q.optLayout !== '1col' && shouldUseTwoCols(q));
-                      return (
-                        <div style={{
-                          display: isTwoCol ? 'grid' : 'block',
-                          gridTemplateColumns: isTwoCol ? 'minmax(0, 1fr) minmax(0, 1fr)' : 'none',
-                          gap: isTwoCol ? '10px 20px' : '0'
-                        }}>
-                          <div style={{ marginBottom: '8px' }}><strong>(A)</strong> <span style={{ whiteSpace: 'pre-wrap', fontFamily: q.isCodeOptions ? 'monospace' : 'inherit', display: q.isCodeOptions ? 'inline-block' : 'inline', verticalAlign: 'top' }}>{renderOptionText(q.optA, q.ext)}</span></div>
-                          <div style={{ marginBottom: '8px' }}><strong>(B)</strong> <span style={{ whiteSpace: 'pre-wrap', fontFamily: q.isCodeOptions ? 'monospace' : 'inherit', display: q.isCodeOptions ? 'inline-block' : 'inline', verticalAlign: 'top' }}>{renderOptionText(q.optB, q.ext)}</span></div>
-                          <div style={{ marginBottom: '8px' }}><strong>(C)</strong> <span style={{ whiteSpace: 'pre-wrap', fontFamily: q.isCodeOptions ? 'monospace' : 'inherit', display: q.isCodeOptions ? 'inline-block' : 'inline', verticalAlign: 'top' }}>{renderOptionText(q.optC, q.ext)}</span></div>
-                          <div style={{ marginBottom: '8px' }}><strong>(D)</strong> <span style={{ whiteSpace: 'pre-wrap', fontFamily: q.isCodeOptions ? 'monospace' : 'inherit', display: q.isCodeOptions ? 'inline-block' : 'inline', verticalAlign: 'top' }}>{renderOptionText(q.optD, q.ext)}</span></div>
-                        </div>
-                      );
-                    })() : !q.isProof ? (
-                      <div style={{ color: '#f38ba8' }}><strong>NAT Answer:</strong> {q.natAnswer ? q.natAnswer : '_________________'}</div>
-                    ) : null}
-                  </div>
+                  <div style={{ color: '#a6e3a1', fontWeight: 'bold', marginBottom: '10px' }}>{previewMeta}</div>
+                  <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>{previewLinks}</div>
+                  {previewMain}
                 </div>
               </div>
             </div>

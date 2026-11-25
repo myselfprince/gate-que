@@ -47,6 +47,51 @@
 .workspace :global(.q-header) > div { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
 .workspace :global(.preview-pane) { line-height: 1.65; }
 .workspace :global(.half-width) { min-width: 0; }
+
+/* Answer review: layout switch, answer-key filter and compact preview cards */
+.reviewBar { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px; padding: 10px 14px; margin: 0 0 18px; background: #141823; border: 1px solid #353a50; border-radius: 10px; }
+.segmented { display: inline-flex; border: 1px solid #45475a; border-radius: 8px; overflow: hidden; }
+.segmented button { background: transparent; color: #a6adc8; border-radius: 0; padding: 7px 12px; font-size: 12px; }
+.segmented button + button { border-left: 1px solid #45475a; }
+.segmented button[aria-pressed="true"] { background: #89b4fa; color: #11111b; }
+.reviewFilter { display: flex; align-items: center; gap: 8px; margin: 0; color: #bac2de; font-size: 12px; font-weight: 600; }
+.reviewFilter select { width: auto; padding: 6px 8px; font-size: 12px; }
+.reviewNext { background: #f9e2af; color: #11111b; padding: 7px 12px; font-size: 12px; border-radius: 8px; }
+.reviewProgress { display: inline-flex; align-items: center; gap: 8px; color: #a6adc8; font-size: 12px; }
+.reviewProgress strong { color: #a6e3a1; }
+.reviewMeter { width: 90px; height: 6px; border-radius: 3px; background: #313244; overflow: hidden; }
+.reviewMeter > span { display: block; height: 100%; background: #a6e3a1; }
+.reviewSave { margin-left: auto; color: #a6adc8; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.reviewSave .primary { padding: 7px 14px; font-size: 12px; }
+
+/* Pinned editor tools: a one-row copy under the tabs, shown once the full toolbar scrolls away.
+   It takes no space in the page flow, so pinning never shifts the questions. */
+.compactDock { position: sticky; top: 8px; z-index: 90; height: 0; }
+/* While the pinned bar shows, the big tab bar scrolls away; the bar has its own tab buttons. */
+.tabsReleased { position: static; }
+.compactTabs { display: inline-flex; gap: 2px; padding: 2px; background: #141823; border: 1px solid #353a50; border-radius: 8px; }
+.compactTabs button { background: transparent; color: #a6adc8; border-radius: 6px; }
+.compactTabs button[aria-current="page"] { background: #30384e; color: #f1f3fa; }
+.compactBar { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 8px; padding: 6px 10px; background: #191d2a; border: 1px solid #45475a; border-radius: 10px; box-shadow: 0 10px 24px #0008; }
+.compactBar select, .compactBar input { width: auto; padding: 5px 8px !important; font-size: 12px; }
+.compactBar button { padding: 5px 9px !important; font-size: 12px !important; }
+.compactBar .segmented button { padding: 5px 9px !important; }
+.compactBar .reviewFilter { font-weight: 400; }
+.compactDivider { width: 1px; align-self: stretch; background: #45475a; margin: 0 2px; }
+.reviewGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 14px; align-items: start; }
+.reviewItem { margin-bottom: 12px; min-width: 0; }
+.reviewCard { padding: 12px 16px 6px; background: #191d2a; border: 1px solid #353a50; border-left: 3px solid #f9e2af; border-radius: 10px; line-height: 1.65; overflow-wrap: anywhere; }
+.reviewDone { border-left-color: #a6e3a1; }
+.reviewMissing { border-left-color: #f9e2af; }
+.reviewHeader { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 12px; margin-bottom: 8px; font-size: 13px; }
+.reviewHeader a { font-size: 12px; }
+.reviewNumber { color: #f1f3fa; font-size: 14px; }
+.reviewMeta { color: #a6e3a1; font-weight: 600; }
+.reviewActions { display: inline-flex; flex-wrap: wrap; gap: 6px; margin-left: auto; }
+.reviewActions button { background: #30384e; color: #cdd6f4; padding: 4px 10px; font-size: 12px; border-radius: 6px; }
+.reviewActions .reviewEdit { background: #89b4fa; color: #11111b; }
+.reviewWarning { margin: 0 0 8px; color: #f38ba8; font-size: 12px; font-weight: 600; }
+.reviewBlank { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 8px 14px; margin-bottom: 12px; border: 1px dashed #6c7086; border-radius: 10px; color: #a6adc8; font-size: 13px; }
 @media (max-width: 1100px) {
   .chapterBar { grid-template-columns: 1fr 1fr; }
   .databaseControls { grid-column: 1 / -1; }
@@ -55,12 +100,14 @@
   .workspace :global(.question-card) { flex-direction: column; gap: 24px; }
   .workspace :global(.half-width), .workspace :global(.preview-pane) { width: 100% !important; padding: 0 !important; border: 0; }
   .workspace :global(.preview-pane) { border-top: 1px solid #353a50; padding-top: 18px !important; }
+  .reviewGrid { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 600px) {
   .workspace { padding: 18px 12px 40px; }
   .chapterBar { grid-template-columns: minmax(0, 1fr); padding: 16px; gap: 12px; }
   .chapterBar > .primary { justify-self: stretch; }
   .tabs { width: 100%; box-sizing: border-box; top: 0; }
+  .compactDock { top: 0; }
   .tabs button { flex: 1; padding: 11px 7px; font-size: 12px; }
   .toolbar { padding: 12px; }
   .tools > div { gap: 8px !important; margin: 0 !important; }

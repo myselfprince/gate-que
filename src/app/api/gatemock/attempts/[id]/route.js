@@ -28,7 +28,7 @@ async function handle(request, context, action) {
     }
     const finished = action === 'submit' ? { finishedAt: new Date(), result: gradeAttempt(attempt.questions, state, attempt.negativeFraction) } : {};
     const saved = await MockAttempt.findOneAndUpdate({ _id: id, tokenHash: tokenHash(token), revision: body.revision, finishedAt: null },
-      { $set: { state, ...finished }, $inc: { revision: 1 } }, { new: true }).lean();
+      { $set: { state, ...finished }, $inc: { revision: 1 } }, { returnDocument: 'after' }).lean();
     if (!saved) return jsonError('This attempt changed in another tab. Reload before continuing.', 409);
     return NextResponse.json({ success: true, attempt: publicAttempt(await refreshAttemptAnswers(MockAttempt, saved)) });
   } catch (error) { if (error.name === 'ValidationError') return jsonError(error.message); console.error('Mock attempt failed:', error.name); return unexpectedError(); }

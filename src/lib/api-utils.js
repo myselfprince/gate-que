@@ -114,6 +114,28 @@ export const validateChapterPayload = (data) => {
   return { ...identity, questions, lockCount };
 };
 
+// Incremental save: only changed questions, plus the id order when questions were added, removed or moved.
+export const validateChapterPatch = (data) => {
+  const identity = validateChapterIdentity(data);
+  if (data?.baseRevision === undefined) throw new ValidationError('Chapter revision is required.');
+  const baseRevision = data.baseRevision;
+  if (baseRevision !== null && (typeof baseRevision !== 'string' || !Number.isFinite(Date.parse(baseRevision)))) throw new ValidationError('Chapter revision is invalid.');
+  const loadedCount = readInteger(data?.loadedCount, 'Loaded question count', { min: 0, max: 1_000 });
+  const upserts = validateQuestions(data?.upserts ?? []);
+  const upsertIds = upserts.map((question) => question.id);
+  if (new Set(upsertIds).size !== upsertIds.length) throw new ValidationError('Each changed question must appear once.');
+  let order;
+  if (data?.order !== undefined) {
+    if (!Array.isArray(data.order) || data.order.length > 1_000) throw new ValidationError('Question order is invalid.');
+    order = data.order.map((id) => readString(id, 'Question id', { required: true, maxLength: 100 }));
+    if (new Set(order).size !== order.length) throw new ValidationError('Question order has repeated ids.');
+    const inOrder = new Set(order);
+    if (upsertIds.some((id) => !inOrder.has(id))) throw new ValidationError('Every changed question must be in the question order.');
+  }
+  const lockCount = readOptionalInteger(data?.lockCount, 'Lock count', { min: 0, max: order?.length ?? loadedCount });
+  return { ...identity, baseRevision, loadedCount, upserts, ...(order !== undefined && { order }), ...(lockCount !== undefined && { lockCount }) };
+};
+
 export const validateScrapedChapterPayload = (data) => ({
   ...validateChapterIdentity(data),
   questions: validateQuestions(data?.questions)

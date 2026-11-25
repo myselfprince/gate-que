@@ -8,6 +8,33 @@ export function questionType(question) {
     ? question.correctOptions?.length > 1 ? 'MSQ' : 'MCQ' : 'NAT';
 }
 
+export const OPTION_LETTERS = ['A', 'B', 'C', 'D'];
+
+// Switching between MCQ and MSQ keeps the marked options that still fit, so a
+// key can be corrected without re-marking it. Any other switch starts clean.
+export function answerTypePatch(question, type) {
+  const current = questionType(question);
+  const options = question.correctOptions || [];
+  const keepOptions = ['MCQ', 'MSQ'].includes(current) && (type === 'MSQ' || (type === 'MCQ' && options.length <= 1));
+  return {
+    questionType: type,
+    correctOptions: keepOptions ? [...options] : [],
+    ...(keepOptions ? {} : { natAnswer: '', natRange: null }),
+    isProof: type === 'SUBJECTIVE',
+    answerDisposition: question.answerDisposition === 'none-correct' && !['MCQ', 'MSQ'].includes(type) ? 'disputed' : question.answerDisposition || 'standard',
+  };
+}
+
+// MCQ: picks the option, or clears it when the marked option is clicked again.
+// MSQ: toggles the option. A non-option question becomes an MCQ.
+export function toggleCorrectOptionPatch(question, letter) {
+  const type = questionType(question);
+  const options = question.correctOptions || [];
+  if (type === 'MSQ') return { questionType: 'MSQ', correctOptions: options.includes(letter) ? options.filter(option => option !== letter) : [...options, letter].sort() };
+  if (type === 'MCQ') return { questionType: 'MCQ', correctOptions: options.length === 1 && options[0] === letter ? [] : [letter] };
+  return { ...answerTypePatch(question, 'MCQ'), correctOptions: [letter] };
+}
+
 export function storedAnswerText(question) {
   if (question.isBlank) return '';
   if (awardsMarksToAll(question)) return 'Marks to All';
@@ -17,6 +44,13 @@ export function storedAnswerText(question) {
   if (question.natRange) return `${question.natRange.min} to ${question.natRange.max}`;
   const answer = question.natAnswer?.trim() || '';
   return /^(?:NAT|_+|answer not available)$/i.test(answer) ? '' : answer;
+}
+
+// True when nothing is left to mark: a key is stored, the question is flagged
+// (none correct / disputed), or it is subjective and needs no key. Blanks never count.
+export function answerKeyComplete(question) {
+  if (question.isBlank) return false;
+  return questionType(question) === 'SUBJECTIVE' || Boolean(storedAnswerText(question));
 }
 
 export function numericAnswerRange(question) {

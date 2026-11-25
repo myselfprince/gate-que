@@ -1,0 +1,30 @@
+.answerKey { margin-top: 15px; }
+.bar { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 12px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px dashed #353a50; }
+.types { display: inline-flex; border: 1px solid #45475a; border-radius: 6px; overflow: hidden; }
+.type, .typeActive { padding: 3px 12px; font-size: 12px; border-radius: 0; background: transparent; color: #a6adc8; }
+.types > button + button { border-left: 1px solid #45475a; }
+.type:hover:not(:disabled) { background: #313244; color: #cdd6f4; }
+.typeActive { background: #a6e3a1; color: #11111b; }
+.status, .statusEmpty { font-size: 13px; line-height: 1.4; }
+.status { color: #a6e3a1; font-weight: 600; }
+.statusEmpty { color: #f9e2af; }
+
+.optionsTwoCol { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2px 20px; }
+/* The negative margin keeps option letters aligned with the question text despite the padding. */
+.option, .optionMarked { position: relative; margin: 0 0 6px -9px; padding: 4px 30px 4px 8px; border: 1px solid transparent; border-radius: 6px; transition: background .12s, border-color .12s; }
+.option[aria-disabled="false"] { cursor: pointer; }
+.option[aria-disabled="false"]:hover { background: rgba(137, 180, 250, .08); border-color: #45475a; }
+.optionMarked { background: rgba(166, 227, 161, .14); border-color: #a6e3a1; cursor: pointer; }
+.optionMarked[aria-disabled="true"] { cursor: default; }
+.optionMarked .letter { color: #a6e3a1; }
+.option:focus-visible, .optionMarked:focus-visible { outline: 2px solid #89b4fa; outline-offset: 2px; }
+.tick { position: absolute; top: 4px; right: 9px; color: #a6e3a1; font-weight: 700; visibility: hidden; }
+.optionMarked .tick { visibility: visible; }
+.text { white-space: pre-wrap; }
+.codeText { white-space: pre-wrap; font-family: monospace; display: inline-block; vertical-align: top; }
+
+.nat, .natRecorded { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 10px; color: #f38ba8; }
+.natRecorded { color: #a6e3a1; }
+.answerKey .natInput { width: auto; flex: 1 1 160px; max-width: 280px; padding: 5px 10px; }
+.natRecorded .natInput { border-color: #a6e3a1; background: rgba(166, 227, 161, .1); }
+.nat small, .natRecorded small { flex-basis: 100%; color: #a6adc8; font-size: 12px; }

@@ -14,7 +14,13 @@ Welcome to the **GATE CSE PYQ Pipeline**! This is a full-stack Next.js applicati
 Run `npm run lint` and `npm run build` before deployment.
 
 The workspace separates **Question editor**, **PDF & LaTeX**, and **YouTube
-studio** into tabs. Use **Save to database** to save question edits. YouTube
+studio** into tabs. Question edits save to the database automatically about a
+second after you stop typing, and before you switch topic. Only changed
+questions are sent and updated in place; adding, removing or moving questions
+sends the new order and is refused if another window changed the chapter
+first. A change that removes five or more questions (or all of them) waits for
+**Save to database**, which also saves anything pending at once and makes the
+first save of a chapter loaded only from a local draft. YouTube
 studio has separate **Title & description** and **Thumbnails & cutout** views.
 **Questions to load** defaults to **All questions**. Click **Load Database** to
 load the full chapter, or choose a smaller batch when needed.

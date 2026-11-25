@@ -17,7 +17,7 @@ export async function POST(request) {
     const savedChapter = await ScrapedChapter.findOneAndUpdate(
       { subject, chapter },
       { $set: { questions } },
-      { new: true, upsert: true, runValidators: true, setDefaultsOnInsert: true }
+      { returnDocument: 'after', upsert: true, runValidators: true, setDefaultsOnInsert: true }
     );
     
     return NextResponse.json({ success: true, data: savedChapter });

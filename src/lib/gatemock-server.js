@@ -44,7 +44,7 @@ export function publicAttempt(attempt) {
 export async function finishExpired(Model, attempt) {
   if (!attempt.finishedAt && Date.now() >= new Date(attempt.expiresAt).getTime()) {
     return await Model.findOneAndUpdate({ _id: attempt._id, revision: attempt.revision, finishedAt: null },
-      { $set: { finishedAt: new Date(), result: gradeAttempt(attempt.questions, attempt.state, attempt.negativeFraction) }, $inc: { revision: 1 } }, { new: true }).lean()
+      { $set: { finishedAt: new Date(), result: gradeAttempt(attempt.questions, attempt.state, attempt.negativeFraction) }, $inc: { revision: 1 } }, { returnDocument: 'after' }).lean()
       || await Model.findById(attempt._id).lean();
   }
   return attempt;

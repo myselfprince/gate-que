@@ -36,7 +36,7 @@ export async function POST(request) {
     const config = await AppConfig.findOneAndUpdate(
       { configName: "default" },
       { $set: { syllabus, topicMapping } },
-      { new: true, upsert: true, runValidators: true, setDefaultsOnInsert: true }
+      { returnDocument: 'after', upsert: true, runValidators: true, setDefaultsOnInsert: true }
     );
     return NextResponse.json({ success: true, data: config });
   } catch (error) {

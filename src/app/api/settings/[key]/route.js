@@ -38,7 +38,7 @@ export async function PUT(request, { params }) {
     try { value = normalizeWorkspaceSetting(key, (await parseJson(request))?.value); }
     catch (error) { return jsonError(error.message); }
     await dbConnect();
-    const setting = await WorkspaceSetting.findOneAndUpdate({ key }, { $set: { value } }, { new: true, upsert: true, runValidators: true }).lean();
+    const setting = await WorkspaceSetting.findOneAndUpdate({ key }, { $set: { value } }, { returnDocument: 'after', upsert: true, runValidators: true }).lean();
     return NextResponse.json({ success: true, data: body(setting) });
   } catch (error) {
     console.error('Settings PUT error:', error);

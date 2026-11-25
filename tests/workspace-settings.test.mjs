@@ -52,3 +52,36 @@ test('the browser saver debounces edits, keeps the latest value and flushes on c
     delete globalThis.document; delete globalThis.window; delete globalThis.fetch;
   }
 });
+
+test('a remounted panel gets this tab\'s newest value, requests stay in order, and saveNow saves at once', async () => {
+  const requests = [];
+  let releaseFirst;
+  globalThis.document = { visibilityState: 'visible', addEventListener: () => {}, removeEventListener: () => {} };
+  globalThis.window = { addEventListener: () => {}, removeEventListener: () => {} };
+  globalThis.fetch = async (url, options = {}) => {
+    if (!options.method) return { ok: true, json: async () => ({ success: true, data: { value: { stale: true } } }) };
+    const value = JSON.parse(options.body).value;
+    if (value.n === 1) await new Promise(resolve => { releaseFirst = resolve; });
+    requests.push(value);
+    return { ok: true, json: async () => ({ success: true }) };
+  };
+  try {
+    const { loadWorkspaceSetting, workspaceSettingSaver } = await import('../src/lib/workspace-settings-client.js');
+    // Nothing saved in this tab yet: the database copy is read.
+    assert.deepEqual(await loadWorkspaceSetting('scraper-group-prompt'), { stale: true });
+    const saver = workspaceSettingSaver('youtube', { delay: 1000 });
+    const first = saver.saveNow({ n: 1 });
+    saver.save({ n: 2 });
+    saver.dispose(); // panel unmounts (topic change) while the first save is still in flight
+    // The next panel starts from the newest value, not the database's older copy.
+    assert.deepEqual(await loadWorkspaceSetting('youtube'), { n: 2 });
+    await new Promise(resolve => setTimeout(resolve, 0)); // the first request starts on the next tick
+    releaseFirst(); await first;
+    await new Promise(resolve => setTimeout(resolve, 10));
+    assert.deepEqual(requests, [{ n: 1 }, { n: 2 }], 'the newer value is written last');
+    globalThis.fetch = async () => ({ ok: false, json: async () => ({ success: false, error: 'Database offline.' }) });
+    await assert.rejects(workspaceSettingSaver('youtube').saveNow({ n: 3 }), /Database offline/);
+  } finally {
+    delete globalThis.document; delete globalThis.window; delete globalThis.fetch;
+  }
+});

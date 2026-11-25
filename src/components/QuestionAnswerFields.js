@@ -1,12 +1,12 @@
 'use client';
 import QuestionReviewFields from './QuestionReviewFields';
-import { questionType, storedAnswerText } from '@/lib/question-answers.mjs';
+import { answerTypePatch, questionType, storedAnswerText } from '@/lib/question-answers.mjs';
 
 export default function QuestionAnswerFields({ question, disabled, onChange }) {
   const type = questionType(question);
   return <fieldset disabled={disabled} style={{ marginTop: 16, padding: 14, border: '1px solid #45475a', borderRadius: 8 }}>
     <legend>Correct answer · {storedAnswerText(question) ? 'Recorded' : 'Not recorded'}</legend>
-    <label>Question type<select aria-label="Question type" value={type} onChange={event => onChange({ questionType: event.target.value, correctOptions: [], natAnswer: '', natRange: null, isProof: event.target.value === 'SUBJECTIVE', answerDisposition: question.answerDisposition === 'none-correct' && !['MCQ', 'MSQ'].includes(event.target.value) ? 'disputed' : question.answerDisposition || 'standard' })}>
+    <label>Question type<select aria-label="Question type" value={type} onChange={event => onChange(answerTypePatch(question, event.target.value))}>
       <option value="MCQ">MCQ — one correct option</option><option value="MSQ">MSQ — multiple correct options</option><option value="NAT">NAT — numerical answer</option><option value="SUBJECTIVE">Subjective / proof</option>
     </select></label>
     {(type === 'MCQ' || type === 'MSQ') ? <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap', alignItems: 'center' }}>
@@ -21,6 +21,6 @@ export default function QuestionAnswerFields({ question, disabled, onChange }) {
       </div><button type="button" onClick={() => onChange({ natRange: null })}>Clear range</button></details>}
     </>}
     <QuestionReviewFields value={question} questionType={type} onChange={onChange} />
-    <small style={{ color: '#a6adc8' }}>Leave unanswered if the key is unknown. Save to database to retain these fields.</small>
+    <small style={{ color: '#a6adc8' }}>Leave unanswered if the key is unknown. Changes save to the database automatically.</small>
   </fieldset>;
 }

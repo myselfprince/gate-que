@@ -1,0 +1,1467 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "1. Discrete Maths",
+  "chapter": "3. Combinatorics",
+  "slug": "1-discrete-maths--3-combinatorics",
+  "reviewedAt": "2026-11-25",
+  "reviewer": "Claude (AI-assisted review; spot-check before publishing)",
+  "sources": {
+    "gateOverflowPdf": {
+      "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume1.pdf",
+      "sha256": "e42a70646bdbc4f86edff44b97555a94c866deda508c761da40c20d95b493a2d",
+      "chapter": "1 Discrete Mathematics: Combinatory",
+      "answerKeyPage": 30
+    },
+    "gateOverflowPdfVolume2": {
+      "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume2.pdf",
+      "sha256": "457f9e583b943b3c41e78d8431b09e322123b0d80765396af36ee2100196714f",
+      "chapter": "1.35 Algorithms: Recurrence Relation (Q2, Q6, Q19, Q20, Q27)",
+      "answerKeyPage": 115
+    },
+    "madeEasyPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\1. Discrete Maths\\3. Combinatorics.pdf",
+      "sha256": "f32eceeed3d236e73f3599942af207823bd65d87161ffec57044e1ae2f8d6a34",
+      "note": "Two photographed question pages; no answer table in this file."
+    },
+    "madeEasyKeyPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\All Subject Solutions Keys\\Discrete Mathemetics.pdf",
+      "sha256": "5c73a1df7848af2b405175dc29721a82eac4e56ca0ea8e1d5a41e4e26f4a0ed6",
+      "answerKeyPage": 3
+    },
+    "yearPapers": "data/papers/*.json (verified copies linked by source.copiedFrom.questionId)"
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "poetfszdb",
+      "contentSha256": "76fda2ad8343171cac2d5db994762452a1adb20188f2f7fa9573a12df6c5b5bd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Inclusion–exclusion (everyone speaks at least one language): 28 = 18 + 15 + 22 − 9 − 11 − 13 + x, so x = 6.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.13.8, Set Theory: GATE CSE 1998 | Question: 2.4, p.122 (key p.126); https://gateoverflow.in/1676/gate-cse-1998-question-2-4",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.1 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "8jfkx2xz6",
+      "contentSha256": "73ea75cbe58b0a02bbbd9f262d6a8b8e1f8fa93ae72b539368130488ea52b6ed",
+      "questionType": "SUBJECTIVE",
+      "correctOptions": [],
+      "status": "verified-with-note",
+      "reason": "Reference answer: x_n − 1 = 2(x_{n−1} − 1) with x_1 − 1 = 1, so x_n = 2^{n−1} + 1 (checked against the recurrence for n ≤ 29).",
+      "note": "Descriptive \"solve the recurrence\" item with no options, so it is stored as SUBJECTIVE (the worksheet inferred NAT only because it has no options). GATE Overflow files it as descriptive with no key; Made Easy prints \"Sol.\" and derives x_n = 2^{n−1} + 1.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.35.12, Recurrence Relation: GATE CSE 1998 | Question: 6a, p.87 (key p.115); https://gateoverflow.in/44584/gate-cse-1998-question-6a",
+          "answer": "N/A — filed as descriptive with no key; consistent with SUBJECTIVE",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.2 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "Sol. (worked solution gives x_n = 2^(n-1) + 1)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "x_n = 2^{n−1} + 1",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "92yjva4kx",
+      "contentSha256": "83b772e90d98fdda2acb08b33200c4c8aeb5bc81fbceaf6dc9e982fe7b6f15d4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Flowers of one kind are identical and a girl may receive none: (10+1)(15+1)(14+1) = 11 × 16 × 15 = 2640 for 10 roses, 15 sunflowers and 14 daffodils.",
+      "note": "GATE Overflow's copy of GATE 1999 Q2.2 reads 15 daffodils, giving 11 × 16 × 16 = 2816 and key D (None of the above). The app and the Made Easy book both print 14 daffodils, for which 2640 (C) is listed, so C is the answer for the app's text.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.2.4, Combinatory: GATE CSE 1999 | Question: 2.2, p.22 (key p.30); https://gateoverflow.in/1480/gate-cse-1999-question-2-2",
+          "answer": "D — for its text with 15 daffodils (2816, not listed); the app has 14 daffodils",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.3 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "zislgeiom",
+      "contentSha256": "13f2b2c15efff94e49d18b63538b8a2db7e7035e80ed05d0c116eacc355e5db7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Two cards from each of the four suits (8 cards) avoid a triple; the 9th card forces three cards of one suit.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.6.1, Pigeonhole Principle: GATE CSE 2000 | Question: 1.1, p.27 (key p.30); https://gateoverflow.in/624/gate-cse-2000-question-1-1",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.4 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q1",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "uvuf6t9u9",
+      "contentSha256": "e2a16151840356d2f5cf5ad738f42170513be56241790763aaac5b9cc762c658",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Ending in 0: 9·8·7 = 504; ending in 2, 4, 6 or 8: 4·8·8·7 = 1792; total 2296 (also counted directly over 1000–9999).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.2.5, Combinatory: GATE CSE 2001 | Question: 2.1, p.22 (key p.30); https://gateoverflow.in/719/gate-cse-2001-question-2-1",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.5 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q26",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "p8xzluwgw",
+      "contentSha256": "e527ac2935e51f896502a3b1633d9369c59889172f212ceb747333e6b8156982",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "With S_k = T(2^k): S_k = 3S_{k−1} + 1, S_0 = 1, so S_k = (3^{k+1} − 1)/2 (checked for k ≤ 19).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.35.13, Recurrence Relation: GATE CSE 2002 | Question: 1.3, p.87 (key p.115); https://gateoverflow.in/807/gate-cse-2002-question-1-3",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.6 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q3",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "m94izik3t",
+      "contentSha256": "23a3daf68377b9b7efbf1ce611ad6d6b5b3523b39987d2bdd5ffd200e956d629",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "An even cycle needs 2 colours and an odd cycle 3; n − 2⌊n/2⌋ + 2 is 2 for even n and 3 for odd n (chromatic numbers brute-forced for n = 3…9).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.4.1, Graph Coloring: GATE CSE 2002 | Question: 1.4, p.41 (key p.55); https://gateoverflow.in/808/gate-cse-2002-question-1-4",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.7 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q4",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "y3v7lnkcb",
+      "contentSha256": "22d194d7bcb0b3ed7e672dfb1fb173ec19dea3f191b612dc44280ac7f025951a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Choosing which 5 of the 8 elements form B fixes both sorted sequences: C(8,5) = 56.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.2.6, Combinatory: GATE CSE 2003 | Question: 4, p.22 (key p.30); https://gateoverflow.in/895/gate-cse-2003-question-4",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.8 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q4",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "aezcixfqq",
+      "contentSha256": "6ed06ecca89e0af38bacf0887b94479d928b5f2a767b2b4f5092703476a60bdb",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Each couple independently has 3 allowed states (absent, wife alone, both), giving 3^n (brute-forced for n ≤ 6).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.2.7, Combinatory: GATE CSE 2003 | Question: 5, p.22 (key p.30); https://gateoverflow.in/896/gate-cse-2003-question-5",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.9 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q5",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "ilfmtc4an",
+      "contentSha256": "1f204cd16e94c9addef794ba2a54a31cc043e41dd56d50661d88c1f9c10eb03d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "A letter's two prints use an unordered colour pair, repetition allowed: k(k+1)/2 pairs. k = 6 gives 21 < 26 and k = 7 gives 28 ≥ 26, so k = 7.",
+      "note": "The Made Easy answer table prints (d) 6, which counts ordered pairs (k² ≥ 26). The two prints of a letter are interchangeable, so the pairs are unordered; GATE Overflow and the verified GATE CS 2004 paper both key 7 (C).",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.2.8, Combinatory: GATE CSE 2004 | Question: 75, p.23 (key p.30); https://gateoverflow.in/1069/gate-cse-2004-question-75",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.10 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "d (6) — counts ordered colour pairs",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q75",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "8mmcui4tf",
+      "contentSha256": "b958b7ef3ea633c91ee245935f9a5297b46a04352a52d88c1373823b3a66fb56",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Derangements of 5 objects: !5 = 44 (enumerated over all 120 permutations).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.1.6, Balls In Bins: GATE IT 2004 | Question: 35, p.21 (key p.30); https://gateoverflow.in/3678/gate-it-2004-question-35",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.11 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q35",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "q7zeg8x37",
+      "contentSha256": "095d072a8a8e1eef998687620880c67fdb0b2f5dce612c55f622708dd483ea7f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "φ(p²q) = p²q(1 − 1/p)(1 − 1/q) = p(p − 1)(q − 1); confirmed by counting for several prime pairs.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.8.4, Number Theory: GATE IT 2005 | Question: 34, p.110 (key p.126); https://gateoverflow.in/3780/gate-it-2005-question-34",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.12 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "knb1s3ne0",
+      "contentSha256": "8353e6a015786036cc28f8d200c43446c759f02ace21aca257e1502d9271b14f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "There are 3 × 5 = 15 residue classes (a mod 3, b mod 5); 16 pairs force a repeat, while 15 need not.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.6.2, Pigeonhole Principle: GATE CSE 2005 | Question: 44, p.27 (key p.30); https://gateoverflow.in/1170/gate-cse-2005-question-44",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.13 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q44",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "2jx5lgmrv",
+      "contentSha256": "73ac8ed3ceb3731e779f512ad75b31582ead60c53ea12284c30687960dac0811",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "1/(1−x)² is the square of the geometric series, so the coefficient of x^i is i + 1 (checked by convolution).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.4.2, Generating Functions: GATE CSE 2005 | Question: 50, p.26 (key p.30); https://gateoverflow.in/1175/gate-cse-2005-question-50",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.14 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q50 (option text differs; mapped by content)",
+          "answer": "C — five-option scan (A = 1, B = i, C = i+1, D = 2i, E = 2^i); i+1 is book option B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "1t66dhcb5",
+      "contentSha256": "d3cd716c70564ddc876efc7a640671d5aced97e96cf3ca8c8fdfedddd5c178c1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "C(2n, n) favourable outcomes out of 2^{2n} = 4^n equally likely ones (brute-forced for n ≤ 6).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.4.3, Binomial Distribution: GATE CSE 2006 | Question: 21, p.204 (key p.226); https://gateoverflow.in/982/gate-cse-2006-question-21",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.15 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q21",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "d0u7dzp21",
+      "contentSha256": "784c77551268e9204db3f7086fb8258175e048f1f90a47a831fe4883d4d6754c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Each path is an arrangement of 10 right and 10 up moves: C(20,10) = 184756 (matches a DP count).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.2.9, Combinatory: GATE CSE 2007 | Question: 84, p.23 (key p.30); https://gateoverflow.in/1275/gate-cse-2007-question-84",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.16 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q84",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "6kt24a4tj",
+      "contentSha256": "ba0240a715eb6c7c236adb4ccaeb843ef46f5e8ffd527632d3b20673f39a5da5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Paths using the forbidden step: C(8,4) to (4,4) times C(11,5) from (5,4) to (10,10). C(20,10) − C(8,4)·C(11,5) = 152416, matching a DP with that edge removed.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.2.10, Combinatory: GATE CSE 2007 | Question: 85, p.23 (key p.30); https://gateoverflow.in/43509/gate-cse-2007-question-85",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.17 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q85",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "vy0w1c1mi",
+      "contentSha256": "707ddecd831a2cbbeade8dffeb5b5067053541073ba4a850c94d29bd9d53ecc7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "P = 1 + 3 + … + (2k − 1) = k² and Q = 2 + 4 + … + 2k = k(k + 1), so P = Q − k (checked for k ≤ 29).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.8.3, Summation: GATE CSE 2008 | Question: 24, p.29 (key p.30); https://gateoverflow.in/422/gate-cse-2008-question-24",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.18 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q24",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 19,
+      "id": "73sy0qgo8",
+      "contentSha256": "e40a8926a2761a0f550159bf90b25afebcaca90e5dfe34e9a3e1f37505563dc6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A valid string ends in 1 (any valid prefix of length n − 1) or in 10 (valid prefix of length n − 2), so x_n = x_{n−1} + x_{n−2}; brute-force confirmed for n ≤ 12.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.35.19, Recurrence Relation: GATE CSE 2008 | Question: 78, p.89 (key p.115); https://gateoverflow.in/497/gate-cse-2008-question-78",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.19 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q78",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "i7a0q7ml7",
+      "contentSha256": "81f656df59b71a7377a719b89561362a614a57a018cec7b788b18f5a3e4bb8e3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "x_1 = 2, x_2 = 3, x_3 = 5, x_4 = 8, x_5 = 13 (all 32 strings of length 5 enumerated).",
+      "note": "The original GATE CSE 2008 Q79 options were 5, 7, 8 and 16, none correct, so GATE Overflow keys it X and the verified year paper leaves the key blank. The book replaces option D with 13, the correct value, so D is stored.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.35.20, Recurrence Relation: GATE CSE 2008 | Question: 79, p.89 (key p.115); https://gateoverflow.in/43485/gate-cse-2008-question-79",
+          "answer": "X — its options 5, 7, 8, 16 contain no correct value; the app's D is 13",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.20 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q79 (option text differs; mapped by content)",
+          "answer": "No key — scan options 5, 7, 8, 16; its reference derives x_5 = 13 = book option D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "92fkki3ma",
+      "contentSha256": "bc0c2cced9d03be6864b68c28da6d34eb0df03a2d0960db04dffafd1bfad938f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Legendre: ⌊300/11⌋ + ⌊300/121⌋ = 27 + 2 = 29.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.8.6, Number Theory: GATE IT 2008 | Question: 24, p.110 (key p.126); https://gateoverflow.in/3285/gate-it-2008-question-24",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.21 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 22,
+      "id": "oigtqozbv",
+      "contentSha256": "d92a448ab5b745b99810359acb4bfa207f43d73a1e1b8653cee2abc0bb8813cd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Blue balls: C(n + b − 1, b) ways; red balls: C(n + r − 1, r) ways; the product is option A (checked by enumeration for small b, r, n).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.2.18, Combinatory: GATE IT 2008 | Question: 25, p.24 (key p.30); https://gateoverflow.in/3286/gate-it-2008-question-25",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.22 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 23,
+      "id": "uilnz2819",
+      "contentSha256": "201526c104d60fdcb99d3ed85aa4bc2afd3d52c7952347bccd5e79b4e561c8ef",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "89",
+      "status": "verified",
+      "reason": "Pennant counts satisfy p(n) = p(n − 1) + p(n − 2) with p(1) = 1, p(2) = 2: 1, 2, 3, 5, 8, 13, 21, 34, 55, 89.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.2.11, Combinatory: GATE CSE 2014 | Set 1 | Question: 49, p.23 (key p.30); https://gateoverflow.in/1929/gate-cse-2014-set-1-question-49",
+          "answer": "89",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.23 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "89",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "89",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 24,
+      "id": "5lvhheam5",
+      "contentSha256": "c79cfc086cbb95bb37840f55d7bc7d87a2c05e36907e5feb9d8fd8c89b1b32c1",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "3.9",
+      "natRange": {
+        "min": 3.8,
+        "max": 3.9
+      },
+      "status": "verified-with-note",
+      "reason": "Word lengths 3, 5, 5, 3, 5, 4, 3, 4, 3 total 35, so E = 35/9 = 3.888…, which rounds to 3.9.",
+      "note": "The official key (as printed by GATE Overflow) accepts 3.8 to 3.9, so that range is stored; the value rounded as instructed is 3.9, which Made Easy prints.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.8.6, Expectation: GATE CSE 2014 | Set 2 | Question: 2, p.208 (key p.227); https://gateoverflow.in/1954/gate-cse-2014-set-2-question-2",
+          "answer": "3.8 : 3.9",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.24 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "3.9",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "3.9 (exact 35/9)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 25,
+      "id": "vrawbzvlw",
+      "contentSha256": "8ad20fb76bb420a86acc8d7d67063dd2efb313b77d9104536f40580f22d0215f",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "8",
+      "status": "verified",
+      "reason": "2014 = 2 · 19 · 53, so it has 2 · 2 · 2 = 8 positive divisors.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.8.2, Number Theory: GATE CSE 2014 | Set 2 | Question: 49, p.110 (key p.126); https://gateoverflow.in/2015/gate-cse-2014-set-2-question-49",
+          "answer": "8",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.25 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "8",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "8",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 26,
+      "id": "cd5fpohki",
+      "contentSha256": "773570bc57f536df3ddebcec10afae1ce73af28c1bf46cc4a4ac30b2a0b9b9ea",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0.99",
+      "status": "verified",
+      "reason": "Telescoping: Σ (1/x − 1/(x + 1)) for x = 1…99 is 1 − 1/100 = 0.99 (exact fraction 99/100).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.8.4, Summation: GATE CSE 2015 | Set 1 | Question: 26, p.30 (key p.30); https://gateoverflow.in/8248/gate-cse-2015-set-1-question-26",
+          "answer": "0.99",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.26 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "0.99",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "0.99",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 27,
+      "id": "1l9st8rob",
+      "contentSha256": "867a0b729d417f31c2a077bd373eb5fd7c8bdce49adb028b27a3b9bffcd4a01a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Strings containing 11 start with 0 (a_{n−1}), with 10 (a_{n−2}) or with 11 (2^{n−2}); only option A matches brute-force counts for n ≤ 13.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.35.24, Recurrence Relation: GATE CSE 2015 | Set 1 | Question: 49, p.90 (key p.115); https://gateoverflow.in/8355/gate-cse-2015-set-1-question-49",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.27 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 28,
+      "id": "4tze7axx7",
+      "contentSha256": "42db17fef32d4c8b7df6c66157b78a2959cc7e60d4810918defd8857f03becf7",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "36",
+      "status": "verified",
+      "reason": "2100 = 2² · 3 · 5² · 7, so it has 3 · 2 · 3 · 2 = 36 divisors.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.8.3, Number Theory: GATE CSE 2015 | Set 2 | Question: 9, p.110 (key p.126); https://gateoverflow.in/8058/gate-cse-2015-set-2-question-9",
+          "answer": "36",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.28 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "36",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "36",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 29,
+      "id": "wdt1j0j94",
+      "contentSha256": "eff0e0f136fe9dbea3b75d6f53cf320cc46d72fc4b20e28397f81b09620bce7e",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "15",
+      "status": "verified",
+      "reason": "Non-decreasing 4-digit strings over {1, 2, 3} are multisets of size 4 from 3 digits: C(6,4) = 15.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.2.12, Combinatory: GATE CSE 2015 | Set 3 | Question: 5, p.23 (key p.30); https://gateoverflow.in/8399/gate-cse-2015-set-3-question-5",
+          "answer": "15",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.29 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "15",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "15",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 30,
+      "id": "0utb3lef2",
+      "contentSha256": "de6c10510421e6be1a8b226296544ef5a226a5fb6961acb4671909d28c6268eb",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A valid string ends in 0 (a_{n−1}) or in 01 (a_{n−2}), so a_n = a_{n−1} + a_{n−2}; only B matches brute-force counts.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.7.2, Recurrence Relation: GATE CSE 2016 | Set 1 | Question: 2, p.28 (key p.30); https://gateoverflow.in/39636/gate-cse-2016-set-1-question-2",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.30 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 31,
+      "id": "u9vcrjr94",
+      "contentSha256": "8295aa5e51cd326541da6e08aa51c12eb33637567b61d9955181cad2229a6977",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "10",
+      "status": "verified",
+      "reason": "(x³/(1 − x))³ = x⁹(1 − x)^{−3}; the coefficient of x³ in (1 − x)^{−3} is C(5,2) = 10.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.4.3, Generating Functions: GATE CSE 2016 | Set 1 | Question: 26, p.26 (key p.30); https://gateoverflow.in/39693/gate-cse-2016-set-1-question-26",
+          "answer": "10",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.31 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "10",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "10",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 32,
+      "id": "qbvkm9jhb",
+      "contentSha256": "814c6b22a353cc04db032830c3e1e91f13f47c0d3209afc21797f76a005f1093",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "198",
+      "status": "verified",
+      "reason": "a_n = Σ_{k=1}^{n} (6k² + 2k) = 2n(n + 1)² (a_1 = 8 fits), so a_99 = 2 · 99 · 100² = 1,980,000 = 198 × 10⁴.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.7.3, Recurrence Relation: GATE CSE 2016 | Set 1 | Question: 27, p.28 (key p.30); https://gateoverflow.in/39714/gate-cse-2016-set-1-question-27",
+          "answer": "197.9 : 198.1 (official accepted range; contains 198)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.32 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "198",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "198",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 33,
+      "id": "lvf44ybuu",
+      "contentSha256": "f4644d7c5210cebecce239d3d37dc7b8de9da36756b049a2e9cf0ac849180c6a",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "15",
+      "status": "verified",
+      "reason": "a_n = C(n + 2, 2) + C(n + 1, 2): a_0 = 1 and a_3 = 10 + 6 = 16, so a_3 − a_0 = 15.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.4.4, Generating Functions: GATE CSE 2017 | Set 2 | Question: 47, p.26 (key p.30); https://gateoverflow.in/118392/gate-cse-2017-set-2-question-47",
+          "answer": "15",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.33 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "15",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "15",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 34,
+      "id": "mrwcpv94g",
+      "contentSha256": "bef9f364f7263006b59cc6da2589afe5cc8a866c78309d417a528eb5ef31a170",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Σ (2n + 3)xⁿ = 2x/(1 − x)² + 3/(1 − x) = (3 − x)/(1 − x)²; series coefficients checked for every option.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.4.5, Generating Functions: GATE CSE 2018 | Question: 1, p.27 (key p.30); https://gateoverflow.in/204075/gate-cse-2018-question-1",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.34 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 35,
+      "id": "snypoziks",
+      "contentSha256": "d8d2c77023f55c69554691f2f6cbc95fd93cb1d920a126c5f20b856f9072e364",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Counting pairs by the subset size: Σ k·C(n, k) = n·2^{n−1}, so both statements are true (brute-forced for n ≤ 9).",
+      "note": "Option order differs from GATE Overflow (A Only I, B Only II, C Both I and II, D Neither); its key C (\"Both I and II\") is book option A.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.2.13, Combinatory: GATE CSE 2019 | Question: 5, p.23 (key p.30); https://gateoverflow.in/302843/gate-cse-2019-question-5",
+          "answer": "C — GATE Overflow option C \"Both I and II\" is book option A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.35 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 36,
+      "id": "mu30qtkbh",
+      "contentSha256": "5ff561ecbe788dac67d46ff3bd5d00cb5bb967347c46014c806fa322d6f1e2e7",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "12",
+      "status": "verified",
+      "reason": "Of the 60 distinct arrangements of LILAC, exactly 12 leave no letter in its original position (enumerated).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.2.14, Combinatory: GATE CSE 2020 | Question: 42, p.24 (key p.30); https://gateoverflow.in/333189/gate-cse-2020-question-42",
+          "answer": "12",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.36 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "12",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "12",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 37,
+      "id": "i7i4of8n6",
+      "contentSha256": "4f7710e8449ff2c1a8f9a0d7ac167e339b7c763e6a6869bd213f30ee3fc9ec35",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "65",
+      "status": "verified",
+      "reason": "The toughest and easiest jobs are fixed; the other 4 jobs go anywhere but the middle computer needs one: 3⁴ − 2⁴ = 65 (enumerated).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.3.4, Counting: GATE CSE 2021 | Set 1 | Question: 19, p.25 (key p.30); https://gateoverflow.in/357432/gate-cse-2021-set-1-question-19",
+          "answer": "65 : 65",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.37 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "65",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "65",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 38,
+      "id": "x8knnhjj1",
+      "contentSha256": "3fbf646ccda6cb54117d50db6f068d541fd1d9757723930fdef4c813bd9ee735",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "7",
+      "status": "verified",
+      "reason": "Partitions of 6 into at most 3 parts: 6, 5+1, 4+2, 3+3, 4+1+1, 3+2+1, 2+2+2 — 7 in total.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.1.5, Balls In Bins: GATE CSE 2022 | Question: 22, p.21 (key p.30); https://gateoverflow.in/371914/gate-cse-2022-question-22",
+          "answer": "7",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.38 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "7",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "7",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 39,
+      "id": "ayxgnfj0w",
+      "contentSha256": "320c7eb4e32bd2cf76057ea9439079d825f193d6ff6fbd06af38c76cffbeecf5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "a_n = 1 + n·[n odd], so G(x) = 1/(1 − x) + Σ_{n odd} n xⁿ = 1/(1 − x) + x(1 + x²)/(1 − x²)²; series checked for every option.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.4.6, Generating Functions: GATE CSE 2022 | Question: 26, p.27 (key p.30); https://gateoverflow.in/371910/gate-cse-2022-question-26",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.39 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 40,
+      "id": "1gh7ecior",
+      "contentSha256": "eaeb6bd982ba776d982c4415c60d17cabe5d9e88dcfd6439f9abdd6c9d31d987",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "status": "verified",
+      "reason": "f(2ⁿ − 1) = 2ⁿ − 1, f(2ⁿ) = 1 and f(5·2ⁿ) = 2^{n+1} + 1 hold for all n checked (up to n = 11); f(2ⁿ + 1) = 2f(2^{n−1}) + 1 = 3, so D fails for n ≥ 2.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.7.4, Recurrence Relation: GATE CSE 2022 | Question: 41, p.28 (key p.30); https://gateoverflow.in/371895/gate-cse-2022-question-41",
+          "answer": "A;B;C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.40 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "a, b, c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "A;B;C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 41,
+      "id": "j3vg5lyt2",
+      "contentSha256": "ecfcf62bfc96202d80de0fa7fe4e782fd2b1803d59a7c1c0ca1a8162f14b4ee1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "With φ, ψ = (1 ± √5)/2, φⁿ + ψⁿ gives 1 and 3 for n = 1, 2 and satisfies the recurrence; only A matches L_n numerically.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.7.5, Recurrence Relation: GATE CSE 2023 | Question: 5, p.28 (key p.30); https://gateoverflow.in/399307/gate-cse-2023-question-5",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.41 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 42,
+      "id": "ynb7dfl4t",
+      "contentSha256": "119fe305d88a0b77afb0819529f65ae9a7cc76769e5511b9261a411e118c21d4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Choose the 2k positions of A ∪ B (C(n, 2k)), which set comes first (2), the internal orders ((k!)²) and the rest ((n − 2k)!); brute force confirms it for small n, k.",
+      "note": "The app's stem is truncated: it omits the two separation conditions and the question \"How many permutations of U separate A from B?\". The answer is for the full GATE CSE 2023 Q38 wording, which GATE Overflow and the book print.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.3.6, Counting: GATE CSE 2023 | Question: 38, p.26 (key p.30); https://gateoverflow.in/399273/gate-cse-2023-question-38",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE PYQ book, Combinatorics answer table Q3.42 (All Subject Solutions Keys/Discrete Mathemetics.pdf p.3)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation (brute-force enumeration / exact arithmetic in Python)",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

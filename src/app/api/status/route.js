@@ -12,15 +12,16 @@ export async function GET(request) {
   try {
     await dbConnect();
 
-    // 1. Get actual question counts from the main Chapter DB
-    const chapters = await Chapter.find({}, 'subject chapter questions');
+    // 1. Question counts are computed inside MongoDB, so no question text leaves the database.
+    // 2. User-defined target counts come from the Target collection.
+    const [chapters, targets] = await Promise.all([
+      Chapter.aggregate([{ $project: { _id: 0, subject: 1, chapter: 1, count: { $size: { $ifNull: ['$questions', []] } } } }]),
+      Target.find({}, 'subject chapter targetCount -_id').lean(),
+    ]);
     const actualCounts = {};
     chapters.forEach(ch => {
-      actualCounts[`${ch.subject}|${ch.chapter}`] = ch.questions ? ch.questions.length : 0;
+      actualCounts[`${ch.subject}|${ch.chapter}`] = ch.count;
     });
-
-    // 2. Get user-defined target counts from the Target DB
-    const targets = await Target.find({});
     const targetCounts = {};
     targets.forEach(t => {
       targetCounts[`${t.subject}|${t.chapter}`] = t.targetCount;
@@ -44,7 +45,7 @@ export async function POST(request) {
     const savedTarget = await Target.findOneAndUpdate(
       { subject, chapter },
       { $set: { targetCount } },
-      { new: true, upsert: true, runValidators: true, setDefaultsOnInsert: true }
+      { returnDocument: 'after', upsert: true, runValidators: true, setDefaultsOnInsert: true }
     );
 
     return NextResponse.json({ success: true, data: savedTarget });

@@ -29,7 +29,7 @@ export async function POST(request) {
     const prefs = await Preference.findOneAndUpdate(
       { user: 'admin' },
       { $set: { lastSubject: subject, lastChapter: chapter } },
-      { new: true, upsert: true, runValidators: true, setDefaultsOnInsert: true }
+      { returnDocument: 'after', upsert: true, runValidators: true, setDefaultsOnInsert: true }
     );
     
     return NextResponse.json({ success: true, data: prefs });

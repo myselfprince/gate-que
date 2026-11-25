@@ -13,6 +13,7 @@ export default function PdfSettingsPanel({ settings, onChange, onValidityChange 
   const [notice, setNotice] = useState('');
   const [invalid, setInvalid] = useState(false);
   const [revision, setRevision] = useState(0);
+  const [savingAll, setSavingAll] = useState(false);
   const invalidFields = useRef(new Set());
   const report = useCallback((key, valid) => {
     if (valid) invalidFields.current.delete(key); else invalidFields.current.add(key);
@@ -42,7 +43,7 @@ export default function PdfSettingsPanel({ settings, onChange, onValidityChange 
     } catch { /* An unreadable browser copy is ignored; the database copy is authoritative. */ }
     loadWorkspaceSetting('pdf').then(value => {
       if (cancelled || edited.current) return;
-      if (value) { apply(value); setNotice('Settings loaded from the database.'); }
+      if (value) { apply(value); setNotice('Settings loaded. One design is used for every subject, chapter and topic.'); }
       else if (local) { apply(local); saving.save(local); setNotice('Settings from this browser are being copied to the database…'); }
     }, error => {
       if (cancelled || edited.current) return;
@@ -57,6 +58,20 @@ export default function PdfSettingsPanel({ settings, onChange, onValidityChange 
     saver.current?.save({ settings: next, templates: nextTemplates });
     // A browser copy is kept only as a fallback for when the database is unreachable.
     try { localStorage.setItem(storageKey, JSON.stringify({ settings: next, templates: nextTemplates })); } catch { /* Database save still runs. */ }
+  }
+  // Writes the current design to the database at once, without the usual short delay.
+  async function saveForAllTopics() {
+    edited.current = true;
+    setSavingAll(true);
+    try {
+      await saver.current?.saveNow({ settings, templates });
+      try { localStorage.setItem(storageKey, JSON.stringify({ settings, templates })); } catch { /* Database copy is saved. */ }
+      setNotice(`Saved at ${new Date().toLocaleTimeString()}. These settings now apply to every subject, chapter and topic.`);
+    } catch (error) {
+      setNotice(`Not saved: ${error.message} Your changes stay active on this page; try again.`);
+    } finally {
+      setSavingAll(false);
+    }
   }
   function update(key, value) {
     const next = { ...settings, [key]: value };
@@ -118,6 +133,10 @@ export default function PdfSettingsPanel({ settings, onChange, onValidityChange 
           </div>
         </div>
       </details>
+    </div>
+    <div className={styles.saveAll}>
+      <button type="button" className={styles.saveAllButton} disabled={invalid || savingAll} onClick={saveForAllTopics}>{savingAll ? 'Saving…' : 'Save settings for all topics'}</button>
+      <p className={styles.hint}>One PDF design is shared by every subject, chapter and topic, and changes also save automatically. Text and diagram sizes set on a single question in the editor still apply to that question.</p>
     </div>
     <p role="status" className={styles.notice}>{notice || 'Settings are saved automatically to the database.'}</p>
   </section>;

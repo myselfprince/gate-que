@@ -147,3 +147,18 @@ test('reviewed Mathematical Logic key covers every question with the verified an
   assert.equal(key.join(' '), 'D D A A A A D D B D C C A B B B B D D D D A A A C D B D B B B A B C D A D B B D D C A C C A 11 4 D B D D A B B C AC BC B BD A');
   assert.deepEqual(reviewed.questions.filter(item => item.questionType === 'MSQ').map(item => item.position), [57, 58, 60]);
 });
+
+test('reviewed Combinatorics key covers every question with the verified answers', () => {
+  const reviewed = validateTopicAnswerFile(JSON.parse(fs.readFileSync(path.join(TOPIC_ANSWER_DIR, '1-discrete-maths--3-combinatorics.json'), 'utf8')));
+  assert.equal(reviewed.questions.length, 42);
+  const answer = item => {
+    if (item.questionType === 'SUBJECTIVE') return 'S';
+    if (item.questionType !== 'NAT') return item.correctOptions.join('');
+    return item.natRange ? `${item.natRange.min}-${item.natRange.max}` : item.natAnswer;
+  };
+  assert.equal(reviewed.questions.map(answer).join(' '), 'D S C C B B D C B C A D C B A A D A D D C A 89 3.8-3.9 8 0.99 A 36 15 B 10 198 15 D A 12 65 7 A ABC A D');
+  assert.deepEqual(reviewed.questions.filter(item => item.questionType === 'MSQ').map(item => item.position), [40]);
+  assert.deepEqual(reviewed.questions.filter(item => item.questionType === 'SUBJECTIVE').map(item => item.position), [2]);
+  assert.equal(reviewed.questions[23].natAnswer, '3.9');
+  assert.deepEqual(reviewed.questions.filter(item => item.status === 'verified-with-note').map(item => item.position), [2, 3, 10, 20, 24, 35, 42]);
+});
