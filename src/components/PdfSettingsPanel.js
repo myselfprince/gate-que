@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { DEFAULT_PDF_SETTINGS, PDF_PAGE_SIZES, PDF_PRESETS, normalizePdfSettings, migrateLegacyPdfSettings } from '@/lib/pdf-settings.mjs';
 import PdfDecorationSettings from './PdfDecorationSettings';
+import { loadWorkspaceSetting, workspaceSettingSaver } from '@/lib/workspace-settings-client';
 import styles from './PdfSettingsPanel.module.css';
 
 const storageKey = 'gate-pdf-settings-v2';
@@ -18,22 +19,44 @@ export default function PdfSettingsPanel({ settings, onChange, onValidityChange 
     setInvalid(invalidFields.current.size > 0);
     onValidityChange?.(invalidFields.current.size === 0);
   }, [onValidityChange]);
+  const saver = useRef(null), edited = useRef(false);
+  // The database copy wins, so settings follow you across restarts, ports and browsers.
+  // An older copy kept only in this browser is moved into the database once.
   useEffect(() => {
-    const timer = setTimeout(() => {
-      try {
-        const current = localStorage.getItem(storageKey);
-        const saved = JSON.parse(current || localStorage.getItem('gate-pdf-settings-v1') || 'null');
-        const normalize = current ? normalizePdfSettings : migrateLegacyPdfSettings;
-        if (saved?.settings) onChange(normalize(saved.settings));
-        if (saved?.templates) setTemplates(Object.fromEntries(Object.entries(saved.templates).map(([key, value]) => [key, normalize(value)])));
-      } catch { setNotice('Saved PDF settings could not be restored. Defaults are active.'); }
-    }, 0);
-    return () => clearTimeout(timer);
+    let cancelled = false;
+    const messages = { pending: 'Saving to the database…', saving: 'Saving to the database…', saved: 'Settings saved to the database.' };
+    const saving = workspaceSettingSaver('pdf', { onStatus: (status, error) => {
+      if (!cancelled) setNotice(status === 'error' ? `Not saved: ${error.message} Your changes stay active on this page; change a setting again to retry.` : messages[status]);
+    } });
+    saver.current = saving;
+    const apply = value => {
+      onChange(normalizePdfSettings(value.settings));
+      setTemplates(Object.fromEntries(Object.entries(value.templates || {}).map(([key, template]) => [key, normalizePdfSettings(template)])));
+    };
+    let local = null;
+    try {
+      const current = localStorage.getItem(storageKey);
+      const saved = JSON.parse(current || localStorage.getItem('gate-pdf-settings-v1') || 'null');
+      const normalize = current ? normalizePdfSettings : migrateLegacyPdfSettings;
+      if (saved?.settings) local = { settings: normalize(saved.settings), templates: Object.fromEntries(Object.entries(saved.templates || {}).map(([key, value]) => [key, normalize(value)])) };
+    } catch { /* An unreadable browser copy is ignored; the database copy is authoritative. */ }
+    loadWorkspaceSetting('pdf').then(value => {
+      if (cancelled || edited.current) return;
+      if (value) { apply(value); setNotice('Settings loaded from the database.'); }
+      else if (local) { apply(local); saving.save(local); setNotice('Settings from this browser are being copied to the database…'); }
+    }, error => {
+      if (cancelled || edited.current) return;
+      if (local) apply(local);
+      setNotice(`${error.message} ${local ? 'Using the copy saved in this browser.' : 'Defaults are active.'}`);
+    });
+    return () => { cancelled = true; saving.dispose(); };
   }, [onChange]);
   function save(next, nextTemplates = templates) {
+    edited.current = true;
     onChange(next);
-    try { localStorage.setItem(storageKey, JSON.stringify({ settings: next, templates: nextTemplates })); setNotice('Settings saved in this browser.'); }
-    catch { setNotice('Settings are active, but this browser could not save them.'); }
+    saver.current?.save({ settings: next, templates: nextTemplates });
+    // A browser copy is kept only as a fallback for when the database is unreachable.
+    try { localStorage.setItem(storageKey, JSON.stringify({ settings: next, templates: nextTemplates })); } catch { /* Database save still runs. */ }
   }
   function update(key, value) {
     const next = { ...settings, [key]: value };
@@ -64,7 +87,7 @@ export default function PdfSettingsPanel({ settings, onChange, onValidityChange 
       <label>Answers in PDF<select aria-label="PDF answer display" value={settings.answerMode || 'none'} onChange={e => update('answerMode', e.target.value)}><option value="none">Hide answers</option><option value="toggle">Show / hide on click</option><option value="footer">Show in page footer</option></select></label>
       <label className={styles.check}><input type="checkbox" checked={settings.includeAnswerKey} onChange={e => update('includeAnswerKey', e.target.checked)} /> Separate answer-key PDF</label>
     </div>
-    {settings.answerMode === 'toggle' && <p className={styles.hint}>Stored answers start hidden. Click to reveal them in the preview or a PDF reader with layer support.</p>}
+    {settings.answerMode === 'toggle' && <p className={styles.hint}>Stored answers start hidden. Click Show answer to reveal one in the preview, Chrome, Edge, Firefox or Acrobat.</p>}
     {invalid && <p className={styles.error} role="alert">Fix the highlighted settings before exporting.</p>}
     <div className={styles.groups}>
       <PdfDecorationSettings key={revision} settings={settings} update={update} report={report} />
@@ -96,6 +119,6 @@ export default function PdfSettingsPanel({ settings, onChange, onValidityChange 
         </div>
       </details>
     </div>
-    <p role="status" className={styles.notice}>{notice || 'Settings are saved automatically in this browser.'}</p>
+    <p role="status" className={styles.notice}>{notice || 'Settings are saved automatically to the database.'}</p>
   </section>;
 }

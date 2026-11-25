@@ -1,7 +1,8 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { GATE_SYLLABUS } from '@/lib/syllabus';
+import { loadWorkspaceSetting, workspaceSettingSaver } from '@/lib/workspace-settings-client';
 
 const TOPIC_MAPPING = {
   "Asymptotic Notation": "1. Algo. Analysis and Asymptotic Notations",
@@ -181,6 +182,7 @@ export default function ScraperPage() {
   const [chunkSizes, setChunkSizes] = useState({});
   const [prependGroupCopyPrompt, setPrependGroupCopyPrompt] = useState(true);
   const [groupCopyPrompt, setGroupCopyPrompt] = useState(DEFAULT_GROUP_COPY_PROMPT);
+  const promptSaver = useRef(null), promptEdited = useRef(false);
   
   // NEW: Scraper Filter Year State
   const [filterYear, setFilterYear] = useState('All');
@@ -255,24 +257,27 @@ export default function ScraperPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // The group-copy prompt is saved in the database; an older browser-only copy is moved there once.
   useEffect(() => {
-    queueMicrotask(() => {
-      const savedPrompt = localStorage.getItem(GROUP_COPY_PROMPT_STORAGE_KEY);
-      const savedEnabled = localStorage.getItem(GROUP_COPY_PROMPT_ENABLED_STORAGE_KEY);
-
-      if (savedPrompt === null) {
-        localStorage.setItem(GROUP_COPY_PROMPT_STORAGE_KEY, DEFAULT_GROUP_COPY_PROMPT);
-      } else {
-        setGroupCopyPrompt(savedPrompt);
-      }
-
-      if (savedEnabled === null) {
-        localStorage.setItem(GROUP_COPY_PROMPT_ENABLED_STORAGE_KEY, 'true');
-      } else {
-        setPrependGroupCopyPrompt(savedEnabled === 'true');
-      }
-    });
+    let cancelled = false;
+    const saving = workspaceSettingSaver('scraper-group-prompt', { onStatus: (status, error) => { if (!cancelled && status === 'error') console.error('Group copy prompt not saved:', error.message); } });
+    promptSaver.current = saving;
+    const savedPrompt = localStorage.getItem(GROUP_COPY_PROMPT_STORAGE_KEY);
+    const savedEnabled = localStorage.getItem(GROUP_COPY_PROMPT_ENABLED_STORAGE_KEY);
+    const local = savedPrompt !== null || savedEnabled !== null ? { prompt: savedPrompt ?? DEFAULT_GROUP_COPY_PROMPT, enabled: savedEnabled !== 'false' } : null;
+    const apply = value => { setGroupCopyPrompt(value.prompt); setPrependGroupCopyPrompt(value.enabled); };
+    loadWorkspaceSetting('scraper-group-prompt').then(value => {
+      if (cancelled || promptEdited.current) return;
+      if (value) apply(value);
+      else if (local) { apply(local); saving.save(local); }
+    }, () => { if (!cancelled && !promptEdited.current && local) apply(local); });
+    return () => { cancelled = true; saving.dispose(); };
   }, []);
+  function persistGroupCopyPrompt(prompt, enabled) {
+    promptEdited.current = true;
+    promptSaver.current?.save({ prompt, enabled });
+    try { localStorage.setItem(GROUP_COPY_PROMPT_STORAGE_KEY, prompt); localStorage.setItem(GROUP_COPY_PROMPT_ENABLED_STORAGE_KEY, String(enabled)); } catch { /* Database save still runs. */ }
+  }
 
   useEffect(() => {
     if (typeof window !== 'undefined' && !window.MathJax) {
@@ -510,7 +515,7 @@ export default function ScraperPage() {
             onChange={(e) => {
               const enabled = e.target.checked;
               setPrependGroupCopyPrompt(enabled);
-              localStorage.setItem(GROUP_COPY_PROMPT_ENABLED_STORAGE_KEY, String(enabled));
+              persistGroupCopyPrompt(groupCopyPrompt, enabled);
             }}
             style={{ width: '16px', height: '16px', accentColor: '#cba6f7' }}
           />
@@ -520,7 +525,7 @@ export default function ScraperPage() {
           </span>
         </label>
         <details style={{ marginTop: '12px' }}>
-          <summary style={{ color: '#89b4fa', cursor: 'pointer', fontWeight: 'bold' }}>Edit copied prompt (saved locally)</summary>
+          <summary style={{ color: '#89b4fa', cursor: 'pointer', fontWeight: 'bold' }}>Edit copied prompt (saved to the database)</summary>
           <p style={{ color: '#bac2de', fontSize: '13px', margin: '10px 0' }}>
             This prompt is placed before questions copied with Copy All, a typed range, or a generated batch button. Single-question copies remain unchanged.
           </p>
@@ -529,7 +534,7 @@ export default function ScraperPage() {
             onChange={(e) => {
               const prompt = e.target.value;
               setGroupCopyPrompt(prompt);
-              localStorage.setItem(GROUP_COPY_PROMPT_STORAGE_KEY, prompt);
+              persistGroupCopyPrompt(prompt, prependGroupCopyPrompt);
             }}
             rows={14}
             spellCheck={false}
@@ -541,7 +546,7 @@ export default function ScraperPage() {
               type="button"
               onClick={() => {
                 setGroupCopyPrompt(DEFAULT_GROUP_COPY_PROMPT);
-                localStorage.setItem(GROUP_COPY_PROMPT_STORAGE_KEY, DEFAULT_GROUP_COPY_PROMPT);
+                persistGroupCopyPrompt(DEFAULT_GROUP_COPY_PROMPT, prependGroupCopyPrompt);
               }}
               style={{ background: '#45475a', color: '#cdd6f4', padding: '7px 10px', borderRadius: '4px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}
             >

@@ -11,6 +11,13 @@ function TextSetting({ name, label, value, update, report, maxLength, placeholde
     const timer = setTimeout(() => { setDraft(value); setError(''); report(name, true); }, 0);
     return () => clearTimeout(timer);
   }, [value, name, report]);
+  // Valid text is applied (and saved) after a short pause, so a reload mid-edit keeps it.
+  // Invalid drafts wait for blur or Enter, which shows the error.
+  useEffect(() => {
+    if (draft === value) return;
+    const timer = setTimeout(() => { try { update(name, draft); setError(''); report(name, true); } catch { /* Reported on blur. */ } }, 800);
+    return () => clearTimeout(timer);
+  }, [draft, value, name, update, report]);
   function apply() {
     try { update(name, draft); setError(''); report(name, true); }
     catch (error) { setError(error.message); report(name, false); }

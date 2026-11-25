@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useImperativeHandle, useState } from 'react';
+import { useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { DEFAULT_YOUTUBE_SETTINGS, buildYouTubeExport, normalizeTags, tagCost, youtubeCopyText, youtubeCsv } from '@/lib/youtube-metadata.mjs';
+import { loadWorkspaceSetting, workspaceSettingSaver } from '@/lib/workspace-settings-client';
 import styles from './YouTubeStudio.module.css';
 import ThumbnailStudio from './ThumbnailStudio';
 
@@ -21,20 +22,38 @@ export default function YouTubeStudio({ ref, subject, chapter, questions, notify
   const [studioView, setStudioView] = useState('metadata');
   const [ready, setReady] = useState(false);
   const storageKey = `gate-youtube-drafts-v1:${subject}:${chapter}`;
+  const saver = useRef(null), edited = useRef(false);
   useEffect(() => {
     const timer = setTimeout(() => {
-      try {
-        setSettings({ ...DEFAULT_YOUTUBE_SETTINGS, ...JSON.parse(localStorage.getItem('gate-youtube-settings-v1') || '{}') });
-        setDrafts(JSON.parse(localStorage.getItem(storageKey) || '{}'));
-      } catch { setNotice('Saved YouTube drafts could not be restored.'); }
+      try { setDrafts(JSON.parse(localStorage.getItem(storageKey) || '{}')); }
+      catch { setNotice('Saved YouTube drafts could not be restored.'); }
       setReady(true);
     }, 0);
     return () => clearTimeout(timer);
   }, [storageKey]);
+  // Channel settings live in the database; an older browser-only copy is moved there once.
+  useEffect(() => {
+    let cancelled = false;
+    const saving = workspaceSettingSaver('youtube', { onStatus: (status, error) => { if (!cancelled && status === 'error') setNotice(`Settings not saved: ${error.message}`); } });
+    saver.current = saving;
+    let local = null;
+    try { const saved = localStorage.getItem('gate-youtube-settings-v1'); if (saved) local = { ...DEFAULT_YOUTUBE_SETTINGS, ...JSON.parse(saved) }; } catch { /* ignored */ }
+    loadWorkspaceSetting('youtube').then(value => {
+      if (cancelled || edited.current) return;
+      if (value) setSettings(value);
+      else if (local) { setSettings(local); saving.save(local); }
+    }, error => {
+      if (cancelled || edited.current) return;
+      if (local) setSettings(local);
+      setNotice(`${error.message} ${local ? 'Using the settings saved in this browser.' : 'Defaults are active.'}`);
+    });
+    return () => { cancelled = true; saving.dispose(); };
+  }, []);
   function saveSettings(key, value) {
     const next = { ...settings, [key]: value }; setSettings(next);
-    try { localStorage.setItem('gate-youtube-settings-v1', JSON.stringify(next)); }
-    catch { setNotice('Settings are active, but this browser could not save them.'); }
+    edited.current = true;
+    saver.current?.save(next);
+    try { localStorage.setItem('gate-youtube-settings-v1', JSON.stringify(next)); } catch { /* Database save still runs. */ }
   }
   function saveDraft(id, next) {
     const updated = { ...drafts, [id]: next }; setDrafts(updated);
@@ -73,7 +92,7 @@ export default function YouTubeStudio({ ref, subject, chapter, questions, notify
     <div id="yt-metadata-panel" role="tabpanel" aria-labelledby="yt-metadata-tab" hidden={studioView !== 'metadata'} className={styles.studio}>
       <aside>
         <section className={styles.panel} aria-label="YouTube defaults">
-          <h3>Upload defaults</h3><p className={styles.muted}>Used for every question. Your settings and custom edits are saved in this browser.</p>
+          <h3>Upload defaults</h3><p className={styles.muted}>Used for every question. These settings are saved to the database; custom per-question edits are saved in this browser.</p>
           <label>Channel name<input disabled={!ready} maxLength={80} value={settings.channelName} onChange={e => saveSettings('channelName', e.target.value)} /></label>
           <label>Website URL<input disabled={!ready} type="url" value={settings.website} onChange={e => saveSettings('website', e.target.value)} placeholder="https://your-site.com" /></label>
           <label>Chapter playlist URL<input disabled={!ready} type="url" value={settings.playlistUrl} onChange={e => saveSettings('playlistUrl', e.target.value)} placeholder="https://www.youtube.com/playlist?list=…" /></label>

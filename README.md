@@ -44,10 +44,16 @@ The existing variable-height question-card ZIP remains under **Question image
 export**. Thumbnail generation needs Chrome/Puppeteer and access to the existing
 MathJax CDN, just like the question preview.
 
-YouTube copy, defaults and thumbnail design are saved in this browser's local
-storage; the resized PNG cutout is saved in IndexedDB with transparency intact.
-These creator settings are separate from **Save to database** and do not sync
-between browsers. Use the downloadable metadata and PNG/ZIP files for backups.
+Workspace settings are saved to MongoDB as soon as they change, so they survive
+server restarts, different ports and other browsers. This covers every PDF design
+setting and saved PDF template, the YouTube upload defaults and the scraper's
+group-copy prompt. They live in the `workspacesettings` collection, are validated
+by `src/lib/workspace-settings.mjs` and are served by `/api/settings/<key>`. Edits
+are debounced into one save, and a pending save is flushed when the tab closes. A
+copy kept only in this browser from before is moved into the database the first
+time the page loads. Per-question YouTube copy edits and the thumbnail design
+(with its PNG cutout in IndexedDB) remain in this browser; use the downloadable
+metadata and PNG/ZIP files for backups.
 
 Open **Diagram studio** from the editor, or visit `/diagram-maker`. Its SVG
 canvas includes 48 symbols: AND/OR/NOT/NAND/NOR/XOR/XNOR gates, buffers,
