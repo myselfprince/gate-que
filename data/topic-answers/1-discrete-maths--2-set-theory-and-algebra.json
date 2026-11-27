@@ -1,0 +1,3433 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "1. Discrete Maths",
+  "chapter": "2. Set Theory and Algebra",
+  "slug": "1-discrete-maths--2-set-theory-and-algebra",
+  "reviewedAt": "2026-11-27",
+  "sources": {
+    "gateOverflowPdf": {
+      "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume1.pdf",
+      "sha256": "e42a70646bdbc4f86edff44b97555a94c866deda508c761da40c20d95b493a2d",
+      "answerKeyPages": [
+        30,
+        126,
+        127,
+        187
+      ]
+    },
+    "madeEasyPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\1. Discrete Maths\\2. Set Theory and Algebra.pdf",
+      "sha256": "21e39f76c04388ff746bc2701012e9608bbbfb2e7c8861714c61373ba1a947bb",
+      "chapter": "Set Theory and Algebra"
+    },
+    "madeEasySolutionsPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\All Subject Solutions Keys\\Discrete Mathemetics.pdf",
+      "sha256": "5c73a1df7848af2b405175dc29721a82eac4e56ca0ea8e1d5a41e4e26f4a0ed6",
+      "answerKeyPage": 2,
+      "printedAnswerKeyPage": 28
+    },
+    "yearPapers": "Verified copies in data/papers, linked by source.copiedFrom.questionId"
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "goy39j02u",
+      "contentSha256": "c0f041d4bb9beb46a7547fc905387d503ee0266598ebc4f1eda4dd05ba8988a7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "On {a,b}, R = {(a,a)} is symmetric and transitive. The missing pair (b,b) disproves reflexivity, which all three preceding choices claim.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.7, Relations: GATE CSE 1995 | Question: 1.19, PDF p.114 (key p.126). https://gateoverflow.in/2606/gate-cse-1995-question-1-19",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.1, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "a4vmenyl6",
+      "contentSha256": "8aa3da2ce0e39eb194f0ebb06d066aa06035809e1482d8fe6254de1d0e6bf4de",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The outer set contains three distinct elements. Each can independently be included in a subset, so there are 2³ = 8 subsets.",
+      "note": "Restore the nested set delimiters from GATE Overflow, S = {{∅}, 1, {2,3}}. Made Easy and the app use parentheses. The outer cardinality is three in either version.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.13.5, Set Theory: GATE CSE 1995 | Question: 1.20, PDF p.121 (key p.126). https://gateoverflow.in/2607/gate-cse-1995-question-1-20",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.2, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "hkm8zbgew",
+      "contentSha256": "5b7aa43d917a138c08455d4731b539fed0b0b9595d803c8b84c23f29a6ccfd5c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Invertible real matrices of a fixed order form a group under multiplication. For order at least 2, a shear and the diagonal matrix diag(2,1) acting on the same two coordinates do not commute.",
+      "note": "Both keys assume a common matrix size of at least 2. Specify “all invertible real n × n matrices for a fixed n ≥ 2.” Mixed sizes do not admit a single multiplication operation, and size 1 gives an abelian group.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.4.6, Group Theory: GATE CSE 1995 | Question: 2.17, PDF p.101 (key p.126). https://gateoverflow.in/2629/gate-cse-1995-question-2-17",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.3, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "wo6d45pih",
+      "contentSha256": "3e77f8457623e34e877ca14aba96f9d8fc85240f1fcfc2ce10a0762c42595a29",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Every element of A ∪ B is in exactly one of A − B, B − A, and A ∩ B. The three sets therefore partition A ∪ B.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.13.7, Set Theory: GATE CSE 1996 | Question: 1.1, PDF p.122 (key p.126). https://gateoverflow.in/2705/gate-cse-1996-question-1-1",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.4, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "ntiqwwnbr",
+      "contentSha256": "8b57150585714e3c9506edce63182e7e57beefcb6932f9f8327bf281c289d5fb",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The cover edges under divisibility are 2–6, 3–6, 6–12, and 12–24. Every other comparable distinct pair has an intermediate element.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.10.3, Partial Order: GATE CSE 1996 | Question: 1.2, PDF p.111 (key p.126). https://gateoverflow.in/2706/gate-cse-1996-question-1-2",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.5, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "w1ezt5h4e",
+      "contentSha256": "4d52e5e64640fd884a569f1b01a013be17cc1e9882a666e18c39002b7893b050",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "There must be at least two possible outputs and a nonempty domain. An infinite domain or codomain would give infinitely many functions. For finite sets there are |Y|^|X| functions, and primality of 97 forces |X| = 1 and |Y| = 97.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.3.5, Functions: GATE CSE 1996 | Question: 1.3, PDF p.95 (key p.126). https://gateoverflow.in/2707/gate-cse-1996-question-1-3",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.6, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "89463pdt7",
+      "contentSha256": "1bb230e27457d1ef908887cb3c8033ccdd9ee4a11bbd886f49e5c54df89fe7ff",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Zero is rational and has no multiplicative inverse. Rational and integer addition and multiplication of nonzero reals each satisfy the abelian group axioms.",
+      "note": "In B and D, read “is an abelian group” in place of “in an abelian group.” The intended assertions are true.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.4.8, Group Theory: GATE CSE 1996 | Question: 1.4, PDF p.101 (key p.126). https://gateoverflow.in/2708/gate-cse-1996-question-1-4",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.7, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "vzf94bla0",
+      "contentSha256": "1ba8c0477e7e1db1b9b4fbdae8942b59ed6a0e40cb5b166b6e80aa2c09dbc446",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "If u = x + y and v = x − y, addition and subtraction give x = (u+v)/2 and y = (u−v)/2.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.3.6, Functions: GATE CSE 1996 | Question: 2.1, PDF p.95 (key p.126). https://gateoverflow.in/2730/gate-cse-1996-question-2-1",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.8, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "7ri3irw1l",
+      "contentSha256": "eb61cab322a35c5a1ce9298fd8d4303278ab22cf92de0b15ae7694ef7a544337",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Disjointness is symmetric. With A = {1} and B = {2}, both A R B and B R A hold while A R A fails. Transitivity therefore is not guaranteed.",
+      "note": "B is the keyed general claim. The nonempty relation on the collection {∅} is transitive, so B should read “R is symmetric and need not be transitive.”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.8, Relations: GATE CSE 1996 | Question: 2.2, PDF p.115 (key p.126). https://gateoverflow.in/2731/gate-cse-1996-question-2-2",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.9, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "u6hjg4s40",
+      "contentSha256": "5566bdc4f7c611dd96e408d13fdb9c58f073d015c94dd4e31c212cb25898f1b1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Concatenation adds lengths, so no nonempty string over the alphabet can be inverted to give the empty string. The permutation group, nonzero residues modulo a prime, and the stated subgroup criterion are valid.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.4.9, Group Theory: GATE CSE 1996 | Question: 2.4, PDF p.101 (key p.126). https://gateoverflow.in/2733/gate-cse-1996-question-2-4",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.10, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "uykt9cv5f",
+      "contentSha256": "e4fb20e0939e9605b4944a8f4551694d287fef6258a698b7fab7c3c9a9649ed1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Equivalence relations correspond to partitions. Block-size patterns 4, 3+1, 2+2, 2+1+1, and 1+1+1+1 contribute 1, 4, 3, 6, and 1 partitions, for 15 total.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.11, Relations: GATE CSE 1997 | Question: 6.3, PDF p.115 (key p.126). https://gateoverflow.in/2259/gate-cse-1997-question-6-3",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.11, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "27cvlr2uc",
+      "contentSha256": "e630046f118bce253d46283f53bb3bbbaa95320949f3087db1b26135392e53a8",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A × A is the universal equivalence relation and contains every ordered pair, giving n² elements.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.12, Relations: GATE CSE 1998 | Question: 1.6, PDF p.115 (key p.126). https://gateoverflow.in/1643/gate-cse-1998-question-1-6",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.12, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "3fvfouber",
+      "contentSha256": "a85c5bf3da944647489bb44632250723d82faff5b992ef0f1a49179e3c85a104",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Intersection preserves all three axioms. For the union, use partitions {{1,2},{3}} and {{1},{2,3}}. The union relates 1 to 2 and 2 to 3 while omitting (1,3).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.13, Relations: GATE CSE 1998 | Question: 1.7, PDF p.115–116 (key p.126). https://gateoverflow.in/1644/gate-cse-1998-question-1-7",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.13, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "3izq1dfun",
+      "contentSha256": "fe72150bde9caba115ed802761c6ff5e137c28684b5c24583f0b884dbfc8c610",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Each of the m domain elements has n independent choices of image, giving nᵐ functions.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.3.8, Functions: GATE CSE 1998 | Question: 1.8, PDF p.96 (key p.126). https://gateoverflow.in/1645/gate-cse-1998-question-1-8",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.14, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "b09ge02jc",
+      "contentSha256": "b5ed22c100f2a0e66c984ac54b6ed51bffea7357ef315ef7084d6f9c37eaf32f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "The pair (1,1) is present and (4,4) is absent. Rows for 2 and 3 contain all targets, row 1 contains only 1, and row 4 is empty. Every two-step path therefore has its direct edge.",
+      "note": "Use escaped LaTeX braces \\{ and \\} around the listed relation and the underlying set so the delimiters display.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.16, Relations: GATE CSE 1998 | Question: 2.3, PDF p.116 (key p.126). https://gateoverflow.in/1675/gate-cse-1998-question-2-3",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.15, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation with exhaustive enumeration",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "dbv600kz2",
+      "contentSha256": "caab62322d58d460b80c2fd4f3d2247e58644ed7871fa888a65817ec32cb561d",
+      "questionType": "SUBJECTIVE",
+      "correctOptions": [],
+      "status": "verified-with-note",
+      "reason": "The relation is {a,b,c} × {a,b,c} together with (d,d), giving ten ordered pairs. The digraph has a self-loop at each vertex, both arrows between each distinct pair in {a,b,c}, and no arrows between d and the other vertices.",
+      "note": "Descriptive parts (a) and (b) have a reference solution here. The scanned key says “Sol.” and GATE Overflow marks the item as descriptive. Use escaped set braces so Π₁ = {{a,b,c},{d}} displays with both blocks delimited.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.10.5, Partial Order: GATE CSE 1998 | Question: 11, PDF p.111 (key p.126). https://gateoverflow.in/1725/gate-cse-1998-question-11",
+          "answer": "N/A (descriptive question)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.16, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "Sol. (descriptive question)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "Reference solution in reason",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "ayg8fk6ao",
+      "contentSha256": "b3bc233c96ea546d747892e81249a49421d277669e718ef720db93729b37e172",
+      "questionType": "SUBJECTIVE",
+      "correctOptions": [],
+      "status": "verified-with-note",
+      "reason": "Only equal elements can commute. First, a commutes with a², so a² = a. Next, a(aba) = aba = (aba)a, so aba = a. Finally (abc)(ac) = ab(cac) = abc and (ac)(abc) = (aca)bc = abc. Thus abc and ac commute and are equal.",
+      "note": "The three parts ask for proofs. Made Easy labels the item “Sol.” and GATE Overflow supplies no objective key.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.4.11, Group Theory: GATE CSE 1998 | Question: 12, PDF p.102 (key p.126). https://gateoverflow.in/1726/gate-cse-1998-question-12",
+          "answer": "N/A (descriptive question)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.17, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "Sol. (descriptive question)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "Reference solution in reason",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "nyg27rm90",
+      "contentSha256": "6702472409fcf1bb19ff0afe6f3a0512f4456a207c16727a77f5b02f799e92cd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "A relation is an arbitrary subset of the n² ordered pairs in A × A, so there are 2^(n²) relations.",
+      "note": "GATE Overflow prints distractor B as 2ⁿ. The app and Made Easy print 2n. The general formula in C still holds.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.17, Relations: GATE CSE 1999 | Question: 1.2, PDF p.116 (key p.126). https://gateoverflow.in/1456/gate-cse-1999-question-1-2",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.18, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 19,
+      "id": "h593mn6uz",
+      "contentSha256": "40aeb1fdfe8180f792b75e2847ff36f23a56c9c30010ac9905e7a4c4eeb47732",
+      "questionType": "SUBJECTIVE",
+      "correctOptions": [],
+      "status": "verified-with-note",
+      "reason": "The proof starts by assuming xRy for some y. Symmetry and transitivity then give xRx for that x, but x may have no outgoing pair. For example, on {a,b}, R = {(a,a)} is symmetric and transitive and omits (b,b).",
+      "note": "The item asks for a proof critique and counterexample. Made Easy labels it “Sol.” and GATE Overflow supplies no objective key.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.19, Relations: GATE CSE 1999 | Question: 3, PDF p.117 (key p.126). https://gateoverflow.in/1522/gate-cse-1999-question-3",
+          "answer": "N/A (descriptive question)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.19, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "Sol. (descriptive question)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "Reference solution in reason",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "9cfcgqd8w",
+      "contentSha256": "7ed5824fd2a7be07f4fc077782df484eeb39759a87d8bf83d08b43d471d0ed31",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "A sum of integers is even exactly when its two terms have equal parity. The two equivalence classes are the even and odd integers.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.20, Relations: GATE CSE 2000 | Question: 2.5, PDF p.117 (key p.126). https://gateoverflow.in/652/gate-cse-2000-question-2-5",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.20, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q28 (verified linked copy)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "elvggjgj9",
+      "contentSha256": "8c8cad25454570522c7e9289927f4c3121c9b6e69afbeee52b54442e4d53b9b8",
+      "questionType": "MCQ",
+      "correctOptions": [],
+      "status": "verified-with-note",
+      "reason": "Take S = {∅}. Then P(S) = {∅,{∅}} and both of its elements are in P(P(S)), so B fails. On this same example P(P(S)) has four members, P(S) ∩ S has one, and S belongs to P(S). Hence A, C, and D also fail.",
+      "note": "GATE Overflow and Made Easy key B. The verified 2000 paper review and the counterexample show that no option is always true. A corrected B is “P(S) ∩ P(P(S)) = P(S ∩ P(S)).”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.13.9, Set Theory: GATE CSE 2000 | Question: 2.6, PDF p.122 (key p.126). https://gateoverflow.in/653/gate-cse-2000-question-2-6",
+          "answer": "B (asserts that the intersection is always {∅})",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.21, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "B (asserts that the intersection is always {∅})",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q29 (verified linked copy)",
+          "answer": "No option valid as written (reviewed year-paper reference answer)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "No option correct as written",
+          "agrees": true
+        }
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "With S = {∅}, the intersection in B is {∅,{∅}}. A, C and D also fail on this example, so none of the printed choices is universally true."
+    },
+    {
+      "position": 22,
+      "id": "cdjh0abf6",
+      "contentSha256": "e7f37974df2a02d797d2066252f5c3d902de336558bf62f91e68c69baeb8ec42",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "R₁ is equality of parity and R₃ is equality of sign. R₂ fails reflexivity since a+a is even. For R₄, 1 relates to 3 and 3 to 5, but 1 and 5 differ by 4.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.21, Relations: GATE CSE 2001 | Question: 1.2, PDF p.117 (key p.126). https://gateoverflow.in/695/gate-cse-2001-question-1-2",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.22, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q2 (verified linked copy)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 23,
+      "id": "jkvt6dp0j",
+      "contentSha256": "fcf934477ea1a50db2552f780037dc1f1043e1f66b68ffd4d61db40324db9066",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Take A as the positive even integers and B = C as the positive odd integers, giving an empty intersection. For S₂ choose √2 and −√2, whose sum is 0.",
+      "note": "Restore S₁ to “A ∩ (B ∪ C) is finite,” as in GATE Overflow and the verified year paper. Made Easy and the app print B ∩ C. The even/odd witness works for both versions.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.13.11, Set Theory: GATE CSE 2001 | Question: 2.2, PDF p.122 (key p.127). https://gateoverflow.in/720/gate-cse-2001-question-2-2",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.23, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q27 (verified linked copy)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 24,
+      "id": "p8wwjjbty",
+      "contentSha256": "0225b12c11c4636570f8d0f5de700983b8e77e1c73b18e1e3d51cff724ff1ebe",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "An image of a union consists of the images from either set. For intersections, take E and F as disjoint singletons whose two elements have the same image. Then f(E ∩ F) is empty and f(E) ∩ f(F) is nonempty.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.3.9, Functions: GATE CSE 2001 | Question: 2.3, PDF p.96 (key p.126). https://gateoverflow.in/721/gate-cse-2001-question-2-3",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.24, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q28 (verified linked copy)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 25,
+      "id": "y4seelckb",
+      "contentSha256": "c1e1396ae354986e5b32e8cf34f0d42ac929895268f4cd6024324d5f2b169e6c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "For the empty relation there are no pairs that can violate symmetry or transitivity. The three required reflexive pairs are absent.",
+      "note": "Read “The binary relation S = ∅ on A = {1,2,3}” in place of the undefined symbol f. The parenthetical “empty set” in the app and the GATE Overflow PDF establish the intended relation.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.22, Relations: GATE CSE 2002 | Question: 2.17, PDF p.117 (key p.126). https://gateoverflow.in/847/gate-cse-2002-question-2-17",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.25, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q42 (verified linked copy)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 26,
+      "id": "xsewwfmx7",
+      "contentSha256": "fc6edfa0c95c25439aaf57ea2817dd21f307d316d077f310448bdbd77770e8be",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The empty string is a two-sided identity. A nonempty string has no inverse, since concatenation adds nonnegative lengths.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.4.15, Group Theory: GATE CSE 2003 | Question: 7, PDF p.102–103 (key p.126). https://gateoverflow.in/898/gate-cse-2003-question-7",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.26, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q7 (verified linked copy)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 27,
+      "id": "qbk7xhd1o",
+      "contentSha256": "ff547003889bf9246142e319e44ed68e8709202b4ac6aaaebf159c7101d3e8c2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Monotonicity and a ≤ c force P(c) to be true. Because c also satisfies b ≤ c, D would force P(c) to be false.",
+      "note": "In C, the source wording is “b ≤ x and x ≠ c.” The app repeats “such that.” This does not change which statement is impossible.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.10.6, Partial Order: GATE CSE 2003 | Question: 31, PDF p.112 (key p.126). https://gateoverflow.in/921/gate-cse-2003-question-31",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.27, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q31 (verified linked copy)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 28,
+      "id": "9sot1w8ae",
+      "contentSha256": "f6c13ec5696c452badc26b87889e11f4f94d65a39d56f197d551f90c080af2e9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The multiplication row for a gives a × x = x. Of the nine pairs, (a,c), (b,c), and (c,b) satisfy x+y = c. The second equation keeps exactly (b,c) and (c,b).",
+      "note": "In the app PNG, the upper-left 2×2 block of the addition table is [[a,b],[b,a]]. The two PDFs and the verified 2003 paper show [[b,a],[a,b]]. Restore a+a=b, a+b=a, b+a=a, and b+b=b to match the source. Enumerating both tables gives the same two solutions.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.1.3, Binary Operation: GATE CSE 2003 | Question: 38, PDF p.92–93 (key p.126). https://gateoverflow.in/929/gate-cse-2003-question-38",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.28, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q38 (verified linked copy)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation with exhaustive enumeration",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 29,
+      "id": "fuwm4keg3",
+      "contentSha256": "d61a319aed897fb6f5823a9c7e268358b1c48e4100083d806b7e2e4c953a785b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Each edge advances by one. A path of zero or more edges reaches precisely the integers y ≥ x, including x itself.",
+      "note": "The GATE Overflow reproduction uses {0,1,2}. Made Easy and the verified 2004 paper use the app's full {0,1,2,…} domain. The closure uses y ≥ x within the given domain in both versions.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.24, Relations: GATE CSE 2004 | Question: 24, PDF p.118 (key p.126). https://gateoverflow.in/1021/gate-cse-2004-question-24",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.29, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q24 (verified linked copy)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 30,
+      "id": "83o4cufau",
+      "contentSha256": "ff3825ae13341fce785a83453f02f1e061f6f55e888ae4f9031b6c8bb70a0bca",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The n diagonal entries and n(n−1)/2 entries above the diagonal are freely chosen. Symmetry fixes the rest, giving 2^((n²+n)/2).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.6.11, Matrix: GATE CSE 2004 | Question: 26, PDF p.175 (key p.187). https://gateoverflow.in/1023/gate-cse-2004-question-26",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.30, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q26 (verified linked copy)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 31,
+      "id": "ufds50ix4",
+      "contentSha256": "8090335870318c2fe0ff5cecf19c75e0d0da63057433d048a6868cb1bb06fbd7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Inclusion–exclusion gives 125+85+65−50−35−30+15 = 175 students in at least one course. The remaining 25 take none.",
+      "note": "The GATE Overflow and verified papers assign 35 to Programming Language and Computer Organization, and 30 to Data Structures and Computer Organization. The verified paper also shows distractor D as 35. Those differences leave the count of 25 unchanged.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.13.24, Set Theory: GATE IT 2004 | Question: 2, PDF p.125 (key p.127). https://gateoverflow.in/3643/gate-it-2004-question-2",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.31, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q2 (verified linked copy)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 32,
+      "id": "z37c52y44",
+      "contentSha256": "1749c544df6f05b888609202157b22d69749dbfa69ba62463f3e6ceff29c575d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Enumerating intermediate y in B yields (1,2), (3,2), (3,4), (5,4), and (7,2). Include a pair (x,z) exactly when some y makes x+y divisible by 3 and y+z even and indivisible by 3.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.38, Relations: GATE IT 2004 | Question: 4, PDF p.120–121 (key p.126). https://gateoverflow.in/3645/gate-it-2004-question-4",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.32, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q4 (verified linked copy)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation with exhaustive enumeration",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 33,
+      "id": "ae8j034lc",
+      "contentSha256": "7ee2bd6b033805c56083c4f63a8e03a3e64f78c93d75ed274355e068481ddbd3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The table gives a² = b, a³ = c, and a⁴ = e. Multiplying c = a³ by e, a, b, c in column order gives c, e, a, b.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.4.16, Group Theory: GATE CSE 2004 | Question: 72, PDF p.103 (key p.126). https://gateoverflow.in/1066/gate-cse-2004-question-72",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.33, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q72 (verified linked copy)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 34,
+      "id": "2pdiuq1d9",
+      "contentSha256": "a8f28c216494ebbbb1396f1d8ee4972935c5477a2d9e21e8aa262d879c700b30",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Adding {1} provides a bottom. The two incomparable supersets {1,2,3} and {1,2,4} meet at {1,2}. The other incomparable pairs meet at {1}, and all incomparable pairs join at the top. These pairwise bounds give a complete finite lattice.",
+      "note": "A is the minimal sufficient addition among the choices. If arbitrary sets could be added, ∅ could also supply the missing bottom. Clarify the stem to ask for the minimal sufficient addition among the choices.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.10.7, Partial Order: GATE CSE 2004 | Question: 73, PDF p.112 (key p.126). https://gateoverflow.in/1067/gate-cse-2004-question-73",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.34, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q73 (verified linked copy)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 35,
+      "id": "wq9jtvrvf",
+      "contentSha256": "922ba924337344fff364b8a7d0fb34edc6e54007d33c84d21753c1961cd7bb11",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "An element of either expression is in A and outside both B and C, so X = Y.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.13.13, Set Theory: GATE CSE 2005 | Question: 8, PDF p.123 (key p.127). https://gateoverflow.in/1157/gate-cse-2005-question-8",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.35, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q8 (verified linked copy)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 36,
+      "id": "bjzg5rwy2",
+      "contentSha256": "dc35fb0b79db759903c11a62be1da3f1a7c57b5ef81471bd37ef64357aa48490",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The three middle elements have pairwise meet e and join a, so the diagram defines a lattice. Distributivity fails because b ∧ (c ∨ d) = b, while (b ∧ c) ∨ (b ∧ d) = e.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.6.7, Lattice: GATE CSE 2005 | Question: 9, PDF p.108 (key p.126). https://gateoverflow.in/1158/gate-cse-2005-question-9",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.36, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q9 (verified linked copy)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 37,
+      "id": "l1bxcptxw",
+      "contentSha256": "231c85c6bd4da5d20205fbcff4843f02b9ce18a62ce6080dd6c216619f7b0a01",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Modulo 15, 4·4 = 16 ≡ 1 and 7·13 = 91 ≡ 1. The inverses are 4 and 13, respectively.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.4.17, Group Theory: GATE CSE 2005 | Question: 13, PDF p.103 (key p.126). https://gateoverflow.in/1163/gate-cse-2005-question-13",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.37, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q13 (verified linked copy)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 38,
+      "id": "teokm4cj9",
+      "contentSha256": "c052a38997ff6eda1ef7354c504a43241ebbd952d620d8d9eeb2065073e7afe8",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Each equivalence axiom survives intersection. For the union, the partitions {{1,2},{3}} and {{1},{2,3}} supply (1,2) and (2,3) without (1,3).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.25, Relations: GATE CSE 2005 | Question: 42, PDF p.118 (key p.126). https://gateoverflow.in/1167/gate-cse-2005-question-42",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.38, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q42 (verified linked copy)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 39,
+      "id": "h0qrm93j5",
+      "contentSha256": "1a633af76a617383a075b923bbd7a213f89791dfe20be4e4fb048658f127725f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "For each c in C, surjectivity of h supplies an a with f(g(a)) = c, giving a preimage under f. For example, g may map a singleton into one point of a larger B while f maps all of B onto a singleton C.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.3.13, Functions: GATE CSE 2005 | Question: 43, PDF p.97 (key p.126). https://gateoverflow.in/1168/gate-cse-2005-question-43",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.39, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q43 (verified linked copy)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 40,
+      "id": "jzxrziswe",
+      "contentSha256": "f53c3821238ba85dd9a008ec40e64d320aca9901ac3b4c956bc858521fea15db",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "These are the invertible upper-triangular real matrices. Multiplication and inverses preserve triangular form and nonzero diagonal, the identity belongs to the set, and matrix multiplication is associative.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.4.18, Group Theory: GATE CSE 2005 | Question: 46, PDF p.103 (key p.126). https://gateoverflow.in/1171/gate-cse-2005-question-46",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.40, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q46 (verified linked copy)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 41,
+      "id": "otdhqzkzb",
+      "contentSha256": "30c7594078726b159a496624d225bb3787f1eea74fa8d1591f59819d14bca884",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "For each c in C, h onto gives an a with g(f(a)) = c. Thus g is onto, even if some elements of B are never hit by f.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.3.29, Functions: GATE IT 2005 | Question: 31, PDF p.100 (key p.126). https://gateoverflow.in/3777/gate-it-2005-question-31",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.41, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 42,
+      "id": "g9xebwvwb",
+      "contentSha256": "4f6944a734233e49f29dcf345968ef234063928266cc88227757d663eb7bca6b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Distinct members of an inclusion chain have distinct sizes from 0 through n. Starting at ∅ and adding one element at a time attains n+1.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.13.25, Set Theory: GATE IT 2005 | Question: 33, PDF p.125 (key p.127). https://gateoverflow.in/3779/gate-it-2005-question-33",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.42, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 43,
+      "id": "3k60wj5wu",
+      "contentSha256": "68032d45398b84f09c30688ea567c40a1acd39dd258e093b0be68e6c7116ae7a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Under the displayed neutral-element equation, I has z = 3 and II has z = min ℕ. In III, z = 1 is forced by aᶻ = a, but 1ᵃ cannot equal every a. The printed keys use the equation test.",
+      "note": "Both keys give A using the displayed neutral-element equation. Under the stricter reading that each qualifying formula must be closed on ℕ, I fails at (1,1) and D would apply. Specify ℕ = {1,2,…} and use I = x+y−1 to make the keyed A unambiguous.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.1.8, Binary Operation: GATE IT 2006 | Question: 2, PDF p.94 (key p.126). https://gateoverflow.in/3539/gate-it-2006-question-2",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.43, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 44,
+      "id": "nnow75yez",
+      "contentSha256": "9871728b2dbb820808f47ae99245e04e021c4ef5a0e9f22206dd8c0fd67c6c87",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "The product W contains xy elements and the power set E has 2^(xy) elements. Each of the z inputs independently chooses an image in E, giving (2^(xy))^z = 2^(xyz).",
+      "note": "Restore distractor A to z raised to 2^(xy), and distractor C to z raised to 2^(x+y), as printed in GATE Overflow and the verified 2006 paper. D remains correct.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.3.14, Functions: GATE CSE 2006 | Question: 2, PDF p.97 (key p.126). https://gateoverflow.in/881/gate-cse-2006-question-2",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.44, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q2 (verified linked copy)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 45,
+      "id": "0qmqkd8ot",
+      "contentSha256": "bcbce838b667fd8ab6b3a53ce9c46d5e97c1836d7403598964ff0ff7504c66da",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The element 3 has inverse 7 because 3·7 ≡ 1 modulo 10. Even residues lack inverses, and 2·5 ≡ 0 shows that closure fails.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.4.19, Group Theory: GATE CSE 2006 | Question: 3, PDF p.103 (key p.126). https://gateoverflow.in/882/gate-cse-2006-question-3",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.45, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q3 (verified linked copy)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 46,
+      "id": "hrey87aav",
+      "contentSha256": "05bc2f9ddca73ca0f8a507ea4905bfaa1814b2d7c65fd5f139619a91765947d3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The strict inequalities prevent (x,y) from relating to itself. Both a partial order in the reflexive convention used here and an equivalence relation require reflexivity.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.27, Relations: GATE CSE 2006 | Question: 4, PDF p.118 (key p.126). https://gateoverflow.in/883/gate-cse-2006-question-4",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.46, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q4 (verified linked copy)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 47,
+      "id": "cs5vns8hs",
+      "contentSha256": "ac73597c40e5c358b90b272262d92dc6ce87d29d6658e2fecf4e8d5f092e2410",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Membership in X means membership in E and F and exclusion from G. Y first removes the elements of G from E and then removes those outside F, leaving the same set.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.13.14, Set Theory: GATE CSE 2006 | Question: 22, PDF p.123 (key p.127). https://gateoverflow.in/983/gate-cse-2006-question-22",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.47, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q22 (verified linked copy)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 48,
+      "id": "0t199w0ar",
+      "contentSha256": "d562531750802357e7d6550111c843e20c71dba3bfe4f5cb29aceec0053d5f34",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Each chosen subset contributes one incidence for each of its three members. Counting every incidence by its subset gives the sum as 3n.",
+      "note": "The verified year paper prints distractors C and D as 2m−1 and 2n−1, respectively. Made Easy and GATE Overflow use +1, as does the app. All versions give B.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.3.15, Functions: GATE CSE 2006 | Question: 25, PDF p.97 (key p.126). https://gateoverflow.in/988/gate-cse-2006-question-25",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.48, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q25 (verified linked copy)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 49,
+      "id": "lxax5qbfv",
+      "contentSha256": "3795fd1766c8d9bb7a224d54c114e610ca634f01b226548f6aabac40d36899f9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "In membership bits with (p,q,r) = (1,1,0), I gives 1 on the left and 0 on the right. II is p ∧ (q XOR r) = (p ∧ q) XOR (p ∧ r), which holds for all eight input triples.",
+      "note": "GATE Overflow uses P ∩ (Q ∩ R) on the left of II and keys C because both statements there are false. Made Easy and the app use P ∩ (Q Δ R), which makes II true and B correct.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.13.26, Set Theory: GATE IT 2006 | Question: 23, PDF p.125 (key p.127). https://gateoverflow.in/3562/gate-it-2006-question-23",
+          "answer": "C (neither statement, for the version with P ∩ (Q ∩ R) in II)",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.49, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation with exhaustive enumeration",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 50,
+      "id": "w8cy1cw4k",
+      "contentSha256": "137b90783255f3a1b7d0dd93337aff22a62aa5b3a1319c7277b142904a993c3e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Inclusion–exclusion counts 61+41+24−20−12−8+4 = 90 multiples of at least one of 2, 3, and 5. The remaining 123−90 = 33 belong to X.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.13.27, Set Theory: GATE IT 2006 | Question: 24, PDF p.126 (key p.127). https://gateoverflow.in/3563/gate-it-2006-question-24",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.50, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation with exhaustive enumeration",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 51,
+      "id": "3myd1zxhw",
+      "contentSha256": "f88d9d7c38765355651b3af7ee5f18cd9b3ef030f78ecd00f13612ad5c33ce98",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The universal relation S × S has n² pairs. All equivalence relations contain the n diagonal pairs, and the diagonal alone is an equivalence relation.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.28, Relations: GATE CSE 2007 | Question: 2, PDF p.119 (key p.126). https://gateoverflow.in/1201/gate-cse-2007-question-2",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.51, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q2 (verified linked copy)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 52,
+      "id": "0j4bhel4x",
+      "contentSha256": "4b52fb75fbe4381fe535feabeeeb9322e89f7464884b2e46326e12554c04e7e8",
+      "questionType": "MCQ",
+      "correctOptions": [],
+      "status": "verified-with-note",
+      "reason": "π₄ refines every partition and π₁ is the coarsest. The block {a,b,c} of π₃ crosses the blocks of π₂, while {c,d} of π₂ crosses those of π₃. Thus the diagram must be a diamond with π₄ at the bottom, π₁ at the top, and π₂ and π₃ in the middle. None of the app diagrams has these labels.",
+      "note": "The printed C diagram in both PDFs and the verified year paper has π₄ at the bottom and π₃ at the right. The app PNG swaps those two labels. Swap them back in diagram C to restore the correct published option.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.10.8, Partial Order: GATE CSE 2007 | Question: 26, PDF p.112 (key p.126). https://gateoverflow.in/1224/gate-cse-2007-question-26",
+          "answer": "C (π₄ at bottom and π₃ at right). This correct diagram is absent from the app.",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.52, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C (π₄ at bottom and π₃ at right). This correct diagram is absent from the app.",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q26 (verified linked copy)",
+          "answer": "C (π₄ at bottom and π₃ at right). This correct diagram is absent from the app.",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "No option correct as written",
+          "agrees": true
+        }
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "The refinement diagram needs π₄ at the bottom and π₃ on the right. The app's option C swaps those labels, and none of the four diagrams is correct as drawn."
+    },
+    {
+      "position": 53,
+      "id": "i4s08wi5q",
+      "contentSha256": "5e98a3f7337dfda8e7a1f4acd56283d551bab65c9eb7b1ac430680dbef08e0cd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The recursion compares digits independently with leading zeros. 101 ≤ 022 fails at the hundreds digit and 022 ≤ 101 fails at the units digit. The digitwise comparisons 145 ≤ 265 and 000 ≤ 153 both hold.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.10.10, Partial Order: GATE IT 2007 | Question: 23, PDF p.113 (key p.126). https://gateoverflow.in/3456/gate-it-2007-question-23",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.53, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 54,
+      "id": "nu1xlulen",
+      "contentSha256": "b566ac2fdecac84d68b65c65c2bb34a94a3dbcad4274781026c01f6522ed4e9a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The first two terms combine to Q ∩ R. The rest is Qᶜ ∪ Rᶜ = (Q ∩ R)ᶜ, so the union is U.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.13.16, Set Theory: GATE CSE 2008 | Question: 2, PDF p.123 (key p.127). https://gateoverflow.in/400/gate-cse-2008-question-2",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.54, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q2 (verified linked copy)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 55,
+      "id": "95uudolon",
+      "contentSha256": "a22a86ee1fed50f2178e3ebda355df70a4790e238abfd9579a69694fd7c88933",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Diagrams (i) and (iv) have pairwise meets and joins. In (ii) the side vertices have two incomparable maximal lower bounds, and in (iii) the two lower side vertices have two incomparable minimal upper bounds.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.6.10, Lattice: GATE IT 2008 | Question: 28, PDF p.109 (key p.126). https://gateoverflow.in/3318/gate-it-2008-question-28",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.55, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 56,
+      "id": "w119gqegx",
+      "contentSha256": "7ec7765f55725c96c926afd5c2922636dcc44896d951990de5fec05399190631",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Associativity, an identity and inverses are group axioms. S₃ is an example of a group whose multiplication is noncommutative.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.4.21, Group Theory: GATE CSE 2009 | Question: 1, PDF p.104 (key p.126). https://gateoverflow.in/795/gate-cse-2009-question-1",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.56, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q1 (verified linked copy)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 57,
+      "id": "awg2cym8j",
+      "contentSha256": "08ad3e08a1643056ce49e0abd3b54415652682af1838c2641a45ee5361087d73",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The missing (y,x) for (x,y) disproves symmetry. Both (x,z) and (z,x) are present with x distinct from z, disproving antisymmetry.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.29, Relations: GATE CSE 2009 | Question: 4, PDF p.119 (key p.126). https://gateoverflow.in/797/gate-cse-2009-question-4",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.57, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q4 (verified linked copy)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 58,
+      "id": "v1j3ewryb",
+      "contentSha256": "4d867b2438fd0b8030c589e8754916d62e4467a4f2ea529e2907be2aac439b2e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The identity is a and b² = a. The powers of c run c,b,d,a, and those of d run d,b,c,a, so c and d each generate all four elements.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.4.22, Group Theory: GATE CSE 2009 | Question: 22, PDF p.104 (key p.126). https://gateoverflow.in/799/gate-cse-2009-question-22",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.58, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q22 (verified linked copy)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 59,
+      "id": "zf8t0w5ce",
+      "contentSha256": "a4534106bd2bf0f2c39d31f7bd152c0dcf597b5595a9445011301481f46a52e2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Reflexivity forces five of the 25 ordered pairs. Each of the other 20 pairs is independently optional, giving 2²⁰ relations.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.30, Relations: GATE CSE 2010 | Question: 3, PDF p.119 (key p.126). https://gateoverflow.in/1149/gate-cse-2010-question-3",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.59, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q3 (verified linked copy)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 60,
+      "id": "deazqydsm",
+      "contentSha256": "ae351f78269214deadded0659b58132f6502830c1d1247b0a1c7287b41b9c83b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Powers of ω multiply by adding exponents modulo 3. This gives closure, identity 1, and inverses ω and ω² for each other. Associativity is inherited from multiplication.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.4.23, Group Theory: GATE CSE 2010 | Question: 4, PDF p.104 (key p.126). https://gateoverflow.in/1150/gate-cse-2010-question-4",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.60, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q4 (verified linked copy)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 61,
+      "id": "bwuzaf70y",
+      "contentSha256": "aed81f1eb797d4e0f55d9981b0a3dc7a9d29f84c05c149a23b7c524e7bfb98d9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "There are 2ⁿ functions in total. A function misses a codomain element exactly when it is one of the two constant functions, leaving 2ⁿ−2 surjections.",
+      "note": "Restore distractor D to 2(2ⁿ−2), as printed in both PDFs and the verified 2012 paper. C gives the formula for every n ≥ 2.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.3.17, Functions: GATE CSE 2012 | Question: 37, PDF p.97 (key p.126). https://gateoverflow.in/1759/gate-cse-2012-question-37",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.61, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q37 (verified linked copy)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 62,
+      "id": "4upstrdcb",
+      "contentSha256": "82b7017aafb34af72e920f180f2c14fdaf7de0815f5dcc6ddfbb0ec5c5dd5cdb",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "x²+y² is symmetric in x and y. For (x,y,z) = (1,1,0), (x ⊕ y) ⊕ z = 4 while x ⊕ (y ⊕ z) = 2.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.1.5, Binary Operation: GATE CSE 2013 | Question: 1, PDF p.93 (key p.126). https://gateoverflow.in/59/gate-cse-2013-question-1",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.62, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 63,
+      "id": "ro7blfh1g",
+      "contentSha256": "91cb15feafc59d5005e1221bc88741d9cd0644ad9778c8c671728d04a61c8dfc",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "status": "verified",
+      "reason": "The domain {0,1}⁴ has 16 elements, so S has 2¹⁶ elements and N = 2^(2¹⁶). Two base-2 logarithms give 16.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.3.18, Functions: GATE CSE 2014 | Set 1 | Question: 50, PDF p.97 (key p.126). https://gateoverflow.in/1930/gate-cse-2014-set-1-question-50",
+          "answer": "16",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.63, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "16",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "16",
+          "agrees": true
+        }
+      ],
+      "natAnswer": "16"
+    },
+    {
+      "position": 64,
+      "id": "szh3cjg6u",
+      "contentSha256": "a840ad0c87319d5a4d45b46e1fd73ceab86511396c77e37856f881d64bd6dc1a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "For any nonempty U, min(U △ ∅) lies in U, giving U < ∅. For every proper V ⊂ S, min(S △ V) lies in S, giving S < V. Thus ∅ is greatest and S is least.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.13.17, Set Theory: GATE CSE 2014 | Set 2 | Question: 50, PDF p.123–124 (key p.127). https://gateoverflow.in/2016/gate-cse-2014-set-2-question-50",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.64, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 65,
+      "id": "tedxj3v3w",
+      "contentSha256": "9d20942efc2a221b775a300d25b5d759969c1a15864e217957ed6b8f7718e8be",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "An x belongs to the preimage of S ∩ T exactly when f(x) belongs to both S and T. This is equivalent to x belonging to both preimages.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.3.19, Functions: GATE CSE 2014 | Set 3 | Question: 2, PDF p.98 (key p.126). https://gateoverflow.in/2036/gate-cse-2014-set-3-question-2",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.65, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 66,
+      "id": "qdkivay1i",
+      "contentSha256": "19a211af4964a7e51747a8bedab6743ffdc2928c39834c6313f875a64d0c7697",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "status": "verified",
+      "reason": "The proper subgroup orders divide 15, so the candidates are 1, 3, and 5. Only 5 satisfies the lower bound of 4.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.4.24, Group Theory: GATE CSE 2014 | Set 3 | Question: 3, PDF p.104 (key p.126). https://gateoverflow.in/2037/gate-cse-2014-set-3-question-3",
+          "answer": "5",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.66, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "5",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "5",
+          "agrees": true
+        }
+      ],
+      "natAnswer": "5"
+    },
+    {
+      "position": 67,
+      "id": "dlzsuq1mr",
+      "contentSha256": "2a1939e08eea16f3cd991380cdff2eb181127be24547b03c4ccd95e6329f626a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "An involution is a permutation with cycles of length one or two. The odd domain size 2015 forces a fixed point, and a permutation is onto. A single transposition with all other points fixed disproves P.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.3.20, Functions: GATE CSE 2014 | Set 3 | Question: 49, PDF p.98 (key p.126). https://gateoverflow.in/2083/gate-cse-2014-set-3-question-49",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.67, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 68,
+      "id": "bime3lsxy",
+      "contentSha256": "67917da69083c593fb21c65e1cb4dbdf348d9ddeddd340605b6b1f877143eeb7",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "status": "verified",
+      "reason": "Since x² = y² = e and (xy)² = e, xy = (xy)⁻¹ = yx. Every word reduces to one of e, x, y, xy. Independent nonidentity generators of C₂ × C₂ attain four distinct elements.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.4.25, Group Theory: GATE CSE 2014 | Set 3 | Question: 50, PDF p.104–105 (key p.126). https://gateoverflow.in/2084/gate-cse-2014-set-3-question-50",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.68, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "4",
+          "agrees": true
+        }
+      ],
+      "natAnswer": "4"
+    },
+    {
+      "position": 69,
+      "id": "gnwbdwys9",
+      "contentSha256": "8dfff5f60b46fe4bdfa3e0aa7d39553fd687b536c10793979d06a70e397b25d6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "For x ≠ 0,1, g(h(x)) = −1/(x−1) and h(g(x)) = (x−1)/x. Their ratio is −x/(x−1)², equal to h(x)/g(x).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.3.21, Functions: GATE CSE 2015 | Set 1 | Question: 5, PDF p.98 (key p.126). https://gateoverflow.in/8025/gate-cse-2015-set-1-question-5",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.69, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 70,
+      "id": "re2ywpvgp",
+      "contentSha256": "8794ac10bd2eb04c5bff35e86ed80999adc1ccbab82da1263e437c40c1b5dfb3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The empty set belongs to 2ᴬ and is a subset of 2ᴬ. Both 5 and {6} belong to A, so {5,{6}} belongs to 2ᴬ. The subset claim in statement 4 fails because {6} is not itself a subset of A.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.13.18, Set Theory: GATE CSE 2015 | Set 1 | Question: 16, PDF p.124 (key p.127). https://gateoverflow.in/8238/gate-cse-2015-set-1-question-1-6",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.70, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 71,
+      "id": "qdjvelarg",
+      "contentSha256": "adf169f6991ac1ef9f72a0e963d71d6716e35d40870664a03e426b92280f3d90",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The join-over-meet law fails exactly when x,y,z are the three distinct middle elements q,r,s. Enumerating all 125 ordered triples gives 119 successes, so pᵣ = 119/125 is strictly between 1/5 and 1.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.6.8, Lattice: GATE CSE 2015 | Set 1 | Question: 34, PDF p.108 (key p.126). https://gateoverflow.in/8281/gate-cse-2015-set-1-question-34",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.71, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation with exhaustive enumeration",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 72,
+      "id": "5176g4my4",
+      "contentSha256": "a96e69c1515327c364f683fbf1158222d12dd60312ea30ffba38811b2a05a9f2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Having a nontrivial common divisor is symmetric, and distinctness forbids self-pairs. Transitivity fails since 2 R 6 and 6 R 3 hold while 2 R 3 fails.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.31, Relations: GATE CSE 2015 | Set 2 | Question: 16, PDF p.119 (key p.126). https://gateoverflow.in/8089/gate-cse-2015-set-2-question-16",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.72, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 73,
+      "id": "guyq5krmb",
+      "contentSha256": "4bba6426a2acd604152223342d2eca145367ae549ab0f7282e1830e17282328a",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "status": "verified",
+      "reason": "There are 11 elements from 0 through 10, giving 2¹¹ = 2048 subsets.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.13.19, Set Theory: GATE CSE 2015 | Set 2 | Question: 18, PDF p.124 (key p.127). https://gateoverflow.in/8092/gate-cse-2015-set-2-question-18",
+          "answer": "2048",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.73, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "2048",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "2048",
+          "agrees": true
+        }
+      ],
+      "natAnswer": "2048"
+    },
+    {
+      "position": 74,
+      "id": "69belfzfk",
+      "contentSha256": "5a5ebd8282f81b13ac93e3d6846b4d43a5f3eabc103362f5b23f9d93fbf4de25",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "status": "verified",
+      "reason": "A surjection has exactly one codomain value with two preimages. Choose that value in 3 ways, its pair of preimages in 6 ways, and the remaining assignment in 2 ways, for 36 total.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.3.22, Functions: GATE CSE 2015 | Set 2 | Question: 40, PDF p.98 (key p.126). https://gateoverflow.in/8212/gate-cse-2015-set-2-question-40",
+          "answer": "36",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.74, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "36",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation with exhaustive enumeration",
+          "answer": "36",
+          "agrees": true
+        }
+      ],
+      "natAnswer": "36"
+    },
+    {
+      "position": 75,
+      "id": "e3pf0rxgc",
+      "contentSha256": "ead0c5aed0e490526eb850888467fcceea24b048b359d0d99f789761f655f894",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "status": "verified-with-note",
+      "reason": "Of 20² functions from X to Y, 20·19 send the two inputs to different outputs. The probability is 19/20 = 0.95.",
+      "note": "Change “functions defined from X and Y” to “functions defined from X to Y,” as in the GATE Overflow question.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.3.23, Functions: GATE CSE 2015 | Set 2 | Question: 54, PDF p.98 (key p.126). https://gateoverflow.in/8257/gate-cse-2015-set-2-question-54",
+          "answer": "0.95",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.75, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "0.95",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation with exhaustive enumeration",
+          "answer": "0.95",
+          "agrees": true
+        }
+      ],
+      "natAnswer": "0.95"
+    },
+    {
+      "position": 76,
+      "id": "2xhvzgq5p",
+      "contentSha256": "122e7ce06f6d32684b0ff2aa4534aec01721b25df9f9272bf870e1008b3262b2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The operator is NAND, so exchanging its inputs preserves the value. For (P,Q,R) = (1,1,0), the two associations give 1 and 0, respectively. Only S₂ holds universally.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.1.7, Binary Operation: GATE CSE 2015 | Set 3 | Question: 2, PDF p.93–94 (key p.126). https://gateoverflow.in/8393/gate-cse-2015-set-3-question-2",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.76, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation with exhaustive enumeration",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 77,
+      "id": "02f51tdx5",
+      "contentSha256": "85fe170bc4765baeeb6e9532e68783e001d2e70420272879932e31f12c4285b9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "X ∖ Y = X ∩ Y′, and Y′ ∖ X′ = Y′ ∩ X. The same set appears on both sides for every X,Y.",
+      "note": "GATE Overflow has X ∩ Y = ∅ in distractor C. Made Easy and the app use X ∖ Y = ∅. The universally quantified claim is false in either version, and D holds.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.13.20, Set Theory: GATE CSE 2015 | Set 3 | Question: 23, PDF p.124 (key p.127). https://gateoverflow.in/8426/gate-cse-2015-set-3-question-23",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.77, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 78,
+      "id": "swe4slzkp",
+      "contentSha256": "bf4a6afdda5e17437d403dd17b23c824673a00722009d92faab8f934a76f54aa",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The equation is p+r = q+s, which is unchanged when the two ordered pairs swap. Self-relation would require p = q, and (1,2) does not satisfy it.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.32, Relations: GATE CSE 2015 | Set 3 | Question: 41, PDF p.119 (key p.126). https://gateoverflow.in/8500/gate-cse-2015-set-3-question-41",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.78, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 79,
+      "id": "z9tmkmtyt",
+      "contentSha256": "742257aa7bcb9ce3e7b0df8b56a228670701020707f5a81371ab66a2bd673f94",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "status": "verified",
+      "reason": "Even n reduces to n/2. For odd n > 5, n+5 is even and (n+5)/2 is smaller than n. For n ≤ 5, the inputs 1,2,3,4 all connect to 1, and 5 is separate. Both rules preserve divisibility by 5, so assigning distinct values to multiples and nonmultiples of 5 attains two.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.3.24, Functions: GATE CSE 2016 | Set 1 | Question: 28, PDF p.98–99 (key p.126). https://gateoverflow.in/39717/gate-cse-2016-set-1-question-28",
+          "answer": "2",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.79, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "2",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "2",
+          "agrees": true
+        }
+      ],
+      "natAnswer": "2"
+    },
+    {
+      "position": 80,
+      "id": "6mm8lcet3",
+      "contentSha256": "e6b7000f9b8f940a84cef9a7545e2572fb09934f30933c84e8ddc65158c31e83",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Every pair relates to itself. For transitivity, (3,3) R (1,4) and (1,4) R (2,2) hold via different coordinates. Neither coordinate makes (3,3) R (2,2) hold.",
+      "note": "In B and C, replace “Q are” with “Q is.” The propositions and the answer are unchanged.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.33, Relations: GATE CSE 2016 | Set 2 | Question: 26, PDF p.119–120 (key p.126). https://gateoverflow.in/39603/gate-cse-2016-set-2-question-26",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.80, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 81,
+      "id": "t0yvzl1r0",
+      "contentSha256": "3c50904a5fcd54fe9def30b24bee3bc1cd691fc5e7c3174dd03ae137e782f6db",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Treat mutual reactions as undirected edges. The nine degrees within S sum to 27, and the total degree is even by the handshake lemma, so at least one outside degree is odd. Connecting all nine S vertices to the same three outside vertices leaves other outside vertices isolated, disproving I as a universal claim.",
+      "note": "The stem should read “23 different compounds,” as in GATE Overflow. The handshake argument uses the stated mutual reaction relation.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.13.21, Set Theory: GATE CSE 2016 | Set 2 | Question: 28, PDF p.124 (key p.127). https://gateoverflow.in/39595/gate-cse-2016-set-2-question-28",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.81, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 82,
+      "id": "25enhha5n",
+      "contentSha256": "2954fc32793101b93cfdf91d1ba12e1ebf42b9cfe805a0466dc9d3bb1d8c1a55",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "status": "verified",
+      "reason": "The diagram already defines a lattice. Comparable pairs have their larger and smaller elements as join and meet. The only incomparable pairs are d with b or c, and both have join e and meet a.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.6.9, Lattice: GATE CSE 2017 | Set 2 | Question: 21, PDF p.108–109 (key p.126). https://gateoverflow.in/118278/gate-cse-2017-set-2-question-21",
+          "answer": "0",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.82, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "0",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation with exhaustive enumeration",
+          "answer": "0",
+          "agrees": true
+        }
+      ],
+      "natAnswer": "0"
+    },
+    {
+      "position": 83,
+      "id": "4ekn7sv24",
+      "contentSha256": "12c91c87e1aceb866ffe732a80dbdebd99976d946c14a7b1a507c429ca39f13c",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "status": "verified",
+      "reason": "Inclusion–exclusion gives 166+100+71−33−23−14+4 = 271. The terms count multiples of 3, 5, 7, their pairwise least common multiples, and 105.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.13.22, Set Theory: GATE CSE 2017 | Set 1 | Question: 47, PDF p.125 (key p.127). https://gateoverflow.in/118330/gate-cse-2017-set-1-question-47",
+          "answer": "271",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.83, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "271",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation with exhaustive enumeration",
+          "answer": "271",
+          "agrees": true
+        }
+      ],
+      "natAnswer": "271"
+    },
+    {
+      "position": 84,
+      "id": "s82ul4l2e",
+      "contentSha256": "48175dfb07568a5ecb82aafbfb11fc7873abca61c44cfe0dcda4482224712756",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "status": "verified",
+      "reason": "A proper subgroup has index at least 2, so its order is at most 42. The even residues in the cyclic group of order 84 form an order-42 subgroup, attaining the largest possible size.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.4.26, Group Theory: GATE CSE 2018 | Question: 19, PDF p.105 (key p.126). https://gateoverflow.in/204093/gate-cse-2018-question-19",
+          "answer": "42",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.84, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "42",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "42",
+          "agrees": true
+        }
+      ],
+      "natAnswer": "42"
+    },
+    {
+      "position": 85,
+      "id": "i4d9gd4o4",
+      "contentSha256": "d1c0e178926dd562a5a0d5bd84a730c3c12d69a98bbcc77042150436f08769ab",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "P is countable, Q is in bijection with ℕ², and S is a countable union over finite subset sizes of images of finite tuples. R corresponds to the power set of ℕ and is uncountable by Cantor's theorem.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.2.2, Countable Uncountable Set: GATE CSE 2018 | Question: 27, PDF p.94 (key p.126). https://gateoverflow.in/204101/gate-cse-2018-question-27",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.85, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 86,
+      "id": "pwaxkp4ki",
+      "contentSha256": "84416038cbb2c736ab88d3c8bb4f9fb425cfd596fd8805cf3b511f25cae9ccbb",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Conjugacy is an equivalence relation using the identity, inverse conjugator, and composition of conjugations. R₂ fails reflexivity for an element of order 3, which differs from its inverse.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.4.27, Group Theory: GATE CSE 2019 | Question: 10, PDF p.105 (key p.126). https://gateoverflow.in/302838/gate-cse-2019-question-10",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.86, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 87,
+      "id": "wsp93mtdc",
+      "contentSha256": "79dc89905d300c96391975ce4710484942224287dd0ded7f3fb8518b1d9d4392",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "status": "verified",
+      "reason": "Three diagonal pairs are forced and six off-diagonal pairs are free, so the reflexive fraction of all relations is 2⁶/2⁹ = 1/8 = 0.125.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.34, Relations: GATE CSE 2020 | Question: 17, PDF p.120 (key p.126). https://gateoverflow.in/333214/gate-cse-2020-question-17",
+          "answer": "0.1249 to 0.1259 (accepted interval containing 0.125)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.87, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "0.125",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation with exhaustive enumeration",
+          "answer": "0.125",
+          "agrees": true
+        }
+      ],
+      "natAnswer": "0.125",
+      "natRange": {
+        "min": 0.1249,
+        "max": 0.1259
+      }
+    },
+    {
+      "position": 88,
+      "id": "ma5cl5wxr",
+      "contentSha256": "c11f365d79df95289e3bd6b706a3f0852de92ecf6e5c27e97f81784ae8db7f8c",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "status": "verified",
+      "reason": "Lagrange's theorem bounds proper subgroup orders to 1, 5, and 7. Cauchy's theorem guarantees an element of order 7, which generates such a subgroup.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.4.28, Group Theory: GATE CSE 2020 | Question: 18, PDF p.105 (key p.126). https://gateoverflow.in/333213/gate-cse-2020-question-18",
+          "answer": "7",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.88, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "7",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "7",
+          "agrees": true
+        }
+      ],
+      "natAnswer": "7"
+    },
+    {
+      "position": 89,
+      "id": "mj1mecos2",
+      "contentSha256": "de0f9c18f12eb27e8d78263c9dc0ae0c7b7235c86ac0051d3182ed4f151ef3cb",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "For aRb, applying circularity to aRb and bRb yields bRa. Then aRb and bRc imply cRa, and symmetry gives aRc. The relation {(1,1)} on {1,2} refutes B and C. The edges of the path 1–2–3 taken in both directions with all self-loops refute D.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.12.35, Relations: GATE CSE 2021 | Set 1 | Question: 43, PDF p.120 (key p.126). https://gateoverflow.in/357408/gate-cse-2021-set-1-question-43",
+          "answer": "C (reflexive and circular implies equivalence) → app A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.89, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 90,
+      "id": "3i2lim03m",
+      "contentSha256": "cc86b2344a1a11710099347286709e8b8394409c23455960be7f97e82a47da4d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The proper nontrivial subgroup order is 2 or 3, both prime, so H is cyclic. The group S₃ has order 6 and is noncyclic.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.4.29, Group Theory: GATE CSE 2021 | Set 1 | Question: 34, PDF p.105 (key p.126). https://gateoverflow.in/357417/gate-cse-2021-set-1-question-34",
+          "answer": "B (G may be noncyclic and H is cyclic) → app C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.90, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 91,
+      "id": "fnnpwui1l",
+      "contentSha256": "20e3aaf514fc31deb081dbfe64f671df9cb8a88a82d53ace9f82ea29ee3fcf4c",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Read the n² matrix entries in row-major order and map a,b,c to 0,1,2. This assigns one function to each matrix with a unique inverse construction, so a bijection and therefore a surjection exist.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.3.25, Functions: GATE CSE 2021 | Set 2 | Question: 11, PDF p.99 (key p.126). https://gateoverflow.in/357529/gate-cse-2021-set-2-question-11",
+          "answer": "B;C (a surjection exists and a bijection exists) → app A, D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.91, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "A, D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "AD",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 92,
+      "id": "r8q8vhz0n",
+      "contentSha256": "37fb2287824e67a603c816be2dc694ac9816f7b62fa3980f7e419d8d4f4a35fc",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "status": "verified-with-note",
+      "reason": "For inclusive containment, each of the ten elements is outside B, in B ∖ A, or in A. The three independent states give 3¹⁰ = 59049 pairs.",
+      "note": "Both PDFs print A ⊆ B. Use the explicit inclusive symbol in the app, where ⊂ is ambiguous. The published answer includes A = B. Reading it as proper containment would subtract 2¹⁰ and give 58025.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.3.5, Counting: GATE CSE 2021 | Set 2 | Question: 50, PDF p.26 (key p.30). https://gateoverflow.in/357487/gate-cse-2021-set-2-question-50",
+          "answer": "59049",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.92, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "3^10 = 59049",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation with exhaustive enumeration",
+          "answer": "59049",
+          "agrees": true
+        }
+      ],
+      "natAnswer": "59049"
+    },
+    {
+      "position": 93,
+      "id": "931inooxt",
+      "contentSha256": "24860697a1a82ea7f41e603eddb4606e734409e052f75df7f99d057164ea1956",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Nonzero pairwise orthogonal vectors are linearly independent, as dotting a proposed dependence with each vector shows. Dimension 10 gives the upper bound, and the ten standard basis vectors attain it.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.13.23, Set Theory: GATE CSE 2021 | Set 2 | Question: 37, PDF p.125 (key p.127). https://gateoverflow.in/357503/gate-cse-2021-set-2-question-37",
+          "answer": "B (dimension bound 10) → app A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.93, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 94,
+      "id": "ki51neq69",
+      "contentSha256": "dcd6ec5300b49430c02b72937c591fe96712a3e641893973dc39e59cfedd523e",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Cancelling the first x and last y in xyxy = xxyy gives yx = xy. If all elements square to 1, then xy = (xy)⁻¹ = y⁻¹x⁻¹ = yx. A group of order 2 is cyclic, and every subgroup of an abelian group inherits commutativity.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.4.30, Group Theory: GATE CSE 2022 | Question: 17, PDF p.105 (key p.126). https://gateoverflow.in/371919/gate-cse-2022-question-17",
+          "answer": "A;B;C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.94, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "A, B, C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "ABC",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 95,
+      "id": "2ar5pr3wu",
+      "contentSha256": "5768c970cab3c17004df0bd748e432798f96d2e66b5380993a0b4d041e0086ea",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "All representatives of a class have the same image, so F is well-defined. Equal F-values identify the same class, giving injectivity. F is onto because f is onto. Thus F is bijective.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.3.26, Functions: GATE CSE 2023 | Question: 39, PDF p.99 (key p.126). https://gateoverflow.in/399272/gate-cse-2023-question-39",
+          "answer": "B;C;D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.95, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "B, C, D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "BCD",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 96,
+      "id": "g3esxd988",
+      "contentSha256": "c65496f9381060c405cd8e28f21599eeba953cb4dffe66fa96abb02209fc4032",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Membership in the symmetric difference is XOR, giving closure and associativity. The identity is ∅, and A △ A = ∅ makes every A its own inverse.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.4.31, Group Theory: GATE CSE 2023 | Question: 41, PDF p.105–106 (key p.126). https://gateoverflow.in/399270/gate-cse-2023-question-41",
+          "answer": "A;D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.96, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "A, D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "AD",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 97,
+      "id": "c636clitw",
+      "contentSha256": "a38b2efc2ff41b5495a96345bfc8cad47d84b21094ed0210a737802b9a63d614",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "status": "verified",
+      "reason": "Put n = |A| = |B|. The second bijection requires n² = |A ∪ B| ≤ 2n, so n is either 1 or 2. Equal singletons realize n = 1, and disjoint two-element sets realize n = 2.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.3.27, Functions: GATE CSE 2024 | Set 1 | Question: 22, PDF p.99 (key p.126). https://gateoverflow.in/422820/gate-cse-2024-set-1-question-22",
+          "answer": "2",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.97, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "2",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "2",
+          "agrees": true
+        }
+      ],
+      "natAnswer": "2"
+    },
+    {
+      "position": 98,
+      "id": "sf2rupfr2",
+      "contentSha256": "7fda315574b8c15706ade6261ebad973988778272e6ec0292cef4e5535e4c655",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "C",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Multiplication is associative and distributes over a+2b by c(a+2b) = ca+2cb. The two associations of ◇ give a+2b+2c and a+2b+4c. For a=b=c=1, a ◇ (b·c) = 3 and (a ◇ b)(a ◇ c) = 9.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.4.32, Group Theory: GATE CSE 2024 | Set 1 | Question: 42, PDF p.106 (key p.126). https://gateoverflow.in/422800/gate-cse-2024-set-1-question-42",
+          "answer": "B;D (multiplication is associative and distributes over ◇) → app C, D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.98, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "C, D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question",
+          "answer": "CD",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 99,
+      "id": "77khywtp7",
+      "contentSha256": "de34563c6e134cea870fbe3ae688c27caf83dd5d47e8e3f9d5dcda6695d7c40c",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "status": "verified",
+      "reason": "Respecting 1 before 2 and 3 before both 2 and 4 gives the five total orders 1324, 1342, 3124, 3142, and 3412.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.10.9, Partial Order: GATE CSE 2024 | Set 2 | Question: 24, PDF p.112 (key p.126). https://gateoverflow.in/422873/gate-cse-2024-set-2-question-24",
+          "answer": "5",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.99, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "5",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation with exhaustive enumeration",
+          "answer": "5",
+          "agrees": true
+        }
+      ],
+      "natAnswer": "5"
+    },
+    {
+      "position": 100,
+      "id": "6zniz91y9",
+      "contentSha256": "56110a909d92dda99f7fb079431f3c460a4171c39d709676e0e8f0d1fae75296",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "status": "verified",
+      "reason": "A tuple is its own inverse when doubling each coordinate gives zero modulo its modulus. The three coordinates offer 2, 1, and 2 choices, giving four tuples.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.4.33, Group Theory: GATE CSE 2024 | Set 2 | Question: 53, PDF p.106 (key p.126). https://gateoverflow.in/422844/gate-cse-2024-set-2-question-53",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Set Theory and Algebra Q2.100, answer table in Discrete Mathemetics.pdf p.2 (printed p.28)",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation with exhaustive enumeration",
+          "answer": "4",
+          "agrees": true
+        }
+      ],
+      "natAnswer": "4"
+    }
+  ],
+  "reviewer": "Codex (AI-assisted verification against the live chapter and local sources)"
+}

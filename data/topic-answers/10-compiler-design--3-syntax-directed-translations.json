@@ -1,0 +1,952 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "10. Compiler Design",
+  "chapter": "3. Syntax Directed Translations",
+  "slug": "10-compiler-design--3-syntax-directed-translations",
+  "reviewedAt": "2026-11-26",
+  "sources": {
+    "gateOverflowPdfs": [
+      {
+        "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume2.pdf",
+        "sha256": "457f9e583b943b3c41e78d8431b09e322123b0d80765396af36ee2100196714f"
+      },
+      {
+        "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume3.pdf",
+        "sha256": "5c552941136eb96612fabec8a5b2cb67fc07c17023ce15628408ca27d6640c24"
+      }
+    ],
+    "madeEasyChapterPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\10. Compiler Design\\3. Syntax Directed Translations.pdf",
+      "sha256": "a763257c9796c375d591a6be074d495f2287a0ab620069d0f1dd32c5f669bc90",
+      "bookPages": [
+        504,
+        505,
+        506,
+        507
+      ]
+    },
+    "madeEasyKeyPdf": {
+      "file": "C:/Users/Prince/Desktop/MadeEasy PYQ PDF/All Subject Solutions Keys/Compiler Design.pdf",
+      "sha256": "da8a898aa7fad9c008bdd80684b899bb2048c8af699ec1d7c83e5436676570c",
+      "answerKeyPage": 7,
+      "bookPage": 508
+    },
+    "yearPapers": "Linked copies in data/papers/*.json. Q3.1 also uses the original 1995 scan and a supplemental worked solution.",
+    "officialKeys": "Matched to the original paper question and option text or numeric value. Each entry cites the specific official key."
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "madeeasy-compiler-syntax-1",
+      "contentSha256": "6475be7f123c534ef94a9dfa65edbe6c50ea06b1255a2bd5b99271c09b797a10",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Under conventional relocatable linking, an object module supplies the object code, information for relocations, and names with section-relative locations for exported definitions. The linker determines final absolute addresses.",
+      "note": "The original 1995 scan (p. 2, Q14) asks what information need not be included. The book and app omit not, so A, B and C answer the displayed stem. D follows from solving the original negative stem. The Made Easy table prints D for the positive stem and GATE Overflow keys C for the negative stem. Both disagree with the displayed question. The worked 1995 solution explicitly confirms the inclusion of all three.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.24.7, Runtime Environment: GATE CSE 1995 | Question: 1.14, PDF p. 175 (key p. 188)",
+          "answer": "C (for the negative stem)",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.1",
+          "answer": "D",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "GATE CS 1995 Q14, original scan p. 2. Supplemental worked solution in Prepp compiler-design notes, “GATE 95 QUESTION ON LINKER”: https://cdn-images.prepp.in/public/image/a747e84bfc3d4c91354981b56252f324.pdf",
+          "answer": "A, B, C are included. D answers the original negative stem.",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relocatable-module derivation. TIS ELF 1.2, Part 1, Special Sections, Symbol Table and Relocation: https://refspecs.linuxfoundation.org/elf/elfspec.pdf",
+          "answer": "A;B;C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "madeeasy-compiler-syntax-2",
+      "contentSha256": "0879b56ea9556dc24601eb2b3955ff98b3e2647ed4ae8ff7b57e04ee0c9683f7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The recursive X on the left of the ⊕ production groups a chain as (a ⊕ b) ⊕ c. The recursive Y on the right of the ⊙ production groups a chain as a ⊙ (b ⊙ c).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.20.2, Operator Precedence: GATE CSE 1997 | Question: 1.6, PDF p. 158–159 (key p. 188)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.2",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "madeeasy-compiler-syntax-3",
+      "contentSha256": "c59fdf33997d570b93f8dfe46ce728f57ff4b678b657ff91c66b1b69818be195",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "An inherited value can be computed during a bottom-up parse when its dependencies are already known. Parent and left-sibling dependencies in an L-attributed definition permit this in suitable cases, using stack values or marker actions. The presence of synthesized attributes alone gives no such guarantee.",
+      "note": "B is the conventional exam choice supported by GATE Overflow and the linked year-paper review. The wording leaves the evaluation model unspecified. Some non-L-attributed cases can be handled by delaying actions, and L-attribution does not guarantee evaluation during every LR parse. Made Easy keys C, which fails even for an inherited value assigned a constant without synthesized attributes.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.27.7, Syntax Directed Translation: GATE CSE 2003 | Question: 18, PDF p. 181 (key p. 188)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.3",
+          "answer": "C",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q18 (linked verified copy, mapped by option text)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "madeeasy-compiler-syntax-4",
+      "contentSha256": "be64138e4ed651da8f9792390774ffc84f2d87e1e774d928ce2e3ed99faa1d5b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The first T prints 9. Each R prints its following number through T, then prints + before recursing. The action trace is 9 5 + 2 +.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.12.22, Grammar: GATE CSE 2003 | Question: 58, PDF p. 139 (key p. 187)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.4",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q58 (linked verified copy, mapped by option text)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "madeeasy-compiler-syntax-5",
+      "contentSha256": "07a449f16e50cf1303ee26412212056cb2f251ed14f696bf810c7062bd70cc24",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The identifier productions reuse Y and Z as their places. The addition calls newtemp once and emits t₁ = Y + Z. The start production then emits X = t₁.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.27.8, Syntax Directed Translation: GATE CSE 2003 | Question: 59, PDF p. 181–182 (key p. 188)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.5",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q59 (linked verified copy, mapped by option text)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "madeeasy-compiler-syntax-6",
+      "contentSha256": "696d264a391c8b8d632f1b63afce494eccfdf8a84f3fe7f3e5546bd256e73b30",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Evaluate E₂ and save its value to memory. Evaluating E₁ next leaves it in the sole register, ready for subtraction. Computing E₁ first would require restoring it after using the register for E₂.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.23.2, Register Allocation: GATE CSE 2004 | Question: 10, PDF p. 171–172 (key p. 188)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.6",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q10 (linked verified copy, mapped by option text)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "madeeasy-compiler-syntax-7",
+      "contentSha256": "ecab43ce465363a6272e1adb1e0907ceeba11f3398bf6242369861f94ac6024b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The T production handles & inside each # operand. Applying the actions gives (2 × (3 + 5)) × (6 + 4) = 160.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.27.9, Syntax Directed Translation: GATE CSE 2004 | Question: 45, PDF p. 182 (key p. 188)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.7",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q45 (linked verified copy, mapped by option text)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "madeeasy-compiler-syntax-8",
+      "contentSha256": "9e5c1dbc2434920bee9302a333ef4d69262546bba751758d07de7d002ab7164f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Reversing the rightmost derivation gives n+n×n → E+n×n → E×n → E. The replaced substrings are the first n, then E+n, then E×n.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.12.26, Grammar: GATE CSE 2005 | Question: 59, PDF p. 140 (key p. 187)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.8",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q59 (linked verified copy, mapped by option text)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "madeeasy-compiler-syntax-9",
+      "contentSha256": "49831a3c9336fdec30f57a4896e2d8f3bbc766b0f5b328dae1793438ef9dce7d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "After reading E + E with another operator as lookahead, yacc can reduce the completed addition or shift the next operator. With no precedence declarations it defaults to shift.",
+      "note": "Distractor B ends at “and resolves” in the app, Made Easy and GATE Overflow. The minimal grammatical completion is “It detects a reduce–reduce conflict and resolves it.” The grammar gives a shift/reduce conflict.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.22.11, Parsing: GATE CSE 2005 | Question: 83a, PDF p. 168 (key p. 188)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.9",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q85 (linked verified copy, mapped by option text)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent conflict trace and the original yacc manual, Ambiguity and Conflicts: https://people.freebsd.org/~bapt/pdfdocs/psd/Yacc%3A_Yet_Another_Compiler-Compiler.pdf",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "madeeasy-compiler-syntax-10",
+      "contentSha256": "b2017ee68bb0947747e3ce382e7dc99e4d99850a5a3d266d00f38f162e345437",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "The same default shift for either operator delays every reduction until its right-hand continuation is parsed. Both operators have equal precedence and group to the right, giving 3 × (2 + 1) = 9.",
+      "note": "“Part (a)” refers to Q3.9. Standalone wording can read “Assume yacc resolves the conflicts by its default shift rule.” Merely saying that the conflicts are resolved leaves the resolution policy open.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.22.12, Parsing: GATE CSE 2005 | Question: 83b, PDF p. 168 (key p. 188)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.10",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q86 (linked verified copy, mapped by option text)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent shift/reduce trace using Q3.9’s default shift rule",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "madeeasy-compiler-syntax-11",
+      "contentSha256": "4ab4dc9d345a155b4b88b23945d66c9fbf03dc8b6a40a98ee2719de1efa8a3b6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "S reads the first E and prints 2. The multiplication tail reads an E containing 3 + 4 and prints 3 4 +. The multiplication action then prints *, yielding 2 3 4 + *.",
+      "note": "Distractor B reads “2 * + 3 4” in the app, Made Easy, GATE Overflow and the original 2006 scan (p. 9). The linked year-paper JSON omits its +. Choice D has the same text in all copies.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.12.28, Grammar: GATE CSE 2006 | Question: 59, PDF p. 140 (key p. 187)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.11",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q59 (linked verified copy, mapped by option text)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent SDT action trace. Original GATE CS 2006 scan p. 9 confirms the distractor text",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "madeeasy-compiler-syntax-12",
+      "contentSha256": "0d36d7951e318a23915d781d5afef04320b52be07feb1434f3d527fcf596b0ce",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Load a into R₁ and c into R₂, then add b and d to their respective registers. SUB e,R₂ yields t₃, SUB R₁,R₂ yields t₄, and MOV R₂,out stores it. Direct generation needs one initial load per independent addition plus the final store.",
+      "note": "The keys assume direct generation of the stated operations. If the final expression may be rewritten as a+b+c+d−e, one load and one store suffice. GATE Overflow also prints Rⱼ as the register-register destination. Made Easy, the app and the original 2007 scan (p. 13) specify Rᵢ, and the direct MOV count is three for either destination convention.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §1.21.9, Machine Instruction: GATE CSE 2007 | Question: 54, PDF p. 71 (key p. 94)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.12",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q54 (linked verified copy, mapped by option text)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent instruction trace, lower bound and symbolic reassociation. App destinations match GATE CS 2007 Q54, original scan p. 13",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "madeeasy-compiler-syntax-13",
+      "contentSha256": "b8600f08ee5552d2e05923a3eb6fd4ba04184a1ad1a99421ef72585cc762dd96",
+      "questionType": "NAT",
+      "natAnswer": "6",
+      "status": "verified",
+      "reason": "Number the leaves a through h from left to right. The tree expands to a+b−c+d+e−f+g+h. Choose 1 for the six positive leaves and 0 for c and f. Exhaustive evaluation of all 256 assignments confirms the maximum 6.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.10.2, Expression Evaluation: GATE CSE 2014 | Set 2 | Question: 39, PDF p. 131 (key p. 187)",
+          "answer": "6",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.13",
+          "answer": "6",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014, CS session 2 Q39: https://gate2024.iisc.ac.in/wp-content/uploads/2014/cs_2014.pdf",
+          "answer": "6 to 6",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "App diagram checked visually and all 256 leaf assignments evaluated",
+          "answer": "6",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "madeeasy-compiler-syntax-14",
+      "contentSha256": "06d36ca14563c14a0026909b01be717b0f892c12b655f5c49d27c80fe74f738b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Multiple front ends or target back ends can share the same intermediate representation. A machine-independent optimizer on that representation can therefore be reused.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.13.6, Intermediate Code: GATE CSE 2014 | Set 3 | Question: 17, PDF p. 147 (key p. 187)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.14",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014, CS session 3 Q17, same option text: https://gate2024.iisc.ac.in/wp-content/uploads/2014/cs_2014.pdf",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "madeeasy-compiler-syntax-15",
+      "contentSha256": "6e5c766abdcbb0c524bcf141e29120aeceff486cde5ded9412b20196c3bab07f",
+      "questionType": "NAT",
+      "natAnswer": "9",
+      "status": "verified",
+      "reason": "Group 5+1 first, associate the two subtractions to the right, then apply the lowest-precedence multiplication. The result is (2 − ((5 + 1) − 7)) × 3 = 9.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.20.7, Operator Precedence: GATE CSE 2016 | Set 1 | Question: 45, PDF p. 160 (key p. 188)",
+          "answer": "9",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.15",
+          "answer": "9",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2016 final CS Set A key, Q45, p. 2: https://web.archive.org/web/20160327121653id_/http://www.gate.iisc.ernet.in:80/GATE2016_ans_keys_final/CS-1_AnsKey.pdf",
+          "answer": "9.0 to 9.0",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "9",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "madeeasy-compiler-syntax-16",
+      "contentSha256": "5bb1db32ee4ebb53b4eb82479e2882ddd76cb6e599b5ca1d89ca37483d3acbf8",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Reduce the second a to S, then Sb to A, then aA to S. The corresponding actions print 2 3 1.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.27.10, Syntax Directed Translation: GATE CSE 2016 | Set 1 | Question: 46, PDF p. 182 (key p. 188)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.16",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2016 final CS Set A key, Q46, p. 2, same print sequence: https://web.archive.org/web/20160327121653id_/http://www.gate.iisc.ernet.in:80/GATE2016_ans_keys_final/CS-1_AnsKey.pdf",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "madeeasy-compiler-syntax-17",
+      "contentSha256": "0491c90eb59bbbb4684b8cd96b306d97239c2a52117fe9dae87f47055eb8f549",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Type checking uses parsed structure during semantic analysis. Regular lexical rules can be expressed by context-free grammars, compilers may use different IRs, and calls may pass arguments on the stack.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.7.8, Compilation Phases: GATE CSE 2018 | Question: 8, PDF p. 128 (key p. 187)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.17",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "madeeasy-compiler-syntax-18",
+      "contentSha256": "72dbea80cfebf07e91cc0117c2ebe4ebc9b87434fc9a25ba7996b0d3cd73c206",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "The app tree groups a # (((b $ c) $ d) # (e # f)). The $ subtree binds before #, the $ chain nests to the left, and the # chain nests to the right.",
+      "note": "The GATE Overflow PDF swaps the operators in distractor D. The app and Made Easy match the original 2018 paper (CS Q38, p. 12), where D gives # higher precedence and right associativity and $ left associativity. The keyed choice A matches by text.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.20.8, Operator Precedence: GATE CSE 2018 | Question: 38, PDF p. 160–161 (key p. 188)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.18",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "App diagram checked visually. GATE 2018 CS Q38, p. 12, for original distractor: https://gate.iitk.ac.in/GATE2023/doc/papers/2018/cs_2018.pdf",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 19,
+      "id": "madeeasy-compiler-syntax-19",
+      "contentSha256": "16cba720723be0b7f92fa01750a3424ce04819f43ca4f8ca7c12ec23d8155bd5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "In D → T L, copy the type synthesized by T into L.type. In L → L₁ , id, pass the parent L.type to L₁.type. This gives (L, T, L₁, L).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.27.11, Syntax Directed Translation: GATE CSE 2019 | Question: 36, PDF p. 182–183 (key p. 188)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.19",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "madeeasy-compiler-syntax-20",
+      "contentSha256": "44b312d55eb5fb83acf3d89164dcb6e5ac8b8c7f452afd3af1beececee42fe3c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "P.i uses the parent A.i, and Q.i uses the parent and left sibling P. Rule 2 makes X.i depend on its right sibling Y.s, which violates the L-attributed restriction.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.27.12, Syntax Directed Translation: GATE CSE 2020 | Question: 33, PDF p. 183 (key p. 188)",
+          "answer": "B (only Rule 1 is L-attributed) → app C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.20",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "madeeasy-compiler-syntax-21",
+      "contentSha256": "7fa9fc02c7e5f9f45150b81f67e39d2ed260f7cc89058003818cc4fe9d3b356f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "The ID action always assigns int. That fits declared integer identifiers and the addition check. A declared boolean identifier is also treated as int, so a valid negation such as !b fails.",
+      "note": "The printed chapter labels both the integer and boolean choices (a). The boolean choice should be labelled (b), as it already is in the app.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.27.13, Syntax Directed Translation: GATE CSE 2021 | Set 1 | Question: 26, PDF p. 183 (key p. 188)",
+          "answer": "B (integer declarations and expressions) → app A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.21",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 22,
+      "id": "madeeasy-compiler-syntax-22",
+      "contentSha256": "3a46d60bf66d2abe087b8c5f790ea76176d150a6ec9ad8b35159c7990f23857d",
+      "questionType": "NAT",
+      "natAnswer": "80",
+      "status": "verified-with-note",
+      "reason": "The T rules make % left-associative division and bind it inside each # operand. The result is 20 × (10 ÷ 5) × ((8 ÷ 2) ÷ 2) = 80.",
+      "note": "The app, Made Easy and official paper list P among the non-terminals, although it appears in no production. The non-terminals used by the given rules are {S, T, R}.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.27.14, Syntax Directed Translation: GATE CSE 2022 | Question: 55, PDF p. 183–184 (key p. 188)",
+          "answer": "80",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.22",
+          "answer": "80",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2022 CS Q65, p. 2: https://gate2026.iitg.ac.in/doc/download/Answer_keys2022/cs_2022.pdf",
+          "answer": "80 to 80",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "80",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 23,
+      "id": "madeeasy-compiler-syntax-23",
+      "contentSha256": "da15898dc95c3cb52f559c13b8036e4e2ba8942e7b8111620710b44b9d38e8e4",
+      "questionType": "NAT",
+      "natAnswer": "2.375",
+      "natRange": {
+        "min": 2.374,
+        "max": 2.376
+      },
+      "status": "verified",
+      "reason": "The I rules give binary 10 the value 2. The F rules evaluate 011 as 0/2 + 1/4 + 1/8 = 0.375. The exact result is 2.375, and the official key accepts 2.374 to 2.376.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.27.15, Syntax Directed Translation: GATE CSE 2023 | Question: 50, PDF p. 184 (key p. 188)",
+          "answer": "2.375",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.23",
+          "answer": "2.375",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2023 CS Q60, p. 2: https://gate2026.iitg.ac.in/doc/download/Answer_keys2023/CS_ANS_GATE2023.pdf",
+          "answer": "2.374 to 2.376",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "2.375",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 24,
+      "id": "madeeasy-compiler-syntax-24",
+      "contentSha256": "21ce53449c62d9a7aa862e26e28006250e94693db6c5173bb2a6390b7676bf3e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "D consumes MM and contributes 5+5−5 = 5. H consumes L and contributes 50−10 = 40. T takes ε and contributes −5. U consumes K and contributes 5, so S.val = 45.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.27.16, Syntax Directed Translation: GATE CSE 2024 | Set 1 | Question: 27, PDF p. 184 (key p. 188)",
+          "answer": "A (45) → app B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.24",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2024 CS1 master paper Q37, final key p. 2: https://gate2024.iisc.ac.in/wp-content/uploads/2024/CS1FinalAnswerKey.pdf",
+          "answer": "A (45) → app B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 25,
+      "id": "madeeasy-compiler-syntax-25",
+      "contentSha256": "88f31a362d4bab7ee960fb6eb9b2086a400845df55f078bf5d7449f8c8ee7dbe",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "C"
+      ],
+      "status": "verified",
+      "reason": "A is false because L-attributed dependencies permit left-to-right depth-first evaluation. C is false because LR(1) parsing alone does not guarantee that inherited values are available in time for every reduction. Side-effect-free semantic rules define an attribute grammar, and synthesized attributes can be computed at reductions, so B and D are true.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.27.17, Syntax Directed Translation: GATE CSE 2024 | Set 2 | Question: 19, PDF p. 185 (key p. 188)",
+          "answer": "B;D (depth-first impossibility and the universal LR(1) claim) → app A;C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Compiler Design solutions PDF p. 7 (book p. 508), Q3.25",
+          "answer": "A;C",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2024 CS2 master paper Q29, final key p. 1: https://gate2024.iisc.ac.in/wp-content/uploads/2024/CS2FinalAnswerKey.pdf",
+          "answer": "B;D → app A;C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "A;C",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

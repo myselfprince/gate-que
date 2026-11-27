@@ -10,6 +10,7 @@ function statusText(question, type, hasOptions) {
   if (type === 'NAT') return question.natAnswer?.trim() || question.natRange ? 'Answer recorded' : 'Type the numerical answer';
   const marked = question.correctOptions || [];
   if (marked.length) return `Answer: ${marked.map(option => `(${option})`).join(', ')}`;
+  if (question.answerDisposition === 'disputed' && question.specialNote) return 'Answer note';
   if (!hasOptions) return 'Add option text in the editor to mark an answer';
   return type === 'MSQ' ? 'Click every correct option' : 'Click the correct option';
 }
@@ -21,7 +22,8 @@ export default function PreviewAnswerKey({ question, disabled, hasOptions, isTwo
   const isChoice = type === 'MCQ' || type === 'MSQ';
   const noneCorrect = question.answerDisposition === 'none-correct';
   const marked = question.correctOptions || [];
-  const recorded = isChoice ? marked.length > 0 || noneCorrect : Boolean(question.natAnswer?.trim() || question.natRange);
+  const disputed = question.answerDisposition === 'disputed';
+  const recorded = isChoice ? marked.length > 0 || noneCorrect || (disputed && Boolean(question.specialNote)) : Boolean(question.natAnswer?.trim() || question.natRange);
   const optionTextClass = question.isCodeOptions ? styles.codeText : styles.text;
 
   const mark = letter => onChange(toggleCorrectOptionPatch(question, letter));
@@ -31,8 +33,9 @@ export default function PreviewAnswerKey({ question, disabled, hasOptions, isTwo
       <div role="group" aria-label="Question type" className={styles.types}>
         {TYPES.map(([value, title]) => <button key={value} type="button" title={title} aria-pressed={type === value} disabled={disabled} className={type === value ? styles.typeActive : styles.type} onClick={() => { if (type !== value) onChange(answerTypePatch(question, value)); }}>{value}</button>)}
       </div>
-      <span className={recorded ? styles.status : styles.statusEmpty}>{statusText(question, type, hasOptions)}{question.answerDisposition === 'disputed' ? ' · Disputed' : ''}</span>
+      <span className={recorded ? styles.status : styles.statusEmpty}>{statusText(question, type, hasOptions)}{disputed && (marked.length > 0 || !question.specialNote) ? ' · Disputed' : ''}</span>
     </div>
+    {question.specialNote && <p className={styles.note}>{question.specialNote}</p>}
 
     {hasOptions ? <div role={type === 'MSQ' ? 'group' : 'radiogroup'} aria-label="Correct answer" className={isTwoCol ? styles.optionsTwoCol : styles.options}>
       {OPTION_LETTERS.map(letter => {

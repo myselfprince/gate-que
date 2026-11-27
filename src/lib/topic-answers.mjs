@@ -61,10 +61,13 @@ function normalizeEntry(entry, index) {
   if (typeof entry.contentSha256 !== 'string' || !/^[a-f0-9]{64}$/.test(entry.contentSha256)) throw new Error(`${at}: contentSha256 is invalid.`);
   if (!TYPES.includes(entry.questionType)) throw new Error(`${at}: questionType must be one of ${TYPES.join(', ')}.`);
   const result = { position: entry.position, id, contentSha256: entry.contentSha256, questionType: entry.questionType };
+  const disposition = entry.answerDisposition ?? 'standard';
+  if (!DISPOSITIONS.includes(disposition)) throw new Error(`${at}: answerDisposition is invalid.`);
   const options = entry.correctOptions ?? [];
   if (!Array.isArray(options) || options.some(option => !LETTERS.includes(option)) || new Set(options).size !== options.length) throw new Error(`${at}: correctOptions must be distinct letters A-D.`);
-  if (entry.questionType === 'MCQ' && options.length !== 1) throw new Error(`${at}: an MCQ needs exactly one correct option.`);
-  if (entry.questionType === 'MSQ' && !options.length) throw new Error(`${at}: an MSQ needs at least one correct option.`);
+  const noCorrectOption = disposition === 'none-correct' && options.length === 0;
+  if (entry.questionType === 'MCQ' && options.length !== 1 && !noCorrectOption) throw new Error(`${at}: an MCQ needs exactly one correct option.`);
+  if (entry.questionType === 'MSQ' && !options.length && !noCorrectOption) throw new Error(`${at}: an MSQ needs at least one correct option.`);
   if (['NAT', 'SUBJECTIVE'].includes(entry.questionType) && options.length) throw new Error(`${at}: ${entry.questionType} cannot have option letters.`);
   result.correctOptions = [...options].sort();
   if (entry.questionType === 'NAT') {
@@ -73,8 +76,6 @@ function normalizeEntry(entry, index) {
     result.natAnswer = text(entry.natAnswer ?? '', `${at} natAnswer`, { required: !range, max: 200 });
     if (range) result.natRange = { min: range.min, max: range.max };
   }
-  const disposition = entry.answerDisposition ?? 'standard';
-  if (!DISPOSITIONS.includes(disposition)) throw new Error(`${at}: answerDisposition is invalid.`);
   if (disposition !== 'standard') {
     result.answerDisposition = disposition;
     result.specialNote = text(entry.specialNote, `${at} specialNote`);

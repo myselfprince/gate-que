@@ -1,0 +1,4635 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "8. C Prog",
+  "chapter": "1. Programming",
+  "slug": "8-c-prog--1-programming",
+  "reviewedAt": "2026-11-27",
+  "reviewer": "Codex",
+  "blankPositions": [
+    91,
+    95,
+    101,
+    107,
+    112,
+    133,
+    134
+  ],
+  "sources": {
+    "gateOverflowPdfs": [
+      {
+        "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume2.pdf",
+        "sha256": "457f9e583b943b3c41e78d8431b09e322123b0d80765396af36ee2100196714f",
+        "pages": 403
+      },
+      {
+        "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume3.pdf",
+        "sha256": "5c552941136eb96612fabec8a5b2cb67fc07c17023ce15628408ca27d6640c24",
+        "pages": 469
+      },
+      {
+        "file": "E:\\All Projects and Data\\gate-pyq-YT-app\\tmp\\topic-answers\\3-computer-networks--1-iso-osi-stack-and-swp\\GO-ISRO-2025.pdf",
+        "sha256": "cc614262bdc42c9201de7ceab35de962ac5585e83e18e3718ee55f809a817603",
+        "pages": 278
+      }
+    ],
+    "madeEasyQuestionPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\8. C Prog\\1. Programming.pdf",
+      "sha256": "a67c4df2b16f9665e0f1cc1a6e1f447e1b2a29c35479ac092084b1e12a0ea6a8"
+    },
+    "madeEasyAnswerTable": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\All Subject Solutions Keys\\C Prog. & Data Structures.pdf",
+      "sha256": "96e6fa281f052a5eb12bfaede2eac8f860b2cc588009838cd065982b08fabfbd",
+      "answerKeyPage": 1,
+      "printedPage": 340
+    },
+    "yearPapers": "data/papers/*.json, matched by copiedFrom.questionId and question and option text."
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "e1davf8vt",
+      "contentSha256": "e6f66f6d5dc3ad7e735f6d5eb978cf4493bb3f72796e6bf9f52df1e891110c97",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A subroutine call creates an activation record, an assembler maintains the location counter, garbage collection uses reference counts, and a linking loader relocates addresses. The matches are A–3, B–4, C–2, D–1.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.24.8, Runtime Environment: GATE CSE 1996 | Question: 2.17, PDF p.175 (key p.188). https://gateoverflow.in/2746/gate-cse-1996-question-2-17",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.1, 1. Programming.pdf p.1 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "dl82wbbl7",
+      "contentSha256": "21371ddfa452c0a81e55d68d2c69f4aef94a63ad214d62ac65453d6773fbe806",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Dynamically allocated structures can outlive the calls that created them and need storage independent of the call stack. Recursion and dynamic scope can both use activation records.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.24.9, Runtime Environment: GATE CSE 1997 | Question: 1.10, PDF p.175 (key p.188). https://gateoverflow.in/2226/gate-cse-1997-question-1-10",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.2, 1. Programming.pdf p.1 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "jzkfare6r",
+      "contentSha256": "5b953fd7fa1cfd449e8d2949ddb4f1206668fed0f7a3316aab0cd99e3467047f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "A display indexes the active records by lexical nesting level and gives direct access to a nonlocal variable's activation record.",
+      "note": "The Made Easy table gives D, activation tree. The question asks for the array of record pointers, which is a display, as keyed by GATE Overflow.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.24.13, Runtime Environment: GATE CSE 1998 | Question: 2.15, PDF p.176 (key p.188). https://gateoverflow.in/1687/gate-cse-1998-question-2-15",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.3, 1. Programming.pdf p.1 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D (activation tree)",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "05t43meme",
+      "contentSha256": "0edba1dfbfeeaa785054b2f02d2fe46e19722b6898ae22c13fa936d62607d285",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The first call to show finds the global x=0.25. The call from small finds small's x=0.125 first on the dynamic call chain.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.4, 1. Programming.pdf p.1 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "hlh7yf8md",
+      "contentSha256": "797ae50928d2f163b45ca42999525f79097d3552632020a32737acf0c598debf",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "Made Easy expects A under the native-addressing interpretation and GATE Overflow lists A/B/C/D. The stated addressing modes alone do not rule out software implementations or specify a unique choice. To isolate A, ask which operation requires native indirect memory access and use dereferencing a runtime pointer as that choice.",
+      "status": "verified-with-note",
+      "reason": "Native pointer dereferencing uses an address computed at run time. Immediate and direct mode alone supply a literal operand or a fixed address, but software can emulate a computed access using a dispatch over fixed addresses.",
+      "note": "Made Easy expects A under the native-addressing interpretation and GATE Overflow lists A/B/C/D. The stated addressing modes alone do not rule out software implementations or specify a unique choice. To isolate A, ask which operation requires native indirect memory access and use dereferencing a runtime pointer as that choice.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §1.1.7, Addressing Modes: GATE CSE 1999 | Question: 2.23, PDF p.29 (key p.93). https://gateoverflow.in/1500/gate-cse-1999-question-2-23",
+          "answer": "A;B;C;D (all four choices)",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.5, 1. Programming.pdf p.1 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "No unique answer from the given processor model. A describes native pointer access.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "bmqxq6jvs",
+      "contentSha256": "3186280b68b31dac566112e19630abe758e09b4c87d11535f6b3c5328053e4f2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "With a=b=c, Trial(a,c,b) repeats the exact same call indefinitely. Therefore it cannot be a total maximum, minimum, or median function on the stated inputs.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.23.10, Identify Function: GATE CSE 1999 | Question: 2.24, PDF p.59 (key p.115). https://gateoverflow.in/1501/gate-cse-1999-question-2-24",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.6, 1. Programming.pdf p.1 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "h6hvgaruq",
+      "contentSha256": "d9b21949a8edb13cb791ef443cda61fd51f627db80ab0cbc353fe5cbe94142de",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Indirect addressing dereferences pointers, immediate addressing embeds constants, and auto-decrement addressing suits a loop counter or backward traversal. In the diagram these are X–2, Y–3, Z–1.",
+      "note": "The worksheet's linked CS 2000 Q13 copy is a different stack/queue/heaps question. The matching addressing-mode question is CS 2000 Q1.10.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §1.1.8, Addressing Modes: GATE CSE 2000 | Question: 1.10, PDF p.29 (key p.93). https://gateoverflow.in/633/gate-cse-2000-question-1-10",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.7, 1. Programming.pdf p.1 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "zbyz08ucj",
+      "contentSha256": "06feb65cd62ef87a469bd88e44c03a38393fe76cf89a19ea56c5a6752a6cc69e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "The brackets bind to s before the asterisk, so s is an array of ten pointers to struct node.",
+      "note": "The struct member should be int i; with a semicolon. The question stem also contains a stray semicolon before “define.” The s declarator itself identifies the pointer array.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.16.1, Structure: GATE CSE 2000 | Question: 1.11, PDF p.315 (key p.320). https://gateoverflow.in/634/gate-cse-2000-question-1-11",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.8, 1. Programming.pdf p.1 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q11 (linked record, key compared by option text).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "5w4ubexui",
+      "contentSha256": "6c9251f415337d6ea823637a7ad2d46b46ee09b5ec9d829144dd652ee2b559fd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "X loses the allocated address and leaks it. Y dereferences the pointer after freeing its storage. The intended Z dereferences an uninitialized pointer. This gives X–3, Y–1, Z–2.",
+      "note": "Z is malformed in the app. Restore the two statements char *p; *p = 'a'; as shown in the printed question.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.9.1, Pointers: GATE CSE 2000 | Question: 1.12, PDF p.293 (key p.319). https://gateoverflow.in/635/gate-cse-2000-question-1-12",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.9, 1. Programming.pdf p.1 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q12 (linked record, key compared by option text).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "ttos7ion6",
+      "contentSha256": "490ad0b47f3a6cc2138431ddf7681bf13bcc7f3a168f902393d4c880efb7a164",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Names alias when they designate the same storage location. Two independent variables can have equal values without sharing that storage.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.1.1, Aliasing: GATE CSE 2000 | Question: 1.16, PDF p.275 (key p.319). https://gateoverflow.in/639/gate-cse-2000-question-1-16",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.10, 1. Programming.pdf p.1 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q16 (linked record, key compared by option text).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "c7bkguffy",
+      "contentSha256": "6f9d26a4f41b6ad592f5b3aa7095a3e987f81316d41a2ef4d53b83c5a5bb400a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Ignoring alignment, the five shorts occupy 10 bytes. The union shares one storage area of max(4,8)=8 bytes. The total is 18 bytes.",
+      "note": "The app's struct uses parentheses. Restore braces as in struct { short x[5]; union { float y; long z; } u; } t;.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.19.1, Union: GATE CSE 2000 | Question: 1.17, ISRO2015-79, PDF p.318 (key p.320). https://gateoverflow.in/640/gate-cse-2000-question-1-17-isro2015-79",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.11, 1. Programming.pdf p.1 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q17 (linked record, key compared by option text).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "yf346cg29",
+      "contentSha256": "a119af9141da1f5f27fabb7f9dc854674b34004a77e7941aff68f975c3bb9dd0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The static count retains its value across calls and accumulates 0+1+2+3+4. The last assignment leaves j=10.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.11.1, Programming In C: GATE CSE 2000 | Question: 2.20, PDF p.298 (key p.319). https://gateoverflow.in/667/gate-cse-2000-question-2-20",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.12, 1. Programming.pdf p.1 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q43 (linked record, key compared by option text).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "jdm8ozsiy",
+      "contentSha256": "25c3713a180bd7cd632415a5a8764091bf368e7cb95535b22b07db614924ad62",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Formal x aliases caller y=3. Formal y and z both alias caller x. The first assignment makes caller x=14, then the second sets it to 3+14+14=31. Caller y remains 3.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.8.3, Parameter Passing: GATE CSE 2001 | Question: 2.17 | UGCNET-AUG2016-III: 21, PDF p.289 (key p.319). https://gateoverflow.in/735/gate-cse-2001-question-2-17-ugcnet-aug2016-iii-21",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.13, 1. Programming.pdf p.1 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q42 (linked record, key compared by option text).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "wni5krt6t",
+      "contentSha256": "0bcfaf31159b8b7662ebfc75789a3030eb906f615d9394ba7c212197a0da6216",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "P1 returns an address whose automatic object's lifetime has ended. P2 dereferences an uninitialized pointer. P3 is valid when malloc succeeds and returns heap storage still alive after return.",
+      "note": "The Made Easy table gives D, which includes P3. C is the conventional key when allocation is assumed to succeed. To remove the allocation-failure ambiguity, add “Assume malloc succeeds.”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.9.2, Pointers: GATE CSE 2001 | Question: 2.18, PDF p.293 (key p.319). https://gateoverflow.in/736/gate-cse-2001-question-2-18",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.14, 1. Programming.pdf p.1–2 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D (P1, P2 and P3)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q43 (linked record, key compared by option text).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "cip7wq4sj",
+      "contentSha256": "c798afea559ea5949e721482412889a3c66f0fb5358be6be20c686828f69aa5c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "D passes its own n=3 by reference. W increments and prints 4, which is covered by “None of the above.”",
+      "note": "",
+      "sources": [
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.15, 1. Programming.pdf p.2 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q44 (linked record, key compared by option text).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "xao4hf9qo",
+      "contentSha256": "62300cd203636e65108a9b58f4ec83aba90a8c2811260c57e3ddb9842800baa2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "A reference parameter writes directly to caller storage. If an exception skips the copy-out step of value-result passing, caller storage may differ.",
+      "note": "The Made Easy table gives B, but a loop alone does not distinguish these mechanisms. The verified CS 2002 paper gives D.",
+      "sources": [
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.16, 1. Programming.pdf p.2 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "B (differs in the presence of loops)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q18 (linked record, key compared by option text).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "kltfcsxbo",
+      "contentSha256": "1090e0877f97a06425002718e84007623d7f0fe31037063af5d1c7babb2e4be8",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The number of activation records separating a function from main is set by the actual chain of calls. The visibility of C globals is lexical.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.11.2, Programming In C: GATE CSE 2002 | Question: 1.17, PDF p.299 (key p.319). https://gateoverflow.in/822/gate-cse-2002-question-1-17",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.17, 1. Programming.pdf p.2 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q17 (linked record, key compared by option text).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "bqtgvzrs9",
+      "contentSha256": "f4e381ff5c1483c42f51054579e7b25c1860247e1c485910c42ca277a95df60d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A char is one byte and C stores rows consecutively. The offset of a[40][50] is 100×40+50=4050 bytes.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.2.1, Array: GATE CSE 2002 | Question: 2.8, PDF p.275 (key p.319). https://gateoverflow.in/838/gate-cse-2002-question-2-8",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.18, 1. Programming.pdf p.2 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q33 (linked record, key compared by option text).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 19,
+      "id": "y43mmqzel",
+      "contentSha256": "1a19885597ad3e51b378e4fb874eb2462ef648def7736cf917dec12558757923",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "A[2] is a modifiable pointer lvalue, while A[2][3] and B[2][3] are integer lvalues. B[1] is a whole array and cannot be assigned.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.9.3, Pointers: GATE CSE 2003 | Question: 2, PDF p.294 (key p.319). https://gateoverflow.in/893/gate-cse-2003-question-2",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.19, 1. Programming.pdf p.2 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q2 (linked record, key compared by option text).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "lt5xfxor0",
+      "contentSha256": "971109ad5adee2c8b981c5cc61b531d9a3147d358ed6b38040dc7c79ea538129",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Any printed j would have to be divisible by every k from 2 through min(j−1,TwoLog_n). If j−1 is included it rules j out. Otherwise lcm(1,…,TwoLog_n) is at least 2^(TwoLog_n−1), greater than n for the app's bound.",
+      "note": "The app uses 2×ceil(log₂ n), while the source uses 2×floor(log₂ n). Restore floor to match the paper. The empty set is correct for both bounds.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.23.13, Identify Function: GATE CSE 2003 | Question: 88, PDF p.60 (key p.115). https://gateoverflow.in/971/gate-cse-2003-question-88",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.20, 1. Programming.pdf p.2 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q88 (linked record, key compared by option text).",
+          "answer": "D ↦ app D (empty set)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "z5mlqlg1x",
+      "contentSha256": "bda64ec0e1a15655eabbd6d996272c9bb2980ad2ff3e9bfe3a464fdb44d9c062",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "P's local x is 7. Q adds the global x=5 to its argument and prints 12. P then writes 6 through y but prints its own 7. Main prints the new global 6.",
+      "note": "Use #include <stdio.h> without spaces inside the header name. The numeric sequence is independent of the sources' different print separators.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.9.4, Pointers: GATE CSE 2003 | Question: 89, PDF p.294 (key p.319). https://gateoverflow.in/972/gate-cse-2003-question-89",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.21, 1. Programming.pdf p.2 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q89 (linked record, key compared by option text).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 22,
+      "id": "jb1pmq3gq",
+      "contentSha256": "307819765708faeaec25f812750aa0cba83f57bd5bda3d2ffb1258d25ba7a370",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Structured control constructs let the reader infer the control flow directly from the program text. Indentation alone does not establish structure.",
+      "note": "The stem should read “The goal of structured programming is to:”.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.12.1, Programming Paradigms: GATE CSE 2004 | Question: 1, PDF p.308 (key p.320). https://gateoverflow.in/998/gate-cse-2004-question-1",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.22, 1. Programming.pdf p.2 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q1 (linked record, key compared by option text).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 23,
+      "id": "ubebs80sd",
+      "contentSha256": "f944483ba18f0c86a5a48511bb7c98956627829b8a190b31a64f6d1514806223",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Only local copies a and b are exchanged. Both parameters have integer type and are passed by value, so swap(x,y) cannot exchange the caller's variables.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.21.12, Parameter Passing: GATE CSE 2004 | Question: 2,ISRO2017-54, PDF p.165 (key p.188). https://gateoverflow.in/999/gate-cse-2004-question-2-isro2017-54",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.23, 1. Programming.pdf p.2 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q2 (linked record, key compared by option text).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 24,
+      "id": "pnmg8dcwx",
+      "contentSha256": "3de3443ae9289b651ede024d65bfb6e9a24a2b89f8b85f313e358b74ccde2473",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "For the only allowed inputs, 1−0=1 and 1−1=0. Thus x=1−x implements the conditional.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.5.6, Identify Function: GATE IT 2004 | Question: 15, PDF p.283 (key p.319). https://gateoverflow.in/3656/gate-it-2004-question-15",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.24, 1. Programming.pdf p.2 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q15 (linked record, key compared by option text).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 25,
+      "id": "19tvgl4gw",
+      "contentSha256": "0cb89c7e43d0cd4fc086fde5785db1870bed6deee41f1281aa92156ec245f7be",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The triangular loop j≥i visits each unordered off-diagonal pair once. The temporary saves one element while its transpose partner is copied. A swaps each pair twice and B/D use the temporary before initializing it.",
+      "note": "Use #include <stdio.h> without spaces inside the header name.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.2.10, Array: GATE IT 2004 | Question: 58, PDF p.278 (key p.319). https://gateoverflow.in/3701/gate-it-2004-question-58",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.25, 1. Programming.pdf p.2 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q58 (linked record, key compared by option text).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 26,
+      "id": "xyyw3641b",
+      "contentSha256": "fa811f6bb9d093606dfbf4c38c09008f7d00df96f08a4b7ef4f2b64ece6bf423",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The four returns from funcg are 16,17,18,19 because its static y increments. The successive outer totals are 10+16+17=43 and 43+18+19=80 regardless of the order within each pair.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.11.25, Programming In C: GATE IT 2004 | Question: 59, PDF p.306 (key p.320). https://gateoverflow.in/3702/gate-it-2004-question-59",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.26, 1. Programming.pdf p.2–3 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q59 (linked record, key compared by option text).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 27,
+      "id": "lej2h3gea",
+      "contentSha256": "bdc7df4fddd5fd9cb7a3e73faf44314792f05f7a4fb91331681d8e1465806ac7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "The app starts with A B. f1 changes a copy and prints U V, so the second print in main is A B. f2 writes through a pointer and prints V W.",
+      "note": "The linked IT 2004 scan uses L rather than U in f1 and would print L V on the second line. Made Easy and GATE Overflow use U, which matches the app. Use #include <stdio.h> without spaces inside the header name.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.16.4, Structure: GATE IT 2004 | Question: 61, PDF p.316 (key p.320). https://gateoverflow.in/3704/gate-it-2004-question-61",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.27, 1. Programming.pdf p.3 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q61 (linked record, key compared by option text).",
+          "answer": "Literal paper prints L V on line two; its published B matches the U V variant only",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 28,
+      "id": "lhi33sxy6",
+      "contentSha256": "589350723d5643b5b66bba9b20918367f09818de4474368a49bb5c174d9728b1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The recursive entries have (n,i) equal to (1,1), (2,2), (4,3), and (7,4). The last returns 7 and each caller returns that value.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.13.6, Recursion: GATE CSE 2004 | Question: 31, ISRO2008-40, PDF p.310 (key p.320). https://gateoverflow.in/1028/gate-cse-2004-question-31-isro2008-40",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.28, 1. Programming.pdf p.3 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q31 (linked record, key compared by option text).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 29,
+      "id": "j7jrvewpj",
+      "contentSha256": "0d0205da60ee1cd464a57f30611c371fe65796ac7ea805a26c3b009d91463c46",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "Close the comment with */ and write while (m != n). The corrected program computes the greatest common divisor, option C.",
+      "status": "verified-with-note",
+      "reason": "The literal app fragment contains an unclosed block comment. In the source program, subtracting the smaller positive value from the larger preserves the gcd, and the final equal values are the gcd.",
+      "note": "Close the comment with */ and write while (m != n). The corrected program computes the greatest common divisor, option C.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.23.14, Identify Function: GATE CSE 2004 | Question: 41, PDF p.60 (key p.115). https://gateoverflow.in/1038/gate-cse-2004-question-41",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.29, 1. Programming.pdf p.3 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q41 (linked record, key compared by option text).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "Ill-formed as shown. GCD (C) after restoring the comment and operator.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 30,
+      "id": "q9soiqn1w",
+      "contentSha256": "1e9fe5f5440868faf3306b1229f2b1d1d4bd48774013a08aeade917954f0e3de",
+      "questionType": "MCQ",
+      "correctOptions": [],
+      "answerDisposition": "none-correct",
+      "specialNote": "No app option states the invariant. Restore A as n=d₁…d_(m−i) and rev=d_m d_(m−1)…d_(m−i+1). The +1 at the wrapped end of the printed option was lost.",
+      "status": "verified-with-note",
+      "reason": "After i iterations n has lost i trailing digits and rev holds exactly those i digits in reverse order. The final reversed digit is d_(m−i+1), whereas app choice A ends at d_(m−i).",
+      "note": "No app option states the invariant. Restore A as n=d₁…d_(m−i) and rev=d_m d_(m−1)…d_(m−i+1). The +1 at the wrapped end of the printed option was lost.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.6.5, Loop Invariants: GATE CSE 2004 | Question: 32, PDF p.284 (key p.319). https://gateoverflow.in/1029/gate-cse-2004-question-32",
+          "answer": "A in the PDF ends d_(m−i+1); there is no matching app choice",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.30, 1. Programming.pdf p.3 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "A in print gives d_(m−i+1); there is no matching app choice",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q32 (linked record, key compared by option text).",
+          "answer": "A in the paper gives d_(m−i+1); there is no matching app choice",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "No matching option. The reversed suffix ends at d_(m−i+1).",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 31,
+      "id": "j7fguhogz",
+      "contentSha256": "823456858eb107b4da06ac0b071251d23126cd527df25b32213b61e1598bcadc",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "The first assignment copies s[6], the terminating null character, into p[0]. printf with %s therefore emits an empty string.",
+      "note": "App choices A and C both read gnirts. The printed C distractor is gnirt.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.15.1, Strings: GATE CSE 2004 | Question: 33, PDF p.315 (key p.320). https://gateoverflow.in/1030/gate-cse-2004-question-33",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.31, 1. Programming.pdf p.3 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q33 (linked record, key compared by option text).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 32,
+      "id": "vfwvcgr5s",
+      "contentSha256": "66f16f48d88f70fbcac4f50d5a26bcb8d0a02ef7011675aa1fd7408592a22535",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The parentheses make f a pointer. Its pointed-to function takes an int pointer and returns int.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.9.5, Pointers: GATE CSE 2005 | Question: 1, ISRO2017-55, PDF p.294 (key p.319). https://gateoverflow.in/1343/gate-cse-2005-question-1-isro2017-55",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.32, 1. Programming.pdf p.3 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q1 (linked record, key compared by option text).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 33,
+      "id": "7jjdjm8io",
+      "contentSha256": "b86e8b78c709c80b799afc2b30ad5268418cb4bc8c7559cf3e6793d7e099680e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "An ADT specifies the operations available to consumers and their behavior while hiding its representation.",
+      "note": "The content is GATE CS 2005 Q2. The app year is 2004.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §3.2.1, Abstract Data Type: GATE CSE 2005 | Question: 2, PDF p.198 (key p.253). https://gateoverflow.in/1344/gate-cse-2005-question-2",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.33, 1. Programming.pdf p.3 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q2 (linked record, key compared by option text).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 34,
+      "id": "k5alw6348",
+      "contentSha256": "0790c2e4dbac700b079e0b73bc6f553222e548407b65f1f01623266d6a75fea2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Deleting the prototype leaves the call undeclared in modern C. In historical C the implicit int declaration conflicts with the subsequent double definition. A compiler diagnostic is required.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.11.4, Programming In C: GATE CSE 2005 | Question: 32, PDF p.299 (key p.319). https://gateoverflow.in/1368/gate-cse-2005-question-32",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.34, 1. Programming.pdf p.3 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q32 (linked record, key compared by option text).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 35,
+      "id": "dxlxgfld4",
+      "contentSha256": "47d5892ec75be9bc7c6be9791980c2734a9b17348543b9947f412ed3c8dd594f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "The remainder is printed as recursion unwinds, producing 2,0,4,8. The sum is passed by value, so main's sum remains 0.",
+      "note": "The app's printf(\"%dn\", sum) prints an extra literal n after 0. The source ends with printf(\"%d\\n\", sum) and has no trailing getchar(). D gives the numeric sequence.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.23.16, Identify Function: GATE CSE 2005 | Question: 31, PDF p.61 (key p.115). https://gateoverflow.in/1367/gate-cse-2005-question-31",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.35, 1. Programming.pdf p.3 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q31 (linked record, key compared by option text).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 36,
+      "id": "77mjp6pui",
+      "contentSha256": "c39d5974f31e35ad6002a1a75bee82ce4c8cc6351088a1c77297aa530ea77a16",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "While A[i][j]=0, j cannot be the sink because i has no edge to it. When A[i][j]=1, i cannot be the sink, so replace the candidate with j. This yields E₁=!A[i][j] and E₂=i=j.",
+      "note": "The linked algorithm prints j! = i in the app. Restore j != i in the verification loop.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.17.10, Graph Algorithms: GATE IT 2005 | Question: 84a, PDF p.45 (key p.114). https://gateoverflow.in/3856/gate-it-2005-question-84a",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.36, 1. Programming.pdf p.3 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 37,
+      "id": "kfszzpia4",
+      "contentSha256": "94df9bf98abff8a61051ed8ec064ad7c0720db77df22d385df9e0a5cbb1b116b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "For each j≠i, reject i if there is an edge from i to j or if the edge from j to i is missing. This gives E₃=A[i][j] || !A[j][i].",
+      "note": "Restore j != i in the verification loop.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.17.11, Graph Algorithms: GATE IT 2005 | Question: 84b, PDF p.45 (key p.114). https://gateoverflow.in/3857/gate-it-2005-question-84b",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.37, 1. Programming.pdf p.3 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 38,
+      "id": "dv7sr0fls",
+      "contentSha256": "d9b8e1e6b5588faa71001d90a1eab44dcd4cd6fb10465860d72e43c8fed2c928",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "Both sources key D, the only valid per-character update. To make the function correct for the stated domain, add if (a[j] || b[j]) return 0; immediately after the while loop, or state that the input strings have equal length.",
+      "status": "verified-with-note",
+      "reason": "D tallies a[j] positively and b[j] negatively at the same index before advancing j. This checks anagrams for equal-length strings. With unequal lengths the loop can stop with all counts zero even for non-anagrams, as with a=\"a\" and b=\"ab\".",
+      "note": "Both sources key D, the only valid per-character update. To make the function correct for the stated domain, add if (a[j] || b[j]) return 0; immediately after the while loop, or state that the input strings have equal length.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.23.34, Identify Function: GATE IT 2005 | Question: 53, PDF p.66 (key p.115). https://gateoverflow.in/3814/gate-it-2005-question-53",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.38, 1. Programming.pdf p.4 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D for equal lengths. No listed patch handles arbitrary lengths.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 39,
+      "id": "8p3vt3sx0",
+      "contentSha256": "2d7634750b00ff6e431d6970d1a201c4bcd35dbcecc4647121ba1843cc7c375e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The recursive calls for 20,10,5,2,1 contribute −1,−2,+4,−8,+16, respectively. The sum is 9.",
+      "note": "Use #include <stdio.h> without spaces inside the header name.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.23.35, Identify Function: GATE IT 2005 | Question: 57, PDF p.67 (key p.115). https://gateoverflow.in/3818/gate-it-2005-question-57",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.39, 1. Programming.pdf p.4 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 40,
+      "id": "u2bwg5voy",
+      "contentSha256": "173bf7b44d2e30e8b39f33f50e5bc0f2269a27aad45cdd4b61d73f6c2855f558",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "The first increment of the c member skips the b in better. The postfix increment of p then moves to jungle, and *++p->c advances that member to u. Its record has i=6 and its remaining string is ungle.",
+      "note": "Use #include <stdio.h> without spaces inside the header name. Printed distractors also spell ncestor where the app has nclastor in A.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.16.5, Structure: GATE IT 2006 | Question: 49, PDF p.317 (key p.320). https://gateoverflow.in/3592/gate-it-2006-question-49",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.40, 1. Programming.pdf p.4 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 41,
+      "id": "4snyxbzsm",
+      "contentSha256": "296ada3e003e9c8481c6a10f714471ad31cda399c48aa156e6487ba5d7b63830",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "When the original i is 0,2,4, the post-increment leaves 1,3,5 to add, for a total of 9 per call. The static values go from (−3,−6) to (6,3) to (15,12). swap only exchanges local pointer parameters.",
+      "note": "Use #include <stdio.h> without spaces inside the header name.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.8.11, Parameter Passing: GATE IT 2006 | Question: 50, PDF p.292 (key p.319). https://gateoverflow.in/3593/gate-it-2006-question-50",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.41, 1. Programming.pdf p.4 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 42,
+      "id": "os5nyemse",
+      "contentSha256": "96f701ec39324856dd17259dfbdcaaeb4aff518d92ce124c4dff527d2fda4f83",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "The first prints are 8 and −12. Advancing a[0] yields 7, advancing a yields 23, and a[−1][1] now reads the old first array's index 2, producing 8.",
+      "note": "Use #include <stdio.h> without spaces inside the header name.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.11.28, Programming In C: GATE IT 2006 | Question: 51, PDF p.307 (key p.320). https://gateoverflow.in/3594/gate-it-2006-question-51",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.42, 1. Programming.pdf p.4 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 43,
+      "id": "r6pitubu5",
+      "contentSha256": "30cecbafe731977cbea057241fe79adbca0bebfac6c6060d83b7c6cad3ed03d6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Pascal's identity reduces each interior term until one of the boundaries n=0 or n=m. Both boundary coefficients are 1, and recursion can reach n=m even if the initial arguments satisfy m>n.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.23.36, Identify Function: GATE IT 2006 | Question: 52, PDF p.67 (key p.115). https://gateoverflow.in/3595/gate-it-2006-question-52",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.43, 1. Programming.pdf p.4 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 44,
+      "id": "5kc423agv",
+      "contentSha256": "bddf7ff7ce603ce47332083d8fadefd5ad1de008f9d9d8e808a26c0b04115e93",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Each merge step increments k and exactly one of i,j. Thus k=i+j throughout. Both proposed conditions subtract one, so neither can hold.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.23.18, Identify Function: GATE CSE 2006 | Question: 53, PDF p.61 (key p.115). https://gateoverflow.in/1831/gate-cse-2006-question-53",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.44, 1. Programming.pdf p.4 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q53 (linked record, key compared by option text).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 45,
+      "id": "i1o7b7v3r",
+      "contentSha256": "ff74300721012dd60f4ae1f2423c3fa1db98f7f0f6b1aab8dfb60c4f4930c03b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "When j=i+2, work1 reads back the changed element and returns the old value minus 2, while work2 uses the saved value and returns the old value minus 3. CPU time also depends on implementation and is not guaranteed to improve.",
+      "note": "The Made Easy table gives B, which claims the optimization always improves performance. GATE Overflow and the verified year paper give A.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.6.1, Code Optimization: GATE CSE 2006 | Question: 55, PDF p.124 (key p.187). https://gateoverflow.in/1833/gate-cse-2006-question-55",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.45, 1. Programming.pdf p.4 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "B (S1 false, S2 true)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q55 (linked record, key compared by option text).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 46,
+      "id": "n30pwzqod",
+      "contentSha256": "aa130991d45e5314215353b9010fb4e80b78ae962c5c0ed2613c28417b3e1398",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Distinct valid pointers and in-range arithmetic permit the swap. A shared target is overwritten with zero, so some valid inputs fail, and invalid pointers can fault. The arithmetic uses the pointed-to integers.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.9.6, Pointers: GATE CSE 2006 | Question: 57, PDF p.295 (key p.319). https://gateoverflow.in/1835/gate-cse-2006-question-57",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.46, 1. Programming.pdf p.4–5 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q57 (linked record, key compared by option text).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 47,
+      "id": "7kjwumpxh",
+      "contentSha256": "3e4b0885bf749a6ccc5e9e30e0da79735b7c545c355f225e6381bfdc2409e870",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "f(5) sets r=5 then computes f(3)+2. The three small positive calls each add the unchanged r to f(0)=1. The total is 18.",
+      "note": "Use #include <stdio.h> without spaces inside the header name.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.13.8, Recursion: GATE CSE 2007 | Question: 42, PDF p.311 (key p.320). https://gateoverflow.in/1240/gate-cse-2007-question-42",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.47, 1. Programming.pdf p.5 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q42 (linked record, key compared by option text).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 48,
+      "id": "rbgvtrbxo",
+      "contentSha256": "0383ef6185265bb140ffbf5c9130a55f3ddaf3dcb6a9b50467d67f5fc2b635b1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Every power of two reduces to 1. The cycle 5→14→7→20→10→5 does not reach 1, and every number 5·2^k eventually enters it. Both sets are infinite.",
+      "note": "The multiplication in the last call is written 3n in the pseudo-C. Write f(3*n - 1) in executable C and retain the arbitrary-precision assumption.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.13.19, Recursion: GATE IT 2007 | Question: 27, PDF p.314 (key p.320). https://gateoverflow.in/3460/gate-it-2007-question-27",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.48, 1. Programming.pdf p.5 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 49,
+      "id": "swrn0qluq",
+      "contentSha256": "c903eb46f52f4acdb521eb7371a3e3b674655a9b5057370b77eae74a1e6afff2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The positive nondecreasing runs have sums 2, 3+4=7, and 2. The largest stored sum is 7.",
+      "note": "Use #include <stdio.h> without spaces inside the header name.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.11.29, Programming In C: GATE IT 2007 | Question: 31, PDF p.308 (key p.320). https://gateoverflow.in/3464/gate-it-2007-question-31",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.49, 1. Programming.pdf p.5 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 50,
+      "id": "sbavfscz2",
+      "contentSha256": "894d2ba96b726749bbe6730966ab74fcee36808df42823f6f259c04192ea0c63",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "Both keys give the intended decimal result 25. Replace push(c) with push(c - '0'), use printf(\"%d\", pop()), and include <ctype.h> for isdigit. No listed decimal output is established by the supplied C.",
+      "status": "verified-with-note",
+      "reason": "The intended postfix computation is 5×2 + 3×(3+2) = 25. The literal getchar code pushes digit character codes, so the ASCII stack instead computes 53×50 + 51×(51+50) = 7801, then tries to print a character.",
+      "note": "Both keys give the intended decimal result 25. Replace push(c) with push(c - '0'), use printf(\"%d\", pop()), and include <ctype.h> for isdigit. No listed decimal output is established by the supplied C.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §3.13.19, Stack: GATE IT 2007 | Question: 32, PDF p.249 (key p.254). https://gateoverflow.in/3465/gate-it-2007-question-32",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.50, 1. Programming.pdf p.5 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent C trace under ISO WG14 draft N1570, https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf §§7.4.1.5, 7.21.6.1 (isdigit and printf).",
+          "answer": "No defined listed output as written. 25 (B) with digit conversion and decimal output.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 51,
+      "id": "si91g43ob",
+      "contentSha256": "885fbf8d9f24660557dd364178155b42de93d2d98ab52a3848e1009c3e911074",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "By value, the direct global assignment makes i=100 and the local parameters cannot change j=60. By reference, x writes 10 into i and y adds that i to j, leaving (10,70).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.21.14, Parameter Passing: GATE IT 2007 | Question: 33, PDF p.165 (key p.188). https://gateoverflow.in/3466/gate-it-2007-question-33",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.51, 1. Programming.pdf p.5 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 52,
+      "id": "hh0qitbrx",
+      "contentSha256": "d721e1e0d1f42069870ae677360454c4e29797a4d2b391e30d5de2246bc05841",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Lexical lookup in g resolves i to the global 10. Dynamic lookup sees f's activation first and resolves i to the caller's local 20.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.20.1, Variable Binding: GATE IT 2007 | Question: 34, UGCNET-Dec2012-III: 52, PDF p.319 (key p.320). https://gateoverflow.in/3467/gate-it-2007-question-34-ugcnet-dec2012-iii-52",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.52, 1. Programming.pdf p.5 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C ↦ app A (x=10, y=20)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 53,
+      "id": "zr0lz94yw",
+      "contentSha256": "1e79f6402d37cff8ddac62c52439755647d0518329472ba241f448761519cd86",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The conditional selects max(x,y,z). The four maxima are 4,6,6,5, so only the tuple (3,4,2) assigns 4.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.11.5, Programming In C: GATE CSE 2008 | Question: 18, PDF p.299 (key p.319). https://gateoverflow.in/416/gate-cse-2008-question-18",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.53, 1. Programming.pdf p.5 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q18 (linked record, key compared by option text).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 54,
+      "id": "zvhcfzdyz",
+      "contentSha256": "995c999df92dabad399c56567d2914a1715ed9ccf1aa7afafb7b85bcba582599",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "The first assignment copies a[5], the null terminator, into a[0]. The later iterations leave it there, so %s prints no characters before the newline.",
+      "note": "Remove the duplicated letters from the choice text and use #include <stdio.h> without spaces inside the header name.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.2.11, Array: GATE IT 2008 | Question: 49, PDF p.279 (key p.319). https://gateoverflow.in/3359/gate-it-2008-question-49",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.54, 1. Programming.pdf p.5 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 55,
+      "id": "hhrlxp4t0",
+      "contentSha256": "8ba5932f3bb60ddfebca2b14a1934c4374bc58d3bc563a5ccab04e6dbe2b5c36",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "Use #define swap1(a,b) with no space before '(' and use >= as one token. The printed book also uses > in the first test while the app and GATE Overflow use <. Either repaired version gives (4,5), but the literal app code has no valid compilation.",
+      "status": "verified-with-note",
+      "reason": "Starting from (5,4), both less-than tests are false. With the intended >= token the pointer swap then writes (4,5).",
+      "note": "Use #define swap1(a,b) with no space before '(' and use >= as one token. The printed book also uses > in the first test while the app and GATE Overflow use <. Either repaired version gives (4,5), but the literal app code has no valid compilation.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.8.12, Parameter Passing: GATE IT 2008 | Question: 50, PDF p.292 (key p.319). https://gateoverflow.in/3360/gate-it-2008-question-50",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.55, 1. Programming.pdf p.5 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "Ill-formed as shown. 4,5 (C) after restoring the function-like macro and >=.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 56,
+      "id": "8x3kncmii",
+      "contentSha256": "fd715cd85d60bc774e7ac9adfadd1d18ee9b8e8b963500c5f236345e1804af4c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The first loop increments indices 0 and 2 and exits with i=4. The decrement sets outer i=3. The inner i is separate. j=7,6 both decrement a[3], making a[3]=2.",
+      "note": "Restore the closing brace after printf and use #include <stdio.h> without spaces inside the header name.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.2.12, Array: GATE IT 2008 | Question: 51, PDF p.279 (key p.319). https://gateoverflow.in/3361/gate-it-2008-question-51",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.56, 1. Programming.pdf p.6 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 57,
+      "id": "p8cq8g4ds",
+      "contentSha256": "fbb7d21393da2da4430cddc5e0c02db2c035426c078e4917a75c01d3b86b4cfb",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "Both sources key the row-major result B. Use b[j][i] = a[i][j] for the defined transpose and use #include <stdio.h> without spaces inside the header name.",
+      "status": "verified-with-note",
+      "reason": "The intended flat index 2j+i places a[i][j] into row j and column i of b, yielding rows (a,d), (b,e), (c,f). In strict C, p points into the first two-element row, so forming and dereferencing pointers across the row boundary is undefined.",
+      "note": "Both sources key the row-major result B. Use b[j][i] = a[i][j] for the defined transpose and use #include <stdio.h> without spaces inside the header name.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.2.13, Array: GATE IT 2008 | Question: 52, PDF p.279 (key p.319). https://gateoverflow.in/3362/gate-it-2008-question-52",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.57, 1. Programming.pdf p.6 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent C trace under ISO WG14 draft N1570, https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf §6.5.6p8 (array bounds on pointer arithmetic).",
+          "answer": "Undefined row-crossing pointer arithmetic. B for the intended row-major transpose.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 58,
+      "id": "w8ukb75rm",
+      "contentSha256": "889421e1bb4ccc4a33c9c8a395e383ab3465a10e60fae50e31d5690f3e8004b7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The recursion prints the high bit first, then each remainder while unwinding. 173=128+32+8+4+1, so the output is 10101101.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.23.37, Identify Function: GATE IT 2008 | Question: 82, PDF p.67 (key p.115). https://gateoverflow.in/3406/gate-it-2008-question-82",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.58, 1. Programming.pdf p.6 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 59,
+      "id": "swex2g5xj",
+      "contentSha256": "22e3b6d598ef400cd72b6f137872fcfe3a8e10ba26d355727ff6a3386e803f1e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "P1 also recurses on n/2 before printing n%2; its base prints the leading 1. P2 emits low bits first and prints the reversed sequence, which differs for 173.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.23.38, Identify Function: GATE IT 2008 | Question: 83, PDF p.68 (key p.115). https://gateoverflow.in/3407/gate-it-2008-question-83",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.59, 1. Programming.pdf p.6 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 60,
+      "id": "hs6d6mbji",
+      "contentSha256": "e89752ac9562441f2ee6bf15df6fb8c6f5e0e5f744f09fd02c56166e2f61e9b1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Both pointers lead to c. The first update leaves z=5. The second leaves y=7. The value argument x changes independently from 4 to 7. The return value is 7+7+5=19.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.8.5, Parameter Passing: GATE CSE 2008 | Question: 60, PDF p.290 (key p.319). https://gateoverflow.in/483/gate-cse-2008-question-60",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.60, 1. Programming.pdf p.6 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q60 (linked record, key compared by option text).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 61,
+      "id": "y6o5wmr4f",
+      "contentSha256": "a2d4c38a5247c09e4f2cd7ad25ccb19c08f84f36fa8c938d77f4ae9d39cccbc8",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Only D saves getchar() into c, stops at the newline, and calls putchar on the saved character as recursion unwinds. The non-newline input characters appear in reverse order.",
+      "note": "The terminating newline is also emitted by the base call because ?2 is outside the if. To print just the reversed characters, put reverse() and putchar(c) together inside the conditional.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.11.6, Programming In C: GATE CSE 2008 | Question: 61, PDF p.300 (key p.319). https://gateoverflow.in/484/gate-cse-2008-question-61",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.61, 1. Programming.pdf p.6 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q61 (linked record, key compared by option text).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 62,
+      "id": "q6ig1sinx",
+      "contentSha256": "6c43d50d33db5d41f237750c8f091119f621947007803154f751eb946fb00dcf",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Tracking (return value,*f_p) from n=1 through n=5 yields (1,1),(2,1),(3,2),(5,3),(8,5). The program prints 8.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.23.19, Identify Function: GATE CSE 2009 | Question: 18, PDF p.62 (key p.115). https://gateoverflow.in/1310/gate-cse-2009-question-18",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.62, 1. Programming.pdf p.6 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q18 (linked record, key compared by option text).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 63,
+      "id": "m8h3jdkum",
+      "contentSha256": "1dc66bc40c4ac8362ef3ec47cdd4ccf603c30f13b9bfc124148b66315e65e3d9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "The local pointer p is redirected to j and then assigns j=2. i remains zero. The app prints 02 and D is the pair (0,2).",
+      "note": "The source inserts a space in printf(\"%d %d\\n\", i, j). The app omits that space.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.8.6, Parameter Passing: GATE CSE 2010 | Question: 11, PDF p.290 (key p.319). https://gateoverflow.in/2184/gate-cse-2010-question-11",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.63, 1. Programming.pdf p.6 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q11 (linked record, key compared by option text).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 64,
+      "id": "mt8man5ff",
+      "contentSha256": "3b8959cdecc6454327c8d768fa28efa73e24b026afb00335c0a7ec56e5536d4a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "From the tail, the recursive suffix values are 0,6,5,9,4,3,15. Even leading elements add the suffix value, while odd ones subtract it.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.23.20, Identify Function: GATE CSE 2010 | Question: 35, PDF p.62 (key p.115). https://gateoverflow.in/2336/gate-cse-2010-question-35",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.64, 1. Programming.pdf p.6 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q35 (linked record, key compared by option text).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 65,
+      "id": "tqwjq1olq",
+      "contentSha256": "2566a9353ef81eaee35cd4cd8166163f9de9968b67e57e2ca0e075acc39fdca1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "T1 hits S1 and exits. T2 hits S3 and exits. T4 runs both S2 and S4, completing statement coverage.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.65, 1. Programming.pdf p.6 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q44 (linked record, key compared by option text).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 66,
+      "id": "x0q2nhapd",
+      "contentSha256": "72e6502a01a006d1cdc43b220d8cc6f254cbc692e7b16543f18327452073cfbf",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "Use p + (p[3] - p[1]) and assume ASCII. The linked year scan additionally spells the type Char. Its distractor D is 011 rather than the app's 11.",
+      "status": "verified-with-note",
+      "reason": "In ASCII the intended net offset is 'E'−'A'=4, giving the suffix 2011. The literal left-associated expression first forms p+'E', outside the array, so it has undefined behavior in C.",
+      "note": "Use p + (p[3] - p[1]) and assume ASCII. The linked year scan additionally spells the type Char. Its distractor D is 011 rather than the app's 11.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.2.2, Array: GATE CSE 2011 | Question: 22, PDF p.276 (key p.319). https://gateoverflow.in/2124/gate-cse-2011-question-22",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.66, 1. Programming.pdf p.7 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q22 (linked record, key compared by option text).",
+          "answer": "C (reference under the intended lowercase-char, net-offset reading)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent C trace under ISO WG14 draft N1570, https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf §6.5.6p5–8 (left-associated addition/subtraction and array bounds).",
+          "answer": "Undefined intermediate pointer. 2011 (C) with a parenthesized integer offset.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 67,
+      "id": "ivrtvscnn",
+      "contentSha256": "6e7a50ede54c28af02f25f3f3fcba94761636b9bc28720af4893eb0482782022",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Each recursion discards one decimal digit and adds its remainder. The sum is 5+4+3=12.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.23.21, Identify Function: GATE CSE 2011 | Question: 48, PDF p.62 (key p.115). https://gateoverflow.in/2154/gate-cse-2011-question-48",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.67, 1. Programming.pdf p.7 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q48 (linked record, key compared by option text).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 68,
+      "id": "eylfmu6jh",
+      "contentSha256": "414ff97795ed2d602c6b46e1d5167a373a2d325f030f3b0f29710486d494f1a7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The function sums the binary digits for base 2. Since 513=2^9+1, exactly two remainders are 1.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.23.22, Identify Function: GATE CSE 2011 | Question: 49, PDF p.63 (key p.115). https://gateoverflow.in/43324/gate-cse-2011-question-49",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.68, 1. Programming.pdf p.7 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q49 (linked record, key compared by option text).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 69,
+      "id": "b03cehtfn",
+      "contentSha256": "b1105d587a33d8df2d5baaaeb9bf533c9a721cc92bcef74a8f3e6a2eab7c0d92",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The app has a valid newline escape. Execution starts in case A and runs all subsequent statements because none of the cases has a break. The output contains Choice A, Choice B, and No Choice in order.",
+      "note": "The historical key awarded Marks to All for the source problem, whose printed escape had a space between the backslash and n. The app's repaired escape supports C by tracing the switch. Choice B and No Choice are concatenated in the literal output.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.17.1, Switch Case: GATE CSE 2012 | Question: 3, PDF p.317 (key p.320). https://gateoverflow.in/35/gate-cse-2012-question-3",
+          "answer": "X (Marks to All on the original exam)",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.69, 1. Programming.pdf p.7 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q3 (linked record, key compared by option text).",
+          "answer": "Marks to All (historical scoring for source escape typo)",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 70,
+      "id": "t5i4bg8u5",
+      "contentSha256": "4e70aec16abf0d8256ca6450ac866531544845b8aa8ead741987c00d391c0ff4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "prtFun's static a starts at 2, is increased by 2 on each call, and prints (4,2) and (6,2). main's own a becomes 2 and the global b remains 0.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.11.7, Programming In C: GATE CSE 2012 | Question: 48, PDF p.300 (key p.319). https://gateoverflow.in/2176/gate-cse-2012-question-48",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.70, 1. Programming.pdf p.7 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q48 (linked record, key compared by option text).",
+          "answer": "C ↦ app C (4 2 / 6 2 / 2 0)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 71,
+      "id": "n5k93bgi8",
+      "contentSha256": "cc54e46f21f1d82e5307a94da524b8485c5f2a9d9b2cdd22c38375a0d09d525f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "With register storage the a in prtFun is reinitialized to 2 each time, so both calls print (4,2). main's auto a still increments to 2, and global b is zero.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.11.8, Programming In C: GATE CSE 2012 | Question: 49, PDF p.301 (key p.319). https://gateoverflow.in/43314/gate-cse-2012-question-49",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.71, 1. Programming.pdf p.7 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q49 (linked record, key compared by option text).",
+          "answer": "D ↦ app D (4 2 / 4 2 / 2 0)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 72,
+      "id": "93ohk4kb9",
+      "contentSha256": "6c75e4c2c303ed9235fa86d37ab50364c4d052bf0df4650579b82b7101285f87",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "The published key assumes the recursive call finishes before the right-hand x is read. The pseudocode supplies no operand evaluation order and the C++-style reference declaration does not impose this order. To obtain unique B, evaluate the call into a temporary before multiplying by x.",
+      "status": "verified-with-note",
+      "reason": "There are four increments of the referenced p, ending at 9. Reading each x after its recursive call gives 9^4=6561. Reading it before the recursive call in every frame gives 6×7×8×9=3024.",
+      "note": "The published key assumes the recursive call finishes before the right-hand x is read. The pseudocode supplies no operand evaluation order and the C++-style reference declaration does not impose this order. To obtain unique B, evaluate the call into a temporary before multiplying by x.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.8.7, Parameter Passing: GATE CSE 2013 | Question: 42, PDF p.291 (key p.319). https://gateoverflow.in/60/gate-cse-2013-question-42",
+          "answer": "6561 ↦ app B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.72, 1. Programming.pdf p.7 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "3024 or 6561, among other possibilities. B if each call is evaluated first.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 73,
+      "id": "9q7np7aw5",
+      "contentSha256": "abb8cfc96e954819a0d391e97ec3e2a57642b4e5ac087a00cec002e4b211a67a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "scanf writes a successfully entered, representable integer through pi to i. The printf argument then adds 5 to that value, assuming the sum is representable.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.9.7, Pointers: GATE CSE 2014 | Set 1 | Question: 10, PDF p.295 (key p.319). https://gateoverflow.in/1770/gate-cse-2014-set-1-question-10",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.73, 1. Programming.pdf p.7 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 74,
+      "id": "plk7wguxi",
+      "contentSha256": "b87a4dc4ad0821e56e0b6f78de15bd4ab5d61273e50118407dbdac9942824c37",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "For each j there are j eligible i values and n−j eligible k values. The sum of j(n−j) is (n−1)n(n+1)/6.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.43.21, Time Complexity: GATE CSE 2014 | Set 1 | Question: 42, PDF p.109 (key p.116). https://gateoverflow.in/1920/gate-cse-2014-set-1-question-42",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.74, 1. Programming.pdf p.7 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 75,
+      "id": "iv6y7ubkf",
+      "contentSha256": "2cbfff47335640039931afcd5cda7776879f3a01a53bed1d9ab6195daed1e02d",
+      "questionType": "NAT",
+      "natAnswer": "9",
+      "status": "verified",
+      "reason": "The counter increments once for each bit removed by a right shift. Since 2^8≤435<2^9, nine shifts are needed.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.23.25, Identify Function: GATE CSE 2014 | Set 2 | Question: 10, PDF p.64 (key p.115). https://gateoverflow.in/1964/gate-cse-2014-set-2-question-10",
+          "answer": "9",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.75, 1. Programming.pdf p.7 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "9",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "9",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 76,
+      "id": "55zwnzm6j",
+      "contentSha256": "ea36acab2f4cbc86e792b25d85e709df6fff50f5e6f01dc5f8d84a9a901563e2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "The product of n and n−1 is always even, so the early division by 2 is exact and reduces the largest intermediate. Division by 3 before including n−2 can truncate; the app's D has the wrong divisor.",
+      "note": "The printed D is p = n * (n - 1) * (n - 2) / 6.0;. The app inserts an extra / 2. The printed D also risks wrapping the full integer product before floating-point division.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.11.9, Programming In C: GATE CSE 2014 | Set 2 | Question: 11, PDF p.301 (key p.319). https://gateoverflow.in/1965/gate-cse-2014-set-2-question-11",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.76, 1. Programming.pdf p.7 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 77,
+      "id": "z4x2nq492",
+      "contentSha256": "9eb3d95b15c6b45568f5c52bb171d23ee7417d0af14c4954e3acd31e65647ba5",
+      "questionType": "NAT",
+      "natAnswer": "1.73",
+      "natRange": {
+        "min": 1.72,
+        "max": 1.74
+      },
+      "status": "verified-with-note",
+      "reason": "C's abs takes an int, so x²−3 is truncated toward zero. The first branch returns x itself whenever 2<x²<4. In particular 1.72, 1.73, and 1.74 all qualify.",
+      "note": "The official range is 1.72–1.74. Literal C also accepts positive two-decimal values 1.42–1.99 and the negatives of those values at the first test. For the positive mathematical-root interpretation, use fabs with <math.h> and require q>0, which selects 1.73.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.13.9, Recursion: GATE CSE 2014 | Set 2 | Question: 40, PDF p.311 (key p.320). https://gateoverflow.in/2000/gate-cse-2014-set-2-question-40",
+          "answer": "1.72–1.74",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.77, 1. Programming.pdf p.7 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "1.73",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 official key, CS Session 2 Q40. https://gate.iitk.ac.in/GATE2023/doc/papers/2014/cs_2014.pdf",
+          "answer": "1.72–1.74",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent C trace under ISO WG14 draft N1570, https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf §§6.3.1.4, 7.22.6.1 (conversion to int and abs).",
+          "answer": "1.73 is valid. The official grading interval is 1.72–1.74.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 78,
+      "id": "w0i2rwn5o",
+      "contentSha256": "f56ec81e173baa9ace131778477d1af057e4faf1e6a63ffab933e09afd424ec8",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "For j=50, the static i is always 50. Every call prints something and invokes another f(50), so there is no normal return.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.11.10, Programming In C: GATE CSE 2014 | Set 2 | Question: 42, PDF p.301 (key p.319). https://gateoverflow.in/2008/gate-cse-2014-set-2-question-42",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.78, 1. Programming.pdf p.7 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 79,
+      "id": "05rbjo5cw",
+      "contentSha256": "1898a1d487aace7a69a280c21a8b54b7c59ce1423acf9031e125c0ef5b14086d",
+      "questionType": "NAT",
+      "natAnswer": "-5",
+      "status": "verified",
+      "reason": "f1 changes only copies. f2 swaps b and c in the caller, leaving a=4, b=6, c=5. Thus c−a−b=−5.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.11.11, Programming In C: GATE CSE 2015 | Set 1 | Question: 11, PDF p.302 (key p.319). https://gateoverflow.in/8185/gate-cse-2015-set-1-question-1-1",
+          "answer": "-5",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.79, 1. Programming.pdf p.7 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "-5",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "-5",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 80,
+      "id": "0dsyy6lt3",
+      "contentSha256": "971cc74534f78e75342be2ebb0ab9eca1fd595bf944dee02e8c1b3f52109150f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The loop starts with x=qy+r and preserves it by subtracting y from r as q grows by one. Positive y guarantees exit once r<y.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.6.6, Loop Invariants: GATE CSE 2015 | Set 1 | Question: 33, PDF p.285 (key p.319). https://gateoverflow.in/8276/gate-cse-2015-set-1-question-33",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.80, 1. Programming.pdf p.7 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 81,
+      "id": "twndxpwso",
+      "contentSha256": "23aaca35f77e957b59a75a10053fbea28105e7a6d4d1f398c29c079b831edc2e",
+      "questionType": "NAT",
+      "natAnswer": "51",
+      "status": "verified",
+      "reason": "The sums from n=1 to 5 are 1,2,5,15,51. In the final case the addends are 1+15+10+10+15.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.23.28, Identify Function: GATE CSE 2015 | Set 2 | Question: 11, PDF p.64 (key p.115). https://gateoverflow.in/8060/gate-cse-2015-set-2-question-11",
+          "answer": "51",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.81, 1. Programming.pdf p.8 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "51",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "51",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 82,
+      "id": "skx8ndrt9",
+      "contentSha256": "121d7de807f6e6cc27aae7fb334a2bb252f3cdd6936652337ca07d7af33b9f0e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Recursion stops on the first space. The saved letters A,B,C,D are emitted on return in the order D,C,B,A.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.13.10, Recursion: GATE CSE 2015 | Set 2 | Question: 15, PDF p.311 (key p.320). https://gateoverflow.in/8086/gate-cse-2015-set-2-question-15",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.82, 1. Programming.pdf p.8 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 83,
+      "id": "2fq61ptxb",
+      "contentSha256": "de1ca6d68c5a6eefd55522e55a5accfe0ad0e6e4be844d12a3ac51239d8e5ec6",
+      "questionType": "NAT",
+      "natAnswer": "5",
+      "status": "verified-with-note",
+      "reason": "At each vacancy use the smaller entry to the right or below. The required moves in the app image are 2,3,6,18,25 before filling the last vacancy with infinity. Each move is forced by a smaller adjacent entry, so five are needed.",
+      "note": "The app diagram repeats 3 and contradicts “unique entries.” The scanned book has 5 in row 1, column 3. Restoring 5 changes the move values but still requires five shifts.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §3.3.12, Array: GATE CSE 2015 | Set 2 | Question: 31, PDF p.202 (key p.253). https://gateoverflow.in/8148/gate-cse-2015-set-2-question-31",
+          "answer": "5",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.83, 1. Programming.pdf p.8 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "5",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "5",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 84,
+      "id": "2ks79nx5f",
+      "contentSha256": "7fc4786fd679f3166521f32c2cbe73bb4b5a20f58b78f2fb53a89609f47137a3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "p addresses index 2, so writing the character '0' replaces '3' while preserving the string terminator. The result is 1204.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.2.5, Array: GATE CSE 2015 | Set 3 | Question: 7, PDF p.276 (key p.319). https://gateoverflow.in/8401/gate-cse-2015-set-3-question-7",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.84, 1. Programming.pdf p.8 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 85,
+      "id": "f676swq75",
+      "contentSha256": "49a9ee1fdb42fc81b8a60643d08a79773893061b04da889efd8228ba427f37dd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Converting 5.5 to int starts x at 5. Call by value leaves it 5. With hypothetical reference parameters both names designate x, so the two compound assignments double it to 10 and then 20.",
+      "note": "The matching question is ISRO 2015 Q80, which assumes both passing modes for comparison. C itself passes arguments by value. Made Easy 1.85 is a different pointer-output question and its key 140 does not apply.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GO-ISRO-2025.pdf §4.14.2, Parameter Passing: ISRO2015-80, PDF p.58 (key p.61). https://gateoverflow.in/52145/isro2015-80",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 86,
+      "id": "8036i6dz2",
+      "contentSha256": "4ad62894e123708b6e9cb49c456e6975bdec5efa6a9218f9705a5e7e9ff97623",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Counting all calls including the initial and base calls, T(n)=1 for n<1 and T(n)=1+T(n−1)+T(n−3) otherwise. T(1) through T(6) are 3,5,7,11,17,25.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.35.25, Recurrence Relation: GATE CSE 2015 | Set 3 | Question: 39, PDF p.90 (key p.115). https://gateoverflow.in/8498/gate-cse-2015-set-3-question-39",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.86, 1. Programming.pdf p.8 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 87,
+      "id": "fm5sokbus",
+      "contentSha256": "946819d130cb9d6949e81079630c6f9c185e5cb33b9478dcb5d63d3b5f838ac8",
+      "questionType": "NAT",
+      "natAnswer": "10",
+      "status": "verified",
+      "reason": "Assigning 1+0.4+1 truncates j to 2, and k-=--j gives k=−1. The five switch values are −1,0,1,2,3, triggering 1,1,3,3,2 prints through fall-through.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.17.2, Switch Case: GATE CSE 2015 | Set 3 | Question: 48, PDF p.318 (key p.320). https://gateoverflow.in/8557/gate-cse-2015-set-3-question-48",
+          "answer": "10",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.87, 1. Programming.pdf p.8 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "10",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "10",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 88,
+      "id": "d791m4m71",
+      "contentSha256": "0b4b8146e554f611f7849438446e99f9f6f57efd67c3dbd20760814af7f29668",
+      "questionType": "NAT",
+      "natAnswer": "230",
+      "status": "verified",
+      "reason": "f1 returns 26, f3 returns 100, and the two f2 calls return 51 and 52. Adding them to the local starting x=1 gives 230.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.3.1, Functions: GATE CSE 2015 | Set 3 | Question: 54, PDF p.280 (key p.319). https://gateoverflow.in/8563/gate-cse-2015-set-3-question-54",
+          "answer": "230",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.88, 1. Programming.pdf p.8 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "230",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "230",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 89,
+      "id": "a2angqc73",
+      "contentSha256": "9c8eb4a74aec69e5afc1cf43718080e2806f52d035250ac58082a18320220b4c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "f requires an int and a short and returns void. i and *p have the required types. s is a short rather than a pointer, and a void result cannot be assigned.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.11.12, Programming In C: GATE CSE 2016 | Set 1 | Question: 12, PDF p.302 (key p.319). https://gateoverflow.in/39638/gate-cse-2016-set-1-question-12",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.89, 1. Programming.pdf p.8 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 90,
+      "id": "tbq0kopm7",
+      "contentSha256": "65098d588a00c48bb015f590797a67e91a09a2c582ae824cb2ecba9d3a11cc17",
+      "questionType": "NAT",
+      "natAnswer": "2016",
+      "status": "verified",
+      "reason": "mystery swaps only its local pointer parameters and never dereferences them. a stays 2016 through every call.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.8.8, Parameter Passing: GATE CSE 2016 | Set 1 | Question: 15, PDF p.291 (key p.319). https://gateoverflow.in/39642/gate-cse-2016-set-1-question-15",
+          "answer": "2016",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.90, 1. Programming.pdf p.8 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "2016",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "2016",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 92,
+      "id": "yvwdxk4zf",
+      "contentSha256": "2753582203ad61356c1c03508126931f574e10174336fd3b64b3de0c11b69133",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The three entries print (3,1),(2,2),(1,3) and leave the shared static d=4. Each return prints 4, giving the sequence 3 1 2 2 1 3 4 4 4.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.13.11, Recursion: GATE CSE 2016 | Set 1 | Question: 35, PDF p.311 (key p.320). https://gateoverflow.in/39730/gate-cse-2016-set-1-question-35",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.92, 1. Programming.pdf p.8 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 93,
+      "id": "47fxzjesi",
+      "contentSha256": "e3e6ac8332d23e59c71fdc2f54549da3500ac8cef6c36a67d574e435d8b25620",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "Both keys assume a local binding that the pseudocode does not declare. State “a=1 declares a new local a in m” or write local a = 1 to make D unique.",
+      "status": "verified-with-note",
+      "reason": "When the first a=1 in m introduces a local a, y still refers to the global 3, the local becomes 2, and n multiplies that local by itself. Both prints are 4. If that assignment updates global a, it aliases y and the corresponding prints are 0,0.",
+      "note": "Both keys assume a local binding that the pseudocode does not declare. State “a=1 declares a new local a in m” or write local a = 1 to make D unique.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.21.13, Parameter Passing: GATE CSE 2016 | Set 1 | Question: 36, PDF p.165 (key p.188). https://gateoverflow.in/39701/gate-cse-2016-set-1-question-36",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.93, 1. Programming.pdf p.8–9 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "4,4 (D) with a local binding in m, 0,0 with a global assignment.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 94,
+      "id": "ef09zelvv",
+      "contentSha256": "0ab0b7bd8e50d2c104fd55c443d11552eebdf8df69948b666e2b7437db82f938",
+      "questionType": "NAT",
+      "natAnswer": "30",
+      "status": "verified",
+      "reason": "The value copy m becomes 15. The pointer adds 15 to i, leaving i=20, and j stays 10. Their sum is 30.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.8.9, Parameter Passing: GATE CSE 2016 | Set 2 | Question: 12, PDF p.291 (key p.319). https://gateoverflow.in/39565/gate-cse-2016-set-2-question-12",
+          "answer": "30",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.94, 1. Programming.pdf p.9 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "30",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "30",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 96,
+      "id": "yw9xw5qmq",
+      "contentSha256": "16dcf2f915240bf8afe72cb83e07a4480e8d934863d3ecdb7edc3db174986ce7",
+      "questionType": "NAT",
+      "natAnswer": "3",
+      "status": "verified",
+      "reason": "The recursion takes the maximum of zero and each adjacent left-minus-right difference. For the array these are −2,3,−4,2, so the maximum is 3.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.13.12, Recursion: GATE CSE 2016 | Set 2 | Question: 37, PDF p.312 (key p.320). https://gateoverflow.in/39602/gate-cse-2016-set-2-question-37",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.96, 1. Programming.pdf p.9 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "3",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 97,
+      "id": "f8hlxv0l8",
+      "contentSha256": "cb4e0e758407714637fd5be02568c867fe8c6d17faad0b72271fc6470bf40425",
+      "questionType": "NAT",
+      "natAnswer": "23",
+      "answerDisposition": "disputed",
+      "specialNote": "Restore static int count = 0; before the while loop and use count += v & 1; in the loop. The stored 23 is for the corrected source.",
+      "status": "verified-with-note",
+      "reason": "The literal declaration static int count += ... is invalid, and a variable declared inside the loop would be out of scope at return. In the source, popcounts for 5,4,3,2,1 are 2,1,2,1,1. The persistent counts are 2,3,5,6,7, which sum to 23.",
+      "note": "Restore static int count = 0; before the while loop and use count += v & 1; in the loop. The stored 23 is for the corrected source.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.11.15, Programming In C: GATE CSE 2017 | Set 1 | Question: 55, PDF p.303 (key p.319). https://gateoverflow.in/118442/gate-cse-2017-set-1-question-55",
+          "answer": "23",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.97, 1. Programming.pdf p.9 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "23",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "Ill-formed as shown. 23 with a function-scope persistent counter.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 98,
+      "id": "6o4l8jdr4",
+      "contentSha256": "14aa1004b4f31844b51b937b5e2ce715dd14186dfac2b78e48d50e33c659abc0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "foo passes the original positive val to every deeper call because of postfix decrement, so recursion normally exhausts the stack. bar decreases the value between recursive frames, but the frame with val=1 keeps looping on bar(0).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.13.14, Recursion: GATE CSE 2017 | Set 1 | Question: 36, PDF p.312 (key p.320). https://gateoverflow.in/118319/gate-cse-2017-set-1-question-36",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.98, 1. Programming.pdf p.9 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 99,
+      "id": "fzoynbmju",
+      "contentSha256": "fd43942edfc4776bf40c7afc6e7e9d250d66409f0c97d2650207ab1533b0583d",
+      "questionType": "NAT",
+      "natAnswer": "3",
+      "status": "verified-with-note",
+      "reason": "Under the stated unsigned arithmetic, 3−5 wraps to a large positive value, making the conditional select strlen(s)=3.",
+      "note": "The portable description is “size_t is an unsigned integer type.” To preserve the question's conversion rule, state “assume size_t is unsigned int.”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.11.14, Programming In C: GATE CSE 2017 | Set 1 | Question: 53, PDF p.302 (key p.319). https://gateoverflow.in/118473/gate-cse-2017-set-1-question-53",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.99, 1. Programming.pdf p.9 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "3",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 100,
+      "id": "yrkgpgxrs",
+      "contentSha256": "d330a0a2d5914ee40dcc71be36a9b4939344ef1ad051fa9c4e94e88a8385a518",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The descent prints 5,3,4,2,3,1,2 before reaching fun2(0). Returning prints 2,2,3,3,4,4,5. Concatenating them gives 53423122233445.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.13.13, Recursion: GATE CSE 2017 | Set 1 | Question: 35, PDF p.312 (key p.320). https://gateoverflow.in/118317/gate-cse-2017-set-1-question-35",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.100, 1. Programming.pdf p.9 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 102,
+      "id": "o2hi99vey",
+      "contentSha256": "b0898ae58a32666efe85896b0b5f27731c63cb23526f30c1d54cd51b10df580a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "Restore *ptr = 1; and printf(\"%d, %d\", x, y);. The app has a letter l in place of 1, a split printf identifier, and a malformed argument separator.",
+      "status": "verified-with-note",
+      "reason": "After the pointer is set to &x, y gets the current x=0. The intended store of 1 through the pointer changes x but leaves y unchanged, yielding (1,0). The app's literal statements do not compile.",
+      "note": "Restore *ptr = 1; and printf(\"%d, %d\", x, y);. The app has a letter l in place of 1, a split printf identifier, and a malformed argument separator.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.5.3, Identify Function: GATE CSE 2017 | Set 2 | Question: 14, PDF p.282 (key p.319). https://gateoverflow.in/118245/gate-cse-2017-set-2-question-14",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.102, 1. Programming.pdf p.9 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "Ill-formed as shown. 1,0 (C) with the printed pointer store and printf.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 103,
+      "id": "q3ilimi2x",
+      "contentSha256": "470563eed13b53fa7c701d589cf916c3f39e958962c5d4abbaa11a21e9cc9e8c",
+      "questionType": "NAT",
+      "natAnswer": "2",
+      "answerDisposition": "disputed",
+      "specialNote": "Use strlen(c + (2[p] - 6[p] - 1)) and assume ASCII. The original expression has undefined pointer arithmetic.",
+      "status": "verified-with-note",
+      "reason": "2[p] and 6[p] are 'T' and 'I'. In ASCII their difference minus one is 10, so the intended suffix is \"17\", of length 2. As written, c+2[p] is already outside the array before later subtraction.",
+      "note": "Use strlen(c + (2[p] - 6[p] - 1)) and assume ASCII. The original expression has undefined pointer arithmetic.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.9.10, Pointers: GATE CSE 2017 | Set 2 | Question: 55, PDF p.296 (key p.319). https://gateoverflow.in/118335/gate-cse-2017-set-2-question-55",
+          "answer": "2",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.103, 1. Programming.pdf p.9 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "2",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent C trace under ISO WG14 draft N1570, https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf §6.5.6p8 (array bounds on pointer arithmetic).",
+          "answer": "Undefined intermediate pointer. 2 with a parenthesized integer offset.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 104,
+      "id": "xvidy38fb",
+      "contentSha256": "2fcfdb33861764fb38160d206891f9a6168d895a4a215039a48366e18dd48a32",
+      "questionType": "NAT",
+      "natAnswer": "0",
+      "status": "verified",
+      "reason": "Both n and n1 get 11. Each is then decremented to 10, so n-=n1 leaves zero.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.11.17, Programming In C: GATE CSE 2017 | Set 2 | Question: 54, PDF p.303 (key p.319). https://gateoverflow.in/118272/gate-cse-2017-set-2-question-54",
+          "answer": "0",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.104, 1. Programming.pdf p.9 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "0",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "0",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 105,
+      "id": "3fky0o8tk",
+      "contentSha256": "7115ca79db27584a7fdda5dae519db8a49bcbbcac38357242c40b0d276097d54",
+      "questionType": "NAT",
+      "natAnswer": "3",
+      "status": "verified",
+      "reason": "Both passes swap adjacent ascending pairs until the array is descending. The final array is 6,5,4,3,2,1, and index 3 holds 3.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.5.4, Identify Function: GATE CSE 2017 | Set 2 | Question: 43, PDF p.282 (key p.319). https://gateoverflow.in/118388/gate-cse-2017-set-2-question-43",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.105, 1. Programming.pdf p.10 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "3",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 106,
+      "id": "tp6h94l39",
+      "contentSha256": "f9b15597553d1e7a1b1deb53c3d9ceece61e34c4be06a9b7dc516a096b1d4ed1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "The second malloc overwrites the only pointer to the first allocation. Even when the later allocation is freed, the first allocation is unreachable.",
+      "note": "Add #include <stdlib.h> for malloc and free, and use a standard int main(void) with integer returns. D answers the intended allocation question given valid library declarations.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.9.9, Pointers: GATE CSE 2017 | Set 1 | Question: 13, PDF p.296 (key p.319). https://gateoverflow.in/118293/gate-cse-2017-set-1-question-13",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.106, 1. Programming.pdf p.10 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 108,
+      "id": "868efnb5p",
+      "contentSha256": "9efc53917bda51716f0e4575e3d29d29e9ad9ef84b53ac4d03cea20a42225a3f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "With ordinary contiguous char member layout and ASCII, the bytes read at offsets 1 and 2 are '0' and 'c'. printf with %c prints the characters without quotation marks.",
+      "note": "Use #include <stdio.h> without spaces inside the header name. To make A portable, use q->y and q->z instead of layout-dependent byte offsets and use 'c' or state the encoding assumption.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.16.2, Structure: GATE CSE 2018 | Question: 2, PDF p.316 (key p.320). https://gateoverflow.in/204076/gate-cse-2018-question-2",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.108, 1. Programming.pdf p.10 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 109,
+      "id": "a0wrfc5eu",
+      "contentSha256": "398f35235bfedd8885972754f3f6e1e3af3e592e3fb89169b2140a8e507b6821",
+      "questionType": "NAT",
+      "natAnswer": "4",
+      "answerDisposition": "disputed",
+      "specialNote": "The keys give the intended count 4. Use unsigned return and intermediate types, or omit the unused products, to obtain a defined 4. Use #include <stdio.h> without spaces inside the header name.",
+      "status": "verified-with-note",
+      "reason": "The b values are 81,27,9,3, so the counter records four calls. The computed return would be 4^81, and signed intermediate multiplication overflows on ordinary int implementations before the print.",
+      "note": "The keys give the intended count 4. Use unsigned return and intermediate types, or omit the unused products, to obtain a defined 4. Use #include <stdio.h> without spaces inside the header name.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.13.15, Recursion: GATE CSE 2018 | Question: 21, PDF p.313 (key p.320). https://gateoverflow.in/204095/gate-cse-2018-question-21",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.109, 1. Programming.pdf p.10 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent C trace under ISO WG14 draft N1570, https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf §6.5p5 (overflow of signed arithmetic).",
+          "answer": "Four calls in the counter trace. Signed overflow makes the printed result undefined on ordinary int implementations.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 110,
+      "id": "hxar6iaxr",
+      "contentSha256": "aedd20f146e396141ac89ec1163fec795344bdfa119844621edf38536a927a4a",
+      "questionType": "NAT",
+      "natAnswer": "10230",
+      "status": "verified",
+      "reason": "For each y from 1024 down through 2, x is halved from 1024 to 1 with ten prints. There are 1023 such values of y, hence 10230 prints.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.36.3, Recursion: GATE CSE 2018 | Question: 45, PDF p.93 (key p.115). https://gateoverflow.in/204120/gate-cse-2018-question-45",
+          "answer": "10230",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.110, 1. Programming.pdf p.10 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "10230",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "10230",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 111,
+      "id": "u8qpggg87",
+      "contentSha256": "b6836bf9adfc002ce5b5115edf697939ea8b20767ae39fca27368d70fbd3f9a0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "Restore void fun2(char **s1, char **s2) and #include <stdio.h>. A is the reference for the corrected source.",
+      "status": "verified-with-note",
+      "reason": "In the source, fun1 only swaps local pointers, so the first print is Hi Bye. fun2 takes pointer addresses and swaps the caller's pointers, so the second print is Bye Hi. The app's char parameters cannot be dereferenced and do not accept the passed addresses.",
+      "note": "Restore void fun2(char **s1, char **s2) and #include <stdio.h>. A is the reference for the corrected source.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.8.10, Parameter Passing: GATE CSE 2018 | Question: 29, PDF p.292 (key p.319). https://gateoverflow.in/204103/gate-cse-2018-question-29",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.111, 1. Programming.pdf p.10 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "Ill-formed as shown. A after restoring two char ** parameters.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 113,
+      "id": "dz0x55ysg",
+      "contentSha256": "57d9c076e4e352c0c7fab73242774a64c3b44547ee2f686e9e96f0a5e09cc3ba",
+      "questionType": "NAT",
+      "natAnswer": "6",
+      "status": "verified-with-note",
+      "reason": "ip points to arr[4], and ip[1] is arr[5]=6. The displayed number is 6.",
+      "note": "Use #include <stdio.h> and printf(\"%d\\n\", ip[1]);. The app has a spaced header and its format prints a literal n after the number once the header is fixed.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.2.6, Array: GATE CSE 2019 | Question: 24, PDF p.277 (key p.319). https://gateoverflow.in/302824/gate-cse-2019-question-24",
+          "answer": "6",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.113, 1. Programming.pdf p.10 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "6",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "6",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 114,
+      "id": "r6z3shd45",
+      "contentSha256": "4e03adb0123034383779eb41a3661aed9525be08e00e4e06693bb76af87cbf98",
+      "questionType": "NAT",
+      "natAnswer": "26",
+      "answerDisposition": "disputed",
+      "specialNote": "Restore #include <stdio.h> and printf(\"%d\\n\", x);. The published and stored reference value is 26.",
+      "status": "verified-with-note",
+      "reason": "The first call computes y=2×5+2=12. The second computes x=2×12+2=26. There is no compilation of the literal incomplete include directive.",
+      "note": "Restore #include <stdio.h> and printf(\"%d\\n\", x);. The published and stored reference value is 26.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.5.5, Identify Function: GATE CSE 2019 | Question: 18, PDF p.282 (key p.319). https://gateoverflow.in/302830/gate-cse-2019-question-18",
+          "answer": "26",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.114, 1. Programming.pdf p.10 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "26",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "Ill-formed as shown. 26 with the stdio header recovered.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 115,
+      "id": "epmiu0zaf",
+      "contentSha256": "217df250d1e3729c7221e4e66d244b08d16b0691abf5a9c70b613a00ace5c65e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Nonnegative integer halving reaches zero. The test n<0 stays false at zero, so convert(0) calls itself before it can print anything.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.23.30, Identify Function: GATE CSE 2019 | Question: 26, PDF p.65 (key p.115). https://gateoverflow.in/302822/gate-cse-2019-question-26",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.115, 1. Programming.pdf p.11 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "C ↦ app D (no output, no termination)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 116,
+      "id": "7ual1if6s",
+      "contentSha256": "debb63308fd97fd5746cdf364eea04ce2c828d002ef2822aa4434e88605a1841",
+      "questionType": "NAT",
+      "natAnswer": "5",
+      "status": "verified-with-note",
+      "reason": "The loop enters with j=1,2,4,8,16 and prints once per entry. At j=32 the ratio is exactly 0.0625, so the strict comparison stops it.",
+      "note": "Use #include <stdio.h> without spaces inside the header name.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.11.20, Programming In C: GATE CSE 2019 | Question: 52, PDF p.304 (key p.319). https://gateoverflow.in/302796/gate-cse-2019-question-52",
+          "answer": "5",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.116, 1. Programming.pdf p.11 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "5",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "5",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 117,
+      "id": "so2jeroxb",
+      "contentSha256": "6d33ca9802a8f674622d9fb4febf4b5d540b4ecb49cb14bbda504cb2570d9941",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "The init call returns 7, the first condition 6, the first printed call 5, and the update 4. The next condition, printed call and update return 3,2,1. A condition result of 0 ends the loop.",
+      "note": "Use #include <stdio.h> without spaces inside the header name. The app's format emits a space between 5 and 2, which choice D represents as 52.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.11.19, Programming In C: GATE CSE 2019 | Question: 27, PDF p.304 (key p.319). https://gateoverflow.in/302821/gate-cse-2019-question-27",
+          "answer": "B ↦ app D (52)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.117, 1. Programming.pdf p.11 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 118,
+      "id": "emkqe7jtu",
+      "contentSha256": "42e8d894be1ef192267d0dd50f7905691a30ac86057731473d694739e2558e2e",
+      "questionType": "NAT",
+      "natAnswer": "10",
+      "status": "verified-with-note",
+      "reason": "At step i, *b−i is 10−i and *(b−i) is 10−2i. Their difference is i. The numeric sum is 0+1+2+3+4=10.",
+      "note": "Use #include <stdio.h> and printf(\"%d\\n\", sum);. As shown, after fixing the header the output includes a literal n after 10.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.11.21, Programming In C: GATE CSE 2019 | Question: 53, PDF p.305 (key p.319). https://gateoverflow.in/302795/gate-cse-2019-question-53",
+          "answer": "10",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.118, 1. Programming.pdf p.11 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "10",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "10",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 119,
+      "id": "9wkc1eu9t",
+      "contentSha256": "a59d9ff7d4c155f6c8ea838fed3f13c20c218671ef27d82c6ccdc8681d3efb5e",
+      "questionType": "NAT",
+      "natAnswer": "81",
+      "status": "verified",
+      "reason": "The bits of 4 stored low to high are 0,0,1. Repeated squaring yields powers 3,9,81, and only the last is multiplied into tot.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.23.31, Identify Function: GATE CSE 2020 | Question: 48, PDF p.65 (key p.115). https://gateoverflow.in/333183/gate-cse-2020-question-48",
+          "answer": "81",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.119, 1. Programming.pdf p.11 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "81",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "81",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 120,
+      "id": "i47qwxovz",
+      "contentSha256": "a9c59f0fa6beb8546738148552674dbad1ac94ef11bf6a067723f7339e386679",
+      "questionType": "NAT",
+      "natAnswer": "55",
+      "status": "verified",
+      "reason": "fun1 persists its own i, adding 5,4,3,2,1 on its successive uses. Its returned values are 5,9,12,14,15. The separate static accumulator in fun2 adds them to get 55.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.13.16, Recursion: GATE CSE 2020 | Question: 46, PDF p.313 (key p.320). https://gateoverflow.in/333185/gate-cse-2020-question-46",
+          "answer": "55",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.120, 1. Programming.pdf p.11 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "55",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "55",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 121,
+      "id": "mnvfex56p",
+      "contentSha256": "81eb01d949b96cecca981fb31045cf4a01797c4f606c0dfacb23633a04b62bf0",
+      "questionType": "NAT",
+      "natAnswer": "1023",
+      "status": "verified",
+      "reason": "Starting at one, each of nine iterations replaces total by 2×total+1. This produces 2^10−1=1023.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.23.32, Identify Function: GATE CSE 2021 | Set 1 | Question: 48, PDF p.66 (key p.115). https://gateoverflow.in/357403/gate-cse-2021-set-1-question-48",
+          "answer": "1023",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.121, 1. Programming.pdf p.11 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "1023",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "1023",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 122,
+      "id": "geh7jp78q",
+      "contentSha256": "ed6b788571cfff594d78fea0e0df8a9c3f1bf874d42f419470400f8f6c960e01",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The left side short-circuits for negative j. i++ is evaluated four times for j=0,1,2,3, but the first old value is zero. Thus count sums 1+2+3 and then adds i=4, giving 10.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.11.22, Programming In C: GATE CSE 2021 | Set 1 | Question: 37, PDF p.305 (key p.319). https://gateoverflow.in/357414/gate-cse-2021-set-1-question-37",
+          "answer": "B ↦ app D (prints 10)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.122, 1. Programming.pdf p.11 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 123,
+      "id": "l6v8zby54",
+      "contentSha256": "bbd184cf7062408a3af9fa2c7dca89ae083dad4f370d4a35525c410243ddcb7b",
+      "questionType": "NAT",
+      "natAnswer": "15",
+      "status": "verified",
+      "reason": "Repeated subtraction of 15 reduces the second argument from 255 to 15. The equality case then returns 15.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.23.33, Identify Function: GATE CSE 2021 | Set 2 | Question: 23, PDF p.66 (key p.115). https://gateoverflow.in/357517/gate-cse-2021-set-2-question-23",
+          "answer": "15",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.123, 1. Programming.pdf p.11 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "15",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2021 official key, CS-2 Q23. https://gate2026.iitg.ac.in/doc/download/2021/cs_2021.pdf",
+          "answer": "15",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "15",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 124,
+      "id": "ttnnt6t19",
+      "contentSha256": "4ef35d5eff84ac7f52bc4c8040ca39fa97b83c6dcd950ca588c74ff040630810",
+      "questionType": "NAT",
+      "natAnswer": "60",
+      "status": "verified-with-note",
+      "reason": "Both arguments need two decrements by 10. The branching paths contribute six base returns, each 10. Equivalently each branch from (15,15) yields 30.",
+      "note": "The Made Easy question uses an either-nonpositive base test. The app and GATE source test both and continue down the one remaining coordinate. This extends terminal paths without changing their number. The Made Easy key's printed 24 is crossed out and annotated 60.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.36.4, Recursion: GATE CSE 2021 | Set 2 | Question: 49, PDF p.94 (key p.115). https://gateoverflow.in/357488/gate-cse-2021-set-2-question-49",
+          "answer": "60",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.124, 1. Programming.pdf p.12 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "24 printed and crossed out; 60 handwritten",
+          "agrees": false
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2021 official key, CS-2 Q49. https://gate2026.iitg.ac.in/doc/download/2021/cs_2021.pdf",
+          "answer": "60",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "60",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 125,
+      "id": "ti289cbt4",
+      "contentSha256": "a96d189833a7b69b4457c128f3eca375f6f786568360cb93275df0553846ad43",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "Both keys accept the intended row-major value 24. The printed book also changes arr[1] to arr[i], where i is already 4. For a defined program use arr[2][4] or compute the row and column from index 14.",
+      "status": "verified-with-note",
+      "reason": "The intended flat index is 5+9=14, corresponding to arr[2][4]=24. In C, arr[1] decays to a pointer into one five-element row. Adding nine exceeds that row, so the supplied program has undefined behavior.",
+      "note": "Both keys accept the intended row-major value 24. The printed book also changes arr[1] to arr[i], where i is already 4. For a defined program use arr[2][4] or compute the row and column from index 14.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.2.8, Array: GATE CSE 2021 | Set 2 | Question: 10, PDF p.277 (key p.319). https://gateoverflow.in/357530/gate-cse-2021-set-2-question-10",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.125, 1. Programming.pdf p.12 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "A ↦ app C (24, intended flat indexing)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2021 official key, CS-2 Q10. https://gate2026.iitg.ac.in/doc/download/2021/cs_2021.pdf",
+          "answer": "C (24, intended flat indexing)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent C trace under ISO WG14 draft N1570, https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf §6.5.6p8 (array bounds on pointer arithmetic).",
+          "answer": "Undefined row-crossing pointer arithmetic. 24 (C) with arr[2][4].",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 126,
+      "id": "owod0ci1e",
+      "contentSha256": "ea0ea5fab0832cdf9c86c1cbedad6819c75d40005be22520a3a4b99b5539c890",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The first pointer store changes x from 1 to 10. &z[0]+1 is &z[1], so adding 3 changes z[1] from 11 to 14. z[0] remains 10.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.9.11, Pointers: GATE CSE 2022 | Question: 11, PDF p.296 (key p.319). https://gateoverflow.in/371925/gate-cse-2022-question-11",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.126, 1. Programming.pdf p.12 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 127,
+      "id": "alkz1e03d",
+      "contentSha256": "4961d6864045dab526b55c4c37d4c73e90aa78ec891f99b4aef85c07d2ac820e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "j stays zero so the loop prints row zero in each 3×3 slice. Those rows start at 1,10,19 and each has three consecutive values.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.2.9, Array: GATE CSE 2022 | Question: 33, PDF p.278 (key p.319). https://gateoverflow.in/371903/gate-cse-2022-question-33",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.127, 1. Programming.pdf p.12 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 128,
+      "id": "1bax4woww",
+      "contentSha256": "7e1a8396396a41feffbf83f57d8cdeebc0d564e4ed9914672a85874c28ec2c5e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "In ASCII, 80&120=80, 80|120=120, and 80^120=40. Applying the constants produces 122,75,83, which %c prints as z K S.",
+      "note": "The table gives ASCII '-' as 46, which is the code for '.'. Correct '-' to 45. Using 46 as a supplied numeric constant would give z J S instead.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.7.1, Output: GATE CSE 2022 | Question: 34, PDF p.286 (key p.319). https://gateoverflow.in/371902/gate-cse-2022-question-34",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.128, 1. Programming.pdf p.12 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 129,
+      "id": "cl11iw0cu",
+      "contentSha256": "0c5ed999af84bab2b816374643e1f5127cdf6df6ad4896e35e76ffe72fa94f81",
+      "questionType": "NAT",
+      "natAnswer": "7",
+      "status": "verified",
+      "reason": "The static x in funcp increments from 1 to 2 and then to 3. Main's x is 2 and its y is 3+2=5, so it prints 7.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.7.2, Output: GATE CSE 2023 | Question: 25, PDF p.286 (key p.319). https://gateoverflow.in/399286/gate-cse-2023-question-25",
+          "answer": "7",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.129, 1. Programming.pdf p.12 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "7",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "7",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 130,
+      "id": "knab2g5vi",
+      "contentSha256": "28844aa4469f02bf162bde973487240ade6e2bf08b2c1be3336062e47e389e00",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Main calls f1, f2(2), and f3. f2(2) calls f3 and f2(1), and f2(1) calls f3 and f1. Only diagram A represents all those parent-child calls.",
+      "note": "The book's f1(2) is a print error. The app and GATE Overflow use f2(2), which the keyed diagram requires. For modern executable C, add prototypes for f1, f2, and f3 before main.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.24.22, Runtime Environment: GATE CSE 2023 | Question: 26, PDF p.178 (key p.188). https://gateoverflow.in/399285/gate-cse-2023-question-26",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.130, 1. Programming.pdf p.12 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 131,
+      "id": "vaqfgp942",
+      "contentSha256": "95dd4de6c5e9165cfdc9ae09bf944564670bbccbc45937ddab3cc7d8f29be9c3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Integer division makes 6/12+1 equal to 1. With b=0, the next iteration maps 1 back to 1. The condition stays true in the trace.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.7.3, Output: GATE CSE 2024 | Set 1 | Question: 8, PDF p.287 (key p.319). https://gateoverflow.in/422834/gate-cse-2024-set-1-question-8",
+          "answer": "C ↦ app D (infinite loop)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.131, 1. Programming.pdf p.12 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 132,
+      "id": "tsbf4qhtg",
+      "contentSha256": "1204871e4a58c476f3a509f300a5b51a35d723ccb470d01586eb2fa6e254b673",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Each recursive frame holds one input character, and the newline frame returns without printing. The four remaining frames emit 4,3,2,1 as they unwind.",
+      "note": "App choice C has a truncated word. It should read “The program will terminate with no output.”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.7.4, Output: GATE CSE 2024 | Set 1 | Question: 9, PDF p.287 (key p.319). https://gateoverflow.in/422833/gate-cse-2024-set-1-question-9",
+          "answer": "C ↦ app D (prints 4321 and terminates)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.132, 1. Programming.pdf p.13 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 135,
+      "id": "5879hydqe",
+      "contentSha256": "56d0652d2710d7202660405f87af5c4db75d4ceec33a8595c0950b4968172725",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "B",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Each of the three declarations or calls supplies a null-terminated sequence of four characters. b advances to the terminator and b−a is 4. The code compiles, so C is false.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §4.1.1, Output: GATE CSE 2024 | Set 2 | Question: 23, PDF p.265 (key p.265). https://gateoverflow.in/422874/gate-cse-2024-set-2-question-23",
+          "answer": "A;B;D ↦ app B;A;D (literal, array, initialized pointer)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.135, 1. Programming.pdf p.13 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "ABD",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "ABD",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 136,
+      "id": "i7xs1hr9z",
+      "contentSha256": "1a18c539ccbdfaad47a4222b12e20c19d65515d298ed03f92b4479b2e942a7fd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Right-to-left argument evaluation prints 20 and then 10. Inside f, g(x) prints 10 and h(y) prints 20. The four unseparated chunks give 20101020.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.3.2, Functions: GATE CSE 2024 | Set 2 | Question: 3, PDF p.280 (key p.319). https://gateoverflow.in/422894/gate-cse-2024-set-2-question-3",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.136, 1. Programming.pdf p.13 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "D ↦ app A (20101020)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 137,
+      "id": "tox7k32rv",
+      "contentSha256": "549e5b97ec5319ab03afc739686795652efbd05d3bd06a973278c1889e35df4f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "q points one array element past p, so q−p=1. The pointed-to values differ by 25.0−20.0=5. Both integer conversions are exact.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.9.12, Pointers: GATE CSE 2024 | Set 2 | Question: 26, PDF p.297 (key p.319). https://gateoverflow.in/422871/gate-cse-2024-set-2-question-26",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.137, 1. Programming.pdf p.13 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 138,
+      "id": "nkr10qkul",
+      "contentSha256": "fac1f3b97d405037b757b7b0fd670901abbbac022237a7d601431c25ba44f413",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Switching to the second value extends the two-value suffix but starts a new equal-value run of length one. A third value can extend only the previous equal-value run, so the new two-value suffix is len1+1.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.1.8, Algorithm Design: GATE CSE 2024 | Set 2 | Question: 32, PDF p.24 (key p.114). https://gateoverflow.in/422865/gate-cse-2024-set-2-question-32",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Programming Q1.138, 1. Programming.pdf p.13 and C Prog. & Data Structures.pdf p.1 (printed p.340).",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 139,
+      "id": "iqho7ssrs",
+      "contentSha256": "080364c1e28a30ff90b1193165c3c502c0c1c161dee2c323ddbcb4a2e8478984",
+      "questionType": "NAT",
+      "natAnswer": "46",
+      "status": "verified",
+      "reason": "f(n)=2n+10 and g(f(n))=2n+20. For n=1,2 the terms are 22 and 24, whose sum is 46.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.7.7, Output: GATE CSE 2025 | Set 2 | Question: 53, PDF p.288 (key p.319). https://gateoverflow.in/460840/gate-cse-2025-set-2-question-53",
+          "answer": "46:46",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "46",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 140,
+      "id": "dew2yhobd",
+      "contentSha256": "396b875031889211fc0e68b59e21c956857ac5a21cb46082563af72be02fe79f",
+      "questionType": "NAT",
+      "natAnswer": "111",
+      "status": "verified",
+      "reason": "a saves arr[1]=50, then the element increments to 51. The pointer advances to arr[2]=10. The expression adds 50+10+51=111.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.9.14, Pointers: GATE CSE 2025 | Set 2 | Question: 52, PDF p.297 (key p.319). https://gateoverflow.in/460841/gate-cse-2025-set-2-question-52",
+          "answer": "111:111",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "111",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 141,
+      "id": "l4uejpi6n",
+      "contentSha256": "fe21b547e56842d7c52d652f3fa286db899c25f49f21264e9bf89198de646842",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Forward copying puts the twelve characters of Hello World! at the front. The loop does not copy the null terminator. The old d! at indices 12 and 13 remains before the old terminator, so the output is Hello World!d!.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.15.2, Strings: GATE CSE 2025 | Set 2 | Question: 9, PDF p.315 (key p.320). https://gateoverflow.in/460826/gate-cse-2025-set-2-question-9",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 142,
+      "id": "x4w6us57y",
+      "contentSha256": "709c538967acbff78c49927b2fb2e51e4989182954ce9fe62c05e70c3daa0b25",
+      "questionType": "NAT",
+      "natAnswer": "5",
+      "status": "verified",
+      "reason": "The function adds one when a run ends and counts the final run at size one. The runs have values 0,1,2,0,1, giving five.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.13.17, Recursion: GATE CSE 2025 | Set 1 | Question: 51, PDF p.313 (key p.320). https://gateoverflow.in/460029/gate-cse-2025-set-1-question-51",
+          "answer": "5:5",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "5",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 143,
+      "id": "mavv63iep",
+      "contentSha256": "91d4feac086060cb1fc0ec0479fefde96c324fe3ab76ce36a5b31f46c3bd3f0e",
+      "questionType": "NAT",
+      "natAnswer": "25",
+      "status": "verified",
+      "reason": "z points to a and foo writes its value parameter x=25 through that pointer, so a becomes 25.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §5.9.13, Pointers: GATE CSE 2025 | Set 1 | Question: 24, PDF p.297 (key p.319). https://gateoverflow.in/460056/gate-cse-2025-set-1-question-24",
+          "answer": "25:25",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "25",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 144,
+      "id": "i36p90zpw",
+      "contentSha256": "4d4d94cd706368cf7ad30c8e52aa1f88cacab0edb080a1fd6e31caeb2e397899",
+      "questionType": "NAT",
+      "natAnswer": "435",
+      "status": "verified",
+      "reason": "Each adjacent swap eliminates exactly one inversion. The descending array has one inversion for every unordered pair of the 30 entries, so bubble sort makes 30×29/2=435 swaps.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §1.32.1, Number of Swap: GATE CSE 2025 | Set 1 | Question: 23, PDF p.80 (key p.115). https://gateoverflow.in/460057/gate-cse-2025-set-1-question-23",
+          "answer": "435:435",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the app question and diagram, where applicable.",
+          "answer": "435",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

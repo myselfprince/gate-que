@@ -1,0 +1,4274 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "3. Computer Networks",
+  "chapter": "1. ISO-OSI Stack and SWP",
+  "slug": "3-computer-networks--1-iso-osi-stack-and-swp",
+  "reviewedAt": "2026-11-26",
+  "reviewer": "Codex",
+  "sources": {
+    "gateOverflowPdf": {
+      "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume3.pdf",
+      "sha256": "5c552941136eb96612fabec8a5b2cb67fc07c17023ce15628408ca27d6640c24",
+      "chapter": "Computer Networks",
+      "answerKeyPages": [
+        165,
+        166
+      ]
+    },
+    "gateOverflowIsroPdf": {
+      "file": "isro_w_cover.pdf",
+      "url": "https://github.com/GATEOverflow/GO-PDFs/releases/download/isro/isro_w_cover.pdf",
+      "sha256": "cc614262bdc42c9201de7ceab35de962ac5585e83e18e3718ee55f809a817603",
+      "answerKeyPages": [
+        88,
+        89
+      ]
+    },
+    "gateOverflowOlderEditions": [
+      "https://github.com/GATEOverflow/GO-PDFs/releases/download/gatecse-2022-vol1%2C2/Volume-3.pdf",
+      "https://pdfcoffee.com/2019-vol3pdf-pdf-free.html",
+      "https://pdfcoffee.com/vol-3-sep-pdf-free.html"
+    ],
+    "madeEasyPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\3. Computer Networks\\1. ISO-OSI Stack and SWP.pdf",
+      "sha256": "5acae98aa4c21fbe429d57a2051bf8917177c73c82bcda00ab4876aef262f82f",
+      "answerKeyPage": 3
+    },
+    "yearPapers": "Linked data/papers/*.json copies and separately cited published exam solutions",
+    "officialKeys": "Individually cited organizer answer keys"
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "75c32d9f-fea4-47fc-ba61-fd0180e1e6e2",
+      "contentSha256": "c3c9ed8f0bcc45aa1548a6252f8294a892c244a4d95e350e56df147afa16ffd1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "A start transition sets the receiver's sampling phase for a character and the stop interval readies it for the next start transition.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow 2019 Volume 3, §2.33.2, GATE 1992 Q03(v), Serial Communication questions and worked answers, printed pp. 259–263. https://pdfcoffee.com/2019-vol3pdf-pdf-free.html",
+          "answer": "C (synchronization)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "c6ea4b77-f364-49e5-9f3b-3df7fe6b0dc2",
+      "contentSha256": "48d35f94cc035ed6ec8e2dcd0e43c1ff0884540b7558405e82e07df08df6ce12",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Start and stop bits frame each character and let the asynchronous receiver resynchronize. Synchronization is the only listed purpose.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow 2022 Volume 3, §2.24.1, GATE CSE 1992 Q02(v), PDF pp. 225–226. https://github.com/GATEOverflow/GO-PDFs/releases/download/gatecse-2022-vol1%2C2/Volume-3.pdf",
+          "answer": "C (synchronization only)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "7a666726-57b8-4ce7-8ab8-167ede1c0602",
+      "contentSha256": "2860bda46cfc969132b58a37492d817b5c16e13d85c17a43a53c8f1ac154d5ff",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "An asynchronous character takes one start bit, eight data bits and two stop bits. At 2400 bits/s, 218 complete 11-bit characters fit in a second.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.26.1, Out of Gatecse Syllabus: GATE CSE 1993 | Question: 6.4, ISRO2008-14, PDF p. 81 (key p. 89). https://gateoverflow.in/2287/gate-cse-1993-question-6-4-isro2008-14",
+          "answer": "C (218 characters/s)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "d39207fe-c51f-42ab-9c84-55eac25705ce",
+      "contentSha256": "e49015fa8d4d07935d2345198db8df86702d699241ae7e035b8c855a78a14b2a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The minimum pairwise XOR weight is 2. For example, 010101 XOR 000111 = 010010, and no pair differs in fewer than two positions.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.12.2, Error Detection: GATE CSE 1995 | Question: 1.12, PDF p. 125 (key p. 165). https://gateoverflow.in/2599/gate-cse-1995-question-1-12",
+          "answer": "A (distance 2)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "a927edd8-368b-4e52-a815-25c79acda5eb",
+      "contentSha256": "18d98b8c09c5fc2e5c1b7263bb45227d07aa9d759c6db958e51d2c0e11bea669",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The start bit supplies a fresh timing edge to the asynchronous receiver at the beginning of each byte.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow 2019 Volume 3, §2.33.4, GATE 1997 Q2.3, Serial Communication questions and worked answers, printed pp. 259–263. https://pdfcoffee.com/2019-vol3pdf-pdf-free.html",
+          "answer": "A (synchronize per byte)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "e4d33edd-5e66-476f-89bf-67def3f884f9",
+      "contentSha256": "44d10841db391ee22a09c3c61c540d2e014a0c38eea813bee53d144d95de4be7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "At one bit per symbol, 300 characters/s with 12 bits per character requires 3600 baud. Of the listed rates, 4800 baud is the smallest sufficient one.",
+      "note": "Read “band rate” and the option units as “baud rate” and “baud.” The numerical minimum is 3600 baud with the implied start bit. The question asks for the smallest rate among the choices.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow 2019 Volume 3, §2.33.5, GATE 1998 Q1.16, Serial Communication questions and worked answers, printed pp. 259–263. https://pdfcoffee.com/2019-vol3pdf-pdf-free.html",
+          "answer": "C (4800 baud)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "42576c0e-f623-4af8-b1bb-f3f9231b421b",
+      "contentSha256": "2ec10e99c33f7be43dc1a5cd0588d7843d26e5773c3ff169afaa38dbc23d222a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The leading 0 is a start bit and the trailing 1s are stop bits. They let the receiver align its sampling with each character.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow 2019 Volume 3, §2.33.6, GATE 2002 Q1.11, Serial Communication questions and worked answers, printed pp. 259–263. https://pdfcoffee.com/2019-vol3pdf-pdf-free.html",
+          "answer": "A (receiver synchronization)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "877dafd3-b7bd-44f2-b943-5ac44ec3c3a2",
+      "contentSha256": "1ff9b48e7aa9067dbdb65b33bfb6417f4eac7d645cd465879701333023ae77ba",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "The first ACK returns after 50 + 2×200 = 450 µs. The sender can transmit 5000 bytes in that window, for 11.11×10⁶ bytes/s.",
+      "note": "The app and Made Easy use Bps, so B is correct here. The linked year-paper scan prints bits/s and has no matching literal option. The equivalent rate is 88.89×10⁶ bits/s.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.30.1, Sliding Window: GATE CSE 2003 | Question: 84, PDF p. 148 (key p. 165). https://gateoverflow.in/967/gate-cse-2003-question-84",
+          "answer": "B (11.11×10⁶ Bps)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.1, PDF p. 1 (table p. 3, book p. 671)",
+          "answer": "b (11.11×10⁶ Bps)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q84 (linked worksheet copy)",
+          "answer": "B printed in bps; worked reference recognizes 11.11×10⁶ Bps",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "53360a65-b796-4e2b-8cba-85742c9ead8c",
+      "contentSha256": "fedac3651656cc314105ffc3d14a690298f54732899d402a5725b8859e3b613f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "The round-trip propagation time is 2×2000/(2×10⁸) = 20 µs. At 10⁷ bits/s the minimum frame is 200 bits, or 25 bytes, which is absent before “None of the above.”",
+      "note": "The stem's “brodcast” should read “broadcast.”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.19.1, LAN Technologies: GATE CSE 2003 | Question: 83, PDF p. 135 (key p. 165). https://gateoverflow.in/966/gate-cse-2003-question-83",
+          "answer": "D (none of the above)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "d75f5cda-35db-4d6f-963b-7e1c61853418",
+      "contentSha256": "b40878b243c16b8ab92f4482d2a3971f91448e8fcdb12064e3b805e9fc82cf3e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A particular host succeeds with probability 0.2×0.8^(n−1). It is 0.16 at n=2 and decreases below 0.16 for larger n.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.20.3, MAC Protocol: GATE IT 2004 | Question: 85, PDF p. 137 (key p. 165). https://gateoverflow.in/3729/gate-it-2004-question-85",
+          "answer": "B (two hosts)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "dcc33614-e731-4036-b6ad-034643a5a006",
+      "contentSha256": "173ac6002b456a60c66b4ed0f0a89b64c56914b27c38ba164f09607b1a2982bc",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The linear code is closed under XOR. The span of the three independent codewords contains 0010111 and 1011010, but neither 0110110 nor 0111010.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.8, PDF p. 1 (table p. 3, book p. 671)",
+          "answer": "a (I and III)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q84 (linked worksheet copy)",
+          "answer": "A (1 and 3, corresponding to app I and III)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "49a5f44a-7725-4822-8d45-3ec728a6be01",
+      "contentSha256": "02cffc314659ed063c396053d4c8b5a0ac215096ca25fe1745111d422641b6ac",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "A frame takes 40 ms to send. Ten 800-bit frames per 840 ms give about 9.52 kbps, closest to 10 kbps.",
+      "note": "Choice B is a rounded result. The options would be clearer with “approximately” in the stem or “9.52 kbps” in B.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.30.13, Sliding Window: GATE IT 2004 | Question: 83, PDF p. 150 (key p. 165). https://gateoverflow.in/3727/gate-it-2004-question-83",
+          "answer": "B (10 kbps)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.7, PDF p. 1 (table p. 3, book p. 671)",
+          "answer": "b (10 kbps)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q83 (linked worksheet copy)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "3ebb30dd-cf53-4d91-8bc3-a6dc08808dc3",
+      "contentSha256": "24c871f2b2e826793d44169ca4699f74e7ae1a8de3f7391d9e4e53955f223dea",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Each cycle includes 800 µs of frame transmission, 400 µs for the frame tail to return, and another 400 µs for the released token to come back. 8000 bits in 1600 µs gives 5 Mbps.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q82 (linked worksheet copy)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "13a4cbcc-5103-48af-82fa-fadf5391840a",
+      "contentSha256": "5d5e02eaac07f1e28b37d77f4622abeca030850a52e71ce87759ff8d1edb130a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The N sequence numbers that may still be retransmitted must be distinct from the M consecutive numbers the receiver is ready to accept. The minimum space is N+M.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.30.12, Sliding Window: GATE IT 2004 | Question: 81, PDF p. 150 (key p. 165). https://gateoverflow.in/3725/gate-it-2004-question-81",
+          "answer": "C (M+N)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.6, PDF p. 1 (table p. 3, book p. 671)",
+          "answer": "c (M+N)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q81 (linked worksheet copy)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "16968cfb-3242-412c-a53e-3b8d9992cf8f",
+      "contentSha256": "bee5db7137e55624eacebe92bdf524fa9d3126a77a6ac8ca86c2763b768def70",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Inserting a 0 after every pair of consecutive 1s prevents a run of three 1s. Applied to 01110110 this yields 0110101100.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.3.2, Bit Stuffing: GATE IT 2004 | Question: 80, PDF p. 114 (key p. 165). https://gateoverflow.in/3724/gate-it-2004-question-80",
+          "answer": "D (0110101100)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.5, PDF p. 1 (table p. 3, book p. 671)",
+          "answer": "d (0110101100)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q80 (linked worksheet copy)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "d536a271-8c15-494a-b4b7-1b25209a7f80",
+      "contentSha256": "90341f5b2e0b50255fb044edec9cb2d080e16b760e2ed4379b78341e9d3eea3f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "T₁ sends 12 bits per character, giving 100 characters/s. T₂ sends 33 eight-bit characters per 30 useful characters, giving 1200×30/264 ≈ 136 characters/s.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.4, PDF p. 1 (table p. 3, book p. 671)",
+          "answer": "c (100 and 136 characters/s)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q45 (linked worksheet copy)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "68aa7715-199a-4475-aadb-8ae895415762",
+      "contentSha256": "33f86f8ea38741d204a0ccbc707f8aeaf1e11c37d3d084997be6e008a3de85a3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Circuit switching reserves resources with more predictable delay. Packet switching incurs variable queueing delay, so the claim of less variation is false.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.24.4, Network Switching: GATE IT 2004 | Question: 22, PDF p. 142 (key p. 165). https://gateoverflow.in/3663/gate-it-2004-question-22",
+          "answer": "B (less variation in delay)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q22 (linked worksheet copy)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "d33dac9d-e253-4243-a1f0-7465adf1a527",
+      "contentSha256": "050f74f7ec3686b72d54d25b409eb7462cb4e333e87454964bdefa8a98b8b392",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The 200-byte TCP segment splits into payloads of 80, 80 and 40 bytes. The 512 kbps link carries 260 bytes including the three IP headers for every 180 application bytes, giving 354.5 kbps.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.14.2, Fragmentation: GATE CSE 2004 | Question: 57, PDF p. 129 (key p. 165). https://gateoverflow.in/43572/gate-cse-2004-question-57",
+          "answer": "B (354.5 kbps)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 19,
+      "id": "d3e6b178-490b-457d-a32e-c9f358751396",
+      "contentSha256": "3ca3918dd8bba7b07f21464709a02a2996a87d29d33d558457659983ab9e4684",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A's new frame picks a slot in {0,1} and B's retry in {0,1,2,3}. A chooses a strictly smaller slot in five of eight equally likely pairs.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.13.1, Ethernet: GATE CSE 2004 | Question: 54, PDF p. 127 (key p. 165). https://gateoverflow.in/1050/gate-cse-2004-question-54",
+          "answer": "B (0.625)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "67521417-26d7-4c77-955f-24346d3a1c2f",
+      "contentSha256": "10519ec69703b1ee1c48728ed9a9e6341dd243055aefe78531620a5cce26d0b4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Each asynchronous character occupies 1+8+2+1 = 12 bit times, so 9600/12 = 800 characters/s.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.3, PDF p. 1 (table p. 3, book p. 671)",
+          "answer": "b (800)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q22 (linked worksheet copy)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "a3938aa1-f6c0-4fb6-be9b-08b21dbf966e",
+      "contentSha256": "edc0f6f62ca6a2a9400bad55f0789c13f765b7909b94bcf1c65a3b3af7394f04",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Data link is hop-by-hop reliability (P–1), the network layer routes (Q–4), and transport provides process-to-process communication (R–3).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.22.2, Network Layer: GATE CSE 2004 | Question: 15, PDF p. 138 (key p. 165). https://gateoverflow.in/1012/gate-cse-2004-question-15",
+          "answer": "A (P–1, Q–4, R–3)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.2, PDF p. 1 (table p. 3, book p. 671)",
+          "answer": "a (P–1, Q–4, R–3)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q15 (linked worksheet copy)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 22,
+      "id": "cd3294b2-737e-4efc-acca-d6a1d5038510",
+      "contentSha256": "13873054791d57966c518aae26ce9e9e61d7ceab530308a6eea8587fc108adb1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Divide 101000110100000 by generator bits 110101 over GF(2). The five-bit remainder is 01110.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.5.5, CRC Polynomial: GATE IT 2005 | Question: 78, PDF p. 117 (key p. 165). https://gateoverflow.in/3842/gate-it-2005-question-78",
+          "answer": "A (01110)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.10, PDF p. 1 (table p. 3, book p. 671)",
+          "answer": "a (01110)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 23,
+      "id": "da2970fe-4e2c-4ff5-a523-1a0d53e044c1",
+      "contentSha256": "d5176f86bb1dc33de79cf8f1fce084677156c8574a252d5c5ccbfd7fe10f83d5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "A slot takes 100/10⁷ s plus 1000/(2×10⁸) s = 15 µs. With n slots per cycle the per-station rate is 100/(15n µs), so n≤10.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.20.4, MAC Protocol: GATE IT 2005 | Question: 75, PDF p. 137 (key p. 165). https://gateoverflow.in/3838/gate-it-2005-question-75",
+          "answer": "C (10 stations)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 24,
+      "id": "85910dee-8997-4f07-b6a0-80dc4397e143",
+      "contentSha256": "7a3e34b860fc5f6a70add3cadf171ccb35033098e9be15fd64aae6d0b76ac440",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "For stop-and-wait utilization of at least one half, frame transmission time must be at least the 40 ms round-trip propagation time. At 4000 bits/s that requires 160 bits.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.33.5, Stop and Wait: GATE IT 2005 | Question: 72, PDF p. 153 (key p. 165). https://gateoverflow.in/3835/gate-it-2005-question-72",
+          "answer": "D (160 bits)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.11, PDF p. 1 (table p. 3, book p. 671)",
+          "answer": "d (160 bits)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 25,
+      "id": "c099a281-7f53-4fbd-aad2-e68740c92e4e",
+      "contentSha256": "4bc20cb1837d998f8609349c26ebe400b1ecd220ab20b8cfdbfe33d3d6c6e80f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Round-trip propagation takes 2×1000/(2×10⁸) = 10 µs. Multiplying by 10⁹ bits/s gives 10,000 bits.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.6.5, CSMA CD: GATE IT 2005 | Question: 71, PDF p. 118 (key p. 165). https://gateoverflow.in/3834/gate-it-2005-question-71",
+          "answer": "A (10000 bits)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 26,
+      "id": "f12e919f-1387-48de-81f2-01883ced2f59",
+      "contentSha256": "909dc098e9c303107fc7118c1cc23ca25ea731e57b97bf7cf9650a240a2d9ea0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A bridge separates collision domains while forwarding link-layer broadcasts between its segments. A broadcast domain therefore normally spans the bridge.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.19.6, LAN Technologies: GATE IT 2005 | Question: 28, PDF p. 136 (key p. 165). https://gateoverflow.in/3774/gate-it-2005-question-28",
+          "answer": "D (reduces broadcast domain)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 27,
+      "id": "1722e815-8122-4e72-94ac-e97ad153bdd5",
+      "contentSha256": "48d2d46c77e7db17add0ee363e39fb382c4cd1696ffc31d9e8dd2748f276d04c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Large propagation delays extend the collision-detection interval and require much larger frames for CSMA/CD. Satellite networks are a poor match.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.6.4, CSMA CD: GATE IT 2005 | Question: 27, PDF p. 118 (key p. 165). https://gateoverflow.in/3773/gate-it-2005-question-27",
+          "answer": "C (unsuitable for long propagation delay)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 28,
+      "id": "6aae0d7f-5ea4-40fe-96bd-639aab454063",
+      "contentSha256": "ceb157ec560c3a642cef9f9f0ff5a5ff93841c767999b1c795078311a9ae2af2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "At 10 Mbps, 46.4 µs accounts for 464 bit times. Adding the specified 48-bit jam interval gives the 512-bit slot in the question's model.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.20.1, MAC Protocol: GATE CSE 2005 | Question: 74, PDF p. 136 (key p. 165). https://gateoverflow.in/1397/gate-cse-2005-question-74",
+          "answer": "D (512 bits)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 29,
+      "id": "20fa2d5e-ec2b-42a2-a32c-a1764ed0d261",
+      "contentSha256": "d9131b03af040c7ca8b2f179d73ea3c599b4b183ae3f5a8debeb1bf3e7f9fa13",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Three store-and-forward hops take (n+2) packet times for n equal packets. For packet sizes 4, 6, 7 and 9 bytes including the header, the byte-times are 104, 60, 56 and 54 respectively.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.24.1, Network Switching: GATE CSE 2005 | Question: 73, PDF p. 142 (key p. 165). https://gateoverflow.in/1396/gate-cse-2005-question-73",
+          "answer": "D (9 bytes)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 30,
+      "id": "f1891348-a7d8-428e-9410-6669d0aecd45",
+      "contentSha256": "166b2e182d023a50a4d79681c7c005a77713b7e5c7e1fc70311056df9abbd90a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Selective reject with equal send and receive windows of size W needs a sequence space of at least 2W to distinguish new frames from old ones. Thus W≤2^(n−1).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.30.2, Sliding Window: GATE CSE 2005 | Question: 25, PDF p. 148 (key p. 165). https://gateoverflow.in/1361/gate-cse-2005-question-25",
+          "answer": "B (2^(n−1))",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.9, PDF p. 1 (table p. 3, book p. 671)",
+          "answer": "b (2^(n−1))",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q25 (linked worksheet copy)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 31,
+      "id": "2a5ece74-b18c-4b66-b4d6-ad05dcf14de9",
+      "contentSha256": "75ed499c94105101033181e411a70c79416e4159ac22c1082ddd6947b2f7b048",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Independent attempts succeed with probability 0.8. The mean number of attempts for 100 successes is 100/0.8 = 125.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.33.6, Stop and Wait: GATE IT 2006 | Question: 68, PDF p. 153 (key p. 165). https://gateoverflow.in/3612/gate-it-2006-question-68",
+          "answer": "B (125)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.13, PDF p. 1 (table p. 3, book p. 671)",
+          "answer": "b (125)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 32,
+      "id": "be1b3f8a-4937-4af8-b0be-00ea14dbd361",
+      "contentSha256": "031c37344613607a7df251490e5914250022dbea1109ee8412bd1d5855633632",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Without buffering, ten simultaneous 10 Mbps sources fill the link exactly. With buffering the cycle-average rate is 10/3 Mbps per source, allowing thirty sources.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.21.4, Network Flow: GATE IT 2006 | Question: 67, PDF p. 138 (key p. 165). https://gateoverflow.in/3611/gate-it-2006-question-67",
+          "answer": "A (10 and 30)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 33,
+      "id": "3669d4ed-1273-4c8b-90a3-18a9fdd97848",
+      "contentSha256": "cde994007f7975f90d8aceb184be6f737c9a994f9ae19390963745a4939e38f2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A minimum frame takes 84×8/10⁸ = 6.72 µs per receive interface. A shared processor handling both interfaces needs one decision per 3.36 µs on average.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.19.7, LAN Technologies: GATE IT 2006 | Question: 66, PDF p. 136 (key p. 165). https://gateoverflow.in/3610/gate-it-2006-question-66",
+          "answer": "B (3.36 µs)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 34,
+      "id": "7d011e69-0cc4-47df-96d9-57ce6f8d4e71",
+      "contentSha256": "c691b5ef0075f950bcc054eb7ae02d4fd05c7bcf2066c3f309205cba046b5e13",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "One packet is sent per time unit and acknowledgements lag by N units. Hence i−N packets are acknowledged by time i, giving 1−N/i packets per time unit.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.30.15, Sliding Window: GATE IT 2006 | Question: 64, PDF p. 151 (key p. 165). https://gateoverflow.in/3608/gate-it-2006-question-64",
+          "answer": "A (1−N/i)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 35,
+      "id": "af62e819-8bd2-48ab-86c0-27b379fe11fe",
+      "contentSha256": "fc14488934265f43c97a754ef2bf67798736722b76cfb073713f5e48ec0149f1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Ethernet's frame check sequence is a CRC. The IPv4 header uses an Internet checksum.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.13.7, Ethernet: GATE IT 2006 | Question: 19, PDF p. 128 (key p. 165). https://gateoverflow.in/3558/gate-it-2006-question-19",
+          "answer": "C (Ethernet CRC and IPv4 checksum)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 36,
+      "id": "509009de-8503-4f12-807d-41e9e53dff71",
+      "contentSha256": "01efec2ba69c9c862dd05019f9b63d6b479c85493dbf595881b59b014afc5681",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "The displayed image labels both lower host pairs H11 and H12. Relabel the B4-side pair H9 and H10. If the table starts empty, one H1 broadcast learns only H1 on port 3. To make A determinate, ask for B3's fully learned table after traffic from all hosts.",
+      "status": "verified-with-note",
+      "reason": "B3 reaches H1–H4 through port 3, H5, H6, H9 and H10 through port 1, and H7, H8, H11 and H12 through port 2. Those are the fully learned paths in A.",
+      "note": "The displayed image labels both lower host pairs H11 and H12. Relabel the B4-side pair H9 and H10. If the table starts empty, one H1 broadcast learns only H1 on port 3. To make A determinate, ask for B3's fully learned table after traffic from all hosts.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.4.3, Bridges: GATE CSE 2006 | Question: 83, PDF p. 115–116 (key p. 165). https://gateoverflow.in/79790/gate-cse-2006-question-83",
+          "answer": "A (ports 3, 1 and 2 for the intended full table)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q83 (linked worksheet copy)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A for the fully learned table; a lone broadcast learns only H1",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 37,
+      "id": "9211bb75-4e9d-461e-b880-07a052127ea4",
+      "contentSha256": "9cb1c1f887987553604d4f84b8a9a625dd8d70dd890403a43a0caf7775ef0f7c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Root B1 connects to B5 and B3. B3 wins the designated-bridge tie on both lower LANs, making B4 and B2 children of B3. DFS can visit B5 first and B4 before B2.",
+      "note": "The diagram repeats H11 and H12 on both lower LANs. The B4-side hosts should be H9 and H10. The duplicate labels do not affect the bridge traversal.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.4.2, Bridges: GATE CSE 2006 | Question: 82, PDF p. 114–115 (key p. 165). https://gateoverflow.in/1855/gate-cse-2006-question-82",
+          "answer": "A (B1, B5, B3, B4, B2)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q82 (linked worksheet copy)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 38,
+      "id": "ec87922a-6983-4078-9019-4798888f6c29",
+      "contentSha256": "ef3a311d2b0e0bcf9ce21c6b8d8470ed6ce420bddb23b5f5cbd3f5f15502b355",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Attempts 5, 10 and 15 are lost. The affected window starts at frame 5, then 7, then 9. Replays after those losses complete transmission on attempt 16.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.30.4, Sliding Window: GATE CSE 2006 | Question: 46, PDF p. 149 (key p. 165). https://gateoverflow.in/1822/gate-cse-2006-question-46",
+          "answer": "C (16 transmissions)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.15, PDF p. 1 (table p. 3, book p. 671)",
+          "answer": "c (16)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q46 (linked worksheet copy)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 39,
+      "id": "74d165ce-0311-43fd-b601-c9a88bc664bc",
+      "contentSha256": "3e04d496cf1c4d552c784ad94668769e18583b91f42b27c5d8ed16916c7204b2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The 80 ms round-trip delay times 128 kbps is 10,240 bits. Dividing by the 256 bits per packet gives a 40-packet window.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.30.3, Sliding Window: GATE CSE 2006 | Question: 44, PDF p. 148 (key p. 165). https://gateoverflow.in/1820/gate-cse-2006-question-44",
+          "answer": "B (40 frames)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.14, PDF p. 1 (table p. 3, book p. 671)",
+          "answer": "b (40 frames)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q44 (linked worksheet copy)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 40,
+      "id": "ca2a656f-435d-4b59-b277-bb72dd82f016",
+      "contentSha256": "7dc4f8fc0892ffce97dfa337b4d6b2c9ecf117352ea5d9312d5533dcd266d751",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "The transmitter stuffs a zero in the payload bitstream after the specified run of ones, preventing the payload from imitating a frame flag.",
+      "note": "If retaining the distractors, correct “nipple” to “nibble” in C and D and “use” to “user” in D.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.4.3, Communication: ISRO CSE 2007 | Question: 24, ISRO CSE 2016 | Question: 67, PDF p. 66 (key p. 88). https://gateoverflow.in/49497/isro-cse-2007-question-24-isro-cse-2016-question-67",
+          "answer": "A (stuff a zero into the user stream)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 41,
+      "id": "16c122da-bc2d-4ee1-945e-2f271e98e933",
+      "contentSha256": "6c0b2d3d1444e0dd92d3191f86e7113b203826931b68955e7a6ddf085bf37c9e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Manchester encoding requires a transition in the middle of every bit cell, providing timing recovery.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.4.2, Communication: ISRO CSE 2007 | Question: 22, PDF p. 66 (key p. 88). https://gateoverflow.in/49495/isro-cse-2007-question-22",
+          "answer": "C (Manchester)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 42,
+      "id": "8d9e62af-b351-4d24-9990-51fbd5ef8f8f",
+      "contentSha256": "eae4ae67a5ea6024e454b3893706279b6350db8d6b0ea0078c6f7db746cbac43",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "An Ethernet hub regenerates incoming physical-layer signals and repeats them to its other ports, acting as a multiport repeater.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.12.1, Ethernet: ISRO CSE 2007 | Question: 21, PDF p. 71 (key p. 89). https://gateoverflow.in/49494/isro-cse-2007-question-21",
+          "answer": "A (repeater)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 43,
+      "id": "8f0cfd8c-231a-4a93-b659-f04db64a7edf",
+      "contentSha256": "3ef27f378f2d115c1c0628e9590f66249029858dd315ed1da87fa35abc57f60c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Bandwidth = highest frequency − lowest frequency, so the upper frequency is 52 + 5 = 57 kHz.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.4.1, Communication: ISRO CSE 2007 | Question: 20, PDF p. 66 (key p. 88). https://gateoverflow.in/49493/isro-cse-2007-question-20",
+          "answer": "D (57 kHz)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 44,
+      "id": "a032382d-cd26-432e-81b0-cc5f6350cf0a",
+      "contentSha256": "add1960a2d31825d59994d00ca42e6b38d76a32ca4160c0b7b666ab4fb6e6d72",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "Replace “synchronous serial line” with “asynchronous serial line.” C is the keyed answer after this correction.",
+      "status": "verified-with-note",
+      "reason": "Asynchronous start/stop framing gives 11 bits per character and floor(2400/11)=218. Counting only the specified two extra bits gives 240 characters/s, and ordinary synchronous eight-bit framing gives 300. Neither literal reading is listed.",
+      "note": "Replace “synchronous serial line” with “asynchronous serial line.” C is the keyed answer after this correction.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.0.5, ISRO CSE 2007 Q19, PDF p. 62–63 (key p. 88)",
+          "answer": "C (218, the intended asynchronous result)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "No correct option as written; C after correcting the transmission mode",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 45,
+      "id": "e80ec9a8-0aa9-455f-81d6-9e30a34793d2",
+      "contentSha256": "7a9715df42cc984d1d7bc18f4c5a378de8998cb414da320b14db4795c1455328",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "An eight-bit rotary encoder distinguishes 256 positions, so one step spans 360°/256 ≈ 1.40625°.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.9.1, Encoding: ISRO CSE 2007 | Question: 13, PDF p. 69 (key p. 88). https://gateoverflow.in/49484/isro-cse-2007-question-13",
+          "answer": "D (1.4 degrees)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 46,
+      "id": "0e6e87b5-d6fe-437c-a9b4-11c12046fe8c",
+      "contentSha256": "f2bb645f31ef0f57e8b35c6149f5dd58c4ed9452450d915aba6ba753dc60d3d5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "With all stations sending and immediate token release, a revolution takes 15×5+3 ms. The useful fraction 75/78 ≈ 0.96154 is closest to 0.961.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "year-paper",
+          "ref": "GATE IT 2007 paper Q75 https://solutionsadda.in/wp-content/uploads/2020/04/2007-IT.pdf and the keyed answers in Computer Networks, linked Q18–19. https://www.scribd.com/document/80444078/Computer-Networks",
+          "answer": "D (0.961)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 47,
+      "id": "058451bf-cd37-4c2c-8619-28ba8fdc9a8a",
+      "contentSha256": "0deae9f82254e266eedebcd78cf5fcc48dd07b7978778ccb4a63be0b099017ac",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "With immediate release each station adds 3 ms of transmission per revolution, so the useful fraction is 30/(30+5) ≈ 0.857.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "year-paper",
+          "ref": "GATE IT 2007 paper Q74 https://solutionsadda.in/wp-content/uploads/2020/04/2007-IT.pdf and the keyed answers in Computer Networks, linked Q18–19. https://www.scribd.com/document/80444078/Computer-Networks",
+          "answer": "C (0.857)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 48,
+      "id": "cbd9e129-3da5-4dea-81ba-739f50b54c56",
+      "contentSha256": "50e9513449623c2fbdf2a2c8377a49e66d944d135aebca7508e430954b0f8beb",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Each poll permits 8000 bits in 800 µs. Including the 80 µs polling interval gives 8000/880 µs = 100/11 Mbps.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.8.4, Communication: GATE IT 2007 | Question: 64, PDF p. 119 (key p. 165). https://gateoverflow.in/3509/gate-it-2007-question-64",
+          "answer": "B (100/11 Mbps)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 49,
+      "id": "0fc5f10d-cada-494d-8bef-654ff069385f",
+      "contentSha256": "46d2e80753a5dca8c5131a21913bb26591c62d150c40d6a68cde93df93fde6f1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Serving five packets each time unit gives backlog bᵢ=max(0,bᵢ₋₁+aᵢ−5). The twenty end-of-unit backlogs sum to 89 packets, for an average of 4.45.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.8.3, Communication: GATE IT 2007 | Question: 62, PDF p. 119 (key p. 165). https://gateoverflow.in/3506/gate-it-2007-question-62",
+          "answer": "B (4.45)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.19, PDF p. 1 (table p. 3, book p. 671)",
+          "answer": "b (4.45)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 50,
+      "id": "ec906f3f-e2ba-46b7-a53b-ef50204d2c48",
+      "contentSha256": "85a5291261a1c1e9bf876985fa31310a374262ab8680dca24520199ac382bd55",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "In waveform (b) the mid-cell transition occurs every time and start-of-cell transitions are at cells 2, 3, 4, 5 and 7. The customary differential Manchester convention makes those zeros, giving 1000010111.",
+      "note": "A uses the convention that a start-of-cell transition encodes 0, consistent with (a) using a falling edge for 1. State the conventions explicitly to avoid the polarity ambiguity noted in the historical discussion.",
+      "sources": [
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.18, PDF p. 1 (table p. 3, book p. 671)",
+          "answer": "a (1000010111, Differential Manchester)",
+          "agrees": true
+        },
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow September 2017 Volume 3, §2.24.2, GATE IT 2007 Q61, printed pp. 185–186. https://pdfcoffee.com/vol-3-sep-pdf-free.html",
+          "answer": "A or B (discussion depends on coding conventions)",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 51,
+      "id": "074585a0-fc8d-4c3a-957b-97767718e0a7",
+      "contentSha256": "75fd4b7cf8197546f555beefdabc434cedef4e288ce03ec4c1bfec3d9d127dbf",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The minimum pairwise Hamming distance is 4, so the guaranteed correction capacity is floor((4−1)/2) = 1 bit. The app puts 1 under C.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.12.6, Error Detection: GATE IT 2007 | Question: 43, PDF p. 126 (key p. 165). https://gateoverflow.in/3478/gate-it-2007-question-43",
+          "answer": "B (1 bit, app C)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.17, PDF p. 1 (table p. 3, book p. 671)",
+          "answer": "b (1 bit, app C)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 52,
+      "id": "a311cb4d-554b-439c-85ca-9b1d19b5ce9c",
+      "contentSha256": "9d748156e8d500333649db523f05a16ea65369439ebe354afa3ca49b89436003",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "SMTP handles application mail, BGP makes network-layer routing decisions, TCP provides transport, and PPP frames link traffic. This matches P–1, Q–4, R–2, S–3.",
+      "note": "The keyed match classifies BGP by its routing function. BGP messages themselves run over TCP, so “classify by protocol function” would make the intended layering explicit.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.23.3, Network Protocols: GATE CSE 2007 | Question: 70, PDF p. 140 (key p. 165). https://gateoverflow.in/1268/gate-cse-2007-question-70",
+          "answer": "B (P–1, Q–4, R–2, S–3)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 53,
+      "id": "f87a5cc1-b94d-4f33-b501-4fae6c856a88",
+      "contentSha256": "09af6451b591183b0189c16c44fa2523ddceb880842b5333da16443e5ea3228e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The first ACK returns after K/R + 2Lt. Sustained transmission during that interval requires ceil(1+2LtR/K) outstanding frames. In the intended generic window calculation the corresponding bit count is ceil(log₂(1+2LtR/K)).",
+      "note": "The options use ordinary square brackets where the paper uses ceilings. Replace the outer brackets with ceiling signs. The keyed formula sizes the window from the bandwidth-delay relation. A specific ARQ sequence-space rule would require a protocol and receive-window size.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.30.5, Sliding Window: GATE CSE 2007 | Question: 69, PDF p. 149 (key p. 165). https://gateoverflow.in/1267/gate-cse-2007-question-69",
+          "answer": "C (ceiling of log₂((2LtR+K)/K))",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 54,
+      "id": "add197e7-80a6-4d67-ab91-28e81f6836cc",
+      "contentSha256": "d85d6b4c48b49474b89b6165340476ed84e87c89b6de9b952bdfc303ebbe1b21",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Dividing 11001001000 by generator 1001 over GF(2) gives remainder 011. Appending it to the original message gives 11001001011.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.5.1, CRC Polynomial: GATE CSE 2007 | Question: 68, ISRO2016-73, PDF p. 116 (key p. 165). https://gateoverflow.in/1266/gate-cse-2007-question-68-isro2016-73",
+          "answer": "B (11001001011)",
+          "agrees": true
+        },
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.2.1, CRC Polynomial: GATE CSE 2007 | Question: 68, ISRO2016-73, PDF p. 64 (key p. 88). https://gateoverflow.in/1266/gate-cse-2007-question-68-isro2016-73",
+          "answer": "B (11001001011)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.16, PDF p. 1 (table p. 3, book p. 671)",
+          "answer": "b (11001001011)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q68 (linked worksheet copy)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 55,
+      "id": "e2ac730d-3c13-498d-9c42-c7dd91eeea10",
+      "contentSha256": "16f4602a5811616a958c27d1261a6b7e2dd4dc9233988e106975a1311d3551b9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "One bit takes 0.1 µs at 10⁷ bits/s. At 200 m/µs the signal covers 20 m during that interval, which the app labels D.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.36.1, Token Ring: GATE CSE 2007 | Question: 66, ISRO2016-71, PDF p. 87 (key p. 89). https://gateoverflow.in/1264/gate-cse-2007-question-66-isro2016-71",
+          "answer": "C (20 metres, app D)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q66 (linked worksheet copy)",
+          "answer": "C (app D)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 56,
+      "id": "dadc5e6f-6251-4958-9f5e-bac1e6a1683c",
+      "contentSha256": "e075876641a43563e98fbd27d947753391a96515b764778bce8d0d65075a911a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "There are n choices for the single sender, each with probability p(1−p)^(n−1). Their mutually exclusive probabilities add.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.19.2, LAN Technologies: GATE CSE 2007 | Question: 65, PDF p. 135 (key p. 165). https://gateoverflow.in/1263/gate-cse-2007-question-65",
+          "answer": "A (np(1−p)^(n−1))",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 57,
+      "id": "3de59012-6858-43d2-895e-5229659cf2d6",
+      "contentSha256": "b66b753ca96608eef9af0c1b1480cc520a4d34f623d5ff3b3b8bd78533fdf5f7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Manchester encodes each bit with two signal elements, so the data bit rate is half the signal-element rate in baud.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow September 2017 Volume 3, §2.24.1, GATE CSE 2007 Q19, printed p. 185. https://pdfcoffee.com/vol-3-sep-pdf-free.html",
+          "answer": "A (half the baud rate)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 58,
+      "id": "17cc0794-038f-447c-81a0-6a3a085b3d58",
+      "contentSha256": "6a43e92724f7610934f81d2db945cf2b8e2d638734a66950b95afab8253be5f9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The start bit and two stop bits raise the cost to 11 bit times per eight-bit character. The number of complete characters is floor(2400/11) = 218.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.26.1, Out of Gatecse Syllabus: GATE CSE 1993 | Question: 6.4, ISRO2008-14, PDF p. 81 (key p. 89). https://gateoverflow.in/2287/gate-cse-1993-question-6-4-isro2008-14",
+          "answer": "C (218 characters/s)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 59,
+      "id": "0afef070-fe25-469c-8413-bf6796f499fc",
+      "contentSha256": "84100a5dc98c6e0b6360039db68a94009d0387b097bc8d98ae3134b7edb5b5ba",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "IEEE 802.6 DQDB also schedules medium access without contention collisions. Ask which standard specifies a token-passing LAN to make C unique.",
+      "status": "verified-with-note",
+      "reason": "IEEE 802.5 Token Ring grants access to one token holder at a time. That is the collision-free LAN protocol intended by the question.",
+      "note": "IEEE 802.6 DQDB also schedules medium access without contention collisions. Ask which standard specifies a token-passing LAN to make C unique.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.23.2, Network Protocols: ISRO CSE 2008 | Question: 10, PDF p. 76 (key p. 89). https://gateoverflow.in/49672/isro-cse-2008-question-10",
+          "answer": "C (IEEE 802.5 Token Ring)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent read of IEEE 802.6-1994 §§2.1.2 and 5.1.2.1.4 (distributed queue access)",
+          "answer": "C for Token Ring; D is also scheduled access",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 60,
+      "id": "7b698678-82d8-4c23-ab0c-e4805c96c882",
+      "contentSha256": "422c1878b036a76d626bda7d0f516da97aacc10e65b4350325fb0dc6190d0b48",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Convert 40 kHz to 0.04 MHz and subtract from 4 MHz. The bandwidth is 3.96 MHz.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.4.4, Communication: ISRO CSE 2008 | Question: 9, PDF p. 66 (key p. 88). https://gateoverflow.in/49671/isro-cse-2008-question-9",
+          "answer": "C (3.96 MHz)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 61,
+      "id": "49b81043-85e8-447d-be08-22870823838f",
+      "contentSha256": "cb2b8af41edb6dfa233b05e2e3f643f056bf5abf8745da51f32f1e29e227d2e7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "A radio transmitter may be unable to sense other contenders at the receiver because of hidden terminals. Carrier sensing alone does not reliably coordinate access over radio.",
+      "note": "The historical key intends the limitations of carrier sensing over a shared radio channel. Wireless LANs still use carrier sensing with collision avoidance.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.3.1, CSMA CD: ISRO CSE 2008 | Question: 6, PDF p. 65 (key p. 88). https://gateoverflow.in/17272/isro-cse-2008-question-6",
+          "answer": "A (radio)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 62,
+      "id": "066265c6-82fe-43ab-9c97-04f847b4b0f7",
+      "contentSha256": "6f79e283632f1f355cd585bc53cf7c7c4d7bafd584e2a1c3dc02a1813887ddd4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "The stem does not say whether “original sender” means the originator of the MAC frame or the IP packet. IEEE 802.3 §3.2.3 supports A if it refers to the frame, and a transparent bridge does not replace that address. B is the historical key. Ask for “the physical address of the station that initiated this Ethernet frame” to remove the ambiguity.",
+      "status": "verified-with-note",
+      "reason": "The source MAC identifies the station that initiated this Ethernet frame. In the keyed routed-hop interpretation, this is the previous transmitting station, B.",
+      "note": "The stem does not say whether “original sender” means the originator of the MAC frame or the IP packet. IEEE 802.3 §3.2.3 supports A if it refers to the frame, and a transparent bridge does not replace that address. B is the historical key. Ask for “the physical address of the station that initiated this Ethernet frame” to remove the ambiguity.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.12.2, Ethernet: ISRO CSE 2008 | Question: 5, PDF p. 71 (key p. 89). https://gateoverflow.in/49666/isro-cse-2008-question-5",
+          "answer": "B (previous station's physical address on a routed hop)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent read of IEEE Std 802.3-2015 §3.2.3. https://smartcomlab.tmit.bme.hu/alpha/meresek/ttmer101/ieee-802.3/802.3-2015_SECTION1.pdf",
+          "answer": "B for a routed hop; A if the sender refers to the frame originator",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 63,
+      "id": "b8123ae4-b76b-4396-b296-482e7379c158",
+      "contentSha256": "e68ec3d06155411f3aef4f568d385b5f708649e8d0b48b44aa5af5e306fa06b6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The parity syndromes are row r₁ and columns d₅, d₂ and d₀. Three column flips are required and can all be placed in r₁, so three corrupted bits are sufficient.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.12.7, Error Detection: GATE IT 2008 | Question: 66, PDF p. 126 (key p. 165). https://gateoverflow.in/3380/gate-it-2008-question-66",
+          "answer": "C (3 bits)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.23, PDF p. 2 (table p. 3, book p. 671)",
+          "answer": "c (3)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 64,
+      "id": "3fe45fd8-3cf1-46a0-b462-631b6cba32d1",
+      "contentSha256": "7ba07414a853dff287968d3e4ea36e1aa95e32bb3b10b45b38c0b37d42c101ad",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The round-trip propagation delay is 2×200/(2×10⁸) = 2 µs. At 10⁹ bits/s this needs 2000 bits, or 250 bytes.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.6.6, CSMA CD: GATE IT 2008 | Question: 65, PDF p. 118 (key p. 165). https://gateoverflow.in/3376/gate-it-2008-question-65",
+          "answer": "B (250 bytes)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 65,
+      "id": "0cbf06bd-68f5-4716-b504-5b783069b250",
+      "contentSha256": "d77638f48dcaf7c554765f502242a9484c94b918d9928049420d94079beb5727",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Going up and down via the satellite in both directions gives RTT = 4×36,504 km/c = 0.48672 s. With W=127, solving 127T/(T+0.48672)=0.25 gives T=0.96 ms, or 120 bytes.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.30.16, Sliding Window: GATE IT 2008 | Question: 64, PDF p. 151 (key p. 165). https://gateoverflow.in/3375/gate-it-2008-question-64",
+          "answer": "A (120 bytes)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.22, PDF p. 2 (table p. 3, book p. 671)",
+          "answer": "a (120 bytes)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 66,
+      "id": "8db17185-e902-4fd7-b0df-562478ac217f",
+      "contentSha256": "735c7b41cfa6f33c12350be922f919ae3f2690224592128a2bcb922806546ddb",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "There are 12 bit times per byte including the start, parity and two stop bits. Fifteen seconds supplies 144,000 bit times, or 12,000 data bytes.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.21, PDF p. 2 (table p. 3, book p. 671)",
+          "answer": "b (12000 bytes)",
+          "agrees": true
+        },
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow 2019 Volume 3, §2.33.9, GATE IT 2008 Q18, Serial Communication questions and worked answers, printed pp. 259–263. https://pdfcoffee.com/2019-vol3pdf-pdf-free.html",
+          "answer": "B (12000 bytes)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 67,
+      "id": "c6d09fb4-5938-41a9-9b85-a48d0079d403",
+      "contentSha256": "62e1b28510907d4e4e97b19bbca4560b1a8fd4733613c8338b9096591d892a80",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "While sending at 10 Mbps the full bucket loses tokens at 10−2 = 8 Mbit/s. Its initial 16 Mbits last two seconds.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.36.1, Token Bucket: GATE CSE 2008 | Question: 58, PDF p. 163 (key p. 166). https://gateoverflow.in/481/gate-cse-2008-question-58",
+          "answer": "B (2 s)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 68,
+      "id": "a47f41c1-2210-440b-9d3d-4c3a16f8ee81",
+      "contentSha256": "9e9daa5b1558dcd16551872ce49d6023032068deafe2e015b96a905203750f25",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "01:A5:BB:A7:FF:60 comprises six two-digit hexadecimal octets, the standard 48-bit MAC address format.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.20.1, MAC Protocol: ISRO CSE 2009 | Question: 4, PDF p. 74 (key p. 89). https://gateoverflow.in/50321/isro-cse-2009-question-4",
+          "answer": "D (01:A5:BB:A7:FF:60)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 69,
+      "id": "c8d4748d-bad8-4db7-8f24-65f5771e35cb",
+      "contentSha256": "6f51186983beedf4175c4cfc65369ddd5bf6c9486ad0da9735a36ce6854c604b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The 32-frame window takes 32 ms to send. The first ACK, piggybacked immediately on a 1 ms return frame, completes at 1+25+1+25 = 52 ms. The sender waits 20 ms.",
+      "note": "The 20 ms answer assumes available equal-size reverse traffic. Use lowercase ℓ consistently in 2^ℓ and refer to the one-way sequence-number calculation, which is Q70 in the app.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.30.7, Sliding Window: GATE CSE 2009 | Question: 58, PDF p. 149 (key p. 165). https://gateoverflow.in/43470/gate-cse-2009-question-58",
+          "answer": "C (20 ms)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.26, PDF p. 2 (table p. 3, book p. 671)",
+          "answer": "c (20 ms)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q58 (linked worksheet copy)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 70,
+      "id": "5db2d995-6c18-4f7d-98bc-9eb87aaf48e3",
+      "contentSha256": "d64854b9ca3c537a0bbc58ef3eceefd971c0d58d11c5cc8862f4d68fbb0c4c16",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Each frame takes 1 ms to inject. A 25 ms one-way propagation interval holds 25 frames, so at least ceil(log₂25) = 5 bits are needed.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.30.6, Sliding Window: GATE CSE 2009 | Question: 57, ISRO2016-75, PDF p. 149 (key p. 165). https://gateoverflow.in/1340/gate-cse-2009-question-57-isro2016-75",
+          "answer": "D (5 bits)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.25, PDF p. 2 (table p. 3, book p. 671)",
+          "answer": "d (5 bits)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q57 (linked worksheet copy)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 71,
+      "id": "09cf5dd1-04bf-4d10-90dd-2ccf191da5e3",
+      "contentSha256": "1bf854780ce1cae3369df23395a3343c4820c032c7435eca34e83aff160c83cd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Every odd-weight error polynomial evaluates to 1 at x=1 over GF(2). A generator with factor x+1 evaluates to 0 there and cannot divide any such error polynomial.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.12.3, Error Detection: GATE CSE 2009 | Question: 48, PDF p. 125 (key p. 165). https://gateoverflow.in/1334/gate-cse-2009-question-48",
+          "answer": "C (factor 1+x)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.24, PDF p. 2 (table p. 3, book p. 671)",
+          "answer": "c (factor 1+x)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q48 (linked worksheet copy)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 72,
+      "id": "24742c6e-5485-4258-9b49-5cc149a300b9",
+      "contentSha256": "b39b55a0fab918af6df7eee40a333121355eeca0deabec8df04ec2c1ba00bd2a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Summing the listed per-port data rates gives 24×8 Gbps = 192 Gbps, which is D.",
+      "note": "GATE Overflow marks B, whose unit is Mbps, in both the printed options and the app. The wired rate sum is 192 Gbps. Specify “sum the stated port data rates” to make the aggregate convention explicit.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.27.1, Routers Bridge Hubs Switches: ISRO CSE 2011 | Question: 71, PDF p. 81 (key p. 89). https://gateoverflow.in/52868/isro-cse-2011-question-71",
+          "answer": "B (192 Mbps)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "Wiley ISRO Scientist/Engineer Computer Science Solved Papers, ISRO 2011 Q71 worked answer. https://dokumen.pub/wileys-isro-scientist-engineer-scientist-c-computer-science-solved-papers-and-practice-tests-2007-2020-9788126595457-9788126577255.html",
+          "answer": "D (192 Gbps)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 73,
+      "id": "0de69ac0-651c-4746-b85a-97c93d20184c",
+      "contentSha256": "8f77a8d253aee64ad20bb3b2e51d49f347fea07380b6d24360cfea0c328aab5d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "In ten hours the line sends 2.048×10⁶×36000 bits. Dividing 512 errors by that total gives 6.94×10⁻⁹.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.11.2, Error Detection: ISRO CSE 2011 | Question: 50, PDF p. 70 (key p. 88). https://gateoverflow.in/52174/isro-cse-2011-question-50",
+          "answer": "A (6.9×10⁻⁹)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 74,
+      "id": "7256cee8-2db3-4808-9cdc-013cd2d51779",
+      "contentSha256": "ce5bf1e0ee1ab36fab5777f1e557dcfc1544a26dbd0aa009f5ba4a13917f6b73",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "0xAA XOR 0x55 equals 0xFF. All eight bit positions differ.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.10.1, Error Correction: ISRO CSE 2011 | Question: 48, PDF p. 70 (key p. 88). https://gateoverflow.in/50634/isro-cse-2011-question-48",
+          "answer": "C (8)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 75,
+      "id": "a031585b-2c1d-4526-b214-ac680eac26a0",
+      "contentSha256": "f92b9b9ce5e06a2655c0a245d5a53407b73d64cb172112d7bfe281907e4cf417",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "The terminal displays 80×8 = 640 bits per complete 100 µs sweep, for an average rate of 6.4 Mbps.",
+      "note": "The instantaneous active-sweep rate is 8 Mbps. Say “average bit rate over the complete sweep” to select B. The linked GATE IT scan uses 50 characters, whereas the ISRO 2011 version used here specifies 80.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §36.13.2, IO Handling: GATE IT 2004 | Question: 11, ISRO2011-33, PDF p. 212 (key p. 235). https://gateoverflow.in/3652/gate-it-2004-question-11-isro2011-33",
+          "answer": "B (6.4 Mbps for 80 characters/line)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q11 (linked worksheet copy)",
+          "answer": "B is conditional on 80 characters; the selected 50-character scan gives no matching choice",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 76,
+      "id": "0d15498f-6bd3-48a4-9d9c-36913daf06c8",
+      "contentSha256": "ed962ff0402e7e08f84ee91b577ca28b0aa4c213ba15b0df18bd60ca48645bf9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "ARP resolves an IPv4 address to the corresponding link-layer MAC address on the local link.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.23.4, Network Protocols: ISRO CSE 2011 | Question: 12, PDF p. 76 (key p. 89). https://gateoverflow.in/52262/isro-cse-2011-question-12",
+          "answer": "B (ARP)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 77,
+      "id": "c7c01e6a-46c1-4f0b-b03a-9536f45de0fb",
+      "contentSha256": "bf29b01b1345454efce3bf5001a012ea395b4fae9f8fc983e81d4a833598a2d1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The optical 1000BASE-X Gigabit Ethernet PHY uses 8B/10B coding.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.4.5, Communication: ISRO CSE 2011 | Question: 1, PDF p. 66 (key p. 88). https://gateoverflow.in/18138/isro-cse-2011-question-1",
+          "answer": "D (8B/10B)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 78,
+      "id": "c0166cff-cb58-4f60-b107-4eab667095c7",
+      "contentSha256": "144070bc985faed0dc739a5b851a344e10cf11f39ed84fb23bf1ac35c091f394",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Serialization and propagation are each 1 ms per link. The first packet takes 6 ms across three store-and-forward links, and the remaining 999 packets follow one per millisecond, for 1005 ms.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.8.1, Communication: GATE CSE 2012 | Question: 44, PDF p. 118 (key p. 165). https://gateoverflow.in/2153/gate-cse-2012-question-44",
+          "answer": "A (1005 ms)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 79,
+      "id": "f1d4d2b6-c9de-4a78-8d27-5980fe7cd2c1",
+      "contentSha256": "eca3e9bf06d54ced3f707e6bcc75c71b9f6fbfd9764ce48c73302e4333955e2c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The stop-and-wait cycle is 20+2×30 = 80 ns with negligible ACK transmission. The efficiency is 20/80 = 25%.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.31.1, Stop and Wait: ISRO-2013-41, PDF p. 82 (key p. 89). https://gateoverflow.in/43981/isro-2013-41",
+          "answer": "B (25%)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 80,
+      "id": "682eca0c-5af9-4416-901d-686b442fd02b",
+      "contentSha256": "783a8d82b8f738c94ee585403c9f903dc0a86ee338bd714fded95d25ee5c206e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The divisor for x⁴+x+1 is 10011. Dividing 11010110110000 over GF(2) leaves 1110, so the transmitted frame is 11010110111110.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.2.3, CRC Polynomial: ISRO-2013-40, PDF p. 65 (key p. 88). https://gateoverflow.in/43979/isro-2013-40",
+          "answer": "C (11010110111110)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 81,
+      "id": "bdfcc3d2-644a-4fde-acc6-2371e06ea4fd",
+      "contentSha256": "01c8b7c88c0352119be3125636bf8444d7e7dd23be955cac1b6bddfc5103bbdb",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Each switched port isolates collisions. Without VLAN separation the switch floods broadcasts within the same broadcast domain.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.12.6, Ethernet: ISRO-2013-39, PDF p. 72 (key p. 89). https://gateoverflow.in/43978/isro-2013-39",
+          "answer": "A (different collision domains, same broadcast domain)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 82,
+      "id": "b5317fb6-fedb-4e9f-a895-c510d0cd390c",
+      "contentSha256": "3a311ae91969b8049a8a0a4c2d0f84e838b8819b042bc2be6a90a06d17efed29",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The preamble prepares the receiving PHY for bit synchronization before the MAC frame. Addresses and FCS belong to the MAC frame.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.12.5, Ethernet: ISRO-2013-38, PDF p. 72 (key p. 89). https://gateoverflow.in/43976/isro-2013-38",
+          "answer": "A (preamble)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 83,
+      "id": "641200ba-b4d8-415e-a950-5c09f14c3812",
+      "contentSha256": "cba46462e79f851ba56e9e62044095ee4efceed5321ef5e3678dc7d389a3a5ec",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "RS-232 data uses negative voltage for mark (logical 1) and positive voltage for space (logical 0), matching −3 to −15 V and +3 to +15 V respectively.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §34.1.1, Rs232: ISRO-2013-37, PDF p. 201 (key p. 201). https://gateoverflow.in/43973/isro-2013-37",
+          "answer": "C (positive voltage for 0, negative for 1)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 84,
+      "id": "c04b998c-37c1-4119-8a3f-c7d9c15e2919",
+      "contentSha256": "2abab5f3c54685ecf922f9fc2efdab9b0bf56c37aa0b9e95ea7fa1c0662c71c0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "IEEE 1394 defines the high-speed serial bus commonly called FireWire.",
+      "note": "The first distractor's “RS?232” should read “RS-232.”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §23.2.1, Ieee1394: ISRO-2013-20, PDF p. 172 (key p. 173). https://gateoverflow.in/43819/isro-2013-20",
+          "answer": "C (FireWire)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 85,
+      "id": "d190ef61-5492-4578-822a-266f7f19955c",
+      "contentSha256": "c2dd86c083a62a00abfc5f7736dae7d86f15c980756e8e3cbf8fe5357d6dbf03",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Each character uses seven data bits, one parity bit and two framing bits. At 19,200 bits/s the line carries 1920 such characters/s.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.0.2, ISRO 2013 Q19, PDF p. 62 (key p. 88)",
+          "answer": "C (1920 characters/s)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 86,
+      "id": "1cec93f4-8702-4a79-a5af-2f47a34e7937",
+      "contentSha256": "6096ecd4bb4977f37f1feb8d163c56cd826b5d526322286bc2ec4462672fbdb2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Five Hamming position checks suffice for single-error correction of 16 data bits since 2⁵≥16+5+1. A sixth, overall parity bit raises the minimum distance to four for simultaneous SECDED.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.11.4, Error Detection: ISRO-2013-18, PDF p. 71 (key p. 88). https://gateoverflow.in/43816/isro-2013-18",
+          "answer": "6 check bits (app B)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 87,
+      "id": "577f97f8-ce1a-4690-a7f1-22f6f8a99122",
+      "contentSha256": "2684267134053e9ba0e60d45f991e5d235fd2a05d7948f5f93eac71c5c3b1055",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The frame takes 10,000/(500×10⁶) = 20 µs. The one-way delay budget is 10 µs, giving 200,000 km/s ×10⁻⁵ s = 2 km.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.13.2, Ethernet: GATE CSE 2013 | Question: 36, PDF p. 127 (key p. 165). https://gateoverflow.in/1547/gate-cse-2013-question-36",
+          "answer": "B (2 km)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 88,
+      "id": "8f3cadfb-1e1c-4d8d-bec2-5f083361386f",
+      "contentSha256": "981b733e1418038e634106ddb2f7276a4b778b5c84bd44c84a246159602daaf3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "IPv4 multicast maps to 01:00:5E followed by a zero bit and 23 variable bits. The fourth octet of option D is FF, outside that mapping.",
+      "note": "Say “not a valid IPv4 multicast MAC address.” The question uses the IPv4 mapping range, while the group bit alone is set in all four displayed addresses.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.20.3, MAC Protocol: ISRO CSE 2014 | Question: 71, PDF p. 75 (key p. 89). https://gateoverflow.in/17449/isro-cse-2014-question-71",
+          "answer": "D (01:00:5E:FF:FF:FF, outside IPv4 multicast mapping)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 89,
+      "id": "84d7f322-4629-4b6a-9a1a-4ac43110d098",
+      "contentSha256": "3e1145bc904173226f10ab949abba3c6f499329b47110f1be64518edfffa5b83",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Ethernet auto-negotiation advertises capabilities and selects common link parameters such as speed and duplex.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.12.3, Ethernet: ISRO CSE 2014 | Question: 61, PDF p. 71 (key p. 89). https://gateoverflow.in/55011/isro-cse-2014-question-61",
+          "answer": "D (auto-negotiation)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 90,
+      "id": "0497d063-311d-4635-bc99-afa5cf3018af",
+      "contentSha256": "170c3a51631ee5e420c5925ebe93c9c082d753fd0b711f09361fdd58ffb13ce5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "One-way propagation is 250 ms and transmitting 1000 bits at 50 kbps takes 20 ms. The last bit arrives after 270 ms.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.4.6, Communication: ISRO CSE 2014 | Question: 45, PDF p. 66 (key p. 88). https://gateoverflow.in/54975/isro-cse-2014-question-45",
+          "answer": "D (270 ms)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 91,
+      "id": "f46fc769-8cf2-46b6-81e4-66aea8a77a4f",
+      "contentSha256": "f030c2bc67b2b2ff9cc20a0023a7c038924c6edb098c1776998fd3af1853b08b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The first zero after five consecutive ones is the stuffed bit. Removing it from 01111100101 gives 0111110101.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.3.1, Bit Stuffing: GATE CSE 2014 | Set 3 | Question: 24, PDF p. 114 (key p. 165). https://gateoverflow.in/2058/gate-cse-2014-set-3-question-24",
+          "answer": "B (0111110101)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.28, PDF p. 2 (table p. 3, book p. 671)",
+          "answer": "b (0111110101)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 92,
+      "id": "baede916-6d95-4236-8faa-e3ac32c120de",
+      "contentSha256": "6d20b4297feb05b100c08c3a18f1e194cddd99f8cf788d1901973d1af5a8bb40",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Bit synchronization is a physical-layer function. Routing, end-to-end process communication and medium sharing match the other listed layers or sublayers.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.22.4, Network Layer: GATE CSE 2014 | Set 3 | Question: 23, PDF p. 139 (key p. 165). https://gateoverflow.in/2057/gate-cse-2014-set-3-question-23",
+          "answer": "B (data link layer and bit synchronization)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.27, PDF p. 2 (table p. 3, book p. 671)",
+          "answer": "b (data link layer and bit synchronization)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 93,
+      "id": "b2428eb7-20ea-4ce1-aaa2-8bfc3ebf1de3",
+      "contentSha256": "3650992090929a3bec9f5cf8bbec7e012aac698d076a624d0514c3e2a4411d72",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The diagram has three serial links. For n packets with size L, the pipeline takes (n+2)L/R. The three cases take 3.3 ms, 2.4 ms and 3.3 ms.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.24.2, Network Switching: GATE CSE 2014 | Set 2 | Question: 26, PDF p. 142 (key p. 165). https://gateoverflow.in/1985/gate-cse-2014-set-2-question-26",
+          "answer": "D (T₁=T₃>T₂)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 94,
+      "id": "e2b19bbf-689b-48b8-8081-82f42d7cc206",
+      "contentSha256": "c10eac1bc96eef608fdb90dd72a353e18fe90331b11a2bf6611b77581081bbab",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "5",
+      "status": "verified",
+      "reason": "At 1.5 Mbps, frame serialization takes about 5.33 ms. A window of at least 12 frames is needed for 60% utilization over 100 ms of round-trip propagation. Selective repeat needs at least twice that many sequence values, so five bits suffice.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.30.8, Sliding Window: GATE CSE 2014 | Set 1 | Question: 28, PDF p. 149 (key p. 165). https://gateoverflow.in/1795/gate-cse-2014-set-1-question-28",
+          "answer": "5 bits",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "5",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 95,
+      "id": "6dfbb0f4-bbb7-46a6-8df4-c961fa4a263b",
+      "contentSha256": "2367e1e3f48e65c29b923729146f94427c0f764bde086b9b1474848f8e23f362",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "28",
+      "natRange": {
+        "min": 28,
+        "max": 30
+      },
+      "status": "verified-with-note",
+      "reason": "Propagation around the ring is 10 µs. After the monitor releases the token, up to nine other stations can hold it for 2 µs apiece, yielding 28 µs before the token must return.",
+      "note": "The official key also accepts 30 µs when timing includes the monitor's own 2 µs hold. Specify that the timer starts when the monitor releases the token for a unique exact value.",
+      "sources": [
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 CS Session 1 Q26 final key, IIT Kanpur archive. https://gate.iitk.ac.in/GATE2023/doc/papers/2014/cs_2014.pdf",
+          "answer": "28 to 30 µs",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "28",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 96,
+      "id": "3655ef0d-0bf8-42ee-abc5-4cd0ea6ad567",
+      "contentSha256": "e30df6b1980946e05fc8b285df7fee2cf56509333c1b260ef372d8afee821806",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The offered load in attempts per slot is 70 attempts/s ×0.05 s/slot = 3.5.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.30.1, Slotted Aloha: ISRO2015-55, PDF p. 82 (key p. 89). https://gateoverflow.in/19453/isro2015-55",
+          "answer": "B (3.5)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "ISRO BE003 11 October 2015 revised final answer key, Booklet A Q55, PDF p. 1. https://img.freejobalert.com/uploads/2011/07/Answer-Key-ISRO-Scientist-Engineer-SC-Computer-Science.pdf",
+          "answer": "B (3.5)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 97,
+      "id": "5016e5a2-5e20-438d-bda3-2eff0964a4b7",
+      "contentSha256": "a73899ada05fffcd79c162c9eb01ad1a08e566335c55e97d10978129a5ce4200",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Divide 100111001000 by 1011 over GF(2). The remainder is 011 and the receiver divides the complete codeword 100111001011.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.2.4, CRC Polynomial: ISRO2015-52, PDF p. 65 (key p. 88). https://gateoverflow.in/51715/isro2015-52",
+          "answer": "B (100111001011)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "ISRO BE003 11 October 2015 revised final answer key, Booklet A Q52, PDF p. 1. https://img.freejobalert.com/uploads/2011/07/Answer-Key-ISRO-Scientist-Engineer-SC-Computer-Science.pdf",
+          "answer": "B (100111001011)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 98,
+      "id": "1b9b8d56-3814-4b28-a3ea-cea9facc7a29",
+      "contentSha256": "7b01fcc16dc118fca3a43a7ef3b7912c319378a07b88b210658d128be6ac74e9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Counting the explicitly stipulated start and stop bits, each character costs 7+1+1+1 = 10 bits, so 2400/10 = 240 characters/s.",
+      "note": "The word “synchronous” conflicts with the specified per-character start/stop framing. The ISRO final key and GATE Overflow give A, 300 characters/s without the framing bits. Honor the explicit framing for 240 and replace “synchronous” with “asynchronous.”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.0.6, ISRO 2015 Q51, PDF p. 63 (key p. 88)",
+          "answer": "A (300 without start/stop overhead)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "CMB Space ISRO Computer Science 2015 Q51 worked answer. https://www.cmb-space.com/isro-pyq/cs/2015",
+          "answer": "C (240 characters/s, app B)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "ISRO BE003 11 October 2015 revised final answer key, Booklet A Q51, PDF p. 1. https://img.freejobalert.com/uploads/2011/07/Answer-Key-ISRO-Scientist-Engineer-SC-Computer-Science.pdf",
+          "answer": "A (300 characters/s)",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 99,
+      "id": "968d09e5-8157-4470-acd5-4cbb6e102870",
+      "contentSha256": "89e91860a313eb8355b394b503a7121b54a39a3a52a5fb414a4d7776f8436a12",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The 3000–30000 MHz band is SHF (3–30 GHz), used for microwave links, satellite bands and radar. Choice D's 30000 kHz is only 30 MHz.",
+      "note": "The ISRO final key and GATE Overflow mark D despite its unit error. EHF spans 30–300 GHz. Ask “Which named band spans 3–30 GHz?” to make C unique, since multiple microwave bands can serve satellite and radar applications.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.4.7, Communication: ISRO2015-49, PDF p. 67 (key p. 88). https://gateoverflow.in/51711/isro2015-49",
+          "answer": "D (30000 kHz)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "CMB Space ISRO Computer Science 2015 Q49 worked answer. https://www.cmb-space.com/isro-pyq/cs/2015",
+          "answer": "C (SHF, 3000–30000 MHz)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "ISRO BE003 11 October 2015 revised final answer key, Booklet A Q49, PDF p. 1. https://img.freejobalert.com/uploads/2011/07/Answer-Key-ISRO-Scientist-Engineer-SC-Computer-Science.pdf",
+          "answer": "D (30000 kHz)",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 100,
+      "id": "2b846f4e-b76b-4a74-8966-05c53d384ef6",
+      "contentSha256": "84e17d9b6793fa57464eae08fd6b69cc166700c2989700639dbbe74188b79ed0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A T-switch selects which devices are physically interconnected, allowing equipment connections to be rearranged.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.27.2, Routers Bridge Hubs Switches: ISRO2015-48, PDF p. 81 (key p. 89). https://gateoverflow.in/51709/isro2015-48",
+          "answer": "D (rearranging device connections)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "ISRO BE003 11 October 2015 revised final answer key, Booklet A Q48, PDF p. 1. https://img.freejobalert.com/uploads/2011/07/Answer-Key-ISRO-Scientist-Engineer-SC-Computer-Science.pdf",
+          "answer": "D (rearranging device connections)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 101,
+      "id": "1ed8870a-6caa-4e9f-820e-1feb411eae65",
+      "contentSha256": "c80d3f5d756278a306dcfcf9b713e5d183b57cab41d17a73935042e7028f7d50",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "1575",
+      "status": "verified",
+      "reason": "Each packet takes 500 µs to serialize. The second follows 500 µs behind the first. Including both 20 µs link delays, 35 µs of switch processing and two serializations gives 500+500+20+35+500+20 = 1575 µs.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.24.3, Network Switching: GATE CSE 2015 | Set 3 | Question: 36, PDF p. 142 (key p. 165). https://gateoverflow.in/8495/gate-cse-2015-set-3-question-36",
+          "answer": "1575 µs",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.32, PDF p. 2 (table p. 3, book p. 671)",
+          "answer": "1575 µs",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "1575",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 102,
+      "id": "8d595a73-44c5-4e9a-b9c7-10fed2a5a5d0",
+      "contentSha256": "3e727546dc4a83cd14f6f815dde0b08cefceaac91a97ebf7858e7fa762854e7b",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "8",
+      "status": "verified",
+      "reason": "The one-way propagation delay is 2 s and a packet takes 0.02 s to serialize. A window of at least 1+4/0.02=201 frames is needed. Go-Back-N allows at most 2^k−1, requiring k=8.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.30.9, Sliding Window: GATE CSE 2015 | Set 3 | Question: 28, PDF p. 150 (key p. 165). https://gateoverflow.in/8481/gate-cse-2015-set-3-question-28",
+          "answer": "8 bits",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.31, PDF p. 2 (table p. 3, book p. 671)",
+          "answer": "8 bits",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "8",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 103,
+      "id": "c1999cc8-15a2-4413-94c9-c96a131b9b79",
+      "contentSha256": "ba500732d7ba0d27177045df6a443ba39eb300de1129409e904957813577ebf1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A 1250-byte frame takes 100 µs at 100 Mbps. Equating this to round-trip propagation over 2 km gives 20,000 km/s.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.6.1, CSMA CD: GATE CSE 2015 | Set 3 | Question: 6, PDF p. 117 (key p. 165). https://gateoverflow.in/8400/gate-cse-2015-set-3-question-6",
+          "answer": "D (20,000 km/s)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 104,
+      "id": "816a5f40-7065-45fc-b286-a8c1049fbcb9",
+      "contentSha256": "050443b21b0333c7c32a56084172b382adba2c322edf055655b5a6309e61e6bc",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "12",
+      "status": "verified",
+      "reason": "The data packet takes 8 ms to serialize. Solving 8/(8+2d)=0.25 yields a one-way delay of 12 ms.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.20.2, MAC Protocol: GATE CSE 2015 | Set 2 | Question: 8, PDF p. 136 (key p. 165). https://gateoverflow.in/8056/gate-cse-2015-set-2-question-8",
+          "answer": "12 ms",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.30, PDF p. 2 (table p. 3, book p. 671)",
+          "answer": "12 ms",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "12",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 105,
+      "id": "652f98e6-3837-4821-a800-673a5b8020d1",
+      "contentSha256": "7ba7ff9aaded9d333ab25fb1e116d013a887bebfeaa1548811cb347aeba01252",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0.4404",
+      "status": "verified",
+      "reason": "Sum the four independent exactly-one-transmitter probabilities: 0.0336+0.0756+0.1296+0.2016 = 0.4404.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.31.1, Slotted Aloha: GATE CSE 2015 | Set 1 | Question: 29, PDF p. 151 (key p. 165). https://gateoverflow.in/8253/gate-cse-2015-set-1-question-29",
+          "answer": "0.4404",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "0.4404",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 106,
+      "id": "935aa5a0-bd4e-4fff-8eca-2c55760e6468",
+      "contentSha256": "dd247d755b650d5618734a4475259eb9ab56d57ed322d111e6ee40dab16ebc19",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "320",
+      "status": "verified",
+      "reason": "At 50% utilization, frame serialization must be at least the 40 ms round-trip propagation time. At 64 kbps, that is 2560 bits or 320 bytes.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.33.1, Stop and Wait: GATE CSE 2015 | Set 1 | Question: 53, PDF p. 152 (key p. 165). https://gateoverflow.in/8363/gate-cse-2015-set-1-question-53",
+          "answer": "320 bytes",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.29, PDF p. 2 (table p. 3, book p. 671)",
+          "answer": "320 bytes",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "320",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 107,
+      "id": "5c0e1596-4aa3-4ede-8094-c4ff591e92d7",
+      "contentSha256": "c1c43b3f5150e564f7925c91fa1706cbb6ca55a7e34b438bffbcd5691467b2fa",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The 25 ms one-way path contains 25 frame transmission times of 1 ms each. Distinguishing 25 values requires ceil(log₂25)=5 bits.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.30.6, Sliding Window: GATE CSE 2009 | Question: 57, ISRO2016-75, PDF p. 149 (key p. 165). https://gateoverflow.in/1340/gate-cse-2009-question-57-isro2016-75",
+          "answer": "D (5 bits)",
+          "agrees": true
+        },
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.29.1, Sliding Window: GATE CSE 2009 | Question: 57, ISRO2016-75, PDF p. 82 (key p. 89). https://gateoverflow.in/1340/gate-cse-2009-question-57-isro2016-75",
+          "answer": "D (5 bits)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.25, PDF p. 2 (table p. 3, book p. 671)",
+          "answer": "d (5 bits)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 108,
+      "id": "bf29971d-3e3c-423c-800d-c26ac808902c",
+      "contentSha256": "d85d6b4c48b49474b89b6165340476ed84e87c89b6de9b952bdfc303ebbe1b21",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Division of the zero-padded message 11001001000 by 1001 in GF(2) leaves 011. The transmitted codeword is 11001001011.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.5.1, CRC Polynomial: GATE CSE 2007 | Question: 68, ISRO2016-73, PDF p. 116 (key p. 165). https://gateoverflow.in/1266/gate-cse-2007-question-68-isro2016-73",
+          "answer": "B (11001001011)",
+          "agrees": true
+        },
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.2.1, CRC Polynomial: GATE CSE 2007 | Question: 68, ISRO2016-73, PDF p. 64 (key p. 88). https://gateoverflow.in/1266/gate-cse-2007-question-68-isro2016-73",
+          "answer": "B (11001001011)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.16, PDF p. 1 (table p. 3, book p. 671)",
+          "answer": "b (11001001011)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 109,
+      "id": "5639d517-0d08-4abc-a2fa-03a0b5eff497",
+      "contentSha256": "04471e778fccd657ba4679a4cbabca1041df57147d3d737f9224c8f45ca41c52",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "A bit lasts 10⁻⁷ s, or 0.1 µs. The signal travels 20 m in that time, which is choice C in this version.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.36.1, Token Ring: GATE CSE 2007 | Question: 66, ISRO2016-71, PDF p. 87 (key p. 89). https://gateoverflow.in/1264/gate-cse-2007-question-66-isro2016-71",
+          "answer": "C (20 metres)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 110,
+      "id": "90f3e161-245e-45c0-b44a-880e9bf6975b",
+      "contentSha256": "bec190789fdf79e98fcfc40b5966363af437ec1153f94899e3097e4cbd9bdce0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "After detecting a collision, a CSMA/CD transmitter sends a jam sequence so the other stations can recognize the collision.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.3.2, CSMA CD: ISRO CSE 2016 | Question: 69, PDF p. 65 (key p. 88). https://gateoverflow.in/55519/isro-cse-2016-question-69",
+          "answer": "C (jam)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 111,
+      "id": "f24bdaf9-db2a-4c22-9bee-85bf8e177a4c",
+      "contentSha256": "06451bd4df2eb8e3fc13983eaacd1d11a3d5044abcb09315afdefd8f11a9e33a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Payload bit stuffing inserts zeros in the user stream to prevent the flag pattern from occurring inside a frame.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.4.3, Communication: ISRO CSE 2007 | Question: 24, ISRO CSE 2016 | Question: 67, PDF p. 66 (key p. 88). https://gateoverflow.in/49497/isro-cse-2007-question-24-isro-cse-2016-question-67",
+          "answer": "A (stuff a zero into the user stream)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 112,
+      "id": "6c6b870d-8e77-470e-ad5c-6b01f66cdeca",
+      "contentSha256": "dcfc6c2d123a1e26314411fed6ab995fce35c29aeed4d7f32356413de3dbade8",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "4",
+      "status": "verified",
+      "reason": "The frame takes roughly 63–64 ms to serialize. At least ceil(1+300 ms/Tframe)=6 frames must fit in the window. Selective repeat needs at least 12 sequence values, so four bits suffice.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.30.10, Sliding Window: GATE CSE 2016 | Set 2 | Question: 55, PDF p. 150 (key p. 165). https://gateoverflow.in/39577/gate-cse-2016-set-2-question-55",
+          "answer": "4 bits",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "4",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 113,
+      "id": "d6b8f0bc-6d9a-45ea-b58d-1e124d0d5b0f",
+      "contentSha256": "05d4e7d01bf1ac616e19d1b72937420dc05022a1a226bbb3fd34fa83a1d645c4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "In the standard basic model, three non-overlapping 2.4 GHz channels are available and unicast delivery is acknowledged. RTS/CTS reserves the medium for collision avoidance, so only I and III hold.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow 2022 Volume 3, §2.33.1, GATE CSE 2016 Set 2 Q54, PDF p. 273 and the chapter key. https://github.com/GATEOverflow/GO-PDFs/releases/download/gatecse-2022-vol1%2C2/Volume-3.pdf",
+          "answer": "B (I and III only)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 114,
+      "id": "3bcb31f8-40ab-4ffa-835a-d43ae128d53c",
+      "contentSha256": "61a2a283d4e7375cdfa4a353c47190d99978f16e9cc104bca7f5b273255a5d7f",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "200",
+      "status": "verified",
+      "reason": "Round-trip propagation takes 80 µs. At 20×10⁶ bits/s a frame lasting that long is 1600 bits, or 200 bytes.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.6.2, CSMA CD: GATE CSE 2016 | Set 2 | Question: 53, PDF p. 117 (key p. 165). https://gateoverflow.in/39589/gate-cse-2016-set-2-question-53",
+          "answer": "200 bytes",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "200",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 115,
+      "id": "d1573a5f-5226-46e4-9a90-16628017772d",
+      "contentSha256": "8b1073708ff1a6eaf4dc108a8c7e41e5427df7607a80f51901e2bd703eec060a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Binary exponential backoff expands the random retry interval after collisions, decreasing the chance of repeated simultaneous retries.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.13.3, Ethernet: GATE CSE 2016 | Set 2 | Question: 24, PDF p. 127 (key p. 165). https://gateoverflow.in/39543/gate-cse-2016-set-2-question-24",
+          "answer": "D (backoff lowers retry collisions)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 116,
+      "id": "6a58faaa-deac-4d35-9ea7-03e2802242c6",
+      "contentSha256": "1a9deaaae8f173c7db1bb2bab2dfbd4d2f08b696a5fabe33ff8428e993c526fc",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "2500",
+      "status": "verified",
+      "reason": "Data serialization is 100 ms and ACK serialization another 100 ms. The two 100 ms propagation legs bring the cycle to 400 ms, so throughput is 1000 bytes/0.4 s.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.33.2, Stop and Wait: GATE CSE 2016 | Set 1 | Question: 55, PDF p. 152 (key p. 165). https://gateoverflow.in/39696/gate-cse-2016-set-1-question-55",
+          "answer": "2500 bytes/s",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "2500",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 117,
+      "id": "a11c86bf-5385-4a75-b38b-83867073cc39",
+      "contentSha256": "c9fd6b5977c99f8352d4c46cd958dce8b77d2358d9a7eca340c9333e93ea8f72",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "An Ethernet frame smaller than the 64-octet MAC minimum is called a runt.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.12.4, Ethernet: ISRO CSE 2017 | Question: 33, PDF p. 71 (key p. 89). https://gateoverflow.in/128662/isro-cse-2017-question-33",
+          "answer": "D (runt frame)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 118,
+      "id": "67a2a52f-b16f-4e36-b104-0522c36c36f9",
+      "contentSha256": "3cbd8e01c5eede1f80d1dbf550797ad71e167d2b4317b9c80964fdee7f571fd9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The IEEE 802.11 distributed MAC uses carrier sense multiple access with collision avoidance.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.20.4, MAC Protocol: ISRO CSE 2017 | Question: 32, PDF p. 75 (key p. 89). https://gateoverflow.in/128661/isro-cse-2017-question-32",
+          "answer": "B (CSMA/CA)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 119,
+      "id": "771d78e9-bc6c-4fb9-85f1-3194fba1a5c2",
+      "contentSha256": "283cd440e89b630e8aa8afd18de5f8b4b9ddf172708eca90dc5a466334293565",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "A full mesh needs one link per unordered pair of devices, n(n−1)/2. A star needs one link from each of n−1 peripherals to the center.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.25.2, Network topologies: ISRO CSE 2017 | Question: 30, PDF p. 80 (key p. 89). https://gateoverflow.in/128657/isro-cse-2017-question-30",
+          "answer": "A (n(n−1)/2, n−1)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 120,
+      "id": "5bccbce6-8085-4f43-a16b-6342586617a9",
+      "contentSha256": "b06541cb0701595d3e95c99578067dab9bdfc769dcaf9da596ed8b520f767c4b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "UTP stands for unshielded twisted pair.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.21.2, Network Layer: ISRO CSE 2017 | Question: 28, PDF p. 75 (key p. 89). https://gateoverflow.in/128646/isro-cse-2017-question-28",
+          "answer": "C (unshielded twisted pair)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 121,
+      "id": "40fe9435-c4d1-4255-8f8f-ebbde2a423a8",
+      "contentSha256": "6a8d83b5555abb77b1e14d11c824b35958abcac3d22a54e15d29dfa2b928f6e0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "FDDI's backbone uses two counter-rotating physical rings.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.25.1, Network topologies: ISRO CSE 2017 | Question: 27, PDF p. 80 (key p. 89). https://gateoverflow.in/128644/isro-cse-2017-question-27",
+          "answer": "B (ring)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 122,
+      "id": "06bfe803-2a57-4901-9cea-8426b9fd8bca",
+      "contentSha256": "db33274d63ce5f9f47749d6ce6a9ab9699f3758d4b0e50a9410dbc4f526b00e4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Serialization is 50,000×8/10⁶=0.4 s, and propagation is 10⁷/(2×10⁸)=0.05 s. Thus p=400 ms and q=50 ms.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.21.2, Network Flow: GATE CSE 2017 | Set 2 | Question: 35, PDF p. 137 (key p. 165). https://gateoverflow.in/118537/gate-cse-2017-set-2-question-35",
+          "answer": "D (p=400 ms, q=50 ms)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.33, PDF p. 2 (table p. 3, book p. 671)",
+          "answer": "d (p=400 ms, q=50 ms)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 123,
+      "id": "77e9be91-b80f-4a86-9e70-1ab4091594fb",
+      "contentSha256": "98576d22d025e99ffea696587903f672cf92e0a1556d83585730d55b65eb3956",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Pairwise XORs have minimum weight 3, for example 00000 XOR 01011. The guaranteed correction capacity is floor((3−1)/2)=1.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.12.4, Error Detection: GATE CSE 2017 | Set 2 | Question: 34, PDF p. 126 (key p. 165). https://gateoverflow.in/118376/gate-cse-2017-set-2-question-34",
+          "answer": "A (minimum distance 3 and correction 1)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 124,
+      "id": "402292fa-4183-4532-b05e-f670b0ace7a0",
+      "contentSha256": "8fd7e5dd53ed4cc9ad2212c747902f5e08e6db15b79404e815c24c970e497f06",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "88.34",
+      "natRange": {
+        "min": 86.5,
+        "max": 89.5
+      },
+      "status": "verified-with-note",
+      "reason": "The 1980-byte frame takes 15.84 ms and its 1960 useful bytes correspond to 15.68 ms. With two 0.75 ms propagation legs, 0.25 ms processing and the 0.16 ms ACK, a 17.75 ms cycle gives 88.34% useful efficiency.",
+      "note": "Counting processing at both ends or counting all information-frame bytes changes the computed percentage. The accepted key range is 86.5–89.5%.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.33.3, Stop and Wait: GATE CSE 2017 | Set 1 | Question: 45, PDF p. 152 (key p. 165). https://gateoverflow.in/118328/gate-cse-2017-set-1-question-45",
+          "answer": "86.5–89.5%",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "88.34",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 125,
+      "id": "165e13ac-c93f-489f-bc39-a368ae43f7d7",
+      "contentSha256": "1bbd31e6c000b8df5ace6ee9227741596bea6938c6753c68aaa12939e9fdd8d3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Division of 01011011000 by the generator bits 1011 in GF(2) leaves 101, giving 01011011101.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.5.2, CRC Polynomial: GATE CSE 2017 | Set 1 | Question: 32, PDF p. 116 (key p. 165). https://gateoverflow.in/118313/gate-cse-2017-set-1-question-32",
+          "answer": "C (01011011101)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 126,
+      "id": "d0fab8fa-d5e8-421a-a739-ab365a2af3f9",
+      "contentSha256": "55144778132b5ca3a6574f3372ff7448e6a10a000f0e5fb8c1d101cd3f1d43fe",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The path holds 0.08×128,000=10,240 bits per round trip. The 32-byte packets contain 256 bits, giving 40 packets.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.30.3, Sliding Window: GATE CSE 2006 | Question: 44, PDF p. 148 (key p. 165). https://gateoverflow.in/1820/gate-cse-2006-question-44",
+          "answer": "B (40 frames)",
+          "agrees": true
+        },
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.29.3, Sliding Window: ISRO CSE 2018 | Question: 44, PDF p. 82 (key p. 89). https://gateoverflow.in/213544/isro-cse-2018-question-44",
+          "answer": "B (40 frames)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.14, PDF p. 1 (table p. 3, book p. 671)",
+          "answer": "b (40 frames)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 127,
+      "id": "26209cc8-d5da-49a1-a55c-f3e4f2248330",
+      "contentSha256": "ba0de5a6dead0c5500a117dee7ab3117d59b7a8282725bc6538c0cd7cc6b1231",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "A CRC generator of degree r detects every burst of length at most r. Including x+1 in the generator also detects all error patterns of odd weight.",
+      "note": "For the odd-weight guarantee, specify “a CRC whose generator has x+1 as a factor.” That guarantee depends on the generator.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.2.2, CRC Polynomial: ISRO CSE 2018 | Question: 11, PDF p. 65 (key p. 88). https://gateoverflow.in/213577/isro-cse-2018-question-11",
+          "answer": "B (CRC)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 128,
+      "id": "3cee8272-d3b0-48aa-b599-ff17e0bf7b6c",
+      "contentSha256": "2661e8b3fefe147e7f57eb2254118232787e6a8d74b9f7957f68126fb16d4cc3",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "50",
+      "status": "verified",
+      "reason": "Q must sense P's signal by the end of its 5-unit carrier-sense interval. The bound d/10≤5 gives d≤50 m.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.6.3, CSMA CD: GATE CSE 2018 | Question: 55, PDF p. 117 (key p. 165). https://gateoverflow.in/204130/gate-cse-2018-question-55",
+          "answer": "50 m",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "50",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 129,
+      "id": "4de5ddd2-918b-4965-a2b0-1950a0fa15bb",
+      "contentSha256": "f6c780a3a585c02e8673983c6c2187962b3a59c244610d6deeb5e73f47da9331",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "3",
+      "status": "verified",
+      "reason": "Connecting k switches requires at least k−1 inter-switch links. The remaining host ports are at most 8k−2(k−1)=6k+2. Two give 14 and three can serve 15.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.19.4, LAN Technologies: GATE CSE 2019 | Question: 49, PDF p. 136 (key p. 165). https://gateoverflow.in/302799/gate-cse-2019-question-49",
+          "answer": "3 switches",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "3",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 130,
+      "id": "8dfa52cb-91d7-4d46-8cfd-dff708ae8051",
+      "contentSha256": "29580253ecd2e8d174dec871727db7ad2d1b98aab27af43cc7d452225e9e470a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "On the local subnet an ARP request is sent as an Ethernet broadcast and identifies the requested IPv4 address in its ARP payload.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.23.6, Network Protocols: GATE CSE 2019 | Question: 29, PDF p. 140 (key p. 165). https://gateoverflow.in/302819/gate-cse-2019-question-29",
+          "answer": "C (broadcast MAC on the local subnet)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 131,
+      "id": "d010d60e-ddc7-474c-99ee-cf3b86813440",
+      "contentSha256": "753c4ed2990d7e3f02732b7f6e8147c5ef45554e91f2bfdf05feb4c008b0160c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "NRZ needs one signal interval per bit; Manchester uses two half-bit intervals. At the same data rate the NRZ signal clock is half the Manchester signal clock.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO 2025 (isro_w_cover.pdf) §5.9.2, Encoding: ISRO CSE 2020 | Question: 52, PDF p. 70 (key p. 88). https://gateoverflow.in/331403/isro-cse-2020-question-52",
+          "answer": "B (half the clock frequency)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 132,
+      "id": "e8f0d635-14ce-4b38-b52c-5d3812d13707",
+      "contentSha256": "5a17ddddc9abf1858648c18b1344f5d66d18346bef4d3139daa298e1510face5",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "135",
+      "natRange": {
+        "min": 130,
+        "max": 140
+      },
+      "status": "verified",
+      "reason": "Each frame lasts 1 ms and pure ALOHA's vulnerable period is 2 ms. Poisson attempts at 1000/s succeed at rate 1000e^(−1000×0.002) ≈135.34/s, rounded to 135.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.27.1, Pure Aloha: GATE CSE 2021 | Set 2 | Question: 54, PDF p. 143 (key p. 165). https://gateoverflow.in/357483/gate-cse-2021-set-2-question-54",
+          "answer": "130–140 frames/s",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2021 CS-2 Q54 final key, IISc archive. https://gate2024.iisc.ac.in/wp-content/uploads/2021/cs_2021.pdf",
+          "answer": "130 to 140 frames/s",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "135",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 133,
+      "id": "7dd13cac-e39f-438e-bf6b-952911ca7d12",
+      "contentSha256": "767afffccbcd32d70ceee9fe03ac6bc14f5d2265924456266e0bd204c49210b6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Append three zeros to 11000 and divide by 1011. The GF(2) remainder, in high-to-low check-bit order, is 100.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.5.3, CRC Polynomial: GATE CSE 2021 | Set 2 | Question: 34, PDF p. 116 (key p. 165). https://gateoverflow.in/357506/gate-cse-2021-set-2-question-34",
+          "answer": "C (100)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.37, PDF p. 3 (table p. 3, book p. 671)",
+          "answer": "c (100)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 134,
+      "id": "af80ceec-4ff6-4d1a-9490-1d25648e71e0",
+      "contentSha256": "8c1fb94c4ddc4946deab54d382bf88b18fdbc5b72926fa19c4e7727fffe8a43e",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "51",
+      "natRange": {
+        "min": 50,
+        "max": 52
+      },
+      "status": "verified",
+      "reason": "A frame takes 2 ms and an ACK takes 0.01 ms. One window cycle takes 202.01 ms, so 2W/202.01≥0.5 requires at least 51 frames. The accepted range is 50–52.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.23.7, Network Protocols: GATE CSE 2021 | Set 1 | Question: 49, PDF p. 140 (key p. 165). https://gateoverflow.in/357402/gate-cse-2021-set-1-question-49",
+          "answer": "50–52 frames",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.35, PDF p. 2 (table p. 3, book p. 671)",
+          "answer": "51 frames",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2021 CS-1 Q49 final key, IISc archive. https://gate2024.iisc.ac.in/wp-content/uploads/2021/cs1_2021.pdf",
+          "answer": "50 to 52 frames",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "51",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 135,
+      "id": "85bbb777-cb09-4d3a-9b83-27d8287e11d9",
+      "contentSha256": "362a025da85bc8097d0c31f8a9f6e9b17fe1f073d9815ea8d056d6718b33f0c1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "In the specified 12-bit Hamming layout, even parity at position 1 gives x=0. The c₈ parity group covers x, 0, 1 and 1, so y=0.",
+      "note": "Delete the second d₄. The 12-bit word is d₈ d₇ d₆ d₅ c₈ d₄ d₃ d₂ c₄ d₁ c₂ c₁. This resolves the length mismatch.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.15.2, Hamming Code: GATE CSE 2021 | Set 1 | Question: 29, PDF p. 130 (key p. 165). https://gateoverflow.in/357422/gate-cse-2021-set-1-question-29",
+          "answer": "A (x=0, y=0)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.36, PDF p. 2–3 (table p. 3, book p. 671)",
+          "answer": "a (x=0, y=0)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 136,
+      "id": "af315f68-11cf-4e7b-b751-dbcf2faf891b",
+      "contentSha256": "08d03f90b30dce2410cc6e0e7e30109859a9ec79e6a839058120c625db654a79",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "A standard ARP request is broadcast to find the target MAC, and the target replies by unicast to the requester's MAC. S₁ is false and S₂ is true.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.23.8, Network Protocols: GATE CSE 2021 | Set 1 | Question: 8, PDF p. 141 (key p. 165). https://gateoverflow.in/357444/gate-cse-2021-set-1-question-8",
+          "answer": "C (S₁ false and S₂ true)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.34, PDF p. 2 (table p. 3, book p. 671)",
+          "answer": "a (S₁ false and S₂ true, app C)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 137,
+      "id": "34a0783a-c4fe-4bd2-b99c-109e8a2acf26",
+      "contentSha256": "df2267aa049bbca73d55f3c14c0a3e6bc57a73103a60d5552884801f0f1f10a8",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "7.08",
+      "natRange": {
+        "min": 7.07,
+        "max": 7.09
+      },
+      "status": "verified",
+      "reason": "Propagation over 2100 km takes 7 ms. Serializing 8000 bits at 100 Mbps takes 0.08 ms, for a total of 7.08 ms.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.8.2, Communication: GATE CSE 2022 | Question: 49, PDF p. 119 (key p. 165). https://gateoverflow.in/371887/gate-cse-2022-question-49",
+          "answer": "7.07–7.09 ms",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.38, PDF p. 3 (table p. 3, book p. 671)",
+          "answer": "7.08 ms",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "7.08",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 138,
+      "id": "6398f61d-3be2-45d5-aaf6-43303825fa48",
+      "contentSha256": "c8a3970bd63852839000d5e57c908f65ff3e3db09ab7f536671160ef4db21aec",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Stop-and-wait utilization is transmission time divided by transmission time plus round-trip delay. A longer link increases the propagation term and a higher rate reduces serialization time.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.33.4, Stop and Wait: GATE CSE 2023 | Question: 7, PDF p. 153 (key p. 165). https://gateoverflow.in/399305/gate-cse-2023-question-7",
+          "answer": "B (longer link and higher transmission rate)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy, ISO-OSI Stack and SWP Q1.39, PDF p. 3 (table p. 3, book p. 671)",
+          "answer": "b (longer link and higher transmission rate)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 139,
+      "id": "93c5dced-34a3-418b-93a0-ff3eb2ff5265",
+      "contentSha256": "4e5de6a04b04a9c98049e0348091b8ee8775b4af76359b4a69198105cdec06a1",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "500",
+      "status": "verified",
+      "reason": "Round-trip propagation takes 2×500/(2×10⁸)=5 µs. At 10⁸ bits/s a frame must contain at least 500 bits to span that interval.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.13.6, Ethernet: GATE CSE 2024 | Set 2 | Question: 45, PDF p. 128 (key p. 165). https://gateoverflow.in/422852/gate-cse-2024-set-2-question-45",
+          "answer": "500 bits",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "500",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 140,
+      "id": "c2afffe8-23ab-4c02-a8e1-b05e52fd714f",
+      "contentSha256": "ac994b9f441cd1b612d9fb103700263e0fc8aaad8473bb329ae68435ab7bd952",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Each of the 1000 chunks takes 8 ms per link. The two-hop store-and-forward pipeline completes in 1001 serialization intervals, which is 8.008 s.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.28.8, Routing: GATE CSE 2024 | Set 1 | Question: 26, PDF p. 145 (key p. 165). https://gateoverflow.in/422816/gate-cse-2024-set-1-question-26",
+          "answer": "B (8.008 s)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 141,
+      "id": "c0846662-2325-4539-98fd-fb0eac5a1796",
+      "contentSha256": "0d9b5d94288b9813654cfc26b147beea6fed4c1adb90d66616b175f7b5a2b7a9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Serialization is 1.5 s and the stop-and-wait cycle is 1.7 s. Utilization is about 88.2353%, making A the closest choice.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.7.1, Channel Utilization: GATE CSE 2025 | Set 2 | Question: 26, PDF p. 118 (key p. 165). https://gateoverflow.in/460809/gate-cse-2025-set-2-question-26",
+          "answer": "A (88.23%)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 142,
+      "id": "c651f457-54b8-482b-8634-44615482a820",
+      "contentSha256": "cd47fd03c7e10f6d0ac10cc80919f0d54ce82223dc5ce6d2a20d67f899165577",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The network layer routes packets, the transport layer provides host-to-host transport, and the data link layer frames traffic and handles link errors.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.25.1, Osi Model: GATE CSE 2025 | Set 1 | Question: 6, PDF p. 143 (key p. 165). https://gateoverflow.in/460074/gate-cse-2025-set-1-question-6",
+          "answer": "B (a–I, b–III, c–II)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 143,
+      "id": "01c5c19f-aacb-470c-8f87-0c6481008af4",
+      "contentSha256": "42424942a1ba9bd1f1c078e2633adf20d6b6231a5c84cf23364636574e417765",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "30",
+      "status": "verified",
+      "reason": "Full-rate sending assigns 10⁸/8 sequence numbers per second, or 750 million in 60 s. This exceeds 2²⁹ and fits within 2³⁰. The space also comfortably exceeds the bandwidth-delay window.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.10.1, Data Communication: GATE CSE 2026 | Set 2 | Question: 55, PDF p. 121 (key p. 165). https://gateoverflow.in/523091/gate-cse-2026-set-2-question-55",
+          "answer": "30 bits (30:30)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "30",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 144,
+      "id": "6be9d632-67be-4bc5-860f-3616dd5cd556",
+      "contentSha256": "3c6bc423203c9d82e6c1e48096efb020d4aacf2ed6dcfee8e467a85916910ba4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Dividing 110001011000 by 1001 over GF(2) leaves the three-bit remainder 100.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.5.4, CRC Polynomial: GATE CSE 2026 | Set 2 | Question: 33, PDF p. 117 (key p. 165). https://gateoverflow.in/523113/gate-cse-2026-set-2-question-33",
+          "answer": "D (100)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 145,
+      "id": "b334da93-01db-4085-a39f-0d5ec5dfcb7e",
+      "contentSha256": "8c8c05cd7c677db04b089571df80311ebf91626274bd3e88990ae55a1c29cb9e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The bottleneck link is 500 kbps. Delivering 32 million bits at that rate takes 64 s under the stated negligible-overhead model.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.28.10, Routing: GATE CSE 2026 | Set 2 | Question: 11, PDF p. 146 (key p. 165). https://gateoverflow.in/523135/gate-cse-2026-set-2-question-11",
+          "answer": "B (64 s)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 146,
+      "id": "d174fb08-6fff-4adb-b340-1ff569b5fd62",
+      "contentSha256": "28b9039938559226a90477eeaab0560fa4fd6fce0af6ce2913c7c873f6f398d5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A frame takes 10 ms to send and its first ACK returns after 10+2×100=210 ms. Keeping the link busy until then requires 21 frames in the window.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf §2.30.11, Sliding Window: GATE CSE 2026 | Set 1 | Question: 35, PDF p. 150 (key p. 165). https://gateoverflow.in/523045/gate-cse-2026-set-1-question-35",
+          "answer": "B (21 frames)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent calculation or protocol trace of the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

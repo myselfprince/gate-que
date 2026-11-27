@@ -1,0 +1,529 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "7. Algorithms",
+  "chapter": "4. Dynamic Programming",
+  "slug": "7-algorithms--4-dynamic-programming",
+  "reviewedAt": "2026-11-26",
+  "sources": {
+    "gateOverflowPdfs": [
+      {
+        "file": "G:/GateOverflow PYQ PDF all years/filter1_volume2.pdf",
+        "sha256": "457f9e583b943b3c41e78d8431b09e322123b0d80765396af36ee2100196714f",
+        "answerKeyPages": [
+          114,
+          115,
+          254
+        ]
+      },
+      {
+        "file": "G:/GateOverflow PYQ PDF all years/filter1_volume3.pdf",
+        "sha256": "5c552941136eb96612fabec8a5b2cb67fc07c17023ce15628408ca27d6640c24",
+        "answerKeyPages": [
+          272
+        ]
+      }
+    ],
+    "madeEasyPdf": {
+      "file": "C:/Users/Prince/Desktop/MadeEasy PYQ PDF/7. Algorithms/4. Dynamic Programming.pdf",
+      "sha256": "1cd445300d7384cf5e4c49228b4170fb15af1e2593e99a4278528f0a31c6eaad",
+      "questionPage": 1
+    },
+    "madeEasyKeyPdf": {
+      "file": "C:/Users/Prince/Desktop/MadeEasy PYQ PDF/All Subject Solutions Keys/Algorithms.pdf",
+      "sha256": "9fe37bc195b22601067440f8b69e601670abcb0f2e227306004efdaedb199f9b",
+      "answerKeyPage": 9,
+      "bookPage": 474
+    },
+    "yearPapers": "data/papers/*.json, linked by source.copiedFrom.questionId and mapped by option content",
+    "original2008Paper": "https://gate.iitk.ac.in/GATE2023/doc/papers/2008/cs_2008.pdf (question wording)"
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "madeeasy-algorithms-dynamic-4-1",
+      "contentSha256": "6c3e3650dc207f3587f6f2b3abbc3c3141f773b311dbdd16fe02ac59daec463a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Floyd–Warshall builds all-pairs distances by allowing one more intermediate vertex k at each stage. It takes the minimum of the previous distance i→j and the previous distances i→k plus k→j.",
+      "note": "The Made Easy table agrees with A. Its explanation names Bellman–Ford, whose standard formulation is single-source. Floyd–Warshall is the direct all-pairs dynamic program.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.2.6, Algorithm Design Techniques: GATE CSE 1998 | Question: 1.21, ISRO2008-16, PDF p. 26 (key p. 114). https://gateoverflow.in/1658/gate-cse-1998-question-1-21-isro2008-16",
+          "answer": "A (Dynamic programming)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Dynamic Programming Q4.1, Algorithms.pdf p. 9 (book p. 474)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "madeeasy-algorithms-dynamic-4-2",
+      "contentSha256": "c41e519b7607c8c3d9e9d39f9b5144bd270b83cb6feb923c32acc6aa77276ca0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Row-major and column-major indexing both take constant time in the usual RAM model. Matrix layout can affect cache locality, while the fixed multiplication algorithm performs the same number of arithmetic operations.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.43.9, Time Complexity: GATE CSE 2004 | Question: 39, PDF p. 106 (key p. 115). https://gateoverflow.in/1036/gate-cse-2004-question-39",
+          "answer": "D (independent of the storage scheme)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Dynamic Programming Q4.2, Algorithms.pdf p. 9 (book p. 474)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q39, linked by source.copiedFrom.questionId",
+          "answer": "D (independent of the storage scheme)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "madeeasy-algorithms-dynamic-4-3",
+      "contentSha256": "9392286ea6087ce804b5f3ea116fdca8b1eecec75f9fa4e134aacc36549ba67c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Inserting 1 through 10 with lower-median overflow splits produces splits at insertions 4, 6, 8 and twice at 10. Exhaustively enumerating the reachable tree shapes with both legal split medians gives a maximum of five splits.",
+      "note": "Made Easy keys A (3). Order 4 allows at most four children and three keys per node. A legal lower-median overflow policy attains C (5), which agrees with GATE Overflow and the year-paper key.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.2.16, B Tree: GATE CSE 2008 | Question: 41, PDF p. 186 (key p. 272). https://gateoverflow.in/453/gate-cse-2008-question-41",
+          "answer": "C (5 splits)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Dynamic Programming Q4.3, Algorithms.pdf p. 9 (book p. 474)",
+          "answer": "a (3 splits)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q41, linked by source.copiedFrom.questionId",
+          "answer": "C (5 splits)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Exhaustive enumeration of order-four tree shapes and an increasing-order insertion trace",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "madeeasy-algorithms-dynamic-4-4",
+      "contentSha256": "64913dc072a49714b054182851e036fa7892c2a3bfa0a87a260ebcf758cf991b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "A k-bit target can be 2^k−1, so filling the n-by-(W+1) table takes pseudopolynomial time in binary input length. Unary input length includes W. Subset sum is in NP by certificate verification and is weakly NP-complete.",
+      "note": "Made Easy keys D. D is true when read as printed in the original 2008 paper, “The subset sum problem is NP-hard,” which also corrects the app’s “in NP-hard” typo. B is the intended false statement for the usual Θ(nW) dynamic program. The question states O(nW), an upper bound. No matching question was found in the three GATE Overflow PDFs.",
+      "sources": [
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Dynamic Programming Q4.4, Algorithms.pdf p. 9 (book p. 474)",
+          "answer": "d (the claim that subset sum is NP-hard)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q44, linked by source.copiedFrom.questionId",
+          "answer": "B (polynomial time when the input is encoded in binary)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "madeeasy-algorithms-dynamic-4-5",
+      "contentSha256": "43075fef6b57d4bf6bed812ca8c5b45deb5848f152842a7e379e5ae0891c2e59",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "A subset reaching j either excludes a_i or includes it once. In both cases the remaining selection comes from the first i−1 elements, giving X[i−1,j] OR X[i−1,j−a_i].",
+      "note": "The linked passage should ask whether a subset S′ of S sums to W and define the Boolean array X with n rows and W+1 columns indexed by 0 through W. This resolves “sum of W,” Y versus X, and W−1 columns in the app.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.16.1, Dynamic Programming: GATE CSE 2008 | Question: 80, PDF p. 39 (key p. 114). https://gateoverflow.in/498/gate-cse-2008-question-80",
+          "answer": "B (X[i−1,j] OR X[i−1,j−a_i])",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Dynamic Programming Q4.5, Algorithms.pdf p. 9 (book p. 474)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q80, linked by source.copiedFrom.questionId",
+          "answer": "B (X[i−1,j] OR X[i−1,j−a_i])",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Derivation and comparison against enumerated subsets for example prefixes",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "madeeasy-algorithms-dynamic-4-6",
+      "contentSha256": "e5308fe242ddf659fce2d1d195efdbddcb70ff3bbe4938c995556b231461dcff",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "X[n,W] considers the full set and target W. It is true exactly when a subset of the full set sums to W.",
+      "note": "Use the corrected shared passage in Q5. Under the literal “implies” wording, A (X[1,W]) is also sufficient when true. C is the keyed single choice and the complete decision test. A precise stem is “Which entry is true if and only if some subset of S sums to W?”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.16.2, Dynamic Programming: GATE CSE 2008 | Question: 81, PDF p. 39 (key p. 114). https://gateoverflow.in/43484/gate-cse-2008-question-81",
+          "answer": "C (X[n,W])",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Dynamic Programming Q4.6, Algorithms.pdf p. 9 (book p. 474)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q81, linked by source.copiedFrom.questionId",
+          "answer": "C (X[n,W])",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Subset-table definition and counterexample to the uniqueness of the literal implication",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "madeeasy-algorithms-dynamic-4-7",
+      "contentSha256": "edc2fa4a718dc5335d45e6eaa866bf9947d78477195dd75032145c973e519f77",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "For unequal last symbols, any common subsequence omits at least one of them, so take the larger of the two prefix solutions. For equal last symbols the recurrence is 1 + l(i−1,j−1).",
+      "note": "In the shared passage use “the LCS of X[m] and Y[n]” and uppercase X[i−1] for both comparisons. The stated length of X is m.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.16.3, Dynamic Programming: GATE CSE 2009 | Question: 53, PDF p. 40 (key p. 114). https://gateoverflow.in/1338/gate-cse-2009-question-53",
+          "answer": "C (expr2 = max(l(i−1,j), l(i,j−1)))",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Dynamic Programming Q4.7, Algorithms.pdf p. 9 (book p. 474)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q53, linked by source.copiedFrom.questionId",
+          "answer": "C (expr2 = max(l(i−1,j), l(i,j−1)))",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "madeeasy-algorithms-dynamic-4-8",
+      "contentSha256": "9c91b1ca378983d2766b5a3f542d7af28c1d85c39bb87698613f13a05f0aa858",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "The boundary row and column are zero. Each remaining cell reads its top, left or diagonal predecessor, all available in either increasing row-major or increasing column-major order.",
+      "note": "Use the same corrected shared passage as Q7, with X[m] and uppercase X[i−1].",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.16.4, Dynamic Programming: GATE CSE 2009 | Question: 54, PDF p. 40 (key p. 114). https://gateoverflow.in/43476/gate-cse-2009-question-54",
+          "answer": "B (either row-major or column-major order)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Dynamic Programming Q4.8, Algorithms.pdf p. 9 (book p. 474)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q54, linked by source.copiedFrom.questionId",
+          "answer": "B (either row-major or column-major order)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "madeeasy-algorithms-dynamic-4-9",
+      "contentSha256": "b75ee4a40f763ac4027ad103a8a6f1b1bbc2edacb0ae2d434f0a0ff494da6997",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Each value L_i uses the solved subproblem L_{i+1} when adjacent elements increase. A right-to-left pass followed by a maximum scan takes linear time.",
+      "note": "The recurrence computes the longest contiguous strictly increasing run. Evaluate i from n−2 down to 0 and return max(L_0, L_1, …, L_{n−1}). The app’s L_{n+1} is outside the defined array of lengths.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.16.6, Dynamic Programming: GATE CSE 2011 | Question: 25, PDF p. 41 (key p. 114). https://gateoverflow.in/2127/gate-cse-2011-question-25",
+          "answer": "A (dynamic programming paradigm)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Dynamic Programming Q4.9, Algorithms.pdf p. 9 (book p. 474)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q25, linked by source.copiedFrom.questionId",
+          "answer": "A (dynamic programming paradigm)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "madeeasy-algorithms-dynamic-4-10",
+      "contentSha256": "1ecaf45348b707ed278f0a6a83a430b2542031515cd690f4c3ffe80d762ee171",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The standard Bellman–Ford algorithm scans all Θ(n²) edges of the complete graph in each of n−1 relaxation passes, giving worst-case Θ(n³) time.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.4.2, Bellman Ford: GATE CSE 2013 | Question: 19, PDF p. 32 (key p. 114). https://gateoverflow.in/1441/gate-cse-2013-question-19",
+          "answer": "C (Θ(n³))",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Dynamic Programming Q4.10, Algorithms.pdf p. 9 (book p. 474)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "madeeasy-algorithms-dynamic-4-11",
+      "contentSha256": "36c9d85fc5241b1887b6fb9b371cd24cea0c6634b4381ed7a0ab699cc4b905f5",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "34",
+      "status": "verified",
+      "reason": "Enumerating the distinct subsequences gives three longest common strings, pqrr, qpqr and qprr, each of length four. Thus x + 10y = 4 + 10·3 = 34.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.16.7, Dynamic Programming: GATE CSE 2014 | Set 2 | Question: 37, PDF p. 41 (key p. 114). https://gateoverflow.in/1996/gate-cse-2014-set-2-question-37",
+          "answer": "34",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Dynamic Programming Q4.11, Algorithms.pdf p. 9 (book p. 474)",
+          "answer": "34",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Exhaustive enumeration of distinct subsequences of both strings",
+          "answer": "34",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "madeeasy-algorithms-dynamic-4-12",
+      "contentSha256": "06d43460dd7dddbec718d2d9e38a9ccdd22a1a6b0e55a31a267a32fea60a9edb",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "12",
+      "status": "verified-with-note",
+      "reason": "The cheapest alternative to edge 3–4 is 3→2→1→4 at cost 5+2+5=12. At x=12 the direct edge ties that path. For x>12, replacing the direct edge shortens any route that uses it.",
+      "note": "The opening should read “Consider the weighted undirected graph with 4 vertices.” The app’s “given by with” is extraneous.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.7.3, Data Structures: GATE CSE 2016 | Set 1 | Question: 38, PDF p. 227 (key p. 254). https://gateoverflow.in/39731/gate-cse-2016-set-1-question-38",
+          "answer": "12",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Dynamic Programming Q4.12, Algorithms.pdf p. 9 (book p. 474)",
+          "answer": "12",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Enumeration of all simple 3-to-4 paths avoiding the direct edge",
+          "answer": "12",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "madeeasy-algorithms-dynamic-4-13",
+      "contentSha256": "2d8c6749852f40ffd97657b227cbdd1b7aab438e3e6eba3f16b059f591e9e446",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "1500",
+      "status": "verified",
+      "reason": "The five parenthesizations cost 1500, 1750, 2000, 3000 and 3500. The minimum is A1((A2A3)A4), with multiplication costs 1000 + 250 + 250.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.27.2, Matrix Chain Ordering: GATE CSE 2016 | Set 2 | Question: 38, PDF p. 70 (key p. 115). https://gateoverflow.in/39587/gate-cse-2016-set-2-question-38",
+          "answer": "1500",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Dynamic Programming Q4.13, Algorithms.pdf p. 9 (book p. 474)",
+          "answer": "1500",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Exhaustive enumeration of the five matrix-chain parenthesizations",
+          "answer": "1500",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "madeeasy-algorithms-dynamic-4-14",
+      "contentSha256": "b42e9df419f87f0bee2b0434ff364ebf3465ffda2dfd9c2c8aad22eb83cf5316",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Among all 14 parenthesizations, ((F1(F2(F3F4)))F5) uniquely minimizes the cost at 48 + 75 + 50 + 2000 = 2173. F3F4 is the only direct multiplication of two original matrices.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.27.3, Matrix Chain Ordering: GATE CSE 2018 | Question: 31, PDF p. 70 (key p. 115). https://gateoverflow.in/204105/gate-cse-2018-question-31",
+          "answer": "C (F3F4 only)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Dynamic Programming Q4.14, Algorithms.pdf p. 9 (book p. 474)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Exhaustive enumeration of the 14 matrix-chain parenthesizations",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

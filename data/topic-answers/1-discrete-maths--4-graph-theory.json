@@ -1,0 +1,2313 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "1. Discrete Maths",
+  "chapter": "4. Graph Theory",
+  "slug": "1-discrete-maths--4-graph-theory",
+  "reviewedAt": "2026-11-26",
+  "reviewer": "Codex",
+  "sources": {
+    "gateOverflowPdfs": [
+      {
+        "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume1.pdf",
+        "sha256": "e42a70646bdbc4f86edff44b97555a94c866deda508c761da40c20d95b493a2d"
+      },
+      {
+        "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume2.pdf",
+        "sha256": "457f9e583b943b3c41e78d8431b09e322123b0d80765396af36ee2100196714f"
+      }
+    ],
+    "madeEasyChapterPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\1. Discrete Maths\\4. Graph Theory.pdf",
+      "sha256": "614a282310fe9da61721cf40ba56e155e08e9a25780038d4c73c26ca28b9fc17"
+    },
+    "madeEasySolutionsPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\All Subject Solutions Keys\\Discrete Mathemetics.pdf",
+      "sha256": "5c73a1df7848af2b405175dc29721a82eac4e56ca0ea8e1d5a41e4e26f4a0ed6",
+      "answerKeyPage": 4,
+      "printedPage": 64
+    },
+    "yearPapers": "data/papers/*.json, linked by source.copiedFrom.questionId"
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "cat0of75p",
+      "contentSha256": "c4cc8030dd10a16f9a31389511a05cae7aec91af584c33cddcf87e2b502b1dfd",
+      "questionType": "SUBJECTIVE",
+      "correctOptions": [],
+      "status": "verified",
+      "reason": "Each edge contributes two to the degree sum. Reducing the sum modulo 2 leaves one for each odd-degree vertex, so their count is even.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.2.3, Degree of Graph: GATE CSE 1995 | Question: 24, p. 39 (key p. 55). https://gateoverflow.in/2663/gate-cse-1995-question-24",
+          "answer": "N/A (descriptive proof)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.1, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "Sol. (handshaking lemma proof)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "Even, by the handshaking lemma",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "kto5sdl1q",
+      "contentSha256": "80307a28f2fdb3b9b18834194bcf2e24a6469d82e722779e6bc9f9a541906eb0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "A maximum-weight bridge is forced into the spanning tree, so C is false. The cut property forces the unique lightest edge, the cycle property excludes the unique heaviest edge on a cycle, and distinct weights give a unique MST.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.31.6, Minimum Spanning Tree: GATE CSE 2000 | Question: 2.18, p. 73 (key p. 115). https://gateoverflow.in/665/gate-cse-2000-question-2-18",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.2, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q41",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "5n58dm0yi",
+      "contentSha256": "fd07ba9447c4067449aeb3d28db5ca67f0b9a9550c9654f9e8887fa35a86197d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Each of the n(n−1)/2 unordered pairs of distinct vertices independently has or lacks an edge. The vertex set is fixed, so there are 2^[n(n−1)/2] simple graphs.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.1.1, Counting: GATE CSE 2001 | Question: 2.15, p. 38 (key p. 55). https://gateoverflow.in/733/gate-cse-2001-question-2-15",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.3, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q40",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "zu4rpa915",
+      "contentSha256": "515a0feb74b635537b0ff016cab614a1acfc45bd2fb479162499f24a2f95111e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "A simple undirected graph has at most one edge per unordered pair of distinct vertices. The complete graph realizes all n(n−1)/2 pairs.",
+      "note": "The finite bound uses the usual simple-graph convention. Specify a simple undirected graph on n vertices to exclude parallel edges explicitly.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.5.13, Graph Connectivity: GATE CSE 2002 | Question: 1.25, ISRO2008-30, ISRO2016-6, p. 46 (key p. 55). https://gateoverflow.in/830/gate-cse-2002-question-1-25-isro2008-30-isro2016-6",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.4, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q25",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "cpxq9xufv",
+      "contentSha256": "ba1701ef938c75efd58ca6b63af417cff3465f63f58f196050da34a29a621df7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Deleting a vertex can remove at most its own component. At most n−1 components can remain because only n−1 vertices remain.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.5.14, Graph Connectivity: GATE CSE 2003 | Question: 8, ISRO2009-53, p. 46 (key p. 55). https://gateoverflow.in/899/gate-cse-2003-question-8-isro2009-53",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.5, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q8",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "mpo09gdk5",
+      "contentSha256": "8213e8d805b9e06adf193bcc808ac60a0f4471a100555c12697f6177e4dce722",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Pair the first remaining vertex with any of five others, then the first remaining vertex with one of three. The last pair is forced, giving 5·3·1 = 15.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.7.1, Graph Matching: GATE CSE 2003 | Question: 36, p. 52 (key p. 56). https://gateoverflow.in/926/gate-cse-2003-question-36",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.6, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q36",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "0dbs5142y",
+      "contentSha256": "d6217fa547b236a5feddd832b74631e86582eadba8a21bcae28533cab2a71646",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The average degree is 2|E|/|V| ≤ 6−12/|V| < 6. The minimum cannot exceed the average.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.2.4, Degree of Graph: GATE CSE 2003 | Question: 40, p. 39 (key p. 55). https://gateoverflow.in/931/gate-cse-2003-question-40",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.7, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q40",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "dh9h4gggy",
+      "contentSha256": "a2f2741be994f05a838a7fd482e10af03eb0ca7e0e6ef12b91f5c7239886991d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Label the outer vertices T, R, B, L and the inner square a, b, c, d clockwise from the upper left. With three colours the triangles LTa and Tab force L and b to share a colour, and LBd and Bdc force L and c to share it too. Edge bc rules this out. Four suffice with T/B, L/R, a/c and b/d as the four colour classes.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.4.2, Graph Coloring: GATE CSE 2004 | Question: 77, p. 41 (key p. 55). https://gateoverflow.in/1071/gate-cse-2004-question-77",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.8, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q77",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "f7jv5rpwf",
+      "contentSha256": "124314075703e4a755bb0d15594634df724fd5c06cc794677ee69147c104fda4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Writing N = n(n−1)/2, the threshold is N−n. Choose the k omitted edges for each k from 0 to n, giving the sum of binomial(N,k).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.1.2, Counting: GATE CSE 2004 | Question: 79, p. 38 (key p. 55). https://gateoverflow.in/1073/gate-cse-2004-question-79",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.9, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q79",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "6fxk5bw93",
+      "contentSha256": "261a36adf396e7a319e54e1f31e0afc1852be1cecef37cc0652ee8e1c992266e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "An acyclic undirected graph with c components is a forest with n−c edges. The maximum n−1 is attained by a tree.",
+      "note": "The linked GATE IT 2004 scan gives distractor D as 2n−2. The app, Made Easy and GATE Overflow print 2n−1. The correct option A is n−1 in every version.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.5.35, Graph Connectivity: GATE IT 2004 | Question: 5, p. 50 (key p. 55). https://gateoverflow.in/3646/gate-it-2004-question-5",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.10, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q5",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "jktvu9ven",
+      "contentSha256": "1c7fefa144f4f6d76ab7e4dffaa237f5ddf8be4e419f4308ef30bcf96f049004",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The degree sum is 54. The nine specified vertices contribute 6·2 + 3·4 = 24, leaving 30 for ten degree-three vertices. The total is 19.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.5.34, Graph Connectivity: GATE IT 2004 | Question: 37, p. 50 (key p. 55). https://gateoverflow.in/3680/gate-it-2004-question-37",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.11, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q37",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "j6ad04674",
+      "contentSha256": "deebb17d1288c0502c9d6ef36231d875828546c825f07a969bfb603c15694669",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Euler’s formula gives F = 2−13+19 = 8, including the exterior face.",
+      "note": "The app and Made Easy show distractor A as 0. The GATE Overflow PDF and linked year paper show 6. The keyed option B is 8 in each version.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.8.6, Graph Planarity: GATE CSE 2005 | Question: 10, p. 53 (key p. 56). https://gateoverflow.in/1159/gate-cse-2005-question-10",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.12, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q10",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "268lz3i21",
+      "contentSha256": "c4cac72bf21fa0179dbdbc122b9b52db06ecf0e7b4bd293bc3ee38f3d5fb79a9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "A is a six-cycle with all three opposite chords, hence K₃,₃. B can be drawn with three chords inside the hexagon and two outside. C is K₄ with a vertex attached to the ends of one edge, and D is K₅ with the edge between the lateral vertices missing. B, C and D are planar.",
+      "note": "The year-paper key marks D and describes its drawing as K₅. Its G₄ image, like app D, lacks the lateral edge and is planar. The G₁ image matches app A and is K₃,₃. Correct the spelling of “plannar” to “planar”.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.8.7, Graph Planarity: GATE CSE 2005 | Question: 47, p. 53 (key p. 56). https://gateoverflow.in/1172/gate-cse-2005-question-47",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.13, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q47. Its keyed G₄ drawing maps to app D and has nine edges",
+          "answer": "D (G₄)",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "5wa2yw7of",
+      "contentSha256": "29f7890d36957b0fa1b7c8a57dfc55020696ac1b2ee3b2b39070e6843d4d3186",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Any cycle edge can be removed without sacrificing connectivity, and positive weights make that removal reduce cost. A minimum connected spanning subgraph is therefore a spanning tree.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.5.37, Graph Connectivity: GATE IT 2006 | Question: 11, p. 50 (key p. 55). https://gateoverflow.in/3550/gate-it-2006-question-11",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.14, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "e4gbrcvf7",
+      "contentSha256": "8c0209ce03b848b64ec5fdcea6ebff39d4d36a59a6d94cd7ed6b5b17f86e4373",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Parity of Hamming weight gives a two-colouring, and an edge forces two colours. Distances equal Hamming distances, so the diameter is n and the ratio is 2/n.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.4.10, Graph Coloring: GATE IT 2006 | Question: 25, p. 43 (key p. 55). https://gateoverflow.in/3564/gate-it-2006-question-25",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.15, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "9kji8c339",
+      "contentSha256": "a4ae98c1f186f21febd35d0ac90fb963af3bb0542474fe8500428dd313a2da57",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The empty set and n singletons have no neighbour. A set of size at least three meets any contained pair in two elements, and any pair is adjacent to the full set.",
+      "note": "The shared heading says “Q.4.16 & Q.4.18”. The three original questions use the same graph. Clarify the heading to “Common data for Questions 4.16–4.18”.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.2.5, Degree of Graph: GATE CSE 2006 | Question: 71, p. 39 (key p. 55). https://gateoverflow.in/1850/gate-cse-2006-question-71",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.16, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q71",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "bxzh8lcwa",
+      "contentSha256": "ffe793587a912859b5706baa69656f25efd33c612f7fe11d0f7a6d7ac9134a6c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "For a vertex of size k ≥ 3 the degree is binomial(k,2)·2^(n−k). The successive ratio is (k+1)/(2(k−1)), so sizes 3 and 4 maximize it. Size 2 has degree 2^(n−2)−1 and smaller sizes have degree zero. The maximum is 3·2^(n−3).",
+      "note": "This question uses the shared graph definition from Q4.16. Distractor A should read binomial(n/2,2)·2^(n/2) as in the source PDFs and year paper. The app has binomial(n,2)·2^(n−2).",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.2.6, Degree of Graph: GATE CSE 2006 | Question: 72, p. 39 (key p. 55). https://gateoverflow.in/43566/gate-cse-2006-question-72",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.17, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q72",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "8snmpdnoe",
+      "contentSha256": "204b419ac592fc8144b973b353fddbce189b72a7df176f6e7c0211456ce33873",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "There are n+1 isolated vertices. Every subset of size at least three is adjacent to one of its pairs, and every pair is adjacent to the full set, so all remaining vertices form one component.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.5.17, Graph Connectivity: GATE CSE 2006 | Question: 73, p. 47 (key p. 55). https://gateoverflow.in/43567/gate-cse-2006-question-73",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.18, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q73",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 19,
+      "id": "qg7mpo967",
+      "contentSha256": "265871149a2c57fd49251e8119f633c9c8ef5f02231bbc2dcf9e0cfb7fbe78c6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "By Kuratowski’s theorem, the fewest edges in a nonplanar graph is nine, attained by K₃,₃. At equality the obstruction uses six vertices and any extra vertices must be isolated.",
+      "note": "The minimum possible edge count permits extra isolated vertices. B is the intended option when there are no isolated vertices. Add “without isolated vertices” or require G to be connected. No matching GATE Overflow entry was located across the three indexed PDFs.",
+      "sources": [
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.19, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q4",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "vafjntfkg",
+      "contentSha256": "f9d3726c19a378d744e204021dc4686f69a13c023316691c912ebc4668a029d5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "With the vertex labels from the source figure, edges 1→2 and 1→3 force 1 before both. Only D violates this, and the other three orders respect every directed edge.",
+      "note": "The app redraw labels only vertex 4 and omits the arrowhead on 4→6. Restore labels 1 at left, 2 at upper middle, 3 at lower middle, 5 at upper right and 6 at lower right. The complete source diagram establishes D. The source and app swap distractors B and C.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.44.1, Topological Sort: GATE CSE 2007 | Question: 5, p. 112 (key p. 116). https://gateoverflow.in/31821/gate-cse-2007-question-5",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.20, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q5",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "75ryscrdv",
+      "contentSha256": "1bdeeb3ff8d7e494772dbb9fbca5324212c8051433a72aac06a3ac3bea0af539",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The complement of C₂₅ is 22-regular and connected. Two vertices nonadjacent in the complement have a common neighbour. K₉₀ has degree 89, and an even-regular graph can be disconnected.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.5.18, Graph Connectivity: GATE CSE 2007 | Question: 23, p. 47 (key p. 55). https://gateoverflow.in/1221/gate-cse-2007-question-23",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.21, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q23",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 22,
+      "id": "blyuyl4x6",
+      "contentSha256": "0daf830746160a6d94d2a35bb20fcf10c94688151a7bdd244c6b776602e77c6d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "A maximal independent set dominates the path. Each selected vertex can cover at most three vertices, so at least three are needed. Positions 2, 5 and 8 are independent and dominate all nine vertices.",
+      "note": "Made Easy keys B, which is 4. The explicit maximal independent set {2,5,8} achieves 3, and the GATE Overflow key agrees with C.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.5.40, Graph Connectivity: GATE IT 2008 | Question: 4, p. 51 (key p. 56). https://gateoverflow.in/3264/gate-it-2008-question-4",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.22, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "B",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 23,
+      "id": "oiw32ap64",
+      "contentSha256": "2b2c374579283a9f1ab90c118c4e78c28537520465a586bd75e7b33f6e9dfd1b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The 3-by-3 grid and the arc between opposite corners contain a five-cycle. Checkerboard-colour the grid, then recolour one of the two arc endpoints with a third colour.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.4.11, Graph Coloring: GATE IT 2008 | Question: 3, p. 43 (key p. 55). https://gateoverflow.in/3263/gate-it-2008-question-3",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.23, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 24,
+      "id": "l6pofbnpz",
+      "contentSha256": "b2b62955cc3c5eea84f20ec325a728dfe2bc84bc41971c10fd4569be1b6f0413",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Each old odd degree becomes even, and the new vertex has even degree by the handshaking lemma. The graph is connected and every degree is even, so it has an Euler circuit.",
+      "note": "The app and Made Easy explicitly assume connectedness and say some vertices have odd degree. The GATE Overflow stem omits connectedness. In a disconnected triangle plus an edge the triangle could remain a separate all-even component.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.5.39, Graph Connectivity: GATE IT 2008 | Question: 27, p. 51 (key p. 56). https://gateoverflow.in/3317/gate-it-2008-question-27",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.24, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 25,
+      "id": "x1x7ci5sf",
+      "contentSha256": "1e2674b96f2e5e6529e3ae568543cd57aa6f8bbb9148a44accd91f09f836c08c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "A graph without odd cycles is bipartite. Connectedness and n ≥ 2 ensure at least one edge, so the chromatic number is two.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.4.3, Graph Coloring: GATE CSE 2009 | Question: 2, p. 42 (key p. 55). https://gateoverflow.in/796/gate-cse-2009-question-2",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.25, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q2",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 26,
+      "id": "jtrbnxwrk",
+      "contentSha256": "6ae4c56211aac2843dde7c5647faf4c8a6b6f61a47dcaaa3d8c5c8b0a38fe484",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "In a connected simple graph each of n vertices has a degree from 1 to n−1. Two degrees must coincide by the pigeonhole principle.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.2.7, Degree of Graph: GATE CSE 2009 | Question: 3, p. 39 (key p. 55). https://gateoverflow.in/804/gate-cse-2009-question-3",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.26, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q3",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 27,
+      "id": "ls4v6adtr",
+      "contentSha256": "ca7c7a1c28cc99bf16bf7031cc6578ef544a8e7ccec0b15b461a6573a09b2aed",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The degree sum of a tree T is 2(|T|−1). Equal degree sums of S and T therefore imply equal vertex counts.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.2.8, Degree of Graph: GATE CSE 2010 | Question: 1, p. 40 (key p. 55). https://gateoverflow.in/1147/gate-cse-2010-question-1",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.27, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q1",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 28,
+      "id": "l9s9gvg8z",
+      "contentSha256": "28290da51303e664a90935b92aa241dbc42130db1e3ac21299dc89ac6808fff1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "A vertex with exactly one child would have a subtree size equal to one plus its child’s odd subtree size. That is even and contradicts the hypothesis.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.31, Binary Tree: GATE CSE 2010 | Question: 10, p. 222 (key p. 254). https://gateoverflow.in/2183/gate-cse-2010-question-10",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.28, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q10",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 29,
+      "id": "m6m46za2u",
+      "contentSha256": "92a017075fcd8ee60c631c2a4610d84c76a98cc9e6f225ddd2981e05cd91f891",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Havel–Hakimi reductions succeed for I and III. In II the four degree-six vertices need at least 24−12 = 12 edges to the other four vertices, whose degrees sum to 10. IV contains degree eight on eight vertices.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.2.9, Degree of Graph: GATE CSE 2010 | Question: 28, p. 40 (key p. 55). https://gateoverflow.in/1154/gate-cse-2010-question-28",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.29, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q28",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 30,
+      "id": "p5wksyqsw",
+      "contentSha256": "19e78d3b9a2fadb7d15d95fcfec0af94a95284077b641d674882c95759b08b58",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Draw K₄ as a triangle with the fourth vertex inside it. Draw the cube Q₃ as two nested squares with corresponding corners joined. Both drawings have no crossings.",
+      "note": "The book and app label this as 2010. The matching year paper and GATE Overflow locate it in GATE CS 2011 Q17. The printed distractor C says K₃ where the app uses K₄. The keyed statement B is the same.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.8.9, Graph Planarity: GATE CSE 2011 | Question: 17, p. 54 (key p. 56). https://gateoverflow.in/2119/gate-cse-2011-question-17",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.30, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q17",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 31,
+      "id": "gved2z5uf",
+      "contentSha256": "746ae8716431f95afc60fe3fb80cf8c414003ca353dc7aeee06bf6a7b096ba60",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Euler’s formula gives 2−10+15 = 7 faces. Removing the unbounded face leaves six bounded faces.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.8.10, Graph Planarity: GATE CSE 2012 | Question: 17, p. 54 (key p. 56). https://gateoverflow.in/49/gate-cse-2012-question-17",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.31, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q17",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 32,
+      "id": "9dl9kfula",
+      "contentSha256": "3fef42abe31918b60a67146820364a773c36b9f38b9ad2ce4ebba93039efd0c5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The target and B each consist of a five-cycle with pendant paths of lengths one and two attached to the same vertex. A has a three-cycle, C attaches its paths at different vertices, and D has a four-cycle.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.6.1, Graph Isomorphism: GATE CSE 2012 | Question: 26, p. 51 (key p. 56). https://gateoverflow.in/1611/gate-cse-2012-question-26",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.32, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q26. The five-cycle and two pendant paths in option B match app B",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 33,
+      "id": "9m3vtnq6w",
+      "contentSha256": "0c57848c3281d9c0c587247308cd44fb6ea06cb014467040fa54069fdbde2c88",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Choose four of the six labelled vertices, then fix a starting vertex and divide the 3! orders by two for reversal. This gives binomial(6,4)·3!/2 = 45.",
+      "note": "Original booklet A gave 90 in option C, so no choice equalled 45. The historical grading table awards marks to all. The app and Made Easy already give 45 as C, which is correct for that version.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.1.3, Counting: GATE CSE 2012 | Question: 38, p. 38 (key p. 55). https://gateoverflow.in/473/gate-cse-2012-question-38",
+          "answer": "X (Marks to All)",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.33, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q38. Booklet A printed 90 in choice C",
+          "answer": "Marks to All",
+          "agrees": false
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2012 CS grading table, booklet A Q38. https://gatecse.in/w/images/b/b5/Key_CS_2012.pdf",
+          "answer": "Marks to All",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 34,
+      "id": "vxf1gnn6l",
+      "contentSha256": "0fbb67273149880b57b0e84bba64a9633eba3c249123bdfbc33000b8e54c35f5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "With independent edges, each of the binomial(8,3) triples forms a triangle with probability (1/2)^3. Linearity of expectation gives 56/8 = 7.",
+      "note": "The intended G(8,1/2) model samples edges independently. Equal edge marginals alone do not determine the answer. State “each unordered pair is included independently with probability 1/2”.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.8.5, Expectation: GATE CSE 2013 | Question: 24, p. 208 (key p. 227). https://gateoverflow.in/1535/gate-cse-2013-question-24",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.34, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 35,
+      "id": "8elasa4xa",
+      "contentSha256": "9219d63d01b1946ffe86d293ee52a36ff6987f7e19645f8a1e44dd66fdd8410b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The degree sum is 2|E|, so Q is true. Modulo 2 this sum equals the number of odd degrees, so P is also true.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.2.10, Degree of Graph: GATE CSE 2013 | Question: 25, p. 40 (key p. 55). https://gateoverflow.in/1536/gate-cse-2013-question-25",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.35, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 36,
+      "id": "913qleamy",
+      "contentSha256": "46b94483bc97149012726980b8bac663dcc31365d6fb03b2771d0a0be9f10e76",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "B is the published answer. C also preserves strong connectivity because every added edge replaces an existing path and every original edge remains.",
+      "status": "verified-with-note",
+      "reason": "Reversing all edges reverses every reachability relation and preserves mutual reachability, proving B. C also preserves reachability. All original edges remain and each added shortcut expands to a path of length at most two in G.",
+      "note": "The official and printed keys give B for this single-select question. C is also true as written. Keep B as the historical reference and mark the key disputed for grading. Change the stem to “Which of the following graphs have the same strongly connected components as G? Select all that apply” to use B and C.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.7.2, Data Structures: GATE CSE 2014 | Set 1 | Question: 3, p. 227 (key p. 254). https://gateoverflow.in/1754/gate-cse-2014-set-1-question-3",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.36, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 CS Session 1 answer table, CS Q3. https://cdn-images.prepp.in/public/image/GATE_CS_1_MARCH_2014_SHIFT_2_dd4d1a16732a3d981ed2ff12c43c34a5.pdf",
+          "answer": "B (historical single-select key)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B and C both hold",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 37,
+      "id": "8qvn80vai",
+      "contentSha256": "fd4f49a045a64dc45528d38849ff23e86f529e22f9b45ff7a34bb07a8fe341c9",
+      "questionType": "NAT",
+      "natAnswer": "506",
+      "status": "verified",
+      "reason": "There are 12·11 horizontal edges, 12·11 vertical edges and 2·11² diagonal edges. This counts each unordered pair once, giving 506.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.5.21, Graph Connectivity: GATE CSE 2014 | Set 1 | Question: 51, p. 47 (key p. 55). https://gateoverflow.in/1931/gate-cse-2014-set-1-question-51",
+          "answer": "506",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.37, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "506",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 CS Session 1 answer table, CS Q51. https://cdn-images.prepp.in/public/image/GATE_CS_1_MARCH_2014_SHIFT_2_dd4d1a16732a3d981ed2ff12c43c34a5.pdf",
+          "answer": "506 to 506",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "506",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 38,
+      "id": "0ef0gxlca",
+      "contentSha256": "e5b6e0955a7c5d6a1869271c842679d7312db21ae6ebd169ed1c3e78cc7ef624",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "In C only four vertices have nonzero degree. Each degree-three vertex must meet all three other nonisolated vertices, forcing the fourth to have degree at least three. A is a matching, B a six-cycle, and D can be realized by a five-vertex tree plus an isolate.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.2.11, Degree of Graph: GATE CSE 2014 | Set 1 | Question: 52, p. 40 (key p. 55). https://gateoverflow.in/1932/gate-cse-2014-set-1-question-52",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.38, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 39,
+      "id": "qf3n243xc",
+      "contentSha256": "162f235f24d70cc3dbac6698ddfcd9ae41759dd8fe20a2cff2565e20e7da1a25",
+      "questionType": "NAT",
+      "natAnswer": "36",
+      "status": "verified",
+      "reason": "With part sizes a and 12−a, there are at most a(12−a) edges. The balanced complete bipartite graph K₆,₆ attains 36.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.5.22, Graph Connectivity: GATE CSE 2014 | Set 2 | Question: 3, p. 48 (key p. 55). https://gateoverflow.in/1955/gate-cse-2014-set-2-question-3",
+          "answer": "36",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.39, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "36",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "36",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 40,
+      "id": "vm37d03cj",
+      "contentSha256": "d1e9323edf16bf1a197970ddeed0b82a6f6205f895f24b3183a6acbbc541d301",
+      "questionType": "NAT",
+      "natAnswer": "5",
+      "status": "verified",
+      "reason": "The cycle has degree 2 and its complement degree n−3. Equality forces n=5, and the complement of C₅ is itself a five-cycle.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.6.2, Graph Isomorphism: GATE CSE 2014 | Set 2 | Question: 51, p. 51 (key p. 56). https://gateoverflow.in/2018/gate-cse-2014-set-2-question-51",
+          "answer": "5",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.40, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "5",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "5",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 41,
+      "id": "4p4q0zedd",
+      "contentSha256": "f16be76c255c6b5ee551f8aab0c50a034e532cfe8cae9f50cb7427847eca49af",
+      "questionType": "NAT",
+      "natAnswer": "6",
+      "status": "verified",
+      "reason": "All five weight-one edges are forced since they form a forest. Contract them. The two left components can be joined in three ways of weight two, the connecting bridge is forced and the right triangle has two choices of weight-two edge. This gives 3·2 = 6.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.31.19, Minimum Spanning Tree: GATE CSE 2014 | Set 2 | Question: 52, p. 76 (key p. 115). https://gateoverflow.in/2019/gate-cse-2014-set-2-question-52",
+          "answer": "6",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.41, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "6",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "6",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 42,
+      "id": "f3meug81h",
+      "contentSha256": "570db7dd614947766db3f488d06b8e70d8510bfe26f894939913f044fa87e55c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "In each tree component the edge count is its vertex count minus one. Summing over k components gives n−k.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.5.23, Graph Connectivity: GATE CSE 2014 | Set 3 | Question: 51, p. 48 (key p. 55). https://gateoverflow.in/2085/gate-cse-2014-set-3-question-51",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.42, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 43,
+      "id": "6q8pgyykt",
+      "contentSha256": "6bcc2caebdc3bc221ec67a44dd68522df5935f85e75eb03ecd1a43c165be00e4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The degree bound gives m ≥ 3n/2. For c ≥ 1 components, Euler’s formula gives f = m−n+c+1 ≥ n/2+2 in every embedding.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.8.11, Graph Planarity: GATE CSE 2014 | Set 3 | Question: 52, p. 54 (key p. 56). https://gateoverflow.in/2086/gate-cse-2014-set-3-question-52",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.43, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 44,
+      "id": "po1vlk9lr",
+      "contentSha256": "13e80a9bdaa7d95b62e398b23416b52325ef857bbc7253a0869f821208b984da",
+      "questionType": "NAT",
+      "natAnswer": "24",
+      "status": "verified",
+      "reason": "Counting the edge sides of all triangular faces gives 3f = 2m. Combining with 10−m+f=2 gives m=24.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.8.12, Graph Planarity: GATE CSE 2015 | Set 1 | Question: 54, p. 55 (key p. 56). https://gateoverflow.in/8364/gate-cse-2015-set-1-question-54",
+          "answer": "24",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.44, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "24",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "24",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 45,
+      "id": "uy8pow2n5",
+      "contentSha256": "4e21e8955879347c093431ed7ea030baa37e3a3ba0cbd42628a17bae9b7b3148",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A graph isomorphic to its complement has half the possible edges, so n(n−1)/4 is an integer. This holds only when n is 0 or 1 modulo 4.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.6.3, Graph Isomorphism: GATE CSE 2015 | Set 2 | Question: 28, p. 51 (key p. 56). https://gateoverflow.in/8134/gate-cse-2015-set-2-question-28",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.45, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 46,
+      "id": "5iop126ww",
+      "contentSha256": "1f91600627d322c213830fcd7e297b51508f92244fd097b2d1cf29874ab502c3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "If an edge is on a cycle, the rest of that cycle connects its endpoints after deletion. Such an edge cannot be a bridge.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.5.24, Graph Connectivity: GATE CSE 2015 | Set 2 | Question: 50, p. 48 (key p. 55). https://gateoverflow.in/8252/gate-cse-2015-set-2-question-50",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.46, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 47,
+      "id": "ie4bmsumr",
+      "contentSha256": "0a9f16ca6ab7b0075c2c2b2487c2d676e6307e32b472c21af18247a7b68840af",
+      "questionType": "NAT",
+      "natAnswer": "199",
+      "status": "verified",
+      "reason": "With n₁ one-child nodes and n₂ two-child nodes, the edge count is both n₁+2n₂ and 200+n₁+n₂−1. Hence n₂=199.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.37, Binary Tree: GATE CSE 2015 | Set 3 | Question: 25, p. 223 (key p. 254). https://gateoverflow.in/8428/gate-cse-2015-set-3-question-25",
+          "answer": "199",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.47, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "199",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "199",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 48,
+      "id": "voqnjlp2d",
+      "contentSha256": "1502ad55a44c0d6b3a0c9dfd677e6f99b7ccbd4f05fbecf8b4aee6863a641f3b",
+      "questionType": "NAT",
+      "natAnswer": "995",
+      "status": "verified",
+      "reason": "Every spanning tree on 100 vertices has 99 edges. Adding five to every edge adds 495 to every tree weight, so the minimum becomes 500+495=995.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.31.21, Minimum Spanning Tree: GATE CSE 2015 | Set 3 | Question: 40, p. 77 (key p. 115). https://gateoverflow.in/8499/gate-cse-2015-set-3-question-40",
+          "answer": "995",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.48, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "995",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "995",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 49,
+      "id": "brm70z27q",
+      "contentSha256": "4b9e1ded1dcaf8b679f09431812d7817f849c1f2ff68278d74d332d494b586e4",
+      "questionType": "NAT",
+      "natAnswer": "4",
+      "status": "verified",
+      "reason": "The four-colour theorem guarantees that every planar graph can be coloured with four colours, and planar K₄ requires all four.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.4.4, Graph Coloring: GATE CSE 2016 | Set 2 | Question: 03, p. 42 (key p. 55). https://gateoverflow.in/39553/gate-cse-2016-set-2-question-03",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.49, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "4",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 50,
+      "id": "9vsqg1v1s",
+      "contentSha256": "6f8016d3793f047609b77a206e6c5078d51f9cf2dbd98cdd14ff09a82ad0b8dc",
+      "questionType": "NAT",
+      "natAnswer": "18",
+      "status": "verified",
+      "reason": "A tree on 10 vertices has nine edges. The degree sum is twice that, or 18.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.15.12, Tree: GATE CSE 2017 | Set 1 | Question: 20, p. 252 (key p. 254). https://gateoverflow.in/118300/gate-cse-2017-set-1-question-20",
+          "answer": "18",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.50, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "18",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "18",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 51,
+      "id": "xz22dmhak",
+      "contentSha256": "065d522a326dd621993fcbcdd42afc033869f396fb0c3347b0efb8a66df46147",
+      "questionType": "NAT",
+      "natAnswer": "16",
+      "status": "verified",
+      "reason": "The degree sum gives 3n ≤ 50, hence n ≤ 16. A 16-cycle plus the eight opposite-vertex chords has degree three at every vertex, and adding one unused edge gives 25 edges.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.2.12, Degree of Graph: GATE CSE 2017 | Set 2 | Question: 23, p. 40 (key p. 55). https://gateoverflow.in/118594/gate-cse-2017-set-2-question-23",
+          "answer": "16",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.51, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "16",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "16",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 52,
+      "id": "0xj9dlnoe",
+      "contentSha256": "2953783d2b0253786428041a8be591b8a57a043d9f32f02ccf2aa5269053404d",
+      "questionType": "NAT",
+      "natAnswer": "3",
+      "status": "verified-with-note",
+      "reason": "The triangle a-b-c forces three colours. The classes {a,d}, {b,e} and {c,f} give a proper three-colouring in the app diagram and the source diagram.",
+      "note": "The redraw omits the d–f edge shown in the source figures. Restore that edge. It joins different colour classes in the stated three-colouring.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.4.5, Graph Coloring: GATE CSE 2018 | Question: 18, p. 42 (key p. 55). https://gateoverflow.in/204092/gate-cse-2018-question-18",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.52, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "3",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 53,
+      "id": "tjn1eh4pi",
+      "contentSha256": "a9a2e2a061eb7c3aa5d9f850d216d8e9b5e6a94071a65086c335c4aba6ff7dc1",
+      "questionType": "NAT",
+      "natAnswer": "109",
+      "status": "verified",
+      "reason": "Each permutation has 99 distinct adjacent-swap neighbours. Adjacent swaps can sort any permutation, so the graph is connected and y+10z = 99+10 = 109.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.42.2, Strongly Connected Components: GATE CSE 2018 | Question: 43, p. 104 (key p. 115). https://gateoverflow.in/204117/gate-cse-2018-question-43",
+          "answer": "109",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.53, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "109",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "109",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 54,
+      "id": "vnu556tr3",
+      "contentSha256": "769dbd10d90dff27f5ac6b710e8a62c77483cdefdbc3ef597e232ff285590f08",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Fix one start vertex, order the other n−1 vertices, and divide by two because the two traversal directions give the same undirected cycle. This yields (n−1)!/2.",
+      "note": "The official 2019 MCQ key accepted C or D. Made Easy and GATE Overflow list both. For arbitrary n > 2 the count of distinct undirected cycles is D. Option C equals it only at n=3. Clarify that the expression must hold for every n > 2, counting cycles up to rotation and reversal.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.5.25, Graph Connectivity: GATE CSE 2019 | Question: 12, p. 48 (key p. 55). https://gateoverflow.in/302836/gate-cse-2019-question-12",
+          "answer": "C, D",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.54, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "C, D",
+          "agrees": false
+        },
+        {
+          "kind": "official-key",
+          "ref": "IIT Madras GATE 2019 final key, CS Q12. https://gate.iitm.ac.in/gate2019/pdfs/Anskey/CS_key_Published.pdf",
+          "answer": "D accepted (C or D)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 55,
+      "id": "kclccou6b",
+      "contentSha256": "851a18463a65deaea8a2ae35c94cff16490f57290b69351363ad35e4f130f94a",
+      "questionType": "NAT",
+      "natAnswer": "7",
+      "status": "verified",
+      "reason": "The seven edges at s require seven colours. The four vertices consisting of s and the three-vertex part form K₄,₄ with the other part. Colour those edges by the sum of endpoint indices modulo four, then use three fresh colours for the three remaining edges at s.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.4.6, Graph Coloring: GATE CSE 2020 | Question: 52, p. 42 (key p. 55). https://gateoverflow.in/333179/gate-cse-2020-question-52",
+          "answer": "7",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.55, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "7",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "7",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 56,
+      "id": "ivwt2shif",
+      "contentSha256": "851cc8036b140c0d14070d9d0b02c3163898ec88f7f0a136e503bc2b6aa0035f",
+      "questionType": "NAT",
+      "natAnswer": "11",
+      "status": "verified",
+      "reason": "Euler’s formula gives m=8+5−2=11.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.8.13, Graph Planarity: GATE CSE 2021 | Set 1 | Question: 16, p. 55 (key p. 56). https://gateoverflow.in/357435/gate-cse-2021-set-1-question-16",
+          "answer": "11 to 11",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.56, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "11",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "11",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 57,
+      "id": "jg2vnch0s",
+      "contentSha256": "d327f6eae41b875051c2fea3b5d6f17abd06d709b81acdec3957bc8c7de9d565",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "For distinct endpoints, edges of G₂ join vertices at original distance at most two. Pairing consecutive edges on a shortest path shows d₂ ≤ ceil(d/2), and expanding any G₂ path gives d ≤ 2d₂. Taking maxima gives equality in B.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.5.27, Graph Connectivity: GATE CSE 2021 | Set 1 | Question: 36, p. 48 (key p. 55). The keyed upper bound is app B. https://gateoverflow.in/357415/gate-cse-2021-set-1-question-36",
+          "answer": "A (app B)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.57, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 58,
+      "id": "ec9trzmkh",
+      "contentSha256": "3d2cb1bcb7b6a2a9b4562501460af0530e6fd292ba010da0c5c3e8b35a175174",
+      "questionType": "NAT",
+      "natAnswer": "36",
+      "status": "verified",
+      "reason": "An extremal graph has two clique components. Filling each component or merging two of three or more components can only add edges. Moving a vertex from the smaller clique of size ≥2 to the larger one increases the edge total, so the maximum is binomial(9,2)=36.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.5.28, Graph Connectivity: GATE CSE 2022 | Question: 20, p. 49 (key p. 55). https://gateoverflow.in/371916/gate-cse-2022-question-20",
+          "answer": "36",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.58, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "36",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2022 CS master key Q30. https://gate2027.iitm.ac.in/static/doc/download/Answer_keys2022/cs_2022.pdf",
+          "answer": "36 to 36",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "36",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 59,
+      "id": "lzcgy4xvr",
+      "contentSha256": "9f61723f750307e3005aab1ff7d2f3d6f2008f10c31462b17162b6d546fe8d03",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The trace of A³ counts closed walks of length three. In a simple graph each arises from a triangle with three starting points and two directions, so divide the trace by six.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.5.29, Graph Connectivity: GATE CSE 2022 | Question: 27, p. 49 (key p. 55). https://gateoverflow.in/371909/gate-cse-2022-question-27",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.59, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2022 CS master key Q37. https://gate2027.iitm.ac.in/static/doc/download/Answer_keys2022/cs_2022.pdf",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 60,
+      "id": "zgrjllsdf",
+      "contentSha256": "de0596592ce3258781e3bda0f936e66d668ac91b679865503a1046995e997659",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Number the outer pentagon O₀ through O₄ clockwise from the top and let Iᵢ be the inner endpoint of the spoke at Oᵢ. The outer five-cycle rules out two colours, and colours 1,2,1,2,3,2,1,3,3,2 on the outer then inner vertices suffice. A Hamiltonian path is O₀–O₁–O₂–O₃–O₄–I₄–I₁–I₃–I₀–I₂. Numbering the second drawing’s rim R₀ through R₈ the same way, with centre S, an isomorphism sends the five outer then five inner vertices to R₀,R₁,R₂,R₃,S,R₈,R₅,R₇,R₄,R₆. The set {O₀,O₂,I₃,I₄} is independent, falsifying D.",
+      "note": "This is an MSQ. The four labelled choices are embedded in the app stem and its legacy proof flag was set. Use the spelling “Petersen” and place A–D in the choice fields if the question is edited separately.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.6.4, Graph Isomorphism: GATE CSE 2022 | Question: 40, p. 52 (key p. 56). https://gateoverflow.in/371896/gate-cse-2022-question-40",
+          "answer": "A, B, C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.60, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "A, B, C",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2022 CS master key Q50 (MSQ). https://gate2027.iitm.ac.in/static/doc/download/Answer_keys2022/cs_2022.pdf",
+          "answer": "A, B, C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "A, B, C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 61,
+      "id": "dniggfu4b",
+      "contentSha256": "d60dc63e8fa6f5000a67178d35d3d00b0f244f16f5eefbcde20ac013c5c85d04",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "By symmetry and 0/1 entries, (A²)ᵢᵢ is the degree of vertex i. B fails on a three-vertex path, C on a triangle plus an isolated vertex, and D on two disjoint edges.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.5.30, Graph Connectivity: GATE CSE 2022 | Question: 42, p. 49 (key p. 55). https://gateoverflow.in/371894/gate-cse-2022-question-42",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.61, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2022 CS master key Q52 (MSQ). https://gate2027.iitm.ac.in/static/doc/download/Answer_keys2022/cs_2022.pdf",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 62,
+      "id": "jpzpj8kbm",
+      "contentSha256": "c6f063d7302150f66d3feb54b032531ede93cb9eca206c05b337ec94b915d19c",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Each edge has a later-coloured endpoint that avoids the earlier endpoint’s colour, proving A. At most Δ colours are forbidden at any step, proving B. A clique refutes C, and visiting a path on four vertices in the order 1,4,2,3 uses three colours although two suffice, refuting D.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.4.7, Graph Coloring: GATE CSE 2023 | Question: 45, p. 42 (key p. 55). https://gateoverflow.in/399266/gate-cse-2023-question-45",
+          "answer": "A, B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.62, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "A, B",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "IIT Kanpur GATE 2023 CS master key Q55 (MSQ). https://gate2027.iitm.ac.in/static/doc/download/Answer_keys2023/CS_ANS_GATE2023.pdf",
+          "answer": "A, B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "A, B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 63,
+      "id": "ayqaeyiya",
+      "contentSha256": "05e0c6bc9a6450608cb0a50d26d464d7a75e5ca12f30618e69ce2d7ecaecd637",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A largest colour class of a k-colouring has at least n/k vertices, proving B. A smallest induced subgraph of chromatic number k has minimum degree at least k−1, since a lower-degree vertex could be deleted and recoloured. It has at least k vertices, proving D. C₅ refutes A and Kₖ refutes C.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.4.8, Graph Coloring: GATE CSE 2024 | Set 1 | Question: 41, p. 42 (key p. 55). Source C, the lower bound on edges, maps to app D. https://gateoverflow.in/422801/gate-cse-2024-set-1-question-41",
+          "answer": "B, C (app B, D)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.63, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "B, D",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "IISc GATE 2024 CS1 final key Q51 (MSQ). Source C, the lower bound on edges, maps to app D. https://gate2024.iisc.ac.in/wp-content/uploads/2024/CS1FinalAnswerKey.pdf",
+          "answer": "B, C (app B, D)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B, D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 64,
+      "id": "0iy4g4xja",
+      "contentSha256": "ce645ffdefaa70de006cc566308c35a1eeaa524307b6ff8b091cd72cbecc1cd1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Since A²=I and A is symmetric with 0/1 entries, every diagonal entry of A² equals the corresponding vertex degree and is one. Thus G consists of disjoint edges covering every vertex.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.5.33, Graph Connectivity: GATE CSE 2024 | Set 2 | Question: 7, p. 50 (key p. 55). https://gateoverflow.in/422890/gate-cse-2024-set-2-question-7",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.64, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "IISc GATE 2024 CS2 final key Q17. https://gate2024.iisc.ac.in/wp-content/uploads/2024/CS2FinalAnswerKey.pdf",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 65,
+      "id": "lbpklzfo8",
+      "contentSha256": "a0723bb1c34d3b40a55fb8cf1c82441077dc7ce08f8f7d123b1fb2fc6b782c61",
+      "questionType": "NAT",
+      "natAnswer": "2",
+      "status": "verified-with-note",
+      "reason": "Number the eight vertices clockwise around the rim. Every edge joins vertices of opposite parity, including the chords. An edge forces at least two colours, so the chromatic number is two.",
+      "note": "The app carried a legacy proof flag. The question asks for one integer and the official key classifies it as NAT.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 2.4.9, Graph Coloring: GATE CSE 2024 | Set 2 | Question: 50, p. 43 (key p. 55). https://gateoverflow.in/422847/gate-cse-2024-set-2-question-50",
+          "answer": "2",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Graph Theory Q4.65, Discrete Mathemetics.pdf p. 4 (printed p. 64)",
+          "answer": "2",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "IISc GATE 2024 CS2 final key Q60 (NAT). https://gate2024.iisc.ac.in/wp-content/uploads/2024/CS2FinalAnswerKey.pdf",
+          "answer": "2 to 2",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "2",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

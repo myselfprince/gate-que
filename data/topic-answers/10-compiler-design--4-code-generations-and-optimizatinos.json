@@ -1,0 +1,999 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "10. Compiler Design",
+  "chapter": "4. Code Generations and Optimizatinos",
+  "slug": "10-compiler-design--4-code-generations-and-optimizatinos",
+  "reviewedAt": "2026-11-27T03:32:50.337Z",
+  "sources": {
+    "gateoverflow-pdf": "GATE Overflow filter1_volume2.pdf, Compiler Design, question pages and key pages",
+    "made-easy-key": "Made Easy Code Generation and Optimization, chapter PDF p. 3 and Compiler Design solutions PDF p. 9 (both book p. 517)",
+    "year-paper": "Verified linked GATE question copies in data/papers",
+    "official-key": "Official GATE answer tables matched to their original question and option text",
+    "derived": "Independent solutions for the live worksheet text, code, options, and diagrams"
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "madeeasy-compiler-code-generation-1",
+      "contentSha256": "bbdeb8cc7f53eabf3960de8587d4d7e78e4ad91822f762a9964a1d0da53e57dc",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "The inner loop leaves i % 2 and 5 * i invariant. Both updates use 4 * j, which can also be maintained by adding four per iteration. The displayed loop gives no basis for discarding either update.",
+      "note": "Option C should read “There is scope of strength reduction in this code.” The app omits “of.”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.6.2, Code Optimization: GATE CSE 2006 | Question: 60, PDF p. 124–125 (key p. 187)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.1",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q60 (verified linked copy, matched option text)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "madeeasy-compiler-code-generation-2",
+      "contentSha256": "70c6884d63749e96d0f67d0106d21ef6865356bdb99bc6575e7b3e518a8e37cb",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "A target-independent intermediate representation lets all target back ends reuse optimization passes. Analysis accuracy depends on the available facts and the analysis. Intermediate and machine code with the same control flow and uses and definitions yield the same liveness result.",
+      "note": "Made Easy prints B. GATE Overflow and the linked verified 2008 paper copy select A by the portability wording. Intermediate code does not guarantee greater analysis accuracy.",
+      "replaceExisting": true,
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.6.3, Code Optimization: GATE CSE 2008 | Question: 12, PDF p. 125 (key p. 187)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.2",
+          "answer": "B",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q12 (verified linked copy, matched option text)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "madeeasy-compiler-code-generation-3",
+      "contentSha256": "856576b8160e7efc41f35b77da0ed5bc39b2fec0e4397bde6f1a48fb47b4ed3b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Dynamically created structures can outlive the activation that created them and need dynamically managed storage, conventionally the heap. A stack can support recursion or dynamic scoping, and global variables can use static storage.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.24.17, Runtime Environment: GATE CSE 2010 | Question: 14, PDF p. 177 (key p. 188)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.3",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q14 (verified linked copy, matched option text)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "madeeasy-compiler-code-generation-4",
+      "contentSha256": "8cf12ff0056f346edad72a26fb8a362a845737724551ada7416d836323a44d5c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Higher-precedence ↑ groups the middle operands as 3 ↑ (4 ↑ 3). Left associativity of ↓ then gives (7 ↓ (3 ↑ (4 ↑ 3))) ↓ 2, the tree shown in B.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.20.5, Operator Precedence: GATE CSE 2011 | Question: 27, PDF p. 159–160 (key p. 188)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.4",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q27 (verified linked copy, matched option illustrations)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "madeeasy-compiler-code-generation-5",
+      "contentSha256": "bd97d8b45c81cc2dc3dc5a2b341fdca91c0e2a7f994810135572b0c097a428b7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Each A1 activation and the A2 activation link to their lexical parent Main. A21 links to A2, and the frame pointer identifies the most recent A1 activation.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.24.18, Runtime Environment: GATE CSE 2012 | Question: 36, PDF p. 177 (key p. 188)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.5",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q36 (verified linked copy, matched option illustrations)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "madeeasy-compiler-code-generation-6",
+      "contentSha256": "232906354078fe79b996c9e1f66a2312ac41c319509b83d37084f290da10a1e1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "The test needs both a and x in registers. The false branch still needs c or the values d and e, so two registers require a spill. Sink the definitions of d and e into the false branch. Spill c once before computing x, then reload that same slot as needed to compute and square d and e in turn.",
+      "note": "The common stem should read “at most two source operands and one destination operand.”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.23.5, Register Allocation: GATE CSE 2013 | Question: 48, PDF p. 172–173 (key p. 188)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.6",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "Reproduced GATE 2013 CS official answer table p. 2, ORS code A Q48. The code A paper p. 11 gives the spill options. https://static.zollege.in/public/image/1e31a6b89c70259d9e10e7896ae0f2bb.pdf",
+          "answer": "B (1 spill)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "madeeasy-compiler-code-generation-7",
+      "contentSha256": "8b8297eef77e7a6930a17e9a5880709b7e9b1c7908d0d18f4b6e8a13ef2cceee",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "After x is computed, the live values are a, d, e, and x, so four registers are necessary. Four suffice by assigning c to b's former register and then x to c's former register.",
+      "note": "The common stem should read “at most two source operands and one destination operand.” A period should end the instruction about register allocation. All three GATE Overflow volumes were searched. The GATE Overflow worksheet candidate is the preceding spill-count question.",
+      "sources": [
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.7",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "Reproduced GATE 2013 CS official answer table p. 2, ORS code A Q49. The code A paper p. 11 gives the register-count options. https://static.zollege.in/public/image/1e31a6b89c70259d9e10e7896ae0f2bb.pdf",
+          "answer": "B (4 registers)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "madeeasy-compiler-code-generation-8",
+      "contentSha256": "100fb3d0af91489afdca674c8ccccb22f242633771280a155c5e0d09291ea09a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Evaluating a product of two literals at compile time is constant folding, so D is the false claim. The basic-block and data-flow statements are correct.",
+      "note": "Option D's displayed rewrite should be x = 4 × 5 ⇒ x = 20, as shown in GATE Overflow. The app omits the assignment on the right of the arrow.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.6.4, Code Optimization: GATE CSE 2014 | Set 1 | Question: 17, PDF p. 125 (key p. 187)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.8",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "madeeasy-compiler-code-generation-9",
+      "contentSha256": "db29fee77eb6c7cafd8235005fc2e8bbc8e800c7951d539334c9eb6a9b2e649d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Dynamic allocation by the compiled program occurs at run time. Type checking, symbol-table maintenance, and inline expansion can all take place during compilation.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.24.19, Runtime Environment: GATE CSE 2014 | Set 2 | Question: 18, PDF p. 177–178 (key p. 188)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.9",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "madeeasy-compiler-code-generation-10",
+      "contentSha256": "506f3aa0686352c79bb4995fe19af062b810711c906b67230a4b9e6a19b082fe",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Row-major byte strides of 4, 32, and 1024 make each element a four-byte int, the innermost dimension 32/4 = 8, and the middle dimension 1024/32 = 32. Only A has that element type and those two dimensions.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.13.5, Intermediate Code: GATE CSE 2014 | Set 2 | Question: 34, PDF p. 146 (key p. 187)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.10",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "madeeasy-compiler-code-generation-11",
+      "contentSha256": "fdd37b5d8b8cc63037462d08bce54f1a5f4c09c05b52fca289ad41e272b3708c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "General recursion needs separate activation records for simultaneous calls. Per-call allocation on a stack suffices, so the heap and garbage collection are optional. Statements 1 and 3 are the correct pair.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.24.20, Runtime Environment: GATE CSE 2014 | Set 3 | Question: 18, PDF p. 178 (key p. 188)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.11",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "madeeasy-compiler-code-generation-12",
+      "contentSha256": "d40d682649765e122396b7973f79ed931d3f138513d7682714d07d4c41ca23aa",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Let b₀, c₀, and d₀ be the three leaves. The distinct operation nodes are a₁ = b₀ + c₀, c₁ = a₁ + d₀, and d₁ = b₀ + c₁. Since e = d₁ − b₀ = c₁ and the final a = e + b₀ = d₁, relabeling those nodes gives six nodes and six edges.",
+      "note": "Both keys interpret “minimum” as allowing algebraic cancellation. A DAG that preserves all five expression operators has eight nodes and ten edges, the counts in B.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.9.1, Directed Acyclic Graph: GATE CSE 2014 | Set 3 | Question: 34, PDF p. 130 (key p. 187)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.12",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "madeeasy-compiler-code-generation-13",
+      "contentSha256": "3bc0647e1eb449f161d50537695efd551faa58ca38f0880617e377496b63f5f7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The backward liveness fixed point gives IN(B4) = {r,v}. Block 2 uses r and u and redefines v, so IN(B2) = {r,u}. Block 3 uses s and u and redefines q, so IN(B3) = {r,s,u,v}. The intersection is {r,u}.",
+      "note": "Made Easy prints an asterisk and gives no answer. GATE Overflow confirms C, and the app diagram gives the same result.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.17.1, Live Variable Analysis: GATE CSE 2015 | Set 1 | Question: 50, PDF p. 155 (key p. 188)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.13",
+          "answer": "(*) (no answer given)",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "madeeasy-compiler-code-generation-14",
+      "contentSha256": "a78b08cbe2adf440dc4b741043c7b1923bafcfeb53cc4c8fa8ed94ddaf335698",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "8",
+      "status": "verified",
+      "reason": "The expression has eight binary operation occurrences: four additive operators, two multiplications, and two divisions. Each operation needs its own result name in three-address SSA, including the final sum.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.25.1, Static Single Assignment: GATE CSE 2015 | Set 1 | Question: 55, PDF p. 179 (key p. 188)",
+          "answer": "8",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.14",
+          "answer": "8",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "8",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "madeeasy-compiler-code-generation-15",
+      "contentSha256": "cab6b76c9581453603917d42c9b5ab727bd13596624e6f315bc091eec7288bd4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "An AST node can have varying numbers of children, such as the arguments at a call. A CFG block can have varying numbers of successors, such as the targets of a multiway branch. A loop can create a CFG cycle, and one CFG node can contain several statements.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.1.1, Abstract Syntax Tree: GATE CSE 2015 | Set 2 | Question: 14, PDF p. 120–121 (key p. 187)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.15",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "madeeasy-compiler-code-generation-16",
+      "contentSha256": "c4b77eab2c7cf5b39a8f834b046a44b9c442380afd48b8591dc82ddfb76bad92",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The four code blocks start at 1, 2, 3, and 10. Counting synthetic entry and exit yields six nodes. The edges are entry→1, 1→2, 2→3, 3→3, 3→10, 10→2, and 10→exit.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.13.8, Intermediate Code: GATE CSE 2015 | Set 2 | Question: 29, PDF p. 147 (key p. 188)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.16",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "madeeasy-compiler-code-generation-17",
+      "contentSha256": "f4fffe53977141dee6d6023051579074a91609b5a2001406f292c1a5285a59d6",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "9",
+      "status": "verified-with-note",
+      "reason": "Use x1 = u − t, y1 = x1 * u, x2 = y1 + w, y2 = t − z, and y3 = x2 * y2. The five definitions and the four distinct inputs u, t, w, and z require nine SSA names.",
+      "note": "Line 2 should read y = x * v, as in the printed question and official paper. The app repeats u, which removes one live-in. The published keys give 10 for the five-input variant. GATE Overflow also shows y = y + w on line 3. The original paper and app use x = y + w. The keyed SSA example corroborates the naming rule used to compute 9 for the live text.",
+      "replaceExisting": true,
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.25.2, Static Single Assignment: GATE CSE 2016 | Set 1 | Question: 19, PDF p. 179 (key p. 188)",
+          "answer": "10 (different source code)",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.17",
+          "answer": "10 (printed variant)",
+          "agrees": false
+        },
+        {
+          "kind": "official-key",
+          "ref": "IISc GATE 2016 CS-1 final answer key, CS Q19. The original exam code uses v on line 2. https://web.archive.org/web/20160327121653id_/http://www.gate.iisc.ernet.in:80/GATE2016_ans_keys_final/CS-1_AnsKey.pdf",
+          "answer": "10.0 to 10.0 (original exam variant)",
+          "agrees": false
+        },
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.25.3, GATE 2017 CS Set 1 Q12, PDF p. 179 (key p. 188). Keyed SSA example used to check the renaming rule.",
+          "answer": "9 when the example’s naming rule is applied to the app code (5 definition names + 4 distinct inputs)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Straight-line SSA renaming and count, using the procedure in Cytron et al. (1991), §5.2, pp. 472–473. https://www.cs.utexas.edu/~pingali/CS380C/2010/papers/ssaCytron.pdf",
+          "answer": "9",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "madeeasy-compiler-code-generation-18",
+      "contentSha256": "5ac8b5e0a4d34f5dd895599a7d541e5926f595371f5e9385002b093eac0711e5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "G1 appends another dimension with E → num ][ E and ends with E → num ]. G2 starts from E → [ num ] and appends dimensions with E → E [ num ]. Both yield int a [10] [3] and allow any positive number of dimensions.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.12.38, Grammar: GATE CSE 2016 | Set 2 | Question: 46, PDF p. 142–143 (key p. 187)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.18",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 19,
+      "id": "madeeasy-compiler-code-generation-19",
+      "contentSha256": "137836f2aac0537523477663f1e64f9dff113ac7a702a2b77f8807ec180ce5ba",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "B gives each assignment a fresh name. The multiplication uses the first p version, and the last addition uses the second p version and the first q version.",
+      "note": "In option D, the third line of the official paper reads p₂ = u * v. The app shows q₂ = u * v. D still uses unversioned p and q.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.25.3, Static Single Assignment: GATE CSE 2017 | Set 1 | Question: 12, PDF p. 179 (key p. 188)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.19",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "madeeasy-compiler-code-generation-20",
+      "contentSha256": "22a296da80353c8698309fb468a3f2192d6d2d2911bcba4eb5f953bd7bf4ee40",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "2",
+      "status": "verified",
+      "reason": "Evaluate b + c into one register using two, divide by immediate 3, and use the free register to load d and add it. Then load a into the free register, subtract immediate 1, and multiply the two results. Separate b and c operands require at least two registers.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.23.6, Register Allocation: GATE CSE 2017 | Set 1 | Question: 52, PDF p. 173 (key p. 188)",
+          "answer": "2",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.20",
+          "answer": "2",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "2",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "madeeasy-compiler-code-generation-21",
+      "contentSha256": "c228a7d761e40972c25e9050094d93248145f045df00307a7835b8cec0275d36",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "1024",
+      "status": "verified",
+      "reason": "Each if chooses between two expressions and rejoins before the next statement. The grammar forbids nested conditionals inside those expressions, so ten consecutive binary branches give 2¹⁰ structural paths.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.22.19, Parsing: GATE CSE 2017 | Set 1 | Question: 43, PDF p. 170 (key p. 188)",
+          "answer": "1024",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.21",
+          "answer": "1024",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "1024",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 22,
+      "id": "madeeasy-compiler-code-generation-22",
+      "contentSha256": "48bb26fe2b063552aa8d16c8b4e8cd8451104170a4fecc66d8cc5bf2b17067f5",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "6",
+      "status": "verified",
+      "reason": "The leaves are b, c, and the constant 1. Assignments to a and d share the b + c node. Assignments to e and f share the node for (b + c) + 1. The final e + f adds one node, for six total.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.9.2, Directed Acyclic Graph: GATE CSE 2021 | Set 1 | Question: 50, PDF p. 130–131 (key p. 187)",
+          "answer": "6 to 6",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.22",
+          "answer": "6",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "IIT Bombay GATE 2021 CS Set 1 Q50, official answer key. https://gate2024.iisc.ac.in/wp-content/uploads/2021/cs_2021.pdf",
+          "answer": "6 to 6",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "6",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 23,
+      "id": "madeeasy-compiler-code-generation-23",
+      "contentSha256": "28ce0a84c57e95aad1b81e7fc44df6281416988769d2d7da368ba4ffd15db962",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "A symbol table holds information about identifiers. Three-address code, a control-flow graph, and an abstract syntax tree each represent a program's computation, control flow, or structure. The symbol table is the sole selection.",
+      "note": "The official 2021 CS Set 2 key classifies this question as MSQ and accepts only the symbol table. Its option D maps to app option A.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.13.9, Intermediate Code: GATE CSE 2021 | Set 2 | Question: 13, PDF p. 147 (key p. 188)",
+          "answer": "D, Symbol table → app A (multiple-select)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.23",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "IIT Bombay GATE 2021 CS Set 2 Q13, official answer key. https://gate2024.iisc.ac.in/wp-content/uploads/2021/cs_2021.pdf",
+          "answer": "MSQ D, Symbol table → app A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 24,
+      "id": "madeeasy-compiler-code-generation-24",
+      "contentSha256": "4e8b51a69c8337a1ca8336ba5b68d8822091b3bc675a9d29d3839bc8fd61b478",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "S₂ is the only successor of S₁ inside the basic block. The live-out set of S₁ is therefore exactly the live-in set of S₂.",
+      "note": "App options A and D are identical by commutativity of union. Restore D to OUT(S₁) = IN(S₁) ∪ USE(S₁), the corresponding distractor in the official paper and GATE Overflow. C remains the sole correct option.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.17.2, Live Variable Analysis: GATE CSE 2021 | Set 2 | Question: 38, PDF p. 156 (key p. 188)",
+          "answer": "A, OUT(S₁) = IN(S₂) → app C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.24",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "IIT Bombay GATE 2021 CS Set 2 Q38, official answer key. https://gate2024.iisc.ac.in/wp-content/uploads/2021/cs_2021.pdf",
+          "answer": "A, OUT(S₁) = IN(S₂) → app C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 25,
+      "id": "madeeasy-compiler-code-generation-25",
+      "contentSha256": "4b601bbcab3fb83807e0e369ab86c537420ad4dfacd6a09d0b28c4b5e25356c5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The first assignment performs three additions and reads two fields. Assignments to p and q and the index increment perform three additions per iteration for 100 iterations. C groups p + x + 3 and q + x + 3 from the left, so neither has x + 3 as a subexpression. The invariant field reads are reused, giving 303 additions and two dereferences.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.6.6, Code Optimization: GATE CSE 2021 | Set 2 | Question: 30, PDF p. 125–126 (key p. 187)",
+          "answer": "D, 303 additions and 2 dereferences → app A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.25",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "IIT Bombay GATE 2021 CS Set 2 Q30, official answer key. https://gate2024.iisc.ac.in/wp-content/uploads/2021/cs_2021.pdf",
+          "answer": "D, 303 additions and 2 dereferences → app A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 26,
+      "id": "madeeasy-compiler-code-generation-26",
+      "contentSha256": "66bdb4d6c60cf0a791893045b49d15046f0cbb44f8c4e15c68ab0649d67a63a7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The fixed point gives IN(B2) = {a,i,j}, IN(B3) = {j}, and IN(B4) = {a,j}. Taking the union of successor live-in sets gives B1 and B4 live-out {a,i,j} and B2 and B3 live-out {a,j}.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.17.3, Live Variable Analysis: GATE CSE 2023 | Question: 27, PDF p. 156 (key p. 188)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.26",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "IIT Kanpur GATE 2023 CS Q37, official answer key. https://gate2026.iitg.ac.in/doc/download/Answer_keys2023/CS_ANS_GATE2023.pdf",
+          "answer": "D (matching all four block-exit sets)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 27,
+      "id": "madeeasy-compiler-code-generation-27",
+      "contentSha256": "1183e86b513f9c2fa789507fea24f05c365c4fca3916a58a117e6b7f0f9db9d0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Entry, branch targets, and fallthroughs give leaders L1, L3, L4, L10, L11, L13, and L15. The seven blocks include L4–L9, the largest, with six instructions.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.13.10, Intermediate Code: GATE CSE 2024 | Set 1 | Question: 29, PDF p. 147–148 (key p. 188)",
+          "answer": "D, 7 blocks and 6 instructions → app B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.27",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "IISc GATE 2024 CS1 Q39, final answer key. https://gate2024.iisc.ac.in/wp-content/uploads/2024/CS1FinalAnswerKey.pdf",
+          "answer": "D, 7 blocks and 6 instructions → app B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 28,
+      "id": "madeeasy-compiler-code-generation-28",
+      "contentSha256": "1563d914fafd01a9fe93b460c45496ee89aee9b620762445f798ec47eeb5ba9c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Triple (1) loads s[i] for the negation in (2). Triple (3) multiplies (0) by (2). Triple (6) designates the indexed destination x[i] for the assignment in (7). A has all three.",
+      "note": "The scan and app omit the leading equals sign in the array-read operator =[]. Restore it in triple (1) of options A and D and in triple (6) of options B and C. The three operations in A still identify the intended triple sequence.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §2.13.11, Intermediate Code: GATE CSE 2024 | Set 2 | Question: 33, PDF p. 148 (key p. 188)",
+          "answer": "A, read s[i], multiply (0) by (2), and select x[i] as destination",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Code Generation and Optimization, chapter PDF p. 3 (book p. 517), Q4.28",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "IISc GATE 2024 CS2 Q43, final answer key. https://gate2024.iisc.ac.in/wp-content/uploads/2024/CS2FinalAnswerKey.pdf",
+          "answer": "A (matching load, product, and indexed destination)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the app question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

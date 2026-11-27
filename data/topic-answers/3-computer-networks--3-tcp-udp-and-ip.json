@@ -1,0 +1,3994 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "3. Computer Networks",
+  "chapter": "3. TCP, UDP and IP",
+  "slug": "3-computer-networks--3-tcp-udp-and-ip",
+  "reviewedAt": "2026-11-26",
+  "sources": {
+    "gateOverflowPdf": {
+      "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume3.pdf",
+      "sha256": "5c552941136eb96612fabec8a5b2cb67fc07c17023ce15628408ca27d6640c24",
+      "chapter": "2 Computer Networks",
+      "answerKeyPages": [
+        165,
+        166
+      ]
+    },
+    "gateOverflowIsroPdf": {
+      "file": "isro.pdf",
+      "url": "https://github.com/GATEOverflow/GO-PDFs/releases/download/isro/isro.pdf",
+      "sha256": "4fa6397b9bdba0f1c095c76a8e01c2252b66e14472855706716d5663255bddae",
+      "chapter": "5 Computer Networks",
+      "answerKeyPages": [
+        94,
+        95
+      ]
+    },
+    "madeEasyPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\3. Computer Networks\\3. TCP, UDP and IP.pdf",
+      "sha256": "56139841ba5ebfa3976575c2c90aff616bba7d4cc0b58220cd10c5bfa37cb9e6",
+      "answerKeyPage": 6
+    },
+    "madeEasySolutions": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\All Subject Solutions Keys\\CN.pdf",
+      "sha256": "c09c5dc9e794c599a5d25eaba5d37095b75b81c85c882c6549ea346f616748e7",
+      "answerKeyPage": 7
+    },
+    "yearPapers": "data/papers/*.json, linked by source.copiedFrom.questionId"
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "dda9cce0-5cbb-4b1f-8e79-0f2fcba900b0",
+      "contentSha256": "9e62725d057b249586fe4ecb67eeac297f43f5a335daf443907bce6918050a15",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "AND each address with 255.255.31.0. Only D yields the same masked value for both addresses, 128.8.1.0, since 129 and 161 both give 1 in the third octet.",
+      "note": "The editor gives 172.56.87.233 in option A. The original question gives 172.56.87.23, while Made Easy prints an invalid five-part address. Use 172.56.87.23 to match the original. The first two octets already differ, so D still holds. Apply the historical noncontiguous mask literally.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.34.1, Subnetting: GATE CSE 2003 | Question: 82, ISRO2009-1, PDF p. 153 (answer key p. 165)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.3, chapter PDF p. 1 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q82",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "0860edd7-c49f-4c8c-9aef-0fdad0e81bfd",
+      "contentSha256": "474a3f465ed888dfacba36a8afc9cf589dad6a2d32b10cef45f8e0fca01f83b5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Transport supplies logical end-to-end communication between endpoints. Loss recovery, duplicate suppression and in-order delivery are optional transport services.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.22.1, Network Layer: GATE CSE 2003 | Question: 28, PDF p. 138 (answer key p. 165)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.2, chapter PDF p. 1 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q28",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "566ccd50-7491-4f3e-b9e7-1c61878c1ae1",
+      "contentSha256": "aed50bed6e8b9197aa90f6bec4f1eb6cfc0c5001434ce598fcb0feeea56a0892",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "IPv4 provides loose and strict source routing options. Multiple addresses and multiple routes are possible, and an expired TTL causes the datagram to be discarded.",
+      "note": "Made Easy prints “forwarded” in C even though its explanation says “discarded.” The editor and original paper both say “discarded,” which leaves D as the false statement.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.16.1, IP Addressing: GATE CSE 2003 | Question: 27, PDF p. 131 (answer key p. 165)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.1, chapter PDF p. 1 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q27",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "72b74aff-3a3d-4f61-9417-0304fae41f5b",
+      "contentSha256": "37cffab518c239db21266a5a3a34c9d8d00c73fba9aa5e238d3cf0d08631cb51",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "In slow start, each of the two ACKs can add one 2000-byte MSS. The window reaches 4000 + 2 × 2000 = 8000 bytes, below the stated cap.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.30.14, Sliding Window: GATE IT 2004 | Question: 88, PDF p. 150–151 (answer key p. 165)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.10, chapter PDF p. 1 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q88",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "7e1b814d-8cc1-4cbb-93f9-27fd090e868f",
+      "contentSha256": "4f3627f49788f33c4ab3ca0b1ca6dce2143f89bacda16cc60451a47d91e5574a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "With fragmentation sized for the smaller MTU, five 376-byte payloads and one 220-byte payload carry 2100 bytes. Six 20-byte IPv4 headers cost 120 bytes.",
+      "note": "All three keys give 120 bytes, attainable when the source sizes fragments for the smaller path MTU. If the first network carries maximum-size fragments of 1176 and 924 payload bytes, the second network needs four and three fragments, for 140 bytes. The linked year-paper explanation miscounts this case. Specify minimum IP overhead or say the source already knows the path MTU.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.21.3, Network Flow: GATE IT 2004 | Question: 87, PDF p. 137 (answer key p. 165)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.9, chapter PDF p. 1 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q87",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "8d75f3de-33e0-4336-84fc-89ac5386a7f3",
+      "contentSha256": "39e1df5de6fcb3a87bf9a24ed1787d41bb1049e5f4f1d876beccfd9a39803a2a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The destination port is a transport-header field. The fragment offset and both IP addresses are IPv4-header fields.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.17.12, IP Packet: GATE IT 2004 | Question: 86, PDF p. 134 (answer key p. 165)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.8, chapter PDF p. 1 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q86",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "ce6046c8-a23c-4c17-b426-904cf22c0e2c",
+      "contentSha256": "ff5a12b01fa6586e4d00fcecb0c83fc7bb55d658f497ddb25c45996dc8943e88",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "TCP sequences the bytes in each direction. A data segment's sequence field gives the sequence number of its first byte.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.35.17, TCP: GATE IT 2004 | Question: 28, PDF p. 162 (answer key p. 166)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.7, chapter PDF p. 1 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q28",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "316bc312-e50f-4973-9542-d241e40ec470",
+      "contentSha256": "be165c9f136eccd9fd14f259384b0c9ef390b86e95265adc2b1398dce5852fe0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The globally administered Ethernet MAC address assumed in the question is allocated to be unique across networks, covering the Internet.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.19.5, LAN Technologies: GATE IT 2004 | Question: 27, PDF p. 136 (answer key p. 165)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy 2. LAN.pdf Q2.2, PDF p. 1 (answer table p. 3)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q27, matched by stem and the four choice texts",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "d8ddf0ae-c107-4957-9a90-949ca9f92a50",
+      "contentSha256": "c9e138180bbe284f0210c3eab3bc5132c2abc2fc1de3819f9006e5e8869526c1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The mask is /26, leaving six host bits. Excluding the subnet and broadcast addresses gives 2^6 − 2 = 62 usable addresses.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.34.16, Subnetting: GATE IT 2004 | Question: 26, PDF p. 157 (answer key p. 166)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.6, chapter PDF p. 1 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q26",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "6c10bdbc-9783-4d36-8e59-57321f3dba5d",
+      "contentSha256": "bebdb7b42436c427977489a3d1168a6911f2f3312c4a95e05d664fd8aa11fa43",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "TCP implements in-order delivery and retransmission and reduces its congestion window on congestion. The protocol offers best-effort throughput with no minimum rate guarantee.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.35.16, TCP: GATE IT 2004 | Question: 23, PDF p. 162 (answer key p. 166)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.5, chapter PDF p. 1 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q23",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "eb2331ad-167e-41e7-af17-24a1c88e24fe",
+      "contentSha256": "3f89557e0070851a2d5b474e6f00c9963d0c7d212bf162a06d20d59a15087039",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The IP payload is 180 + 20 = 200 bytes with the TCP header. Network B permits 80 payload bytes per fragment, yielding payloads of 80, 80 and 40 bytes plus three 20-byte IP headers, for 260 bytes.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.14.1, Fragmentation: GATE CSE 2004 | Question: 56, PDF p. 129 (answer key p. 165)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.12, chapter PDF p. 1 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q56",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "29636da7-d0b3-4d4c-9e6d-f7604745641a",
+      "contentSha256": "a00e91520e404c328fe057166ab6dfcbe153baea930744b870e887d350aca53f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "128.75.43.16 matches both Eth0's /24 and Eth1's /25, so Eth1 wins. 192.12.17.10 misses the host route for .5 and uses default Eth2.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.34.2, Subnetting: GATE CSE 2004 | Question: 55, PDF p. 154 (answer key p. 165)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.11, chapter PDF p. 1 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q55",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "726785c6-9568-4468-9bda-6ab090366a4a",
+      "contentSha256": "c8215f0cd4abd3e72a1ca26e177179da20cd1ab7c31d66ac9da1b63e18430871",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A transparent bridge learns and forwards by MAC address. A router normally forwards by the destination IP address, so B reverses their roles.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.4.1, Bridges: GATE CSE 2004 | Question: 16, PDF p. 114 (answer key p. 165)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.4, chapter PDF p. 1 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q16",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "03bd405b-ffc0-4daa-8498-710f6eb43782",
+      "contentSha256": "0c4e0cd75795b58f4e83fb2135d0761107905d0db99d7f51b7a1b48641f0b70b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "After A fails, B and C can still advertise routes via one another. Synchronous updates give F distances 3, 3, 4, 5, … after rounds 1, 2, 3, 4, …, so F still has a finite cost of 101 at round 100.",
+      "note": "Made Easy 4.16 gives infinity. The stated algorithm has no finite infinity cutoff, split horizon or route poisoning. Its synchronous recurrence keeps finite stale routes at round 100.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.28.12, Routing: GATE IT 2005 | Question: 85b, PDF p. 147 (answer key p. 165)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy 4. Routing and Application Layer.pdf Q4.16, PDF p. 2 (CN.pdf answer table p. 9)",
+          "answer": "B (infinite cost)",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Synchronous Bellman–Ford recurrence on the editor graph",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "39f5dec9-3a02-4ddd-a0d5-591c067468af",
+      "contentSha256": "9f3550f7aabec76a7faa0595f0cef886ccb94f4bb15025f9000d099586ba6d11",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "From B, A, C and D are one hop away. E is reachable in two hops via C, and F in two hops via D. Those distances and next hops match the node-B table.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.28.11, Routing: GATE IT 2005 | Question: 85a, PDF p. 146–147 (answer key p. 165)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy 4. Routing and Application Layer.pdf Q4.15, PDF p. 2 (CN.pdf answer table p. 9)",
+          "answer": "C (node B’s table)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "6f016d9b-f08c-48ca-8212-d55a674d8d35",
+      "contentSha256": "693e4fcdeb48ffaa4270788dbd5a4fbf7df64cf14602b1c5177fc9a31ee85371",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Reverse DNS queries PTR for 8.16.128.145.in-addr.arpa. In iterative resolution, the in-addr.arpa zone precedes a more specific delegation such as 128.145.in-addr.arpa.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.1.11, Application Layer Protocols: GATE IT 2005 | Question: 77, PDF p. 113 (answer key p. 165)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy 4. Routing and Application Layer.pdf Q4.5, PDF p. 1 (CN.pdf answer table p. 9)",
+          "answer": "C (in-addr.arpa, then 128.145.in-addr.arpa)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "9f914c57-f15c-447b-97dc-2af3d45987bd",
+      "contentSha256": "2b9b2ea95b074d7ba2a0b7c5d87187d7c7ec06ca6f1b97068223f1038869e64c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The 100-host subnet needs a /25 and each 50-host subnet a /26. The ranges 128–255, 64–127 and 0–63 in the last octet are aligned and disjoint.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.34.17, Subnetting: GATE IT 2005 | Question: 76, PDF p. 157–158 (answer key p. 166)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.21, chapter PDF p. 1–2 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "2e17ca0e-4bb1-43d1-a99c-0e45ebb5ee2f",
+      "contentSha256": "139e502036747226f8fb2a4d28b0d3d8090cae341069987a6575ce0e39e589e8",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The sender window is min(4096, 6144) = 4096 bytes. The 2048 bytes already in flight leave 2048 bytes of unused space in that window.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.9.9, Congestion Control: GATE IT 2005 | Question: 73, PDF p. 121 (answer key p. 165)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.19, chapter PDF p. 1 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 19,
+      "id": "5ccaccd6-f1c9-4df7-bc63-d2041bc78c2b",
+      "contentSha256": "fccd2e9d42d34a2004eb19f8439ac060454ca1d0d83754ea463a626607a31608",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Distance-vector neighbors can advertise stale reachability to each other after a failure and increase the estimated distance one update at a time.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.11.7, Distance Vector Routing: GATE IT 2005 | Question: 29, PDF p. 124 (answer key p. 165)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy 4. Routing and Application Layer.pdf Q4.4, PDF p. 1 (CN.pdf answer table p. 9)",
+          "answer": "B (distance vector)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "a8765cf7-11ae-442d-88da-a96d9e6c93ea",
+      "contentSha256": "42f78319946ef5393b1ac2de1dc113b5557f1a218732a76efba0d3e646796e00",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Six extra network bits split a /16 into 64 /22 subnets. The first six bits of the third octet are 11111100, giving 252 there.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.34.3, Subnetting: GATE CSE 2005 | Question: 27, PDF p. 154 (answer key p. 165)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.16, chapter PDF p. 1 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q27",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "21a3f18c-09fc-4db3-a94a-ca45caf9a3ee",
+      "contentSha256": "e21aa77def41fbe2d21ba95963e98eb100a18789c84aa4294a9b942aa89d5b8f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A spanning tree leaves exactly one active path between any two points in the bridged LAN, preventing forwarding loops.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.28.1, Routing: GATE CSE 2005 | Question: 26, PDF p. 143–144 (answer key p. 165)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy 2. LAN.pdf Q2.5, PDF p. 1 (answer table p. 3)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q26",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 22,
+      "id": "53cef89a-36f4-4092-a7a3-3054a9b56885",
+      "contentSha256": "f5024f374e33fedf116e143df6e6e8f247869d1ad4a81be3d6296959cb74c30e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "ARP resolves an on-link IPv4 address to the link-layer MAC address needed to send the frame.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.23.1, Network Protocols: GATE CSE 2005 | Question: 24, PDF p. 139 (answer key p. 165)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.15, chapter PDF p. 1 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q24",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 23,
+      "id": "32de7480-7845-4476-9495-52e1a27c9933",
+      "contentSha256": "69f183d300ce19479756f9d35ffb938bd4ceacd9c5b5a91100b10e95cf62c824",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "IP forwards individual datagrams independently. Datagrams in the same session may take different routes whether they carry TCP or UDP.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.37.1, UDP: GATE CSE 2005 | Question: 23, PDF p. 164 (answer key p. 166)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.14, chapter PDF p. 1 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q23",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 24,
+      "id": "9e87d40d-a796-4b7e-893f-5258808d507f",
+      "contentSha256": "008df484f294aea7210fe7fc17f67885152513db7ca67e39b99bcdbee5df7385",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The third octet 95 is the last in each of the aligned blocks 64–95, 80–95 and 88–95. The last octet is 255, so all three offered masks can produce that broadcast address.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.34.19, Subnetting: GATE IT 2006 | Question: 70, PDF p. 158 (answer key p. 166)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.28, chapter PDF p. 2 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 25,
+      "id": "c6df236d-a037-4362-8415-b7aeb9021527",
+      "contentSha256": "dcc358641c741b04025f5212221df1bbacdcc541722dafa1d2e8e89124a6e7d8",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "A UDP connect call sets a default peer locally without sending a datagram. A TCP SYN to a closed port is normally answered by a TCP reset. Under that reading neither host generates ICMP Port Unreachable.",
+      "note": "Made Easy agrees for a UDP connect() call without a send. If X sends a UDP datagram, Y alone normally sends ICMP Port Unreachable. A TCP SYN to Z’s closed port produces a TCP RST in either reading, so the GATE Overflow “both” key fails. To make C unique, say that X only calls connect() on the UDP socket and sends no UDP data.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.37.4, UDP: GATE IT 2006 | Question: 69, PDF p. 164 (answer key p. 166)",
+          "answer": "D (both Y and Z)",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.27, chapter PDF p. 2 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "UDP peer selection and closed-port responses, RFC 1122 §4.1.3.1, RFC 9293 and https://man7.org/linux/man-pages/man7/udp.7.html",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 26,
+      "id": "a6785371-8683-41f8-8726-84d232d7fbff",
+      "contentSha256": "9c4789602d25b769efc0debcc9a9b340bed921ea609da08b965ad09b07b835ac",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "144.16.68.117 matches the /16, /19 and /24 rows. The /27 row covers last octets 64–95. The /24 is the longest match and uses eth2.",
+      "note": "The array omits explicit row separators before hline. MathJax renders the five rows. Use a double-backslash row break before each subsequent hline for portable LaTeX.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.34.18, Subnetting: GATE IT 2006 | Question: 63, ISRO2015-57, PDF p. 158 (answer key p. 166)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.24, chapter PDF p. 2 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 27,
+      "id": "26b1ae9c-9e42-4753-8688-60966ef8fa9f",
+      "contentSha256": "89187c50b49626a68b9c350ad99e29aab57b09de895229bb647ae1a7f40ba96b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "With C1's /17 mask, third octets 2 and 75 are both below 128. With C2's /18 mask, they fall in different blocks, 0–63 and 64–127.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.34.4, Subnetting: GATE CSE 2006 | Question: 45, PDF p. 154 (answer key p. 165)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.29, chapter PDF p. 2 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q45",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 28,
+      "id": "b9368e60-3686-4083-82d7-a06b71cf781d",
+      "contentSha256": "fe9ff933d0251a309ee7fce7a16ae34f58715888bdc00ef4c761c96264d55948",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Each forwarding IP router decreases TTL. Discard on expiration bounds the lifetime of a packet caught in a routing loop.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.17.1, IP Packet: GATE CSE 2006 | Question: 5, PDF p. 132 (answer key p. 165)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.23, chapter PDF p. 2 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q5",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 29,
+      "id": "cba83af8-389f-423e-a9ac-13c6c47fe7b8",
+      "contentSha256": "602147a4892b7776551de532cc8789f1e94b56227f4d68895bc92a21ea233e09",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "An IP router selects the next hop by looking up the packet's destination IP address in its forwarding table.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO CSE isro.pdf item 5.22.1, ISRO CSE 2007 Q75, PDF p. 83 (answer key p. 95)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 30,
+      "id": "0379926c-1269-46e7-870b-39b770099982",
+      "contentSha256": "b5a324aa66d342f0fc29d6d3fd16915b301cf2351081c09f9bb618da9323116d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "IEEE 802.11 specifies wireless LAN operation at the MAC and physical layers.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO CSE isro.pdf item 5.38.1, ISRO CSE 2007 Q74, PDF p. 94 (answer key p. 95)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 31,
+      "id": "86b59731-b68d-462e-ad53-f504742b9058",
+      "contentSha256": "d1d36d92f3f0a743e732c2a05e3314fd28b4e24cc4489a127d44dfa224a0c35a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The range is 224.0.0.0/4, with leading bits 1110 in every address. IPv4 uses it for multicast groups.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO CSE isro.pdf item 5.32.5, ISRO CSE 2007 Q73, PDF p. 91 (answer key p. 95)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 32,
+      "id": "0ec86b1b-5258-45f1-869a-3af005949f94",
+      "contentSha256": "336556634be19390a173acf2b008baf8c79a23b6ee86abc125e7533e6ba867d2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Silly window syndrome causes TCP to send many tiny segments, with a large header and ACK overhead relative to useful data.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO CSE isro.pdf item 5.34.1, ISRO CSE 2007 Q66, PDF p. 92 (answer key p. 95)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 33,
+      "id": "bf2ae902-23f7-4bdb-8252-ba772299fe87",
+      "contentSha256": "257f060ae61aa6893f1ddbe2e51a59c13035f76923f9fdeb244cf43b46c0db64",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Each of the five routers computes and maintains its own forwarding or routing table. The six networks supply destinations for those tables.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO CSE isro.pdf item 5.19.1, ISRO CSE 2007 Q26, PDF p. 82 (answer key p. 95)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 34,
+      "id": "cc8b15fa-912e-4c85-9fe0-0cda5a5fb7c6",
+      "contentSha256": "d1a19fea7abfa445775d68dd4046c62f49d6217fd10942679f7b3c89312c19fc",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The depth sum is 2 × 1 + 4 × 2 + 8 × 3 = 34. Every route via the root costs the sum of the sender and receiver depths. Each endpoint is uniform, giving 2 × 34/15 = 4.5333 hops.",
+      "note": "Made Easy 4.11 gives 5.26. The uniform depth calculation yields 4.53 for both ordered and unordered distinct pairs.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.28.13, Routing: GATE IT 2007 | Question: 63, PDF p. 147 (answer key p. 165)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy 4. Routing and Application Layer.pdf Q4.11, PDF p. 2 (CN.pdf answer table p. 9)",
+          "answer": "D (5.26 hops)",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 35,
+      "id": "83aff36b-4083-410e-a104-7ed4d0265b05",
+      "contentSha256": "51789d8e516cc7f60ae0fe69eed1985bcabfef94e846357d4466e969845f2284",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Add F's link cost to every advertised distance from that neighbor, then take the minimum per destination. The A-through-G costs are 8, 20, 17, 12, 10, 0 and 6 ms.",
+      "note": "The stem and options omit explicit row separators before hline. MathJax renders seven rows in each table. Use a double-backslash row break before each subsequent hline for portable LaTeX.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.11.8, Distance Vector Routing: GATE IT 2007 | Question: 60, PDF p. 124–125 (answer key p. 165)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy 4. Routing and Application Layer.pdf Q4.10, PDF p. 1–2 (CN.pdf answer table p. 9)",
+          "answer": "A (8, 20, 17, 12, 10, 0, 6)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 36,
+      "id": "03ce7ba3-4b02-4fb3-ad8f-4d74cda07ba5",
+      "contentSha256": "4ac11d5d09ea08f27a57e45fc8a09f2b8729f8d7b68df6a0ece14f3e5f1372c7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Sequence numbers count bytes, so the missing segment held 290 − 230 = 60 bytes. The cumulative ACK stays at the next expected byte, 230.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.35.19, TCP: GATE IT 2007 | Question: 14, PDF p. 162–163 (answer key p. 166)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.31, chapter PDF p. 2 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 37,
+      "id": "b0848316-00ea-4bdb-9f29-00e51e28ed63",
+      "contentSha256": "475e47f9d5ec75bda9ef604abd02508dc54e47333804964e31934b73b0bd58c1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "TCP updates its retransmission timeout using measured round-trip times and their variation. Only statement (ii) describes that adaptive calculation.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.35.18, TCP: GATE IT 2007 | Question: 13, PDF p. 162 (answer key p. 166)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.30, chapter PDF p. 2 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 38,
+      "id": "e5cd0a39-ec33-4493-9f92-de76700c77cf",
+      "contentSha256": "b45a1691b4bde5592a61c293478614051e9b60b4a2bb876fb14b2e637e527914",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Under the historical rule reserving the all-zero and all-one subnet numbers, six subnet bits give 62 subnets. Ten remaining host bits give 2^10 − 2 = 1022 usable hosts each.",
+      "note": "C uses the historical rule in RFC 950 excluding the all-zero and all-one subnet numbers. With current practice allowing both, the result is 64 subnets and 1022 hosts, which is absent from the choices. Add “exclude the all-zero and all-one subnet numbers” to state the intended convention.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.34.5, Subnetting: GATE CSE 2007 | Question: 67, ISRO2016-72, PDF p. 154 (answer key p. 165)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.32, chapter PDF p. 2 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q67",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 39,
+      "id": "fb106da2-f6c0-45ce-8641-1ba4e44d4f1e",
+      "contentSha256": "2dbd907009e71742fd882d2117207ceb00deb462b7b0ed9204b2905ccccf0b72",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Ordinary DNS queries can use UDP port 53. DNS also supports TCP, while Telnet, SMTP and the HTTP model in this exam use TCP.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.23.2, Network Protocols: GATE CSE 2007 | Question: 20, PDF p. 139 (answer key p. 165)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy 4. Routing and Application Layer.pdf Q4.9, PDF p. 1 (CN.pdf answer table p. 9)",
+          "answer": "C (DNS)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q20, matched by stem and the four choice texts",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 40,
+      "id": "585413d8-5fc9-4896-8ebf-d5d58fd71e73",
+      "contentSha256": "e519e3a885d308196b9c115e77a8acaa6390e68c6102fba0ecaf9d28a0cbb2e7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "198 is binary 11000110. The leading 110 identifies a class C address under classful addressing.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO CSE isro.pdf item 5.14.1, ISRO CSE 2008 Q32, PDF p. 80 (answer key p. 95)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 41,
+      "id": "b0a7317a-3039-4e90-9be2-d9de8b5270cd",
+      "contentSha256": "142e25fe9a998575f24c8a38301becd32e15e055590dd2dff81e25fa197f26c0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "TCP's advertised receive window constrains the sender's outstanding byte range so the receiver can control how fast it accepts data.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO CSE isro.pdf item 5.29.2, ISRO CSE 2008 Q8, PDF p. 89 (answer key p. 95)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 42,
+      "id": "8f2945d4-a9be-41c6-a98d-95bfa6f1c762",
+      "contentSha256": "fa1bb2b8706342d669435247e9cf2f8c531780b0a23449c818b21d3e79f04c7c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The LAN frame encapsulates the IP datagram in its information field, which is the frame payload.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO CSE isro.pdf item 5.18.1, ISRO CSE 2008 Q4, PDF p. 82 (answer key p. 95)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 43,
+      "id": "1eefb7d9-012c-4d98-9f2f-c6abae8de433",
+      "contentSha256": "985e00e47e9cbbfefc1ffc0491565db773e01f7845b0f95eeeac982836939489",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The mask has 24 leading ones from the first three octets and two more from 192 = 11000000, for a /26 prefix.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow ISRO CSE isro.pdf item 5.32.6, ISRO CSE 2008 Q3, PDF p. 91 (answer key p. 95)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 44,
+      "id": "b5ac3dd9-df85-46c7-ac6c-e2098792d470",
+      "contentSha256": "f55d012d584094dd026764215e7527154d71dd6a693c8f9ea7cc077b95977ede",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "X is in 192.168.1.96/27. The interface R1 presents on that directly connected subnet is 192.168.1.110.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.34.21, Subnetting: GATE IT 2008 | Question: 85, PDF p. 158–159 (answer key p. 166)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.38, chapter PDF p. 3 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 45,
+      "id": "95e25371-0c33-4add-ba7b-b2be394c8b22",
+      "contentSha256": "cae3f015b0deb16a697d15fbb49d4e8e80b344da90f83c4369f5c439ab2915cf",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "With /27 blocks of 32 addresses, the listed host and interface addresses occupy subnets beginning at 192.168.1.64, .96 and .128.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.34.20, Subnetting: GATE IT 2008 | Question: 84, PDF p. 158 (answer key p. 166)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.37, chapter PDF p. 3 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 46,
+      "id": "3b1e06ad-5c4f-4683-845e-b93d26801b45",
+      "contentSha256": "4a9ddaa3560520e7887f0ab747776f9eea622aceae60aadedf84ba3f820cfd9e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "A passive server follows LISTEN → SYN-RECEIVED → ESTABLISHED. In the exchange shown, the client needs the SYN+ACK to reach ESTABLISHED. Once it receives that segment, loss of its final ACK can be recovered.",
+      "note": "The keyed B reads S1 as “without receiving the SYN+ACK, the client cannot enter ESTABLISHED.” TCP can recover either lost control message by retransmission. If S1 is about losing one copy, the wording is too broad.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.35.20, TCP: GATE IT 2008 | Question: 69, PDF p. 163 (answer key p. 166)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.36, chapter PDF p. 2 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 47,
+      "id": "46b2d9f1-a4cf-433c-b7c7-0482307b028e",
+      "contentSha256": "382cd16e914723c5e9f5391b33d8a29dbe73d5da46e118bfdad4ed985e87a006",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "TCP uses both flow and congestion control, whereas UDP supplies neither. Fast retransmit responds to inferred loss as part of TCP's congestion-control behavior. Slow start changes the congestion window, so only S1 and S3 hold.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.23.11, Network Protocols: GATE IT 2008 | Question: 68, PDF p. 142 (answer key p. 165)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.35, chapter PDF p. 2 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 48,
+      "id": "4ab2d3e6-6295-4ab3-b56a-9e4d76cc31ed",
+      "contentSha256": "5d0e6dda3e32185dee0fcbc089097f9fd37101246d4bf9b7104ca6bd2db15162",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Classic distance vector can count to infinity, and each DV or LS router computes its own routing information. A DV update is sent to neighbors, whereas LS floods advertisements through the routing domain under the comparison used here.",
+      "note": "D uses the textbook comparison of a neighbor-only DV update with an LS flood. Total traffic over time depends on update frequency and topology. S4 would be clearer as “DV sends its updates to neighboring routers, while LS floods advertisements.”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.28.14, Routing: GATE IT 2008 | Question: 67, PDF p. 147–148 (answer key p. 165)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy 4. Routing and Application Layer.pdf Q4.14, PDF p. 2 (CN.pdf answer table p. 9)",
+          "answer": "D (S1 and S4 only)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 49,
+      "id": "2e69954f-df22-40fa-a1f2-46feac7fe227",
+      "contentSha256": "93566357f5fb32cd59cc08b14e7bff895904e072db37b4c74b7db731c0e19eda",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "255.255.248.0 is /21, leaving 11 host bits. The network and broadcast reservations leave 2^11 − 2 = 2046 usable addresses.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.34.6, Subnetting: GATE CSE 2008 | Question: 57, PDF p. 154 (answer key p. 165)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.40, chapter PDF p. 3 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q57",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 50,
+      "id": "3cd8222c-2021-49aa-bd5b-7e8100a0ddd7",
+      "contentSha256": "cc88ba2dba5df03423f3a0f52443dac6fe9aec235e7fe5662715a7d7891ef9a1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "In the standard slow-start model each ACK adds roughly one MSS. Each RTT acknowledges about one window's worth of segments, so the window grows exponentially.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.9.1, Congestion Control: GATE CSE 2008 | Question: 56, PDF p. 119 (answer key p. 165)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.39, chapter PDF p. 3 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q56",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 51,
+      "id": "76b798c6-f4ad-4f5c-b3c7-a9d89b866c61",
+      "contentSha256": "11339b4536d05ac83b1eb57fd084f92147d87e871e9c663a92dd9c84289382cf",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "TCP provides a byte stream and segments it as needed. The application's total data size is independent of the maximum size of one TCP segment or IP datagram.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.1.1, Application Layer Protocols: GATE CSE 2008 | Question: 14, ISRO2016-74, PDF p. 111 (answer key p. 165)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.33, chapter PDF p. 2 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q14",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 52,
+      "id": "madeeasy-cn-tcp-udp-ip-3-13",
+      "contentSha256": "79225ddab51c2ef2e339ba37b9ef2bab1b10ee486a98a4a33aab6e56dfe425c4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The 512 kbps hop is the bottleneck. Every 260 bytes on that hop carry 180 bytes of application data, so the sustained rate is 512 × 180/260 ≈ 354.5 kbps.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.14.2, Fragmentation: GATE CSE 2004 | Question: 57, PDF p. 129 (answer key p. 165)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.13, chapter PDF p. 1 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q57",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 53,
+      "id": "madeeasy-cn-tcp-udp-ip-3-17",
+      "contentSha256": "8a648d0ac5fa8de6edf9f75401ccee5cd3c216bf4700a9d1fe1f4ffa462d0d9c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "For three equal store-and-forward links and n equal packets, completion takes n + 2 packet transmission times. For packet sizes 4, 6, 7 and 9, the costs are 104, 60, 56 and 54 byte-times respectively.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.24.1, Network Switching: GATE CSE 2005 | Question: 73, PDF p. 142 (answer key p. 165)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.17, chapter PDF p. 1 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q73",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 54,
+      "id": "madeeasy-cn-tcp-udp-ip-3-18",
+      "contentSha256": "03828023daae06224152c9aaeb0c4ac1a60b06aed4002448edcecf2366f23daa",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "replaceExisting": true,
+      "status": "verified-with-note",
+      "reason": "The round-trip propagation interval takes 46.4 μs × 10 Mb/s = 464 bit-times. Including the given 48-bit jam interval gives the 512-bit slot, which also matches the 64-octet minimum 10 Mb/s Ethernet frame.",
+      "note": "The old stored key and Made Easy choice C give the 464 propagation-only bit-times. The problem specifies a 48-bit jam interval and asks about Ethernet, whose minimum frame is 512 bits. D agrees with the GATE Overflow and linked year-paper keys.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.20.1, MAC Protocol: GATE CSE 2005 | Question: 74, PDF p. 136 (answer key p. 165)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.18, chapter PDF p. 1 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C (464)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q74",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Ethernet slot and minimum-frame parameters, IEEE 802.3 table 4-2, https://www.ieee802.org/3/efm/public/jan04/THIN_MAC/4Ad3_1CMP.pdf",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 55,
+      "id": "madeeasy-cn-tcp-udp-ip-3-20",
+      "contentSha256": "4355cbfc1fe3c633e8d2aa78976cfc935780e801b91c865f14c1ab9283c4317c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Condition on the link chosen. With independent bit errors on a link, all L bits arrive intact with probability (1 − b_j)^L. Weight the two probabilities by p_1 and p_2 and add.",
+      "note": "The product terms assume independent bit errors on each link. The question supplies only individual bit-error probabilities. Add “assume independent bit errors” to make the calculation determined.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.12.5, Error Detection: GATE IT 2005 | Question: 74, PDF p. 126 (answer key p. 165)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.20, chapter PDF p. 1 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 56,
+      "id": "madeeasy-cn-tcp-udp-ip-3-22",
+      "contentSha256": "fc14488934265f43c97a754ef2bf67798736722b76cfb073713f5e48ec0149f1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Ethernet's frame check sequence is a CRC, and an IPv4 header carries a one's-complement checksum.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.13.7, Ethernet: GATE IT 2006 | Question: 19, PDF p. 128 (answer key p. 165)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.22, chapter PDF p. 2 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 57,
+      "id": "madeeasy-cn-tcp-udp-ip-3-25",
+      "contentSha256": "6e1d859eb368e4ba867834a04856907a80ebf6b0006548667114aa114c6ecb1c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "The editor and Made Easy show (1 − N)/i in A, which is nonpositive for N ≥ 1. The GATE Overflow original gives 1 − N/i, equivalently (i − N)/i. Use that expression in A and call the measured rate acknowledged goodput. No current option matches.",
+      "replaceExisting": true,
+      "status": "verified-with-note",
+      "reason": "The send window covers the round trip. In the question's time convention i − N packets have been acknowledged by time i, so the average acknowledged goodput is (i − N)/i.",
+      "note": "The editor and Made Easy show (1 − N)/i in A, which is nonpositive for N ≥ 1. The GATE Overflow original gives 1 − N/i, equivalently (i − N)/i. Use that expression in A and call the measured rate acknowledged goodput. No current option matches.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.30.15, Sliding Window: GATE IT 2006 | Question: 64, PDF p. 151 (answer key p. 165)",
+          "answer": "A in the PDF (1 − N/i), which has no exact match in the editor",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.25, chapter PDF p. 2 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "A ((1 − N)/i)",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "No correct option (goodput is 1 − N/i)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 58,
+      "id": "madeeasy-cn-tcp-udp-ip-3-26",
+      "contentSha256": "4b2a69aa1aa4630b3f3fa0f92cf10962b05f34fc99eca4620a92bf6df7e1501e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "For peak lossless use without buffering, ten simultaneously active 10 Mbps sources fill the link. Each source is on one third of the time, so with adequate buffering, 30 sources average 100 Mbps.",
+      "note": "The agreed 10 for S1 means enough simultaneous inputs to saturate the link at peak without overflow. Continuous full utilization would require staggered inputs and a different calculation. State “fill the link while all of those sources are on” for S1.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.21.4, Network Flow: GATE IT 2006 | Question: 67, PDF p. 138 (answer key p. 165)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.26, chapter PDF p. 2 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 59,
+      "id": "madeeasy-cn-tcp-udp-ip-3-34",
+      "contentSha256": "3882233aa59c8debdadaf59f388b7d0e760184580af26bf257082c84f6caaa69",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "connect() on an active TCP socket initiates the handshake and sends a SYN. The other listed calls prepare or listen on a socket.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.32.1, Sockets: GATE CSE 2008 | Question: 17, PDF p. 151 (answer key p. 165)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.34, chapter PDF p. 2 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q17",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 60,
+      "id": "madeeasy-cn-tcp-udp-ip-3-41",
+      "contentSha256": "489c6e066bfa78d92b76e7bb8aa5b3954612b081bf013677fa7025705fc6a488",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "replaceExisting": true,
+      "status": "verified-with-note",
+      "reason": "After listen(), the kernel can complete the TCP handshake and queue the connection before the server calls accept(). A reachable listener with backlog space lets the client's connect() succeed.",
+      "note": "Both printed keys select “returns an error.” A listening kernel can complete the handshake and queue the socket before accept(), as the linked year-paper key explains. For an unambiguous stem, assume a reachable listener, a free backlog slot and no unrelated socket errors.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.32.2, Sockets: GATE CSE 2008 | Question: 59, PDF p. 151–152 (answer key p. 165)",
+          "answer": "C (connect returns an error)",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.41, chapter PDF p. 3 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C (connect returns an error)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q59",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "TCP listen backlog and connection acceptance, https://man7.org/linux/man-pages/man2/listen.2.html",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 61,
+      "id": "madeeasy-cn-tcp-udp-ip-3-42",
+      "contentSha256": "2bfee78bd9b22b6a2ff13a433232bbcb78df6bba106e120f21071f9c5c8d944b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "Made Easy gives 0.064/s and GATE Overflow gives 0.015/s. The latter assumes one byte per lifetime without justification. The linked year-paper explanation confirms the item is underdetermined. A well-defined variant asks for the maximum continuous byte rate with no 32-bit wrap in 64 s, whose boundary is 67,108,864 bytes/s. That variant needs revised choices.",
+      "replaceExisting": true,
+      "status": "verified-with-note",
+      "reason": "The clock generates initial sequence numbers at 1000 ticks/s. During a connection, data sequence numbers advance with bytes sent, and the sender may remain idle for arbitrary intervals. The 64-second lifetime supplies no positive lower bound on that rate.",
+      "note": "Made Easy gives 0.064/s and GATE Overflow gives 0.015/s. The latter assumes one byte per lifetime without justification. The linked year-paper explanation confirms the item is underdetermined. A well-defined variant asks for the maximum continuous byte rate with no 32-bit wrap in 64 s, whose boundary is 67,108,864 bytes/s. That variant needs revised choices.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.35.1, TCP: GATE CSE 2009 | Question: 47, PDF p. 159 (answer key p. 166)",
+          "answer": "A (0.015/s)",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.42, chapter PDF p. 3 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "B (0.064/s)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q47, manual-review explanation",
+          "answer": "No justified minimum (B is the printed reference only)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "No correct option (no stated minimum rate)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 62,
+      "id": "madeeasy-cn-tcp-udp-ip-3-43",
+      "contentSha256": "b4064e730e498ec10463a7115c0ed24fa982e0a0b7d4667a658e667051ad41eb",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A looping datagram loses TTL at every router hop and is dropped when the value expires.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.17.2, IP Packet: GATE CSE 2010 | Question: 15. PGEE 2018, PDF p. 133 (answer key p. 165)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.43, chapter PDF p. 3 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q15",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 63,
+      "id": "madeeasy-cn-tcp-udp-ip-3-44",
+      "contentSha256": "d9397ceedffe3e6d01447c6b64d314a8d1e78bc644c89539ae816923aceea459",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A last-octet /27 partition puts 91 in 64–95 and 113 in 96–127. Both addresses still match the same subnet with any of the shorter offered masks.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.34.7, Subnetting: GATE CSE 2010 | Question: 47, PDF p. 155 (answer key p. 165)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.44, chapter PDF p. 3 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q47",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 64,
+      "id": "madeeasy-cn-tcp-udp-ip-3-45",
+      "contentSha256": "5ca5b28a549d759e7ecc3cba3ce0840003e39e47f7e50e3c731593ca426a51ce",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "The 2011 booklet-A key mirror and linked year-paper copy give D. Made Easy and the old stored key give A. D is the intended answer if HTTP is recognized by its standard TCP port. If “entire HTTP traffic” includes arbitrary ports, A is also defensible. Specify that all HTTP in the question uses a known port to make D unique.",
+      "replaceExisting": true,
+      "status": "verified-with-note",
+      "reason": "D is the conventional answer because packet headers do not identify which user on a multi-user host originated TCP traffic. The same headers expose IP addresses, direction and the IP protocol. A is also defensible if HTTP must be identified independently of its TCP port.",
+      "note": "The 2011 booklet-A key mirror and linked year-paper copy give D. Made Easy and the old stored key give A. D is the intended answer if HTTP is recognized by its standard TCP port. If “entire HTTP traffic” includes arbitrary ports, A is also defensible. Specify that all HTTP in the question uses a known port to make D unique.",
+      "sources": [
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.45, chapter PDF p. 3 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "A (block all HTTP traffic)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q2 (2011 booklet-A key mirror https://gatecse.in/w/images/2/27/Key2011.pdf)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D under the known-HTTP-port convention",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 65,
+      "id": "madeeasy-cn-tcp-udp-ip-3-46",
+      "contentSha256": "5b55254edb823c376f37a6431d744ff75aa5cb82cfa0bc1f82859aa721020afe",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "SMTP is an application-layer mail protocol. It uses TCP as its transport.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.35.2, TCP: GATE CSE 2012 | Question: 22, PDF p. 159 (answer key p. 166)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.46, chapter PDF p. 3 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q22",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2012 CS booklet A Q22, https://gate.iitk.ac.in/GATE2023/doc/papers/2012/cs_2012.pdf",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 66,
+      "id": "madeeasy-cn-tcp-udp-ip-3-47",
+      "contentSha256": "0603685ea9b69ffcb00f58b3e06615db6a772d671ad7bc0c3577c97cef61fb5b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Class C has a 24-bit network portion with the first three bits fixed at 110. The remaining 21 network-number bits give 2^21 classful network numbers.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.16.2, IP Addressing: GATE CSE 2012 | Question: 23, PDF p. 131 (answer key p. 165)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.47, chapter PDF p. 3 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q23",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2012 CS booklet A Q23, https://gate.iitk.ac.in/GATE2023/doc/papers/2012/cs_2012.pdf",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 67,
+      "id": "madeeasy-cn-tcp-udp-ip-3-48",
+      "contentSha256": "4bf01af2a0791e5692ef95e031b6efffcdcb2d46f21468ad8cd2129523ae95bd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Half of the /20 is a /21 and a quarter is a /22. The .136/21 and .128/22 allocations are aligned, disjoint and inside 245.248.128.0/20.",
+      "note": "The exam paper says “a quarter to Organization B.” The editor and Made Easy say “a quarter of Organization B.” The original also uses 245.248.128.0/20, which is in reserved address space. Evaluate the intended prefix arithmetic.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.34.8, Subnetting: GATE CSE 2012 | Question: 34, ISRO-DEC2017-32, PDF p. 155 (answer key p. 165)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.48, chapter PDF p. 3 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q34",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2012 CS booklet A Q34, https://gate.iitk.ac.in/GATE2023/doc/papers/2012/cs_2012.pdf",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 68,
+      "id": "madeeasy-cn-tcp-udp-ip-3-49",
+      "contentSha256": "5a7931ab4dbaa600743ec229892b349f92e1aaed8ebf941270fd2e07578cddb3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "In the usual exam trace, rounds 1–5 start at 2, 4, 8, 9 and 10 MSS. The timeout sets the threshold to 5 and resets the window to 1. With a cap at the threshold during slow start, the post-ACK windows in rounds 6–10 are 2, 4, 5, 6 and 7 MSS.",
+      "note": "The official GATE 2012 booklet-A key awarded marks to all. C is a worked result under the stated trace convention. The supplied wording does not fix when the timeout is applied, when the window is sampled, or how slow start crosses the threshold.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.9.2, Congestion Control: GATE CSE 2012 | Question: 45, PDF p. 119–120 (answer key p. 165)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.49, chapter PDF p. 3 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q45",
+          "answer": "Marks to All",
+          "agrees": false
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2012 CS booklet A Q45, https://gate.iitk.ac.in/GATE2023/doc/papers/2012/cs_2012.pdf",
+          "answer": "Marks to All",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 69,
+      "id": "madeeasy-cn-tcp-udp-ip-3-50",
+      "contentSha256": "346a0027c7e391bb54621a272504a4f56d1e348a5dc3f7d994a4ba4fd8a0376c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "MF = 0 and the offset is nonzero, indicating the last fragment. HLEN 10 means 40 header bytes. The 360 payload bytes start at 300 × 8 = 2400 and end at 2759.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.14.3, Fragmentation: GATE CSE 2013 | Question: 37, PDF p. 129 (answer key p. 165)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.50, chapter PDF p. 3 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 70,
+      "id": "madeeasy-cn-tcp-udp-ip-3-51",
+      "contentSha256": "48eba36bb644fcc61dd7d6b889a6499836da9a5be09a4d935efac093eb87a379",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "1100",
+      "natRange": {
+        "min": 1100,
+        "max": 1300
+      },
+      "replaceExisting": true,
+      "status": "verified-with-note",
+      "reason": "The old window is 16 MSS. After reset to 1 MSS, three 100 ms RTTs bring it to the halved threshold of 8 MSS, then eight more RTTs at +1 MSS reach 16 MSS in 1100 ms.",
+      "note": "The worked answer is 1100 ms under the usual post-timeout model. The official GATE 2014 Set 1 key accepted 1100 through 1300 ms. The old exact-only key did not represent that accepted interval.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.9.3, Congestion Control: GATE CSE 2014 | Set 1 | Question: 27, PDF p. 120 (answer key p. 165)",
+          "answer": "1100",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.51, chapter PDF p. 3 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "1100",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 CS Session 1 Q27, https://gate2024.iisc.ac.in/wp-content/uploads/2014/cs_2014.pdf",
+          "answer": "1100–1300",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "1100",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 71,
+      "id": "madeeasy-cn-tcp-udp-ip-3-52",
+      "contentSha256": "ff15b8a7dacbca3ed2cf94176bc2b97b84f3e57901b33ffcb47970f97b18a2ea",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "5",
+      "status": "verified",
+      "reason": "With about 5.33 ms per frame and 100 ms of round-trip propagation, 60% utilization needs a window of at least 12 frames. Selective repeat needs at least twice that many sequence values, so five bits suffice.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.30.8, Sliding Window: GATE CSE 2014 | Set 1 | Question: 28, PDF p. 149 (answer key p. 165)",
+          "answer": "5",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.52, chapter PDF p. 3 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "5",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 CS Session 1 Q28, https://gate2024.iisc.ac.in/wp-content/uploads/2014/cs_2014.pdf",
+          "answer": "5",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "5",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 72,
+      "id": "madeeasy-cn-tcp-udp-ip-3-53",
+      "contentSha256": "0076ddbeb5ff6bde1547b275cdf51f72c742e8cad70b491aff3288629e28f0e1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "listen() marks an unconnected stream socket as passive. accept() then retrieves a queued connection on a new socket.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.32.3, Sockets: GATE CSE 2014 | Set 2 | Question: 24, PDF p. 152 (answer key p. 165)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.53, chapter PDF p. 3 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 CS Session 2 Q24, https://gate2024.iisc.ac.in/wp-content/uploads/2014/cs_2014.pdf",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 73,
+      "id": "madeeasy-cn-tcp-udp-ip-3-54",
+      "contentSha256": "c3345a565cae7f92420f36fe0d6dde55141b98e7f8ffbcd2c2a7afed5d25db25",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "27",
+      "answerDisposition": "disputed",
+      "specialNote": "The GATE 2014 final key, Made Easy and GATE Overflow all give 26. The question diagram shows five forwarding routers. RFC 1812 §5.3.1 requires the decrement on a forward, and R is the receiving endpoint. The maximum on arrival in the diagram is 27. No reviewed published key gives 27. Label the five square devices as routers and specify arrival before any local processing at R.",
+      "replaceExisting": true,
+      "status": "verified-with-note",
+      "reason": "The shown path contains five square forwarding routers. Each costs at least one TTL unit. With the minimum decrement at each router, the packet arrives at R with 32 − 5 = 27. Ethernet and Token Ring forwarding within the LANs is at the link layer.",
+      "note": "The GATE 2014 final key, Made Easy and GATE Overflow all give 26. The question diagram shows five forwarding routers. RFC 1812 §5.3.1 requires the decrement on a forward, and R is the receiving endpoint. The maximum on arrival in the diagram is 27. No reviewed published key gives 27. Label the five square devices as routers and specify arrival before any local processing at R.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.19.3, LAN Technologies: GATE CSE 2014 | Set 2 | Question: 25, PDF p. 135 (answer key p. 165)",
+          "answer": "26",
+          "agrees": false
+        },
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.19.3, p. 135, topology diagram",
+          "answer": "Five router forwards in the diagram imply 27 at arrival under RFC 1812",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.54, chapter PDF p. 3 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "26",
+          "agrees": false
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 CS Session 2 Q25, https://gate2024.iisc.ac.in/wp-content/uploads/2014/cs_2014.pdf",
+          "answer": "26",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "IPv4 forwarding TTL rule, RFC 1812 §5.3.1, https://www.rfc-editor.org/rfc/rfc1812.html#section-5.3.1",
+          "answer": "27",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 74,
+      "id": "madeeasy-cn-tcp-udp-ip-3-55",
+      "contentSha256": "373b759898552af2dc1d381acef018b84a84cca6347abe81e74ba520dc74b515",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A three-link pipeline takes n + 2 packet transmission times. The three totals in microseconds are 3 × 1100 = 3300, 12 × 200 = 2400 and 22 × 150 = 3300.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.24.2, Network Switching: GATE CSE 2014 | Set 2 | Question: 26, PDF p. 142 (answer key p. 165)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.55, chapter PDF p. 3 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 CS Session 2 Q26, https://gate2024.iisc.ac.in/wp-content/uploads/2014/cs_2014.pdf",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 75,
+      "id": "madeeasy-cn-tcp-udp-ip-3-56",
+      "contentSha256": "a81960e70f3db15a25ba88113219f03f4a0ff71dbd35194d7f17db789f1c9df7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Forwarding changes TTL and the header checksum. If the packet must be fragmented, a noninitial fragment arriving at B can also carry a different fragment offset.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.17.3, IP Packet: GATE CSE 2014 | Set 3 | Question: 25, PDF p. 133 (answer key p. 165)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.56, chapter PDF p. 3–4 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 CS Session 3 Q25, https://gate2024.iisc.ac.in/wp-content/uploads/2014/cs_2014.pdf",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 76,
+      "id": "madeeasy-cn-tcp-udp-ip-3-57",
+      "contentSha256": "0bd0ff5098b098d414fe4cd209378d5aecaf524ed984b69d6ac38ad3515806f3",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "1",
+      "status": "verified-with-note",
+      "reason": "131.23.151.76 matches both 131.16.0.0/12 and 131.22.0.0/15. The /15 is more specific and selects interface 1.",
+      "note": "The editor says “receives a packet address 131.23.151.76.” Clarify it to “receives a packet addressed to 131.23.151.76.” The destination and result are clear from context.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.28.4, Routing: GATE CSE 2014 | Set 3 | Question: 26, PDF p. 144 (answer key p. 165)",
+          "answer": "1",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.57, chapter PDF p. 4 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "1",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 CS Session 3 Q26, https://gate2024.iisc.ac.in/wp-content/uploads/2014/cs_2014.pdf",
+          "answer": "1",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "1",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 77,
+      "id": "madeeasy-cn-tcp-udp-ip-3-58",
+      "contentSha256": "71cd31c1785c2dce263069b5f03a0ac1ecf01c3912d55fa11ab16d0a7d3158bb",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "256",
+      "status": "verified",
+      "reason": "Use 32 bits for the IPv4 address and 10 bits for a per-second counter that can represent at least 1000 values. The remaining eight time bits wrap every 256 seconds.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.38.1, Wrap Around Time: GATE CSE 2014 | Set 3 | Question: 27, PDF p. 164 (answer key p. 166)",
+          "answer": "256",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.58, chapter PDF p. 4 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "256",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 CS Session 3 Q27, https://gate2024.iisc.ac.in/wp-content/uploads/2014/cs_2014.pdf",
+          "answer": "256",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "256",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 78,
+      "id": "madeeasy-cn-tcp-udp-ip-3-59",
+      "contentSha256": "d4607a161955404eeb8bb462ccf5af71be86ef6ff0ffcc18153ab9764251c503",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The 4384-byte payload is divided into 1480, 1480 and 1424 bytes. The last fragment has MF = 0, total length 1444 and offset 2960/8 = 370.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.17.4, IP Packet: GATE CSE 2014 | Set 3 | Question: 28, PDF p. 133 (answer key p. 165)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.59, chapter PDF p. 4 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 CS Session 3 Q28, https://gate2024.iisc.ac.in/wp-content/uploads/2014/cs_2014.pdf",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 79,
+      "id": "madeeasy-cn-tcp-udp-ip-3-60",
+      "contentSha256": "1cfbc6006e1e8135c7b81bb14e662ba5849b08b125776ea7ba0cd7c24f622871",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Under normal window management, segment sequence numbers advance by the payload length and the advertised window can change as buffer space changes. TCP's timeout includes the estimated RTT plus a margin, and the receiver window limits bytes in flight. Statements 1 and 3 are false.",
+      "note": "The intended B uses the normal rule against shrinking the receive window’s right edge. RFC 9293 §3.8.6.2 also tells senders to handle shrinking peers, so the “always” in statement 4 needs the ordinary no-shrink assumption.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.35.3, TCP: GATE CSE 2015 | Set 1 | Question: 19, PDF p. 159 (answer key p. 166)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.60, chapter PDF p. 4 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "TCP receiver-window management, https://www.rfc-editor.org/rfc/rfc9293.html#section-3.8.6.2",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 80,
+      "id": "madeeasy-cn-tcp-udp-ip-3-61",
+      "contentSha256": "50aed8d1f8930f1bd5568c95683e5a0d01d3c8608d94686f235d24c52386b53d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "An ordinary IPv4 router preserves the source address. It updates TTL and checksum, and total length can change if it fragments the packet.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.17.5, IP Packet: GATE CSE 2015 | Set 1 | Question: 22, PDF p. 133 (answer key p. 165)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.61, chapter PDF p. 4 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 81,
+      "id": "madeeasy-cn-tcp-udp-ip-3-62",
+      "contentSha256": "ca4e3b21ef7433c66bbdc4a77726b7d8b293a06f66b1e788b81f5ae476d75e45",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "bind() sets the local endpoint, listen() starts listening, accept() obtains the connected socket, and recv() reads data from that socket.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.32.4, Sockets: GATE CSE 2015 | Set 2 | Question: 20, PDF p. 152 (answer key p. 165)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.62, chapter PDF p. 4 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 82,
+      "id": "madeeasy-cn-tcp-udp-ip-3-63",
+      "contentSha256": "f632f95fa325086095d66d4fffea397784f91738fcce1bc89c1a52154c83bda3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "With an unscaled window of 65535 bytes, filling the link needs at most (65535 × 8)/1048560 = 0.5 seconds of RTT. The maximum scale shift is 14, giving 65535 × 2^14 bytes.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.35.4, TCP: GATE CSE 2015 | Set 2 | Question: 34, PDF p. 159 (answer key p. 166)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.63, chapter PDF p. 4 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2015 CS archived keyed paper, set 2, window scale item, https://gate.iitk.ac.in/GATE2023/doc/papers/2015/cs_2015.pdf",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 83,
+      "id": "madeeasy-cn-tcp-udp-ip-3-64",
+      "contentSha256": "94648cef88bcd2b1e68be6ef87a3c11e9d17b03efdfed6ca5b550d1b55118bda",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Longest-prefix lookup sends .171.92 to Interface 0, .167.151 to R2, .163.121 to the default R4, and .165.121 to R3. This maps to 1, 3, 5, 4.",
+      "note": "List I item C is 128.96.163.151 in the official paper and 128.96.163.121 in the editor and Made Easy. The official D is 128.96.165.121, as in the editor. GATE Overflow prints 128.96.164.121 for D. All variants select the same next hops.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.34.9, Subnetting: GATE CSE 2015 | Set 2 | Question: 41, PDF p. 155 (answer key p. 165)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.64, chapter PDF p. 4 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2015 CS archived keyed paper, set 2, routing-table item, https://gate.iitk.ac.in/GATE2023/doc/papers/2015/cs_2015.pdf",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 84,
+      "id": "madeeasy-cn-tcp-udp-ip-3-65",
+      "contentSha256": "71075901a5d1c7f6de5363c2c9ace88421c06f6fd9f609f764568cef0727bb17",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The IP payload is 8880 + 8 = 8888 bytes. Six 1480-byte fragment payloads leave 8 bytes for the seventh. Its offset is 8880/8 = 1110.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.17.6, IP Packet: GATE CSE 2015 | Set 2 | Question: 52, PDF p. 133 (answer key p. 165)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.65, chapter PDF p. 4 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2015 CS archived keyed paper, set 2, UDP fragment item, https://gate.iitk.ac.in/GATE2023/doc/papers/2015/cs_2015.pdf",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 85,
+      "id": "madeeasy-cn-tcp-udp-ip-3-66",
+      "contentSha256": "118a3a33b0c09abc83cbf588041ee0d83f444de93569b676e26d6854a594ce41",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "TCP is full duplex, supports the SACK option, and delivers an ordered byte stream. Only statement I holds.",
+      "note": "Made Easy prints “Only I and II are correct” in B. The official paper, the editor and GATE Overflow have “Only I and III are correct.” A remains the keyed option under either version.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.35.5, TCP: GATE CSE 2015 | Set 3 | Question: 22, PDF p. 159–160 (answer key p. 166)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.66, chapter PDF p. 4 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2015 CS archived keyed paper, set 3, TCP statements item, https://gate.iitk.ac.in/GATE2023/doc/papers/2015/cs_2015.pdf",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 86,
+      "id": "madeeasy-cn-tcp-udp-ip-3-67",
+      "contentSha256": "8b716916a80119a0e5d33558542a2204b2f56eb30100fd29d00be3b09c33b10b",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "158",
+      "status": "verified-with-note",
+      "reason": "Masking 200.10.11.144 to /27 gives 200.10.11.128/27, with broadcast .159. The highest assignable last octet is 158.",
+      "note": "The phrase “network 200.10.11.144/27” uses a host address with a prefix length. Make the intent explicit by saying “the /27 subnet containing 200.10.11.144” or using the canonical prefix 200.10.11.128/27.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.34.10, Subnetting: GATE CSE 2015 | Set 3 | Question: 38, PDF p. 156 (answer key p. 165)",
+          "answer": "158",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.67, chapter PDF p. 4 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "158",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2015 CS archived keyed paper, set 3, fourth-octet item, https://gate.iitk.ac.in/GATE2023/doc/papers/2015/cs_2015.pdf",
+          "answer": "158",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "158",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 87,
+      "id": "madeeasy-cn-tcp-udp-ip-3-68",
+      "contentSha256": "bcee13b06758b68c0a35a59a61fbf1bb13a69f7aa5dfd6e1715e560ec80c620b",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "13",
+      "status": "verified",
+      "reason": "The original payload is 980 bytes. Each nonfinal fragment holds 80 payload bytes, so 12 such fragments and one 20-byte payload fragment are needed.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.17.7, IP Packet: GATE CSE 2016 | Set 1 | Question: 53, PDF p. 134 (answer key p. 165)",
+          "answer": "13",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.68, chapter PDF p. 4 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "13",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2016 CS Set 1 Q53 answer key (mirror), https://wanivipin.wordpress.com/wp-content/uploads/2018/11/gate_2016_cs_solutionkey.pdf",
+          "answer": "13",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "13",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 88,
+      "id": "madeeasy-cn-tcp-udp-ip-3-69",
+      "contentSha256": "61f7aedf3797f7a4e49ea8ed0f6e36c377ba8f36216bf34ce5061bed5c2d07c0",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "1.1",
+      "status": "verified-with-note",
+      "reason": "By time t the full bucket and new tokens cover at most 1 + 10t MB. The host can send at 20 MB/s for 0.1 s and at 10 MB/s thereafter, reaching 12 MB in 1.1 s.",
+      "note": "GATE Overflow lists 1.10–1.19 s. The stated minimum and the published GATE 2016 Set 1 key are exactly 1.1 s. The longer values can transmit the data, but are not its minimum transmission time.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.36.2, Token Bucket: GATE CSE 2016 | Set 1 | Question: 54, PDF p. 163 (answer key p. 166)",
+          "answer": "1.10–1.19",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.69, chapter PDF p. 4 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "1.1",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2016 CS Set 1 Q54 answer key (mirror), https://wanivipin.wordpress.com/wp-content/uploads/2018/11/gate_2016_cs_solutionkey.pdf",
+          "answer": "1.1",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "1.1",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 89,
+      "id": "madeeasy-cn-tcp-udp-ip-3-70",
+      "contentSha256": "c21eb4591eab5d8bb986c48fa237918496705530e8b408d3616a3fee28437a7e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "On Linux, calling connect() again can change the selected UDP peer. A connected socket filters incoming datagrams to its current peer, so it cannot sustain simultaneous two-way exchanges with several peers.",
+      "note": "Linux permits sendto() to override the default destination even on a connected UDP socket. Receive filtering still limits the connected socket to one peer. Clarify I to say “send and receive datagrams with multiple peers simultaneously” for the keyed answer.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.37.3, UDP: GATE CSE 2017 | Set 2 | Question: 18, PDF p. 164 (answer key p. 166)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.70, chapter PDF p. 4 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2017 CS Set 2 Q18, https://gate.iitk.ac.in/GATE2023/doc/papers/2017/cs_2017.pdf",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Linux UDP peer selection, https://man7.org/linux/man-pages/man7/udp.7.html and https://man7.org/linux/man-pages/man2/connect.2.html",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 90,
+      "id": "madeeasy-cn-tcp-udp-ip-3-71",
+      "contentSha256": "f078e05fe164ed3aea8c461e3b7fd7ea963298e5a0be5a4351390185d403ccf8",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "9",
+      "replaceExisting": true,
+      "status": "verified-with-note",
+      "reason": "The maximum IPv4 header is 60 bytes and the fixed portion is 20. The record-route option needs three control octets and four bytes per address, so floor((40 − 3)/4) = 9 addresses fit.",
+      "note": "Made Easy and the old stored answer give 36, the number of bytes occupied by nine addresses. The stem asks for the number of IPv4 addresses. The official key and RFC 791 header layout support 9.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.16.3, IP Addressing: GATE CSE 2017 | Set 2 | Question: 20, PDF p. 131 (answer key p. 165)",
+          "answer": "9",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.71, chapter PDF p. 4 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "36",
+          "agrees": false
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2017 CS Set 2 Q20, https://gate.iitk.ac.in/GATE2023/doc/papers/2017/cs_2017.pdf",
+          "answer": "9",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "IPv4 IHL and Record Route option wire format, https://www.rfc-editor.org/rfc/rfc791.html",
+          "answer": "9",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 91,
+      "id": "madeeasy-cn-tcp-udp-ip-3-72",
+      "contentSha256": "9d2a25ea4cd5b7519726f974634e9c3528ed7c7f70ee2edeceb86f92887aaecb",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "RIP is a distance-vector protocol over UDP. OSPF is link state and runs directly over IP protocol 89. I, II and IV are correct.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.28.5, Routing: GATE CSE 2017 | Set 2 | Question: 09, PDF p. 144–145 (answer key p. 165)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.72, chapter PDF p. 4 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 92,
+      "id": "madeeasy-cn-tcp-udp-ip-3-73",
+      "contentSha256": "df66029b92aff8234956b0cbea708e543d205428503397322badc062212d11af",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The active closer enters FIN-WAIT-1 after sending its FIN. Receipt of the corresponding ACK moves it to FIN-WAIT-2 to await the peer's FIN.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.35.7, TCP: GATE CSE 2017 | Set 1 | Question: 14, PDF p. 160 (answer key p. 166)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.73, chapter PDF p. 4 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 93,
+      "id": "madeeasy-cn-tcp-udp-ip-3-74",
+      "contentSha256": "651813e421ddf34f1887585617986346bd8c191a958d8f12e279e00b76ae9ae8",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "34",
+      "natRange": {
+        "min": 34,
+        "max": 35
+      },
+      "replaceExisting": true,
+      "status": "verified-with-note",
+      "reason": "TCP counts bytes modulo 2^32. At 10^9 bits/s, one wrap takes 2^32 × 8/10^9 = 34.359738368 s. The nearest integer is 34, and the exam accepted 34 through 35.",
+      "note": "The computed nearest integer is 34. The GATE final key, GATE Overflow’s rendered key table and Made Easy accept 34 through 35. The numeric range represents those accepted answers for grading.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.38.2, Wrap Around Time: GATE CSE 2018 | Question: 25, PDF p. 164 (answer key p. 166)",
+          "answer": "34–35",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.74, chapter PDF p. 5 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "34 or 35",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2018 CS Q25 final key (mirror), https://cdn1.byjus.com/wp-content/uploads/2021/06/GATE-Computer-Science-previous-year-paper-2018-Answer-keys.pdf",
+          "answer": "34–35",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "34",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 94,
+      "id": "madeeasy-cn-tcp-udp-ip-3-75",
+      "contentSha256": "105de8b3436c761a76f6392b0afe804f00f051911d2ded7477f88ec4124112c5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The window normally grows by up to one MSS per ACK in slow start. Roughly a window's worth of ACKs arrives per RTT, so only (iv), approximate doubling per RTT, holds.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.9.4, Congestion Control: GATE CSE 2018 | Question: 14, PDF p. 120 (answer key p. 165)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.75, chapter PDF p. 5 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2018 CS Q14 final key (mirror), https://cdn1.byjus.com/wp-content/uploads/2021/06/GATE-Computer-Science-previous-year-paper-2018-Answer-keys.pdf",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 95,
+      "id": "madeeasy-cn-tcp-udp-ip-3-76",
+      "contentSha256": "30b5d10fbb8e908fe77f47439097e010940d19913a83e131ba42fc3f4b48f9fd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "UDP port numbers, Ethernet MAC addresses, the IPv6 Next Header field and TCP sequence numbers use 16, 48, 8 and 32 bits respectively. That gives P-IV, Q-I, R-II, S-III.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.22.5, Network Layer: GATE CSE 2018 | Question: 13, PDF p. 139 (answer key p. 165)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.76, chapter PDF p. 5 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2018 CS Q13 final key (mirror), https://cdn1.byjus.com/wp-content/uploads/2021/06/GATE-Computer-Science-previous-year-paper-2018-Answer-keys.pdf",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 96,
+      "id": "madeeasy-cn-tcp-udp-ip-3-77",
+      "contentSha256": "39887927e332bccb55958ed9a37798a965e924c18f3c622234c4a09cbd73fd71",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The /30 block for .2 spans .0–.3. The /30 block for .5 and .6 spans .4–.7, so only N and P share a subnet.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.34.11, Subnetting: GATE CSE 2019 | Question: 28, PDF p. 156 (answer key p. 165)",
+          "answer": "C (only N and P share a subnet) → editor B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.77, chapter PDF p. 5 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 97,
+      "id": "madeeasy-cn-tcp-udp-ip-3-78",
+      "contentSha256": "f9af205c50e4766f9ef124ac64a98da942ea110246f0aef378c244fd5eb624a6",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "44",
+      "status": "verified-with-note",
+      "reason": "Starting at one 2 KB MSS, four of the ten RTTs take cwnd from 2 to 32 KB. The remaining six add 2 KB per RTT, giving 44 KB below the 50 KB receive limit.",
+      "note": "The keys assume an initial congestion window of 1 MSS, which the stem does not specify. The usual exam trace gives 44 KB. Add “assume an initial congestion window of 1 MSS” to make the trace unique.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.9.5, Congestion Control: GATE CSE 2020 | Question: 55, PDF p. 120 (answer key p. 165)",
+          "answer": "44",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.78, chapter PDF p. 5 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "44",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "44",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 98,
+      "id": "madeeasy-cn-tcp-udp-ip-3-79",
+      "contentSha256": "bc4c5caa7998c3217332facf68f09844364b34c59e496c3812d7849127a6673c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "1500 hosts need a /21, with a third octet aligned to a multiple of eight. .84 is misaligned and .144 is outside the /17. .104 and .64 are both aligned and inside, so II and III can each be allocated.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.34.12, Subnetting: GATE CSE 2020 | Question: 38, PDF p. 156 (answer key p. 165)",
+          "answer": "B (II and III only) → editor D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.79, chapter PDF p. 5 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 99,
+      "id": "madeeasy-cn-tcp-udp-ip-3-80",
+      "contentSha256": "9cac41ea0dc75c6161cb9c6bc14c3b697c5c62b65444be0b2f2974cf5df81ed2",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The reboot clears the old connection state and lets the server listen on the same port. A client with no timeout may keep waiting in a read. Sending on the old connection can elicit a reset because the server has no matching connection.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.35.8, TCP: GATE CSE 2021 | Set 1 | Question: 44, PDF p. 160 (answer key p. 166)",
+          "answer": "A, B, C (wait, listen again, reset) → editor B, C, D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.80, chapter PDF p. 5 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "B, C, D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "B, C, D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 100,
+      "id": "madeeasy-cn-tcp-udp-ip-3-81",
+      "contentSha256": "cce46ac84b8dfecc76765d771f95c0d4da5f7b8219e768d713e75b0d05f73160",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "B"
+      ],
+      "status": "verified",
+      "reason": "An 820-byte MTU leaves 800 bytes of IP payload, so the second fragment has 600 payload bytes and a 20-byte header. Missing fragments prevent reassembly and require end-to-end TCP retransmission. The TCP port is in the first fragment.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.35.9, TCP: GATE CSE 2021 | Set 1 | Question: 45, PDF p. 160–161 (answer key p. 166)",
+          "answer": "A, C (620-byte second fragment and resend TCP segment) → editor A, B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.81, chapter PDF p. 5 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "A, B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "A, B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 101,
+      "id": "madeeasy-cn-tcp-udp-ip-3-82",
+      "contentSha256": "bf8616f48046e9081446788c34a58b58014ab3f75da5bc1da8d5c9f98013a17b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Q sends SYN+ACK with Q's own sequence Y, ACK = X+1 because SYN consumes one sequence number, and FIN clear.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.35.10, TCP: GATE CSE 2021 | Set 2 | Question: 7, PDF p. 161 (answer key p. 166)",
+          "answer": "C (SYN+ACK, SEQ Y, ACK X+1, FIN clear) → editor A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.82, chapter PDF p. 5 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 102,
+      "id": "madeeasy-cn-tcp-udp-ip-3-83",
+      "contentSha256": "6d2bc5f19ade8156ce6aabec527bbbe26aed05a37fafff66c9c41db59e680419",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "33",
+      "status": "verified",
+      "reason": "The link can carry 60 × 10^9/8 = 7.5 billion bytes during the MSL. The count exceeds 2^32 and is below 2^33, so at least 33 sequence bits are needed.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.35.11, TCP: GATE CSE 2022 | Question: 50, PDF p. 161 (answer key p. 166)",
+          "answer": "33",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.83, chapter PDF p. 5 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "33",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "33",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 103,
+      "id": "madeeasy-cn-tcp-udp-ip-3-84",
+      "contentSha256": "f4b82a984829fe7a07e70db9c0533f3611767765f2e9e2b636e3bccbc5584e43",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "At 100 Mbps the 120-second lifetime spans 1.5 billion byte sequence values. That exceeds 2^30. Each offered width of at least 32 bits meets the wraparound and in-flight window constraints.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.35.12, TCP: GATE CSE 2023 | Question: 40, PDF p. 161 (answer key p. 166)",
+          "answer": "B, C, D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.84, chapter PDF p. 5 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "B, C, D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "B, C, D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 104,
+      "id": "madeeasy-cn-tcp-udp-ip-3-85",
+      "contentSha256": "f66fcc4f0b28fae541bda169a503f4a212ceadd8f18c093c76ce81e16ecc88c5",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "C",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Iterative DNS takes 3 RTTs. The initial TCP connection and base HTML take 2 more. Ten objects need two parallel batches of 2 RTTs each with nonpersistent HTTP, or one pipelined RTT on the persistent connection, giving 9 and 6 RTTs.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.16.5, IP Addressing: GATE CSE 2023 | Question: 42, PDF p. 131–132 (answer key p. 165)",
+          "answer": "C, D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.85, chapter PDF p. 5 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C, D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C, D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 105,
+      "id": "madeeasy-cn-tcp-udp-ip-3-86",
+      "contentSha256": "74f88cf928d154a1eed6f8501856241353122398d00c7216defb7df98c19808f",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "3",
+      "status": "verified-with-note",
+      "reason": "The destination matches 200.150.68.0/24 and is outside the more specific .64/27 range of last octets 64–95. Interface 3 is the longest valid match.",
+      "note": "The first mask in the editor and Made Easy is 255.250.0.0. The original paper gives 255.255.0.0. The malformed first row does not alter the longest match at interface 3.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.34.14, Subnetting: GATE CSE 2023 | Question: 55, PDF p. 157 (answer key p. 166)",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.86, chapter PDF p. 5 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "3",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 106,
+      "id": "madeeasy-cn-tcp-udp-ip-3-87",
+      "contentSha256": "7c8364d1ff64f3e86c9ed53b9606f0baa26cc42ba49c3579cc8588363a2011f5",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "C",
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "SYN consumes one sequence number, so the server acknowledges N_P+1 modulo 2^32. The client chooses its own initial sequence number in the model of the question.",
+      "note": "Option B calls N_Q a sequence number despite the stem defining it as the server acknowledgment number. “The acknowledgement number N_Q is always 0 for a new connection” is a consistent distractor. C and D remain correct.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.35.13, TCP: GATE CSE 2024 | Set 1 | Question: 19, PDF p. 161 (answer key p. 166)",
+          "answer": "A, D (client chooses initial sequence and server ACKs N_P+1) → editor C, D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.87, chapter PDF p. 6 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C, D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C, D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 107,
+      "id": "madeeasy-cn-tcp-udp-ip-3-88",
+      "contentSha256": "f66df71b8485975d63f4c83677ebbf18ef3b3da9eaea339acb06330cfd7a6a55",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Outbound source NAT changes the private IPv4 source to the translated source address. The resulting new header requires an updated header checksum.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.17.8, IP Packet: GATE CSE 2024 | Set 1 | Question: 21, PDF p. 134 (answer key p. 165)",
+          "answer": "A, C (Source IP and Header Checksum) → editor B, D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.88, chapter PDF p. 6 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "B, D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "B, D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 108,
+      "id": "madeeasy-cn-tcp-udp-ip-3-89",
+      "contentSha256": "b4de01e7b8780aae5783c129c69e0f6153843ba3a5b373bc9a76f9890a489173",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "6",
+      "status": "verified",
+      "reason": "The first link carries payload fragments of 520, 520 and 360 bytes. The second link permits at most 336 bytes of aligned payload in nonfinal fragments. Each of the three existing fragments splits into two.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.17.9, IP Packet: GATE CSE 2024 | Set 1 | Question: 55, PDF p. 134 (answer key p. 165)",
+          "answer": "6",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.89, chapter PDF p. 6 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "6",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "6",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 109,
+      "id": "madeeasy-cn-tcp-udp-ip-3-90",
+      "contentSha256": "847f0d8d3e36db62890fbc276dbafec381d133412be043eacb2d0b8e8136a930",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "40",
+      "status": "verified",
+      "reason": "The .132 and .191 destinations match R2's /25 as their longest prefix. The shorter /24 or a more specific /26 serves the other destinations, so R2 forwards 2 × 20 = 40 packets.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.28.9, Routing: GATE CSE 2024 | Set 1 | Question: 48, PDF p. 145–146 (answer key p. 165)",
+          "answer": "40",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.90, chapter PDF p. 6 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "40",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "40",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 110,
+      "id": "madeeasy-cn-tcp-udp-ip-3-91",
+      "contentSha256": "fcab8d590c846edaea4dda24c7777b627952e53af9971829e15d92908160cbbc",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A forwarding IPv4 router reduces TTL and updates the header checksum to reflect the changed header. The protocol and source fields are preserved in ordinary forwarding.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.17.11, IP Packet: GATE CSE 2024 | Set 2 | Question: 22, PDF p. 134 (answer key p. 165)",
+          "answer": "C, D (TTL and Header Checksum) → editor A, B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.91, chapter PDF p. 6 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "A, B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "A, B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 111,
+      "id": "madeeasy-cn-tcp-udp-ip-3-92",
+      "contentSha256": "58ba732c73a62a573bb166c83a5897e533ffeac067c7c3c70e90d271366e1ccf",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "C",
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "IPv4 reassembles at the destination. An intermediate router can fragment a datagram that exceeds its outgoing MTU when fragmentation is permitted.",
+      "note": "The keyed D assumes the IPv4 Don’t Fragment bit is clear. With DF set, the router drops an oversized packet. Add “if fragmentation is permitted” to D.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.17.10, IP Packet: GATE CSE 2024 | Set 2 | Question: 18, PDF p. 134 (answer key p. 165)",
+          "answer": "B, C (MTU fragmentation and destination reassembly) → editor C, D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.92, chapter PDF p. 6 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "C, D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "C, D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 112,
+      "id": "madeeasy-cn-tcp-udp-ip-3-93",
+      "contentSha256": "e86e8808c3c29725d6bfc668b1f223e93c7336fcd8d1e4311e05a739b2280f84",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The two consecutive /24 blocks at third octets 2 and 3 share 23 prefix bits. 10.12.2.0/23 spans exactly the requested range.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.16.6, IP Addressing: GATE CSE 2024 | Set 2 | Question: 28, PDF p. 132 (answer key p. 165)",
+          "answer": "A (10.12.2.0/23) → editor D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.93, chapter PDF p. 6 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 113,
+      "id": "madeeasy-cn-tcp-udp-ip-3-94",
+      "contentSha256": "ff6216997614a2e34c1995c52a4bfcda8257379e6264c3aaffef8c2be85d77b9",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "4",
+      "status": "verified",
+      "reason": "A timeout resets cwnd to 1 MSS. The next two acknowledged slow-start rounds increase it to 2 and then 4 MSS, below the halved 6 MSS threshold, so the third RTT begins at 4 MSS.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.9.6, Congestion Control: GATE CSE 2024 | Set 2 | Question: 44, PDF p. 120 (answer key p. 165)",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy TCP, UDP and IP Q3.94, chapter PDF p. 6 (answer table p. 6, also CN.pdf p. 7)",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution using the editor’s question and options",
+          "answer": "4",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

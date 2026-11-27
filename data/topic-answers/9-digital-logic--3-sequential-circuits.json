@@ -1,0 +1,1338 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "9. Digital Logic",
+  "chapter": "3. Sequential Circuits",
+  "slug": "9-digital-logic--3-sequential-circuits",
+  "reviewedAt": "2026-11-27",
+  "sources": {
+    "gateOverflowPdfs": [
+      {
+        "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume2.pdf",
+        "sha256": "457f9e583b943b3c41e78d8431b09e322123b0d80765396af36ee2100196714f"
+      },
+      {
+        "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume3.pdf",
+        "sha256": "5c552941136eb96612fabec8a5b2cb67fc07c17023ce15628408ca27d6640c24"
+      }
+    ],
+    "madeEasyPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\9. Digital Logic\\3. Sequential Circuits.pdf",
+      "sha256": "41cd95b1b2efe20c72011eb32e607fb4c5701672be021a6546520eb5be1a6467",
+      "answerKeyPage": 4,
+      "bookPage": 227
+    },
+    "madeEasySolutionsPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\All Subject Solutions Keys\\Digital Logic.pdf",
+      "sha256": "f9d1048a2162c912f8ee138ac88b34f0021a6b826c5487501911244f41f49035",
+      "answerKeyPage": 3,
+      "bookPage": 227
+    },
+    "yearPapers": "data/papers/*.json (verified copies linked by source.copiedFrom.questionId)",
+    "paperScans": [
+      {
+        "file": "D:/Gate PYQs Year Wise - PDFs/2001.pdf",
+        "examQuestion": "GATE CSE 2001 Q33",
+        "pdfPages": [
+          4,
+          5
+        ]
+      },
+      {
+        "file": "D:/Gate PYQs Year Wise - PDFs/2005 IT.pdf",
+        "examQuestion": "GATE IT 2005 Q43",
+        "pdfPages": [
+          6
+        ]
+      }
+    ]
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "madeeasy-digital-logic-sequential-3-1",
+      "contentSha256": "38b4e1833282ffcfb8301773bb815f2305a504b8d7a50968015725bcaa5b1124",
+      "questionType": "SUBJECTIVE",
+      "correctOptions": [],
+      "status": "verified-with-note",
+      "reason": "The circuit gives (Q1⁺,Q2⁺,Q3⁺) = (Q2 XOR Q3,Q1,Q2). The complete diagram has S0 → S0 and the cycle S4 → S2 → S5 → S6 → S7 → S3 → S1 → S4. From S4 the only unreachable state is S0.",
+      "note": "Made Easy supplies the nonzero cycle and unreachable state for part (b). GATE Overflow splits the question into 4.8.13 and 4.8.14 and gives N/A for both. The full diagram in the reference includes the independently derived S0 self-loop.",
+      "sources": [
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.1, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "Sol. (part b gives the seven-state cycle and unreachable S0)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "S0 has a self-loop. The seven other states form a cycle, so only S0 is unreachable from S4.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "madeeasy-digital-logic-sequential-3-2",
+      "contentSha256": "900ea31621da90aa660e7bb4bc3340daf0f2bb57c322b4ce0a0b233ae0de396c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "J = K = 1 toggles P and the D stage samples the old P, so (P⁺,Q⁺) = (NOT P,P). Starting from 01 the sequence is 10, 01, 10, … . The third cycle gives 10 (A).",
+      "note": "The app and Made Easy omit the cycle count. GATE Overflow 4.8.17 and the linked year paper specify “after three clock cycles.” With the app wording alone, odd cycles give A and even cycles give D. The year-paper reference has an intermediate 11, while the printed circuit gives 01 on cycle 2.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.8.17, Circuit Output: GATE CSE 2000 | Question: 2.12, PDF p. 306 (key p. 362) https://gateoverflow.in/659/gate-cse-2000-question-2-12",
+          "answer": "A (P,Q = 1,0 after three cycles)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.2, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "A (P,Q = 1,0 after three cycles)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q35, linked by source.copiedFrom.questionId",
+          "answer": "A (P,Q = 1,0 after three cycles)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "A (P,Q = 1,0 after three cycles)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "madeeasy-digital-logic-sequential-3-3",
+      "contentSha256": "5ee71515f8e0f30ca770d8fed780630de48b2c4f498c79a416126e9af54deea9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "At a rising edge Q0 samples X and Y samples X AND NOT Q0 using the old Q0. X rises after edge 1 and is high at edge 2, which sets both outputs. At edge 3, old Q0 is 1 and Y drops. A shows the later single-clock pulse.",
+      "note": "The linked year-paper transcription uses a period of exactly 40 ns. The 2001 paper scan (PDF p. 4), Made Easy, GATE Overflow and the app use at least 40 ns. Plot A is the one-cycle pulse at the second sampled edge under the shown timing in either case.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.8.18, Circuit Output: GATE CSE 2001 | Question: 2.8, PDF p. 306 (key p. 362) https://gateoverflow.in/726/gate-cse-2001-question-2-8",
+          "answer": "A (one high pulse from the second rising edge to the third)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.3, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "A (one high pulse from the second rising edge to the third)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q33, linked by source.copiedFrom.questionId (keyed option image matches the app by SHA-256)",
+          "answer": "A (one high pulse from the second rising edge to the third)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "A (one high pulse from the second rising edge to the third)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "madeeasy-digital-logic-sequential-3-4",
+      "contentSha256": "32d5b9876650630f24ec1c2ec3eaaf3026d2f4415e11be913f437e63a7477fe8",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The app wiring gives (Q2⁺,Q1⁺,Q0⁺) = (Q1,Q0,Q1 XOR Q2). The resulting decimal trace is 1 → 2 → 5 → 3 → 7 → 6 → 4 → 1.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.36.3, Synchronous Asynchronous Circuits: GATE CSE 2001 | Question: 2.12, PDF p. 361 (key p. 363) https://gateoverflow.in/730/gate-cse-2001-question-2-12",
+          "answer": "B (1, 2, 5, 3, 7, 6, 4)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.4, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "B (1, 2, 5, 3, 7, 6, 4)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q37, linked by source.copiedFrom.questionId",
+          "answer": "B (1, 2, 5, 3, 7, 6, 4)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "B (1, 2, 5, 3, 7, 6, 4)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "madeeasy-digital-logic-sequential-3-5",
+      "contentSha256": "d2119e5a9bed7a20b6ff80f76345fa2f2990625314f632f6536a7100b18371d5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "A represents a previous 0 (including the start), while B and C represent a previous 1. For inputs 0 and 1 the outputs from A are 00 and 01, and from B or C they are 01 and 10. These are the sums of consecutive bits.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.8, Finite Automata: GATE CSE 2002 | Question: 2.5, PDF p. 350 (key p. 402) https://gateoverflow.in/835/gate-cse-2002-question-2-5",
+          "answer": "A (sum of the present and previous input bits)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.5, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "A (sum of the present and previous input bits)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q30, linked by source.copiedFrom.questionId",
+          "answer": "A (sum of the present and previous input bits)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "A (sum of the present and previous input bits)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "madeeasy-digital-logic-sequential-3-6",
+      "contentSha256": "99fc23c0c91a82703aa48e6246be9a30814428c98b2d634a8a16e43de1570545",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Before latching, store the difference z_k − n_k in one of three states (−1, 0, +1). Reaching ±2 enters one of two distinct absorbing states with the corresponding permanent output. The three transient states have different suffixes that first trigger the permanent output, so all five states are necessary.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.36.4, Synchronous Asynchronous Circuits: GATE CSE 2003 | Question: 44, PDF p. 361 (key p. 363) https://gateoverflow.in/935/gate-cse-2003-question-44",
+          "answer": "A (5 states)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.6, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "A (5 states)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q44, linked by source.copiedFrom.questionId",
+          "answer": "A (5 states)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "A (5 states)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "madeeasy-digital-logic-sequential-3-7",
+      "contentSha256": "28e19a326868cb768fba68e082861c508485826f3118d45b734fe74413e49fcf",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Each NAND has a zero input, forcing its output high. Both labelled outputs are 1 while S = R = 0.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.17.2, Flip Flop: GATE CSE 2004 | Question: 18, ISRO2007-31, PDF p. 325 (key p. 362) https://gateoverflow.in/1015/gate-cse-2004-question-18-isro2007-31",
+          "answer": "C (Q = 1, Q′ = 1)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.7, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "C (Q = 1, Q′ = 1)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q18, linked by source.copiedFrom.questionId",
+          "answer": "C (Q = 1, Q′ = 1)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "C (Q = 1, Q′ = 1)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "madeeasy-digital-logic-sequential-3-8",
+      "contentSha256": "8487da80a06155a91838cb0b5f7a29a96edf1885acb5d52b6a9cb2a80a8ecf8a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "The LSB Q1 toggles on 10 → 11 and 01 → 00 and holds on the other two transitions. The toggle input X is therefore 1 exactly when Q1 and Q2 differ. The drawn XNOR drives the MSB.",
+      "note": "Made Easy and the linked year-paper copy print XNOR as distractor C. GATE Overflow prints NOR there. The keyed expression in all sources is XOR, which is D in the app.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.8.20, Circuit Output: GATE CSE 2004 | Question: 61, PDF p. 307 (key p. 362) https://gateoverflow.in/1056/gate-cse-2004-question-61",
+          "answer": "D (Q1 XOR Q2)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.8, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "D (Q1 XOR Q2)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q61, linked by source.copiedFrom.questionId",
+          "answer": "D (Q1 XOR Q2)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "D (Q1 XOR Q2)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "madeeasy-digital-logic-sequential-3-9",
+      "contentSha256": "68543014b6c7eb21cc3e163d48b3d9aa2f6d492adc31eb7b52bfa5a8f3bed532",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Read from the LSB, the machine copies all zeros up to the first 1, copies that 1, and complements every higher bit. This implements fixed-width two’s complement, including the all-zero case.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.14, Finite Automata: GATE CSE 2005 | Question: 63, PDF p. 352 (key p. 402) https://gateoverflow.in/1386/gate-cse-2005-question-63",
+          "answer": "B (two's complement)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.9, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "B (two's complement)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q63, linked by source.copiedFrom.questionId",
+          "answer": "B (two's complement)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "B (two's complement)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "madeeasy-digital-logic-sequential-3-10",
+      "contentSha256": "90e2ee28d5690d9e267583ebec7be8a2d2b1103ad9cd0c3cfcfcdc03508fc82e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The counter goes from decimal 172 to 39 modulo 256. The least nonnegative increment is (39 − 172) mod 256 = 123.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.13.16, Digital Counter: GATE IT 2005 | Question: 11, PDF p. 322 (key p. 362) https://gateoverflow.in/3756/gate-it-2005-question-11",
+          "answer": "D (123 pulses)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.10, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "D (123 pulses)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "D (123 pulses)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "madeeasy-digital-logic-sequential-3-11",
+      "contentSha256": "93a74ef4c478dc060d7690d2ee259ca63a6f8d280f5f836684f59b6cafd5cd94",
+      "questionType": "MCQ",
+      "correctOptions": [],
+      "answerDisposition": "none-correct",
+      "specialNote": "Each of A–D gives z = 0 at the end of cycle 3 for every initial state. See the trace in the Sequential Circuits answer file.",
+      "status": "verified-with-note",
+      "reason": "With the shown OR gate, upper output U_t = A_t OR B_t, lower output V_t = C_t AND NOT U_(t−1), and z_t = U_t AND V_t. Every option has A_2 OR B_2 = 1, giving V_3 = 0 and z_3 = 0 for either value of each initial flip-flop.",
+      "note": "GATE Overflow keys the item as X and Made Easy prints (*). The app, Made Easy and GATE Overflow draw OR at A,B. The GATE IT 2005 Q43 scan (2005 IT.pdf, PDF p. 6) shows XOR, which also gives z = 0 because all four third rows have A = B = 1. Restore XOR if matching the exam diagram and include a “None of the listed sequences” choice. An official marking award could not be verified.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.8.36, Circuit Output: GATE IT 2005 | Question: 43, PDF p. 313 (key p. 362) https://gateoverflow.in/3804/gate-it-2005-question-43",
+          "answer": "X (no keyed option)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.11, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "(*) (no option specified)",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "all four listed sequences give z = 0 after cycle 3",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "madeeasy-digital-logic-sequential-3-12",
+      "contentSha256": "86494bc93876cff08af73e73b1636bccf9ac29d27067842be8bbd0dfdfa20d1f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "The D input is A when X is high and the complement of the previous Y when X is low. The five preceding X levels are 1, 1, 0, 1, 1. Sampling those values at the five rising edges yields A0, A1, A1′, A3, A4.",
+      "note": "X transitions on several drawn rising edges. The keyed result assumes the value just before each edge, as for signals updated after the same clock edge. State this convention explicitly in the problem.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.8.22, Circuit Output: GATE CSE 2005 | Question: 62, PDF p. 308 (key p. 362) https://gateoverflow.in/264/gate-cse-2005-question-62",
+          "answer": "A (A0, A1, A1′, A3, A4)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.12, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "A (A0, A1, A1′, A3, A4)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q62, linked by source.copiedFrom.questionId",
+          "answer": "A (A0, A1, A1′, A3, A4)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "A (A0, A1, A1′, A3, A4)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "madeeasy-digital-logic-sequential-3-13",
+      "contentSha256": "de01b5a2257e805aa236b695ff4d0ceda85d23774e249b9de7163563e76c0d29",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "For the stated Q0Q1 order, Q0⁺ = NOT Q0 and Q1⁺ = Q0 XOR (NOT Q1). Iterating from 00 gives 11, 01, 10, 00.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.8.23, Circuit Output: GATE CSE 2005 | Question: 64, PDF p. 308 (key p. 362) https://gateoverflow.in/1387/gate-cse-2005-question-64",
+          "answer": "D (00 → 11 → 01 → 10 → 00)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.13, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "D (00 → 11 → 01 → 10 → 00)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q64, linked by source.copiedFrom.questionId",
+          "answer": "D (00 → 11 → 01 → 10 → 00)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "D (00 → 11 → 01 → 10 → 00)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "madeeasy-digital-logic-sequential-3-14",
+      "contentSha256": "01faff939e3c995eeef25d59202e2cbf18cc4b85afadaff25284fe982b905e41",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "For an incoming bit d, (q2⁺,q1⁺,q0⁺) = (q1,q2 XOR q0,d). Feeding 100110000 into 000 gives 001 → 010 → 100 → 011 → 111 → 100 → 010 → 100 → 010.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.8.25, Circuit Output: GATE CSE 2006 | Question: 37, PDF p. 309 (key p. 362) https://gateoverflow.in/1295/gate-cse-2006-question-37",
+          "answer": "C (010)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.14, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "C (010)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q37, linked by source.copiedFrom.questionId",
+          "answer": "C (010)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "C (010)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "madeeasy-digital-logic-sequential-3-15",
+      "contentSha256": "4a723eb727e85ae3de72c16090ee7645b94492dc2bbe83011f80a23da32621cd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "In C the first D stage samples the unchanged input at the next rising edge and the second stage forwards it at the following falling edge. The output is the uninverted input delayed by one clock period T. That is 180° of f when f toggles on every falling edge and has period 2T.",
+      "note": "C is the published answer. The linked year-paper reference describes half a clock period, but the diagram gives a full clock period between the change in f and the change in the second output. The stem leaves the period of f open. Specifying “f toggles at every falling edge” makes the keyed 180° interpretation precise.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.8.26, Circuit Output: GATE CSE 2006 | Question: 8, PDF p. 309 (key p. 362) https://gateoverflow.in/887/gate-cse-2006-question-8",
+          "answer": "C (two non-inverting D stages that sample on the rising and falling clock edges in that order)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.15, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "C (two non-inverting D stages that sample on the rising and falling clock edges in that order)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q8, linked by source.copiedFrom.questionId (keyed option image matches the app by SHA-256)",
+          "answer": "C (two non-inverting D stages that sample on the rising and falling clock edges in that order)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "C (two non-inverting D stages that sample on the rising and falling clock edges in that order)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "madeeasy-digital-logic-sequential-3-16",
+      "contentSha256": "fe8069b3449c7b6813dcd4f057115afb595db426001a628d23bce4f15d90b97a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "From S = 0 the next state is 1 exactly when y = 0. From S = 1 the next state is 1 exactly when x = 1. Combining the cases gives S⁺ = S′y′ + Sx.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.37, Finite Automata: GATE IT 2006 | Question: 37, PDF p. 361 (key p. 402) https://gateoverflow.in/3576/gate-it-2006-question-37",
+          "answer": "A (S⁺ = S′y′ + Sx)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.16, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "A (S⁺ = S′y′ + Sx)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "A (S⁺ = S′y′ + Sx)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "madeeasy-digital-logic-sequential-3-17",
+      "contentSha256": "22873eeef03dcdc6b6c96cdcdabb3e2e8343e5489df8d3de4a2bf8b9b1eb9e6b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "With both active-low inputs at 00, the two NAND outputs are forced to 11. Releasing both inputs to 11 together lets the two gates react to the same high feedback. With symmetric delays the outputs can fall and rise together until the symmetry breaks.",
+      "note": "Made Easy and the old stored key give A (11 → 00). That drives both outputs high and holds them there. The possibly oscillatory release is 00 → 11, letter D in both GATE Overflow and the app.",
+      "replaceExisting": true,
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.17.7, Flip Flop: GATE IT 2007 | Question: 7, PDF p. 327 (key p. 362) https://gateoverflow.in/3440/gate-it-2007-question-7",
+          "answer": "D (00 → 11)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.17, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "A (11 → 00)",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "D (00 → 11)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "madeeasy-digital-logic-sequential-3-18",
+      "contentSha256": "2c091c5e923e0e5219cded2b9e41a532b22565bcf1937c7390e34b61b7153128",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "XOR each incoming bit with the current rightmost bit and shift the result in on the left. Starting from 0110, the six bits 101101 yield 1011 → 1101 → 0110 → 1011 → 1101 → 0110.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.8.39, Circuit Output: GATE IT 2007 | Question: 40, PDF p. 314 (key p. 362) https://gateoverflow.in/3473/gate-it-2007-question-40",
+          "answer": "A (0110)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.18, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "A (0110)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "A (0110)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 19,
+      "id": "madeeasy-digital-logic-sequential-3-19",
+      "contentSha256": "489faf4153bfb56d7450ed927952ee6f08090ac72ef32356e42749e6cfcb4db3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Load stays low and Count stays high. A3 AND A1 first asserts asynchronous clear at binary 0101, so the settled states cycle through 0, 1, 2, 3, 4.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.8.27, Circuit Output: GATE CSE 2007 | Question: 36, PDF p. 310 (key p. 362) https://gateoverflow.in/1234/gate-cse-2007-question-36",
+          "answer": "C (0, 1, 2, 3, 4)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.19, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "C (0, 1, 2, 3, 4)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q36, linked by source.copiedFrom.questionId",
+          "answer": "C (0, 1, 2, 3, 4)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "C (0, 1, 2, 3, 4)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "madeeasy-digital-logic-sequential-3-20",
+      "contentSha256": "c5990f7d4f7ea4f18c3bd2f1b45694d72a3134abcc0598bd136fb6745878d48c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The machine holds for xy = 00 or 11 and toggles for xy = 01 or 10. Driving both J and K with x XOR y implements exactly those transitions.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.13.17, Digital Counter: GATE IT 2008 | Question: 37, PDF p. 323 (key p. 362) https://gateoverflow.in/3347/gate-it-2008-question-37",
+          "answer": "D (J = x XOR y, K = x XOR y)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.20, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "D (J = x XOR y, K = x XOR y)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "D (J = x XOR y, K = x XOR y)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "madeeasy-digital-logic-sequential-3-21",
+      "contentSha256": "92d2f80f87d5e1c2cf0a167f12c84732358490cf571b9e5b4fb2337835481a8f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "The only transition into 01 with output 1 is from 10 on a 1. The shortest path from 00 to 10 is 00 → 01 → 10 on 10. Appending 1 gives the minimum-length input 101.",
+      "note": "The stem calls A and B “two states.” They are two state bits encoding the four assignments in the table. Suggested wording is “an FSM with two state bits A and B, one input and one output.”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.15.4, Finite State Machines: GATE CSE 2009 | Question: 27, PDF p. 324 (key p. 362) https://gateoverflow.in/1313/gate-cse-2009-question-27",
+          "answer": "A (3 input bits)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.21, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "A (3 input bits)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q27, linked by source.copiedFrom.questionId",
+          "answer": "A (3 input bits)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "A (3 input bits)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 22,
+      "id": "madeeasy-digital-logic-sequential-3-22",
+      "contentSha256": "a1da8ba370d6805c35d5980339d6515a7c83e08994f1bb5b48d7a6d6751187ec",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Both T inputs are high. Q0 toggles at each input clock edge and Q1 toggles on each rising Q0 edge. Starting from Q1Q0 = 00 gives 11 → 10 → 01 → 00.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.8.29, Circuit Output: GATE CSE 2010 | Question: 32, PDF p. 310 (key p. 362) https://gateoverflow.in/2206/gate-cse-2010-question-32",
+          "answer": "A (11, 10, 01, 00)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.22, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "A (11, 10, 01, 00)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q32, linked by source.copiedFrom.questionId",
+          "answer": "A (11, 10, 01, 00)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "A (11, 10, 01, 00)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 23,
+      "id": "madeeasy-digital-logic-sequential-3-23",
+      "contentSha256": "7f69bd9ab3dd30cd4b30ef517e2d75ec2defb33eb262a529e32fe5a30edb669d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "A modulo-258 counter needs 258 states. Eight flip-flops give 256 and nine give 512, so the minimum is nine.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.13.7, Digital Counter: GATE CSE 2011 | Question: 15, PDF p. 320 (key p. 362) https://gateoverflow.in/2117/gate-cse-2011-question-15",
+          "answer": "A (9 flip-flops)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.23, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "A (9 flip-flops)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q15, linked by source.copiedFrom.questionId",
+          "answer": "A (9 flip-flops)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "A (9 flip-flops)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 24,
+      "id": "madeeasy-digital-logic-sequential-3-24",
+      "contentSha256": "748df8625c7f9312baedcfc393dbd1b58e2ecc62ecfb7431fca0ed4c2cd3721a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The circuit gives (P⁺,Q⁺,R⁺) = (R,NOT (P OR R),Q AND NOT R). Substituting PQR = 010 gives 011.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.8.31, Circuit Output: GATE CSE 2011 | Question: 50, PDF p. 311 (key p. 362) https://gateoverflow.in/2157/gate-cse-2011-question-50",
+          "answer": "D (011)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.24, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "D (011)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q50, linked by source.copiedFrom.questionId",
+          "answer": "D (011)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "D (011)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 25,
+      "id": "madeeasy-digital-logic-sequential-3-25",
+      "contentSha256": "8e6c259a6f62083ffa0d2e7bf4b0781e570d8025693d31723fd44130bd62bb4e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Iterating (P⁺,Q⁺,R⁺) = (R,NOT (P OR R),Q AND NOT R) from reset gives 000 → 010 → 011 → 100 → 000. There are four distinct states.",
+      "note": "The linked year-paper copy gives the correct count of four but describes 000 as a reset-only state. Substituting 100 into the circuit returns 000, so all four states recur.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.8.32, Circuit Output: GATE CSE 2011 | Question: 51, PDF p. 311 (key p. 362) https://gateoverflow.in/43318/gate-cse-2011-question-51",
+          "answer": "B (4 states)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.25, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "B (4 states)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q51, linked by source.copiedFrom.questionId",
+          "answer": "B (4 states)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "B (4 states)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 26,
+      "id": "madeeasy-digital-logic-sequential-3-26",
+      "contentSha256": "9df6d7522bc46437143de0004524059fa7189835e3ff2aae818dce14c0ca2d42",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The decoder turns each of the k binary counts into a distinct one-hot vector. The 1 moves to the next output on every count and wraps around, as in a k-bit ring counter.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.13.8, Digital Counter: GATE CSE 2014 | Set 2 | Question: 7, PDF p. 320 (key p. 362) https://gateoverflow.in/1959/gate-cse-2014-set-2-question-7",
+          "answer": "C (k-bit ring counter)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.26, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "C (k-bit ring counter)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "C (k-bit ring counter)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 27,
+      "id": "madeeasy-digital-logic-sequential-3-27",
+      "contentSha256": "6566dc90cc5e9141e9b9db100e04da3b6bfea389621b0d3ff4b54dc9a5173940",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "At 000, J2 = NOT Q1 sets Q2. At the next edge the middle stage copies the old Q2, since J1 = Q2 and K1 = NOT Q2. At the third edge J0 = Q1 sets Q0 while the other two stay high. The trace is 000 → 100 → 110 → 111.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.8.33, Circuit Output: GATE CSE 2014 | Set 3 | Question: 45, PDF p. 312 (key p. 362) https://gateoverflow.in/2079/gate-cse-2014-set-3-question-45",
+          "answer": "C (100, 110, 111)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.27, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "C (100, 110, 111)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "C (100, 110, 111)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 28,
+      "id": "madeeasy-digital-logic-sequential-3-28",
+      "contentSha256": "acb236e7580aa8a338e97155b8bacb49339cfd02d4dca0144f94a3e248b397ac",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Right shifts with inverted LSB feedback into the MSB produce 0000 → 1000 → 1100 → 1110 → 1111 → 0111 → 0011 → 0001 → 0000. Those values match D.",
+      "note": "The stem omits the shift direction. The published key D assumes right shifts with inverted LSB feedback into the MSB. A is the corresponding left-shift sequence. Specify the shift and feedback direction to make D unique.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.13.9, Digital Counter: GATE CSE 2015 | Set 1 | Question: 20, PDF p. 321 (key p. 362) https://gateoverflow.in/8219/gate-cse-2015-set-1-question-20",
+          "answer": "D (0, 8, 12, 14, 15, 7, 3, 1, 0)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.28, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "D (0, 8, 12, 14, 15, 7, 3, 1, 0)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "D (0, 8, 12, 14, 15, 7, 3, 1, 0)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 29,
+      "id": "madeeasy-digital-logic-sequential-3-29",
+      "contentSha256": "a3b6e8183b7a4e3a66285cf2ed68099bf91f82c0977325b667a5240309d51a39",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Let d and q be the D and JK outputs. The simultaneous update is (d⁺,q⁺) = (q,q XOR d). Its cycle from (1,0) is (1,0) → (0,1) → (1,1) → (1,0), giving 0110110… at the JK output.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.17.3, Flip Flop: GATE CSE 2015 | Set 1 | Question: 37, PDF p. 325 (key p. 362) https://gateoverflow.in/8287/gate-cse-2015-set-1-question-37",
+          "answer": "A (0110110…)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.29, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "A (0110110…)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "A (0110110…)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 30,
+      "id": "madeeasy-digital-logic-sequential-3-30",
+      "contentSha256": "6e56a38b52420d900a25d17b9f42c57b9094a2bd91fc7870ce459588a25b304a",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "3",
+      "status": "verified",
+      "reason": "The eight-step pattern has eight distinct phases. Three flip-flops suffice by using the low bit of a three-bit modulo-8 counter to distinguish the repeats and exposing the upper two bits, and two flip-flops cannot encode eight phases.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.13.10, Digital Counter: GATE CSE 2015 | Set 2 | Question: 7, PDF p. 321 (key p. 362) https://gateoverflow.in/8054/gate-cse-2015-set-2-question-7",
+          "answer": "3 (3 flip-flops)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.30, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "3 (3 flip-flops)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "3 (3 flip-flops)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 31,
+      "id": "madeeasy-digital-logic-sequential-3-31",
+      "contentSha256": "e31d3e9e8a52f4ca13c21081dc40e1f3d5ec2f85db288b816b2ddffc046150e5",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "3",
+      "natRange": {
+        "min": 3,
+        "max": 4
+      },
+      "status": "verified-with-note",
+      "reason": "The period has six distinct phases, so two flip-flops cannot suffice. A three-JK modulo-6 state register can use internal states 000 through 101 and decode them as 0, 1, 0, 2, 0, 3. This achieves the minimum of three when output decoding is allowed.",
+      "note": "Made Easy and the original stored exact key give 4. Four are needed if two flip-flop outputs must directly encode the visible count because the three occurrences of 00 require two additional phase bits. The unqualified minimum is 3 with decoding, and the GATE Overflow key lists the inclusive range 3–4.",
+      "replaceExisting": true,
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.13.11, Digital Counter: GATE CSE 2016 | Set 1 | Question: 8, PDF p. 321 (key p. 362) https://gateoverflow.in/39670/gate-cse-2016-set-1-question-8",
+          "answer": "3:4 (published accepted range)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.31, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "4 flip-flops",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "3 minimum with combinational output decoding",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 32,
+      "id": "madeeasy-digital-logic-sequential-3-32",
+      "contentSha256": "569345e116c569dbcd4ce04dcc173ff113b3f4df4f94e036fb95a0f31e20c6c6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "For Q1Q0, the update is (Q1 XOR Q0,Q1). From 11 the trace is 11 → 01 → 10 → 11 → 01. The third and fourth outputs are 11 and 01.",
+      "note": "The app has illegible-bit placeholders in C and D. GATE Overflow shows C as 00 after cycle 3 and 11 after cycle 4, and D as 01 after both cycles. The intact choice B is still the result of the trace.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.17.4, Flip Flop: GATE CSE 2017 | Set 1 | Question: 33, PDF p. 326 (key p. 362) https://gateoverflow.in/118315/gate-cse-2017-set-1-question-33",
+          "answer": "B (11 after cycle 3 and 01 after cycle 4)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.32, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "B (11 after cycle 3 and 01 after cycle 4)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "B (11 after cycle 3 and 01 after cycle 4)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 33,
+      "id": "madeeasy-digital-logic-sequential-3-33",
+      "contentSha256": "003c725f43f27709b777e4a5c7ee3227fa90268613d15232957af46277bb9486",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "A T flip-flop toggles exactly where Q differs from Q⁺. T1 is 1 only on 01 and T0 is 1 on 00, 01 and 10. The resulting expressions are (NOT Q1) AND Q0 and (NOT Q1) OR (NOT Q0), respectively.",
+      "note": "The book and app use (NOT Q1) OR (NOT Q0) for T0 in distractor C. GATE Overflow prints (NOT Q1) AND (NOT Q0) there. Choice B has matching expressions in both sources.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.13.12, Digital Counter: GATE CSE 2017 | Set 2 | Question: 42, PDF p. 321 (key p. 362) https://gateoverflow.in/118557/gate-cse-2017-set-2-question-42",
+          "answer": "B (T1 = (NOT Q1) AND Q0, T0 = (NOT Q1) OR (NOT Q0))",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.33, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "B (T1 = (NOT Q1) AND Q0, T0 = (NOT Q1) OR (NOT Q0))",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "B (T1 = (NOT Q1) AND Q0, T0 = (NOT Q1) OR (NOT Q0))",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 34,
+      "id": "madeeasy-digital-logic-sequential-3-34",
+      "contentSha256": "4b0d1d896ac1365b47f139d9de6a4b9a056e36bcb36068802e5c4708c89527ab",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "2",
+      "status": "verified",
+      "reason": "With state (a,b) for the two D outputs, the update is (in,a). A self-loop requires in = a = b, so only 00 with in = 0 and 11 with in = 1 qualify.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.17.5, Flip Flop: GATE CSE 2018 | Question: 22, PDF p. 326 (key p. 362) https://gateoverflow.in/204096/gate-cse-2018-question-22",
+          "answer": "2 (2 states)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.34, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "2 (2 states)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "2 (2 states)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 35,
+      "id": "madeeasy-digital-logic-sequential-3-35",
+      "contentSha256": "41c2afa8e292494053b7d3685e553e11f402f842a415705684397f6813a0cc8a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The T inputs are R, NOT P and NOT Q. XORing them with the old P,Q,R, respectively, gives 000 → 011 → 101 → 000.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.13.13, Digital Counter: GATE CSE 2021 | Set 1 | Question: 28, PDF p. 321 (key p. 362) https://gateoverflow.in/357423/gate-cse-2021-set-1-question-28",
+          "answer": "A (011, 101, 000), which is D in the app",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.35, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "D (011, 101, 000)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "D (011, 101, 000)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 36,
+      "id": "madeeasy-digital-logic-sequential-3-36",
+      "contentSha256": "3502911e6cbb92e6566363e9a53d3dd459fe81af088addcf21e41a10e1b5a78f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "When S = 1 the mux passes the external data input. When S = 0 it feeds Q back and holds the stored level. This is a level-sensitive D latch.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.27.9, Multiplexer: GATE CSE 2023 | Question: 11, PDF p. 346 (key p. 362) https://gateoverflow.in/399301/gate-cse-2023-question-11",
+          "answer": "B (D latch)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.36, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "B (D latch)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "B (D latch)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 37,
+      "id": "madeeasy-digital-logic-sequential-3-37",
+      "contentSha256": "a121b57f14b49740b3b7c157699b85ad8b95629221b1a0fe055d5415d64bef7a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The update is (Q1 XOR (NOT Q3),Q1,Q3 XOR Q2). From 011 the cycle is 011 → 000 → 100 → 010 → 101 → 111 → 110 → 011. The only state outside that cycle is 001.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.13.14, Digital Counter: GATE CSE 2023 | Question: 33, PDF p. 322 (key p. 362) https://gateoverflow.in/399278/gate-cse-2023-question-33",
+          "answer": "A ((0, 0, 1))",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Sequential Circuits Q3.37, book p. 227 (chapter PDF p. 4, Digital Logic solutions scan p. 3)",
+          "answer": "A ((0, 0, 1))",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question, using its stated inputs, options and diagram where provided",
+          "answer": "A ((0, 0, 1))",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

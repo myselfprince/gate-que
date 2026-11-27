@@ -1,0 +1,1012 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "6. Data Structures",
+  "chapter": "3. Linked Lists",
+  "slug": "6-data-structures--3-linked-lists",
+  "reviewedAt": "2026-11-27",
+  "sources": {
+    "gateOverflowPdf": {
+      "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume2.pdf",
+      "sha256": "457f9e583b943b3c41e78d8431b09e322123b0d80765396af36ee2100196714f",
+      "chapter": "Programming and DS: Data Structures, with matches in Algorithms and Programming in C",
+      "answerKeyPages": [
+        115,
+        116,
+        254,
+        320
+      ]
+    },
+    "gateOverflowIsroPdf": {
+      "file": "isro_w_cover.pdf",
+      "url": "https://github.com/GATEOverflow/GO-PDFs/releases/download/isro/isro_w_cover.pdf",
+      "sha256": "cc614262bdc42c9201de7ceab35de962ac5585e83e18e3718ee55f809a817603",
+      "chapter": "38.9 Linked List",
+      "answerKeyPage": 251
+    },
+    "madeEasyPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\6. Data Structures\\3. Linked Lists.pdf",
+      "sha256": "5116b86fba0ef7484ed895112d1544b71dee3dc7d9960968700d8191fc2f3483",
+      "answerKeyPage": 2
+    },
+    "madeEasySolutionsPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\All Subject Solutions Keys\\C Programming and DS.pdf",
+      "sha256": "380c891929abca5d5194efb7e6270603eb61b98d9a869af0f7b300532f04c4d8",
+      "answerKeyPages": [
+        23,
+        26
+      ]
+    },
+    "yearPapers": "Verified data/papers/*.json copies linked by question ID or matched by stem and option text",
+    "officialKeys": [
+      {
+        "exam": "ISRO CSE 2017 (7 May)",
+        "url": "https://blogmedia.testbook.com/blog/wp-content/uploads/2017/05/Final-ISRO-Answer-Key-Computer-Science.pdf",
+        "mirrored": true
+      },
+      {
+        "exam": "ISRO CSE 2018 (22 April)",
+        "url": "https://es.scribd.com/document/431496006/ISRO-2018-KEYS",
+        "mirrored": true
+      },
+      {
+        "exam": "GATE 2025 CS1",
+        "paper": "https://gate2025.iitr.ac.in/doc/2025/2025_QP/CS1.pdf",
+        "url": "https://gate2025.iitr.ac.in/doc/2025/2025_Key/CS1_Keys.pdf"
+      }
+    ]
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "jsxe41xvv",
+      "contentSha256": "e54beb7623c6d6924a2f8d396edc0e3b73a12a305f978a713a94f65987d88362",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Splicing a new record after an existing node sets the new node’s next link to the old successor and sets the existing node’s next link to the new record.",
+      "note": "The app spells “organisation” as “oraganisation”.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.10.1, Linked List: GATE CSE 1987 | Question: 1-xv, PDF p. 232 (key p. 254); https://gateoverflow.in/80298/gate-cse-1987-question-1-xv",
+          "answer": "B (two pointers)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "019dj8zj5",
+      "contentSha256": "cb0004ec8b84a0b0f1b5aa6968c13afcd061049593d29cb2786e6fe32a26be54",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Binary search depends on efficient access to the middle of each remaining interval. A linked list must traverse links to reach the middle. The other listed tasks can use sequential traversal and local splicing.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.10.4, Linked List: GATE CSE 1994 | Question: 1.17, UGCNET-Sep2013-II: 32, PDF p. 233 (key p. 254); https://gateoverflow.in/2460/gate-cse-1994-question-1-17-ugcnet-sep2013-ii-32",
+          "answer": "B (binary search)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "iiqnkx2la",
+      "contentSha256": "9f86e6121494dcdc3ce313f6d5e4bec80b767766651d54842abfbb27b0f7e877",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "For a fixed table with ordinary hashing, higher load increases collision probability. Quicksort can repeatedly split off only its pivot, costing Θ(n²). Recursion alone gives no efficiency guarantee, and binary search on a linear linked list lacks random access.",
+      "note": "Separate statements I–IV and ask “Which pair of statements is true?” Statement I uses the ordinary fixed-table hashing assumption. A single extra insertion can still avoid a collision.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.10.5, Linked List: GATE CSE 1995 | Question: 2.22, PDF p. 233 (key p. 254); https://gateoverflow.in/2634/gate-cse-1995-question-2-22",
+          "answer": "D (I and III)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "upmx2jk6f",
+      "contentSha256": "223e98888a59160411c3291b9619b554b3d27ad5b356d6fe4428e7cea3dc296f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Compare the first unmerged element of each list and advance the one you emit. At most m + n − 1 comparisons are needed before one list is exhausted.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.30.1, Merging: GATE CSE 1995 | Question: 1.16, PDF p. 71 (key p. 115); https://gateoverflow.in/2603/gate-cse-1995-question-1-16",
+          "answer": "C (O(m + n))",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "zkvvubufk",
+      "contentSha256": "9d15f3f398d5d4bd8f826883f8b24c92478ceebd3682ba0bddde750ac981cebd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "With a head pointer for each list, a circular doubly linked list also exposes its tail through head->prev. Joining the lists needs only the link updates at their two boundaries.",
+      "note": "The expected answer assumes every list is represented by its head alone. State this assumption in the question. A separately maintained tail pointer would also allow constant-time concatenation of a linear linked list.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.10.6, Linked List: GATE CSE 1997 | Question: 1.4, PDF p. 233 (key p. 254); https://gateoverflow.in/2220/gate-cse-1997-question-1-4",
+          "answer": "C (circular doubly linked list)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "tqsf9jvzh",
+      "contentSha256": "51fcafaf3bfd9fbce1dc6d42ee5c2808ae628158f289d6d96d72d19c0db1d62f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "A missing element or a match at the last node requires inspecting and comparing all n node values.",
+      "note": "Restore option C to “log₂ n − 1”. The app puts n in a superscript on log.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.10.10, Linked List: GATE CSE 2002 | Question: 1.5, PDF p. 234 (key p. 254); https://gateoverflow.in/809/gate-cse-2002-question-1-5",
+          "answer": "D (n comparisons)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Linked List Q4.1, 3. Linked Lists.pdf (key PDF p. 2, book p. 383), also C Programming and DS.pdf (key PDF p. 26)",
+          "answer": "d (n comparisons)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q5 (matched by stem and options)",
+          "answer": "D (n comparisons)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "tpx4bqz87",
+      "contentSha256": "5f6c843032e3ed9c0b864dedd22413a952b6f787bf2d4c3c642f3daef1a033a4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "P is undeclared in the displayed C. After changing P->data to p->data, B is the answer.",
+      "status": "verified-with-note",
+      "reason": "The literal code uses an undeclared uppercase P. With lowercase p, the empty and singleton cases return true and each recursive call checks one adjacent pair for non-decreasing order.",
+      "note": "Replace P->data with p->data. The intended key is B. The GATE paper copy and Made Easy scan also identify the item as two marks. The app shows one.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.10.11, Linked List: GATE CSE 2003 | Question: 90, PDF p. 234 (key p. 254); https://gateoverflow.in/973/gate-cse-2003-question-90",
+          "answer": "B (non-decreasing order with the declared p)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Linked List Q4.2, 3. Linked Lists.pdf (key PDF p. 2, book p. 383), also C Programming and DS.pdf (key PDF p. 26)",
+          "answer": "b (non-decreasing order)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q90 (linked by question ID)",
+          "answer": "B (non-decreasing order)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet and the corrected source version",
+          "answer": "No valid option for the displayed code. B for the corrected code.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "vq02gwxcx",
+      "contentSha256": "f2df7f2322167826174879475fec4bd3f6fbb35188b7530ef5a5dd6fb6df72da",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "To unlink the exact node x, find its predecessor by walking from the head and set the predecessor’s next link to x->next. An intermediate node can be second-to-last, so the worst case takes Θ(n).",
+      "note": "The year-paper review chose D for deleting the payload: copy the successor’s value into x and unlink the successor in O(1). The app asks to delete node x itself, which remains allocated and linked after that method. GATE Overflow and Made Easy key A. Specify that x itself must be unlinked and the other node identities preserved.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.10.23, Linked List: GATE IT 2004 | Question: 13, PDF p. 238 (key p. 254); https://gateoverflow.in/3654/gate-it-2004-question-13",
+          "answer": "A (O(n) to unlink the specified node)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Linked List Q4.3, 3. Linked Lists.pdf (key PDF p. 2, book p. 383), also C Programming and DS.pdf (key PDF p. 26)",
+          "answer": "a (O(n))",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q13 (linked by question ID)",
+          "answer": "D (O(1) for logical payload deletion)",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "9zp19h1j7",
+      "contentSha256": "3f7df20bc517c1e29c965c57cd97c09025e7deaaf5e9804d808a5d3d612a3c69",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Holding the rear pointer gives p->next as the front. Enqueue splices after p and advances p. Dequeue unlinks p->next and clears p when the only node is removed.",
+      "note": "The Made Easy combined scan Q3.10 keys C, “not possible with a single pointer”, which maps to app B. The circular diagram and the year-paper key support the rear node (app A). The GATE paper copy and Made Easy scan list two marks, while the app shows one.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.10.12, Linked List: GATE CSE 2004 | Question: 36, PDF p. 235 (key p. 254); https://gateoverflow.in/1033/gate-cse-2004-question-36",
+          "answer": "A (rear node)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Stacks and Queues Q3.10 in C Programming and DS.pdf, Q p. 21 and key p. 23 (book pp. 369, 373)",
+          "answer": "c (not possible with a single pointer, app B)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q36 (matched by stem, diagram and option text)",
+          "answer": "A (rear node)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "hr628yizp",
+      "contentSha256": "1d563a5c21201c363322dff6504ddb61421902ff506d102672605050da36d679",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "The struct declaration ends in `);`, which is invalid C. With `};` as the terminator the answer is B.",
+      "status": "verified-with-note",
+      "reason": "The structure terminator is invalid C. With the terminator corrected, the loop swaps adjacent values (1,2), (3,4) and (5,6), leaving 7 at the end.",
+      "note": "Replace `struct node * next;);` with `struct node *next; };`. The same malformed terminator appears in the GATE Overflow and Made Easy question pages, whose keys reflect the intended loop. Made Easy prints two marks, while the app shows one.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.10.24, Linked List: GATE IT 2005 | Question: 54, PDF p. 239 (key p. 254); https://gateoverflow.in/3815/gate-it-2005-question-54",
+          "answer": "B (2, 1, 4, 3, 6, 5, 7 after fixing the struct terminator)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Linked List Q4.4, 3. Linked Lists.pdf (key PDF p. 2, book p. 383), also C Programming and DS.pdf (key PDF p. 26)",
+          "answer": "b (2, 1, 4, 3, 6, 5, 7)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet and the corrected source version",
+          "answer": "No valid option for the displayed code. B for the corrected code.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "1f27vk1ik",
+      "contentSha256": "53e3211e1d23bf3613a251424dd2e32e8fe2921e4246db877bf58f40cf3bd6c5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Keep the current first element of each of the Θ(log n) lists in a min-heap. There are Θ(n) elements to emit and each heap update costs O(log log n), giving O(n log log n) total time.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.40.11, Sorting: GATE CSE 2005 | Question: 39, PDF p. 101 (key p. 115); https://gateoverflow.in/784/gate-cse-2005-question-39",
+          "answer": "A (O(n log log n))",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q39 (linked by question ID)",
+          "answer": "A (O(n log log n))",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "ces3igeig",
+      "contentSha256": "8cb99eb048bdc7f6f80dec191f2ae0997fdfc6326aac727f25972464074297a5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "An ordinary doubly linked list node has a data field, a previous link and a next link, for three fields.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "isro_w_cover.pdf 38.9.3, ISRO CSE 2008 Q76, PDF p. 244 (key p. 251); https://gateoverflow.in/17245/isro-cse-2008-question-76",
+          "answer": "C (three fields)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "jn1xz0ta5",
+      "contentSha256": "5c3e81ebee1126462de012974157ed95f75217fb619ac30bebd52e64ecc31eed",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Given the node itself, a doubly linked list supplies its predecessor directly and can unlink the node in O(1). Finding the predecessor in a singly linked list can take Θ(n). The other operations have the same asymptotic cost on either list.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "isro_w_cover.pdf 38.9.2, ISRO CSE 2008 Q72, PDF p. 244 (key p. 251); https://gateoverflow.in/50141/isro-cse-2008-question-72",
+          "answer": "A (delete the node whose location is given)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "a8re8rtk5",
+      "contentSha256": "306a134ef44e36fde5b3d204fafd72e5de07cae972665e7dc27bc480418c4c56",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Start at the head and follow next links. In the worst case the target is last or absent and all n nodes are examined, so the tight worst-case time is Θ(n).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "isro_w_cover.pdf 38.9.1, ISRO CSE 2008 Q71, PDF p. 244 (key p. 251); https://gateoverflow.in/50139/isro-cse-2008-question-71",
+          "answer": "B (O(n))",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "9p2djo9z9",
+      "contentSha256": "1ffaed454e6d427191b5afe566a3ac0d7e69b2c98f7cf8060ba0dc3a58e74e4b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "Change Void to void before tracing the function. The corrected code gives B.",
+      "status": "verified-with-note",
+      "reason": "Void is not a C type in the displayed snippet. With lowercase void, each iteration swaps the current pair and advances two nodes, producing 2, 1, 4, 3, 6, 5, 7.",
+      "note": "Change `Void rearrange` to `void rearrange`. The source key B applies to the corrected C.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.10.14, Linked List: GATE CSE 2008 | Question: 62, PDF p. 235 (key p. 254); https://gateoverflow.in/485/gate-cse-2008-question-62",
+          "answer": "B (2, 1, 4, 3, 6, 5, 7 with lowercase void)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Linked List Q4.5, 3. Linked Lists.pdf (key PDF p. 2, book p. 383), also C Programming and DS.pdf (key PDF p. 26)",
+          "answer": "b (2, 1, 4, 3, 6, 5, 7)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q62 (linked by question ID)",
+          "answer": "B (2, 1, 4, 3, 6, 5, 7)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet and the corrected source version",
+          "answer": "No valid option for the displayed code. B for the corrected code.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "pa2uufkrq",
+      "contentSha256": "4584e5c756ee5f9b09145dd4714bc85695825f13da03ca1159702821514c728c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "Repair the NULL guard and use q = p. The resulting move-to-front operation is option D.",
+      "status": "verified-with-note",
+      "reason": "After repairing the guard and q assignment, the loop leaves p at the tail and q at its predecessor. Detach p with q->next = NULL, then link p to the old head and set head = p.",
+      "note": "Use “singly-linked”, `if ((head == NULL) || (head->next == NULL)) return head;` and `q = p;`. The printed app code fails to compile for every option. D is the intended replacement after these repairs.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.10.15, Linked List: GATE CSE 2010 | Question: 36, PDF pp. 235–236 (key p. 254); https://gateoverflow.in/2337/gate-cse-2010-question-36",
+          "answer": "D (detach the tail, link it before the head, then assign head)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Linked List Q4.6, 3. Linked Lists.pdf (key PDF p. 2, book p. 383), also C Programming and DS.pdf (key PDF p. 26)",
+          "answer": "d (detach the tail, link it before the head, then assign head)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q36 (linked by ID and matched by assignment order)",
+          "answer": "D (q->next = NULL, p->next = head, then head = p)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet and the corrected source version",
+          "answer": "No valid option for the displayed code. D for the corrected code.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "4c46zjoan",
+      "contentSha256": "d8e968aabc244508a24fc7d34451121f216cfb9504c9ea0a9d5563e5e69e5661",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Get a new node, store 10, link that node to the old head and make it the head. This prepends one new node.",
+      "note": "The app collapses four pseudocode assignments into one line. Put `p = getnode()`, `info(p) = 10`, `next(p) = list` and `list = p` on separate lines.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "isro_w_cover.pdf 38.9.9, ISRO CSE 2013 Q4, PDF p. 246 (key p. 251); https://gateoverflow.in/43754/isro-2013-4",
+          "answer": "C (inserting a node)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "8h82c350o",
+      "contentSha256": "8d709b2438c4a65b144f299ac1833a230b921c4ecbc36c6c79cdc3a8c20611c9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Assuming n ≥ 3, take the median of any three distinct elements using at most three comparisons. One selected element is smaller and one larger, so the median is neither global extreme.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.43.23, Time Complexity: GATE CSE 2015 | Set 2 | Question: 22, PDF p. 110 (key p. 116); https://gateoverflow.in/8113/gate-cse-2015-set-2-question-22",
+          "answer": "D (Θ(1))",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 19,
+      "id": "te13xsvz2",
+      "contentSha256": "56ba17b9b26dca0d695698a1fff30fbb4b4a7b8e56401fce5ef220bf0a7abf13",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "An unsorted array appends in O(1) amortized time, removes a known record by swapping in the last element, and decreases a known key in place. The few linear finds give O(N√log N) total. Online binary-heap inserts can cost Θ(N log N) total, and sorted representations can spend Θ(N²) on inserts.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.43.22, Time Complexity: GATE CSE 2015 | Set 1 | Question: 40, PDF p. 110 (key p. 116); https://gateoverflow.in/8299/gate-cse-2015-set-1-question-40",
+          "answer": "A (unsorted array)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "xgvxgmgfq",
+      "contentSha256": "9157771ff0f10b12e9e67729320ca539ca910bdc64fd6aa5f09bb10c16a1666e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Known-node deletes cost O(1) each. Finding the position for an insert, search or decreased key can cost O(N). A constant fraction of the nodes can remain after the deletes, and Θ(N) repeated decrease-key operations can then require Θ(N²) total time.",
+      "note": "Restore the operation list to “Θ(N) deletes, O(log N) inserts, O(log N) finds, and Θ(N) decrease-key operations”. The app has stray semicolons within the insert and find quantities.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.10.16, Linked List: GATE CSE 2016 | Set 2 | Question: 15, PDF p. 236 (key p. 254); https://gateoverflow.in/39557/gate-cse-2016-set-2-question-15",
+          "answer": "C (O(N²))",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "jgnsnulmu",
+      "contentSha256": "146dc6da8b3d6496480a847df0003cfc3902bca043756a322439d40ec0085e64",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "ISRO excluded this question. D describes the dependence on insertion position and which pointers are counted.",
+      "status": "verified-with-note",
+      "reason": "Inserting between two nodes changes four link fields. Appending to a nonempty linear list changes three link fields if both new-node fields are counted and no external tail pointer is stored. The count depends on insertion position and what counts as an affected pointer.",
+      "note": "ISRO’s final key excluded this item from evaluation. GATE Overflow prints X. D is the best reference choice for the wording shown. For a fixed answer of four, specify insertion between two existing nodes and count both link writes on the new node.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "isro_w_cover.pdf 38.9.6, ISRO CSE 2017 Series A Q53, PDF p. 245 (key p. 251); https://gateoverflow.in/128485/isro-cse-2017-question-53",
+          "answer": "X (agrees with the disputed disposition)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "ISRO BE003 revised final key, 7 May 2017, Series A Q53, PDF p. 3 (mirror); https://blogmedia.testbook.com/blog/wp-content/uploads/2017/05/Final-ISRO-Answer-Key-Computer-Science.pdf",
+          "answer": "Excluded for evaluation (agrees with the disputed disposition)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "D is the best reference option. The question omits how to count the writes.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 22,
+      "id": "9k9do62bc",
+      "contentSha256": "d5a56a03839dcdbc76be27bb131b4ccd414006157b3e40b5ae639acdcc1f7ada",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "In a circular list, splicing after any known node and unlinking its successor can preserve the cycle. Neither operation is required to act at the last node.",
+      "note": "Put the two statements on separate lines as (I) insertion must be at the last node and (II) deletion must be at the last node. A general circular list imposes neither restriction.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "isro_w_cover.pdf 38.9.5, ISRO CSE 2017 Series A Q16, PDF p. 245 (key p. 251); https://gateoverflow.in/128489/isro-cse-2017-question-16",
+          "answer": "B (both statements are false)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "ISRO BE003 revised final key, 7 May 2017, Series A Q16, PDF p. 1 (mirror); https://blogmedia.testbook.com/blog/wp-content/uploads/2017/05/Final-ISRO-Answer-Key-Computer-Science.pdf",
+          "answer": "b (both statements are false)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 23,
+      "id": "38198tcjy",
+      "contentSha256": "48aec2e61bcd8c8d9ae5a31750556ed74a42f38318dd91879e971abee2d4f0d2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "Use struct node *next inside the typedef and write the comparison as !=. The corrected program gives B.",
+      "status": "verified-with-note",
+      "reason": "The literal C uses node before its typedef is available and splits the != token. In the intended code, p starts at n. If n is empty, the first dereference has a null pointer. Otherwise the traversal ends at the tail of n and links m there.",
+      "note": "Use `struct node *next;` inside the typedef and `while (p->next != NULL)`. The source PDFs also use the premature typedef name. B is the intended outcome with valid C and the usual disjoint-list interpretation of append.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.10.17, Linked List: GATE CSE 2017 | Set 1 | Question: 08, PDF p. 236 (key p. 254); https://gateoverflow.in/118711/gate-cse-2017-set-1-question-08",
+          "answer": "B (null dereference for empty n, otherwise append m to n)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Linked List Q4.7, 3. Linked Lists.pdf (key PDF p. 2, book p. 383), also C Programming and DS.pdf (key PDF p. 26)",
+          "answer": "b (null dereference for empty n, otherwise append m to n)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet and the corrected source version",
+          "answer": "No valid option for the displayed code. B for the corrected code.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 24,
+      "id": "mfmgrulf9",
+      "contentSha256": "de5aa63ac1c2fc430a39d800ea2c0a7f738d050abdac83698434cd45df4278d3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Write the successor into the predecessor’s Fwd link and the predecessor into the successor’s Bwd link. This bypasses X in both directions.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "isro_w_cover.pdf 38.9.8, ISRO CSE 2018 Series A Q79, PDF pp. 245–246 (key p. 251); https://gateoverflow.in/213509/isro-cse-2018-question-79",
+          "answer": "a (predecessor’s Fwd = successor and successor’s Bwd = predecessor)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "ISRO BE003 revised final key, 22 April 2018, Series A Q79 / Series C Q19 (mirror); https://es.scribd.com/document/431496006/ISRO-2018-KEYS",
+          "answer": "a (both adjacent links bypass X)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 25,
+      "id": "3bwiwnvv3",
+      "contentSha256": "f451e0813b614c6fd3c08fb66adf6419efb74d6e5b0e0cdffed0d81f55d6ffc7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "An insertion into a sorted list of length k can require traversing Θ(k) nodes to find its position. Summing k from 0 to n − 1 gives Θ(n²).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.10.18, Linked List: GATE CSE 2020 | Question: 16, PDF p. 237 (key p. 254); https://gateoverflow.in/333215/gate-cse-2020-question-16",
+          "answer": "C (Θ(n²))",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 26,
+      "id": "j19kwi33d",
+      "contentSha256": "2a0f99f0645158c06c929dfcb7596aff9baccba441ca9bf57e3d6fb24ad05ac2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "Both loop tests require <=. With the tests repaired, the final node has an uninitialized next pointer and the intended answer is D.",
+      "status": "verified-with-note",
+      "reason": "The literal < = tokens make the loops invalid C. With <=, the program allocates four nodes and leaves the fourth node’s next field uninitialized. The print loop follows that indeterminate pointer and attempts to dereference it.",
+      "note": "Change `< =` to `<=` in both loops and `returnreturn` to `return` in option C. The Made Easy key c refers to dereferencing an uninitialized pointer and maps to app D. Its explanation draws a NULL tail link, but the code leaves the link uninitialized.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 5.16.3, Structure: GATE CSE 2021 | Set 2 | Question: 35, PDF p. 316 (key p. 320); https://gateoverflow.in/357505/gate-cse-2021-set-2-question-35",
+          "answer": "D (dereferences an uninitialized pointer)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Linked List Q4.8, 3. Linked Lists.pdf (key PDF p. 2, book p. 383), also C Programming and DS.pdf (key PDF p. 26)",
+          "answer": "c (dereferences an uninitialized pointer, app D)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet and the corrected source version",
+          "answer": "No valid option for the displayed code. D for the corrected code.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 27,
+      "id": "741cwzbiz",
+      "contentSha256": "e8323fc4a49bf8c07a7ab10c685c56164fde01f4dfcaf562998287c3676b59db",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Walk the list once, retaining the previous node and the next node while reversing each link. This turns a→b→c→d→e into e→d→c→b→a with O(1) auxiliary space. The links require Θ(n) time to update.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.10.19, Linked List: GATE CSE 2022 | Question: 5, PDF p. 237 (key p. 254); https://gateoverflow.in/371931/gate-cse-2022-question-5",
+          "answer": "A (Θ(n) worst-case time)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Linked List Q4.9, 3. Linked Lists.pdf (key PDF p. 2, book p. 383), also C Programming and DS.pdf (key PDF p. 26)",
+          "answer": "a (Θ(n) worst-case time)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 28,
+      "id": "rzustzflb",
+      "contentSha256": "a3eae28f102849a4c471e5be4c8e81752e553f43fdf023b8361a75d48e3d2485",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A singly linked list can require a walk from the head to find the predecessor, including when the target is the tail. A doubly linked list provides both neighbors, so unlinking a known node takes O(1).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.10.20, Linked List: GATE CSE 2023 | Question: 3, PDF p. 237 (key p. 254); https://gateoverflow.in/399309/gate-cse-2023-question-3",
+          "answer": "D (SLLdel O(n), DLLdel O(1))",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Linked List Q4.10, 3. Linked Lists.pdf (key PDF p. 2, book p. 383), also C Programming and DS.pdf (key PDF p. 26)",
+          "answer": "d (SLLdel O(n), DLLdel O(1))",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 29,
+      "id": "mdixunjp9",
+      "contentSha256": "1b72d37dde1fce2c47638f63049129867eb1e94a883ab73ac99e08e574addcea",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Assuming N ≥ 2, compare any pair of distinct elements and return the smaller. With zero comparisons any chosen element could be the largest.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.40.18, Sorting: GATE CSE 2025 | Set 2 | Question: 10, PDF p. 102 (key p. 115); https://gateoverflow.in/460825/gate-cse-2025-set-2-question-10",
+          "answer": "A (one comparison)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 30,
+      "id": "pshjdca02",
+      "contentSha256": "90d98afc5fe0a064c47e6ac8c71e577ed8d794a1ff630d3df7cf64aaae13ccb2",
+      "questionType": "NAT",
+      "natAnswer": "5",
+      "answerDisposition": "disputed",
+      "specialNote": "The program segment is missing. The complete published version leaves five nodes, so 5 is the reference value.",
+      "status": "verified-with-note",
+      "reason": "With the source code restored, ptr1 starts at L1’s head and tests its successor against L2. It bypasses 12, 9, 11 and 15, leaving 1, 7, 3, 5 and 8. The head 1 is never tested.",
+      "note": "The app supplies the list diagram and LIST typedef but omits the program segment, so the result cannot be determined from the app alone. Restore the membership function and the loop from the official CS1 master paper Q62. Start ptr1 at L1 and bypass ptr1->next if its value is in L2, otherwise advance. The source answer is exactly 5.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.10.21, Linked List: GATE CSE 2025 | Set 1 | Question: 52, PDF pp. 237–238 (key p. 254); https://gateoverflow.in/460028/gate-cse-2025-set-1-question-52",
+          "answer": "5:5 (exactly five with the complete code)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "IIT Roorkee GATE 2025 CS1 master Q62 and final key p. 2; https://gate2025.iitr.ac.in/doc/2025/2025_QP/CS1.pdf#page=62 and https://gate2025.iitr.ac.in/doc/2025/2025_Key/CS1_Keys.pdf#page=2",
+          "answer": "5 to 5 for the complete published code",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet and the corrected source version",
+          "answer": "Indeterminate with the missing code. The restored code leaves 5 nodes.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 31,
+      "id": "g9rrh8775",
+      "contentSha256": "3e57ee32eb31013055123ec8649b6113587c893a09e27435093e260fcd39c0c5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "For a nonempty list, the last node has head->next == NULL and contributes one. Otherwise count the current node and recursively count the nonempty suffix starting at head->next.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.10.22, Linked List: GATE CSE 2026 | Set 1 | Question: 29, PDF p. 238 (key p. 254); https://gateoverflow.in/523051/gate-cse-2026-set-1-question-29",
+          "answer": "B (head->next == NULL and 1 + getListSize(head->next))",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

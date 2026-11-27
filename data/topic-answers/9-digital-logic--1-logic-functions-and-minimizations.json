@@ -1,0 +1,2680 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "9. Digital Logic",
+  "chapter": "1. Logic Functions and Minimizations",
+  "slug": "9-digital-logic--1-logic-functions-and-minimizations",
+  "reviewedAt": "2026-11-27",
+  "sources": {
+    "gateOverflowPdfs": [
+      {
+        "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume3.pdf",
+        "sha256": "5c552941136eb96612fabec8a5b2cb67fc07c17023ce15628408ca27d6640c24",
+        "chapter": "Digital Logic",
+        "answerKeyPages": [
+          361,
+          362,
+          363
+        ]
+      },
+      {
+        "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume1.pdf",
+        "sha256": "e42a70646bdbc4f86edff44b97555a94c866deda508c761da40c20d95b493a2d",
+        "chapter": "Discrete Mathematics: Set Theory & Algebra",
+        "answerKeyPages": [
+          126,
+          127
+        ]
+      }
+    ],
+    "madeEasyPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\9. Digital Logic\\1. Logic Functions and Minimizations.pdf",
+      "sha256": "ebe00a96fdac069eb9a388d2691cb17a90e381b121a5687172308c6f08bf7c42",
+      "answerKeyPage": 5,
+      "printedPage": 199
+    },
+    "madeEasySolutionsPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\All Subject Solutions Keys\\Digital Logic.pdf",
+      "sha256": "f9d1048a2162c912f8ee138ac88b34f0021a6b826c5487501911244f41f49035",
+      "answerKeyPage": 1,
+      "printedPage": 199
+    },
+    "yearPapers": "data/papers/*.json (verified copies linked by source.copiedFrom.questionId)"
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "madeeasy-digital-logic-functions-1-1",
+      "contentSha256": "3673d68883817b1151de7526f5ea35a5c5f27b6be3ac693b8d310a32e27f2f3b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The map is 1 exactly when B and D differ. The groups of zeros B=D=0 and B=D=1 give the POS (B+D)(B′+D′).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.21.5, K Map: GATE CSE 1996 | Question: 2.24, p.335 (key p.362) (https://gateoverflow.in/2753/gate-cse-1996-question-2-24)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.1, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "madeeasy-digital-logic-functions-1-2",
+      "contentSha256": "43f6a903a60a59b95529215fa45fe6b9b572f20e7a52df211753c828b9fb817f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The function reduces to x′+y′+z. Every assignment satisfying xz makes it 1. The term xy′ can be enlarged to y′, and xz omits one variable from a minterm.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.30.1, Prime Implicants: GATE CSE 1997 | Question: 5.1, p.358 (key p.363) (https://gateoverflow.in/2252/gate-cse-1997-question-5-1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.2, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "madeeasy-digital-logic-functions-1-3",
+      "contentSha256": "f27cd1a47522e2d8bf31de91bf4c37425076592ab99a9deb5f760eaeb53a8afb",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Substitution gives z*x=z′+x=xy′+x=x.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.9, Boolean Algebra: GATE CSE 1997 | Question: 2-1, p.291 (key p.361) (https://gateoverflow.in/2227/gate-cse-1997-question-2-1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.3, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "madeeasy-digital-logic-functions-1-4",
+      "contentSha256": "8dbe2cecb4288dd9fae917c5a437b5b66e3d07675ea801719fdd9a3dbd3d4f82",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The displayed function reduces to x′+z. Therefore xz implies f, and (x,y,z)=(1,0,0) rules out y′ as an implicant.",
+      "note": "The printed Q1.4 uses x′+y′z+xz and gives option D as “y is a prime implicant of f.” Restore y in D to match print. The related GATE 1997 Q5.1, also copied at Q1.2, uses x′+y′x+xz and keys the same xz implication.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.30.1, Prime Implicants: GATE CSE 1997 | Question: 5.1, p.358 (key p.363) (https://gateoverflow.in/2252/gate-cse-1997-question-5-1)",
+          "answer": "C (xz is an implicant) in the related original; also true for the displayed variant.",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.4, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "madeeasy-digital-logic-functions-1-5",
+      "contentSha256": "abf8c633c814b095808ba9190adc48f63c275d2df5a7a566344c928adcca8629",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "The circuit gives f=(f₁ AND f₂) OR f₃. The intersection is {8}, so f₃ must supply 9 and avoid every minterm outside {8,9}. Only the offered set {9} works.",
+      "note": "Book option D contains minterm 18, outside the 0–15 domain for four variables. The original option is Σ(8,10,15).",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.8.15, Circuit Output: GATE CSE 1997 | Question: 5.5, p.305-306 (key p.362) (https://gateoverflow.in/2256/gate-cse-1997-question-5-5)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.5, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "madeeasy-digital-logic-functions-1-6",
+      "contentSha256": "77aa0f8b1cc6d4e5f7d3077a8f9a670b0fdf08884b86b30a997d2ffec196b7c6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "NAND is symmetric in its inputs. With inputs (0,1,1), left grouping gives 0 and right grouping gives 1. AND, OR and XOR are associative.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.11, Boolean Algebra: GATE CSE 1998 | Question: 2.8, p.292 (key p.361) (https://gateoverflow.in/1680/gate-cse-1998-question-2-8)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.6, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "madeeasy-digital-logic-functions-1-7",
+      "contentSha256": "0b58db9328de3440c3feb858a45178701189ace108ffd3f1d7483640cc546884",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Starting with B, each pair of XOR applications with B cancels. After an even number of applications the result is B, and after an odd number it is the all-zero string.",
+      "note": "Clarify how the count is taken with “Start with B and XOR the result with B exactly n times.” The keyed answer counts n XOR operations, with n+1 copies of B.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.10, Boolean Algebra: GATE CSE 1998 | Question: 1.13, p.291 (key p.361) (https://gateoverflow.in/1650/gate-cse-1998-question-1-13)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.7, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "madeeasy-digital-logic-functions-1-8",
+      "contentSha256": "358607e79563bc08dfafe6ae01db594d750b0ea8fdc7fde2deb56024b0afb43b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The labeled columns give output 1 at BC=00 and 11 in both rows, which is B XNOR C, equivalently B′ XOR C.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.21.6, K Map: GATE CSE 1998 | Question: 2.7, p.335 (key p.362) (https://gateoverflow.in/1679/gate-cse-1998-question-2-7)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.8, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "madeeasy-digital-logic-functions-1-9",
+      "contentSha256": "6a000c625adb693b0429b09c1a17ab2fe4a5cc9e6b42bd79ba91da83b7760dc5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The first three expressions give x′. The expression x NOR 1 is always 0 and fails at x=0.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.12, Boolean Algebra: GATE CSE 1999 | Question: 1.7, p.292 (key p.361) (https://gateoverflow.in/1460/gate-cse-1999-question-1-7)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.9, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "madeeasy-digital-logic-functions-1-10",
+      "contentSha256": "132b63cb08ab774f51aa0ad01cc246b7f86e24a2be8314193191327c383950fc",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "All required ones lie in CD=11 or in the A=1 rows with D=1. The expression CD+AD=D(C+A) covers those cells and avoids every specified zero.",
+      "note": "Printed and GATE Overflow option C reads AD+A′B. The app adds a bar to D. The GATE Overflow rendering also uses +(A+B) at the end of its D, while the book and editor use multiplication. The keyed expression D(C+A) is the same in both.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.21.7, K Map: GATE CSE 1999 | Question: 1.8, p.335 (key p.362) (https://gateoverflow.in/1461/gate-cse-1999-question-1-8)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.10, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "madeeasy-digital-logic-functions-1-11",
+      "contentSha256": "7a778d8ef29b5566b9fc478af80fad663f80ae69fdf6fab41bfd800dedba4e38",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Substituting (x,y,z,w)=(1,0,1,1) gives left sides (1,0,1,0). A and D fail the third equation, and B fails the second.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.13, Boolean Algebra: GATE CSE 2000 | Question: 2.10, p.292 (key p.361) (https://gateoverflow.in/657/gate-cse-2000-question-2-10)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.11, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q33",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "madeeasy-digital-logic-functions-1-12",
+      "contentSha256": "a255148a9d18a34db084267a1e2f2cd7b90514e304dd0844220a0f0522bb0a82",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "A and B both equal y(w+x) and implement every care cell. At (w,x,y,z)=(1,1,0,0), option C is 1 while the map is 0.",
+      "note": "GATE Overflow keys D (“None of the above”). The source map and C have the same care-cell mismatch at wxyz=1100, so the Made Easy and verified year-paper key C is correct.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.21.8, K Map: GATE CSE 2000 | Question: 2.11, p.335-336 (key p.362) (https://gateoverflow.in/658/gate-cse-2000-question-2-11)",
+          "answer": "D (None of the above); contradicts the displayed map and keyed option C.",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.12, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q34",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "madeeasy-digital-logic-functions-1-13",
+      "contentSha256": "4921e6c2416cd96b2415d8e1e73d0f8c5ee2f792b40cc95f4fe91c0d8614273a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Two four-cell groups give xy and y′z. Every eight-cell group contains a zero, and no single implicant covers the specified ones, so the four-literal SOP is minimal.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.21.9, K Map: GATE CSE 2001 | Question: 1.11, p.336 (key p.362) (https://gateoverflow.in/704/gate-cse-2001-question-1-11)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.13, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q11",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "madeeasy-digital-logic-functions-1-14",
+      "contentSha256": "bad52978cdd52fa86b97327b8b306fbe1fa5478199f7e7ef66a856b7abf07262",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The required ones form the xz′ and x′z groups with the available don't-cares. Each group has four cells and neither can be enlarged into an eight-cell implicant.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.21.10, K Map: GATE CSE 2002 | Question: 1.12, p.336 (key p.362) (https://gateoverflow.in/816/gate-cse-2002-question-1-12)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.14, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q12",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "madeeasy-digital-logic-functions-1-15",
+      "contentSha256": "cafb2b01990e2c3bc44cccd02f9393a1a7b3acdf48b8e6b8125816a71711ecc7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "The NAND network gives f=f₁f₂+f₃. With the displayed f₂, f₁f₂ has only minterm 5, so f₃ must supply 1 and 4 and can include 5. Only Σ(1,4,5) among the choices works.",
+      "note": "Use f₂=Σ(6,7) to match the original and independently checked year paper. The displayed Σ(6,5) changes the constraint on f₃ at 5 and leaves A as the unique offered answer.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.6.2, Canonical Normal Form: GATE CSE 2002 | Question: 2-1, p.298 (key p.362) (https://gateoverflow.in/831/gate-cse-2002-question-2-1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.15, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q26",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "madeeasy-digital-logic-functions-1-16",
+      "contentSha256": "2b86fa3a1d872606055f2f2d92101dbbbdf44d9176253f9450b3a0b0f52695ba",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The inner call gives (x+y)′+y=x′+y. The outer call gives (x′+y)′+z=xy′+z.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.14, Boolean Algebra: GATE CSE 2002 | Question: 2-3, p.292 (key p.361) (https://gateoverflow.in/833/gate-cse-2002-question-2-3)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.16, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q28",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "madeeasy-digital-logic-functions-1-17",
+      "contentSha256": "618df5ec6b754a5d3640d90017c44ae93512c98478a794bd19360c2f823dcc94",
+      "questionType": "SUBJECTIVE",
+      "correctOptions": [],
+      "status": "verified",
+      "reason": "Label the six inputs top to bottom a, b, c, d, e, f. Use n₁=NAND(a,b), n₂=NAND(c,d), n₃=NAND(n₁,n₂), n₄=NAND(n₃,n₃), n₅=NAND(e,f), and output NAND(n₄,n₅). Bubble cancellation at the two OR stages verifies the six-gate construction.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.12.2, Digital Circuits: GATE CSE 2002 | Question: 7, p.317 (key p.362) (https://gateoverflow.in/860/gate-cse-2002-question-7)",
+          "answer": "N/A, descriptive part B.",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.17, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "Sol. (descriptive response).",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q55 (referenceAnswer for part B)",
+          "answer": "Six 2-input NANDs, including a tied-input NAND after combining the first two branches.",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "Six 2-input NAND gates",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "madeeasy-digital-logic-functions-1-18",
+      "contentSha256": "307da61474522735dd0c8c98c4cbbb449273dfeca0094b604d2bd5608899cf84",
+      "questionType": "MCQ",
+      "correctOptions": [],
+      "status": "verified-with-note",
+      "reason": "Enumerating the 81 four-variable cubes and minimizing the literal weight of each exact cover gives SOP 8 and POS 9. Witnesses are y′w′+x′z′w+xz′w′ and (z′+w′)(y′+z′)(x+z+w)(x′+w′), respectively. The requested pair (9,8) is absent.",
+      "note": "The printed table shows an asterisk. GATE Overflow and the year-paper's conventional letter show C=(9,10), which uses a nonminimal SOP. The year-paper review independently confirms (9,8). Supply (9,8) as a choice to repair the item.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.21.11, K Map: GATE CSE 2003 | Question: 45, p.336 (key p.362) (https://gateoverflow.in/936/gate-cse-2003-question-45)",
+          "answer": "C (9,10); the minimum SOP has 8 literals.",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.18, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "* (no choice keyed).",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q45 (printed/conventional letter)",
+          "answer": "C (9,10).",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q45 (referenceAnswer and source.issues)",
+          "answer": "Minimum literal counts (9,8), absent from the choices.",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "No listed pair is minimal. The minimum is 9 literals in POS and 8 in SOP.",
+          "agrees": true
+        }
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "No listed pair is minimal. The minimum is 9 literals in POS and 8 in SOP."
+    },
+    {
+      "position": 19,
+      "id": "madeeasy-digital-logic-functions-1-19",
+      "contentSha256": "e72c8f82827d17d88c3166cadc0488c9ac7c28f097adf75f45bcc4537a97ac68",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "A rises at 1 ns. The first XOR is high from 1 to 3 ns, and its four-nanosecond delayed copy is high from 5 to 7 ns. The second XOR therefore changes at 1, 3, 5 and 7 ns.",
+      "note": "The app's circuit labels both buffers δ₂. The 2 ns buffer should read δ₁=2 ns and the 4 ns buffer δ₂=4 ns, as in the stem and original circuit.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.12.3, Digital Circuits: GATE CSE 2003 | Question: 47, p.317 (key p.362) (https://gateoverflow.in/29098/gate-cse-2003-question-47)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.19, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q47",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "madeeasy-digital-logic-functions-1-20",
+      "contentSha256": "4bc9600623d1ed82e6969fa58bf15f2529e4eae22b48fa1d90ec3fb72012461b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Combine x′y′+x′y to get x′, then use x′+xy=x′+y.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.15, Boolean Algebra: GATE CSE 2004 | Question: 17, p.292 (key p.361) (https://gateoverflow.in/1014/gate-cse-2004-question-17)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.20, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q17",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "madeeasy-digital-logic-functions-1-21",
+      "contentSha256": "210e154b0beb8cb7d1b4da9708672f619236139fba9e8973fddc9eb9bcb2631f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "For u=NAND(A,B), the output NAND(NAND(A,u),NAND(B,u)) is XOR. Exhaustive truth-table enumeration from the two input signals rules out all networks of at most three two-input NAND gates.",
+      "note": "GATE Overflow shows 2 in distractor A. The Made Easy book and the verified paper copy show 3. The keyed choice text is 4 in all three.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.24.6, Min No Gates: GATE IT 2004 | Question: 8, p.341 (key p.362) (https://gateoverflow.in/3649/gate-it-2004-question-8)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.21, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q8",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 22,
+      "id": "madeeasy-digital-logic-functions-1-22",
+      "contentSha256": "6ff5a5896c85892be5ced1f33651255e7ecc3b3c137232398c91a2b2e3bf7aa1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "The on-set is {1,3,4,5,6}. A′C covers {1,3}, AB′ covers {4,5}, and AC′ covers {4,6}. Their union matches exactly.",
+      "note": "The supplied year-paper scan has an unclear first plus sign in B. Its review derives the same expression as the unambiguous Made Easy and GATE Overflow choice AB′+AC′+A′C.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.33, Boolean Algebra: GATE IT 2004 | Question: 44, p.296 (key p.361) (https://gateoverflow.in/3687/gate-it-2004-question-44)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.22, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q44 (option B as transcribed in the paper copy)",
+          "answer": "B lacks a plus between AB′ and AC′.",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q44 (referenceAnswer)",
+          "answer": "AB′+AC′+A′C → B in the book and editor.",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 23,
+      "id": "madeeasy-digital-logic-functions-1-23",
+      "contentSha256": "d88ad882b5573f3c54954a0ce58bc565d3dbc428c1a0ded84dd99d496920c7dc",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The on-set is {1,3,4,5,6}. Minterm 3 belongs to only the prime implicant a′c, and minterm 6 belongs to only ac′. Minterms 1 and 5 covered by b′c also have other prime coverings.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.30.2, Prime Implicants: GATE CSE 2004 | Question: 59, p.358 (key p.363) (https://gateoverflow.in/1054/gate-cse-2004-question-59)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.23, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q59",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 24,
+      "id": "madeeasy-digital-logic-functions-1-24",
+      "contentSha256": "8b81538d7562f3dbf2fd417ac7710d8f7a46aecbf4b233864f1c2fe63cf3ff71",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Three-input XOR is true at 001, 010, 100 and 111. Expanding C gives exactly these four assignments.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.34, Boolean Algebra: GATE IT 2005 | Question: 7, p.296 (key p.361) (https://gateoverflow.in/3752/gate-it-2005-question-7)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.24, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 25,
+      "id": "madeeasy-digital-logic-functions-1-25",
+      "contentSha256": "d8eb2092032e44fe4d9cf2723a07e989354422bdab085d8307ff03446d31c54e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The circuit closes through the b-to-b wire at S1=S2=1 or through the c-to-c wire at S1=S2=0. Equal switch settings give XNOR.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.8.35, Circuit Output: GATE IT 2005 | Question: 10, p.313 (key p.362) (https://gateoverflow.in/3755/gate-it-2005-question-10)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.25, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 26,
+      "id": "madeeasy-digital-logic-functions-1-26",
+      "contentSha256": "3f7405d1ce141dab622b3cfb3e19635ef9fa6582600432ddca85ceb5254ea06f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The final NAND produces XY′+(YZ)′=Y′+Z′, so X is redundant.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.8.21, Circuit Output: GATE CSE 2005 | Question: 15, p.308 (key p.362) (https://gateoverflow.in/1351/gate-cse-2005-question-15)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.26, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q15",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 27,
+      "id": "madeeasy-digital-logic-functions-1-27",
+      "contentSha256": "e50dfc6223ebd16a4ea0f8ff809827a8223f685e091b7eb06b66ce834f1f01b6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "BC′D′ covers {4,12}, A′C′D covers {1,5}, and AB′D covers {9,11}. Their union is exactly the specified minterm list.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.26.4, Min Sum of Products Form: GATE CSE 2005 | Question: 18, p.342 (key p.362) (https://gateoverflow.in/1354/gate-cse-2005-question-18)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.27, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q18",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 28,
+      "id": "madeeasy-digital-logic-functions-1-28",
+      "contentSha256": "f85bec1dcf836bcc520484fc40b96d4a3e0397f0b4c1a85005f50b926e9c9088",
+      "questionType": "MCQ",
+      "correctOptions": [],
+      "status": "verified-with-note",
+      "reason": "Every adjacent on-set pair must share a cube. A misses the edge 13–15. B adds 14 and misses 12 and 13. C misses the edges 11–15 and 12–13. D misses minterm 12. The cover xz+wx y′+wyz covers all six on-set minterms and all six edges.",
+      "note": "The printed key marks the item with an asterisk and the verified year-paper review confirms that the offered covers fail. GATE Overflow D includes the omitted wx y′ term. In the stem change i₁ to ⟨w₁,x₁,y₁,z₁⟩. To restore GATE Overflow's valid D, add wx y′ so D reads wx y′, wyz, wxz, w′xz, xy′z, xyz.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.35.1, Static Hazard: GATE CSE 2006 | Question: 38, p.360 (key p.363) (https://gateoverflow.in/1814/gate-cse-2006-question-38)",
+          "answer": "D includes wx y′, a required cube missing from the book's D.",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.28, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "* (no choice keyed).",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q38 (referenceAnswer and source.issues)",
+          "answer": "No hazard-free listed cover. xz + wx y′ + wyz works. Supplied key is an asterisk.",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "No listed cover implements the function without static-1 hazards. A valid cover is xz + wx y′ + wyz.",
+          "agrees": true
+        }
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "No listed cover implements the function without static-1 hazards. A valid cover is xz + wx y′ + wyz."
+    },
+    {
+      "position": 29,
+      "id": "madeeasy-digital-logic-functions-1-29",
+      "contentSha256": "174e5b034c69d30b6e4bfeea00de63b3e66aedd1e2ee9120177594da87657000",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Enumerate n=0 through 15 using G(n)=n XOR (n>>1). The input codes G(n) for which bit 2 of G((n+1) mod 16) is 1 are {2,4,5,6,7,12,13,15}.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.3.1, Binary Codes: GATE CSE 2006 | Question: 40, p.290 (key p.361) (https://gateoverflow.in/1816/gate-cse-2006-question-40)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.29, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q40",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 30,
+      "id": "madeeasy-digital-logic-functions-1-30",
+      "contentSha256": "c44071b5770a01ed1f74247dd01cb45af3e2256c90f2669d456db33612f5b844",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The four corner ones form the prime group Q′S′. The corner at PQRS=0000 belongs to no other prime group, so this implicant is essential.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.21.15, K Map: GATE IT 2006 | Question: 35, p.338 (key p.362) (https://gateoverflow.in/3574/gate-it-2006-question-35)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.30, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 31,
+      "id": "madeeasy-digital-logic-functions-1-31",
+      "contentSha256": "7f6453234d7372c0faaacf2e730f3b6247a68f3ac3c75013283788d2fac2fb85",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "There are 2ⁿ input assignments and two independent output choices for each, giving 2^(2ⁿ) distinct truth tables.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 4.3.16, Functions: GATE CSE 2007 | Question: 3, p.97 (key p.126) (https://gateoverflow.in/1202/gate-cse-2007-question-3)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.31, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q3",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 32,
+      "id": "madeeasy-digital-logic-functions-1-32",
+      "contentSha256": "5ea4d9838948bc9f6c2bb1febb0a12550324b845f5110ef24a1ec35a94f9d56a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The listed minterms are exactly those with x≠z. The function ignores w and y.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.26.5, Min Sum of Products Form: GATE CSE 2007 | Question: 9, p.342 (key p.362) (https://gateoverflow.in/1207/gate-cse-2007-question-9)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.32, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q9",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 33,
+      "id": "madeeasy-digital-logic-functions-1-33",
+      "contentSha256": "986c10b495195ffaa40206ca89350092bc31383c88d1ff2eee63ae7e35d12250",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Replacing the parenthesized product branches by NAND stages, and also replacing a·d, gives ab+c′+a′c+d′+bc+d′+a′+d′. Absorption reduces it to a′+b+c′+d′.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.8.38, Circuit Output: GATE IT 2007 | Question: 38, p.314 (key p.362) (https://gateoverflow.in/3471/gate-it-2007-question-38)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.33, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 34,
+      "id": "madeeasy-digital-logic-functions-1-34",
+      "contentSha256": "c396862c8fda7e24be56e4dba08998c20bbf5ac458c10aad89c855b00e119fcc",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The on-set of ad′+a′c′+bc′d is {0,1,4,5,8,10,12,13,14}. Only option A has those nine cells. Option C adds the cell ab=01, cd=10.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.21.16, K Map: GATE IT 2007 | Question: 78, p.338 (key p.362) (https://gateoverflow.in/3530/gate-it-2007-question-78)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.34, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 35,
+      "id": "madeeasy-digital-logic-functions-1-35",
+      "contentSha256": "89d0e7c4af967f7abe421c8a808ea1dd37ce76b9f4b75410509c71582826c6e1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "At abcd=1001 the target is 0, while C is 1 through c′d. Expanding the other three expressions gives exactly the target on-set.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.21.17, K Map: GATE IT 2007 | Question: 79, p.338 (key p.362) (https://gateoverflow.in/3531/gate-it-2007-question-79)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.35, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 36,
+      "id": "madeeasy-digital-logic-functions-1-36",
+      "contentSha256": "ea7861e016ecdcfc36965f3ce21d769979c97d1bf43dbbe6e0ed48c05d9e36f5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Expanding A, B and C yields exactly {0,4,5,7,8,9,13,15}. Option D evaluates to 1 at wxyz=0010 because of w′y, although minterm 2 is absent.",
+      "note": "The book lists the four expressions themselves as A–D. The original labels them P–S and uses “P only,” “Q and S,” “R and S,” and “S only.” Original D maps to the expression in app D.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.16, Boolean Algebra: GATE CSE 2007 | Question: 32, p.292 (key p.361) (https://gateoverflow.in/1230/gate-cse-2007-question-32)",
+          "answer": "D (S only) → app D, the expression labeled S in the original.",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.36, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q32 (choice and referenceAnswer)",
+          "answer": "D (S only) → app D, the expression labeled S in the original.",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 37,
+      "id": "madeeasy-digital-logic-functions-1-37",
+      "contentSha256": "124e19795a57a64b29cdd42aea4fa0422574ef83c8adfb651f0b6846b2575f8a",
+      "questionType": "MCQ",
+      "correctOptions": [],
+      "status": "verified-with-note",
+      "reason": "The displayed XY+XY′ equals X, so Z=X. For X=0 and Y=1, Y*Z=1 and X*Z=0, invalidating P and Q, and (X*Y)*Z=0 invalidates R. Every option asserts at least one universally valid statement, so no choice works.",
+      "note": "Both key letters D rely on the intended XNOR definition. The verified year-paper comparison confirms the book uses the projection XY+XY′. Restore X*Y=XY+X′Y′ to make P, Q and R universally valid.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.17, Boolean Algebra: GATE CSE 2007 | Question: 33, p.293 (key p.361) (https://gateoverflow.in/1231/gate-cse-2007-question-33)",
+          "answer": "D (all three statements) for the original XNOR operator.",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.37, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "D (all three), inconsistent with the operator in the book stem.",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q33 (key under the original XNOR definition)",
+          "answer": "D (all three statements).",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q33 (source.issues comparing the printed and original operators)",
+          "answer": "The book has XY+XY′, which projects X. The answer key refers to XY+X′Y′.",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "The displayed operator reduces to X, so none of the statements is universally valid. The original defines X*Y as XY + X′Y′.",
+          "agrees": true
+        }
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "The displayed operator reduces to X, so none of the statements is universally valid. The original defines X*Y as XY + X′Y′.",
+      "replaceExisting": true
+    },
+    {
+      "position": 38,
+      "id": "madeeasy-digital-logic-functions-1-38",
+      "contentSha256": "0a52a312df6f500269b803eac48041e49a3afc97e75248a39f47b61dce4b0a3e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The upper OR receives X₄ and the lower gate drives T=X₃X₄. When T=1, X₄ already forces the upper OR high and the final NOR low. When T=0 the fault changes nothing.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.8.40, Circuit Output: GATE IT 2007 | Question: 45, p.314 (key p.362) (https://gateoverflow.in/3480/gate-it-2007-question-45)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.38, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 39,
+      "id": "madeeasy-digital-logic-functions-1-39",
+      "contentSha256": "b5fc1187446d3d74c1884358824b8e16c46a1bcf94f4fef81104d6cf476177a1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Two four-cell groups using the wraparound don't-care give b′d′ and a′d′. This covers all ones with four literals. The equivalent expression C requires five literals.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.21.12, K Map: GATE CSE 2008 | Question: 5, p.337 (key p.362) (https://gateoverflow.in/403/gate-cse-2008-question-5)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.39, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q5",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 40,
+      "id": "madeeasy-digital-logic-functions-1-40",
+      "contentSha256": "174bfcad2196b3cb930e1e75fb07e366793208c52df9dbf44a6bdc9d0db0abc6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The circuit gives f=f₁f₂+f₃. With C the intersection of f₁ and f₂ is {6,8}, so union with f₃ gives {1,6,8,15}. Every other choice introduces minterm 4.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.6.3, Canonical Normal Form: GATE CSE 2008 | Question: 8, p.298 (key p.362) (https://gateoverflow.in/406/gate-cse-2008-question-8)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.40, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q8",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 41,
+      "id": "madeeasy-digital-logic-functions-1-41",
+      "contentSha256": "54768f0c9776cdc087d674c9efce590a82fe62127d24573aa468f060d5321c98",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "XNOR is affine, and composition of affine functions stays affine. AND is not affine. Implication with negation can make OR, OR with negation is complete, and NAND alone is complete.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.19.7, Functional Completeness: GATE IT 2008 | Question: 1, p.330 (key p.362) (https://gateoverflow.in/3222/gate-it-2008-question-1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.41, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 42,
+      "id": "madeeasy-digital-logic-functions-1-42",
+      "contentSha256": "0eed17e11b09b3c79532ebb772e77a84737754054c60ff6a64cd0e392a57704f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The middle factor is P(Q′+R). On P=1 the first factor is 1 and the last factor is Q′, leaving P(Q′+R)Q′=PQ′.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.18, Boolean Algebra: GATE CSE 2008 | Question: 26, p.293 (key p.361) (https://gateoverflow.in/424/gate-cse-2008-question-26)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.42, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q26",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 43,
+      "id": "madeeasy-digital-logic-functions-1-43",
+      "contentSha256": "68c66f8194ca328310bdc118088a4e7f3f716ee7fd2f7f5fd03199bbeab46bb4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Membership in the on-set is unchanged by flipping D. Flipping A, B or C changes membership for at least one pair of inputs, for example 0/8, 10/14 and 0/2, respectively.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.26.16, Min Sum of Products Form: GATE IT 2008 | Question: 8, p.344 (key p.362) (https://gateoverflow.in/3268/gate-it-2008-question-8)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.43, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 44,
+      "id": "madeeasy-digital-logic-functions-1-44",
+      "contentSha256": "9a7122475c3c2e3267bb5394643f575d0c88e6a44c4b6d1bbbd022ee2bd22a4d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Three NOR gates implement (A+C)(B+C) by NORing A with C and B with C, then NORing the results. Truth-table enumeration using the three input signals yields no realization using one or two gates.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.24.4, Min No Gates: GATE CSE 2009 | Question: 6, p.340 (key p.362) (https://gateoverflow.in/1298/gate-cse-2009-question-6)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.44, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q6",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 45,
+      "id": "madeeasy-digital-logic-functions-1-45",
+      "contentSha256": "f3e20a9dcf98d99d928a80c9255ee2fec71d0a5130619adcfb465ba8d435535c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "PQ covers {6,7}, QR′ covers {2,6}, and PR′ covers {4,6}. The union is {2,4,6,7}.",
+      "note": "Book option C repeats m₁. The source scan checked in the year paper reads m₀+m₂+m₆+m₇. GATE Overflow renders its C as m₀+m₁+m₆+m₇. The keyed expansion A agrees across sources.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.6.4, Canonical Normal Form: GATE CSE 2010 | Question: 6, p.299 (key p.362) (https://gateoverflow.in/2177/gate-cse-2010-question-6)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.45, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q6",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 46,
+      "id": "madeeasy-digital-logic-functions-1-46",
+      "contentSha256": "df810e28c1eab2de3ac7a4b485bd34e484f45737b77ba869bda18cbaf9338253",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "The first two factors combine to P+Q′. Multiplication by P+Q+R′ gives P+Q′(Q+R′)=P+Q′R′.",
+      "note": "The item matches GATE CS 2011 Q14. Update the book's 2010 tag to 2011 and restore original distractor A to P′Q+R′. Both changes preserve B.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.26.6, Min Sum of Products Form: GATE CSE 2011 | Question: 14, p.342 (key p.362) (https://gateoverflow.in/2116/gate-cse-2011-question-14)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.46, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q14 (option B, allowing differences in parentheses)",
+          "answer": "P+Q′R′ → B.",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 47,
+      "id": "madeeasy-digital-logic-functions-1-47",
+      "contentSha256": "cd0c0662ffb4b0b3e1fb3963715817cdbf26ce6d157b481c06cc81fa2aeb393d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The intermediate NORs produce (P+Q)(Q+R)=Q+PR and (P+R)(Q+R)=R+PQ. The final NOR gives (Q+R)′ by absorption.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.8.28, Circuit Output: GATE CSE 2010 | Question: 31, p.310 (key p.362) (https://gateoverflow.in/2205/gate-cse-2010-question-31)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.47, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q31",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 48,
+      "id": "madeeasy-digital-logic-functions-1-48",
+      "contentSha256": "2fc9070c5f822566a6bb026d8ae5e27f719cd776f25a841b1dcc87c0665b1613",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A inverts the XOR output, B inverts one input to XOR, and C inverts both XOR inputs and the output. Each gives XNOR. D takes the complement of NAND(a,b′) AND (a+b′), giving XNOR(a,b′)=XOR(a,b).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.12.4, Digital Circuits: GATE CSE 2011 | Question: 13, p.317 (key p.362) (https://gateoverflow.in/2115/gate-cse-2011-question-13)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.48, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q13 (circuit diagrams and key)",
+          "answer": "D → D (same XOR network). The book swaps the B and C diagrams.",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 49,
+      "id": "madeeasy-digital-logic-functions-1-49",
+      "contentSha256": "b14918cc0c0dd4fefc1936f4d4a2f357475960406582a826e6b1684d9917e0a7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Grouping the required ones with the adjacent don't-cares gives b′d′ and b′c′. A misses the 1 at ab=10, cd=01, while C and D use more literals.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.21.13, K Map: GATE CSE 2012 | Question: 30, p.337 (key p.362) (https://gateoverflow.in/1615/gate-cse-2012-question-30)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.49, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q30",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 50,
+      "id": "madeeasy-digital-logic-functions-1-50",
+      "contentSha256": "4f7a251ab2a0f5e798b9cfd8de075ecbf7b2ad11b0c16c6528f182f5313117fa",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The output follows X on all four input rows, independent of Y.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.19, Boolean Algebra: GATE CSE 2012 | Question: 6, p.293 (key p.361) (https://gateoverflow.in/38/gate-cse-2012-question-6)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.50, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q6",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 51,
+      "id": "madeeasy-digital-logic-functions-1-51",
+      "contentSha256": "c4904904f8f7d681a26aa75cbc1e841a417a033f4f44d638dff04142c90cc54a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Inverting both XOR inputs leaves XOR unchanged. The other three expressions give XNOR.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.20, Boolean Algebra: GATE CSE 2013 | Question: 21, p.293 (key p.361) (https://gateoverflow.in/1532/gate-cse-2013-question-21)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.51, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 52,
+      "id": "madeeasy-digital-logic-functions-1-52",
+      "contentSha256": "ee0451614726baefde49f4f0bade13afba2007db70465303340ebdeb86f738b0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Factoring Q and absorbing gives F=Q(P+P′R+P′R′S)=Q(P+R+S). Each product PQ, QR and QS covers a distinct case with exactly one of P,R,S set.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.26.8, Min Sum of Products Form: GATE CSE 2014 | Set 1 | Question: 7, p.343 (key p.362) (https://gateoverflow.in/1764/gate-cse-2014-set-1-question-7)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.52, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 53,
+      "id": "madeeasy-digital-logic-functions-1-53",
+      "contentSha256": "1590fff902f65ba02c85edf80f6c0595061285852d49bfe6f77ba66473c1d223",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The dual at input x is the complement of F at the complemented input. Self-duality forces opposite outputs on each complementary pair. There are 2^(n−1) pairs with one independent binary choice each.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.14.1, Dual Function: GATE CSE 2014 | Set 2 | Question: 6, p.323 (key p.362) (https://gateoverflow.in/1958/gate-cse-2014-set-2-question-6)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.53, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 54,
+      "id": "madeeasy-digital-logic-functions-1-54",
+      "contentSha256": "1a8106da45c9e36119e863e9e4a6ca8caf008df34ce6d9710bf2a9e583f8b1e3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Using the four allowed don't-cares lets the care ones at Q=S=0 and at Q=S=1 each expand into a four-cell group. The two terms are Q′S′+QS.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.26.9, Min Sum of Products Form: GATE CSE 2014 | Set 3 | Question: 7, p.343 (key p.362) (https://gateoverflow.in/2041/gate-cse-2014-set-3-question-7)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.54, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 55,
+      "id": "madeeasy-digital-logic-functions-1-55",
+      "contentSha256": "91ddea921db42b0ea93319ce60994beaf26eeb6d23b0ea05f8deadc331b75745",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The repeated (P XOR Q) terms cancel and XOR with 0 leaves Q. The result 1 XOR P XOR Q is XNOR.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.21, Boolean Algebra: GATE CSE 2014 | Set 3 | Question: 55, p.293-294 (key p.361) (https://gateoverflow.in/2090/gate-cse-2014-set-3-question-55)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.55, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 56,
+      "id": "madeeasy-digital-logic-functions-1-56",
+      "contentSha256": "d25218d8941aa1984a73f3be986abe2b428781bf7bdb91d3d256dc6c7a09fab1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Identifying X and Y gives f(X,X,Z)=X′Z′, a NOR, so f alone is complete. The operation g simplifies to Y and only projects an input.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.19.6, Functional Completeness: GATE CSE 2015 | Set 1 | Question: 39, p.330 (key p.362) (https://gateoverflow.in/8294/gate-cse-2015-set-1-question-39)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.56, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 57,
+      "id": "madeeasy-digital-logic-functions-1-57",
+      "contentSha256": "2fa812268c34180262fc022bc4305504cbecf5c58cb4455f0b71b0d5db5ea480",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "1",
+      "status": "verified",
+      "reason": "For the complemented bracket to be 1, D must be 1. Then A′C+A′C′ forces A=1, AB′ forces B=1, and AC′ forces C=1. The resulting ABCD is one minterm.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.22, Boolean Algebra: GATE CSE 2015 | Set 2 | Question: 37, p.294 (key p.361) (https://gateoverflow.in/8162/gate-cse-2015-set-2-question-37)",
+          "answer": "1",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.57, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "1",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "1",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 58,
+      "id": "madeeasy-digital-logic-functions-1-58",
+      "contentSha256": "f0db7d3498502e470ff759a9f45f94baacdcac1e62272359e541b20e796f36b1",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "3",
+      "status": "verified",
+      "reason": "The maximal cubes are w′z′ covering {0,2,4,6}, w′xy′ covering {4,5}, and x′yz′ covering {2,10}. There are exactly three.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.6.5, Canonical Normal Form: GATE CSE 2015 | Set 3 | Question: 43, p.299 (key p.362) (https://gateoverflow.in/8503/gate-cse-2015-set-3-question-43)",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.58, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "3",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 59,
+      "id": "madeeasy-digital-logic-functions-1-59",
+      "contentSha256": "52ecd4292b1bab11bb6d67c47d668a5588ffb809e5d9c13d73cd3bdcfdb0cc97",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "P′ covers minterms 0 through 3, and QR adds 7. The remaining indices are 4, 5 and 6, so both the stated sum S2 and product S3 are correct.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.6.6, Canonical Normal Form: GATE CSE 2015 | Set 3 | Question: 44, p.299 (key p.362) (https://gateoverflow.in/8504/gate-cse-2015-set-3-question-44)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.59, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 60,
+      "id": "madeeasy-digital-logic-functions-1-60",
+      "contentSha256": "650a4d779fe1b6282e2fdcc272436beb20607ee9138a46c99d3e3bd134e1ddb1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The output is x for y=0 and x′ for y=1. Combining those cases gives xy′+x′y.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.23, Boolean Algebra: GATE CSE 2016 | Set 1 | Question: 06, p.294 (key p.361) (https://gateoverflow.in/39629/gate-cse-2016-set-1-question-06)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.60, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 61,
+      "id": "madeeasy-digital-logic-functions-1-61",
+      "contentSha256": "6db11ad4ea9b5690801a8277300ce4727493dfa94868bbc87001aa73d15558f3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "XOR parity zero implies x₁ XOR x₃ = x₂ XOR x₄. Complementing both inputs on each side preserves the corresponding XOR.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.24, Boolean Algebra: GATE CSE 2016 | Set 2 | Question: 08, p.294 (key p.361) (https://gateoverflow.in/39540/gate-cse-2016-set-2-question-08)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.61, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 62,
+      "id": "madeeasy-digital-logic-functions-1-62",
+      "contentSha256": "f27874c7b99a7cf82e106595f59b116b589b8e4ca445542aab0439703ddbf169",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "1",
+      "status": "verified",
+      "reason": "The three required ones and one don't-care form the group c a′ in the labeled map. NOR(c′,a) implements it in one gate. No available input literal alone fits the care cells.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.24.5, Min No Gates: GATE CSE 2017 | Set 1 | Question: 21, p.340 (key p.362) (https://gateoverflow.in/118301/gate-cse-2017-set-1-question-21)",
+          "answer": "1",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.62, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "1",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "1",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 63,
+      "id": "madeeasy-digital-logic-functions-1-63",
+      "contentSha256": "4f6727432729fd1b1aeef6e444fa73545fe17cdbebc61298756be4a91e5b4d3a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The zero groups w=1,z=1 and x=1,z=0 cover all care zeros and use only allowed don't-cares. They give (w′+z′)(x′+z), and no single zero group covers them.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.25.2, Min Products of Sum Form: GATE CSE 2017 | Set 2 | Question: 28, p.341 (key p.362) (https://gateoverflow.in/118370/gate-cse-2017-set-2-question-28)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.63, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 64,
+      "id": "madeeasy-digital-logic-functions-1-64",
+      "contentSha256": "f71b5fe5d414e0105a0c6b154068cfd5f806d5838e8b0bb4260fa88a73be2362",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "For (w,x,y,z)=(0,0,1,0), the left-hand side of C is 1 and the right-hand side is 0. Absorption proves A and D, and De Morgan's law followed by absorption proves B.",
+      "note": "Restore option C to (w x′(y+x z′)+w′x′)y=xy′ as in the printed and GATE Overflow copies. The editor has extra or misplaced complement bars in the left-hand side. C is still the false identity.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.25, Boolean Algebra: GATE CSE 2017 | Set 2 | Question: 27, p.294 (key p.361) (https://gateoverflow.in/118494/gate-cse-2017-set-2-question-27)",
+          "answer": "C, the false identity using (w x′(y+x z′)+w′x′)y on the left.",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.64, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 65,
+      "id": "madeeasy-digital-logic-functions-1-65",
+      "contentSha256": "82933a94f7582dfb34b92b2c0ec9a66c906488723e318b399a723ce32e18b0e6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "P XOR P′ equals 1 and P XNOR P′ equals 0. Thus D compares Q′ with Q, which always differ.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.26, Boolean Algebra: GATE CSE 2018 | Question: 4, p.294 (key p.361) (https://gateoverflow.in/204078/gate-cse-2018-question-4)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.65, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 66,
+      "id": "madeeasy-digital-logic-functions-1-66",
+      "contentSha256": "93421ebc6358fede9ce0c46981deddf96b1d50fb8e16b16b6dd39362243bd30a",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "3",
+      "status": "verified",
+      "reason": "Enumeration of maximal cubes gives uniquely covered minterms 0, 5 and 9, requiring Q′S′, P′QS and PQ′ respectively. Every other prime covers only minterms already covered by those.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.26.10, Min Sum of Products Form: GATE CSE 2018 | Question: 49, p.343 (key p.362) (https://gateoverflow.in/204124/gate-cse-2018-question-49)",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.66, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "3",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 67,
+      "id": "madeeasy-digital-logic-functions-1-67",
+      "contentSha256": "cbcb8c7f7e5aa8c920f27dcd793e514c73d01b9510fc0c3ced088b140e9cf6a1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "For (x,y,z)=(1,1,0), the two sides of D evaluate to 1 and 0 respectively. The other three statements follow from the XOR truth table.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.27, Boolean Algebra: GATE CSE 2019 | Question: 6, p.295 (key p.361) (https://gateoverflow.in/302842/gate-cse-2019-question-6)",
+          "answer": "B → D, the false identity (x+y) XOR z = x XOR (y+z).",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.67, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 68,
+      "id": "madeeasy-digital-logic-functions-1-68",
+      "contentSha256": "21327fd3ae36979367edabacbd31a8f665bdc4a591f39c8abcb864287258edfa",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "3",
+      "status": "verified",
+      "reason": "The on-set is Q XNOR S and is independent of P,R. The POS (Q+S′)(Q′+S) uses two first-level NOR gates and one final NOR. Two NOR gates with the complemented inputs available cannot realize this truth table.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.6.8, Canonical Normal Form: GATE CSE 2019 | Question: 50, p.299 (key p.362) (https://gateoverflow.in/302798/gate-cse-2019-question-50)",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.68, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "3",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 69,
+      "id": "madeeasy-digital-logic-functions-1-69",
+      "contentSha256": "13eea3297c93541a4d7382fda7f36c706f763da0f3d121d1846a999e9d4f83f6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The intersection of f₁ and f₂ is {2,8,14}. Symmetric difference with f₃={2,7,11,14} cancels 2 and 14 and leaves {7,8,11}.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.6.7, Canonical Normal Form: GATE CSE 2019 | Question: 30, p.299 (key p.362) (https://gateoverflow.in/302818/gate-cse-2019-question-30)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.69, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 70,
+      "id": "madeeasy-digital-logic-functions-1-70",
+      "contentSha256": "30c75a727f29f7a534829fba7d9ee08639c8eeb29614726df06910dae1120254",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The circuit implements a+b′c. All minterms with a=1 are included, and b′c adds minterm 1, giving {1,4,5,6,7}.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.6.9, Canonical Normal Form: GATE CSE 2020 | Question: 28, p.300 (key p.362) (https://gateoverflow.in/333203/gate-cse-2020-question-28)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.70, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 71,
+      "id": "madeeasy-digital-logic-functions-1-71",
+      "contentSha256": "d551aff669e5cb740c60408d732e6e327d6bf639ebf0b1d054eadcdc36251caf",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "C",
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "When Z=0, F=0, and when Z=1, F=X′+Y. Hence F′=Z′+XY′, which equals both D and the factored C. At (X,Y,Z)=(0,1,0), F′=1 but each of A and B is 0.",
+      "note": "The printed A (GATE Overflow D) is XY′+YZ′+X′Y′Z′. Restore its middle term YZ′. The editor currently has Y′Z′, which makes A false. The other keyed expressions match app C and D.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.28, Boolean Algebra: GATE CSE 2021 | Set 1 | Question: 42, p.295 (key p.361) (https://gateoverflow.in/357409/gate-cse-2021-set-1-question-42)",
+          "answer": "B and C → D and C by formula. The remaining source key D uses YZ′ and has no matching app choice.",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.71, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "A, C, D in print. The printed A uses YZ′ and has no matching app choice. C and D match.",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "C, D",
+          "agrees": true
+        }
+      ],
+      "replaceExisting": true
+    },
+    {
+      "position": 72,
+      "id": "madeeasy-digital-logic-functions-1-72",
+      "contentSha256": "3840cc1f2d14574c7912c78e82355e5a97e48de6e38419483060c0947de91aaf",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "6",
+      "status": "verified-with-note",
+      "reason": "The constraints leave minterms 2 and 3 unspecified. With those cells treated as don't-cares, the minimum cover is x′y′+xy+wz. Exhaustive cube covering gives six literals.",
+      "note": "The published answer 6 treats unspecified minterms 2 and 3 as don't-cares. Other fixed completions can require 8 or 9 literals. Add “Treat any unspecified inputs as don't-cares” to make the intended minimum explicit.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.26.11, Min Sum of Products Form: GATE CSE 2021 | Set 2 | Question: 52, p.343 (key p.362) (https://gateoverflow.in/357485/gate-cse-2021-set-2-question-52)",
+          "answer": "6 : 6 (exactly 6).",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.72, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "6",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "6",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 73,
+      "id": "madeeasy-digital-logic-functions-1-73",
+      "contentSha256": "0fd74bff9d0601c8209501d22cc5d9564a11707269c0c3d931e39d9ed9fadef0",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Without delays Y=XX′=0. On a 0-to-1 transition the direct input can reach 1 while the inverter output is still 1, producing a transient 1. The falling transition supplies a 0 directly to the AND.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.9.2, Combinational Circuit: GATE CSE 2024 | Set 1 | Question: 18, p.315 (key p.362) (https://gateoverflow.in/422824/gate-cse-2024-set-1-question-18)",
+          "answer": "A, C → A, D (constant zero without delays and a possible transient one after a rising X).",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.73, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "A, D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "A, D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 74,
+      "id": "madeeasy-digital-logic-functions-1-74",
+      "contentSha256": "b4b6c2bc6e2f03f50e05526ea5feeb3f345e6e06c58cbd95bfddb25c6c700fdc",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The on-set consists of inputs with at least two ones, giving XY+YZ+XZ. The complement set {0,1,2,4} is the correct maxterm list. Each input can affect the output.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.26.12, Min Sum of Products Form: GATE CSE 2024 | Set 1 | Question: 37, p.343 (key p.362) (https://gateoverflow.in/422805/gate-cse-2024-set-1-question-37)",
+          "answer": "A, B → A, C (maxterm list and majority SOP).",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.74, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "A, C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "A, C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 75,
+      "id": "madeeasy-digital-logic-functions-1-75",
+      "contentSha256": "5f41ee539d9e6afcda940e781097c1d92c6356f5ca1c68720c4a674dc7ff9850",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Idempotence gives x·x=x, and dominance gives x+1=1, so A fails at x=1 and C fails at x=0. The complement law and identity law make B and D true.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.4.29, Boolean Algebra: GATE CSE 2024 | Set 2 | Question: 20, p.295 (key p.361) (https://gateoverflow.in/422877/gate-cse-2024-set-2-question-20)",
+          "answer": "B, C → C, A (x+1=x and x·x=0).",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.75, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "A, C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "A, C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 76,
+      "id": "madeeasy-digital-logic-functions-1-76",
+      "contentSha256": "396f16221b8a7a608d2c38f3c5c7838affc2d24c37e75db85d29da73829d775a",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The AND on-set is {3,5,7,11,13} and the OR on-set is {0,1,2,4,6,11,13}. Their symmetric difference is {0,1,2,3,4,5,6,7}, which is both the sum in B and the complementary maxterm product in C.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.6.10, Canonical Normal Form: GATE CSE 2024 | Set 2 | Question: 40, p.300 (key p.362) (https://gateoverflow.in/422857/gate-cse-2024-set-2-question-40)",
+          "answer": "C, D → B, C (on-set 0–7 and off-set 8–15).",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Logic Functions and Minimization Q1.76, book p.199 (chapter PDF p.5 and Digital Logic solutions PDF p.1)",
+          "answer": "B, C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent review of the editor question",
+          "answer": "B, C",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

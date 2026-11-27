@@ -1,0 +1,775 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "5. Operating Systems",
+  "chapter": "3. Deadlock",
+  "slug": "5-operating-systems--3-deadlock",
+  "reviewedAt": "2026-11-26",
+  "sources": {
+    "gateOverflowPdf": {
+      "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume3.pdf",
+      "sha256": "5c552941136eb96612fabec8a5b2cb67fc07c17023ce15628408ca27d6640c24",
+      "chapter": "5 Operating System",
+      "answerKeyPages": [
+        467,
+        468,
+        469
+      ]
+    },
+    "madeEasyPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\5. Operating Systems\\3. Deadlock.pdf",
+      "sha256": "6205825112b07858d82294f7c72b91d47198507724fb6384ae4b33dad1bb0ed6",
+      "answerKeyPage": 3
+    },
+    "madeEasySolutionsPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\All Subject Solutions Keys\\OS.pdf",
+      "sha256": "4d3a3fe4b3c14b4b358fcec724c0570f3c5a3f9478e599049d3f3b7f353f7bd4",
+      "answerKeyPage": 7
+    },
+    "yearPapers": "data/papers/*.json (copies linked by source.copiedFrom.questionId)",
+    "officialKey": {
+      "file": "https://previousyearquestions.app/papers/gate-cs/2015/answer-key-session-2.pdf",
+      "sha256": "99687d6b2679e106f747df67ce2cb728242f5ff655cadcc5c652947417612171",
+      "answerKeyPage": 10
+    }
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "madeeasy-os-deadlock-1",
+      "contentSha256": "720c9dfb0fac48ba8132be1a5a5c9abca34b33a814ae948879c86e2d43e467e6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Three processes can each hold one unit and wait for a second. With four units, at least one can get both and finish, releasing its units.",
+      "note": "The book and editor refer to units of lowercase r after naming the resource R. Read this as units of resource R, as in GATE Overflow.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.25.7, PDF p. 445, key p. 469 (Resource Allocation: GATE CSE 1997 | Question: 6.7)",
+          "answer": "C (4 units)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Deadlock Q3.1, 3. Deadlock.pdf p. 3 (book p. 563) and duplicate scan OS.pdf p. 7",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the editor question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "madeeasy-os-deadlock-2",
+      "contentSha256": "6517e911268f68564dcc8dc2fb9a325c1d7491d743828b4e30abd496bb194b9a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "With five or fewer processes, the six drives cannot all be occupied by processes each holding only one drive. With six processes, each can hold one drive and wait for another.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.25.9, PDF p. 445, key p. 469 (Resource Allocation: GATE CSE 1998 | Question: 1.32)",
+          "answer": "B (5 processes)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Deadlock Q3.2, 3. Deadlock.pdf p. 3 (book p. 563) and duplicate scan OS.pdf p. 7",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the editor question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "madeeasy-os-deadlock-3",
+      "contentSha256": "29c8a60977db418f6e530033ea5d3150a20bdc3f6d2572028382793def289e15",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Two processes can each retain one resource and ask for the other's before either releases anything. A and D break hold-and-wait, and B prevents circular wait by imposing an order.",
+      "note": "D shares an awkward phrase across the sources. Read it as \"Request all required resources and have them allocated before execution.\"",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.25.10, PDF p. 445, key p. 469 (Resource Allocation: GATE CSE 2000 | Question: 2.23)",
+          "answer": "C (Never request a resource after releasing any resource)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Deadlock Q3.3, 3. Deadlock.pdf p. 3 (book p. 563) and duplicate scan OS.pdf p. 7",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q46 stored key",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the editor question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "madeeasy-os-deadlock-4",
+      "contentSha256": "1e229a41fe080443bb418d4dd244f08157330c238f0f791e148f3a160631f719",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "A requester waits only for a holder with a smaller timestamp, so timestamps strictly decrease along wait edges. An older requester can repeatedly be killed by newer holders and keep its original timestamp.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.5.4, PDF p. 380, key p. 468 (Deadlock Prevention Avoidance Detection: GATE IT 2004 | Question: 63)",
+          "answer": "A (Deadlock-free with possible starvation)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Deadlock Q3.4, 3. Deadlock.pdf p. 3 (book p. 563) and duplicate scan OS.pdf p. 7",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q63 stored key",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "madeeasy-os-deadlock-5",
+      "contentSha256": "260cd7092915d33354d3bc20c059300105eb75a56f8e323faadffef98c67121c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "A blocked process with maximum demand s_i can hold at most s_i - 1 units. The stated bound gives sum(s_i - 1) < m, so at least one unit remains free and a one-unit request can advance.",
+      "note": "The linked year paper repeats s_i < m in distractors A and B. The app and both books give s_i < n in B. The keyed inequality in C is the same in all versions.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.25.12, PDF p. 446, key p. 469 (Resource Allocation: GATE CSE 2005 | Question: 71)",
+          "answer": "C (sum(s_i) < m + n)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Deadlock Q3.5, 3. Deadlock.pdf p. 3 (book p. 563) and duplicate scan OS.pdf p. 7",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q71 stored key",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the editor question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "madeeasy-os-deadlock-6",
+      "contentSha256": "a8cec9edbe808fd7a128514595fef9b05c7ddbbe512432612d62fdb0fcf409db",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "With I and a full buffer, the producer can hold S while waiting for F, and the consumer then needs S to free a slot. Swapping the consumer's two signals introduces no new blocking operation.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.24.49, PDF p. 441, key p. 469 (Process Synchronization: GATE IT 2006 | Question: 55)",
+          "answer": "A (I only)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Deadlock Q3.6, 3. Deadlock.pdf p. 3 (book p. 563) and duplicate scan OS.pdf p. 7",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "madeeasy-os-deadlock-7",
+      "contentSha256": "efd3eb54a641f3c09057965ac5021af610aa4d8508bb8e60a2c2e72ebab7a29c",
+      "questionType": "MCQ",
+      "correctOptions": [],
+      "answerDisposition": "none-correct",
+      "specialNote": "The printed options contain no general necessary condition. The GATE Overflow variant of B uses min, which gives the necessary bound for at least one remaining request to proceed.",
+      "replaceExisting": true,
+      "status": "verified-with-note",
+      "reason": "With holdings (1, 1, 2, 1) and requests (0, 0, 1, 3), p and q free two units. The third process can finish and raise the free count to four, enabling the last process even though B fails. This also refutes C and D. A fails for holdings (2, 2, 1, 1) and requests (0, 0, 1, 1), where all processes finish.",
+      "note": "The app, Made Easy and linked paper use max in B. Use x_p + x_q >= min_{k != p,q} y_k for the necessary condition for further progress after p and q finish. GATE Overflow also has max(x_p, x_q) > 1 in C, where the app has min(x_p, x_q) < 1. The linked paper's reference explanation confirms that none of its listed choices is correct.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.25.13, PDF p. 446, key p. 469 (Resource Allocation: GATE CSE 2006 | Question: 66)",
+          "answer": "B (B uses the min of the outstanding requests). The corrected condition is absent from the app choices.",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Deadlock Q3.7, 3. Deadlock.pdf p. 3 (book p. 563) and duplicate scan OS.pdf p. 7",
+          "answer": "b (max of the outstanding requests)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q66 stored key",
+          "answer": "B (max of the outstanding requests)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q66 referenceAnswer",
+          "answer": "No listed option works. The necessary condition uses min.",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the editor question",
+          "answer": "None of the options is correct",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "madeeasy-os-deadlock-8",
+      "contentSha256": "3f25e0b2310b88b04577de29e0e0d0ce1abcb30aa1fb41aa3a158609f6e2e975",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Available resources start at (0, 1, 2). Only P1 can finish, leaving (2, 1, 3). P0's request then fits, and its release gives (3, 3, 4), which lets P2 finish last.",
+      "note": "The linked year paper has identical options and keys A (P0). After P1 finishes, P2 still needs two units of Y and only one is free. P1, P0, P2 is the unique possible completion order.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.25.14, PDF p. 447, key p. 469 (Resource Allocation: GATE CSE 2007 | Question: 57)",
+          "answer": "C (P2)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Deadlock Q3.8, 3. Deadlock.pdf p. 3 (book p. 563) and duplicate scan OS.pdf p. 7",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q57 stored key",
+          "answer": "A (P0)",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the editor question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "madeeasy-os-deadlock-9",
+      "contentSha256": "5475b8d9379c0efd26eff2171f48294835e1d4955adcd2abe27636d33dab8d81",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The producer starts with S = 1 and consumes that permit before writing x. The consumer receives Q only after the write and signals S only after reading x, so the producer cannot overwrite it.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.24.52, PDF p. 442, key p. 469 (Process Synchronization: GATE IT 2008 | Question: 53)",
+          "answer": "D (Each value of x is consumed before the next value is produced)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Deadlock Q3.9, 3. Deadlock.pdf p. 3 (book p. 563) and duplicate scan OS.pdf p. 7",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the editor question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "madeeasy-os-deadlock-10",
+      "contentSha256": "96c088587518737f9048a43adba3ee91162d6a958c9d295c6f4f6a08e580f454",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Releasing everything before requesting a resource breaks hold-and-wait. The policy gives no fairness guarantee, so a process can repeatedly lose a resource to others.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.25.27, PDF p. 450, key p. 469 (Resource Allocation: GATE IT 2008 | Question: 54)",
+          "answer": "B (Starvation is possible and deadlock is prevented)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Deadlock Q3.10, 3. Deadlock.pdf p. 3 (book p. 563) and duplicate scan OS.pdf p. 7",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the editor question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "madeeasy-os-deadlock-11",
+      "contentSha256": "df444bfe1250da54c352be9692985e193ca17e9c310274c5ed5fb2c74d12747a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "A prevention rule can reject an otherwise safe request, for example one that violates the prescribed resource order. Checking the resulting safe state belongs to avoidance.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.25.15, PDF p. 447, key p. 469 (Resource Allocation: GATE CSE 2008 | Question: 65)",
+          "answer": "A (Prevention always grants a request if the resulting state is safe)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Deadlock Q3.11, 3. Deadlock.pdf p. 3 (book p. 563) and duplicate scan OS.pdf p. 7",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q65 stored key",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "madeeasy-os-deadlock-12",
+      "contentSha256": "253465990b0a9ad3afa07671249574f6ebb77788153871b2a5db54b2a34de881",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "P2 can finish with its available R4 and R1 units. P3 releases two R1 units, enabling P1 to continue and release an R2 unit. P3 can then take R2 and R3, finish and free R4 for P1's final request.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.25.16, PDF p. 447, key p. 469 (Resource Allocation: GATE CSE 2009 | Question: 30)",
+          "answer": "A (All three processes finish without deadlock)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Deadlock Q3.12, 3. Deadlock.pdf p. 3 (book p. 563) and duplicate scan OS.pdf p. 7",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q30 stored key",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "madeeasy-os-deadlock-13",
+      "contentSha256": "3b85e1f5a654fe00b10f261e8147c66376c2d3e7f5f26e67b8c8c1b153f4d0ca",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "For n = 21 and k = 12, P10 can hold R10 and wait for R12 while P9 does the reverse. When n is even the increasing and decreasing edges have distinct parity. For n = 41 and k = 19, their ranges are disjoint.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.25.17, PDF p. 448, key p. 469 (Resource Allocation: GATE CSE 2010 | Question: 46)",
+          "answer": "B (n = 21, k = 12)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Deadlock Q3.13, 3. Deadlock.pdf p. 3 (book p. 563) and duplicate scan OS.pdf p. 7",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q46 stored key",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the editor question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "madeeasy-os-deadlock-14",
+      "contentSha256": "bb1913fc9241916d884272ab3c386484555d1f9c504e45187569d950e9ebbfb9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "REQ1 leaves (3, 2, 0). Only P1 can finish, leaving (6, 4, 0) with both other processes still blocked. REQ2 leaves (1, 2, 2) and admits the safe order P1, P2, P0.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.25.19, PDF p. 448-449, key p. 469 (Resource Allocation: GATE CSE 2014 | Set 1 | Question: 31)",
+          "answer": "B (Only REQ2 can be permitted)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Deadlock Q3.14, 3. Deadlock.pdf p. 3 (book p. 563) and duplicate scan OS.pdf p. 7",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the editor question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "madeeasy-os-deadlock-15",
+      "contentSha256": "088e7fd76c8e36eab763fd61cc299ffeb639163075dd1fd696b26e9c1b6c7f88",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "7",
+      "status": "verified",
+      "reason": "If each program holds two tapes, six can be tied up with each waiting for a third. A seventh tape lets one program finish and release three, allowing the others to proceed.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.25.20, PDF p. 449, key p. 469 (Resource Allocation: GATE CSE 2014 | Set 3 | Question: 31)",
+          "answer": "7",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Deadlock Q3.15, 3. Deadlock.pdf p. 3 (book p. 563) and duplicate scan OS.pdf p. 7",
+          "answer": "7",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the editor question",
+          "answer": "7",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "madeeasy-os-deadlock-16",
+      "contentSha256": "f87eb057b93c402e953582582fb85881ee0730a5053aa5fc37d017e85d6a1e3f",
+      "questionType": "MCQ",
+      "correctOptions": [],
+      "answerDisposition": "none-correct",
+      "specialNote": "Specify that each process can hold at most two units at once and may acquire them one at a time. Replace D (4) with D (6), the minimum process count that allows deadlock.",
+      "status": "verified-with-note",
+      "reason": "With a maximum demand of two units, each deadlocked process can hold at most one. Exhausting six units needs at least six such holders. Six processes can each hold one and wait for another, so none of the listed values works.",
+      "note": "The archived official answer sheet and GATE Overflow key D (4). Made Easy prints an asterisk without a legend. The equivalent six-drive problem at Q2 confirms that up to five processes are safe under the same maximum-demand model.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.25.21, PDF p. 449, key p. 469 (Resource Allocation: GATE CSE 2015 | Set 2 | Question: 23)",
+          "answer": "D (4 processes)",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Deadlock Q3.16, 3. Deadlock.pdf p. 3 (book p. 563) and duplicate scan OS.pdf p. 7",
+          "answer": "* (no letter or legend)",
+          "agrees": false
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2015 CS, 7 Feb Shift 2 session answer sheet, p. 10 Q30 (same stem and choices as Set 2 paper Q20), https://previousyearquestions.app/papers/gate-cs/2015/answer-key-session-2.pdf#page=10",
+          "answer": "D (4 processes)",
+          "agrees": false
+        },
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.25.9, PDF p. 445, key p. 469 (same six units and maximum demand of two, editor Q2)",
+          "answer": "B (five is the maximum guaranteed deadlock-free process count). This excludes 1, 2, 3 and 4 as possible deadlocks.",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the editor question",
+          "answer": "None of the options is correct",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "madeeasy-os-deadlock-17",
+      "contentSha256": "396d902fcde37f10ce97830a024fb5dcc3b8c23d599eacacb9beb30ea34d4370",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "I avoids hold-and-wait by releasing partial acquisitions. II and III impose strict ordering in opposite directions. IV requires a request larger than every held resource, so following a wait cycle would require a strict increase all the way back to its start.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.25.22, PDF p. 449, key p. 469 (Resource Allocation: GATE CSE 2015 | Set 3 | Question: 52)",
+          "answer": "D (Any one of I, II, III and IV)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Deadlock Q3.17, 3. Deadlock.pdf p. 3 (book p. 563) and duplicate scan OS.pdf p. 7",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the editor question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "madeeasy-os-deadlock-18",
+      "contentSha256": "d405ae0c47a6648b3082fbcf741aedee473e5d8ec0258c0e90f2acc99a24e306",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Two drives are free. P3 needs two more and can finish, leaving five free. P1 needs four and can finish next, and P2 then has enough to finish.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.25.23, PDF p. 449, key p. 469 (Resource Allocation: GATE CSE 2017 | Set 2 | Question: 33)",
+          "answer": "B (Safe, Not Deadlocked)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Deadlock Q3.18, 3. Deadlock.pdf p. 3 (book p. 563) and duplicate scan OS.pdf p. 7",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the editor question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 19,
+      "id": "madeeasy-os-deadlock-19",
+      "contentSha256": "6555cdc6777148c13c0ea75632bd7a44ee6f5097308f8feff3262d6f52d31594",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "2",
+      "status": "verified",
+      "reason": "Deadlock is impossible when 3(K - 1) < 4, which holds up to K = 2. At K = 3 two processes can hold two units each while every process still needs resources.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.5.1, PDF p. 379, key p. 467 (Deadlock Prevention Avoidance Detection: GATE CSE 2018 | Question: 24)",
+          "answer": "2",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Deadlock Q3.19, 3. Deadlock.pdf p. 3 (book p. 563) and duplicate scan OS.pdf p. 7",
+          "answer": "2",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the editor question",
+          "answer": "2",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "madeeasy-os-deadlock-20",
+      "contentSha256": "39850fe738232057b316eaab1bd595757796fd5e0ef1e1fff15df5cf390a917e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "From (3, 3, 0), P0 and then P2 can finish, raising the available vector to (5, 3, 4). P1 can finish and give (6, 4, 6), which meets P3's need of (3, 4, 1).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.1.1, PDF p. 377, key p. 467 (Bankers Algorithm: GATE CSE 2018 | Question: 39)",
+          "answer": "A (The system is in a safe state)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Deadlock Q3.20, 3. Deadlock.pdf p. 3 (book p. 563) and duplicate scan OS.pdf p. 7",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the editor question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "madeeasy-os-deadlock-21",
+      "contentSha256": "63b16cc1fc0dedef91dacc411e2a43a17a8d65b02d8afb96089ad31f9e00e5ee",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A is a necessary condition. A cycle with multiple instances can be resolved by another holder releasing a unit, so B fails. An unsafe state only makes deadlock possible, so C fails. With no request edges as in D, no process is waiting for a resource.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.25.25, PDF p. 450, key p. 469 (Resource Allocation: GATE CSE 2022 | Question: 16)",
+          "answer": "A, D (A circular wait is necessary, and assignment edges alone imply no deadlock)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Deadlock Q3.21, 3. Deadlock.pdf p. 3 (book p. 563) and duplicate scan OS.pdf p. 7",
+          "answer": "ad",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the editor question",
+          "answer": "A, D",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

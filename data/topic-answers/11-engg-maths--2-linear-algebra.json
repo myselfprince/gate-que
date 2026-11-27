@@ -1,0 +1,2040 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "11. Engg. Maths",
+  "chapter": "2. Linear Algebra",
+  "slug": "11-engg-maths--2-linear-algebra",
+  "reviewedAt": "2026-11-27",
+  "sources": {
+    "gateOverflowPdfs": [
+      {
+        "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume1.pdf",
+        "sha256": "e42a70646bdbc4f86edff44b97555a94c866deda508c761da40c20d95b493a2d",
+        "answerKeyPages": [
+          187,
+          188
+        ]
+      },
+      {
+        "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume2.pdf",
+        "sha256": "457f9e583b943b3c41e78d8431b09e322123b0d80765396af36ee2100196714f",
+        "answerKeyPages": [
+          187,
+          253
+        ]
+      }
+    ],
+    "madeEasyChapter": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\11. Engg. Maths\\2. Linear Algebra.pdf",
+      "sha256": "db82237929f2ad56a350754384712fa8e74edf893fb7cc827830d06e9bcd9337",
+      "questionPages": [
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101
+      ],
+      "note": "The supplied PDF ends with Q6.68. The answer table and book pages 102–111 were unavailable. Q6.59, Q6.60, Q6.63–Q6.66 and Q6.68 have worked answers on book p. 112."
+    },
+    "madeEasyBookPage112": {
+      "file": "C:/Users/Prince/Desktop/MadeEasy PYQ PDF/11. Engg. Maths/3. Calculus.pdf",
+      "sha256": "06a0870de3ef2626055b76a9397ca64389af901de19ab79c2ddae67c9986c1f2",
+      "pdfPage": 1
+    },
+    "madeEasyArrays": {
+      "file": "C:/Users/Prince/Desktop/MadeEasy PYQ PDF/6. Data Structures/1. Arrays.pdf",
+      "sha256": "09631d0c7973ec663deae638233f5a17f75e19661cba9484ef8902ab8c48f4fe",
+      "answerKeyPage": 2
+    },
+    "yearPapers": "Verified copies in data/papers/*.json. Q9 and Q10 were matched independently by content. Published worked references supplement the conflicting PDF keys for Q29 and Q40.",
+    "subjective": "GATE Overflow item 6.3.2 on PDF p. 166 has N/A in the key. The GATE CS 2002 worked year-paper response provides the eigenvalues for Q13."
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "madeeasy-maths-linear-algebra-6-1",
+      "contentSha256": "cf09e3176623cdb118055286fd67b80ab0d0f61031038b03939057df9daf1a3c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Every row is the same vector and its first entry is 1. The row space therefore has dimension 1.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.9.2, Rank of Matrix: GATE CSE 1995 | Question: 1.24, PDF pp. 179 (key p. 187); https://gateoverflow.in/2611/gate-cse-1995-question-1-24",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "madeeasy-maths-linear-algebra-6-2",
+      "contentSha256": "2f9af8e45c77f3e9f5f81b0830b6ca7ec703efcb52f4962407ab0e699b3f733b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "For A = diag(1,0) and B = (1,0)ᵀ, x₁ = 1 and x₂ is free. Thus a square system with a nonzero right-hand side can have infinitely many solutions.",
+      "note": "The book uses b in the definition and B elsewhere. Use B consistently and describe X as a column vector of unknowns. Choice C is the false claim under the intended notation.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.13.1, System of Equations: GATE CSE 1996 | Question: 1.7, PDF pp. 182 (key p. 187); https://gateoverflow.in/2711/gate-cse-1996-question-1-7",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "madeeasy-maths-linear-algebra-6-3",
+      "contentSha256": "20f8968c9fc6331170e363e8bdeb65c9fa46cd60e7b2d64f41561862d9947ac0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The diagonal entries of the two products agree. Equality of the off-diagonal entries reduces to (a−b)sin θ = 0, so a=b or θ is an integer multiple of π.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.6.7, Matrix: GATE CSE 1996 | Question: 2.6, PDF pp. 174 (key p. 187); https://gateoverflow.in/2735/gate-cse-1996-question-2-6",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "madeeasy-maths-linear-algebra-6-4",
+      "contentSha256": "f53d0b7d20f9631924f9dfb375ed07c42a419e3a969cc5880c97c1286bf902e5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The upper-triangular determinant is the product 6·2·4·(−1) = −48.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.2.1, Determinant: GATE CSE 1997 | Question: 1.3, PDF pp. 162 (key p. 187); https://gateoverflow.in/2219/gate-cse-1997-question-1-3",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "madeeasy-maths-linear-algebra-6-5",
+      "contentSha256": "b3e0ca31a97064686892660bdbd200f5ae58e247cc2d919ca7d0a760a4ba1570",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The first column of I₁₂ is e₂. Hence the first column of AI₁₂ is Ae₂, which is the second column of A.",
+      "note": "Use A=(aᵢⱼ) in the stem. In A, insert “is” after “row”. In C, write “column is the same as the second column of A”.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.6.8, Matrix: GATE CSE 1997 | Question: 4.2, PDF pp. 175 (key p. 187); https://gateoverflow.in/2243/gate-cse-1997-question-4-2",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "madeeasy-maths-linear-algebra-6-6",
+      "contentSha256": "8a3874222e097a0bbb2f83847422c95b2d43dd07b34a263258a398405ed52fe7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The first equation multiplied by 4 gives 4x+8y=20, while the second gives 4x+8y=12. The system is inconsistent.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.13.2, System of Equations: GATE CSE 1998 | Question: 1.2, PDF pp. 182 (key p. 187); https://gateoverflow.in/1639/gate-cse-1998-question-1-2",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "madeeasy-maths-linear-algebra-6-7",
+      "contentSha256": "abeb1db308f0c9c351a19819825501281821c0ef4827d47b048468eb8113fbd6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Row 4 is three times row 1. The minor using the first three rows and first three columns has determinant 42, so the rank is 3.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.9.3, Rank of Matrix: GATE CSE 1998 | Question: 2.1, PDF pp. 179 (key p. 187); https://gateoverflow.in/1673/gate-cse-1998-question-2-1",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "madeeasy-maths-linear-algebra-6-8",
+      "contentSha256": "f58bf46e069ecbb41ba1604844d8a495185210f4c8096e055c2014cc366c680d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Setting a=b gives two identical rows, so a−b divides the determinant. Expansion gives (b−a)(c−a)(c−b).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.6.9, Matrix: GATE CSE 1998 | Question: 2.2, PDF pp. 175 (key p. 187); https://gateoverflow.in/1674/gate-cse-1998-question-2-2",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "madeeasy-maths-linear-algebra-6-9",
+      "contentSha256": "4e960ef5cdcfbf9f303a5365b34e971b85475ae2a7454778b85019479eddd89a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The diagonal entries vanish and each pair v[i,j]+v[j,i] is zero. The sum is 0.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.3.6, Array: GATE CSE 2000 | Question: 1.2, PDF pp. 200 (key p. 253); https://gateoverflow.in/625/gate-cse-2000-question-1-2",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Arrays PDF pp. 1–2, book Q2.2 at pp. 363 and 365",
+          "answer": "a (sum 0), app A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q2, original 1.2 (matching array and options)",
+          "answer": "A (sum 0)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "madeeasy-maths-linear-algebra-6-10",
+      "contentSha256": "3a6555469cd9b9be049680717a11c2f5b083c7b3e2dd725f6c4ccb2ff029d25f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Expand along row 1 and then along the surviving column containing a single 1. The remaining triangular minor has determinant 2, giving 2·1·2=4.",
+      "note": "The displayed 2001 year tag should read 2000. The identical matrix and four choices are in GATE CS 2000 Q1.3.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.2.2, Determinant: GATE CSE 2000 | Question: 1.3, PDF pp. 162 (key p. 187); https://gateoverflow.in/626/gate-cse-2000-question-1-3",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q3, original 1.3 (matching matrix and options)",
+          "answer": "A (determinant 4)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "madeeasy-maths-linear-algebra-6-11",
+      "contentSha256": "88dfbc074f62519eb32d7c62a1c979dd377e6aba20f17e126536676f147995e6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "The singular matrices diag(1,0) and diag(0,1) sum to I₂. The invertible matrices I₂ and −I₂ sum to zero. Both outcomes are possible.",
+      "note": "The displayed 2002 year tag should read 2001. The original is GATE CS 2001 Q1.1. Specifying n≥2 would also exclude the one-dimensional exception to S₁.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.6.10, Matrix: GATE CSE 2001 | Question: 1.1, PDF pp. 175 (key p. 187); https://gateoverflow.in/694/gate-cse-2001-question-1-1",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q1",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "madeeasy-maths-linear-algebra-6-12",
+      "contentSha256": "10f7e8130d6a3df18ad6c98f8c6168039e7a08b483cadd10d53ae57396b2a9f6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The first row is nonzero and the second row is zero. The rank is 1.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.9.4, Rank of Matrix: GATE CSE 2002 | Question: 1.1, PDF pp. 179 (key p. 187); https://gateoverflow.in/805/gate-cse-2002-question-1-1",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q1",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "madeeasy-maths-linear-algebra-6-13",
+      "contentSha256": "8b7b65086a6b98ff6843921bb0817f4a18c7874e22a9f3551b08c3216d0633e2",
+      "questionType": "SUBJECTIVE",
+      "correctOptions": [],
+      "status": "verified",
+      "reason": "The matrix is upper triangular, so its eigenvalues are its diagonal entries 1, 2, −2 and −1.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q53(a), worked historical response",
+          "answer": "1, 2, −2, −1",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "1, 2, −2, −1",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "madeeasy-maths-linear-algebra-6-14",
+      "contentSha256": "efecc61ffa34d9832431a27fdf3a33836bb59c8567078dc4d7893645de856fa6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Set u=y−4z. The last two equations give x=−11/5 and u=23/5. The first then requires α=1/5, where z is free. Exactly one α has infinitely many solutions.",
+      "note": "The GATE Overflow PDF gives 3 as distractor D. The book and the linked year-paper copy say “Infinitely many”. The keyed one-value choice is B in each version.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.13.4, System of Equations: GATE CSE 2003 | Question: 41, PDF pp. 182 (key p. 187); https://gateoverflow.in/932/gate-cse-2003-question-41",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q41",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "madeeasy-maths-linear-algebra-6-15",
+      "contentSha256": "b94bf37bf910cc84140020e6c3cddbfdfb191ee4f8232eb6004ddc4557553235",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Multiplying ABCD=I on the left by A⁻¹ and then on the right by A gives B(CDA)=I. Thus B⁻¹=CDA.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.6.12, Matrix: GATE CSE 2004 | Question: 27, PDF pp. 175 (key p. 187); https://gateoverflow.in/1024/gate-cse-2004-question-27",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q27",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "madeeasy-maths-linear-algebra-6-16",
+      "contentSha256": "f925129b434a0461a4e7352d39b3caa52b7b1f1ccbc6b68476a306f08ec65bbf",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Subtract the first equation from the third to get x=6. The first two equations then give 2y+3z=0 and y+z=2, so y=6 and z=−4.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.13.17, System of Equations: GATE IT 2004 | Question: 6, PDF pp. 185 (key p. 188); https://gateoverflow.in/3647/gate-it-2004-question-6",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q6",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "madeeasy-maths-linear-algebra-6-17",
+      "contentSha256": "4fedeee2409c07091477ce04e390aaa4c4e6b785ba8f103e9b028cf580a2fdde",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Expansion gives dₙ=3dₙ₋₁−dₙ₋₂ with d₀=1 and d₁=3. If r±=(3±√5)/2, then dₙ=(r₊ⁿ⁺¹−r₋ⁿ⁺¹)/√5, which expands to D.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.2.11, Determinant: GATE IT 2004 | Question: 32, PDF pp. 164–165 (key p. 187); https://gateoverflow.in/3675/gate-it-2004-question-32",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q32",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "madeeasy-maths-linear-algebra-6-18",
+      "contentSha256": "353f2da630bbbfb4718c5496abe42d034cf13cc10ee76c087ee3fd7456349dcd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "X²−X+I=0 gives X(I−X)=I. Hence X⁻¹=I−X, whose second row is (a²−a+1,a).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.6.23, Matrix: GATE IT 2004 | Question: 36, PDF pp. 178 (key p. 187); https://gateoverflow.in/3679/gate-it-2004-question-36",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q36",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 19,
+      "id": "madeeasy-maths-linear-algebra-6-19",
+      "contentSha256": "5ca5abdd7ebf216bcdb7af6b1e18c90c1ec3321c8138b84517fba9f19eab8786",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "From the second equation x=y+2. The first gives y=1/4 and x=9/4, and the pair satisfies x+3y=3. The solution is unique.",
+      "note": "The app and GATE Overflow print −x+5y=−1 and x+3y=3, giving one solution. The selected year-paper scan instead prints −x+5y=1 and x−3y=3, giving no solution (its D). Those are the signs to use if restoring the selected scan.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.13.5, System of Equations: GATE CSE 2004 | Question: 71, PDF pp. 182–183 (key p. 187); https://gateoverflow.in/1065/gate-cse-2004-question-71",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q71, selected sign variant",
+          "answer": "D (no solution for the variant with −x+5y=1 and x−3y=3)",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "madeeasy-maths-linear-algebra-6-20",
+      "contentSha256": "1cbd3199e2f031905b248dd374caf1fb88cfb5d08f1d688b96da2e6f93ab5072",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Expand along row 3. Its only nonzero entry is the 1 in column 4, and the remaining 3×3 minor has determinant 1. The cofactor sign gives −1.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.2.12, Determinant: GATE IT 2005 | Question: 3, PDF pp. 165 (key p. 187); https://gateoverflow.in/3747/gate-it-2005-question-3",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "madeeasy-maths-linear-algebra-6-21",
+      "contentSha256": "2d8aeb41cf3b792ae3d42c7c16c9e8ce56259041e2a72b99dd74dd6f32255c0e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "The determinant of the app’s coefficient matrix is 2. Its invertibility gives a unique real solution.",
+      "note": "The app matches the book. GATE Overflow uses +2x₂ and +4x₂ in equations 2 and 3. The selected exam scan uses those signs plus −3x₃ in equation 1. All three coefficient matrices are nonsingular and give B.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.13.6, System of Equations: GATE CSE 2005 | Question: 48, PDF pp. 183 (key p. 187); https://gateoverflow.in/1173/gate-cse-2005-question-48",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q48",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 22,
+      "id": "madeeasy-maths-linear-algebra-6-22",
+      "contentSha256": "b316af4422b01ea39b244c03748976b54e9efac67dec9444bf4dfcbb5fe59b8a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The characteristic polynomial is λ²−7λ+6=(λ−1)(λ−6).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.3, Eigen Value: GATE CSE 2005 | Question: 49, PDF pp. 166 (key p. 187); https://gateoverflow.in/1174/gate-cse-2005-question-49",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q49",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 23,
+      "id": "madeeasy-maths-linear-algebra-6-23",
+      "contentSha256": "53b2a0b10c5389feaa1a26c5c23ece36dfb8f695527ca12a1a26cc60ea6a53fb",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "F(u−v)=0 with u−v nonzero, so F is singular and u+t(u−v) gives infinitely many solutions. The singular matrix with rows (1,2) and (2,4) has distinct rows.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.6.14, Matrix: GATE CSE 2006 | Question: 23, PDF pp. 176 (key p. 187); https://gateoverflow.in/984/gate-cse-2006-question-23",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q23",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 24,
+      "id": "madeeasy-maths-linear-algebra-6-24",
+      "contentSha256": "dbdabad95d3faaf332f2efab28a031ea97f43f8e429674352238b71d39c6496b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Writing t=λ−a gives det(λI−P)=t(t²−2). Its roots yield a, a−√2 and a+√2.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.32, Eigen Value: GATE IT 2006 | Question: 26, PDF pp. 172 (key p. 187); https://gateoverflow.in/3565/gate-it-2006-question-26",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 25,
+      "id": "madeeasy-maths-linear-algebra-6-25",
+      "contentSha256": "3af2ab86808191344c61301784a90bd2a4cea03bbb0d768afd7fdc8e08efc0b7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "For a unit eigenvector x, xᵀAx equals its eigenvalue. The characteristic polynomial λ²−5λ+5 has larger root (5+√5)/2.",
+      "note": "The book and app duplicate 3 in A and C. GATE IT 2007 Q2 has 5 in A and 3 in C. B is the larger eigenvalue in both versions.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.33, Eigen Value: GATE IT 2007 | Question: 2, PDF pp. 172 (key p. 187); https://gateoverflow.in/3433/gate-it-2007-question-2",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 26,
+      "id": "madeeasy-maths-linear-algebra-6-26",
+      "contentSha256": "6f4a45c004c7c6c46a11bb419b7934b85d4b4ac3be2eb3ad463622426ab10f58",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "The kernel of x₁+x₂+x₃ has dimension two. The two displayed vectors lie in the kernel and are linearly independent, so they form a basis.",
+      "note": "The coordinate expression equates a transposed quantity with a column. Write x=(x₁,x₂,x₃)ᵀ in the set definition. The displayed sum still defines the intended plane.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.14.2, Vector Space: GATE CSE 2007 | Question: 27, PDF pp. 186 (key p. 188); https://gateoverflow.in/1225/gate-cse-2007-question-27",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q27",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 27,
+      "id": "madeeasy-maths-linear-algebra-6-27",
+      "contentSha256": "a905721e1e09cc9a0e8ef73aeae3430b0e8b297807391c36f27bfd7de12a49ea",
+      "questionType": "MCQ",
+      "correctOptions": [],
+      "answerDisposition": "none-correct",
+      "specialNote": "The printed equations have a unique solution exactly when a≠−7. No listed option gives that set.",
+      "status": "verified-with-note",
+      "reason": "For the printed system, the second equation is x₁+5x₃=2. Subtracting row 1 from rows 2 and 3 gives determinant −(a+7). The system has a unique solution exactly when a≠−7, and every listed choice fails to describe that set.",
+      "note": "For the app’s printed coefficients, D would need to say “any real number other than −7”. To restore the intended 2008 system, change the second equation to x₁+2x₂+3x₃=2 and retain the book’s D excluding 5. The original exam printed that equation but its D said “any real number”. The GATE Overflow key marks the original X.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.13.7, System of Equations: GATE CSE 2008 | Question: 3, PDF pp. 183 (key p. 187); https://gateoverflow.in/401/gate-cse-2008-question-3",
+          "answer": "X (no valid option in the 2008 exam version, whose excluded value is 5)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q3, selected paper with different second equation and option D",
+          "answer": "No correct option in the exam version",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "No correct option",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 28,
+      "id": "madeeasy-maths-linear-algebra-6-28",
+      "contentSha256": "58118e48af630064442506f2ba95b9ee83ed19ef86aa0bf0d397231f994d73fd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The four eigenvalue pairs are (1,0), (0,0), (1+i,1−i) and (−1,−1). Only the first matrix has eigenvalue 1.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.5, Eigen Value: GATE CSE 2008 | Question: 28, PDF pp. 166 (key p. 187); https://gateoverflow.in/426/gate-cse-2008-question-28",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q28",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 29,
+      "id": "madeeasy-maths-linear-algebra-6-29",
+      "contentSha256": "a403e6aa1cabf3086e9b975ddc7a56099832d692bf6a285eb7c9dbfd7420bcad",
+      "questionType": "MCQ",
+      "correctOptions": [],
+      "answerDisposition": "none-correct",
+      "specialNote": "Only S3 holds for all singular square matrices. No choice lists S3 alone.",
+      "status": "verified-with-note",
+      "reason": "M=diag(1,0) is singular and its first row and first column are outside the spans of the remaining rows and columns. S1 and S2 are false. Rank-nullity gives S3, and singularity makes S4 false. Only S3 holds.",
+      "note": "The PDF keys D, which assumes that every row and column is a linear combination of the others. To make D true, replace “Each” with “At least one” in both S1 and S2. Alternatively, keep the current assertions and offer “S3 only”.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.6.24, Matrix: GATE IT 2008 | Question: 29, PDF pp. 178 (key p. 187); https://gateoverflow.in/3319/gate-it-2008-question-29",
+          "answer": "D (S1, S2 and S3)",
+          "agrees": false
+        },
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow GATE CSE 2022 edition, Volume-1.pdf pp. 256, 264, 276, item 6.4.22; https://github.com/GATEOverflow/GO-PDFs/releases/download/gatecse-2022-vol1%2C2/Volume-1.pdf",
+          "answer": "D (S1, S2 and S3)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "GATE IT 2008 Q29 worked answer by Sachin Mittal, 10 December 2024, selected 1 July 2025. https://db.gateoverflow.in/3319/gate-it-2008-question-29?show=3319&state=showcomments-3319",
+          "answer": "S3 only. No valid option.",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "No correct option",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 30,
+      "id": "madeeasy-maths-linear-algebra-6-30",
+      "contentSha256": "721898317cbdb965fe1732435f83f5e886939612726d0161a1d9a3658deedeee",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "The trace gives 2+y=4+8=12. The determinant gives 2y−3x=4·8=32, hence y=10 and x=−4.",
+      "note": "GATE Overflow prints x=3 in distractor C. The book and selected year-paper scan both give x=−3, as in the app. The answer is D in both versions.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.6, Eigen Value: GATE CSE 2010 | Question: 29, PDF pp. 166 (key p. 187); https://gateoverflow.in/1155/gate-cse-2010-question-29",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q29",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 31,
+      "id": "madeeasy-maths-linear-algebra-6-31",
+      "contentSha256": "22e7093fed899b5c90a507ad770bd9c4c001f0afa5c7704bdc77cc0f56353446",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The matrix is upper triangular. Its diagonal entries give the eigenvalues 1, 4 and 3.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.7, Eigen Value: GATE CSE 2011 | Question: 40, PDF pp. 167 (key p. 187); https://gateoverflow.in/2142/gate-cse-2011-question-40",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q40",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 32,
+      "id": "madeeasy-maths-linear-algebra-6-32",
+      "contentSha256": "e12db525b5e342d53da83f826d31bd015035c76ea5b13254a220ee12a73c5bc8",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A²=2I and tr(A)=0, so the eigenvalues of A are ±√2. Raising both to the 19th power gives ±512√2.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.8, Eigen Value: GATE CSE 2012 | Question: 11, PDF pp. 167 (key p. 187); https://gateoverflow.in/43/gate-cse-2012-question-11",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q11",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 33,
+      "id": "madeeasy-maths-linear-algebra-6-33",
+      "contentSha256": "cee091a85823c04858088406f45218faf8eb0608753c74a2c0c1316ac8b2494e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "In A, subtract column 1 from column 3, then subtract the new column 3 from column 2. This gives the original columns 2 and 3 in swapped order and reverses the determinant. B, C and D use determinant-preserving additions and subtractions.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.2.3, Determinant: GATE CSE 2013 | Question: 3, PDF pp. 162–163 (key p. 187); https://gateoverflow.in/1412/gate-cse-2013-question-3",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 34,
+      "id": "madeeasy-maths-linear-algebra-6-34",
+      "contentSha256": "3d672aba94085e6ddc69e3d384bfd88efc1b4b02363d5270d374722d48a8bf7f",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "1",
+      "status": "verified",
+      "reason": "The first three coefficient rows have determinant −15 and give one solution. The fourth equation is the second minus the first, including its right-hand side.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.13.8, System of Equations: GATE CSE 2014 | Set 1 | Question: 4, PDF pp. 183 (key p. 188); https://gateoverflow.in/1757/gate-cse-2014-set-1-question-4",
+          "answer": "1",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "1",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 35,
+      "id": "madeeasy-maths-linear-algebra-6-35",
+      "contentSha256": "a60a8fbff2003bf01b50e24da7a1911207eb4b484d4361c13c081205c8a52e3c",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0",
+      "status": "verified",
+      "reason": "For symmetric A with Au=λu and Av=μv, symmetry gives λ(uᵀv)=μ(uᵀv). Since λ≠μ, uᵀv=0.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.9, Eigen Value: GATE CSE 2014 | Set 1 | Question: 5, PDF pp. 167 (key p. 187); https://gateoverflow.in/1760/gate-cse-2014-set-1-question-5",
+          "answer": "0",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "0",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 36,
+      "id": "madeeasy-maths-linear-algebra-6-36",
+      "contentSha256": "ae628e141147897a91554d40c09a1689ff0dbd79b6d8aa2f16fb42dd3092543e",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0",
+      "status": "verified",
+      "reason": "The matrix is an outer product of a column and a row, so its rank is at most 1. Its 3×3 determinant is zero.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.2.4, Determinant: GATE CSE 2014 | Set 2 | Question: 4, PDF pp. 163 (key p. 187); https://gateoverflow.in/1956/gate-cse-2014-set-2-question-4",
+          "answer": "0",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "0",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 37,
+      "id": "madeeasy-maths-linear-algebra-6-37",
+      "contentSha256": "222a07c0b1ff7a709a37a38efe1f1385de2f68307eb0918f3a45fa4b8625752d",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "6",
+      "status": "verified",
+      "reason": "Permute the indices to (1,5,2,3,4) to obtain all-ones blocks of sizes 2 and 3. Their nonzero eigenvalues are 2 and 3, with product 6.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.10, Eigen Value: GATE CSE 2014 | Set 2 | Question: 47, PDF pp. 167 (key p. 187); https://gateoverflow.in/2013/gate-cse-2014-set-2-question-47",
+          "answer": "6",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "6",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 38,
+      "id": "madeeasy-maths-linear-algebra-6-38",
+      "contentSha256": "6fce7f45f5f6e9ab1fb17a945c5c97655b04a579024ee39566a6b287b6e1c7f2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "A negative determinant is a negative product of real eigenvalues, which requires a negative eigenvalue. The diagonal matrix diag(3,−1,−1) has positive trace and determinant and refutes B, C and D.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.11, Eigen Value: GATE CSE 2014 | Set 3 | Question: 4, PDF pp. 167 (key p. 187); https://gateoverflow.in/2038/gate-cse-2014-set-3-question-4",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 39,
+      "id": "madeeasy-maths-linear-algebra-6-39",
+      "contentSha256": "51caec24b368434563530088c941c2fdef05569c4ddbae4c581ae6ae09ec41b0",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "2",
+      "status": "verified",
+      "reason": "The dimension formula gives dim(V₁∩V₂)=8−dim(V₁+V₂)≥2. The spans of the first four and last four vectors of a six-vector basis attain 2.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.14.3, Vector Space: GATE CSE 2014 | Set 3 | Question: 5, PDF pp. 186 (key p. 188); https://gateoverflow.in/2039/gate-cse-2014-set-3-question-5",
+          "answer": "2",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "2",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 40,
+      "id": "madeeasy-maths-linear-algebra-6-40",
+      "contentSha256": "aada931ee10e55663654939d20a5f51cb8ef6c5eb8eb80dcce8c70b5813a9b21",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "6",
+      "status": "verified-with-note",
+      "reason": "Use one temporary t and compute t=X·X, t=t+2, t=t·t, t=t+2, t=t·X, then t=t+5. This evaluates X[(X²+2)²+2]+5 in three multiplications and three additions. With three degree-increasing multiplications and only two additions, matching the powers and constant would require X(X²+c)²+5. Its X³ coefficient forces c=2, giving an X coefficient of 4.",
+      "note": "The official key and GATE Overflow give 7, the ordinary Horner count in X. The printed problem leaves algebraic rearrangement open, so completing the square gives 6 with one temporary. The published worked reprint reports 6 as well.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 2.6.5, Code Optimization: GATE CSE 2014 | Set 3 | Question: 11, PDF pp. 125 (key p. 187); https://gateoverflow.in/2045/gate-cse-2014-set-3-question-11",
+          "answer": "7",
+          "agrees": false
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 CS Session 3 official key, Q11, mirrored at the end of https://gargsacademy.com/wp-content/uploads/2022/07/GATE-CS-2014.pdf",
+          "answer": "7 to 7",
+          "agrees": false
+        },
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "GATE Overflow GATE CSE 2022 edition, Volume-2.pdf pp. 202, 204, 323, item 2.3.3; https://github.com/GATEOverflow/GO-PDFs/releases/download/gatecse-2022-vol1%2C2/Volume-2.pdf",
+          "answer": "7 (ordinary Horner evaluation)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "Niraj Singh, 20 June 2017, answer to a reprint of GATE CS 2014 Set 3 Q11 with numbered choices added. https://gateoverflow.in/133974/polynomial",
+          "answer": "6 (reprint A)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "6",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 41,
+      "id": "madeeasy-maths-linear-algebra-6-41",
+      "contentSha256": "2c1b7ba75a248f6cb131df48448d3fcaedcc56b54c14cf998738dad2cb8e84ac",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "From the trace, 1+a=6. From the determinant, a−4b=−7. Thus a=5 and b=3.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.12, Eigen Value: GATE CSE 2015 | Set 1 | Question: 36, PDF pp. 168 (key p. 187); https://gateoverflow.in/8285/gate-cse-2015-set-1-question-36",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 42,
+      "id": "madeeasy-maths-linear-algebra-6-42",
+      "contentSha256": "13e064d66181571ee37f39c4e48b1cfbf9596652da9489a81dcd76d2d3faaf57",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "6",
+      "status": "verified",
+      "reason": "The characteristic polynomial is λ²−5λ−6=(λ−6)(λ+1). The larger root is 6.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.13, Eigen Value: GATE CSE 2015 | Set 2 | Question: 5, PDF pp. 168 (key p. 187); https://gateoverflow.in/8051/gate-cse-2015-set-2-question-5",
+          "answer": "6",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "6",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 43,
+      "id": "madeeasy-maths-linear-algebra-6-43",
+      "contentSha256": "888946e06886c1ee338b8b90452e876be6fd1c69945b314fb17dc17eca92d1c8",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0",
+      "status": "verified",
+      "reason": "The original third column is 15 times the first. Both operations are determinant-preserving row or column additions, so the determinant stays zero.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.6.15, Matrix: GATE CSE 2015 | Set 2 | Question: 27, PDF pp. 176 (key p. 187); https://gateoverflow.in/8131/gate-cse-2015-set-2-question-27",
+          "answer": "0",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "0",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 44,
+      "id": "madeeasy-maths-linear-algebra-6-44",
+      "contentSha256": "79de1da9792c08ba53914e5bd776db74dbb0308f8383772b7559f6b408292b47",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The kernel of A−I satisfies −y+2z=0 and x+2y=0. Thus (x,y,z)=z(−4,2,1), with z nonzero for an eigenvector.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.14, Eigen Value: GATE CSE 2015 | Set 3 | Question: 15, PDF pp. 168 (key p. 187); https://gateoverflow.in/8411/gate-cse-2015-set-3-question-15",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 45,
+      "id": "madeeasy-maths-linear-algebra-6-45",
+      "contentSha256": "91c805a40083003941056bc50449e733f91d7e6134924b240ab13525a06b7f66",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "5",
+      "status": "verified-with-note",
+      "reason": "With U unit upper triangular, U₁₂=2/2=1, L₂₁=4 and L₂₂=9−4·1=5.",
+      "note": "“Lower diagonal entry” means the bottom-right diagonal element, as indicated by l₂₂. Write “the entry l₂₂ of L” to make the wording precise.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.5.1, Lu Decomposition: GATE CSE 2015 | Set 1 | Question: 18, PDF pp. 172 (key p. 187); https://gateoverflow.in/8241/gate-cse-2015-set-1-question-1-8",
+          "answer": "5",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "5",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 46,
+      "id": "madeeasy-maths-linear-algebra-6-46",
+      "contentSha256": "9e1e1ec1588934e8b80e2ef9bd533b4259fb57eb6c1b6244ad52c78048a58e43",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The determinant factors as −(p+q+r)(p²+q²+r²−pq−pr−qr). Over the reals the second factor is half the sum of the squared pairwise differences, so a nontrivial solution occurs if p+q+r=0 or p=q=r.",
+      "note": "The keyed equivalence uses real coefficients. Add “where p, q and r are real” to state the domain explicitly.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.13.9, System of Equations: GATE CSE 2015 | Set 3 | Question: 33, PDF pp. 183 (key p. 188); https://gateoverflow.in/8490/gate-cse-2015-set-3-question-33",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 47,
+      "id": "madeeasy-maths-linear-algebra-6-47",
+      "contentSha256": "9f7f9d4e31ebc3c471c7547a5f947f0cf6ecc4b2ac1a791d826871eff36f2a85",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "15",
+      "status": "verified",
+      "reason": "The third eigenvalue is the conjugate 2−i because P is real. Their product is 3(2+i)(2−i)=15.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.15, Eigen Value: GATE CSE 2016 | Set 1 | Question: 05, PDF pp. 168 (key p. 187); https://gateoverflow.in/39634/gate-cse-2016-set-1-question-05",
+          "answer": "15",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "15",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 48,
+      "id": "madeeasy-maths-linear-algebra-6-48",
+      "contentSha256": "20bb90b3c1689d3bd5d270a7fc3ae837327d1e5eee10205304559bcc21b5b2ec",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The underdetermined equation 0x₁+0x₂=1 refutes I. An overdetermined homogeneous system has the zero solution, refuting II. A square identity system proves III.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.13.10, System of Equations: GATE CSE 2016 | Set 2 | Question: 04, PDF pp. 184 (key p. 188); https://gateoverflow.in/39545/gate-cse-2016-set-2-question-04",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 49,
+      "id": "madeeasy-maths-linear-algebra-6-49",
+      "contentSha256": "4e4ecd72461d8ece708ea1f3eddfb4e51776eeea8149c832a96e15438bc51ab4",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0.125",
+      "status": "verified",
+      "reason": "det(A)=1·2·4=8. Transposition preserves determinant and inversion reciprocates it, giving 1/8.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.16, Eigen Value: GATE CSE 2016 | Set 2 | Question: 06, PDF pp. 168 (key p. 187); https://gateoverflow.in/39549/gate-cse-2016-set-2-question-06",
+          "answer": "0.125",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "0.125",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 50,
+      "id": "madeeasy-maths-linear-algebra-6-50",
+      "contentSha256": "750b0a7eda6f555fa13021c5501762fcff1184e47f81db3e22b76ece0026146f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "A times the all-ones vector is b. The nonzero coefficient vector c lies in the null space, so the all-ones vector plus tc gives infinitely many solutions.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.13.11, System of Equations: GATE CSE 2017 | Set 1 | Question: 3, PDF pp. 184 (key p. 188); https://gateoverflow.in/118282/gate-cse-2017-set-1-question-3",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 51,
+      "id": "madeeasy-maths-linear-algebra-6-51",
+      "contentSha256": "319b7c5ad13916f117d6f67254b135463f17668ee2e907c40f0e4897af6f8b9f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The squared Frobenius norm is the sum of eigenvalue squares because A is real symmetric. The two nonzero eigenvalues have squares summing to 50, so one has magnitude at most 5. The matrix diag(5,5) refutes the strict bound in II.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.17, Eigen Value: GATE CSE 2017 | Set 1 | Question: 31, PDF pp. 168 (key p. 187); https://gateoverflow.in/118312/gate-cse-2017-set-1-question-31",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 52,
+      "id": "madeeasy-maths-linear-algebra-6-52",
+      "contentSha256": "5e4657a31a89b9d764edbd736a32a479e4d9fe794f880c51610e8499c7b6825f",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "2",
+      "status": "verified",
+      "reason": "The rows of P+Q are (0,−1,−2), (8,9,10) and (8,8,8). The third is the sum of the first two independent rows.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.9.5, Rank of Matrix: GATE CSE 2017 | Set 2 | Question: 22, PDF pp. 180 (key p. 187); https://gateoverflow.in/118363/gate-cse-2017-set-2-question-22",
+          "answer": "2",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "2",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 53,
+      "id": "madeeasy-maths-linear-algebra-6-53",
+      "contentSha256": "999fafbb515d0d5e67f1a9dd1786574e5e21e24b6727c513021a593e74dff336",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "5",
+      "status": "verified",
+      "reason": "Substituting λ=2 gives a=−11. The polynomial then factors as (λ−2)(λ−5)(λ+3), and the largest magnitude is 5.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.18, Eigen Value: GATE CSE 2017 | Set 2 | Question: 52, PDF pp. 169 (key p. 187); https://gateoverflow.in/118618/gate-cse-2017-set-2-question-52",
+          "answer": "5",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "5",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 54,
+      "id": "madeeasy-maths-linear-algebra-6-54",
+      "contentSha256": "db982c3097f8d2c5cecc7a40dfb5127d4349addb15d2ff1005589eb04b60795e",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "3",
+      "status": "verified",
+      "reason": "The vector u has eigenvalue vᵀu=3. The outer product has rank 1, so the other eigenvalue is zero.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.19, Eigen Value: GATE CSE 2018 | Question: 17, PDF pp. 169 (key p. 187); https://gateoverflow.in/204091/gate-cse-2018-question-17",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "3",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 55,
+      "id": "madeeasy-maths-linear-algebra-6-55",
+      "contentSha256": "c86bd3189b8f2e78a19d86ebdeec5cc0880166a4ee5858567dfa9bcd0b72118f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The 2×2 matrix has a one-dimensional eigenspace and only one eigenvalue, so that eigenvalue is repeated and the matrix is defective. An invertible Jordan block with eigenvalue 1 can have the indicated eigenspace after a change of basis.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.20, Eigen Value: GATE CSE 2018 | Question: 26, PDF pp. 169 (key p. 187); https://gateoverflow.in/204100/gate-cse-2018-question-26",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 56,
+      "id": "madeeasy-maths-linear-algebra-6-56",
+      "contentSha256": "7c8b2c04b14a76cacff2014c30e7564a58ffa07e517c1d5144dbb7023865fc12",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "A square matrix is invertible exactly when its determinant is nonzero. The two statements are equivalent.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.2.5, Determinant: GATE CSE 2019 | Question: 9, PDF pp. 163 (key p. 187); https://gateoverflow.in/302839/gate-cse-2019-question-9",
+          "answer": "D (statements I and II are equivalent), app C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 57,
+      "id": "madeeasy-maths-linear-algebra-6-57",
+      "contentSha256": "3d23947afb3c63b7ce13425caf817fa9b0a472f2f2a29f07ee8f3631e211a424",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "12",
+      "status": "verified",
+      "reason": "The eigenvalue product is the determinant. This Vandermonde matrix on 2,3,4,5 has determinant 1·2·3·1·2·1=12.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.21, Eigen Value: GATE CSE 2019 | Question: 44, PDF pp. 169 (key p. 187); https://gateoverflow.in/302804/gate-cse-2019-question-44",
+          "answer": "12",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "12",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 58,
+      "id": "madeeasy-maths-linear-algebra-6-58",
+      "contentSha256": "ad66dafffd734b697b3f645876f86bd27bc4152e907fde134aa5c10d60329486",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Determinants are multiplicative and the column space of A+B is contained in the sum of the two column spaces. Thus II and III hold. A=B=I₂ refutes I and IV.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.9.6, Rank of Matrix: GATE CSE 2020 | Question: 27, PDF pp. 180 (key p. 187); https://gateoverflow.in/333204/gate-cse-2020-question-27",
+          "answer": "C (II and III only), app B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 59,
+      "id": "madeeasy-maths-linear-algebra-6-59",
+      "contentSha256": "cb54002715c312a0e9c6dbc1c92bc296e6559e7be266261639df8806e8fe4c8e",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "3",
+      "status": "verified",
+      "reason": "The matrix is J₄−I₄, where J₄ is all ones. The all-ones vector has eigenvalue 3 and its orthogonal complement has eigenvalue −1.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.22, Eigen Value: GATE CSE 2021 | Set 1 | Question: 52, PDF pp. 169–170 (key p. 187); https://gateoverflow.in/357399/gate-cse-2021-set-1-question-52",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Linear Algebra worked Q6.59, book p. 112 (PDF p. 1 of 11. Engg. Maths/3. Calculus.pdf)",
+          "answer": "3 (worked continuation from book page 111)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "3",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 60,
+      "id": "madeeasy-maths-linear-algebra-6-60",
+      "contentSha256": "89cbcb2d70348772ab8ce2b2f22aee93ee94be06a141a9ee76c56b68d623e401",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "4",
+      "status": "verified",
+      "reason": "The kernel is contained in the given one-dimensional line. A 4×5 matrix has nullity at least one, so nullity is exactly one and rank is 4.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.9.7, Rank of Matrix: GATE CSE 2021 | Set 2 | Question: 24, PDF pp. 180 (key p. 187); https://gateoverflow.in/357516/gate-cse-2021-set-2-question-24",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Linear Algebra worked Q6.60, book p. 112 (PDF p. 1 of 11. Engg. Maths/3. Calculus.pdf)",
+          "answer": "4 (rank)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "4",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 61,
+      "id": "madeeasy-maths-linear-algebra-6-61",
+      "contentSha256": "ec3ed85d1f894d86cad8dc3d5826c9634fe3b4749c029caf9d3ca7281774b557",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Both tr(AB) and tr(BA) sum aᵢⱼbⱼᵢ over all i,j, even if the product matrices have different sizes. Applying the same identity to C,D proves both statements.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.6.16, Matrix: GATE CSE 2022 | Question: 10, PDF pp. 176 (key p. 187); https://gateoverflow.in/371926/gate-cse-2022-question-10",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2022 CS master Q20, key p. 1; https://gate2026.iitg.ac.in/doc/download/Answer_keys2022/cs_2022.pdf",
+          "answer": "C (both statements are correct)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 62,
+      "id": "madeeasy-maths-linear-algebra-6-62",
+      "contentSha256": "4bdb94db76cef861dd6b28e5320380add53c8162f9d46b1e070258e6e5f571b5",
+      "questionType": "MCQ",
+      "correctOptions": [],
+      "answerDisposition": "none-correct",
+      "specialNote": "U₃₂=0 in the displayed upper-triangular matrix. No listed choice gives the requested triple.",
+      "status": "verified-with-note",
+      "reason": "The displayed upper-triangular matrix has U₃₂=0. The equations give x=(0,2,−1)ᵀ. Under unit-diagonal L, elimination gives L₃₂=−1/2 and U₃₃=−1/2. No option gives the requested triple (L₃₂,U₃₂,x₁).",
+      "note": "Change U₃₂ to U₃₃ in the stem and option B, as in the official master paper, and specify that L has unit diagonal. The published D then gives the normalized LU solution. As printed, U₃₂ is always zero, while B says 2 and the other choices give U₃₃.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.5.2, Lu Decomposition: GATE CSE 2022 | Question: 35, PDF pp. 173 (key p. 187); https://gateoverflow.in/371901/gate-cse-2022-question-35",
+          "answer": "D (L₃₂=−1/2, U₃₃=−1/2, x₁=0 for the U₃₃ stem)",
+          "agrees": false
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2022 CS master Q45, key p. 2, for the U₃₃ version; https://gate2026.iitg.ac.in/doc/download/Answer_keys2022/cs_2022.pdf",
+          "answer": "D (L₃₂=−1/2, U₃₃=−1/2, x₁=0)",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy GATE 2022 CS Detailed Solutions p. 23 Q45, which repeats the U₃₂ typo. https://www.madeeasy.in/uploads/examsolution/324ufrep_cs-gate-2022-final.pdf",
+          "answer": "d (uses U₃₃)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "Official GATE 2022 CS master Q45 p. 30. The displayed upper-triangular matrix explicitly shows U₃₂=0, which rules out the one app choice that uses U₃₂. https://gate.iitk.ac.in/GATE2023/doc/papers/2022/cs_2022.pdf",
+          "answer": "U₃₂=0 in the displayed matrix. No app option matches the literal request.",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "No correct option",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 63,
+      "id": "madeeasy-maths-linear-algebra-6-63",
+      "contentSha256": "c80e43900a21771aa161c29d23ebfc4ce42c284c55f1aa9fcd9f80012b5eabbd",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "C",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Multiplying by A, C and D gives the same vectors times 1, 3 and 3, respectively. Multiplying by B gives (−7,−5,12,25)ᵀ, which is outside its span.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.23, Eigen Value: GATE CSE 2022 | Question: 43, PDF pp. 170 (key p. 187); https://gateoverflow.in/371893/gate-cse-2022-question-43",
+          "answer": "A;C;D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Linear Algebra worked Q6.63, book p. 112 (PDF p. 1 of 11. Engg. Maths/3. Calculus.pdf)",
+          "answer": "a, c, d (same eigenvectors)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2022 CS master Q53, key p. 2; https://gate2026.iitg.ac.in/doc/download/Answer_keys2022/cs_2022.pdf",
+          "answer": "A, C, D (same three vectors)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "ACD",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 64,
+      "id": "madeeasy-maths-linear-algebra-6-64",
+      "contentSha256": "a51d2e3f93c69337d2404670e81585446363a4311238c12ff9c6696058dfc022",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "B exchanges rows 1 and 3 of A. The determinant changes sign, and det(A)=−160, so the relation in B is the unique true choice.",
+      "note": "Delete the extra “and” in “Let and A”. The two matrices retain their stated row-swap relationship.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.2.6, Determinant: GATE CSE 2023 | Question: 8, PDF pp. 163–164 (key p. 187); https://gateoverflow.in/399304/gate-cse-2023-question-8",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Linear Algebra worked Q6.64, book p. 112 (PDF p. 1 of 11. Engg. Maths/3. Calculus.pdf)",
+          "answer": "b (determinant changes sign)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2023 CS master Q18, key p. 1; https://gate2026.iitg.ac.in/doc/download/Answer_keys2023/CS_ANS_GATE2023.pdf",
+          "answer": "B (det(B)=−det(A))",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 65,
+      "id": "madeeasy-maths-linear-algebra-6-65",
+      "contentSha256": "87a438964569e13b4a84ee2495076b869fddd0cbc9668477d0e85f830f6e407d",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "2",
+      "status": "verified-with-note",
+      "reason": "The eigenvalue sum is tr(A). The diagram has one self-loop each at vertices 3 and 4. With each loop entered once on the diagonal, the trace is 2.",
+      "note": "The official key accepts the two exact values 2 and 4. The latter counts each undirected self-loop twice on the adjacency diagonal. The app stores the standard 0/1-adjacency value 2. A single numeric interval would also admit 3.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.24, Eigen Value: GATE CSE 2023 | Question: 20, PDF pp. 170 (key p. 187); https://gateoverflow.in/399291/gate-cse-2023-question-20",
+          "answer": "2",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Linear Algebra worked Q6.65, book p. 112 (PDF p. 1 of 11. Engg. Maths/3. Calculus.pdf)",
+          "answer": "2 (one diagonal entry per loop)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2023 CS master Q30, key p. 1; https://gate2026.iitg.ac.in/doc/download/Answer_keys2023/CS_ANS_GATE2023.pdf",
+          "answer": "2 to 2 or 4 to 4",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "2",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 66,
+      "id": "madeeasy-maths-linear-algebra-6-66",
+      "contentSha256": "ece85f29fd986b58dbc900755f7b88050cb8281c1281bf675e744a1243d43f7d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The first and third rows sum to twice the second row. Thus the determinant and the product of the eigenvalues are both zero.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.3.25, Eigen Value: GATE CSE 2024 | Set 1 | Question: 2, PDF pp. 170 (key p. 187); https://gateoverflow.in/422840/gate-cse-2024-set-1-question-2",
+          "answer": "B (product 0), app A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Linear Algebra worked Q6.66, book p. 112 (PDF p. 1 of 11. Engg. Maths/3. Calculus.pdf)",
+          "answer": "a (product 0)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 67,
+      "id": "madeeasy-maths-linear-algebra-6-67",
+      "contentSha256": "57a993e93f0f913cb9a2c436c69ab76b90d8dbc8c9c9e4441f7ed71b206c35a9",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Rank-nullity gives dim ker(A)≥m−n. With n=2,m=3, [I₂|0] refutes B and [I₂|(1,1)ᵀ] refutes C. A zero matrix refutes D because its nullity is m.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.13.12, System of Equations: GATE CSE 2024 | Set 1 | Question: 39, PDF pp. 184 (key p. 188); https://gateoverflow.in/422803/gate-cse-2024-set-1-question-39",
+          "answer": "A (at least m−n linearly independent solutions), app A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 68,
+      "id": "madeeasy-maths-linear-algebra-6-68",
+      "contentSha256": "e9abcc1d83ae3008a463449a40b7ea717301e8216cf638ec25320e2655e4e84d",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A row swap multiplies the determinant by −1 and preserves invertibility. Swapping the rows of [[0,1],[0,0]] changes the trace, and swapping the rows of diag(1,2) destroys symmetry.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 6.2.7, Determinant: GATE CSE 2024 | Set 2 | Question: 37, PDF pp. 164 (key p. 187); https://gateoverflow.in/422860/gate-cse-2024-set-2-question-37",
+          "answer": "A and B (determinant changes sign and invertibility is preserved), app B and D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Linear Algebra worked Q6.68, book p. 112 (PDF p. 1 of 11. Engg. Maths/3. Calculus.pdf)",
+          "answer": "b, d (invertibility and determinant sign change)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the live question",
+          "answer": "BD",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

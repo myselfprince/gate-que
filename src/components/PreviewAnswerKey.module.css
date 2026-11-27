@@ -8,6 +8,7 @@
 .status, .statusEmpty { font-size: 13px; line-height: 1.4; }
 .status { color: #a6e3a1; font-weight: 600; }
 .statusEmpty { color: #f9e2af; }
+.note { margin: 0 0 12px; color: #f9e2af; font-size: 13px; line-height: 1.5; }
 
 .optionsTwoCol { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2px 20px; }
 /* The negative margin keeps option letters aligned with the question text despite the padding. */

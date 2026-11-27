@@ -1,0 +1,1570 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "3. Computer Networks",
+  "chapter": "4. Routing and Application Layer",
+  "slug": "3-computer-networks--4-routing-and-application-layer",
+  "reviewedAt": "2026-11-26",
+  "sources": {
+    "gateOverflowPdf": {
+      "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume3.pdf",
+      "sha256": "5c552941136eb96612fabec8a5b2cb67fc07c17023ce15628408ca27d6640c24",
+      "chapter": "2 Computer Networks",
+      "answerKeyPages": [
+        165,
+        166
+      ]
+    },
+    "madeEasyPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\3. Computer Networks\\4. Routing and Application Layer.pdf",
+      "sha256": "adee929df2f3f0e6f1a7818ec0e2a9d42832439e11260789362993d1c9ac338b",
+      "questionPages": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "madeEasySolutions": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\All Subject Solutions Keys\\CN.pdf",
+      "sha256": "c09c5dc9e794c599a5d25eaba5d37095b75b81c85c882c6549ea346f616748e7",
+      "answerKeyPage": 9,
+      "printedPage": 716
+    },
+    "yearPapers": "data/papers/*.json, matched by linked id or identical question and option text"
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "madeeasy-cn-routing-4-1",
+      "contentSha256": "33f86f8ea38741d204a0ccbc707f8aeaf1e11c37d3d084997be6e008a3de85a3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Packets in a shared network contend for transmission and can queue, so packet switching generally introduces more delay variation than a reserved circuit.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.24.4, Network Switching: GATE IT 2004 | Question: 22, PDF p. 142–143 (key p. 165)",
+          "answer": "B (less variation in delay)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.1, chapter PDF p. 1 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "B (less variation in delay)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q22 (matched by question and option text)",
+          "answer": "B (less variation in delay)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "B (less variation in delay)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "madeeasy-cn-routing-4-2",
+      "contentSha256": "d9d56efa43bef443cdeccea909d87a2ef10db41821510c732ad254d4f5bff2ea",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "FTP clients use PROMPT to toggle interactive prompting. HEAD is an HTTP request method and RCPT TO specifies the recipient in SMTP.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.1.10, Application Layer Protocols: GATE IT 2005 | Question: 25, PDF p. 113 (key p. 165)",
+          "answer": "B (FTP, HTTP, SMTP)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.2, chapter PDF p. 1 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "B (FTP, HTTP, SMTP)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Protocol semantics and the FTP client command reference (https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ftp-prompt_1)",
+          "answer": "B (FTP, HTTP, SMTP)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "madeeasy-cn-routing-4-3",
+      "contentSha256": "ea9f69550f35b648a80fd32c512af3c50657ed57a0b58d836a5b7f5052c7a783",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Traceroute sends probes with successively larger TTL values. Each router where a probe expires can send ICMP Time Exceeded to the source, revealing that hop.",
+      "note": "GATE Overflow keys A, which describes querying each router for its next router. The probe itself reaches successive hops. Made Easy keys C, which matches the ICMP replies. In the stem, use 'identify the intermediate routers' for 'identify these hosts'.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.18.1, Icmp: GATE IT 2005 | Question: 26, PDF p. 135 (key p. 165)",
+          "answer": "A (asks each router for its next router)",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.3, chapter PDF p. 1 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "C (ICMP replies in increasing hop distance)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "TTL and ICMP hop trace, cross-checked with Cisco traceroute documentation (https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13730-ext-ping-trace.html)",
+          "answer": "C (ICMP replies in increasing hop distance)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "madeeasy-cn-routing-4-4",
+      "contentSha256": "8fc2262b33e6da13a319621b713efe8e7e647864e0a9544805c41595a3b3eb8a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "After a route fails, distance-vector peers can advertise stale paths that lead back to each other, making the metric rise incrementally.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.11.7, Distance Vector Routing: GATE IT 2005 | Question: 29, PDF p. 124 (key p. 165)",
+          "answer": "B (distance vector routing)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.4, chapter PDF p. 1 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "B (distance vector routing)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "B (distance vector routing)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "madeeasy-cn-routing-4-5",
+      "contentSha256": "cc4f5fcbb1ae3403c51281cbff1badd258862cd833cb856ad56518da82ed45b6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The PTR query for 145.128.16.8 is 8.16.128.145.in-addr.arpa. Iteration starts above the delegated reverse zone. C supplies the appropriate parent-to-child subsequence.",
+      "note": "Restore 'as a subsequence of steps' in place of 'as a subsequent sequence of steps', as printed in both references. D assumes the resolver can contact a deeper nameserver directly.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.1.11, Application Layer Protocols: GATE IT 2005 | Question: 77, PDF p. 113 (key p. 165)",
+          "answer": "C (in-addr.arpa then 128.145.in-addr.arpa)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.5, chapter PDF p. 1 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "C (in-addr.arpa then 128.145.in-addr.arpa)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "C (in-addr.arpa then 128.145.in-addr.arpa)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "madeeasy-cn-routing-4-6",
+      "contentSha256": "3821c17b93f55d45ab5797655f961be6a389e1a77957ac97bfa639c80f01cb34",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "HELO identifies the connecting client to an SMTP server. PORT tells an FTP server the endpoint for an active-mode data connection.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.1.12, Application Layer Protocols: GATE IT 2006 | Question: 18, PDF p. 113 (key p. 165)",
+          "answer": "D (SMTP and FTP)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.6, chapter PDF p. 1 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "D (SMTP and FTP)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "D (SMTP and FTP)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "madeeasy-cn-routing-4-7",
+      "contentSha256": "d453ce610660f3e4e5cc020446d9c4e61691770e7f8ce9b49fdacbc147bd9fbc",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "B1 is the root. B5 and B3 use root ports 2 and 3. B3 wins the lower LANs over B5 by bridge ID, so B4 and B2 attach through B3. Traversing in port order gives B1, B5, B3, B4, B2.",
+      "note": "The leftmost bottom LAN under B4 should be labeled H9 and H10, as in the original GATE CSE 2006 paper. Made Easy and the app repeat H11 and H12 there. The host labels have no effect on the bridge traversal.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.4.2, Bridges: GATE CSE 2006 | Question: 82, PDF p. 114–115 (key p. 165)",
+          "answer": "A (B1, B5, B3, B4, B2)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.7, chapter PDF p. 1 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "A (B1, B5, B3, B4, B2)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q82 (matched by content, original 2006.pdf p. 13 has H9 and H10 at the lower left)",
+          "answer": "A (B1, B5, B3, B4, B2)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Bridge root-port and designated-port calculation from the app diagram",
+          "answer": "A (B1, B5, B3, B4, B2)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "madeeasy-cn-routing-4-8",
+      "contentSha256": "ede755562e53afcbe79cd475b1b2a7a294ce011f4253b64ea110df006f8f2f2f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "Published key A assumes H9 and H10 on the bottom-left LAN and a fully learned B3 table. The current diagram and a single broadcast alone do not establish that table.",
+      "status": "verified-with-note",
+      "reason": "In the fully learned tree, B3 reaches H1-H4 through port 3, H5/H6/H9/H10 through port 1 and H7/H8/H11/H12 through port 2. That is A after restoring the two host labels.",
+      "note": "As drawn, the leftmost bottom LAN incorrectly repeats H11 and H12. Relabel those hosts H9 and H10. A broadcast from H1 initially learns only H1 on port 3 if the table is empty. Add 'Assume B3 has learned every host address on the active spanning tree' to ask for the complete table in A. A is the published intended key.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.4.3, Bridges: GATE CSE 2006 | Question: 83, PDF p. 115–116 (key p. 165)",
+          "answer": "A (B3 ports 3 / 1 / 2 for the top, lower-left, and lower-right groups)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.8, chapter PDF p. 1 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "A (B3 ports 3 / 1 / 2 for the top, lower-left, and lower-right groups)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q83 (matched by content, original 2006.pdf p. 13 has H9 and H10 at the lower left)",
+          "answer": "A (B3 ports 3 / 1 / 2 for the top, lower-left, and lower-right groups)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Forwarding path and source-learning trace from the app diagram",
+          "answer": "A (B3 ports 3 / 1 / 2 for the top, lower-left, and lower-right groups)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "madeeasy-cn-routing-4-9",
+      "contentSha256": "133f999067e2eefbb5cbbb376a60c8a5d8952ffa88c0c9a42b66d991a30923d5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Conventional DNS queries can use UDP. The listed historical versions of HTTP, Telnet, and SMTP use TCP.",
+      "note": "Remove the stray '1' after the question mark, as in the original GATE paper.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.23.2, Network Protocols: GATE CSE 2007 | Question: 20, PDF p. 139 (key p. 165)",
+          "answer": "C (DNS)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.9, chapter PDF p. 1 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "C (DNS)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q20",
+          "answer": "C (DNS)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "C (DNS)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "madeeasy-cn-routing-4-10",
+      "contentSha256": "fa440e507a3857e6cf69c908b46c42c1a09b8391640e8c2d98bc3b24ffcb36fa",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Add F's cost to each neighbor to that neighbor's advertised distance. The destination-wise minima for A through G, using zero for F itself, are (8, 20, 17, 12, 10, 0, 6).",
+      "note": "The source and the app end the stem after describing the update. Add 'What is F’s updated distance vector?' to make the requested result explicit.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.11.8, Distance Vector Routing: GATE IT 2007 | Question: 60, PDF p. 124–125 (key p. 165)",
+          "answer": "A ((8, 20, 17, 12, 10, 0, 6))",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.10, chapter PDF p. 1, 2 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "A ((8, 20, 17, 12, 10, 0, 6))",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Destination-wise Bellman-Ford update using the four advertised tables",
+          "answer": "A ((8, 20, 17, 12, 10, 0, 6))",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "madeeasy-cn-routing-4-11",
+      "contentSha256": "08c699f6b902c443c1b5cdcd4678e090a8815602b5a3a5bf3a5b4746e0e2a926",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The 15 nodes have depths 0, 1, 2 and 3 with counts 1, 2, 4 and 8. The sum of depths is 34. Both endpoints have uniform marginal distributions, so a trip via the root averages 2 × 34/15 = 4.533... hops.",
+      "note": "The Made Easy table gives D (5.26). Counting the hops for each of the 105 distinct unordered pairs confirms 4.53, C, as keyed by GATE Overflow.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.28.13, Routing: GATE IT 2007 | Question: 63, PDF p. 147 (key p. 165)",
+          "answer": "C (4.53 hops)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.11, chapter PDF p. 2 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "D (5.26 hops)",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Enumeration of hops via the root for 105 unordered router pairs",
+          "answer": "C (4.53 hops)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "madeeasy-cn-routing-4-12",
+      "contentSha256": "1fa7695c5ef5b223684d823b78015d95efad641b0ade6259839d7b005c326d6a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "D has three matches. Basic SMTP lacks inherent client authentication, HTTP requests are stateless, and FTP separates control from data. The closest alternative, C, matches DNS to distributed servers and IMAP to structured mailboxes.",
+      "note": "In clause (v), read 'server side' for 'serve side'. This typo also appears in the printed question.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.23.10, Network Protocols: GATE IT 2007 | Question: 69, PDF p. 141 (key p. 165)",
+          "answer": "D (SMTP-(i), HTTP-(ii), FTP-(v) among the matches)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.12, chapter PDF p. 2 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "D (SMTP-(i), HTTP-(ii), FTP-(v) among the matches)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "D (SMTP-(i), HTTP-(ii), FTP-(v) among the matches)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "madeeasy-cn-routing-4-13",
+      "contentSha256": "a5ef810417fa55a0c92cf682cd1cdcac4ef3fb8d3420c1e99419a29d897dcd32",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "SMTP handles application mail, BGP exchanges network-layer routing information over TCP, TCP is transport, and PPP handles the data link.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.23.3, Network Protocols: GATE CSE 2007 | Question: 70, PDF p. 140 (key p. 165)",
+          "answer": "B (P-1, Q-4, R-2, S-3)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.13, chapter PDF p. 2 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "B (P-1, Q-4, R-2, S-3)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q70",
+          "answer": "B (P-1, Q-4, R-2, S-3)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Protocol roles and BGP transport in RFC 4271 (https://www.rfc-editor.org/rfc/rfc4271.html)",
+          "answer": "B (P-1, Q-4, R-2, S-3)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "madeeasy-cn-routing-4-14",
+      "contentSha256": "77a6825e07f87251e7bf8687d26167211849c6c15a381b43a4b61373c01c86df",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Count-to-infinity affects DV. Every router participates in DV or computes its own paths in LS, so S2 and S3 are false. In the model used here, DV exchanges vectors with neighbors while LS floods link-state updates throughout the network.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.28.14, Routing: GATE IT 2008 | Question: 67, PDF p. 147–148 (key p. 165)",
+          "answer": "D (S1 and S4 only)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.14, chapter PDF p. 2 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "D (S1 and S4 only)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "D (S1 and S4 only)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "madeeasy-cn-routing-4-15",
+      "contentSha256": "a19e4275b48c9586e6b4a4994c26565b604e146301b4bb95a772b4866144197e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "From B, A/C/D are one hop away, E is two hops via C, and F is two hops via D. The displayed table for B is the only table with all correct distances and next hops.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.28.11, Routing: GATE IT 2005 | Question: 85a, PDF p. 146–147 (key p. 165)",
+          "answer": "C (routing table for B)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.15, chapter PDF p. 2 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "C (routing table for B)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "All-pairs shortest paths on the app graph, with explicit next-hop checks",
+          "answer": "C (routing table for B)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "madeeasy-cn-routing-4-16",
+      "contentSha256": "10926270a7240756a2caa22cc9e10f7fb6dcad30c264e01682949b95a68d84c8",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "After A goes down, B, C, D, E and F continue using stale reports. Synchronous distance-vector updates give F costs of 3, 3, 3, 4, 5 at rounds 0 through 4 and 101 at round 100.",
+      "note": "Made Easy keys B (infinity). The stated algorithm allows stale indirect routes and specifies no metric cap or split horizon. It counts upward for finite rounds. Clarify 'at time t + 100' as 'after 100 synchronous update intervals'.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.28.12, Routing: GATE IT 2005 | Question: 85b, PDF p. 147 (key p. 165)",
+          "answer": "A (greater than 100 but finite)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.16, chapter PDF p. 2 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "B (infinity)",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "100 synchronous Bellman-Ford rounds on the app graph after removing A",
+          "answer": "A (greater than 100 but finite)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "madeeasy-cn-routing-4-17",
+      "contentSha256": "73d023e0dab30d760299e80952abc55f33b4699e6a7890e4ef62e6a8fd752107",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Replenishment continues while sending. The bucket drains at 10 − 2 = 8 Mb/s, so the initial 16 Mb permits 2 seconds at full rate.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.36.1, Token Bucket: GATE CSE 2008 | Question: 58, PDF p. 163 (key p. 166)",
+          "answer": "B (2 seconds)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.17, chapter PDF p. 2 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "B (2 seconds)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q58",
+          "answer": "B (2 seconds)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "B (2 seconds)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "madeeasy-cn-routing-4-18",
+      "contentSha256": "5b29ef278a2c411703b7b0ce075fe2109cfe67e8e608c23a7d50b9adb4cb3b92",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Ping uses ICMP Echo handled by the network stack and needs no application server process. The other examples conventionally use application services in a client-server arrangement.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.18, chapter PDF p. 2 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "D (Ping)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q16",
+          "answer": "D (Ping)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "D (Ping)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 19,
+      "id": "madeeasy-cn-routing-4-19",
+      "contentSha256": "5538fcfba57b36833984909247197ebf038a4746c2051fba4b4acf3e20881f37",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "R1–R2 costs 6 versus 5 via R3. R4–R6 costs 8 versus 5 via R5. All other links have minimum cost between their endpoints, giving two unused links.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.11.1, Distance Vector Routing: GATE CSE 2010 | Question: 54, PDF p. 121–122 (key p. 165)",
+          "answer": "C (2 unused links)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.19, chapter PDF p. 2 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "C (2 unused links)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q54",
+          "answer": "C (2 unused links)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "All-pairs shortest paths on the six-router app diagram",
+          "answer": "C (2 unused links)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "madeeasy-cn-routing-4-20",
+      "contentSha256": "8ce8d9a1da205be42205c34d92153b2f1241d27be935966631276e18515b3e59",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "With R1–R2 and R4–R6 each reduced to 2, R5–R6 costs 4 versus 3 via R4. All other links have minimum cost between their endpoints.",
+      "note": "The app repeats the first question's prompt, 'After all the routing tables stabilize, how many links in the network will never be used for carrying any data?' Remove that sentence here and retain the follow-up about changing the weights to 2.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.11.2, Distance Vector Routing: GATE CSE 2010 | Question: 55, PDF p. 122 (key p. 165)",
+          "answer": "B (1 unused link)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.20, chapter PDF p. 2 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "B (1 unused link)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q55",
+          "answer": "B (1 unused link)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "All-pairs shortest paths after replacing the two unused link costs with 2",
+          "answer": "B (1 unused link)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "madeeasy-cn-routing-4-21",
+      "contentSha256": "a3d2930ae480414138afb257a23206f5c738a80097dbb6e466fd3cc96a632060",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "SMTP submits mail, POP downloads mail from a mailbox, and HTTP serves the webmail interface.",
+      "note": "Restore the missing final question from the original paper, 'Which is the application level protocol used in each activity?'",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.1.2, Application Layer Protocols: GATE CSE 2011 | Question: 4, PDF p. 111 (key p. 165)",
+          "answer": "C (m1 SMTP, m2 POP, m3 HTTP)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.21, chapter PDF p. 2 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "C (m1 SMTP, m2 POP, m3 HTTP)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q4",
+          "answer": "C (m1 SMTP, m2 POP, m3 HTTP)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "C (m1 SMTP, m2 POP, m3 HTTP)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 22,
+      "id": "madeeasy-cn-routing-4-22",
+      "contentSha256": "aeef87d372a3f0d6715f1b01218fd3ab99524b21870812b60d637c3340efc185",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "N3 adds 2 to the advertised vectors from N2 and N4 and minimizes by destination. The resulting N1 and N5 distances are 3 and 5 through N2.",
+      "note": "Rename the distance-vector row B5 to N5. The diagram and original paper identify this node as N5.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.11.3, Distance Vector Routing: GATE CSE 2011 | Question: 52, PDF p. 122–123 (key p. 165)",
+          "answer": "A ((3, 2, 0, 2, 5))",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.22, chapter PDF p. 3 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "A ((3, 2, 0, 2, 5))",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q52",
+          "answer": "A ((3, 2, 0, 2, 5))",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "One synchronous distance-vector round using the app diagram and table",
+          "answer": "A ((3, 2, 0, 2, 5))",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 23,
+      "id": "madeeasy-cn-routing-4-23",
+      "contentSha256": "7f78d6682c76ab5bb664d2881973fef94647fc9300cb4f581ca5653abb2039bd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "After the first synchronous round, N4 still advertises 8 to N1. After N1–N2 fails, N2 advertises infinity to N1. In the next round N3 takes the stale route through N4 at cost 2 + 8 = 10.",
+      "note": "Rename the distance-vector row B5 to N5 in this copy of the common passage. The diagram and original paper identify this node as N5.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.11.4, Distance Vector Routing: GATE CSE 2011 | Question: 53, PDF p. 123 (key p. 165)",
+          "answer": "C (10)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.23, chapter PDF p. 3 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "C (10)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q53",
+          "answer": "C (10)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Second synchronous distance-vector round using the app diagram and failed link",
+          "answer": "C (10)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 24,
+      "id": "madeeasy-cn-routing-4-24",
+      "contentSha256": "875eb78381a95b7c3897b858967a2da421c8c9a3dc2325edb2c46067c98a5d60",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The application-layer PDU is a message. Segment, datagram and frame name units at lower layers in the Internet stack.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.1.3, Application Layer Protocols: GATE CSE 2012 | Question: 10, PDF p. 111 (key p. 165)",
+          "answer": "C (Message)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.24, chapter PDF p. 3 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "C (Message)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q10",
+          "answer": "C (Message)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "C (Message)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 25,
+      "id": "madeeasy-cn-routing-4-25",
+      "contentSha256": "f88f2437c0869698063f4581e96b5f6f4e728e5dcd692fdd617c94b4e3ddca97",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The exam uses the conventional mappings of real-time multimedia to UDP, FTP to TCP, ordinary DNS queries to UDP, and email protocols to TCP.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.37.2, UDP: GATE CSE 2013 | Question: 12, PDF p. 164 (key p. 166)",
+          "answer": "C (UDP, TCP, UDP, TCP)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.25, chapter PDF p. 3 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "C (UDP, TCP, UDP, TCP)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "C (UDP, TCP, UDP, TCP)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 26,
+      "id": "madeeasy-cn-routing-4-26",
+      "contentSha256": "9cc9ce8ae452526b5690e038bbc18bed780101046e29447bb62dfdca4f8aea97",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The source, both routers and destination each process the packet at the network layer. The data-link layer is used at both ends of each of the three links, giving six visits.",
+      "note": "Use 'two intermediate routers labelled R' and 'during a transmission from S to D' in the stem.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.22.3, Network Layer: GATE CSE 2013 | Question: 14, PDF p. 138 (key p. 165)",
+          "answer": "C (4 network-layer visits and 6 data-link-layer visits)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.26, chapter PDF p. 3 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "C (4 network-layer visits and 6 data-link-layer visits)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Layer-by-layer traversal of the app diagram",
+          "answer": "C (4 network-layer visits and 6 data-link-layer visits)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 27,
+      "id": "madeeasy-cn-routing-4-27",
+      "contentSha256": "301ca261f99c96a5d483d8980f7bbd532def33d9a53eb33103a39c9d85693c88",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "In the standard comparison, LS runs a full topology shortest-path computation at each router and converges quickly after flooding changes. DV with split horizon can still have loops involving three or more routers.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.28.2, Routing: GATE CSE 2014 | Set 1 | Question: 23, PDF p. 144 (key p. 165)",
+          "answer": "D (S1 and S3 true, S2 false)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.27, chapter PDF p. 3 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "D (S1 and S3 true, S2 false)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 CS set 1, CS Q23 and Session 1 key. https://gate.iitk.ac.in/GATE2023/doc/papers/2014/cs_2014.pdf",
+          "answer": "D (S1 and S3 true, S2 false)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "D (S1 and S3 true, S2 false)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 28,
+      "id": "madeeasy-cn-routing-4-28",
+      "contentSha256": "2d3a0957c7a394bd0823838f6421aa86dd31e268abc8551c27feea5ffdb16c6d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "RIP advertises hop-count distance vectors. OSPF floods link states and computes shortest paths with Dijkstra's algorithm.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.28.3, Routing: GATE CSE 2014 | Set 2 | Question: 23, PDF p. 144 (key p. 165)",
+          "answer": "A (RIP is distance vector and OSPF is link state)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.28, chapter PDF p. 3 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "A (RIP is distance vector and OSPF is link state)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 CS set 2, CS Q23 and Session 2 key. https://gate.iitk.ac.in/GATE2023/doc/papers/2014/cs_2014.pdf",
+          "answer": "A (RIP is distance vector and OSPF is link state)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "A (RIP is distance vector and OSPF is link state)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 29,
+      "id": "madeeasy-cn-routing-4-29",
+      "contentSha256": "952a2629d473ca6548284cc84ed69b8fe47a072c25fb1c5aaf4a8c678f159d70",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Session-layer encryption covers the HTTP request and its URL. A transit router still sees the TCP port numbers and endpoint IP addresses. Link-layer addresses identify the local hop.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.29, chapter PDF p. 3 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "C (only I2 and I3)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 CS set 2, CS Q27 (printed p. 6/15) and Session 2 key. https://gate.iitk.ac.in/GATE2023/doc/papers/2014/cs_2014.pdf",
+          "answer": "C (only I2 and I3)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "C (only I2 and I3)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 30,
+      "id": "madeeasy-cn-routing-4-30",
+      "contentSha256": "a5ad8555509908868625b3dd0e047bd8ca2c08896cbe1a76eb69121754119126",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "A browser can use multiple TCP connections to retrieve one page and its objects. FTP uses a control connection plus a separate data connection.",
+      "note": "The intended comparison is within one application task. Clarify the stem with 'as part of the same application task', since separate Telnet or SMTP sessions can also use concurrent connections.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.23.4, Network Protocols: GATE CSE 2015 | Set 1 | Question: 17, PDF p. 140 (key p. 165)",
+          "answer": "A (HTTP and FTP)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.30, chapter PDF p. 3 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "A (HTTP and FTP)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "A (HTTP and FTP)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 31,
+      "id": "madeeasy-cn-routing-4-31",
+      "contentSha256": "7edde1bf7410c4d377499d0ae92015b4182d445c41c11ac9715cb12e338f0cbf",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Resolve the server hostname first, open the TCP connection with SYN, then transmit the HTTP request on that connection.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.35.6, TCP: GATE CSE 2016 | Set 2 | Question: 25, PDF p. 160 (key p. 166)",
+          "answer": "C (DNS query, TCP SYN, HTTP GET)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.31, chapter PDF p. 3 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "C (DNS query, TCP SYN, HTTP GET)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "C (DNS query, TCP SYN, HTTP GET)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 32,
+      "id": "madeeasy-cn-routing-4-32",
+      "contentSha256": "b5389a134308fdf0db25b70eb967e971bfe6f1d962ae4d85c825829cbf01abec",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "144",
+      "status": "verified",
+      "reason": "Each full non-final fragment carries 8 × floor((600 − 20)/8) = 576 bytes of IP payload. The third starts at byte 1152 of the original IP payload, so its offset is 1152/8 = 144.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.16.4, IP Addressing: GATE CSE 2018 | Question: 54, PDF p. 131 (key p. 165)",
+          "answer": "144",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.32, chapter PDF p. 3 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "144",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2018 CS Q54 and final key (144 to 144). https://gate.iitk.ac.in/GATE2023/doc/papers/2018/cs_2018.pdf",
+          "answer": "144",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "IPv4 fragmentation and 8-byte offset arithmetic",
+          "answer": "144",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 33,
+      "id": "madeeasy-cn-routing-4-33",
+      "contentSha256": "b6c73a18482297778ae6656b61706cd6bd94269f21eb934ce355334a199a4eda",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "SMTP sends mail and POP3 retrieves it from a mailbox. SMTP paired with MIME fails because MIME defines message formatting.",
+      "note": "Made Easy prints (d) twice. The second option 'SMTP, MIME' should be labelled (b), and the last option 'SMTP, POP3' is D in the app. GATE Overflow and the original exam use option B for that same pair.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.1.5, Application Layer Protocols: GATE CSE 2019 | Question: 16, PDF p. 112 (key p. 165)",
+          "answer": "B (SMTP, POP3) → app D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.33, chapter PDF p. 3 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "D (SMTP, POP3)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2019 CS set 2, CS Q16 and final key. https://gate2026.iitg.ac.in/doc/download/2019/cs_2019.pdf",
+          "answer": "B (SMTP, POP3) → app D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "D (SMTP, POP3)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 34,
+      "id": "madeeasy-cn-routing-4-34",
+      "contentSha256": "ced8621fb4ba419e8f9c00f921266de7c1f8010c03be1d5db91ff716668b1765",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "IPv4 forwarding decrements TTL and updates the header checksum. A router can use static routes. Reassembly of fragments happens at the IP destination. Thus only II holds.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.28.6, Routing: GATE CSE 2020 | Question: 15, PDF p. 145 (key p. 165)",
+          "answer": "D (II only)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.34, chapter PDF p. 3 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "D (II only)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2020 CS Q15 and Session 6 answer key. https://gate2026.iitg.ac.in/doc/download/2020/cs_2020.pdf",
+          "answer": "D (II only)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "D (II only)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 35,
+      "id": "madeeasy-cn-routing-4-35",
+      "contentSha256": "ee17c0f63539190067415059dfb152abe067a2c87636b36ecac78d2870fa0391",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "6",
+      "status": "verified",
+      "reason": "Non-persistent HTTP needs a separate TCP connection for the base page and for each of the five distinct image objects, for six connections.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.1.6, Application Layer Protocols: GATE CSE 2020 | Question: 25, PDF p. 112 (key p. 165)",
+          "answer": "6",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.35, chapter PDF p. 3 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "6",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2020 CS Q25 and Session 6 answer key (6 to 6). https://gate2026.iitg.ac.in/doc/download/2020/cs_2020.pdf",
+          "answer": "6",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "6",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 36,
+      "id": "madeeasy-cn-routing-4-36",
+      "contentSha256": "ab0fe5e4901e7d6a1397a5f31864edfa9b316e8a7e73c3dc1a824cbfbcbcfd3f",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "For P, candidate costs through X/Y/Z are 10/8/10, so the next hop is Y. For Q, they are 7/8/13, so the cost is 7 through X.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.11.5, Distance Vector Routing: GATE CSE 2021 | Set 2 | Question: 45, PDF p. 124 (key p. 165)",
+          "answer": "B, C (R to Q costs 7 and the next hop to P is Y) → app A, D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.36, chapter PDF p. 3, 4 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "A, D (R to Q costs 7 and the next hop to P is Y)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2021 CS set 2 Q45, paper p. 37 and answer key p. 6 in the merged PDF. https://gate2026.iitg.ac.in/doc/download/Answer_keys2021/cs_merged_2021.pdf (paper: https://gate.iitk.ac.in/GATE2023/doc/papers/2021/cs_2021.pdf)",
+          "answer": "B, C (R to Q costs 7 and the next hop to P is Y) → app A, D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Bellman-Ford minima from the costs in the app question",
+          "answer": "A, D (R to Q costs 7 and the next hop to P is Y)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 37,
+      "id": "madeeasy-cn-routing-4-37",
+      "contentSha256": "014caacff25d1e175e7d9b8f03a1454fad8fe4d134479589a5904358e19cd2ea",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Count the two Ethernet segments, the web server's link, the top-to-right router link, and the two internal links from the firewall to routers. The Internet-facing firewall link is outside the enterprise.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.13.4, Ethernet: GATE CSE 2022 | Question: 12, PDF p. 127–128 (key p. 165)",
+          "answer": "C (6 subnets)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.37, chapter PDF p. 4 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "C (6 subnets)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2022 master CS Q22, final key p. 1. https://gate2026.iitg.ac.in/doc/download/Answer_keys2022/cs_2022.pdf (paper: https://gate2024.iisc.ac.in/wp-content/uploads/2022/cs_2022.pdf)",
+          "answer": "C (6 subnets)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Count of LANs and point-to-point subnets in the app diagram",
+          "answer": "C (6 subnets)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 38,
+      "id": "madeeasy-cn-routing-4-38",
+      "contentSha256": "6fa3685958516a9ce95fa5779e97e32f548c5e69a8f8d1e273de3fb288bb92d9",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "4",
+      "status": "verified",
+      "reason": "In the exam's delegation model, the resolver queries the root, .in, org.in and gate.org.in servers in turn. Each step contributes one query-response pair.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.1.7, Application Layer Protocols: GATE CSE 2022 | Question: 25, PDF p. 112 (key p. 165)",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.38, chapter PDF p. 4 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2022 master CS Q35, final key p. 1 (4 to 4). https://gate2026.iitg.ac.in/doc/download/Answer_keys2022/cs_2022.pdf (paper: https://gate2024.iisc.ac.in/wp-content/uploads/2022/cs_2022.pdf)",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "4",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 39,
+      "id": "madeeasy-cn-routing-4-39",
+      "contentSha256": "cdc1f5c6778d33dcb85bc5a39a377cd42e987402110d29a907bac7f4240d85e4",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "The existing 12.20.164.0/22 already covers 12.20.166.0/23. The adjacent 12.20.168.0/23 and 12.20.170.0/23 combine into 12.20.168.0/22. The two /22s cover precisely the non-default address blocks.",
+      "note": "The editor initially classified this as MCQ. The official key identifies it as MSQ and requires both prefixes. To make the intent explicit, ask which prefixes together cover the non-default subnets for reachability advertisement. The more-specific routes still determine internal next hops.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.34.13, Subnetting: GATE CSE 2022 | Question: 45, PDF p. 156 (key p. 165)",
+          "answer": "B, D (12.20.164.0/22 and 12.20.168.0/22)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.39, chapter PDF p. 4 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "B, D (12.20.164.0/22 and 12.20.168.0/22)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2022 master CS Q55, final key p. 2 (MSQ). https://gate2026.iitg.ac.in/doc/download/Answer_keys2022/cs_2022.pdf (paper: https://gate2024.iisc.ac.in/wp-content/uploads/2022/cs_2022.pdf)",
+          "answer": "B, D (12.20.164.0/22 and 12.20.168.0/22)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Python ipaddress collapse_addresses on the four non-default destination prefixes",
+          "answer": "B, D (12.20.164.0/22 and 12.20.168.0/22)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 40,
+      "id": "madeeasy-cn-routing-4-40",
+      "contentSha256": "deac7c6e9b82b3ef0e5a9059eab87a7c388d7f8ae43bece25d4952903017e4a1",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0.5",
+      "status": "verified-with-note",
+      "reason": "After Q–R fails, a loop starts if P advertises its stale path to R before Q advertises the failure. With exchangeable continuous times for the two next updates, either order has probability 1/2.",
+      "note": "The published keys assume symmetric update timing. Equal average rates alone do not imply equal chances of sending first. Specify that the times to the next P and Q updates are independent and identically distributed with no ties.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.11.6, Distance Vector Routing: GATE CSE 2022 | Question: 47, PDF p. 124 (key p. 165)",
+          "answer": "0.5",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.40, chapter PDF p. 4 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "0.5",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2022 master CS Q57, final key p. 2 (0.5 to 0.5). https://gate2026.iitg.ac.in/doc/download/Answer_keys2022/cs_2022.pdf (paper: https://gate2024.iisc.ac.in/wp-content/uploads/2022/cs_2022.pdf)",
+          "answer": "0.5",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Ordering of the first two distance-vector updates after a link failure",
+          "answer": "0.5",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 41,
+      "id": "madeeasy-cn-routing-4-41",
+      "contentSha256": "c215d6b7ed68e9c5a27d317659e5b0edfd56ef181129f3afae8682a8e3ab4624",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "C"
+      ],
+      "status": "verified",
+      "reason": "OSPF is an intra-domain link-state protocol. It runs Dijkstra's algorithm and supports hierarchical areas, so the Bellman-Ford and inter-domain claims are false.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.28.7, Routing: GATE CSE 2023 | Question: 15, PDF p. 145 (key p. 165)",
+          "answer": "A, C (Bellman-Ford and inter-domain claims are incorrect)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.41, chapter PDF p. 4 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "A, C (Bellman-Ford and inter-domain claims are incorrect)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2023 master CS Q25, final key p. 1. https://gate2026.iitg.ac.in/doc/download/Answer_keys2023/CS_ANS_GATE2023.pdf (paper: https://gate2026.iitg.ac.in/doc/download/2023/cs_2023.pdf)",
+          "answer": "A, C (Bellman-Ford and inter-domain claims are incorrect)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "A, C (Bellman-Ford and inter-domain claims are incorrect)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 42,
+      "id": "madeeasy-cn-routing-4-42",
+      "contentSha256": "037db7e6aa539244ebccfc3fde56048031a5df0009b6389309c7fd2591cf3184",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "DNS resolves the server address before the TCP SYN. The browser requests the index page after connecting and discovers the image URL in that page before requesting it.",
+      "note": "Restore the original phrase 'opens a single TCP connection'. The app omits 'TCP', although event (iv) still specifies a TCP SYN.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.23.9, Network Protocols: GATE CSE 2024 | Set 1 | Question: 6, PDF p. 141 (key p. 165)",
+          "answer": "C ((ii), (iv), (i), (iii))",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.42, chapter PDF p. 4 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "C ((ii), (iv), (i), (iii))",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2024 master CS1 Q16, final key p. 1. https://gate2026.iitg.ac.in/doc/download/2024/CS1FinalAnswerKey.pdf (paper: https://gate2026.iitg.ac.in/doc/download/2024/CS124S5.pdf)",
+          "answer": "C ((ii), (iv), (i), (iii))",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution of the app question",
+          "answer": "C ((ii), (iv), (i), (iii))",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 43,
+      "id": "madeeasy-cn-routing-4-43",
+      "contentSha256": "2dcb2d4e13c1e131ca47a3b4bd2d774df7ce36ae5583ee42af432b49b5b54439",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "There are 1,000 chunks of 8,000 bits. Each takes 0.008 seconds on a link. With pipelined store-and-forward over two equal links, the last chunk completes after 1,001 transmission intervals, at 8.008 seconds.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf item 2.28.8, Routing: GATE CSE 2024 | Set 1 | Question: 26, PDF p. 145 (key p. 165)",
+          "answer": "B (8.008 seconds) → app C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Routing and Application Layer Q4.43, chapter PDF p. 4 (answer table CN.pdf PDF p. 9, book p. 716)",
+          "answer": "C (8.008 seconds)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2024 master CS1 Q36, final key p. 2. https://gate2026.iitg.ac.in/doc/download/2024/CS1FinalAnswerKey.pdf (paper: https://gate2026.iitg.ac.in/doc/download/2024/CS124S5.pdf)",
+          "answer": "B (8.008 seconds) → app C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Store-and-forward pipeline timing calculation",
+          "answer": "C (8.008 seconds)",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

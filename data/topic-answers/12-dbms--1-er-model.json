@@ -1,0 +1,492 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "12. DBMS",
+  "chapter": "1. ER Model",
+  "slug": "12-dbms--1-er-model",
+  "reviewedAt": "2026-11-26",
+  "sources": {
+    "gateOverflowPdf": {
+      "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume3.pdf",
+      "sha256": "5c552941136eb96612fabec8a5b2cb67fc07c17023ce15628408ca27d6640c24",
+      "chapter": "3 Databases",
+      "answerKeyPage": 273
+    },
+    "madeEasyPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\12. DBMS\\1. ER Model.pdf",
+      "sha256": "aab96c4034d58b63448c7e115b78a124483163c42875a59c7c4b4dab2a917991",
+      "questionPages": [1, 2]
+    },
+    "madeEasySolutionsPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\All Subject Solutions Keys\\DBMS.pdf",
+      "sha256": "f7952d9ef31419ebae3ce10cd3a4d40784fc81c4176e3a5fb3a61ec205aeb2ca",
+      "answerKeyPage": 2,
+      "answerKeyBookPage": 600
+    },
+    "yearPapers": "data/papers/*.json (verified copies linked by source.copiedFrom.questionId)"
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "madeeasy-dbms-er-model-1-1",
+      "contentSha256": "599cee76b53bb0a5f205427ec33895c085ffc8ed8c473c14b5caba84bc937ac2",
+      "questionType": "MCQ",
+      "correctOptions": ["A"],
+      "status": "verified-with-note",
+      "reason": "Employee implements the shared ID and name accessors. It declares the salary operation abstract, and Manager, Engineer, and Secretary implement their category-specific calculations. This selects (i), (iv), (vi), and (viii).",
+      "note": "The stem uses computeSalary, while statements (vi) through (viii) use getSalary for the same operation. Use computeSalary throughout those statements. The 2004 CS paper scan reproduces the mismatch. No matching question was found in the three local GATE Overflow volumes.",
+      "sources": [
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.2 (book p.600), ER Model Q1.1",
+          "answer": "A = (i), (iv), (vi), (viii)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q34, compared with the paper scan pp.4–5",
+          "answer": "A = (i), (iv), (vi), (viii)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Class hierarchy and required operations in the app",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "madeeasy-dbms-er-model-1-2",
+      "contentSha256": "703a207c3ba064490a58c1b4e95c018d78989351e3945989738a77b4055b5aa8",
+      "questionType": "MCQ",
+      "correctOptions": ["B"],
+      "status": "verified-with-note",
+      "reason": "Store E1(A11,A12,A13), E2(A21,A22,A11), and the multivalued attribute in E2_A23(A21,A23). The foreign key A11 in E2 represents R. Keeping A22 alongside repeated A23 values would leave A22 dependent on only A21 of the composite key and violate 3NF.",
+      "note": "The app tags this as CS. The matching paper is GATE IT 2004 Q73. The linked year-paper JSON calls A13 multivalued. Its scanned paper, Made Easy, GATE Overflow, and the app agree that A23 is multivalued in E2. The year-paper variant still gives three tables and swaps the distractors 4 and 5.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.9.11, GATE IT 2004 Q73, pp.211–212 (key p.273), https://gateoverflow.in/3717/gate-it-2004-question-73",
+          "answer": "B = 3",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.2 (book p.600), ER Model Q1.2",
+          "answer": "B = 3",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q73, compared with the paper scan p.12",
+          "answer": "B = 3",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Relational mapping of the app's 1:m diagram and multivalued attribute",
+          "answer": "B = 3",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "madeeasy-dbms-er-model-1-3",
+      "contentSha256": "6bb521d84b2b4aa2536fd61dce0e69f9c2ca182dc648ca02611ada4e486e42a0",
+      "questionType": "MCQ",
+      "correctOptions": ["C"],
+      "status": "verified-with-note",
+      "reason": "The rent payment is tied to a particular person-room occupancy. Lodging is the relationship that pairs the person with the room, so the payment belongs on Lodging.",
+      "note": "The app tags this as CS. The matching paper is GATE IT 2005 Q21.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.9.12, GATE IT 2005 Q21, p.212 (key p.273), https://gateoverflow.in/3766/gate-it-2005-question-21",
+          "answer": "C = Lodging",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.2 (book p.600), ER Model Q1.3",
+          "answer": "C = Lodging",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "App's Hotel Room–Lodging–Person diagram and many-to-many constraint",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "madeeasy-dbms-er-model-1-4",
+      "contentSha256": "401d29d1f009c8e0040ae82d5c1fceffc7337bfd98c13f7d6e38e80dd49ea2a7",
+      "questionType": "MCQ",
+      "correctOptions": ["B"],
+      "status": "verified",
+      "reason": "Use one table per entity. Store the one-side key on the many side for R1 and create a table of the two entity keys for the independent many-to-many R2. The minimum is three tables.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.9.1, GATE CS 2005 Q75, p.209 (key p.273), https://gateoverflow.in/1398/gate-cse-2005-question-75",
+          "answer": "B = 3",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.2 (book p.600), ER Model Q1.4",
+          "answer": "B = 3",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q75",
+          "answer": "B = 3",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Relational mapping of the app's two relationships",
+          "answer": "B = 3",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "madeeasy-dbms-er-model-1-5",
+      "contentSha256": "31ce525c20a6b95342c073df91349af49751344bfd112ec710912ada0f3ca733",
+      "questionType": "MCQ",
+      "correctOptions": ["C"],
+      "status": "verified-with-note",
+      "reason": "Deleting A=2 removes rows (5,2) and (7,2). Deleting A=5 then removes (9,5). The cascade ends there. SQLite ON DELETE CASCADE produced the same additional deletions.",
+      "note": "The app and Made Easy print D as 1. GATE Overflow and the 2005 CS paper give D as (3, 4), (4, 3) and (6, 4). The app's C also lacks a comma between the first two tuples. Its intended wording is (5, 2), (7, 2) and (9, 5). C is correct.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.17.2, GATE CS 2005 Q76, p.222 (key p.273), https://gateoverflow.in/1399/gate-cse-2005-question-76",
+          "answer": "C = (5, 2), (7, 2) and (9, 5)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.2 (book p.600), ER Model Q1.5",
+          "answer": "C = (5, 2), (7, 2) and (9, 5)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q76, compared with the paper scan p.10",
+          "answer": "C = (5, 2), (7, 2) and (9, 5)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Manual cascade trace and in-memory SQLite self-referencing foreign key",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "madeeasy-dbms-er-model-1-6",
+      "contentSha256": "6b58b6833f4d672895dfec2e27c6c4339d7b4a19210152a70250b5e360803f87",
+      "questionType": "MCQ",
+      "correctOptions": ["B"],
+      "status": "verified",
+      "reason": "M, P, and weak entity N each need a table. R1 embeds P1 in M because M participates totally on the many side. R2 embeds P1 in N as part of the weak key (P1,N1). The three entity tables also represent both relationships.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.9.2, GATE CS 2008 Q82, p.209 (key p.273), https://gateoverflow.in/390/gate-cse-2008-question-82",
+          "answer": "B = 3",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.2 (book p.600), ER Model Q1.6",
+          "answer": "B = 3",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q82",
+          "answer": "B = 3",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Arrows, total participation lines, and weak-entity notation in the app diagram",
+          "answer": "B = 3",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "madeeasy-dbms-er-model-1-7",
+      "contentSha256": "f3f520c7004b6f6e0b74c863a10d8c480634e0ea61ae155d1fe52f937882915c",
+      "questionType": "MCQ",
+      "correctOptions": ["A"],
+      "status": "verified",
+      "reason": "The three schemas are M(M1,M2,M3,P1), P(P1,P2), and N(P1,N1,N2). In M, P1 is the foreign key that encodes R1. A lists precisely the attributes of M.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.9.3, GATE CS 2008 Q83, p.209 (key p.273), https://gateoverflow.in/87025/gate-cse-2008-question-83",
+          "answer": "A = {M1, M2, M3, P1}",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.2 (book p.600), ER Model Q1.7",
+          "answer": "A = {M1, M2, M3, P1}",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q83",
+          "answer": "A = {M1, M2, M3, P1}",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Three schemas derived from the app diagram and compared with all four options",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "madeeasy-dbms-er-model-1-8",
+      "contentSha256": "a0e795ea96fc3e0405c82d86e1b2ece0bedf5226f0fbb50b3b3846dce636ba31",
+      "questionType": "MCQ",
+      "correctOptions": ["C"],
+      "status": "verified",
+      "reason": "Basic ER allows both composite and multivalued attributes. A cell of a basic relational table holds one atomic value or the NULL marker allowed by the question, so the claim that it can hold several values is false.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.9.4, GATE CS 2012 Q14, pp.209–210 (key p.273), https://gateoverflow.in/46/gate-cse-2012-question-14",
+          "answer": "C = In a row of a relational table, an attribute can have more than one value",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.2 (book p.600), ER Model Q1.8",
+          "answer": "C = a relational row attribute can have more than one value",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q14",
+          "answer": "C = a relational row attribute can have more than one value",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Basic ER attributes and the atomic-value requirement of first normal form",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "madeeasy-dbms-er-model-1-9",
+      "contentSha256": "60a717374c00e40a423c217691c20b6a3c9254b92846344fa3b097b248fb12a9",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "4",
+      "status": "verified",
+      "reason": "Use E1(a11,a12), E2(a21,a22), and E3(a31,a32,a11). The foreign key a11 in E3 represents R13. The many-to-many R12 requires its own relation (a11,a21). Each relation is in 3NF under the given dependencies, for a total of four.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.9.5, GATE CS 2015 Set 1 Q41, p.210 (key p.273), https://gateoverflow.in/8309/gate-cse-2015-set-1-question-41",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.2 (book p.600), ER Model Q1.9",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Three entity relations and one many-to-many relation",
+          "answer": "4",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "madeeasy-dbms-er-model-1-10",
+      "contentSha256": "f63009de062a94aaa1fffa5b50100ad821d5499548a3f0f9cdfc4f03d0e155a0",
+      "questionType": "MCQ",
+      "correctOptions": ["C"],
+      "status": "verified-with-note",
+      "reason": "For many-to-one R with total participation of A, every A has exactly one B. Store B's key as a non-null foreign key on A and recover R from the keys in A. The official single-choice key is C.",
+      "note": "The stem leaves NULL policy unspecified. With D, a nullable foreign key on A also permits the merge in SQL. Recover R from rows with a non-null key. SQLite verified both mappings. C is the official answer and is unique if the stem adds 'without introducing NULLs'.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.9.6, GATE CS 2017 Set 2 Q17, p.210 (key p.273), https://gateoverflow.in/118157/gate-cse-2017-set-2-question-17",
+          "answer": "C = many-to-one with total participation of A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.2 (book p.600), ER Model Q1.10",
+          "answer": "C = many-to-one with total participation of A",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2017 CS Set 2 final answer key p.1 Q17, https://web.archive.org/web/20170709083153id_/http://www.gate.iitg.ac.in:80/2017answers/CS2.pdf",
+          "answer": "C = many-to-one with total participation of A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "In-memory SQLite merger and projection checks for total and partial participation",
+          "answer": "C with non-null keys. C and D when the foreign key can be nullable.",
+          "agrees": false
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "madeeasy-dbms-er-model-1-11",
+      "contentSha256": "a05e0d7340bbd2b2052b970dab668de29ef9e4ce9b5a6798469f8183345d052f",
+      "questionType": "MCQ",
+      "correctOptions": ["A"],
+      "status": "verified",
+      "reason": "Many-to-one gives each E1 entity at most one E2 partner, and total participation gives it at least one. Since E1 is larger, some E2 entity must have several E1 partners.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.9.7, GATE CS 2018 Q11, p.210 (key p.273), https://gateoverflow.in/204085/gate-cse-2018-question-11",
+          "answer": "A = Every entity in E1 is associated with exactly one entity in E2",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.2 (book p.600), ER Model Q1.11",
+          "answer": "A = Each E1 entity has exactly one E2 partner",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Cardinality proof and enumeration of small surjective many-to-one mappings",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "madeeasy-dbms-er-model-1-12",
+      "contentSha256": "fbc4dc40221d1c7adcef0c838a447783b9923c1b74a3c4aa6b2389afc656e78a",
+      "questionType": "MCQ",
+      "correctOptions": ["D"],
+      "status": "verified",
+      "reason": "A diamond represents a relationship, and a double border marks the identifying relationship that supports a weak entity. The app puts double/bold-bordered diamonds at D.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.9.8, GATE CS 2020 Q14, p.210 (key p.273), https://gateoverflow.in/333217/gate-cse-2020-question-14",
+          "answer": "A = Diamonds with double/bold border, app D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.2 (book p.600), ER Model Q1.12",
+          "answer": "D = Diamonds with double/bold border",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Chen notation for the identifying relationship",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "madeeasy-dbms-er-model-1-13",
+      "contentSha256": "b8495c1e3463fd73c7944138a240b41c7b7e47ad6c8e1f3048e31e6837ab2cb5",
+      "questionType": "MCQ",
+      "correctOptions": ["C"],
+      "status": "verified",
+      "reason": "Diagram (iv) connects Instructor–Course by Teaches, Student–Course by Registration, Course–Classroom by Allocation, and Instructor–Student by Guides. The app lists (iv) as C.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.9.9, GATE CS 2024 Set 1 Q10, p.211 (key p.273), https://gateoverflow.in/422832/gate-cse-2024-set-1-question-10",
+          "answer": "D = diagram (iv), app C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.2 (book p.600), ER Model Q1.13",
+          "answer": "C = diagram (iv)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Visual comparison of all four app diagrams against the four specified relationships",
+          "answer": "C = diagram (iv)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "madeeasy-dbms-er-model-1-14",
+      "contentSha256": "751e091d6932a4c4b36e07ada2ac9e8edf0aa0de29b0266a53b75bbb6979677b",
+      "questionType": "MCQ",
+      "correctOptions": ["C"],
+      "status": "verified",
+      "reason": "Every weak entity requires an owner to identify it, so every weak entity participates in the identifying relationship. An owner can exist with zero associated weak entities.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.9.10, GATE CS 2024 Set 2 Q10, p.211 (key p.273), https://gateoverflow.in/422887/gate-cse-2024-set-2-question-10",
+          "answer": "A = The weak entity set must have total participation in the identifying relationship, app C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.2 (book p.600), ER Model Q1.14",
+          "answer": "C = The weak entity set must have total participation in the identifying relationship",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Weak-entity identification and dependence on an owner",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

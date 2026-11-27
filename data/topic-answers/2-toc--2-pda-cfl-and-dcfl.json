@@ -1,0 +1,3418 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "2. TOC",
+  "chapter": "2. PDA - CFL and DCFL",
+  "slug": "2-toc--2-pda-cfl-and-dcfl",
+  "reviewedAt": "2026-11-26",
+  "sources": {
+    "gateOverflowPdfs": [
+      {
+        "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume2.pdf",
+        "sha256": "457f9e583b943b3c41e78d8431b09e322123b0d80765396af36ee2100196714f"
+      },
+      {
+        "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume3.pdf",
+        "sha256": "5c552941136eb96612fabec8a5b2cb67fc07c17023ce15628408ca27d6640c24"
+      }
+    ],
+    "madeEasyPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\2. TOC\\2. PDA - CFL and DCFL.pdf",
+      "sha256": "8c864ac9fa453f9bb92d95f38637a4a4dfa1ea44b17ec4e4f9bfc480c78bf853",
+      "answerKeyPage": 5,
+      "printedPage": 167
+    },
+    "madeEasySolutions": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\All Subject Solutions Keys\\TOC.pdf",
+      "sha256": "72413c52dd79a3db6d3801860058e137d8110c7b51d41dc9facde0b681149b9b",
+      "answerKeyPage": 2
+    },
+    "yearPapers": "data/papers/*.json",
+    "officialKeys": {
+      "isro2018": "https://es.scribd.com/document/431496006/ISRO-2018-KEYS",
+      "isro2020": "https://img.freejobalert.com/uploads/2020/02/Revised-Answer-Key-ISRO-Scientist-Engineer-SC-Computer-Science.pdf",
+      "gate2021": "https://gate2024.iisc.ac.in/wp-content/uploads/2021/cs1_2021.pdf",
+      "gate2024cs1": "https://gate2026.iitg.ac.in/doc/download/2024/CS1FinalAnswerKey.pdf",
+      "gate2024cs2": "https://gate2026.iitg.ac.in/doc/download/2024/CS2FinalAnswerKey.pdf",
+      "gate2025cs1": "https://gate2026.iitg.ac.in/doc/download/2025_Key/CS1_Keys.pdf",
+      "gate2025cs2": "https://gate2026.iitg.ac.in/doc/download/2025_Key/CS2_Keys.pdf",
+      "gate2026cs1": "https://gate2026.iitg.ac.in/doc/download/2026/Keys/CS1_Keys.pdf",
+      "gate2026cs2": "https://gate2026.iitg.ac.in/doc/download/2026/Keys/CS2_Keys.pdf"
+    },
+    "pageNumbers": "PDF pages are one-based. Official references use each exam key’s question numbering."
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "g49udchma",
+      "contentSha256": "b38ab33000cf4599f651bf8bae2c0568c61177a39c77fa9cf8cbfa26b898b6c1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "Sα → b shortens a two-symbol left side, so the displayed grammar is Type 0. With the book's Sα → bdb | bd, the intended answer is C.",
+      "status": "verified-with-note",
+      "reason": "The rule Sα → b contracts two symbols to one. This makes the displayed grammar unrestricted (Type 0). The corrected noncontracting rule Sα → bdb | bd gives the intended context-sensitive classification C.",
+      "note": "The displayed Sα → b is length-decreasing, so no listed class fits the grammar as written. GATE Overflow records X with no keyed option. Made Easy prints Sα → bdb | bd and keys C for that noncontracting grammar.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #2.12.10 (GATE CSE 1995 Q1.10), PDF p.135 and key p.187",
+          "answer": "X (no keyed option)",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.1 p.1, key p.5 (TOC solutions PDF p.2)",
+          "answer": "C (context-sensitive for the printed noncontracting rule)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "No listed option",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "5khlt3o88",
+      "contentSha256": "40a5356ea21c91cbc2468d1292e81caae7d8c498b9c0879e7e84221f3bf9305c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The CFLs {a^i b^i c^j} and {a^i b^j c^j} intersect in {a^n b^n c^n}, which fails the CFL pumping lemma. CFLs are closed under concatenation, union, and intersection with regular languages.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.4 (GATE CSE 1996 Q2.8), PDF p.333 and key p.402",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.2 p.1, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "sxlgjbze0",
+      "contentSha256": "c334c8a632ae7331e92bbd4a639492eaad422cf67f4106f660c1706be613045c",
+      "questionType": "SUBJECTIVE",
+      "status": "verified",
+      "reason": "A and B are nullable. Delete any subset of their three occurrences in ABAC, then replace the resulting unit production S → C by S → d. One equivalent grammar is S → ABAC | ABC | BAC | AAC | AC | BC | d, A → aA | a, B → bB | b, C → d.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #2.12.12 (GATE CSE 1996 Q11), PDF p.136 and key p.187",
+          "answer": "N/A (descriptive item)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.3 p.1, key p.5 (TOC solutions PDF p.2) and explanation on chapter p.5",
+          "answer": "Equivalent grammar in explanation 2.3",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "Equivalent ε-free and unit-free grammar in reason",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "ykoutik3a",
+      "contentSha256": "3f20698105e8b1bbc01c958976a7c9d31ba7d45d89ecfd13b9beb44dbd615f69",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "A DPDA pushes w until it reads c, then matches and pops its reversal. The unmarked palindrome languages over this alphabet lack a deterministic midpoint test, and a^n b^n c^n fails the CFL pumping lemma.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.15.2 (GATE CSE 1997 Q6.6), PDF p.379 and key p.403",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.4 p.1, key p.5 (TOC solutions PDF p.2)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "cl95lqgbc",
+      "contentSha256": "22c7420b06f4fac27dd1b7614af669ac03eb66ed3811b3e384cbdeeab4b4bf88",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The regular set {a,b}* contains the nonregular subset {a^n b^n : n ≥ 0}. Every finite language is regular, and the product construction gives closure under intersection.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.20.7 (GATE CSE 1998 Q2.6), PDF p.395 and key p.403",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.5 p.1, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "oovy4dhte",
+      "contentSha256": "d29556aa52cd00b5b047436b4f769b12563eb27f83f9905d7dc8905b989f8b3c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A CFG can add a start rule to select either of two grammars for union, or repeat words from one grammar for Kleene closure. General intersection and complement fail closure.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.6 (GATE CSE 1999 Q1.5), PDF p.333 and key p.402",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.6 p.1, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "lkq6skllq",
+      "contentSha256": "6dde0778250663d98f8330f70fec7a926d3eafb68f783e6c15b88e109c2b4a89",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "For NPDAs, add a fresh stack bottom and a cleanup state to convert final-state acceptance to empty-stack acceptance. Conversely, use a sentinel and enter a final state when the original stack empties. Both modes characterize CFLs.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.15.4 (GATE CSE 1999 Q1.6), PDF p.379 and key p.403",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.7 p.1, key p.5 (TOC solutions PDF p.2)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "dz0u8zcaj",
+      "contentSha256": "8fa061ab14dac6a078d362a88e981c8e4528f017abb90b2872bf9b9140c74b55",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "C"
+      ],
+      "status": "verified",
+      "reason": "L₁ − L₂ = L₁ ∩ complement(L₂) is context-free since complement(L₂) is regular. General CFL complements can fail to be context-free. These facts make A and C false as universal claims.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.9.5 (GATE CSE 1999 Q2.4), PDF p.365 and key p.402",
+          "answer": "A, C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.8 p.1, key p.5 (TOC solutions PDF p.2)",
+          "answer": "A, C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "A, C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "xk9zrjy6m",
+      "contentSha256": "d708eeaecbf319bafc5339f2f992b2f7d6b6ac795f488ce48f97fd77283a2fe8",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A fresh start symbol with alternatives for the two original starts generates their union. Intersection and complement are outside CFL closure in general, and DPDAs recognize a strict subclass.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.9 (GATE CSE 2001 Q1.5), PDF p.334 and key p.402",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.9 p.1, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q5",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "4lu5ow3xf",
+      "contentSha256": "47a2f09ce99301ec36e2bc41d047d666f4a2d60c1234509b2c2060084d1a086f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "The state and at most ten symbols from a finite stack alphabet give finitely many configurations. An NFA can track these configurations, so regular is the most specific listed class.",
+      "note": "Option C is truncated. The source wording is “Deterministic context-free.” B remains the most specific class.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.9.7 (GATE CSE 2002 Q1.7), PDF p.365 and key p.402",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.10 p.1, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q7",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "ukm36lpz5",
+      "contentSha256": "92b9e0514c1ec1fdac8ca4e29eeee4bb5414c3a9aebceff887d07815cf958fe7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The language has balanced a/b parentheses. A DPDA pushes on a and pops on b, accepting at zero with no underflow. The SS and ε rules make the grammar ambiguous and guarantee closure under concatenation.",
+      "note": "The source has G = ({S}, {a,b}, R, S) and “There exist x, y ∈ L(G) such that xy ∉ L(G).” Restore the missing separator in the tuple and remove the comma before ∈ in B.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.10 (GATE CSE 2003 Q51), PDF p.334 and key p.402",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.11 p.1, key p.5 (TOC solutions PDF p.2)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q51",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "taaun3ipz",
+      "contentSha256": "6e9e0626fccffb7c69fd5047e1ab44a89ceed44126afaacfab4c3d56e0c9fa6b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The class recognized by NPDAs strictly contains the class recognized by DPDAs. Inherently ambiguous CFLs exist, unambiguous grammars give unique parse trees, and finite languages are regular.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.12.6 (GATE IT 2004 Q9), PDF p.377 and key p.403",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.12 p.1, key p.5 (TOC solutions PDF p.2)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q9",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "rznfgxr10",
+      "contentSha256": "9a58057c122d68d1150a4eb07d5c2e45be4a55663f2b15c195ee7fefdbc1779b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "The app's ε transfer accepts bab. With state f and an empty stack required, only aabab is rejected (B). If reaching f alone suffices, all four strings are accepted.",
+      "status": "verified-with-note",
+      "reason": "Entering f consumes a pivot a without changing the stack. Requiring an empty stack in f makes the pivot the middle symbol. aaa, baaba and bab have middle a, while aabab has middle b. With final-state-only acceptance, all four are accepted.",
+      "note": "Made Easy keys B for the same ε transfer. GATE Overflow also keys B but redraws the transfer as (s,a,a). The year-paper copy keys D, yet bab reaches f with an empty stack by pushing on the first b, transferring on a, and popping on the final b. Specify acceptance in f with an empty stack for B to be unique.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.15.12 (GATE IT 2004 Q40), PDF p.382 and key p.403",
+          "answer": "B (aabab), with a different stack argument on the transfer in the PDF",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.13 p.1, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B (aabab, with empty stack required)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q40",
+          "answer": "D (bab)",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent trace or enumeration on the worksheet question",
+          "answer": "B with empty stack in f, no listed option with final state alone",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "ncfpdjv6f",
+      "contentSha256": "d3f3879c81be6db48aacdff41ef86ec7e24e717c4bef4de46c91dee99e9bce21",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Push once per a or b, then pop once per c. Fixing the a-block to one symbol leaves {a b^n c^(n+1) : n ≥ 1}, a nonregular regular-language slice.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.9.8 (GATE CSE 2004 Q87), PDF p.366 and key p.402",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.14 p.1, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q87",
+          "answer": "B (reference checks the app’s m+n variant as well as the scan’s alternate reading)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "hwyqy5bdo",
+      "contentSha256": "54508ec1085b3f82aaafd171fa0db3d8ac99e75d2d1eee4322188a63d2417c51",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Each a cycles S → A → B → S, and b leaves the nonterminal unchanged. Termination consumes b in S or the third a from B. Thus exactly the nonempty words with a-count divisible by three are generated.",
+      "note": "The introductory label reads “grammar C” while the language is named L(G). Use “grammar G,” as in GATE Overflow and the year paper.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #2.12.24 (GATE CSE 2004 Q88), PDF p.139 and key p.187",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.15 p.1, key p.5 (TOC solutions PDF p.2)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q88",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "671rkcl4w",
+      "contentSha256": "86e473a1a1ed60995d9560ddee0ded0fd3c08680bededb57e8bf5be5fa453a18",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "With L = Σ*, the expression is complement(M), which can fall outside the CFLs. With M = Σ*, it becomes complement(L), which is regular. None of the three proposed guarantees holds.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.9.29 (GATE IT 2005 Q4), PDF p.370–371 and key p.402",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.16 p.1, key p.5 (TOC solutions PDF p.2)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "0d6jfd3y7",
+      "contentSha256": "0a464cef801066fee99baed112c89f66c1ec464ed292be936b8659aa7c77d201",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Take the transition relation to be empty. Final-state acceptance then recognizes only ε, and empty-stack acceptance recognizes nothing because the initial Z cannot be removed.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.15.13 (GATE IT 2005 Q38), PDF p.382 and key p.403",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.17 p.1, key p.5 (TOC solutions PDF p.2)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "7oh97a8pj",
+      "contentSha256": "ab37b64bba1239428b6c04e07bb45726439ac07caaac9649c63deecbdd9bb1f9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Subset construction gives D_f = N_f. DPDAs recognize only deterministic CFLs, a strict subset of the CFLs recognized by NPDAs.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.12.4 (GATE CSE 2005 Q54), PDF p.377 and key p.403",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.18 p.1, key p.5 (TOC solutions PDF p.2)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q54",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 19,
+      "id": "gn970041f",
+      "contentSha256": "7a156c2ab31c3e9858f2f833c5c49a9827ec3a229299d7780ce9f26dc6ec0448",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Each language compares two adjacent blocks and is context-free. Their intersection is the context-sensitive language {a^n b^n c^n : n > 0}, which fails the CFL pumping lemma.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.9.9 (GATE CSE 2005 Q55), PDF p.366 and key p.402",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.19 p.1, key p.5 (TOC solutions PDF p.2)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q55",
+          "answer": "A (reference checks both CFLs with the intended separator in L₂)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "ri95k6vxn",
+      "contentSha256": "ef166e268640ebf42517e122ee91d6f267d2e18a1d0914d701e0fe4fa3529fb2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The separator # lets a DPDA switch from pushing w to matching wᴿ. Unmarked even palindromes require nondeterminism, and the copy language ww fails the CFL pumping lemma.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.11 (GATE CSE 2005 Q57), PDF p.334–335 and key p.402",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.20 p.1, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q57",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "fue7id9wh",
+      "contentSha256": "22966e694d0cbff65c8cc994f713a1ecbd75682df6c3f20cbfba0b5a8d397158",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "L₁ has grammar S → 0S0 | T, T → 0T1 | ε. For L₂, pump 0^p 1^p 0^p: changing one of the first two counts breaks equality, shrinking both makes the last count too large, and growing only the last block also violates its bound. The same three-block equality argument rules out L₃.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.12 (GATE CSE 2006 Q19), PDF p.335 and key p.402",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.21 p.2, key p.5 (TOC solutions PDF p.2)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q19",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 22,
+      "id": "e4bn0f3ci",
+      "contentSha256": "60609f3455a3319d0d8c428d9daacf9970becddccfbdef58d053b9bbeff06869",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The wrapping rules and a, b, ε bases generate precisely all palindromes. baba reverses to abab, while aaaa, abba and babaaabab each equal their reversals.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.31 (GATE IT 2006 Q4), PDF p.339–340 and key p.402",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.22 p.2, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 23,
+      "id": "fa1ki3b9s",
+      "contentSha256": "4c51ea078898e1b7207b247d58cae465503328816fc15cb2c1076039be6f086d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "An NPDA chooses whether to check l ≠ m or m ≠ n. If the resulting language were deterministic context-free, its complement restricted to a*b*c* would also be deterministic context-free and would equal {a^n b^n c^n}, a contradiction.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.15.14 (GATE IT 2006 Q31), PDF p.382 and key p.403",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.23 p.2, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 24,
+      "id": "71gwbfc8a",
+      "contentSha256": "a8c44226d893735a90cb28ca9d08118904c4897a302a3cb77756eda057f9bb86",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Run the PDA for L and DFA for M together. Their product uses the PDA stack and accepts when both components accept, so the intersection is context-free.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.1.10 (GATE IT 2006 Q32), PDF p.332 and key p.402",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.24 p.2, key p.5 (TOC solutions PDF p.2)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 25,
+      "id": "vy8v9oogp",
+      "contentSha256": "211f65ca8b25819df88301cedbc646b81434049bfefae8c703bc880c7ac319f5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "A nonempty accepted string needs both a b and a c. The exact language is {ε} ∪ {a^l b^m c^n : l,m,n ≥ 1 and 2l = m+n}.",
+      "status": "verified-with-note",
+      "reason": "Each a pushes two X symbols, and each b or c pops one. A nonempty run must enter t by reading b and u by reading c. The language is {ε} ∪ {a^l b^m c^n : l,m,n ≥ 1 and 2l = m+n}.",
+      "note": "Both printed keys give C, which captures 2l = m+n. As written, C also admits ab² and ac², which cannot reach f. Correct C to {ε} ∪ {a^l b^m c^n : l,m,n ≥ 1 and 2l = m+n}.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.15.15 (GATE IT 2006 Q33), PDF p.383 and key p.403",
+          "answer": "C (source-keyed balance equation)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.25 p.2, key p.5 (TOC solutions PDF p.2)",
+          "answer": "C (source-keyed balance equation)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "No listed option",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 26,
+      "id": "i0e4tkaey",
+      "contentSha256": "75a34469a267fd5d8551ddddce9c083f2a29924bf2a95c26ab4123074efc7646",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "The grammar generates ε and all a^m b^n with 1 ≤ m ≤ n. The printed option B lacks the zero-case restriction.",
+      "status": "verified-with-note",
+      "reason": "Every S → aSAb contributes one a and at least one b. With at least one such step, A can supply any additional b's. Taking S → ε immediately gives only ε, so the exact language is {ε} ∪ {a^m b^n : 1 ≤ m ≤ n}.",
+      "note": "Both MCQ keys give B, but its formula admits b if m = 0 is allowed. Requiring positive exponents instead would omit ε. The GATE CS 2000 Q7(b) review for this same grammar confirms the correction {ε} ∪ {a^m b^n : 1 ≤ m ≤ n}.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.30 (GATE IT 2006 Q34), PDF p.339 and key p.402",
+          "answer": "B (source-keyed comparison m ≤ n, with the zero case omitted)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.26 p.2, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B (source-keyed comparison m ≤ n)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json, original Q7(b), paperQuestionNumber 54. Same productions.",
+          "answer": "{ε} ∪ {a^m b^n : 1 ≤ m ≤ n}",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "No listed option",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 27,
+      "id": "wyvihzjag",
+      "contentSha256": "fbfb051255e22f79d3d755cb46ce191b62e52795be480b2c80d347a230e5df7d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "SS and ε give multiple parse trees. The generated language is (ab | ba)*, which misses balanced strings such as aabb and is regular, so a DPDA can accept it. I and III hold.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #2.12.27 (GATE CSE 2006 Q32, ISRO2016-35), PDF p.140 and key p.187",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.27 p.2, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q32",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 28,
+      "id": "7o8c6yf88",
+      "contentSha256": "45f0e246657da6f8aa54fe83f14393349d3c351afcd0eee613fca4d4b7e2d318",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Disambiguation replaces the grammar with an unambiguous grammar for the same language, so L(D) = L(G).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #2.12.46 (GATE IT 2007 Q9), PDF p.145 and key p.187",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.28 p.2, key p.5 (TOC solutions PDF p.2)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 29,
+      "id": "mjj5d9y9z",
+      "contentSha256": "d3546f0e826081381bde031f8c78445078c0df7778c5ea876cde41b5a52e78ed",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "In both grammars, the WHILE production has two nonterminals on the right. Each grammar is context-free by its single-nonterminal left sides and fails the syntactic restrictions of a regular grammar.",
+      "note": "D classifies the displayed production rules. Both generated languages are regular after inlining expr, since G₂'s expressions are ID followed by any sequence of operator-ID pairs. Ask explicitly about the syntactic form of the grammars to make D unique.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.34 (GATE IT 2007 Q49), PDF p.340–341 and key p.402",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.29 p.2, key p.5 (TOC solutions PDF p.2)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 30,
+      "id": "0grbyisfg",
+      "contentSha256": "83844f7e8e1561aa330d462bd7b3e0a80ea01ece9e9d6a59b282c26b0172ff06",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Push zeros before 2, then pop once per 1 and require an exact match. The unique delimiter makes this deterministic, and every DCFL is recursive.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.9.12 (GATE CSE 2007 Q30), PDF p.366 and key p.402",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.30 p.2, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q30",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 31,
+      "id": "npk4bj52f",
+      "contentSha256": "49191b67425e589f0f90497eeb15a32234a0ad729208f106aafdccf0e6f75685",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The recursive language Σ* has undecidable subsets. The other statements follow from subset construction, Turing machine simulation, and the inclusion of regular languages in CFLs.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.16.8 (GATE CSE 2008 Q48), PDF p.385 and key p.403",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.31 p.2, key p.5 (TOC solutions PDF p.2)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q48",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 32,
+      "id": "ubvw9lwdh",
+      "contentSha256": "6ad10dcacbb6ba1d3db56f937905c5bb72682fd0af1c2f8e92181a66c4ffaf92",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The usual elimination of left recursion and its mirrored transformation justify I. A grammar for a language containing ε needs an ε-production, so II fails. III describes a right-linear grammar, and CNF trees have at most two children per node, giving IV.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #2.12.35 (GATE CSE 2008 Q50), PDF p.142 and key p.187",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.32 p.2, key p.5 (TOC solutions PDF p.2)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q50",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 33,
+      "id": "gx6xxuicy",
+      "contentSha256": "9efc429471976c94d41ce55569f0733f8a5ccc5f814aa3b44bbd694e0e24a018",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Identifier agreement is modeled by copying w in wcw (3), while paired parameter counts fit the two crossing equalities (1). The expression grammar wraps parentheses (2), and the symmetric productions generate even palindromes (4).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.9.13 (GATE CSE 2008 Q51), PDF p.367 and key p.402",
+          "answer": "C (E-R, F-P, G-Q, H-S maps to 3, 1, 2, 4)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.33 p.2, key p.5 (TOC solutions PDF p.2)",
+          "answer": "C (3, 1, 2, 4)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q51",
+          "answer": "C (E-R, F-P, G-Q, H-S maps to app 3, 1, 2, 4)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 34,
+      "id": "08updj4kv",
+      "contentSha256": "7b3e73a9aed3af71452f3ef5641f38e5fb6c3af113ad4f3a854bb265fb7fcb22",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "L₁ has at least one c and L₂ has none, so their intersection is empty. Intersect L₁ with a*b*c and remove the final c to recover the nonregular equal-count language.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.9.31 (GATE IT 2008 Q33), PDF p.371 and key p.402",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.34 p.2, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 35,
+      "id": "9umc4xhtf",
+      "contentSha256": "d2513fc4695d4a529fb038aefbaf03bd7038295ea881210f0a3f74a5eddc5ee4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A yields 0^i 1 0^j for arbitrary nonnegative i,j, so AA gives exactly 0^i 1 0^j 1 0^k. B adds one 0 on the left and two on the right at each step, yielding 0^n 1 0^(2n), including n = 0.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.35 (GATE IT 2008 Q34), PDF p.341 and key p.402",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.35 p.2, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 36,
+      "id": "zopb7jfj6",
+      "contentSha256": "caa5f0b55d600dbad50a7134a8393e19048882c14a21ecb69c3459327cf2c1f4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "After removing the single leading a, aabbaab leaves abbaab, whose mirrored pairs are complementary. A derives that suffix by three wrappings. No other listed string has an allowed leading a prefix followed by complementary mirrored pairs.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #2.12.47 (GATE IT 2008 Q78), PDF p.145 and key p.187",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.36 p.2, key p.5 (TOC solutions PDF p.2)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent trace or enumeration on the worksheet question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 37,
+      "id": "wgjqkfjqg",
+      "contentSha256": "0b25c6e75015dea6838e6ba6d65e67f531266839233af2020daff914a5e00609",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Only one initial S → aS step is possible for aabbaab, since the remaining length must be even and the prefix has just two a's. S → A, three complementary wrappings and A → ε give six steps and one parse tree.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #2.22.22 (GATE IT 2008 Q79), PDF p.171 and key p.188",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.37 p.3, key p.5 (TOC solutions PDF p.2)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent trace or enumeration on the worksheet question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 38,
+      "id": "g975r1t8d",
+      "contentSha256": "ada169fad6b008e9e9427df4a37513e2be9c947ec690ed2db3a0604b5c0a9620",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The bases a and b are one-symbol palindromes, and each wrap adds identical symbols at both ends. Stripping matching ends reduces every odd palindrome to one of the bases.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.13 (GATE CSE 2009 Q12, ISRO2016-37), PDF p.335 and key p.402",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.38 p.3, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q12",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 39,
+      "id": "1oq74p62p",
+      "contentSha256": "ea594dc3b4ed7f4e0b6d316951689fc1a373d37001ce98a0e01c7b92b26070f1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Regular languages have a minimal DFA unique up to state renaming. A PDA can simulate an NFA, and CFL complements are decidable. Some CFLs, such as unmarked even palindromes, have no equivalent DPDA.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.15.7 (GATE CSE 2009 Q16, ISRO2017-12), PDF p.380 and key p.403",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.39 p.3, key p.5 (TOC solutions PDF p.2)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q16",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 40,
+      "id": "l45g09xem",
+      "contentSha256": "133380a891ae893d18dea4a15e1b92067cef3c2d960ab4bd1011d2bdbf7bd1c9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Regular expressions describe lexical tokens (3), PDAs model syntax analysis (1), dataflow facts drive optimization (4), and register allocation is part of code generation (2).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #2.7.4 (GATE CSE 2009 Q17), PDF p.127 and key p.187",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.40 p.3, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q17",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 41,
+      "id": "bwsh4exhr",
+      "contentSha256": "612818d2974ed555baa92f7a56a28eab61b4f73c2b8bf398fde82d4b224ad392",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "The displayed table reaches state 01 with output 1 on input 11, so the minimum is 2. The source table gives 3 (A).",
+      "status": "verified-with-note",
+      "reason": "Exhaustive tracing gives input 11 as the shortest for the app table: 00 → 01 outputs 0, then 01 → 01 outputs 1. Neither one-bit input meets both conditions. The printed transition rows instead give shortest input 101, length 3.",
+      "note": "The app changes two input-1 rows. Restore (present 01, input 1) → (next 00, output 1) and (present 10, input 1) → (next 01, output 1) to match both PDFs and the GATE CS 2009 paper. The app table gives length 2, which is absent. The printed table gives A (3).",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf #4.15.4 (GATE CSE 2009 Q27), PDF p.324 and key p.362",
+          "answer": "A (3 for the source transition table)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.41 p.3, key p.5 (TOC solutions PDF p.2)",
+          "answer": "A (3 for the source transition table)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q27. Source table matches the Digital Logic rendering.",
+          "answer": "A (3 for the original, with input 101)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent trace or enumeration on the worksheet question",
+          "answer": "2 (no listed option)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 42,
+      "id": "x4mema42u",
+      "contentSha256": "971a78f5b49ea334d1292c4a1a23658541d32317b228d3425bfee45fc2442945",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "L₂ allows no a or b after c, so n = 0 in L₁. The intersection is {a^m b^m c : m ≥ 0}, accepted by a PDA. Removing the final c recovers the nonregular equal-count language.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.9.15 (GATE CSE 2009 Q40), PDF p.367 and key p.402",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.42 p.3, key p.5 (TOC solutions PDF p.2)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q40",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 43,
+      "id": "d0ynk92jp",
+      "contentSha256": "9d64cff20d894bb315b9b756b665cd7b9a88d04eb801b8471ed5ac730c9e69b8",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "DPDAs can compare the length of the zero block to j or 2j by popping one or two markers per 1. A finite offset handles 2j+1, and a comparison can accept excess or shortage for the unequal cases. All four are CFLs.",
+      "note": "Option C in both PDFs and the year paper says “Only L1 and L2 are context-free.” The app says L1 and L3. Both versions leave D correct.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.9.16 (GATE CSE 2010 Q40), PDF p.367 and key p.402",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.43 p.3, key p.5 (TOC solutions PDF p.2)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q40",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 44,
+      "id": "6um1140e8",
+      "contentSha256": "4c04a8fa8646e0bc68f6979df8884aeb053403a144786f78342541b53aa97644",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "L₁ has a regular block pattern, and a PDA checks equality for L₂. L₃ requires the same positive count in three blocks and fails the CFL pumping lemma. A Turing machine can decide all three by counting.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.9.17 (GATE CSE 2011 Q26), PDF p.368 and key p.402",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.44 p.3, key p.5 (TOC solutions PDF p.2)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q26",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 45,
+      "id": "v0bzdb4vc",
+      "contentSha256": "6ed970950f81bd173a3e35b94b77176e9fb6232cfe3334cfc69cf087a2afd807",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "L₁ = 0*1*0* is regular, so its complement is regular. A PDA can compare the outer zero counts for L₂, and L₁ ∩ L₂ = L₂. A CFL and its complement are both decidable.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.9.18 (GATE CSE 2013 Q32), PDF p.368 and key p.402",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.45 p.3, key p.5 (TOC solutions PDF p.2)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 46,
+      "id": "1gxsk48xj",
+      "contentSha256": "c4813cb8fd4e92ce8f8c76c85525450c974f23471583d7e065f2968f19071b29",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The source L₁ = {0^n1^n : n ≥ 0} is accepted by a DPDA counting zeros against ones. The delimiter c makes L₂ deterministic, while even binary palindromes in L₃ are outside DCFL. The apparent union reading of app L₁ is also a DCFL.",
+      "note": "Restore L₁ = {0^n1^n | n ≥ 0} from the PDFs. The extra bar in the app looks like an alternation, whose language is also deterministic context-free. C holds on either reading.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.9.19 (GATE CSE 2014 set 3 Q36), PDF p.368 and key p.402",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.46 p.3, key p.5 (TOC solutions PDF p.2)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 47,
+      "id": "kr3pl7610",
+      "contentSha256": "d2eb5e841703e97b846d95e7f6f9824adffcd83c46eb4ae1f4e58bac67acaa13",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "The literal top-symbol labels prevent the shown NPDA from processing the supplied input. With the source's distinct bottom marker and stack-variable labels, the intended suffix is 10010 (B).",
+      "status": "verified-with-note",
+      "reason": "With the distinct bottom marker and stack-variable notation from the GATE Overflow diagram, 10110 is pushed, the middle 0 is skipped, then its reversed bitwise complement 10010 is matched. Treating the app's Z literally as a stack symbol prevents that run.",
+      "note": "The app uses Z as the initial stack symbol and in the stack-variable labels, and shows an unlabeled loop at q₂. Literal top-Z matching prevents the push phase from repeating or switching after a push. Restore ⊥ as the initial stack symbol, use Z in the push and matching labels for the current stack suffix as in the GATE Overflow diagram, use ε,⊥→ε on entry to q₂, and remove the unlabeled loop.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.15.8 (GATE CSE 2015 set 1 Q51), PDF p.380–381 and key p.403",
+          "answer": "B (10010 for the diagram with a distinct bottom marker)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.47 p.3, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B (10010, intended push and match convention)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent trace or enumeration on the worksheet question",
+          "answer": "No listed option with the literal diagram",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 48,
+      "id": "8ul820v43",
+      "contentSha256": "a9fcea8dc32ada9b0a6cab4bfc8da32677d0906d6fa1127d04e7f27e1d2a3765",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "L₁ has nested a/b and b/a comparisons, while L₃ has grammar S → aaSb | a. The crossed equalities of L₂ fail the CFL pumping lemma on a^p b^p a^p b^p. Thus L₁ and L₃ are the CFLs.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.14 (GATE CSE 2015 set 3 Q32), PDF p.335 and key p.402",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.48 p.3, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 49,
+      "id": "hvcklp8c1",
+      "contentSha256": "b5815534ec06c773814467b50467d813fa8f22a9607eecf4b10bf5810361059b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "G₁ generates a*b+ because B contributes at least one b. In G₂, the initial a or b is mandatory and the remaining blocks can be empty, giving all nonempty words in a*b*.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.16 (GATE CSE 2016 set 1 Q42), PDF p.336 and key p.402",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.49 p.3, key p.5 (TOC solutions PDF p.2)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 50,
+      "id": "1bj8gjrpt",
+      "contentSha256": "cf701f3976761172882d54ad6f2fabb2ca6bfc5978c260ea1c7a2e498c9dd840",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The initial state is final and accepts every all-a string while pushing X. A b begins deterministic popping, and a second final state is reached exactly when Z is exposed. The language is a* ∪ {a^n b^n : n ≥ 0}.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.15.9 (GATE CSE 2016 set 1 Q43), PDF p.381 and key p.403",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.50 p.3, key p.5 (TOC solutions PDF p.2)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 51,
+      "id": "408fm153k",
+      "contentSha256": "94ba08e01f43442ce7bf936d0612d74af66a4c0223c54a76f7760423ae4e79a1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A PDA pushes once per a or b and pops once per c for L₁. Pumping a^p b^p c^(2p) cannot keep all three length constraints for L₂, since the two pumped parts cannot reach all three blocks.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.17 (GATE CSE 2016 set 2 Q43), PDF p.336 and key p.402",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.51 p.3, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 52,
+      "id": "1ich4f3jb",
+      "contentSha256": "19a67ca278b249f95c0e9b89acd0a2733cd380ac10865e03004406019dc9f096",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "S₁ makes paired outer a and b symbols, giving {a^n b^n : n ≥ 0}, which fails the regular pumping lemma. S₂ repeatedly appends ab, giving the regular expression (ab)*.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.20.22 (GATE CSE 2016 set 2 Q17), PDF p.398 and key p.403",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.52 p.3, key p.5 (TOC solutions PDF p.2)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 53,
+      "id": "zihc8u41p",
+      "contentSha256": "5e30e450e00d1fc2828fc68867b40b3712cc70414372fad54fe860ac840d7bca",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "In B, the leftmost-nonterminal dependency follows S → A or B and A → B with no cycle. In A there is A → Aa, in C the cycle is S → A → S, and in D it is A → B → A.",
+      "note": "In option B, both PDFs print A → Bd | ε. The app has A → Bb | ε. Either terminal yields the same acyclic leftmost dependency, so B is correct.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #2.12.37 (GATE CSE 2016 set 2 Q45), PDF p.142 and key p.187",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.53 p.4, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 54,
+      "id": "jcdp4t5ib",
+      "contentSha256": "920a76fdf5830098057f944cb22c8dcfe982d6b6cb063278615303277388275e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Each S layer contributes ab to the left and cT to the right. The base contributes one such pair, and each T independently gives a positive-length b block.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.18 (GATE CSE 2017 set 1 Q10), PDF p.336 and key p.402",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.54 p.4, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 55,
+      "id": "t70g3ntjd",
+      "contentSha256": "009ffd302216d2dd8d82ce8750b3ba0f9c4c7df4f3ea2c1d10413688d6d5ed39",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Both component languages are context-free, so their union is context-free. Their intersection forces all three counts to agree, giving {a^n b^n c^n : n ≥ 0}, which fails the CFL pumping lemma.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.20 (GATE CSE 2017 set 1 Q38), PDF p.337 and key p.402",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.55 p.4, key p.5 (TOC solutions PDF p.2)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 56,
+      "id": "wnq8bogrj",
+      "contentSha256": "d4566a017d8aa6ebcc72b6d2674503a0861923ddda5e441eac2fad8977f03d4b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Every CFL is decidable, so its complement is decidable and hence RE. Union with the RE language L₂ remains RE. A recursive complement for L₂ would make L₂ recursive, and general CFL complements can fall outside CFLs. I and IV hold.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.16.13 (GATE CSE 2015 set 1 Q3), PDF p.386 and key p.403",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 57,
+      "id": "mfgs90gq7",
+      "contentSha256": "c60c9ac52442cda56468669475dd59138444308dea0b6642f2b099dd8b0db9b5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A one-letter base surrounded by any number of matching pairs produces exactly the odd-length palindromes. Removing their outer pairs supplies the converse.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.13 (GATE CSE 2009 Q12, ISRO2016-37), PDF p.335 and key p.402",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.38 p.3, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 58,
+      "id": "wburlrf3y",
+      "contentSha256": "c1685a7fc16e4e720d9815ceae74cf238b6bfdc287341d1848f0d5dd0425930d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The SS rule makes ε ambiguous. The language is (ab | ba)*, which excludes aabb despite equal counts and is regular, so a DPDA accepts it. I and III hold.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #2.12.27 (GATE CSE 2006 Q32, ISRO2016-35), PDF p.140 and key p.187",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.27 p.2, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 59,
+      "id": "0faxh989s",
+      "contentSha256": "42912b3f03f9c65f41097a98f5b527359773b817abbc9336fc13bf4d4ff3e7f1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "A recursive complement union an RE language is RE (I). The complement of a CFL is recursive, so II is a union of recursive languages. Regular star and CFL union prove III. IV can fail with L₁ = ∅ and a CFL whose complement is outside the CFL class.",
+      "note": "Statement III reads L₁* ∪ L₂ in the app and L₁* ∩ L₂ in GATE Overflow. Restore the intersection to match the source. Both expressions are context-free, so D is correct in both versions.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.1.5 (GATE CSE 2016 set 2 Q18), PDF p.330–331 and key p.402",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 60,
+      "id": "2algpzgh1",
+      "contentSha256": "bdf1ade2139e849c415497687f4460a5b7380eeb75d2c93cb8e3b05e87f58037",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "The first grammar permits any number of a's and at least one b. The second enforces the order a*b* and requires a first terminal, so it permits either positive count, excluding only ε.",
+      "note": "Restore the first language in distractor C to {a^m b^n | m ≥ 0 or n > 0}, as in the source and Q49. The keyed D is identical.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.16 (GATE CSE 2016 set 1 Q42), PDF p.336 and key p.402",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.49 p.3, key p.5 (TOC solutions PDF p.2)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 61,
+      "id": "sj84668kb",
+      "contentSha256": "a7a5c8518c416a7145611ec5cee162d993be72a4ee6f051968b1874133507d9d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Each step can prefix either a or b, and S → ε stops at any length. Thus every word in {a,b}* is generated.",
+      "note": "In B remove the extra opening brace. In C the last set should be {a^n b^n | n ≥ 0}. The grammar still matches only D.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.15 (GATE CSE 2016 set 1 Q16), PDF p.335–336 and key p.402",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 62,
+      "id": "6hylfecci",
+      "contentSha256": "9f1e323ab40055d34abe1de5f8f5eaa952e1151b9da80c9172f9b1693aa0144d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Subset construction, stack-free PDA simulation, and decidability of CFL complements support the standard properties. NPDA-to-DPDA conversion would wrongly imply that every CFL is deterministic.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.15.7 (GATE CSE 2009 Q16, ISRO2017-12), PDF p.380 and key p.403",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.39 p.3, key p.5 (TOC solutions PDF p.2)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 63,
+      "id": "xm4wlub9e",
+      "contentSha256": "906bc132aba0321dda51b3586284d6f48516ac65ec4c895f47382faf8e384e98",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The unary prime language fails the CFL pumping lemma by pumping a prime length to a composite length. L₂ needs only a 1:2 stack comparison. L₃ fails the CFL pumping lemma but is decidable by counting, and L₄ has a DPDA. III and IV hold.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.9.21 (GATE CSE 2017 set 2 Q40), PDF p.369 and key p.402",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.58 p.4, key p.5 (TOC solutions PDF p.2)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 64,
+      "id": "t8v4tfbfu",
+      "contentSha256": "0bd18eb4e297719abc736acedeb91774c30808c6a8384c5f6fcdefb5c3d326c3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The grammar can be written as E = T(-T)* and T = F(+F)* with the same F rule, giving C's right-recursive tails. A and B retain left recursion, and D cannot derive all nested expressions of G.",
+      "note": "Restore E′ → −TE′ | ε in option B, and write ε for the app's ∈ glyph in the grammar options. B retains left recursion in T, so C is the equivalent grammar with left recursion removed.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #2.12.39 (GATE CSE 2017 set 2 Q32), PDF p.143 and key p.187",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 65,
+      "id": "7ltch5zu6",
+      "contentSha256": "637a5d24dd7e0237f846b40a066c783a36a544723453e111a92e29cc25c50f3c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "X generates a^k for k ≥ 1, and Y generates a^n b^n for n ≥ 0. Their concatenation has m = k+n > n and realizes every such pair.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.21 (GATE CSE 2017 set 2 Q16), PDF p.337 and key p.402",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.56 p.4, key p.5 (TOC solutions PDF p.2)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 66,
+      "id": "wl7zflid0",
+      "contentSha256": "1229235e416f09174445566a4a99be3d0b0b8f46cb8410592a0cd556d1343fd7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "SLR uses FOLLOW sets, LALR uses merged LR(1) lookaheads, and canonical LR keeps the full LR(1) states. The grammar classes satisfy SLR ⊊ LALR ⊊ LR(1), so only I is true.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #2.14.11 (GATE CSE 2017 set 2 Q6), PDF p.151 and key p.188",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 67,
+      "id": "xj61hogkm",
+      "contentSha256": "325d812cf2162cef26aab79d864a741dcf5c61ab298e6f50187947f4933749d0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "CFL union gives I. L₁ − R is the intersection of L₁ with the regular complement of R, giving III. Complement and intersection of arbitrary CFLs lack closure.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.1.6 (GATE CSE 2017 set 2 Q04), PDF p.331 and key p.402",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.57 p.4, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 68,
+      "id": "qahca23tb",
+      "contentSha256": "076c15b9574fd2dfdfa089dd4a49aef8dff1950140ae78d3d2740f7e80043215",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "G₁ gives a^n c^k b^n and G₂ gives b^n c^k a^n. Their nonzero wraps force different first letters, so only the zero-wrap words c* are shared. This language is infinite and regular.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.9.20 (GATE CSE 2017 set 1 Q37), PDF p.368 and key p.402",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 69,
+      "id": "2ygm32dxx",
+      "contentSha256": "98fe3a307781137c5f615a816c5eba391275ec23cefa13577c9123e02acc955f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Every production preserves or increases #a − #b, so babba is impossible. abab concatenates two ab words, aaab wraps aa, and abbaa is ab followed by ba and a. The singleton a comes from S → SaS with both S's empty.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.19 (GATE CSE 2017 set 1 Q34), PDF p.336–337 and key p.402",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent trace or enumeration on the worksheet question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 70,
+      "id": "ju8ow3s5y",
+      "contentSha256": "61dbb5abb5e1419863406e27d12e2acac5b30c84330fda63dbc0097ed75ac08f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "FIRST(RS) contains w from R → w and y from R → ε followed by S → y. Since S is nonnullable and Q has no other occurrence, FOLLOW(Q) = {w,y}.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #2.11.3 (GATE CSE 2017 set 1 Q17), PDF p.132 and key p.187",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 71,
+      "id": "6cwm5vskl",
+      "contentSha256": "39941466a245593bcb5ddd4e96b7794d23554f17ada88e2c5b8efe077823b47a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "A length-x nonempty derivation uses x terminal productions A → a. The x corresponding leaves in the variable tree need x−1 binary branches A → BC, giving 2x−1 applications.",
+      "note": "The booklet and app use “products” for “production applications.” For a nonempty terminal string of length x, the answer is A (2x−1).",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #2.12.6 (GATE CSE 1992 Q02,xviii), PDF p.135 and key p.187",
+          "answer": "C (2x−1), equivalent GATE 1992 question, maps to app A",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "ISRO BE003 April 2018 revised final key, series A Q27, matched to the series C booklet Q48. https://es.scribd.com/document/431496006/ISRO-2018-KEYS",
+          "answer": "A (2x−1)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 72,
+      "id": "b1g0ksrkl",
+      "contentSha256": "81839c281a7d702aaca0dbb4f240f1aa68c9418abc1ca49cb3c7db238f253d58",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "CFLs are closed under union, concatenation and Kleene star by combining CFGs with suitable start rules. If CFLs were closed under complement, De Morgan's law and union would imply closure under arbitrary intersection, which fails.",
+      "note": "A closure property concerns the languages generated by the grammars. Read the stem as “Under which operation are context-free languages not closed?” with product meaning concatenation.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.2 (GATE CSE 1992 Q02,xix), PDF p.333 and key p.402",
+          "answer": "A, D in the related question. Complementation is outside the closed operations, which supports app B.",
+          "agrees": true
+        },
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.1.1 (GATE CSE 1989 Q3-ii), PDF p.330 and key p.402. Related closure question.",
+          "answer": "A, C (union and concatenation are closed, complementation is excluded)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 73,
+      "id": "hl43k401u",
+      "contentSha256": "b0344fef44e5a27718bd571308810ab75f39eca9d333507a059ccaf7922bbabc",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A signed stack counter checks m+p = n+q for I, and concatenation of two equal-count CFLs gives II. Intersecting III with a*b*c* gives positive triple equality. For IV pump a^r b^r c^(r²). Increasing either input count grows the product by at least r, more than the bounded pump can add to c in the same step. Pumping only c changes the sum while leaving the product fixed.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.9.22 (GATE CSE 2018 Q35), PDF p.369 and key p.402",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.59 p.4, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 74,
+      "id": "m1aha9n2h",
+      "contentSha256": "150dca2de6acd0c08fe6949b304e6c54c1dcda21d4013621ea1a0641ffee18b9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "A is even palindromes, B wraps an equal-count core, and D is a finite union of fixed-ratio CFLs. In C restricted to a+b+a+b+a+b+, the prefix before the final b-block is a palindrome with its middle a-block at least as long as that final b-block. Pumping six equal positive blocks breaks a mirrored count or that inequality.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.22 (GATE CSE 2019 Q31), PDF p.337 and key p.402",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.60 p.4, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B (wa^n wᴿ b^n), maps to app C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 75,
+      "id": "9sbvq3gmd",
+      "contentSha256": "a7f371510c0e26d70a610f1b43da9b057e0c1de6a861737a2671f2c0756d5662",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The one-letter bases and equal outer pairs generate exactly the odd-length palindromes. Every such palindrome reduces to its center letter by stripping pairs.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.13 (GATE CSE 2009 Q12, ISRO2016-37), PDF p.335 and key p.402",
+          "answer": "B (odd-length palindromes), maps to app C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.38 p.3, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B (odd-length palindromes), maps to app C",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "ISRO BE003 January 2020 revised final key, series A Q39, matched to the series B booklet Q18. https://img.freejobalert.com/uploads/2020/02/Revised-Answer-Key-ISRO-Scientist-Engineer-SC-Computer-Science.pdf",
+          "answer": "C (odd-length palindromes)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 76,
+      "id": "em6b2mi4r",
+      "contentSha256": "7668162fc40e314cb7eb69417eb028e11f7cc5aa3001f7aeb36727354d5ba796",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Union uses a choice between the two CFG starts. Kleene star permits zero or more repetitions of a start expansion. General CFL intersection and complement fail closure.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.6 (GATE CSE 1999 Q1.5), PDF p.333 and key p.402",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.6 p.1, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "ISRO BE003 January 2020 revised final key, series A Q37, matched to the series B booklet Q16. https://img.freejobalert.com/uploads/2020/02/Revised-Answer-Key-ISRO-Scientist-Engineer-SC-Computer-Science.pdf",
+          "answer": "B (union and Kleene closure)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 77,
+      "id": "w5k2okuec",
+      "contentSha256": "749d0ceea630ac425010767574d4e7a7e816b877f561127202e02be900b61ce3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "For L₁, replace the repeated x by its last bit: membership is exactly a nonempty prefix, a bit, a nonempty gap, and that bit again at the end. For L₂, a mismatch between halves gives a split into two odd-length blocks with different middle letters, and conversely such centers are half a word apart. Each centered-block language is context-free.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.9.24 (GATE CSE 2020 Q32), PDF p.369–370 and key p.402",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.62 p.4, key p.5 (TOC solutions PDF p.2)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 78,
+      "id": "s9glc3gnq",
+      "contentSha256": "fb0130928a5fc715cfa44fdfb3dfd0bc2c7426ead1078c00fd6d32c9b602b539",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "A DPDA accepts while reading only a's, then pops for matching b's. If L were LL(k), the ε-elimination theorem would give an ε-free LL(K) grammar for L without ε. After a^(n−K), the shared parse for a^n and a^n b^n leaves at most K pending symbols, since it can finish with K a's. Two n values must share a pending suffix and would then admit a mismatched number of b's.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.9.23 (GATE CSE 2020 Q10), PDF p.369 and key p.402",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.61 p.4, key p.5 (TOC solutions PDF p.2)",
+          "answer": "A (I and III only), maps to app C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "DPDA construction and ε-elimination argument using Rosenkrantz and Stearns, Properties of Deterministic Top-Down Grammars (1970), Theorem 3. https://www.academia.edu/15549984/Properties_of_deterministic_top_down_grammars",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 79,
+      "id": "jy4s586bi",
+      "contentSha256": "d0c8db30e3aa831515ba9947c1e6bc6184514d91f10e0c87e3be2e49c510a73e",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "B concatenates two even palindromes, C is all binary words via w = ε, and D is the even palindromes. In A restricted to 0+1+0+1+, w starts with 0 and x starts with 1, and at most one can contain a symbol change. The third block is at least as long as the first, and the second at least as long as the fourth. Pumping four equal blocks violates one bound in one pumping direction.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.24 (GATE CSE 2021 set 2 Q41), PDF p.337–338 and key p.402",
+          "answer": "B, C, D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.65 p.4, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B, C, D (book B maps to app C and book C maps to app B)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B, C, D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 80,
+      "id": "rtlw2tbg7",
+      "contentSha256": "82e79e4d7b9162caae84afcd31f03f817d47337fe3256209ddec24ca5175ae78",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "B equals L₁ ∩ L₂, C equals Σ*, and D equals L₂. Taking L₁ = Σ* makes A the complement of L₂, which need not be context-free.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.9.25 (GATE CSE 2021 set 2 Q12), PDF p.370 and key p.402",
+          "answer": "B, C, D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.66 p.4, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B, C, D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B, C, D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 81,
+      "id": "on42lxl04",
+      "contentSha256": "ece6e72c090f4197648edc43cbefe8d3f71d009b5d91a9bcde68f006f43b919f",
+      "questionType": "NAT",
+      "natAnswer": "50",
+      "status": "verified-with-note",
+      "reason": "The diagrams show a push per a and a pop per b. The accepting transition needs an A remaining, so accepted words are a^i b^j with i > j. At length 100, i ranges from 51 to 100, giving 50 words.",
+      "note": "Restore X,Y ∈ Γ ∪ {ε} by removing the comma after Y, and end the transition definition before “Consider the following pushdown automaton.” Both diagrams and the numerical answer agree with the source.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.15.10 (GATE CSE 2021 set 1 Q51), PDF p.381 and key p.403",
+          "answer": "50 to 50",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.63 p.4, key p.5 (TOC solutions PDF p.2)",
+          "answer": "50",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2021 CS1 technical Q51, paper p.39 and official key. https://gate2024.iisc.ac.in/wp-content/uploads/2021/cs1_2021.pdf",
+          "answer": "50 to 50",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent trace or enumeration on the worksheet question",
+          "answer": "50",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 82,
+      "id": "bckypd08c",
+      "contentSha256": "8a6a8e683875f3704c808229e288bdf9eece0daf9053c26911a704dc525ab2a8",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "FIRST(Rf) = {c,f}, so both S entries use S → Rf. FOLLOW(T) includes c and $ via the nullable trailing R in caTR and the tail position in daT, so both T entries use T → ε.",
+      "note": "GATE Overflow A maps to app D by matching the numbered cells. App distractor C corresponds to source D except that cell (3) is extra: restore “(3) blank” there to match the source option.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #2.12.41 (GATE CSE 2021 set 1 Q31), PDF p.143–144 and key p.187",
+          "answer": "A (S → Rf twice, T → ε twice), maps to app D",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2021 CS1 technical Q31, paper p.26 and official key. https://gate2024.iisc.ac.in/wp-content/uploads/2021/cs1_2021.pdf",
+          "answer": "A (app D, same four cells)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 83,
+      "id": "6de10qujw",
+      "contentSha256": "b4768bdc929ff23c6aa1c10bf7e85c5523422dd2a2e5165ffc036a7d92f95953",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Take L₁ = Σ* and a CFL L₂ with a non-context-free complement. Then L₁ − L₂ is that complement. Intersection with a regular language, concatenation, and union all preserve context-freeness here.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.23 (GATE CSE 2021 set 1 Q1), PDF p.337 and key p.402",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.64 p.4, key p.5 (TOC solutions PDF p.2)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 84,
+      "id": "tgd6k1wak",
+      "contentSha256": "2f79a51c130aa8dd19a82dd59cd82f1a497e4e0fd59e67d93a4e3cc873f6af64",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The copy language L₁ fails CFL pumping. L₂ and L₃ have deterministic one-stack comparisons, while their intersection forces three equal counts. The complement of L₁ is the union of odd-length words and even words with a mismatched position in their halves, the latter recognized by splitting into odd blocks with different middle letters.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.25 (GATE CSE 2022 Q38), PDF p.338 and key p.402",
+          "answer": "B, C, D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.68 p.4, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B, C, D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B, C, D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 85,
+      "id": "m02m83z8b",
+      "contentSha256": "2e5a3640bb7daf2aed44e42be397dd9d79ba4a915fd4f932c30e4f67bfd9b5db",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "L₁ is all words if n may be zero, or a(a+b)*a if n must be positive. In L₂ the first and last letters match and the length is at least three. Choosing w to be that one letter proves the converse, so L₂ is regular as well.",
+      "note": "The exponent n in L₁ is unquantified in both PDFs and the app. Specify n ≥ 0 under the usual nonnegative convention. Taking n ≥ 1 instead also gives a regular language, so A, B and C hold either way.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.9.27 (GATE CSE 2022 Q37), PDF p.370 and key p.402",
+          "answer": "A, B, C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.67 p.4, key p.5 (TOC solutions PDF p.2)",
+          "answer": "A, B, C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "A, B, C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 86,
+      "id": "o0rzht5fz",
+      "contentSha256": "afc8772167caf829db1ea00e3f30427a4e46eed3008e73d52c2972115f6f5b49",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "The diagram pushes one A per a in s and pops one per b in p. Entering q to drain the stack requires one more A, so the automaton accepts precisely a^m b^n with 1 ≤ m and 0 ≤ n < m.",
+      "note": "The source distractor C uses 0 ≤ m and 0 ≤ n. The app uses 0 < n. Both versions leave A as the only description that requires at least one A remaining.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.15.11 (GATE CSE 2023 Q30), PDF p.381–382 and key p.403",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.71 p.5, key p.5 (TOC solutions PDF p.2)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 87,
+      "id": "ug05th5vp",
+      "contentSha256": "a85e9ee2f73b09ec1e51916b259e3a3bd87faff1131772bc5a8f1665296a4e95",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "X produces every nonempty word in a*b* by adding a's on the left and b's on the right to a or b. The aSb wrapper preserves that set, giving exactly a*(a+b)b*.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.26 (GATE CSE 2023 Q29), PDF p.338 and key p.402",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.70 p.4, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 88,
+      "id": "xmefq4gtc",
+      "contentSha256": "4c64acc603ac0310004c061c6b856072ffb4829fbd784dfd1156c562014720e6",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "C",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A DFA product gives A. Running both deciders gives C, and dovetailing recognizers and accepting when both accept gives D. Two CFLs can intersect in {a^n b^n c^n}, so B fails.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.9.28 (GATE CSE 2023 Q14), PDF p.370 and key p.402",
+          "answer": "A, C, D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.69 p.4, key p.5 (TOC solutions PDF p.2)",
+          "answer": "A, C, D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "A, C, D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 89,
+      "id": "1l2ot99xj",
+      "contentSha256": "fd3e2d21de31f694dcc4ec03c379c5cc2e0fa450831ffcbc485a81b794fe90f4",
+      "questionType": "NAT",
+      "natAnswer": "9",
+      "status": "verified",
+      "reason": "GOTO(I₀,S) starts with S′ → S• and S → S•S. Closing over the S after the second dot adds all five S productions with initial dots, plus A → •d# and B → •@, for 2+5+2 = 9 items.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #2.14.18 (GATE CSE 2024 set 2 Q55), PDF p.152–153 and key p.188",
+          "answer": "9",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2024 CS2 final key, master Q65. https://gate2026.iitg.ac.in/doc/download/2024/CS2FinalAnswerKey.pdf",
+          "answer": "9 to 9",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "9",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 90,
+      "id": "tt2is53br",
+      "contentSha256": "2ef5a439790e04b58490c7bcb44113bd69ef53826c0231c79e09f02e99fb5d3b",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Let u count unary aS steps and b count binary aSbS steps. Then n_b=b, n_a=b+u, and n_c=b+1 because a tree with b binary nodes has b+1 leaves. These imply B and C. The word c refutes A and D.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #2.12.43 (GATE CSE 2024 set 2 Q42), PDF p.144 and key p.187",
+          "answer": "B, C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy PDA chapter PDF Q2.72 p.5, key p.5 (TOC solutions PDF p.2)",
+          "answer": "B, C (book B maps to app C and book C maps to app B)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2024 CS2 final key, master Q52. https://gate2026.iitg.ac.in/doc/download/2024/CS2FinalAnswerKey.pdf",
+          "answer": "B, C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B, C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 91,
+      "id": "n094v7wew",
+      "contentSha256": "ab2d4ad08fb50a90f1336acd52e29572d41d7f280b0ee46e574fdb63fa49e8f4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The first S production has FIRST {a,c}, the second {b,d}, so (1) and (2) follow. The A occurrences are immediately followed by a or b and the B occurrences by b or a, so the ε rules fill (3) and (4).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #2.18.1 (GATE CSE 2024 set 2 Q30), PDF p.156–157 and key p.188",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2024 CS2 final key, master Q40. https://gate2026.iitg.ac.in/doc/download/2024/CS2FinalAnswerKey.pdf",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 92,
+      "id": "n6beu0ivp",
+      "contentSha256": "ac55609bf134ddef8ad6832718b0d7261717d3c9b2b0bc920c3bbb87c37decf8",
+      "questionType": "NAT",
+      "natAnswer": "179",
+      "status": "verified",
+      "reason": "The string has 90 terminals. A CNF derivation uses 90 terminal productions and 89 binary productions, for 179 applications.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #2.12.42 (GATE CSE 2024 set 1 Q49), PDF p.144 and key p.187",
+          "answer": "179",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2024 CS1 final key, master Q59. https://gate2026.iitg.ac.in/doc/download/2024/CS1FinalAnswerKey.pdf",
+          "answer": "179 to 179",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "179",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 93,
+      "id": "zkpxvgsp3",
+      "contentSha256": "21174130a4170e3d73c1ac62231d9bfc2f85a5fdf6957be5495e14c6bb827dbe",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "C",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Both S choices can start with if in each grammar. Write I for if b then and e for else. G1 gives IIaea with either attachment. In G2, IIceIcec can group as I(Ic e (Ic e c)) or I(Ic e (Ic)) e c, giving distinct parse trees.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #2.12.44 (GATE CSE 2025 set 2 Q41), PDF p.144 and key p.187",
+          "answer": "C, D",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2025 CS2 official key, master Q51. https://gate2026.iitg.ac.in/doc/download/2025_Key/CS2_Keys.pdf",
+          "answer": "C, D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent trace or enumeration on the worksheet question",
+          "answer": "C, D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 94,
+      "id": "ayf5s1hvt",
+      "contentSha256": "aa57de301074894e5daed866beb6653fa518fa5c4be9844762b1555089c1d541",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "After d, A → d• reduces only on a in LR(1) while S → d•c shifts c. After bd, the reduction uses c while S → bd•a shifts a. The cores differ, so LALR keeps them separate. SLR uses FOLLOW(A) = {a,c} in both states and has conflicts.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #2.14.19 (GATE CSE 2025 set 2 Q30), PDF p.153 and key p.188",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2025 CS2 official key, master Q40. https://gate2026.iitg.ac.in/doc/download/2025_Key/CS2_Keys.pdf",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 95,
+      "id": "sqyud40dn",
+      "contentSha256": "d76eda2c75420c5b1dcfa3b41f6852832c2988327dd41a33bc17028d959f8981",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Mark variables that derive terminal strings to a fixed point, then check whether the start is marked. General CFG equivalence and disjointness are undecidable, and equivalence to a specified regular language includes the undecidable CFG universality problem.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.5.30 (GATE CSE 2025 set 2 Q15), PDF p.348 and key p.402",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2025 CS2 official key, master Q25. https://gate2026.iitg.ac.in/doc/download/2025_Key/CS2_Keys.pdf",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 96,
+      "id": "h04ldqsbv",
+      "contentSha256": "87461dd7328cc15eb21bb2dfb223e2e238ddb2fe3f36d12ce860a6ee4716a2ff",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "A final-state DPDA can simulate any DFA with its stack untouched. The other options include languages outside deterministic context-free languages.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.6.1 (GATE CSE 2025 set 2 Q14), PDF p.348 and key p.402",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2025 CS2 official key, master Q24. https://gate2026.iitg.ac.in/doc/download/2025_Key/CS2_Keys.pdf",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 97,
+      "id": "udyxv6fgr",
+      "contentSha256": "94fbefa5ba616227b90f5c5c1c4fe1a778b9a44f39359eb01cf09febb3eabc11",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "A PDA for L₂ pushes for each a or b and pops for each c. For L₁ pump a^p b^p c^(p+1). Shrinking only the c-block breaks its strict lower bound. Increasing both equal leading counts while leaving c unchanged also breaks it, and changing just one leading count breaks equality.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.27 (GATE CSE 2025 set 1 Q35), PDF p.338 and key p.402",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2025 CS1 official key, master Q45. https://gate2026.iitg.ac.in/doc/download/2025_Key/CS1_Keys.pdf",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 98,
+      "id": "pawy634qb",
+      "contentSha256": "eade59f1d72fc4dd9908ad7bb76d9a60dcc4798013594da3b7a9e138f0ab3925",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "B generates b+ and A generates a+. The two start branches give exactly two a's followed by b+, or a+ followed by exactly two b's.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.2.1 (GATE CSE 2025 set 1 Q9), PDF p.332 and key p.402",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2025 CS1 official key, master Q19. https://gate2026.iitg.ac.in/doc/download/2025_Key/CS1_Keys.pdf",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 99,
+      "id": "tezk4nrbb",
+      "contentSha256": "888aa8825c921877aa909aa84eff69dfa668e0eaf9b33e0af9279e6795f71ed7",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "C",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Signed counting gives A and D. For C, push for a and b, then pop the b markers on c and the a markers on d. B requires crossing comparisons and fails the CFL pumping lemma on a^p b^p c^p d^p.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.29 (GATE CSE 2026 set 2 Q38), PDF p.339 and key p.402",
+          "answer": "A, C, D",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2026 CS2 official key, master Q48. https://gate2026.iitg.ac.in/doc/download/2026/Keys/CS2_Keys.pdf",
+          "answer": "A, C, D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "A, C, D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 100,
+      "id": "8pxfp8koc",
+      "contentSha256": "7d0c7348790591cb827c6f96e8766e0389bfc5b5897eff6f62d269ce5e81f154",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Each B yields equally many a's and b's. The A rules add (2,1) or (3,2) to the counts besides their nonterminal expansions, and the S rule adds (3,3). All contributions have #b ≤ #a ≤ 2#b, so B and D hold.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.3.28 (GATE CSE 2026 set 1 Q42), PDF p.339 and key p.402",
+          "answer": "B, D",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2026 CS1 official key, master Q52. https://gate2026.iitg.ac.in/doc/download/2026/Keys/CS1_Keys.pdf",
+          "answer": "B, D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "B, D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 101,
+      "id": "ybc5tqcgn",
+      "contentSha256": "04ca04c9d133b2e2ffa26779fe217270ffd760b608aad2bfb63bfe4c93a8fe5f",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "status": "verified",
+      "reason": "For abb, either S in aSbS can supply the extra b via bS, giving ambiguity. An equal-count word uses no bS rule. For abab the first matching b must be its second symbol, leaving ab as the suffix, which makes the rightmost derivation unique. CFG membership is decidable.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf #6.2.2 (GATE CSE 2026 set 1 Q15), PDF p.332 and key p.402",
+          "answer": "A, B, C",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2026 CS1 official key, master Q25. https://gate2026.iitg.ac.in/doc/download/2026/Keys/CS1_Keys.pdf",
+          "answer": "A, B, C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent derivation from the worksheet question",
+          "answer": "A, B, C",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

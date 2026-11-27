@@ -1,0 +1,2273 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "6. Data Structures",
+  "chapter": "4. Trees",
+  "slug": "6-data-structures--4-trees",
+  "reviewedAt": "2026-11-26",
+  "sources": {
+    "gateOverflowPdf": {
+      "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume2.pdf",
+      "sha256": "457f9e583b943b3c41e78d8431b09e322123b0d80765396af36ee2100196714f",
+      "chapter": "3 Programming and DS: Data Structures",
+      "answerKeyPages": [
+        253,
+        254
+      ],
+      "otherSections": {
+        "Q40": "1.43 Time Complexity, key p. 116",
+        "Q58": "2.24 Runtime Environment, key p. 188",
+        "Q63": "1.21 Heap Sort, key p. 114"
+      }
+    },
+    "madeEasyPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\6. Data Structures\\4. Trees.pdf",
+      "sha256": "020037cef32681b1eb3bd79141978cfd1888f9c5bab76f7d69095077189a4e92",
+      "note": "Question spreads only. The answer table is in the companion PDF."
+    },
+    "madeEasyKeyPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\All Subject Solutions Keys\\C Programming and DS.pdf",
+      "sha256": "380c891929abca5d5194efb7e6270603eb61b98d9a869af0f7b300532f04c4d8",
+      "answerKeyPage": 32,
+      "bookPage": 392
+    },
+    "yearPapers": "data/papers/*.json, linked to book records by source.copiedFrom.questionId",
+    "officialKeys": {
+      "2019 CS": "https://gate.iitm.ac.in/gate2019/pdfs/Anskey/CS_key_Published.pdf",
+      "2023 CS": "https://gate.iitk.ac.in/GATE2023/doc/papers/2023/ANS/CS_ANS_GATE2023.pdf",
+      "2024 CS1": "https://gate2024.iisc.ac.in/wp-content/uploads/2024/CS1FinalAnswerKey.pdf",
+      "2024 CS2": "https://gate2024.iisc.ac.in/wp-content/uploads/2024/CS2FinalAnswerKey.pdf"
+    }
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "madeeasy-data-structures-trees-5-1",
+      "contentSha256": "d4dc6094d32a28cd8f2733e35521e5fa1e861b5bd863bb4315e61c57d97a602a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Let u count nodes with one child and b count nodes with two. The edge count gives u + 2b = n + u + b − 1, so b = n − 1.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.15, Binary Tree: GATE CSE 1995 | Question: 1.17, PDF pp. 218 (key p. 254) https://gateoverflow.in/2604/gate-cse-1995-question-1-17",
+          "answer": "B ($n-1$)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.1, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "madeeasy-data-structures-trees-5-2",
+      "contentSha256": "5ea8d124ef0863ae8e50a5bea9b2fb417e215483ec93053f6a9dcd159af32754",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The insertion increases the taller child height at c, b and a by one, making their balance differences 2. The new child leaves g with a balance difference of 1.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.1.2, AVL Tree: GATE CSE 1996 | Question: 1.14, PDF pp. 197 (key p. 253) https://gateoverflow.in/2718/gate-cse-1996-question-1-14",
+          "answer": "B (3)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.2, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "madeeasy-data-structures-trees-5-3",
+      "contentSha256": "45b01758544bbed2290b444a894f08901b86adceb4f96c656be619385c4629ee",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Left, right, root traversal visits g, c, d, b, f, e, a, in that order.",
+      "note": "The book and app print an extra b in distractor A. GATE Overflow shows fegcdba. The traversed sequence is C.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.17, Binary Tree: GATE CSE 1996 | Question: 1.15, PDF pp. 219 (key p. 254) https://gateoverflow.in/2719/gate-cse-1996-question-1-15",
+          "answer": "C (gcdbfea)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.3, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "madeeasy-data-structures-trees-5-4",
+      "contentSha256": "a47f486dd636ee90325b42eddfe81bb46efc11964e74c0d152ed646fd5ff8882",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The root is 50. Seven of the remaining keys are smaller and four are larger.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.1, Binary Search Tree: GATE CSE 1996 | Question: 2.14, PDF pp. 208 (key p. 253) https://gateoverflow.in/2743/gate-cse-1996-question-2-14",
+          "answer": "B ((7, 4))",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.4, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "madeeasy-data-structures-trees-5-5",
+      "contentSha256": "c7e5261094bceb3b4c0a22f26fa140b51a8000ba846506161aa23bf4e908b31d",
+      "questionType": "SUBJECTIVE",
+      "correctOptions": [],
+      "status": "verified",
+      "reason": "Probe sequences (a), (c) and (d) are possible. Each ancestor narrows the open interval containing 43. In (b), the next probe 60 is outside (40, 50). In (e), 18 is outside (27, 66).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.2, Binary Search Tree: GATE CSE 1996 | Question: 4, PDF pp. 208 (key p. 253) https://gateoverflow.in/2756/gate-cse-1996-question-4",
+          "answer": "N/A (descriptive question with five subparts)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.5, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "Sol. (a), (c) and (d) possible, (b) and (e) impossible",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "(a), (c), (d) possible",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "madeeasy-data-structures-trees-5-6",
+      "contentSha256": "a47f486dd636ee90325b42eddfe81bb46efc11964e74c0d152ed646fd5ff8882",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The first key, 50, is the root. Its left and right subtrees contain the seven smaller and four larger keys, respectively.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.1, Binary Search Tree: GATE CSE 1996 | Question: 2.14, PDF pp. 208 (key p. 253) https://gateoverflow.in/2743/gate-cse-1996-question-2-14",
+          "answer": "B ((7, 4))",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.6, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "madeeasy-data-structures-trees-5-7",
+      "contentSha256": "effcb13167d35e5b195c15b07e7b9f2ab56ebd731834cd8aca655b6e13f3a627",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "A visits 6 after entering the right subtree of 7. B visits 4 after entering the right subtree of 5. C visits 1 after entering the right subtree of 3. All three violate a bound on where the next preorder key can appear.",
+      "note": "GATE Overflow's option D is 53124768, a valid preorder that is absent from the app. The other three options match. The app uses “None of these” as D, which is correct for its choices.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.3, Binary Search Tree: GATE CSE 1997 | Question: 4.5, PDF pp. 209 (key p. 253) https://gateoverflow.in/2246/gate-cse-1997-question-4-5",
+          "answer": "D (53124768, absent from the app's listed sequences, so app D applies by exclusion)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.7, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "madeeasy-data-structures-trees-5-8",
+      "contentSha256": "3c77a2976b94a9b058fb55cc1969920d37dfc18529a80e53c347dadbf9b942e4",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "A root and one child have identical preorder and postorder whether the child is left or right, so B is false. The complete tree with a root and only a left child has one internal node and one leaf, so C is false.",
+      "note": "Made Easy gives only B. The standard complete-tree definition permits a partly filled last level, so C is also false. GATE Overflow tags this as multiple-select and gives B and C. The stem should ask which statements are false and allow both selections.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.15.4, Tree: GATE CSE 1998 | Question: 1.24, PDF pp. 250 (key p. 254) https://gateoverflow.in/1661/gate-cse-1998-question-1-24",
+          "answer": "B and C (preorder/postorder uniqueness and the complete-tree leaf count)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.8, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "b (the preorder/postorder uniqueness statement only)",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "BC",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "madeeasy-data-structures-trees-5-9",
+      "contentSha256": "372853d5ddda07560b4a4a20d455e3d09113a08de35723bf6aeabab16923f035",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Each internal node contributes n child edges. With L leaves, nx = x + L − 1, giving L = x(n − 1) + 1.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.15.5, Tree: GATE CSE 1998 | Question: 2.11, PDF pp. 251 (key p. 254) https://gateoverflow.in/1683/gate-cse-1998-question-2-11",
+          "answer": "A ($x(n-1)+1$)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.9, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "madeeasy-data-structures-trees-5-10",
+      "contentSha256": "3c13a9ed6948ee8057c79c16889ae158c50f089391c4f50a6f042455dbc83c89",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The root is 1 and the two subtree triples are (2 3 4) and (5 6 7). Every parenthesized group gives one node and its two children.",
+      "note": "The printed and app options run some one-digit node labels together. With spaces between the labels, option C reads (1 (2 3 4) (5 6 7)).",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.20, Binary Tree: GATE CSE 2000 | Question: 1.14, PDF pp. 219 (key p. 254) https://gateoverflow.in/637/gate-cse-2000-question-1-14",
+          "answer": "C ((1 (2 3 4) (5 6 7)))",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.10, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q14 (linked by question ID)",
+          "answer": "C ((1 (2 3 4) (5 6 7)))",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "madeeasy-data-structures-trees-5-11",
+      "contentSha256": "ad57684ec48db5906591643dfde75653bf07064234ad201b9ba77a3f6730f0a4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Use the complete six-node tree numbered 1 to 6 in level order. Its last postorder, inorder and preorder vertices are 1, 3 and 6 respectively. This one tree rules out all three equalities.",
+      "note": "Made Easy marks LASTIN = LASTPRE. The six-node counterexample disproves it for a left-filled complete tree. For clarity, define complete as having every level full except possibly the last, which is filled left to right. GATE Overflow and the year-paper copy both give D.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.21, Binary Tree: GATE CSE 2000 | Question: 2.16, PDF pp. 219–220 (key p. 254) https://gateoverflow.in/663/gate-cse-2000-question-2-16",
+          "answer": "D (None of the above)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.11, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "b (LASTIN = LASTPRE)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q39 (linked by question ID)",
+          "answer": "D (None of the above)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "madeeasy-data-structures-trees-5-12",
+      "contentSha256": "60aa839a91ad76de36d3588067ed515e0ee855af3c5d2538bfd8dc7110a912b7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "There are n − 1 edges and each internal node contributes three. Subtracting the (n − 1)/3 internal nodes from n gives (2n + 1)/3 leaves.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.15.6, Tree: GATE CSE 2002 | Question: 2.9, PDF pp. 251 (key p. 254) https://gateoverflow.in/839/gate-cse-2002-question-2-9",
+          "answer": "D ($\\dfrac{2n+1}{3}$)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.12, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q34 (linked by question ID)",
+          "answer": "D ($\\dfrac{2n+1}{3}$)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "madeeasy-data-structures-trees-5-13",
+      "contentSha256": "1abe27c8f2fd2da1fd39a2ec172550d0d6bbe6a571eaa07feef79dd9cafc2703",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Inorder traversal of a BST lists the distinct keys in ascending order, here 0 through 9.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.5, Binary Search Tree: GATE CSE 2003 | Question: 19, ISRO2009-24, PDF pp. 209 (key p. 253) https://gateoverflow.in/909/gate-cse-2003-question-19-isro2009-24",
+          "answer": "C (0 1 2 3 4 5 6 7 8 9)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.13, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q19 (linked by question ID)",
+          "answer": "C (0 1 2 3 4 5 6 7 8 9)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "madeeasy-data-structures-trees-5-14",
+      "contentSha256": "2cb922dc12dd527b8b72d0b830e8635330d0db585ffb2127e7131e80d5127e58",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A balanced BST supports minimum deletion and membership testing followed by insertion in O(log n). In a plain heap, testing for an arbitrary key can require checking linearly many entries.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.7, Binary Search Tree: GATE CSE 2003 | Question: 63, ISRO2009-25, PDF pp. 210 (key p. 253) https://gateoverflow.in/950/gate-cse-2003-question-63-isro2009-25",
+          "answer": "B (A balanced binary search tree can be used but not a heap)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.14, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q63 (linked by question ID)",
+          "answer": "B (A balanced binary search tree can be used but not a heap)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "madeeasy-data-structures-trees-5-15",
+      "contentSha256": "4fbc26101f6827985eb434250039ed608ff5ec1468a42e1585adb0b2ca5730ba",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The longest root-to-leaf path is 10 → 1 → 3 → 5, of length 3 edges.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.8, Binary Search Tree: GATE CSE 2004 | Question: 4, ISRO2009-26, PDF pp. 210 (key p. 253) https://gateoverflow.in/1001/gate-cse-2004-question-4-isro2009-26",
+          "answer": "B (3)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.15, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q4 (linked by question ID)",
+          "answer": "B (3)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "madeeasy-data-structures-trees-5-16",
+      "contentSha256": "178fb1a3d6f36fe3ffa091c06939c25c885b96fd46c330757298348f64cf352b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Breadth-first search visits nodes in nondecreasing distance from the root, which is level order on a tree.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.15.7, Tree: GATE CSE 2004 | Question: 6, PDF pp. 251 (key p. 254) https://gateoverflow.in/1003/gate-cse-2004-question-6",
+          "answer": "D (breadth first search)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.16, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q6 (linked by question ID)",
+          "answer": "D (breadth first search)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "madeeasy-data-structures-trees-5-17",
+      "contentSha256": "7c03e4f7c16afcff8096f46c5bccdce7437c0230625cff1b9927902d53c3d4db",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A leaf returns 0. Each present child contributes its recursive result plus one edge, and taking the larger contribution gives the height.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.25, Binary Tree: GATE CSE 2004 | Question: 43, PDF pp. 220–221 (key p. 254) https://gateoverflow.in/1040/gate-cse-2004-question-43",
+          "answer": "D (The height of the tree)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.17, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q43 (linked by question ID)",
+          "answer": "D (The height of the tree)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "madeeasy-data-structures-trees-5-18",
+      "contentSha256": "3fb5289c10bcdf9e8514dcee6457fd0123b2df066e9b96b25890097090be0d17",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "With distinct labels, preorder or postorder supplies the root and inorder separates its left and right subtrees. A root with one child can switch that child's side without changing preorder, postorder or level order, so pairs 1 and 4 are insufficient.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.24, Binary Tree: GATE CSE 2004 | Question: 35, PDF pp. 220 (key p. 254) https://gateoverflow.in/1032/gate-cse-2004-question-35",
+          "answer": "B (II and III, the pairs involving inorder)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.18, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q35 (linked by question ID)",
+          "answer": "B (II and III, the pairs involving inorder)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 19,
+      "id": "madeeasy-data-structures-trees-5-19",
+      "contentSha256": "677a4ebb75236bd7a9cc3b5e33f4da328127b9d67c8f8c5ef097b077d7ad178e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Preorder starts at A. Inorder splits BC to the left and D to the right. B is first among the left-subtree keys in preorder, so C is B's right child.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.46, Binary Tree: GATE IT 2004 | Question: 54, PDF pp. 225 (key p. 254) https://gateoverflow.in/3697/gate-it-2004-question-54",
+          "answer": "D (A has children B and D, with C the right child of B)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.19, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "d (A has children B and D, with C the right child of B)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q54 (linked by question ID)",
+          "answer": "D (same option image as the book, checked by SHA-256)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "madeeasy-data-structures-trees-5-20",
+      "contentSha256": "68da46edfc06d1d677180e218dbf6b1d891dd759ef3a94a2ae3a61f0817ee182",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "If r is inserted first it becomes the root, and exactly n − r keys exceed it. Thus p = n − r and r = n − p.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.30, Binary Search Tree: GATE IT 2005 | Question: 12, PDF pp. 214 (key p. 254) https://gateoverflow.in/3757/gate-it-2005-question-12",
+          "answer": "C ($n-p$)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.20, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "madeeasy-data-structures-trees-5-21",
+      "contentSha256": "f51c0346eae4d711514392c96ece7b228e84bbe130168798530313332e8e19ed",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Measuring height in edges, the minimum N(1) is 2. For h ≥ 2, a child of height h − 1 needs N(h − 1) nodes, and its sibling needs at least N(h − 1) − 2. That smaller size is attainable by a perfect tree or the empty tree, so N(h) = 2N(h − 1) − 1 = 2^(h − 1) + 1.",
+      "note": "The printed labels (2) and (4) correspond to app options B and D. Explicitly define height as the number of edges on a longest root-to-leaf path.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.47, Binary Tree: GATE IT 2005 | Question: 50, PDF pp. 225 (key p. 254) https://gateoverflow.in/3811/gate-it-2005-question-50",
+          "answer": "B ($2^{h-1}+1$)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.21, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 22,
+      "id": "madeeasy-data-structures-trees-5-22",
+      "contentSha256": "c8ca44770051900a4d45640b18f483aa0cf9c8ac39aa272ec465bfaa71b2ed45",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Split the preorder at root 5. The left subtree's postorder is 2, 1, 4, 3 and the right subtree's is 7, 8, 6. Append 5.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.31, Binary Search Tree: GATE IT 2005 | Question: 55, PDF pp. 214 (key p. 254) https://gateoverflow.in/3816/gate-it-2005-question-55",
+          "answer": "D (2, 1, 4, 3, 7, 8, 6, 5)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.22, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 23,
+      "id": "madeeasy-data-structures-trees-5-23",
+      "contentSha256": "367a66f2652ebb2fdd1c90e58eed69788153ef0b75bfa5de31946082819aaf15",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "The postorder gives all the BST keys. Inorder sorts them as 9, 10, 15, 22, 23, 25, 27, 29, 40, 50, 60, 95.",
+      "note": "Distractor D has 0 immediately after 10 in the book and app. The GATE Overflow and year-paper versions show 9 there. The sorted traversal in A is still unique.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.10, Binary Search Tree: GATE CSE 2005 | Question: 33, PDF pp. 210 (key p. 253) https://gateoverflow.in/1369/gate-cse-2005-question-33",
+          "answer": "A (9, 10, 15, 22, 23, 25, 27, 29, 40, 50, 60, 95)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.23, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q33 (linked by question ID)",
+          "answer": "A (9, 10, 15, 22, 23, 25, 27, 29, 40, 50, 60, 95)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 24,
+      "id": "madeeasy-data-structures-trees-5-24",
+      "contentSha256": "7620ffab5f97c4707935a608e9ea9f39494239ecaf99529b22bd1767761b9d63",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Counting edges gives kn = n + L − 1 for L leaves, so L = n(k − 1) + 1.",
+      "note": "The stem needs the word “tree” after “complete k-ary”. The linked 2005 scan prints undefined z in C, where it should read n(k − 1) + 1. GATE Overflow and the app already use n in C.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.15.8, Tree: GATE CSE 2005 | Question: 36, PDF pp. 251 (key p. 254) https://gateoverflow.in/1372/gate-cse-2005-question-36",
+          "answer": "C ($n(k-1)+1$)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.24, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q36 (linked by question ID)",
+          "answer": "C as intended. The source scan literally prints z(k − 1) + 1, with undefined z",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 25,
+      "id": "madeeasy-data-structures-trees-5-25",
+      "contentSha256": "38b8cae644167e09989be64f382b432200a7cbf63c610bf5f0157f8a2607cc53",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Five single-child nodes and ten two-child nodes contribute 5 + 20 = 25 edges. The tree has 26 vertices, of which 15 are internal, leaving 11 leaves.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.50, Binary Tree: GATE IT 2006 | Question: 9, PDF pp. 226 (key p. 254) https://gateoverflow.in/3548/gate-it-2006-question-9",
+          "answer": "B (11)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.25, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 26,
+      "id": "madeeasy-data-structures-trees-5-26",
+      "contentSha256": "dfdd5b4ceebf07c9331299d122c70bb5602fd163308df9bb83689da651a2888a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Visiting 47 while looking for 55 sets a lower bound of 47, so the later probe 43 is impossible. The other three sequences stay within their successive bounds.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.32, Binary Search Tree: GATE IT 2006 | Question: 45, PDF pp. 214 (key p. 254) https://gateoverflow.in/3588/gate-it-2006-question-45",
+          "answer": "C ({9, 85, 47, 68, 43, 57, 55})",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.26, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 27,
+      "id": "madeeasy-data-structures-trees-5-27",
+      "contentSha256": "2964bc260ff7179231af33d3fa43716b54c704e1b9b32d72c776ece7942d9784",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "The children of zero-based index p are 2p + 1 and 2p + 2. Inverting gives p = floor((i − 1)/2) = ceil(i/2) − 1, the formula in D.",
+      "note": "Made Easy keys A, floor(i/2), which gives parent index 1 for i = 2. Both i = 1 and i = 2 are children of index 0. GATE Overflow keys the equivalent ceiling form in D.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.48, Binary Tree: GATE IT 2006 | Question: 71, PDF pp. 225 (key p. 254) https://gateoverflow.in/3615/gate-it-2006-question-71",
+          "answer": "D ($\\left\\lceil\\dfrac{i}{2}\\right\\rceil-1$)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.27, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "a (floor(i/2))",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 28,
+      "id": "madeeasy-data-structures-trees-5-28",
+      "contentSha256": "40cdf1fdae276bd886b7cf694e7dce5a2d5e9d040c5719ecaea49f2efcf4d292",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Both root subtrees are heaps. Sifting the root down along one path restores the heap property in at most the tree's height, O(log n), and the root may travel to the bottom.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.4.30, Binary Heap: GATE IT 2006 | Question: 72, PDF pp. 208 (key p. 253) https://gateoverflow.in/3616/gate-it-2006-question-72",
+          "answer": "B ($O(\\log n)$)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.28, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 29,
+      "id": "madeeasy-data-structures-trees-5-29",
+      "contentSha256": "64ade6da0bcd470a74b175bfa41425563dd8b6dc5812b21da2c1fd5d3d1189a2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Level k occupies indices 2^k − 1 through 2^(k + 1) − 2. Solving for k gives floor(log₂(i + 1)).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.49, Binary Tree: GATE IT 2006 | Question: 73, PDF pp. 226 (key p. 254) https://gateoverflow.in/3617/gate-it-2006-question-73",
+          "answer": "C ($\\lfloor\\log_2(i+1)\\rfloor$)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.29, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 30,
+      "id": "madeeasy-data-structures-trees-5-30",
+      "contentSha256": "87c4efdeab1d668709ba199526df5b1143b19cfdf7e864cf7b2f399213f2cbaa",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Levels 0 through h hold at most 1, 2, …, 2^h nodes. A perfect tree reaches the sum 2^(h + 1) − 1.",
+      "note": "Distractor A is 2^h in Made Easy and the app. The original scan recorded in the year-paper copy and the GATE Overflow PDF show 2^h − 1. Both versions have the same correct option C.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.27, Binary Tree: GATE CSE 2007 | Question: 12, PDF pp. 221 (key p. 254) https://gateoverflow.in/1210/gate-cse-2007-question-12",
+          "answer": "C ($2^{h+1}-1$)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.30, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q12 (linked by question ID)",
+          "answer": "C ($2^{h+1}-1$)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 31,
+      "id": "madeeasy-data-structures-trees-5-31",
+      "contentSha256": "ae06cba34216bfca7bea776ee357bfffb9379687aa8ed362a9b3538ef441823d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "There are four chains of three nodes, one for each pair of left/right choices, and one tree whose root has both children. The total is five.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.28, Binary Tree: GATE CSE 2007 | Question: 13, PDF pp. 221 (key p. 254) https://gateoverflow.in/1211/gate-cse-2007-question-13",
+          "answer": "B (5)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.31, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q13 (linked by question ID)",
+          "answer": "B (5)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 32,
+      "id": "madeeasy-data-structures-trees-5-32",
+      "contentSha256": "99ad63a2a73e2867d03f258764ba2570640bc8022ccffe89ea8032a2520d444b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Root a has left subtree d–b–e and right subtree f–c–g in inorder. Their postorders deb and fgc followed by a give debfgca.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.29, Binary Tree: GATE CSE 2007 | Question: 39, UGCNET-June2015-II: 22, PDF pp. 221 (key p. 254) https://gateoverflow.in/1237/gate-cse-2007-question-39-ugcnet-june2015-ii-22",
+          "answer": "A (debfgca)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.32, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q39 (linked by question ID)",
+          "answer": "A (debfgca)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 33,
+      "id": "madeeasy-data-structures-trees-5-33",
+      "contentSha256": "7d82764a11a1aa180c37cb52f6ee20510f3e141005a48919d0b26ba230482eeb",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "With 10 internal nodes and 41 leaves there are 50 edges. All edges are child edges from the 10 internal nodes, so each has 50/10 = 5 children.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.15.9, Tree: GATE CSE 2007 | Question: 43, PDF pp. 251 (key p. 254) https://gateoverflow.in/1241/gate-cse-2007-question-43",
+          "answer": "C (5)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.33, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q43 (linked by question ID)",
+          "answer": "C (5)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 34,
+      "id": "madeeasy-data-structures-trees-5-34",
+      "contentSha256": "bbfd3db5c12963e5cbd7e57ecf96549682c3705362aa36c0d5ecb252e9f8b4d2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The displayed C code fails to compile because identifier case is inconsistent. After fixing the names, a null pointer contributes 0, a leaf contributes 1, and an internal node sums the counts from both children. The intended answer is C.",
+      "note": "The app declares leftchild and rightchild but accesses leftChild and rightChild. It also assigns to Value while declaring value. Rename the members consistently and change Value to value. The source keys give C for the intended recurrence. The literal app program is recorded as having no correct option.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.30, Binary Tree: GATE CSE 2007 | Question: 46, PDF pp. 221–222 (key p. 254) https://gateoverflow.in/1244/gate-cse-2007-question-46",
+          "answer": "C (leaf count for the intended recurrence)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.34, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "c (leaf count for the intended recurrence)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q46 (linked by question ID)",
+          "answer": "C (leaf count from the correctly capitalized program in the year copy)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "No valid literal answer. C after identifier case is corrected.",
+          "agrees": true
+        }
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "The displayed C code fails to compile because the child member names and value variable use inconsistent case. With consistent names, the function counts leaves (option C)."
+    },
+    {
+      "position": 35,
+      "id": "madeeasy-data-structures-trees-5-35",
+      "contentSha256": "4e6feb52cea51bc873d9f88c1709804f3c2fa8f60ac1f515081752618acfdf92",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "On a search for 60 the smaller keys must appear in ascending order and the larger keys in descending order. Interleaving the two fixed orders gives binom(7, 4) = 35.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.33, Binary Search Tree: GATE IT 2007 | Question: 29, PDF pp. 214 (key p. 254) https://gateoverflow.in/3462/gate-it-2007-question-29",
+          "answer": "A (35)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.35, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 36,
+      "id": "madeeasy-data-structures-trees-5-36",
+      "contentSha256": "dd5c0fd18fce61afbfc27edd80e29550e2feba2fd03e29ce55e4b131578422b0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "An AVL tree has logarithmic height, so its worst-case search is Θ(log n). An ordinary BST can be a chain, with worst-case search linear in n.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.1.6, AVL Tree: GATE IT 2008 | Question: 12, PDF pp. 198 (key p. 253) https://gateoverflow.in/3272/gate-it-2008-question-12",
+          "answer": "A (The cost of searching an AVL tree is $\\Theta(\\log n)$ but that of a binary search tree is $O(n)$)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.36, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 37,
+      "id": "madeeasy-data-structures-trees-5-37",
+      "contentSha256": "18ecf3f43e48094c2b2499bccb1ec3ad59262e611b15c1d9c0ed8142c51381b1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The degree sum gives n₁ + 2n₂ + 3n₃ = 2(n₁ + n₂ + n₃ − 1), which simplifies to n₃ = n₁ − 2.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.52, Binary Tree: GATE IT 2008 | Question: 76, PDF pp. 226 (key p. 254) https://gateoverflow.in/3390/gate-it-2008-question-76",
+          "answer": "B ($n_1-2$)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.37, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 38,
+      "id": "madeeasy-data-structures-trees-5-38",
+      "contentSha256": "816fec9659d01b017e4a88d43c911fa29f6181546469fbb89b460042d631edca",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Suppressing a degree-two vertex preserves the degrees of the remaining vertices. The result is a tree on n₁ + n₃ vertices and has n₁ + n₃ − 1 = 2n₁ − 3 edges.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.53, Binary Tree: GATE IT 2008 | Question: 77, PDF pp. 226 (key p. 254) https://gateoverflow.in/3391/gate-it-2008-question-77",
+          "answer": "A ($2*n_1-3$)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.38, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 39,
+      "id": "madeeasy-data-structures-trees-5-39",
+      "contentSha256": "c07e35969643c4ca38ed4e7c95892d3e8eee0d8ad53141ccab90e52db889d03f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Scan postorder backwards and construct the root, right subtree and left subtree using key bounds. Each distinct key is consumed once and its node must be constructed, giving Θ(n).",
+      "note": "Made Easy keys Θ(n log n) in C. A single bounded reverse scan constructs the unique BST in Θ(n), which is option B and agrees with GATE Overflow and the year-paper copy.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.12, Binary Search Tree: GATE CSE 2008 | Question: 46, PDF pp. 211 (key p. 254) https://gateoverflow.in/458/gate-cse-2008-question-46",
+          "answer": "B ($\\Theta(n)$)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.39, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "c (Θ(n log n))",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q46 (linked by question ID)",
+          "answer": "B ($\\Theta(n)$)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 40,
+      "id": "madeeasy-data-structures-trees-5-40",
+      "contentSha256": "f43b8636fca3b3b1e5ea9c6b56023b768be0a0937a020303d68b20fe491a185d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Append the n new entries and build a heap bottom up on all 2n entries. The sum of sift-down heights is linear and reading the new keys already takes Ω(n).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.43.17, Time Complexity: GATE CSE 2008 | Question: 47, PDF pp. 108 (key p. 116) https://gateoverflow.in/459/gate-cse-2008-question-47",
+          "answer": "B ($\\Theta(n)$)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.40, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q47 (linked by question ID)",
+          "answer": "B ($\\Theta(n)$)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 41,
+      "id": "madeeasy-data-structures-trees-5-41",
+      "contentSha256": "8d173d611bef040bc6b5cdc630651be703843c8e5ae658888b4467d00caf55ad",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The first symbol of preorder must equal the last of postorder. The only matching pair is II starting at K and I ending at K. Using III as inorder and II as preorder reconstructs a tree whose postorder is I.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.51, Binary Tree: GATE IT 2008 | Question: 46, PDF pp. 226 (key p. 254) https://gateoverflow.in/3356/gate-it-2008-question-46",
+          "answer": "D (II and III are the preorder and inorder sequences, respectively)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.41, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 42,
+      "id": "madeeasy-data-structures-trees-5-42",
+      "contentSha256": "ec4568c596eb000f60419e90bf26260d4242168646e7d25d5be68c5d629f7e7c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The minimum AVL node counts for heights −1 through 4 are 0, 1, 2, 4, 7 and 12, from N(h) = 1 + N(h − 1) + N(h − 2). Seven nodes achieve height 3.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.1.4, AVL Tree: GATE CSE 2009 | Question: 37,ISRO-DEC2017-55, PDF pp. 197 (key p. 253) https://gateoverflow.in/1323/gate-cse-2009-question-37-isro-dec2017-55",
+          "answer": "B (3)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.42, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q37 (linked by question ID)",
+          "answer": "B (3)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 43,
+      "id": "madeeasy-data-structures-trees-5-43",
+      "contentSha256": "cc4834e84dc1aa691e51ce128cb2fa0479243cf6c63a58083f157d3d517c81d5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "A nonempty child is one edge below its parent. B1 adds that edge to the height of the only present child. B2 adds one to the greater of the two child heights.",
+      "note": "Specify “longest root-to-leaf path” in the height definition. In option D remove the extra closing parenthesis so B2 reads max(h1, h2).",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.33, Binary Tree: GATE CSE 2012 | Question: 47, PDF pp. 222 (key p. 254) https://gateoverflow.in/2163/gate-cse-2012-question-47",
+          "answer": "A (B1: (1 + height(n->right))\nB2: (1 + max(h1, h2)))",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.43, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q47 (linked by question ID)",
+          "answer": "A (B1: (1 + height(n->right))\nB2: (1 + max(h1, h2)))",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 44,
+      "id": "madeeasy-data-structures-trees-5-44",
+      "contentSha256": "06f0fb2c114a1a5cac8076728b1a2ced3c00ae387bf2e736714263f6177bb453",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The subtrees of 30 give postorders 15, 10, 23, 25, 20 and 35, 42, 39. Then visit 30.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.14, Binary Search Tree: GATE CSE 2013 | Question: 43, PDF pp. 211 (key p. 254) https://gateoverflow.in/1554/gate-cse-2013-question-43",
+          "answer": "D (15, 10, 23, 25, 20, 35, 42, 39, 30)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.44, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 45,
+      "id": "madeeasy-data-structures-trees-5-45",
+      "contentSha256": "f20a1a2c01a124d9345fe91794d75c621f1fd04965031a3b4764148c66d46d91",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "1",
+      "status": "verified",
+      "reason": "A postorder traversal computes each rooted subtree's size from its two child sizes in constant work per node. Counting size-four subtrees takes one linear pass, so a = 1 and b = 0.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.34, Binary Tree: GATE CSE 2014 | Set 1 | Question: 12, PDF pp. 222 (key p. 254) https://gateoverflow.in/1776/gate-cse-2014-set-1-question-12",
+          "answer": "1",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.45, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "1",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "1",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 46,
+      "id": "madeeasy-data-structures-trees-5-46",
+      "contentSha256": "d7bfa50f647d42bbbf79a58eaa1eddd3aba38194b3d29ca4749c0123508fc084",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Visit the first child subtree, the node, then remaining child subtrees from left to right. Q contributes SQ and R contributes TRWUV. Around root P this gives SQPTRWUV.",
+      "note": "The diagram has a node with three children. Define generalized inorder for this ordered tree as visiting the first child's subtree, the node, then the other child subtrees from left to right.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.15.10, Tree: GATE CSE 2014 | Set 3 | Question: 12, PDF pp. 251–252 (key p. 254) https://gateoverflow.in/2046/gate-cse-2014-set-3-question-12",
+          "answer": "A (SQPTRWUV)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.46, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 47,
+      "id": "madeeasy-data-structures-trees-5-47",
+      "contentSha256": "ebc7d2a566a94848cf47a813a9c7ab6646e3295884c49a48460a4e09b18989f4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A node with no leftmost child contributes one leaf. Otherwise the recursive call counts the leaves among its children, while the right-sibling recursion also counts the remaining siblings' subtrees.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.15.11, Tree: GATE CSE 2014 | Set 3 | Question: 41, PDF pp. 252 (key p. 254) https://gateoverflow.in/2075/gate-cse-2014-set-3-question-41",
+          "answer": "D (number of leaf nodes in the tree.)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.47, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 48,
+      "id": "madeeasy-data-structures-trees-5-48",
+      "contentSha256": "4ff4a4f468556463e79bbfe9bdacdfa0b6b59532401f287bb163182a7a40b2a4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Only sequences 1 and 4 are increasing as an inorder traversal of these distinct BST keys must be. Sequence 2 has 12 before 10 and sequence 3 has 10 before 8.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.17, Binary Search Tree: GATE CSE 2015 | Set 1 | Question: 10, PDF pp. 212 (key p. 254) https://gateoverflow.in/8129/gate-cse-2015-set-1-question-10",
+          "answer": "A (1 and 4 only)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.48, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 49,
+      "id": "madeeasy-data-structures-trees-5-49",
+      "contentSha256": "11a5f7f4b580a0cad2c67ce4e7da8803e1a78fdb4283cbc1d63755ee6eb47fa9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "A five-edge chain has the minimum 6 nodes. Filling levels 0 through 5 gives the maximum 2^6 − 1 = 63.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.35, Binary Tree: GATE CSE 2015 | Set 1 | Question: 25, PDF pp. 223 (key p. 254) https://gateoverflow.in/8223/gate-cse-2015-set-1-question-25",
+          "answer": "A (63 and 6, respectively)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.49, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 50,
+      "id": "madeeasy-data-structures-trees-5-50",
+      "contentSha256": "d469968a5ff640de2498d912109e527f94e3814eaec44e49d3ddabea8d1ae0df",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "19",
+      "status": "verified",
+      "reason": "If L is the leaf count and b counts two-child nodes, equating child edges with total vertices minus one gives L = b + 1. Hence b = 19.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.36, Binary Tree: GATE CSE 2015 | Set 2 | Question: 10, PDF pp. 223 (key p. 254) https://gateoverflow.in/8059/gate-cse-2015-set-2-question-10",
+          "answer": "19",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.50, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "19",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "19",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 51,
+      "id": "madeeasy-data-structures-trees-5-51",
+      "contentSha256": "7d5f9f99334a8c49e4cfc01217ed7ae8c60cff531e358550ef4137f25f51463e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The deepest insertion is 67 at the end of the path 71 → 65 → 69 → 67, three edges from the root.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.19, Binary Search Tree: GATE CSE 2015 | Set 3 | Question: 13, PDF pp. 212 (key p. 254) https://gateoverflow.in/8409/gate-cse-2015-set-3-question-13",
+          "answer": "B (67)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.51, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 52,
+      "id": "madeeasy-data-structures-trees-5-52",
+      "contentSha256": "1b51d8b2ea7015702aacc8b2bd674948d56ecaa0ca13c78074de834098c10c0d",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "64",
+      "status": "verified",
+      "reason": "Height 6 on seven nodes forces a chain. Each of the first six insertions must choose the smallest or largest remaining key to keep the remaining keys on one side. There are 2^6 = 64 insertion orders.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.20, Binary Search Tree: GATE CSE 2016 | Set 2 | Question: 40, PDF pp. 212 (key p. 254) https://gateoverflow.in/39586/gate-cse-2016-set-2-question-40",
+          "answer": "64",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.52, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "64",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "64",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 53,
+      "id": "madeeasy-data-structures-trees-5-53",
+      "contentSha256": "5bfc851c93cce798c8e04ac1226ea0c92966b824d2d901ddd745d22a08f2d758",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A perfect tree holds 15 nodes at height 3, and height 2 holds at most 7. A chain of 15 nodes attains the maximum height of 14 edges.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.21, Binary Search Tree: GATE CSE 2017 | Set 1 | Question: 6, PDF pp. 212 (key p. 254) https://gateoverflow.in/118286/gate-cse-2017-set-1-question-6",
+          "answer": "B (3 and 14 respectively)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.53, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 54,
+      "id": "madeeasy-data-structures-trees-5-54",
+      "contentSha256": "e189fa2aa80fce4454022204761c8687c079b58394c9a69ac77d3ae5906f512b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The left and right subtrees of 12 have postorders 2, 7, 6, 10, 9, 8 and 15, 17, 20, 19, 16. Append root 12.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.22, Binary Search Tree: GATE CSE 2017 | Set 2 | Question: 36, PDF pp. 212–213 (key p. 254) https://gateoverflow.in/118378/gate-cse-2017-set-2-question-36",
+          "answer": "B (2, 7, 6, 10, 9, 8, 15, 17, 20, 19, 16, 12)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.54, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 55,
+      "id": "madeeasy-data-structures-trees-5-55",
+      "contentSha256": "0e03da465d7cf29ae9d0f7c63b569bc90b9b6d501e96bdd2fe82b506dba0ebff",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "4",
+      "status": "verified",
+      "reason": "Reconstruct from the last postorder key as root and split the inorder at each root. The longest paths are 1 → 2 → 4 → 6 → 8 and 1 → 2 → 4 → 6 → 9, both four edges.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.39, Binary Tree: GATE CSE 2018 | Question: 20, PDF pp. 223 (key p. 254) https://gateoverflow.in/204094/gate-cse-2018-question-20",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.55, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "4",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 56,
+      "id": "madeeasy-data-structures-trees-5-56",
+      "contentSha256": "a1329a5c3af2f4df5ee2f25d02695fc2e577dd945808fc601660cc9f909e8c30",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "4.25",
+      "status": "verified-with-note",
+      "reason": "For each first leaf, the eight equally likely second leaves give distances 0, 2, 4 and 6 with counts 1, 1, 2 and 4. Their mean is (0 + 2 + 8 + 24)/8 = 4.25.",
+      "note": "The prompt explicitly uses “full” to mean every level is full. The conventional term for this shape is “perfect binary tree”. The official range is exactly 4.25 to 4.25.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.40, Binary Tree: GATE CSE 2019 | Question: 46, PDF pp. 223 (key p. 254) https://gateoverflow.in/302802/gate-cse-2019-question-46",
+          "answer": "4.25",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.56, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "4.25",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2019 CS final key, subject question 46, https://gate.iitm.ac.in/gate2019/pdfs/Anskey/CS_key_Published.pdf",
+          "answer": "4.25 to 4.25",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "4.25",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 57,
+      "id": "madeeasy-data-structures-trees-5-57",
+      "contentSha256": "c72c989ca6ca61f7259d2db883933806236f57722e0de2f7dda63f39a43551e1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The subtree rooted at 10 gives postorder 11, 12, 10. The subtree rooted at 20 gives 16, 19, 18, 20. Finally visit root 15.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.24, Binary Search Tree: GATE CSE 2020 | Question: 5, PDF pp. 213 (key p. 254) https://gateoverflow.in/333226/gate-cse-2020-question-5",
+          "answer": "B (11, 12, 10, 16, 19, 18, 20, 15) → app D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.57, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 58,
+      "id": "madeeasy-data-structures-trees-5-58",
+      "contentSha256": "27d92aed114498e78292082bcf434486f62ba1e7cbe51e096724327323acc4bc",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "A procedure is called before the procedures it invokes and returns after they return. Those visit times give preorder and postorder respectively, so both statements are true.",
+      "note": "In distractor B, replace the first S₂ with S₁ so it reads “S₁ is true and S₂ is false”. This restores the missing truth-value combination.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 2.24.21, Runtime Environment: GATE CSE 2021 | Set 1 | Question: 4, PDF pp. 178 (key p. 188) https://gateoverflow.in/357448/gate-cse-2021-set-1-question-4",
+          "answer": "C ($S_1$ is true and $S_2$ is true)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.58, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 59,
+      "id": "madeeasy-data-structures-trees-5-59",
+      "contentSha256": "256b0f4139d47cc888aa7d7ff0b9ab52fc7d567a38dc865cad164786db810da7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "For n ≥ 2, return the root if it has a right child, since that child is larger. Otherwise return its left child, which is smaller than the root. This takes constant time.",
+      "note": "State n ≥ 2 so an element strictly smaller than the maximum exists.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.25, Binary Search Tree: GATE CSE 2021 | Set 1 | Question: 10, PDF pp. 213 (key p. 254) https://gateoverflow.in/357442/gate-cse-2021-set-1-question-10",
+          "answer": "D ($\\Theta(1)$)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.59, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 60,
+      "id": "madeeasy-data-structures-trees-5-60",
+      "contentSha256": "6fbbb6055bf14b0ce8ceb590818943488a865102649f18d16906f38eeb62911f",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "1",
+      "status": "verified",
+      "reason": "BFS first visits the root and its two children. DFS first visits the root, one child, and a grandchild through that child. Exactly the other child belongs to A minus B.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.41, Binary Tree: GATE CSE 2021 | Set 2 | Question: 16, PDF pp. 224 (key p. 254) https://gateoverflow.in/357524/gate-cse-2021-set-2-question-16",
+          "answer": "1 to 1",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.60, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "1",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "1",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 61,
+      "id": "madeeasy-data-structures-trees-5-61",
+      "contentSha256": "8438c00c8fd212f6750594a9225bee6ba17c454940a687e33c5e164717b1feb0",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "509",
+      "status": "verified",
+      "reason": "Following right children gives the maximum at index 510. The second largest is its parent at 254. The third is index 509, the parent's left child, which has no children in the 1000-node tree.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.26, Binary Search Tree: GATE CSE 2022 | Question: 18, PDF pp. 213 (key p. 254) https://gateoverflow.in/371918/gate-cse-2022-question-18",
+          "answer": "509",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.61, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "509",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "509",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 62,
+      "id": "madeeasy-data-structures-trees-5-62",
+      "contentSha256": "0efd35d09c111881a1657b0865dd09fd770f2fd7b9ad91b3c402ab868419ffbd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Each call prints the sum for its subtree after both children finish. Evaluating left before right gives sums 3, 8, 16, 13, 24 and 50. This is the only listed sequence permitted by the C expression.",
+      "note": "C leaves the order of the two recursive calls in the addition unspecified. Left-first gives option C and other permitted orders are absent from the choices. To ask for one exact output, evaluate foo(p->left) and foo(p->right) in separate statements in that order, then add the returned values.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.6.42, Binary Tree: GATE CSE 2023 | Question: 37, PDF pp. 224 (key p. 254) https://gateoverflow.in/399274/gate-cse-2023-question-37",
+          "answer": "C (3 8 16 13 24 50)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.62, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2023 CS master Q47, https://gate.iitk.ac.in/GATE2023/doc/papers/2023/CS_GATE2023.pdf and https://gate.iitk.ac.in/GATE2023/doc/papers/2023/ANS/CS_ANS_GATE2023.pdf",
+          "answer": "C (3 8 16 13 24 50)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 63,
+      "id": "madeeasy-data-structures-trees-5-63",
+      "contentSha256": "0fab092a58a5d919560be5f9125dce4989b1c5130ef5b48ea9f14b3a417321cb",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Bottom-up max-heap construction sifts down from index 4 to 0. After the final root sift, the first three entries are 131, 111 and 90.",
+      "note": "Specify bottom-up max-heap construction. Other valid heaps can have a different prefix. The official keyed tuple maps from paper D to app A. App distractor B should be 131, 11, 93 to match the paper's corresponding distractor.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 1.21.2, Heap Sort: GATE CSE 2024 | Set 1 | Question: 31, PDF pp. 54 (key p. 114) https://gateoverflow.in/422811/gate-cse-2024-set-1-question-31",
+          "answer": "D (131, 111, 90) → app A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.63, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2024 CS1 master Q41, https://gate2024.iisc.ac.in/wp-content/uploads/2024/CS124S5.pdf and https://gate2024.iisc.ac.in/wp-content/uploads/2024/CS1FinalAnswerKey.pdf",
+          "answer": "D (131, 111, 90) → app A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 64,
+      "id": "madeeasy-data-structures-trees-5-64",
+      "contentSha256": "35a3d668d6109e515e700a06e8403d87373d4ad8f5577c7e7d08a981f7905323",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The maximum must occur at a leaf because each internal node has a greater child. Assign the smallest 52 keys to internal nodes in increasing level order, then arrange the other 53 keys among the leaves in any order. Thus all 53 leaf indices are possible.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.4.26, Binary Heap: GATE CSE 2024 | Set 1 | Question: 33, PDF pp. 207 (key p. 253) https://gateoverflow.in/422809/gate-cse-2024-set-1-question-33",
+          "answer": "A (53) → app C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.64, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2024 CS1 master Q43, https://gate2024.iisc.ac.in/wp-content/uploads/2024/CS124S5.pdf and https://gate2024.iisc.ac.in/wp-content/uploads/2024/CS1FinalAnswerKey.pdf",
+          "answer": "A (53) → app C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 65,
+      "id": "madeeasy-data-structures-trees-5-65",
+      "contentSha256": "bfde76acc07f7434c6b2b516727809e8f4954870e33a39f740c28fdf8292b7e2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Inorder is the sorted sequence of V for every insertion order. Even two distinct keys can produce different roots, preorders and postorders when inserted in reverse order.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 3.5.27, Binary Search Tree: GATE CSE 2024 | Set 2 | Question: 29, PDF pp. 213 (key p. 254) https://gateoverflow.in/422868/gate-cse-2024-set-2-question-29",
+          "answer": "A (inorder from the set of keys) → app B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Trees Q5.65, C Programming and DS.pdf, PDF p. 32 (book p. 392)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2024 CS2 master Q39, https://gate2024.iisc.ac.in/wp-content/uploads/2024/CS224S6.pdf and https://gate2024.iisc.ac.in/wp-content/uploads/2024/CS2FinalAnswerKey.pdf",
+          "answer": "A (inorder from the set of keys) → app B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

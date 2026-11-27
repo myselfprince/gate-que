@@ -1191,13 +1191,15 @@ const handleExportAllImages = async () => {
     });
   };
 
+  const aptitudeChapter = subject === '13. General Aptitude' && chapter === '1. General Aptitude';
   const renderPreviewImage = (imageName, ext, key, compact = false) => {
     const imagePath = buildImagePath(imageName, ext);
     const isMissing = imageErrors.has(imagePath);
+    const image = <img src={`${imagePath}?t=${imgCacheBuster}`} onError={() => reportImageStatus(imagePath, true)} onLoad={() => reportImageStatus(imagePath, false)} alt="Question diagram" style={{ maxWidth: '100%', maxHeight: compact ? '80px' : aptitudeChapter ? '360px' : '200px', verticalAlign: 'middle' }} />;
     return (
       <div key={key} style={{ border: `1px dashed ${isMissing ? '#f38ba8' : '#74c7ec'}`, padding: '10px', textAlign: 'center', margin: '10px 0' }}>
-        <img src={`${imagePath}?t=${imgCacheBuster}`} onError={() => reportImageStatus(imagePath, true)} onLoad={() => reportImageStatus(imagePath, false)} alt="Question diagram" style={{ maxWidth: '100%', maxHeight: compact ? '80px' : '200px', verticalAlign: 'middle' }} />
-        {!compact && <><br /><small style={{ color: isMissing ? '#f38ba8' : '#74c7ec' }}>{isMissing ? '⚠️ 404 NOT FOUND: ' : ''}{imagePath}</small></>}
+        {aptitudeChapter && !isMissing ? <a href={imagePath} target="_blank" rel="noopener noreferrer" aria-label="Open full-size question diagram" title="Open full-size question diagram">{image}</a> : image}
+        {!compact && (!aptitudeChapter || isMissing) && <><br /><small style={{ color: isMissing ? '#f38ba8' : '#74c7ec' }}>{isMissing ? '⚠️ 404 NOT FOUND: ' : ''}{imagePath}</small></>}
       </div>
     );
   };
@@ -1240,7 +1242,9 @@ const handleExportAllImages = async () => {
     const imageName = optText.slice(4).trim();
     const imagePath = buildImagePath(imageName, ext);
     const isMissing = imageErrors.has(imagePath);
-    return <img src={`${imagePath}?t=${imgCacheBuster}`} onError={() => reportImageStatus(imagePath, true)} onLoad={() => reportImageStatus(imagePath, false)} alt="Option diagram" style={{ maxWidth: 'calc(100% - 44px)', maxHeight: '60px', height: 'auto', objectFit: 'contain', boxSizing: 'border-box', verticalAlign: 'middle', border: `2px solid ${isMissing ? '#f38ba8' : '#45475a'}`, borderRadius: '4px', marginLeft: '10px' }} />;
+    const image = <img src={`${imagePath}?t=${imgCacheBuster}`} onError={() => reportImageStatus(imagePath, true)} onLoad={() => reportImageStatus(imagePath, false)} alt="Option diagram" style={{ maxWidth: 'calc(100% - 44px)', maxHeight: aptitudeChapter ? '160px' : '60px', height: 'auto', objectFit: 'contain', boxSizing: 'border-box', verticalAlign: 'middle', border: `2px solid ${isMissing ? '#f38ba8' : '#45475a'}`, borderRadius: '4px', marginLeft: '10px' }} />;
+    if (!aptitudeChapter || isMissing) return image;
+    return <a href={imagePath} target="_blank" rel="noopener noreferrer" aria-label="Open full-size option diagram" title="Open full-size option diagram" onClick={event => event.stopPropagation()} onKeyDown={event => event.stopPropagation()}>{image}</a>;
   };
 
   
@@ -1668,7 +1672,9 @@ const handleExportAllImages = async () => {
           const hasOptions = q.optA || q.optB || q.optC || q.optD;
           const preview = renderQuestionPreview(q, imageList);
           const updateAnswer = patch => { setQuestions(current => current.map(item => item.id === q.id ? { ...item, ...patch } : item)); setIsDirty(true); };
-          const previewMeta = `[GATE ${q.examPaper || 'CS'} ${q.year}${q.setNum ? ` (Set-${q.setNum})` : ''} | ${q.marks} Mark${q.questionType ? ` | ${q.questionType}` : ''}]${q.source?.questionNumber ? ` · Book Q${q.source.questionNumber}` : ''}`;
+          const paperNumber = q.paperQuestionNumber ? ` · Paper Q${q.paperQuestionNumber}` : '';
+          const bookNumber = q.source?.questionNumber && q.source.questionNumber !== q.paperQuestionNumber ? ` · Book Q${q.source.questionNumber}` : '';
+          const previewMeta = `[GATE ${q.examPaper || 'CS'} ${q.year}${q.setNum ? ` (Set-${q.setNum})` : ''} | ${q.marks} Mark${q.questionType ? ` | ${q.questionType}` : ''}]${paperNumber}${bookNumber}`;
           const previewLinks = <>
             {safeSolutionUrl(q.solutionUrl) && <a href={safeSolutionUrl(q.solutionUrl)} target="_blank" rel="noopener noreferrer" style={{ color: '#89dceb' }}>Watch video solution ↗</a>}
             {safeGateOverflowUrl(q.gateOverflowUrl) && <a href={safeGateOverflowUrl(q.gateOverflowUrl)} target="_blank" rel="noopener noreferrer" style={{ color: '#a6e3a1' }}>GateOverflow solution ↗</a>}

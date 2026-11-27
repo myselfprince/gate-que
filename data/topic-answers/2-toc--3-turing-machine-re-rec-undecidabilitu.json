@@ -1,0 +1,1725 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "2. TOC",
+  "chapter": "3. Turing Machine, RE, REC, Undecidabilitu",
+  "slug": "2-toc--3-turing-machine-re-rec-undecidabilitu",
+  "reviewedAt": "2026-11-26",
+  "reviewer": "Codex",
+  "sources": {
+    "gateOverflowPdf": {
+      "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume2.pdf",
+      "sha256": "457f9e583b943b3c41e78d8431b09e322123b0d80765396af36ee2100196714f",
+      "chapter": "6 Theory of Computation",
+      "answerKeyPages": [
+        402,
+        403
+      ]
+    },
+    "madeEasyPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\2. TOC\\3. Turing Machine, RE, REC, Undecidabilitu.pdf",
+      "sha256": "4de4a28ac173256fe8827863688851e52dbbbf21031232c5accd5bab5e2ce8c1",
+      "answerKeyPage": 4,
+      "bookPage": 183,
+      "solutionsFile": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\All Subject Solutions Keys\\TOC.pdf",
+      "solutionsSha256": "72413c52dd79a3db6d3801860058e137d8110c7b51d41dc9facde0b681149b9b",
+      "solutionsAnswerKeyPage": 3
+    },
+    "yearPapers": "Verified data/papers copies linked by source.copiedFrom.questionId. The additional ISRO 2011 worked paper is identified at Q22.",
+    "officialKeys": "GATE and ISRO issuer keys linked at the relevant entries with master-paper or booklet question numbers.",
+    "dispositionEvidence": "For Q11 and Q40, agreement from a published key supports the source wording and historical letter required by the format. The derived source gives the literal result, which is stored as none-correct."
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "db86acde-ed22-4278-8a91-57bbe31c5d34",
+      "contentSha256": "283318e2a85de9b21f2369fc4bc564d946ea26e45132cd99394e3f25e93e8641",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "CFG membership is decidable, and a finite automaton terminates after reading the finite input. Testing whether a CFG generates a regular language is undecidable, as is uniform membership for type-0 grammars.",
+      "note": "This is the same 1989 item as Q2 with an introductory phrase. Option C says “automation.” The intended term is “automaton.”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.5.4, Decidability: GATE CSE 1989 | Question: 3-iii, PDF p. 342 (key p. 402). https://gateoverflow.in/87123/gate-cse-1989-question-3-iii",
+          "answer": "B, D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "B, D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "a2357de1-b190-476a-9927-0f2084722901",
+      "contentSha256": "5e22ae490de4832897e0787f662e3a1c9c03bd510f5827c91d94e2f3d2a05df1",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "CFG membership is decidable, and a finite automaton terminates on finite input. CFG regularity is undecidable, and type-0 membership is equivalent to Turing-machine acceptance.",
+      "note": "This repeats Q1, including “automation” in option C. The intended term is “automaton.”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.5.4, Decidability: GATE CSE 1989 | Question: 3-iii, PDF p. 342 (key p. 402). https://gateoverflow.in/87123/gate-cse-1989-question-3-iii",
+          "answer": "B, D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "B, D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "5e9ae41e-52ae-4ef6-87c3-c0c710d92945",
+      "contentSha256": "8b831b58afc24cbcf4acf67a31109d42b4abcf6f87a6bfcc64397e15bf4287b3",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Simulate 100 steps to decide A. From an arbitrary halting instance, construct a machine that prints a designated symbol, or computes products on encoded pairs, only after that instance halts. Either property would decide halting.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.5.5, Decidability: GATE CSE 1990 | Question: 3-vii, PDF p. 342 (key p. 402). https://gateoverflow.in/84835/gate-cse-1990-question-3-vii",
+          "answer": "B, C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "B, C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "0ecb59f5-f0c1-421b-bfa7-0e65632f6c2c",
+      "contentSha256": "7c92def4eff7989ebf736e3f834e46d0f3000a433d1dc9bc30d8b1ffd47f5c1e",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "All CFLs are decidable and a decidable language such as {aⁿbⁿcⁿ : n ≥ 1} is outside the CFLs. A decider is a Turing-machine recognizer, while the type-0 languages include undecidable recognizable languages.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.16.1, Recursive and Recursively Enumerable Languages: GATE CSE 1990 | Question: 3-vi, PDF p. 383 (key p. 403). https://gateoverflow.in/84833/gate-cse-1990-question-3-vi",
+          "answer": "A, D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "A, D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "8ac7f1dc-1758-466a-9cae-310a937945d2",
+      "contentSha256": "03286e6428ecf70bd1fd71bd243611b815c0a9274792d319a256d81592532ea4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Convert the two regular grammars to DFAs and test emptiness of their symmetric difference. Halting, CFG ambiguity, and equivalence of arbitrary CFGs are undecidable.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.5.7, Decidability: GATE CSE 1996 | Question: 1.9, PDF p. 343 (key p. 402). https://gateoverflow.in/2713/gate-cse-1996-question-1-9",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.1, PDF p. 1 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "aba3ce58-d640-4e74-8ff8-54d386e7ac4e",
+      "contentSha256": "e8dac479510442cc43f0060a71caa8c1b13c3a90a26aa47617b409880f4113da",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Bounded acceptance can be simulated for k steps. Automaton nonemptiness is reachability and CFG nonemptiness is a productivity test. Turing-machine equivalence would decide emptiness by comparison with a fixed empty machine.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.5.8, Decidability: GATE CSE 1997 | Question: 6.5, PDF p. 343 (key p. 402). https://gateoverflow.in/2261/gate-cse-1997-question-6-5",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.2, PDF p. 1 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "6ebe488f-71b4-475a-8c2e-7e28737f030e",
+      "contentSha256": "314d105464aa024df62dff20a85c351d2a02d96c9e2cd2e26165d0cf7f16b39d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Simulate M on w and accept as soon as q is visited. A machine can be made to enter a fresh q exactly when an arbitrary simulated computation halts, giving a reduction from halting.",
+      "note": "The Made Easy print tags this item 2002. Its wording and options match GATE CS 2001 Q2.7 and the verified 2001 paper copy, consistent with the app's year.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.5.11, Decidability: GATE CSE 2001 | Question: 2.7, PDF p. 344 (key p. 402). https://gateoverflow.in/725/gate-cse-2001-question-2-7",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.7, PDF p. 1 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q32",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "27700a78-aa3d-4755-90d8-1325d2ce9d34",
+      "contentSha256": "bd85ac3d43cdc5ff86afdf711f7f8fab7e0670fc97c9727c3169ecb68e89da16",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Swapping the outcomes of a decider gives A. Every recursive language is recursively enumerable, so A also implies C under inclusive or. Recursive enumerability alone and context-freeness alone do not give closure under complement.",
+      "note": "The GATE Overflow PDF keys A for the single-choice wording. The verified year-paper review explicitly confirms A and C. Made Easy also keys A, with a different C that begins “The complement of a recursively enumerable language.” To retain the app's C, ask which statements are true and allow multiple selections.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.1.3, Closure Property: GATE CSE 2002 | Question: 2.14, PDF p. 330 (key p. 402). https://gateoverflow.in/844/gate-cse-2002-question-2-14",
+          "answer": "A (published single-choice key)",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.4, PDF p. 1 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "a (option C has a different premise)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q39 (worked reference and source issues)",
+          "answer": "A and C (both true per the worked review, with A as the conventional key)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "A, C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "15f106c0-c470-476b-a93c-54a4cbefbf3d",
+      "contentSha256": "52d391d852a829c6e7a19d82766ce11d38868af7cafa3947b190c457762c0343",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Map (M,w) to ⟨M,w,1⟩ for L and to ⟨M,w,0⟩ for its complement. Both maps reduce nonhalting to the respective language, and nonhalting is not recursively enumerable.",
+      "note": "The set builders for L₀ and L₁ use LaTeX grouping braces in the app. Escape the braces to display them as set delimiters.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.16.4, Recursive and Recursively Enumerable Languages: GATE CSE 2003 | Question: 54, PDF p. 384 (key p. 403). https://gateoverflow.in/355/gate-cse-2003-question-54",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q54",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "11fd5113-6ad1-4e45-9c07-163d329ef235",
+      "contentSha256": "177876d4254d74ab8af92e425b0187b30a32142a4ce7db220ad27a96e35b39f7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "The empty input halts immediately. On a nonempty input q₀ first writes 1 and moves right, then q₁ scans zeros, writing 1 until it meets a 1 or B. It moves left to q₀ on the preceding 1, creating a two-step cycle. The app diagram was also traced for all binary inputs through length 10.",
+      "note": "Escape the braces in the tape and input alphabet notation to display {0,1,B} and {0,1}.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.5.15, Decidability: GATE CSE 2003 | Question: 53, PDF p. 345 (key p. 402). https://gateoverflow.in/941/gate-cse-2003-question-53",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.10, PDF p. 2 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q53",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Transition table in the app diagram and exhaustive trace through length 10",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "d4566061-1a78-4e59-82e7-8eaf19939096",
+      "contentSha256": "0070e9a38c37906a0f6b7c0ff0fe25411f9d58ac3963a7234f6793f2fce6bcf3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "With the displayed one-way implication, f can be the identity and L₂ can be empty while L₁ is undecidable, so C is possible. Taking L₁=L₂=∅ makes A, B and D possible. The source biconditional instead lets an L₂ decider decide L₁.",
+      "note": "Restore f:Σ*→Σ* and x∈L₁ if and only if f(x)∈L₂. The year-paper review documents both losses, and the historical key C applies to that repaired premise. All four choices are possible as displayed.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.5.14, Decidability: GATE CSE 2003 | Question: 52, PDF p. 344–345 (key p. 402). https://gateoverflow.in/356/gate-cse-2003-question-52",
+          "answer": "C (with the source biconditional over Σ*)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q52 (worked reference and source issues)",
+          "answer": "C (source biconditional over Σ*, with both losses documented for the app copy)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "No valid option as written. C with the source biconditional.",
+          "agrees": true
+        }
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "The displayed implication is one-way, so all four options are possible. The original biconditional over Σ* would make C impossible."
+    },
+    {
+      "position": 12,
+      "id": "0cc2c147-e366-4935-a1aa-b8b6f02d0c09",
+      "contentSha256": "d5ee35d8c8fcd46e9c73d3cfc3ca166d5a60ce13195bd570bcb593807307f090",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Both candidate languages, all binary strings and the empty language, are decidable. Either case is enough to establish that this fixed language is recursive.",
+      "note": "GATE Overflow's option D refers to recursive enumerability, while the app, year-paper copy and Made Easy refer to recursiveness. Both versions of D are false. The symbol φ denotes the empty language ∅ here.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.16.2, Recursive and Recursively Enumerable Languages: GATE CSE 2003 | Question: 13, PDF p. 383 (key p. 403). https://gateoverflow.in/904/gate-cse-2003-question-13",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.8, PDF p. 1 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q13",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "4afa8c76-8e42-4dd8-911b-cc001e5a0274",
+      "contentSha256": "b3b5d6f9cacf2620eb0ca9f0f26946e5a2c553d90eb0b46a1019d7a7b45ffb7b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "With a nonrepeating enumeration and decidable L₁, first check membership of both words, then enumerate until both appear and compare their indices. Conversely, in the nonempty case fix the first word w₁ and accept it directly. For each other x, test w₁#x in L₂ to decide L₁.",
+      "note": "The answer A uses a nonrepeating enumeration. With repeats, S₁ can fail: repeat a string for the second time exactly when its index enters a fixed nonrecursive r.e. set, making its diagonal pair undecidable. S₂ still holds, so C is valid under that interpretation. Specify “enumerates each word exactly once.” The selected year-paper scan has i≤j, while the app and GATE Overflow PDF use i<j.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.16.5, Recursive and Recursively Enumerable Languages: GATE CSE 2004 | Question: 89, PDF p. 384 (key p. 403). https://gateoverflow.in/1083/gate-cse-2004-question-89",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q89 (worked reference and source issues)",
+          "answer": "A (under the nonrepeating convention, with i≤j in this scan)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "28ee1088-b567-4c0d-8e65-564921120be2",
+      "contentSha256": "f8217714098125c77d98f8a75f2fa0fe4b2ff2128084667856c791b3444006fe",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Decidable languages are closed under complement. If both L₂ and its complement were recognizable, dovetailing their recognizers would decide L₂, contradicting the premise.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.16.6, Recursive and Recursively Enumerable Languages: GATE CSE 2005 | Question: 56, PDF p. 384 (key p. 403). https://gateoverflow.in/1379/gate-cse-2005-question-56",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.12, PDF p. 2 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q56",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "4aa98419-418f-4cca-9b68-2adefaf03470",
+      "contentSha256": "9d747629022e3dfbeacdae2fed08e5c40ce8a8a47f2784ac000c4f5832e151f5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "A decider for P₃ combined with a reduction from P₂ would decide P₂. Therefore P₂ reducible to P₃ transfers undecidability to P₃.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.17.1, Reduction: GATE CSE 2005 | Question: 45, PDF p. 387 (key p. 403). https://gateoverflow.in/1375/gate-cse-2005-question-45",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.11, PDF p. 2 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q45",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "e4297f0f-8bf2-4e35-8d88-dc25602fcd99",
+      "contentSha256": "82fc7a1ba05ee77dc7ed988b4e6ae464f966972c5aabf6949061559df292a748",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Set L₁=Σ*: the intersection in B is the nonrecursive L₃. The DFA–DPDA product proves A, CFLs are closed under union for C, and dovetailing recognizers proves D.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.9.11, Identify Class Language: GATE CSE 2006 | Question: 33, PDF p. 366 (key p. 402). https://gateoverflow.in/996/gate-cse-2006-question-33",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.14, PDF p. 2 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q33",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "b157a919-55b1-43f3-89ab-96c02f4d3a5e",
+      "contentSha256": "8f6ee1247b820f4f004b03f76a802c59833eef020fb9eb5551a11991b711e826",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "A DFA can store the numeric residue modulo 35 and update it to (2r+b) mod 35 on bit b. Accepting residues satisfy the two specified congruence tests.",
+      "note": "Escape the braces around the set builder defining L so they display in math.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.9.10, Identify Class Language: GATE CSE 2006 | Question: 30, PDF p. 366 (key p. 402). https://gateoverflow.in/993/gate-cse-2006-question-30",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.13, PDF p. 2 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q30",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Residue automaton and evaluation through length 10",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "6342a67f-11a9-4064-b2b6-4e15a2ecb63c",
+      "contentSha256": "850750b7918773acef62ca1162ff1c363a7d8876c76c4408ed635f43038cdc0b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "CFG ambiguity is undecidable by the Post correspondence reduction. CFG membership can be parsed, and finite-automaton finiteness and equivalence follow from reachable-cycle and product-automaton tests.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.5.16, Decidability: GATE CSE 2007 | Question: 6, PDF p. 345 (key p. 402). https://gateoverflow.in/1204/gate-cse-2007-question-6",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.15, PDF p. 2 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q6",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 19,
+      "id": "6aa3d6cb-6322-4781-821f-75821f15a805",
+      "contentSha256": "2f39566fc65f037390c80edb1fc1028f69cb22b453bce4348bc63b4c9f1e650c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Run the two recognizers in parallel on the same input. Exactly one of them will eventually accept, deciding membership in L.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.16.7, Recursive and Recursively Enumerable Languages: GATE CSE 2008 | Question: 13, ISRO2016-36, PDF p. 385 (key p. 403). https://gateoverflow.in/411/gate-cse-2008-question-13-isro2016-36",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.17, PDF p. 2 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q13",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "1dcfd621-9810-4f66-b89e-8dc5dbe41b5b",
+      "contentSha256": "4881a618eff2ab3eadfa66d969196a62bb5ff75d5abbfcd4c653fc41b5d97447",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A product DFA recognizes the intersection, and a reachable productive cycle determines infiniteness. A grammar is context-free if every production has one nonterminal on the left. CFG regularity and general PDA equivalence are undecidable.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.5.17, Decidability: GATE CSE 2008 | Question: 10, PDF p. 345 (key p. 402). https://gateoverflow.in/408/gate-cse-2008-question-10",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.18, PDF p. 2 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q10",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "c46f1f10-32bc-4be0-9c40-9a4dfd0cdd17",
+      "contentSha256": "71e9099beb035c7751d215b813fa90f2c2cd261e923888b576390c44480da2a7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Set L₁=Σ*: L₁−L₃ is then the nonrecognizable complement of L₃. A intersects a recognizable language with a decidable one, and the app's C and D follow from recognizable-language closure under union and intersection.",
+      "note": "The source restores C as “L₂ ∩ L₃ is recursively enumerable” and D as “L₂ ∪ L₃ is recursively enumerable.” Both app distractors remain true, so B is unchanged by the transcription differences.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.16.9, Recursive and Recursively Enumerable Languages: GATE CSE 2010 | Question: 17, PDF p. 385 (key p. 403). https://gateoverflow.in/2190/gate-cse-2010-question-17",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.19, PDF p. 2 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q17",
+          "answer": "B (L₁−L₃, same option text despite reordered or changed distractors)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 22,
+      "id": "5239cb73-e0ad-4975-a257-223a9b001828",
+      "contentSha256": "1ee308132295c7c55990ea113c622cabf59a83fb2bb2667ea490846613703529",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "A decision problem is decidable exactly when its associated language is recursive, meaning a total Turing-machine decider exists.",
+      "note": "The ISRO paper also prints “whose language is recursion.” The intended wording is “A decision problem whose language is recursive is called what?”",
+      "sources": [
+        {
+          "kind": "year-paper",
+          "ref": "ISRO CS 2011 Set A Q79, worked in Wiley's ISRO Scientist/Engineer Computer Science Solved Papers and Practice Tests (ISBN 9788126595457), 2011 Q79. https://dokumen.pub/wileys-isro-scientist-engineer-scientist-c-computer-science-solved-papers-and-practice-tests-2007-2020-9788126595457-9788126577255.html",
+          "answer": "D (decidable)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 23,
+      "id": "935ad9b1-c910-4b28-ad3b-d1193997b48d",
+      "contentSha256": "72782cd3c07266c6234db1d87256a1f18dcb0945899f0875b5c0368738958889",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "For 1, emit output only after a simulated machine halts. For 2, take a fixed CFL K with non-CFL complement and build L(G)#Γ* ∪ Σ*#K. If L(G)=Σ*, its complement is regular. A missing w makes the complement's regular slice w#Γ* equal w#(Γ*−K), which is non-CFL. Thus CFG universality reduces to 2. The promised classes in 3 and 4 are closed under complement.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.5.18, Decidability: GATE CSE 2012 | Question: 24, PDF p. 345 (key p. 402). https://gateoverflow.in/1608/gate-cse-2012-question-24",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.21, PDF p. 2 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q24",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 24,
+      "id": "b6447a14-baed-4b99-87a4-16e32e705fc2",
+      "contentSha256": "e0b612b5cc51ec026542c123492a568177b014f8307f78cbde044208746131d9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "CFG productivity decides 1, and determinization followed by symmetric-difference emptiness decides 4. CFG universality is undecidable, and Turing-machine language regularity is a nontrivial semantic property covered by Rice's theorem.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.5.19, Decidability: GATE CSE 2013 | Question: 41, PDF p. 346 (key p. 402). https://gateoverflow.in/1553/gate-cse-2013-question-41",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.23, PDF p. 2 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 25,
+      "id": "4c74a910-c351-4eae-a4c5-4b0cf06fc467",
+      "contentSha256": "5721b0869b7f33dc887bc46e76662190660ca6b0953a66f8df84b82cc5e0bb43",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Nondeterministic Turing machines can be simulated deterministically. Decidable languages are closed under intersection and complement. Recognizable languages are closed under union and intersection, while complementing a recognizable nonrecursive language is a counterexample to statement 2.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.1.4, Closure Property: GATE CSE 2013 | Question: 17, PDF p. 330 (key p. 402). https://gateoverflow.in/1439/gate-cse-2013-question-17",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.22, PDF p. 2 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 26,
+      "id": "39211355-326c-4405-bbb3-14e00f26240a",
+      "contentSha256": "4977df4229422ab7d346f42e5af1ae6bbc545d7488be3811e5546021142cd93d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "A recognizer run can end in acceptance, end in rejection, or continue forever. Overwriting an input cell can occur during a run and provides no separate acceptance or rejection outcome.",
+      "note": "Read “by changing the input” as a proposed fourth outcome. For precision, ask which is not a separate outcome of running a Turing recognizer. Changing tape contents can accompany halting.",
+      "sources": [
+        {
+          "kind": "official-key",
+          "ref": "ISRO CS 2014 revised key, Set A Q59. https://www.freeexampapers.com/exam-papers/Indian-Space-Research-Organisation/Computer-Science-BE003-key-2014-revised.pdf",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 27,
+      "id": "de0c89a5-b334-4567-9d63-bb257b6c5592",
+      "contentSha256": "bc89aedb106df52e82e638e6ad6d192e24d47ca64118c1e578a4000df5395012",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "CFG ambiguity is undecidable. Membership is decidable by parsing, and emptiness and finiteness are decidable using productive and reachable dependencies of a normalized grammar.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.5.20, Decidability: GATE CSE 2014 | Set 3 | Question: 35, PDF p. 346 (key p. 402). https://gateoverflow.in/2069/gate-cse-2014-set-3-question-35",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.28, PDF p. 2 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 28,
+      "id": "1f672466-a9f0-4913-96b9-d590c2830af0",
+      "contentSha256": "36fc635fb6c712ff68f08af16eb59aa09fb68b267959226cf334de025fed155f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "List finite words in length order, producing a countably infinite Σ*. Cantor's theorem makes its power set uncountable.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.4.2, Countable Uncountable Set: GATE CSE 2014 | Set 3 | Question: 16, PDF p. 341 (key p. 402). https://gateoverflow.in/2050/gate-cse-2014-set-3-question-16",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.27, PDF p. 2 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 29,
+      "id": "996482a7-1dbe-445b-a656-368532dab37d",
+      "contentSha256": "bde1e0f247db47ae8e77e8eee1df878a36800a1273b4fe3c9cb07a6e050bce4b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Dovetail the finitely many simulations on all length-2014 inputs and accept when one accepts. Having an accepted word of length 2014 is a nontrivial semantic property of the accepted language, so Rice's theorem gives undecidability.",
+      "note": "The app's “Turning machine” should read “Turing machine.”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.16.12, Recursive and Recursively Enumerable Languages: GATE CSE 2014 | Set 2 | Question: 35, PDF p. 386 (key p. 403). https://gateoverflow.in/1994/gate-cse-2014-set-2-question-35",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.25, PDF p. 2 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 30,
+      "id": "fb68349f-afdb-4df7-b2c7-a3e97d318475",
+      "contentSha256": "cd4b2342dd47d4afeef52ac3ca6e642ef6ad8b0af22fb17a5d83517704a90be7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Computable preimages preserve decidability and recognizability, proving A and C and giving B by contraposition. A constant mapping to a known string outside a non-r.e. B reduces the recursive empty language to B, disproving D.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.16.11, Recursive and Recursively Enumerable Languages: GATE CSE 2014 | Set 2 | Question: 16, PDF p. 385 (key p. 403). https://gateoverflow.in/1972/gate-cse-2014-set-2-question-16",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.26, PDF p. 2 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 31,
+      "id": "5c60609d-9bb2-4fc3-b40b-9e56a168476b",
+      "contentSha256": "c6c63377591687f9524f7815df1917eee173683ca90fbbb4ed1ec5554c66ea17",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Recognizers for a language and its complement yield a decider by dovetailing. Hence both cannot be recognizable and nonrecursive. A nonrecursive r.e. language gives B, recursive languages give D, and cardinality gives languages outside both the r.e. and co-r.e. classes for A.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.16.10, Recursive and Recursively Enumerable Languages: GATE CSE 2014 | Set 1 | Question: 35, PDF p. 385 (key p. 403). https://gateoverflow.in/1810/gate-cse-2014-set-1-question-35",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.24, PDF p. 2 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 32,
+      "id": "cc05156d-424a-4942-8e70-f3d6850a3b69",
+      "contentSha256": "d807662b37a95025275abe5501039bc235345e96062944131d03f0f73dbbbb36",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Swap the outcomes of a decider to establish I. Exhaustively search the finite set of polynomially bounded certificate strings to decide any NP language, establishing III and disproving II.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.5.21, Decidability: GATE CSE 2015 | Set 2 | Question: 21, PDF p. 346 (key p. 402). https://gateoverflow.in/8111/gate-cse-2015-set-2-question-21",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.30, PDF p. 3 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 33,
+      "id": "7da604f7-40e7-442d-b8c3-3866f436aeee",
+      "contentSha256": "2f39566fc65f037390c80edb1fc1028f69cb22b453bce4348bc63b4c9f1e650c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Dovetail the recognizers for L and its complement until one accepts. Its identity decides L.",
+      "note": "This stem and all four options repeat Q19. GATE Overflow lists this item under both GATE CS 2008 Q13 and ISRO CS 2016 Q36.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.16.7, Recursive and Recursively Enumerable Languages: GATE CSE 2008 | Question: 13, ISRO2016-36, PDF p. 385 (key p. 403). https://gateoverflow.in/411/gate-cse-2008-question-13-isro2016-36",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.17, PDF p. 2 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "d (same wording and options in the book’s GATE CS 2008 printing)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 34,
+      "id": "d3f8be53-00e9-42a0-ace6-979dfd4522b6",
+      "contentSha256": "0df637a1c35127864509ab6f80d52f721577d33c06580255f6309121ee641ef6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "A run of at most 2016 steps can observe only a bounded input prefix. Checking every short input and every prefix of the bound length decides both bounded-run properties. Empty-string acceptance is undecidable by a reduction that simulates an arbitrary fixed halting instance on ε.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.16.14, Recursive and Recursively Enumerable Languages: GATE CSE 2016 | Set 2 | Question: 44, PDF p. 386 (key p. 403). https://gateoverflow.in/39596/gate-cse-2016-set-2-question-44",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.33, PDF p. 3 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 35,
+      "id": "29d847b6-e138-400f-84ed-47c4bbbe241d",
+      "contentSha256": "3f91852396c78a93f31c42d8e05f6d224d1e2524de3a9de12dbdb94edb627687",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The complement of Y is not recognizable. If W were recognizable, its reduction preimage would recognize that complement. The complement of X is decidable, and a reduction to it supplies a decider for Z.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.17.2, Reduction: GATE CSE 2016 | Set 1 | Question: 44, PDF p. 387 (key p. 403). https://gateoverflow.in/39721/gate-cse-2016-set-1-question-44",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.31, PDF p. 3 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 36,
+      "id": "2964bf36-60b2-494e-8647-046141214b2e",
+      "contentSha256": "84cdc20d1ce38f6bfac6a9834ff90df5db5d3c6e1c13c31ce716d4bf527a98ef",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The NFA product and reachability decide I, and CFG membership decides II. Arbitrary CFG equivalence and Turing-recognizer language emptiness are undecidable.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.5.23, Decidability: GATE CSE 2016 | Set 1 | Question: 17, PDF p. 346–347 (key p. 402). https://gateoverflow.in/39651/gate-cse-2016-set-1-question-17",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 37,
+      "id": "537052e8-06fc-4756-9cf4-7189c2dc3d33",
+      "contentSha256": "094b895305e403663476b352b9634659209e4a6b804ece8dc1e39809215f4e24",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Dovetail recognizers for intersection and union. For star, try the finitely many factorizations of a word and dovetail recognizers for their factors. With L=Σ* and P recognizable but nonrecursive, L−P is not recognizable.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "official-key",
+          "ref": "ISRO CS 2017 (7 May) revised final key, Set A Q77. https://blogmedia.testbook.com/blog/wp-content/uploads/2017/05/Final-ISRO-Answer-Key-Computer-Science.pdf",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 38,
+      "id": "dc529c86-c13a-4fed-873f-253162a8ddb2",
+      "contentSha256": "c26e99cf2afa4a93b2016568857a6213482f29aec8abfda5f195239957f7db3a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "An LBA on a fixed input has a finite configuration graph, giving a decider for its language. Diagonalize over the effective list of LBAs and their indexed inputs to obtain a decidable language that no LBA recognizes.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "official-key",
+          "ref": "ISRO CS 2017 (7 May) revised final key, Set A Q11. https://blogmedia.testbook.com/blog/wp-content/uploads/2017/05/Final-ISRO-Answer-Key-Computer-Science.pdf",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 39,
+      "id": "4307b202-f473-4aa6-9ca4-e9979578b114",
+      "contentSha256": "120230262b06ede58f82c6e6502cc5ed94445fa8a394633cccfd153a49dbc339",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Regular-expression membership and CFG emptiness are decidable. CFG universality and Turing-machine acceptance are undecidable. Allowing some alphabet in III preserves hardness by prefixing the undecidable part with a fresh marker and including all strings outside that regular prefix domain.",
+      "note": "Both occurrences of “Turning machine” should read “Turing machine.”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.5.25, Decidability: GATE CSE 2017 | Set 2 | Question: 41, PDF p. 347 (key p. 402). https://gateoverflow.in/118605/gate-cse-2017-set-2-question-41",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.34, PDF p. 3 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 40,
+      "id": "f93ffbfe-6b5b-41ab-b815-bd66831da700",
+      "contentSha256": "856bdb04c990e587971048b858e0c9a9a61f358170eb5c0024c7e3847f50ec8e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Ordinary Turing machines require finite symbol alphabets. With finite A and B, computing f decides its graph. From a recognizable graph, dovetail over all candidate outputs y until x#y is accepted. Totality guarantees exactly one matching y. This proves both A and B under the repaired wording.",
+      "note": "Both printed sources say finite alphabets and key A. The app says infinite and supplies no effective encoding. Restore “finite alphabets,” “a total function,” “Turing machine,” and option B's “if and only if L_f is recursively enumerable.” Even with those repairs, select both A and B or change a distractor to retain a single-choice item.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.5.24, Decidability: GATE CSE 2017 | Set 1 | Question: 39, PDF p. 347 (key p. 402). https://gateoverflow.in/118322/gate-cse-2017-set-1-question-39",
+          "answer": "A (published key with finite alphabets)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.35, PDF p. 3 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "a (published key with finite alphabets)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "No valid option as written. A and B with finite alphabets and the complete wording.",
+          "agrees": true
+        }
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "Standard Turing machines use finite alphabets, and the displayed infinite alphabets have no encoding. With finite alphabets, both A and B hold for the graph of a total function. The published single-choice key lists A."
+    },
+    {
+      "position": 41,
+      "id": "5adf88b5-16eb-4f8b-ab11-4bfe95538fcd",
+      "contentSha256": "f12bb07b9613f940f478253d3e92818ebb69240585fbbead1a8d956a564265fb",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Type-0 membership, regularity of a Turing-recognizable language, and arbitrary grammar equivalence are undecidable. Determinizing the NFA and ignoring the stack yields a DPDA for the same language, so IV always has a yes answer.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.5.26, Decidability: GATE CSE 2018 | Question: 36, PDF p. 347 (key p. 402). https://gateoverflow.in/204110/gate-cse-2018-question-36",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.37, PDF p. 3 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 42,
+      "id": "00b5d0e8-f0e1-45c8-bbed-131753cb3705",
+      "contentSha256": "67cd50fea3dcca625b0c85150303e164382e3345196525ad960a51844c9e0a5d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Dovetail two recognizers and accept when both have accepted to recognize the intersection. Recognizable languages include nonrecursive ones and are countable because machines have finite descriptions.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.1.7, Closure Property: GATE CSE 2018 | Question: 7, PDF p. 331 (key p. 402). https://gateoverflow.in/204081/gate-cse-2018-question-7",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.36, PDF p. 3 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 43,
+      "id": "399c3158-084d-47aa-94fd-ea50e39d80d1",
+      "contentSha256": "74cebdc078abba24de7ca31a80dff761907a10d47e35d5b1e9db278c8898fd01",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Descriptions of Turing machines and finite C program texts are countable, so S₁ and S₂ are countable. All languages form the power set of the binary strings. Removing the countable regular languages from this uncountable set leaves S₄ uncountable.",
+      "note": "Escape the alphabet delimiters to display {0,1} in the set descriptions.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.4.3, Countable Uncountable Set: GATE CSE 2019 | Question: 34, PDF p. 341–342 (key p. 402). https://gateoverflow.in/302814/gate-cse-2019-question-34",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.38, PDF p. 3 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 44,
+      "id": "a2691b29-3573-4ddd-b2bb-dbca2e0caaf4",
+      "contentSha256": "bbad7430ea7b1f676784f4b902b24d6d0d880eba4c5792a48894b56ba54093a9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Simulate exactly 100 steps to decide L₂. Emptiness, nonrecursiveness, and having at least 21 members are nontrivial semantic properties of the recognized language, so L₁, L₃ and L₄ are undecidable by Rice's theorem.",
+      "note": "Made Easy labels the same combination L₁, L₃, L₄ as B, which maps to app A. Escape the braces around the four language definitions to display them as sets.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.5.27, Decidability: GATE CSE 2020 | Question: 26, PDF p. 348 (key p. 402). https://gateoverflow.in/333205/gate-cse-2020-question-26",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.39, PDF p. 3 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "b (L₁, L₃ and L₄ only → app A)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 45,
+      "id": "4136f38f-c0e2-48c7-a8bc-22e595f379bf",
+      "contentSha256": "e428adf430ce8c03d83560d85d43e03f60ba6fb9b58c606a55094989b48e2035",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Only a bounded input prefix can be read during the first 2021 steps. Simulate finitely many short strings and representatives for longer strings to decide both universal and existential versions of the bound.",
+      "note": "Escape the braces around the definitions of L₁ and L₂ to display the set boundaries.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.16.16, Recursive and Recursively Enumerable Languages: GATE CSE 2021 | Set 1 | Question: 39, PDF p. 387 (key p. 403). https://gateoverflow.in/357412/gate-cse-2021-set-1-question-39",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.40, PDF p. 3 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2021 CS1 Q39. https://gate2024.iisc.ac.in/wp-content/uploads/2021/cs1_2021.pdf",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 46,
+      "id": "9d60f2a8-e131-450f-963a-b35adfc65120",
+      "contentSha256": "6ca036242004007acaacf96e7d54f3551badc528c719b32c58780d619e71007c",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "DFA emptiness and universality are decidable by reachability and complementation. PDA emptiness reduces to CFG emptiness. PDA universality is equivalent to undecidable CFG universality.",
+      "note": "The official item is MSQ even though only D is true. Made Easy labels the PDA universality case B. Escape the set delimiters for the binary alphabet and the four languages.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.16.15, Recursive and Recursively Enumerable Languages: GATE CSE 2021 | Set 1 | Question: 12, PDF p. 386 (key p. 403). https://gateoverflow.in/357440/gate-cse-2021-set-1-question-12",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.41, PDF p. 3 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "b (PDA with L(M)=Σ* → app D)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2021 CS1 Q12, MSQ. https://gate2024.iisc.ac.in/wp-content/uploads/2021/cs1_2021.pdf",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 47,
+      "id": "fafa20a6-21ac-4b3f-849f-dd8b75ee9994",
+      "contentSha256": "91c844b7e64ba65b15b896a35b84f5a62e703aadc08619d7fc33703fc25c8519",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Turing-machine equivalence can decide emptiness by comparison with an empty machine. Regularity and universality are nontrivial semantic properties. The 1073-step property is decidable by testing finitely many short inputs and representatives for bounded prefixes.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.5.29, Decidability: GATE CSE 2022 | Question: 36, PDF p. 348 (key p. 402). https://gateoverflow.in/371900/gate-cse-2022-question-36",
+          "answer": "A, B, C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.45, PDF p. 4 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "a, b, c",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2022 CS master Q46, MSQ. https://gate2026.iitg.ac.in/doc/download/Answer_keys2022/cs_2022.pdf",
+          "answer": "A, B, C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "A, B, C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 48,
+      "id": "69eb7525-c20b-4119-8ddb-d4948f749d47",
+      "contentSha256": "5285eba2057a31f71e44c4ab2e5ca310f84e0e2d08f10b702b57cec301dd3a9d",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The universal binary language contains recognizable nonrecursive subsets, refuting A. Dovetailing proves B. CFLs are decidable and decidable languages are closed under complement, proving C. Regular languages intersect to a regular language, which is deterministic context-free, proving D.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.9.26, Identify Class Language: GATE CSE 2022 | Question: 13, PDF p. 370 (key p. 402). https://gateoverflow.in/371923/gate-cse-2022-question-13",
+          "answer": "B, C, D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Turing Machine chapter Q3.44, PDF p. 4 (answer table PDF p. 4, book p. 183, also TOC.pdf p. 3)",
+          "answer": "b, c, d",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2022 CS master Q23, MSQ. https://gate2026.iitg.ac.in/doc/download/Answer_keys2022/cs_2022.pdf",
+          "answer": "B, C, D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "B, C, D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 49,
+      "id": "bedd8f52-95aa-43fd-89d7-00ddd7c86412",
+      "contentSha256": "c8ad695e39eceaeddca2398b55cb43849c2fdcd73b559cb183aefc9036f116cf",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Among the listed properties, CFLs have a and b. Recursive and regular languages each have a and c. The only listed matchings using valid properties for all three classes are B and C.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.1.8, Closure Property: GATE CSE 2025 | Set 2 | Question: 20, PDF p. 331 (key p. 402). https://gateoverflow.in/460815/gate-cse-2025-set-2-question-20",
+          "answer": "B, C",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2025 CS2 master Q30, MSQ. https://gate2026.iitg.ac.in/doc/download/2025_Key/CS2_Keys.pdf",
+          "answer": "B, C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "B, C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 50,
+      "id": "f902f901-9e80-408c-bfea-5d1a494b55a4",
+      "contentSha256": "e14d442a200513d38a45a93f5e5b8ece686e47372b70c6ad64584ce092fccf39",
+      "questionType": "NAT",
+      "natAnswer": "5",
+      "status": "verified",
+      "reason": "Partition refinement on the app's Mealy transition table gives {A,C}, {B,E}, {D,H}, {F} and {G}. The five classes are distinct by output behavior and are all reachable from A.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.8.1, Finite State Machines: GATE CSE 2025 | Set 1 | Question: 49, PDF p. 364 (key p. 402). https://gateoverflow.in/460031/gate-cse-2025-set-1-question-49",
+          "answer": "5 to 5",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2025 CS1 master Q59, NAT. https://gate2025.iitr.ac.in/doc/2025/2025_Key/CS1_Keys.pdf",
+          "answer": "5 to 5",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Partition refinement using the app’s state transition table",
+          "answer": "5",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 51,
+      "id": "be9b3e92-414a-4ef2-943f-737da6aba66f",
+      "contentSha256": "b02eba66a8e638863a2ba1e6efafc39200153b17d857e9ff8249f33906b02102",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "A decider halts with acceptance on members of L and rejection on every nonmember. D supplies both directions and covers every binary input.",
+      "note": "Display the binary-language domain as {0,1}* by escaping the braces in the assertion and options A, C and D.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf §6.21.1, Turing Machine: GATE CSE 2026 | Set 2 | Question: 3, PDF p. 401 (key p. 403). https://gateoverflow.in/523143/gate-cse-2026-set-2-question-3",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2026 CS2 master Q13. https://gate2026.iitg.ac.in/doc/download/2026/Keys/CS2_Keys.pdf",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the chapter worksheet",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

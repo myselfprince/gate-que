@@ -1,0 +1,227 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "5. Operating Systems",
+  "chapter": "6. Miscellaneous",
+  "slug": "5-operating-systems--6-miscellaneous",
+  "reviewedAt": "2026-11-27",
+  "sources": {
+    "gateOverflowPdfs": [
+      {
+        "file": "G:/GateOverflow PYQ PDF all years/filter1_volume2.pdf",
+        "sha256": "457f9e583b943b3c41e78d8431b09e322123b0d80765396af36ee2100196714f"
+      },
+      {
+        "file": "G:/GateOverflow PYQ PDF all years/filter1_volume3.pdf",
+        "sha256": "5c552941136eb96612fabec8a5b2cb67fc07c17023ce15628408ca27d6640c24"
+      }
+    ],
+    "madeEasyPdf": {
+      "file": "C:/Users/Prince/Desktop/MadeEasy PYQ PDF/5. Operating Systems/6. Miscellaneous.pdf",
+      "sha256": "cc03a50b5cac7dcd09ac536eaa00845215079bbe9a82e5d561896d674039a63f"
+    },
+    "madeEasySolutionsPdf": {
+      "file": "C:/Users/Prince/Desktop/MadeEasy PYQ PDF/All Subject Solutions Keys/OS.pdf",
+      "sha256": "4d3a3fe4b3c14b4b358fcec724c0570f3c5a3f9478e599049d3f3b7f353f7bd4",
+      "answerKeyPage": 13,
+      "bookPage": 594
+    },
+    "paperScans": [
+      {
+        "file": "D:/Gate PYQs Year Wise - PDFs/1995.pdf",
+        "examQuestions": "GATE CSE 1995 Q1.14",
+        "pdfPages": [2]
+      },
+      {
+        "file": "D:/Gate PYQs Year Wise - PDFs/2005 IT.pdf",
+        "examQuestions": "GATE IT 2005 Q17–19",
+        "pdfPages": [2, 3]
+      }
+    ]
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "df4r14z77",
+      "contentSha256": "6475be7f123c534ef94a9dfa65edbe6c50ea06b1255a2bd5b99271c09b797a10",
+      "questionType": "MCQ",
+      "correctOptions": ["C"],
+      "answerDisposition": "disputed",
+      "specialNote": "C is the Made Easy reference answer. As written, A is also needed for a module containing compiled code, and B is needed when address fixups are required.",
+      "status": "verified-with-note",
+      "reason": "The linker uses C to resolve references from other modules. It also needs the compiled code (A) and any necessary relocation records (B). The linker can assign absolute addresses for internal symbols during linking.",
+      "note": "The 1995 paper scan and GATE Overflow read “What information need not be included in an object module?” Made Easy and the app omit the negation. GATE Overflow lists C for the negative stem. With the usual relocatable-object assumptions, the technical answer to the original negative stem is D. To keep C as a unique answer, ask “Which information lets the linker resolve references from other modules to symbols defined in this module?”",
+      "sources": [
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Miscellaneous Q6.1, chapter PDF p. 1 and OS.pdf p. 13 (book p. 594)",
+          "answer": "C (external symbol names and locations, retained as the reference)",
+          "agrees": true
+        },
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 2.24.7, GATE CSE 1995 Q1.14, p. 175 (key p. 188)",
+          "answer": "C (external symbol names and locations, for the negative stem)",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent check of the information a linker consumes",
+          "answer": "C is valid under the app's stem. A and, where relocation is needed, B are also valid.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "sppc8xsr8",
+      "contentSha256": "aa2617ccf935f61a139379649bbdc5dd1c5a90c3ded04a7d234df1b0f527ad85",
+      "questionType": "MCQ",
+      "correctOptions": ["D"],
+      "status": "verified",
+      "reason": "Following an interrupt, the operating system can resume the current process or block it and dispatch another process, depending on the event.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.14.2, GATE CSE 1997 Q3.8, p. 396 (key p. 468)",
+          "answer": "D (may block the interrupted process and schedule another)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Miscellaneous Q6.2, chapter PDF p. 1 and OS.pdf p. 13 (book p. 594)",
+          "answer": "D (may block the interrupted process and schedule another)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent trace of the OS scheduling decision after an interrupt",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "u8aneroel",
+      "contentSha256": "ea57d311414966fb72f3e6c16ca6cedc01882d5cf13afe491a2368ec3038ce3f",
+      "questionType": "MCQ",
+      "correctOptions": ["D"],
+      "status": "verified-with-note",
+      "reason": "The kernel delivers SIGINT by arranging for the process to enter its registered handler on return to user mode. The process's handler therefore executes in user mode.",
+      "note": "Both printed keys select kernel mode (GATE Overflow B maps to app A by option text). The GATE IT 2005 paper and the app ask about the handler registered by the process. The Linux signal(7) manual confirms that the handler executes after the transition to user mode.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.19.3, GATE IT 2005 Q19, p. 401 (key p. 468)",
+          "answer": "B (Kernel mode, app A)",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Miscellaneous Q6.3, chapter PDF p. 1 and OS.pdf p. 13 (book p. 594)",
+          "answer": "A (kernel mode)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "GATE IT 2005 Q19, 2005 IT.pdf p. 3 (wording and options), checked against Linux signal(7), Execution of signal handlers: https://man7.org/linux/man-pages/man7/signal.7.html",
+          "answer": "D (user mode, verified by the signal delivery documentation)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent trace of delivery of SIGINT and execution of the registered handler",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "4czlu9q1y",
+      "contentSha256": "83690d143ad5890fd5c04ddf15a0083864e677ec09de2218876ecdda2a41d13c",
+      "questionType": "MCQ",
+      "correctOptions": [],
+      "answerDisposition": "none-correct",
+      "specialNote": "With POSIX ln, both commands fail because the destinations already exist. All three files keep their contents.",
+      "status": "verified-with-note",
+      "reason": "POSIX ln -s requires -f to remove an existing destination. Both destinations are existing regular files. Both commands reported File exists in the command trace, and all three contents were preserved.",
+      "note": "Made Easy's B assumes the destinations are overwritten. The original paper also uses ln -s, and POSIX documents some historical variants of ln with different overwrite behavior. Specify POSIX ln and add “None of I, II or III.” To retain B instead, use ln -sf in both commands and stipulate permission to replace entries in the directory.",
+      "sources": [
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Miscellaneous Q6.4, chapter PDF p. 1 and OS.pdf p. 13 (book p. 594)",
+          "answer": "B (II and III only)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "GATE IT 2005 Q17, 2005 IT.pdf pp. 2–3 (original commands and options), checked against POSIX.1-2017 ln(1p), DESCRIPTION 1(a): https://man7.org/linux/man-pages/man1/ln.1p.html",
+          "answer": "None of the listed options under POSIX ln",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Ran both app commands with GNU ln against three pre-existing regular files in an isolated directory",
+          "answer": "Neither command replaced its destination. No information was lost.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "b22wvlu8n",
+      "contentSha256": "978d2ce06f3b0dd4127bd1be9207abc955ec8fbdc5c8457243f53d8e779347c4",
+      "questionType": "MCQ",
+      "correctOptions": ["A"],
+      "status": "verified-with-note",
+      "reason": "If /etc/passwd is the only matching pathname, find lists ./passwd, and ls passwd identifies that same file. The other choices read or search the file contents.",
+      "note": "The GATE IT 2005 paper matches the app's intended command. Made Easy prints password and omits the starting path, although its key selects ls passwd. For the intended A, specify that /etc/passwd is the only matching pathname under /etc and ask which command identifies the same file. find is recursive and its output includes the ./ prefix.",
+      "sources": [
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Miscellaneous Q6.5, chapter PDF p. 1 and OS.pdf p. 13 (book p. 594), compared with GATE IT 2005 Q18, 2005 IT.pdf p. 3",
+          "answer": "A (ls passwd, consistent with the corrected app command)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Compared GNU find and ls output with one matching file and again with an additional nested match",
+          "answer": "A under a single-match assumption",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "6r4cz4mtb",
+      "contentSha256": "d85ceb6c3d6878512dc9d5ba595e5e4cd083ee1723dfc250a3172c4a87850f62",
+      "questionType": "MCQ",
+      "correctOptions": ["D"],
+      "status": "verified",
+      "reason": "The positive total weight is constant across schedules. Ordering adjacent jobs i then j instead of j then i changes the weighted sum by w_j t_i − w_i t_j. The first order is no worse when w_i/t_i ≥ w_j/t_j, so sorting by descending ratio is optimal.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.23.48, GATE IT 2007 Q26, p. 421 (key p. 468)",
+          "answer": "D (non-increasing order of w_i/t_i)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Miscellaneous Q6.6, chapter PDF p. 1 and OS.pdf p. 13 (book p. 594)",
+          "answer": "D (non-increasing order of w_i/t_i)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Adjacent interchange proof, plus comparison against every permutation for 20,655 four-job cases",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

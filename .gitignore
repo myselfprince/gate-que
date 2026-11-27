@@ -45,7 +45,12 @@ next-env.d.ts
 
 #images
 
-/public
+/public/*
+!/public/13. General Aptitude/
+/public/13. General Aptitude/*
+!/public/13. General Aptitude/1. General Aptitude/
+/public/13. General Aptitude/1. General Aptitude/*
+!/public/13. General Aptitude/1. General Aptitude/ga-*.png
 
 # Local export artifacts and database snapshots
 /tmp/

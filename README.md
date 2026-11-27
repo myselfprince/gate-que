@@ -205,7 +205,7 @@ This application performs browser screenshots, LaTeX compilation, ZIP generation
 
 Production authentication is enabled by default. Set both `JWT_SECRET` and `APP_PASSWORD` to long, unique values before starting the service, then sign in at `/login`. The existing API and UI remain available after sign-in.
 
-Question diagrams live in `public/`, which this repository currently excludes from Git. Copy the matching chapter image library when setting up another machine or deploying. A source-only clone does not include these diagrams. For a larger asset library, use object storage with stable references.
+Question diagrams live in `public/`. The General Aptitude figures are versioned with their question data. For other chapters, copy the matching chapter image library when setting up another machine or deploying.
 
 Instead of manually typing math equations, formatting code, and organizing chapters, this system handles the heavy lifting through automated web scraping, smart text parsing, and a highly interactive workspace.
 
@@ -346,6 +346,12 @@ Book chapters get verified answers one topic at a time. Open `/gatetopicanswers`
 5. `node scripts/topic-answers/coverage.mjs` prints every chapter's answer coverage (read-only), matching the `/gatetopicanswers` page.
 
 `python -I scripts/topic-answers/render-pdf-pages.py <pdf> <dir> <dpi> <page> [--crop x0 y0 x1 y1]` renders formula pages and scanned Made Easy answer tables. Tests: `node --test tests/topic-answers.test.mjs`.
+
+### General Aptitude chapter
+
+The General Aptitude chapter has 270 CS paper questions from 2010 through 2026 in year, set, and original question order. Its checked-in import data includes source PDF pages and answer-key references.
+
+Run `node scripts/import-general-aptitude.mjs --validate` to verify the local data and diagram references, or omit `--validate` for a dry run against the configured editor database. Add `--apply` to back up the chapter and import missing questions.
 
 ## 💻 Tech Stack Summary
 

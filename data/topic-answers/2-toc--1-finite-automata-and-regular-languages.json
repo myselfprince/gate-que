@@ -1,0 +1,3966 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "2. TOC",
+  "chapter": "1. Finite Automata and Regular Languages",
+  "slug": "2-toc--1-finite-automata-and-regular-languages",
+  "reviewedAt": "2026-11-26",
+  "sources": {
+    "gateOverflowPdfs": [
+      {
+        "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume1.pdf",
+        "sha256": "e42a70646bdbc4f86edff44b97555a94c866deda508c761da40c20d95b493a2d"
+      },
+      {
+        "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume2.pdf",
+        "sha256": "457f9e583b943b3c41e78d8431b09e322123b0d80765396af36ee2100196714f"
+      },
+      {
+        "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume3.pdf",
+        "sha256": "5c552941136eb96612fabec8a5b2cb67fc07c17023ce15628408ca27d6640c24"
+      }
+    ],
+    "madeEasyPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\2. TOC\\1. Finite Automata and Regular Languages.pdf",
+      "sha256": "f82e310973e0a67eed2399e62ea1d4867ad9a3078ca343bfae0bd78e223f0a0e",
+      "answerKeyPage": 8,
+      "printedAnswerKeyPage": 141
+    },
+    "madeEasySolutionsPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\All Subject Solutions Keys\\TOC.pdf",
+      "sha256": "72413c52dd79a3db6d3801860058e137d8110c7b51d41dc9facde0b681149b9b",
+      "answerKeyPage": 1
+    },
+    "yearPapers": "data/papers/*.json, linked by source.copiedFrom.questionId",
+    "officialKeys": [
+      "https://gate.iitm.ac.in/gate2019/pdfs/Anskey/CS_key_Published.pdf",
+      "https://gate2024.iisc.ac.in/wp-content/uploads/2020/cs_2020.pdf"
+    ]
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "9c16v7p9s",
+      "contentSha256": "cee5fd6c7ee41e9c519b68924cbcb85d5e2cdd8d90235a93d62f343773c08447",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The base xy and the surrounding x and y in rule (i) generate exactly xⁿyⁿ for n ≥ 1. Pattern (ii) permits xxxyy and pattern (iii) permits xxy.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.3.3, Context Free Language: GATE CSE 1995 | Question: 2.20, p. 333 (key p. 402). https://gateoverflow.in/2632/gate-cse-1995-question-2-20",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.1, question p. 1, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "uuvvjop7w",
+      "contentSha256": "9c6679c7ef5790fad29f43067c3dfd3156195bb067fe20e686b63b8cce74e77f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Input 1 sends the four possible starting states to B or D. Input 0 then sends both to C. Neither one-symbol input sends all four states to C.",
+      "note": "Read “with the following state table” and “If the initial state is unknown.” The app and book have “follows” and “It.”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.15.2, Finite State Machines: GATE CSE 1995 | Question: 2.23, p. 323 (key p. 362). https://gateoverflow.in/2636/gate-cse-1995-question-2-23",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.2, question p. 1, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "2q6x1udd1",
+      "contentSha256": "20be3a2f36f262fdf6f96ea8ce67ddbe3c157918e5f538508f02600673874bd6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Expression (i) permits an even run of zeros with an optional extra zero, which is precisely 0* in (iii).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.18.6, Regular Expression: GATE CSE 1996 | Question: 1.8, p. 388 (key p. 403). https://gateoverflow.in/2712/gate-cse-1996-question-1-8",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.3, question p. 1, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "zi116mwao",
+      "contentSha256": "9bd353a4b02b413fffdfb75e76c84ffab9ee7b7819969195b62b0432c969b31d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "The form aᵐbⁿ with independent lower bounds has the regular expression aa*bb*. Equality or strict comparison of the two unbounded counts gives nonregular languages, as shown by distinguishing prefixes aⁱ with suitable b suffixes.",
+      "note": "Option D omits the lower bound after m ≥ in the app and the Made Easy scan. GATE Overflow gives m ≥ 1 and n ≥ 1.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.6, Regular Language: GATE CSE 1996 | Question: 1.10, p. 395 (key p. 403). https://gateoverflow.in/2714/gate-cse-1996-question-1-10",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.4, question p. 1, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "h9qp2uo2b",
+      "contentSha256": "074506e455ccd58581b829c4c01bf047b38ef871b17838d7ba828b4a92903a4d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The set Σ* is countably infinite, so its power set is uncountable. Finite strings, automata and Turing machine descriptions can each be enumerated.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.4.1, Countable Uncountable Set: GATE CSE 1997 | Question: 3.4, p. 341 (key p. 402). https://gateoverflow.in/2235/gate-cse-1997-question-3-4",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.5, question p. 1, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "f0jer013w",
+      "contentSha256": "282c6857fd1d7eb467702a52ae379ab1c20e41d4b9e3f8cf236f1cac99cac69b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "After the leading zeros, each zero must immediately follow a 1, so the remaining word is a concatenation of the blocks 1 and 10.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.18.7, Regular Expression: GATE CSE 1997 | Question: 6.4, p. 388 (key p. 403). https://gateoverflow.in/2260/gate-cse-1997-question-6-4",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.6, question p. 1, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "eyn5gy020",
+      "contentSha256": "0f83f6fb68251791e1cd9ac0c16c7a73a6905bc6c0de09895a26a494ef201810",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Every block (01)*1* is a concatenation of 01 and 1. Both 01 and 1 are themselves possible blocks in B, giving equality after taking the stars.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.18.9, Regular Expression: GATE CSE 1998 | Question: 1.9, p. 389 (key p. 403). https://gateoverflow.in/1646/gate-cse-1998-question-1-9",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.7, question p. 1, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "qazx811s2",
+      "contentSha256": "25ee0fbf800fa6cc974f544219c384ac6f457439fdfd0d85a0e4224c90ae84aa",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Binary powers of two have the regular form 10*. Unary powers of two have unbounded gaps, and the equal-count and mirrored-run alternatives require unbounded counting.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.6, Finite Automata: GATE CSE 1998 | Question: 1.10, p. 350 (key p. 402). https://gateoverflow.in/1647/gate-cse-1998-question-1-10",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.8, question p. 1, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "ue4b0dv19",
+      "contentSha256": "dec86af388d8958487100652c87c10cc8140cd14fd98969b7059dc74cc920ee6",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "C",
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Option A yields 11·0·1, and B yields 1·101. A word in C starting with 11 must start in the final pair-block portion, which cannot then produce 01. Every nonempty word in D ends in 0.",
+      "note": "Both printed keys identify two correct choices. A clearer stem would ask to select every expression whose language excludes 1101.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.18.8, Regular Expression: GATE CSE 1998 | Question: 1.12, p. 389 (key p. 403). https://gateoverflow.in/1649/gate-cse-1998-question-1-12",
+          "answer": "C;D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.9, question p. 1, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "CD",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "CD",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "s9cf4eund",
+      "contentSha256": "907a9a0229b291e99d4154460a578b43d2a6329898e2886f332cc4ce9298916d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "For each length k there are n − k + 1 starting positions. Summing these counts over k = 1 through n gives n(n + 1)/2.",
+      "note": "The keys count substring occurrences by their start and end positions. Reading “of different lengths” as counting only distinct lengths yields n. Suggested stem is “How many nonempty substring occurrences does a string of length n contain?”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 1.2.3, Combinatory: GATE CSE 1998 | Question: 1.23, p. 22 (key p. 30). https://gateoverflow.in/1660/gate-cse-1998-question-1-23",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.10, question p. 1, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "kkh0zupc9",
+      "contentSha256": "072a557302f57e1d2a35f85b43df3b3d338d2faf20bff56980947110d72d178e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Use an initial state and, for each last symbol, separate accepting and rejecting states according to whether the last two symbols match. The one-symbol suffixes 0 and 1 distinguish the same-status states, and the empty suffix distinguishes the two statuses.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.11.4, Minimal State Automata: GATE CSE 1998 | Question: 2.5, p. 372 (key p. 402). https://gateoverflow.in/1677/gate-cse-1998-question-2-5",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.11, question p. 1, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "ordoc4xpq",
+      "contentSha256": "ee0ee53ccf83583553480134ee0ee7287fdc9d044c4d2734e16e4a63fb74ae97",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "A chain of n + 1 states accepts exactly the words of length n with missing transitions after its accepting endpoint. Any accepting path of length n with a repeated state would also accept a shorter word.",
+      "note": "Specify “minimum number of states in an NFA” for the keyed answer. A complete DFA over {0,1} also needs a rejecting sink for lengths greater than n and would give option C.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.11.6, Minimal State Automata: GATE CSE 1999 | Question: 1.4, p. 372 (key p. 402). https://gateoverflow.in/1458/gate-cse-1999-question-1-4",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.12, question p. 2, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "ndcf4wqhq",
+      "contentSha256": "245c71d50c994e1b1f95b6c9d0e3c1d0f99fff42aa8a67a13a539824b6822dd9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The starred expression for S permits either individual symbol as a factor, and all factors use only a and b. Both languages equal {a,b}*.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.18.11, Regular Expression: GATE CSE 2000 | Question: 1.4, p. 389 (key p. 403). https://gateoverflow.in/627/gate-cse-2000-question-1-4",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.13, question p. 2, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q4",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "0ywt0oind",
+      "contentSha256": "1922a528b6649063fe302c14d9ee9d82e9ee8822bcee417a63d2f40198a85a28",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The base rule emits two zeros and each recursive step adds two zeros. The language is (00)(00)* and excludes every odd length.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.9.6, Identify Class Language: GATE CSE 2000 | Question: 1.5, p. 365 (key p. 402). https://gateoverflow.in/628/gate-cse-2000-question-1-5",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.14, question p. 2, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q5",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "daspaa2wn",
+      "contentSha256": "ef80be907db0946290127a53ba66a5679c9d345588a02e22acfbc000f5a95cb7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "A two-state unary cycle with either one of its states accepting realizes each parity language. The all-lengths language has a one-state DFA, so D is the book’s combined possibility choice.",
+      "note": "GATE Overflow has “must be” choices and an X key. The year-paper copy has no selected answer. A and B are individually possible under the app wording, and D combines them. For a unique intended choice, ask “Which option lists both parity languages whose minimal DFA has two states?” The additional languages {ε} and a⁺ also have two-state minimal DFAs.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.9, Regular Language: GATE CSE 2000 | Question: 2.8, p. 395 (key p. 403). https://gateoverflow.in/655/gate-cse-2000-question-2-8",
+          "answer": "X (the source uses “must be” choices)",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.15, question p. 2, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q31",
+          "answer": "No selected option",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "gzokzn4mm",
+      "contentSha256": "77abcc43530b87cf167c9707828511b6ef24441d294af36ae4ac53d3749ecbef",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "S₁ is (00)(00)*. Intersecting S₂ with 0⁺10⁺ fixes the middle block to one 1 and still requires trailing zeros to exceed leading zeros by one, which fails the pumping lemma.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.10, Regular Language: GATE CSE 2001 | Question: 1.4, p. 396 (key p. 403). https://gateoverflow.in/697/gate-cse-2001-question-1-4",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.16, question p. 2, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q4",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "qu3oasrht",
+      "contentSha256": "e4967a862eb928034bfc5add0b65133185cf7c9a75a249a841b482efc803cad1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Subset construction uses at most 2ᴺ states. An NFA can reach each subset using a symbol specific to that subset and distinguish two subsets with a symbol that accepts from one differing state, so the worst case attains the bound.",
+      "note": "The wording “maximum … at least” also appears in the source. A precise stem asks for the largest possible number of states of the minimal equivalent DFA over all N-state NFAs.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.11.7, Minimal State Automata: GATE CSE 2001 | Question: 1.6, p. 373 (key p. 402). https://gateoverflow.in/699/gate-cse-2001-question-1-6",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.17, question p. 2, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q6",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "zqd2gw597",
+      "contentSha256": "bddf092290b8b5a2447410701918e8e01367979b0bee2936786d8ddfa1166d0a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Track the residues of the a and b counts modulo 6 and 8. All 48 pairs are reachable, and a suffix that zeroes one pair distinguishes it from any different pair.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.11.8, Minimal State Automata: GATE CSE 2001 | Question: 2.5, p. 373 (key p. 402). https://gateoverflow.in/723/gate-cse-2001-question-2-5",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.18, question p. 2, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q30",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 19,
+      "id": "fwj11eif6",
+      "contentSha256": "098df67e4b45bcaad00d5da09e8c2dd388021d7df53f24756ec1a31ddac81ab0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "L₃ contains the even unary lengths. Intersecting L₁ and L₂ with a*b a*b and a*bb a* respectively exposes unbounded matching runs, and the gaps between the square lengths of L₄ grow without bound.",
+      "note": "For L₃ interpret 2i as a string length, so i must be nonnegative. The printed wording says “i is an integer.”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.11, Regular Language: GATE CSE 2001 | Question: 2.6, p. 396 (key p. 403). https://gateoverflow.in/724/gate-cse-2001-question-2-6",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.19, question p. 2, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q31",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "q3oxxhff3",
+      "contentSha256": "c614fc537a79d80674e397e51d46f4b76965cb7bba2c344eb023be1961e35910",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "State A represents previous bit 0 and B and C represent previous bit 1. The transition output gives 00, 01 or 10 according to the sum of that bit and the current input.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.8, Finite Automata: GATE CSE 2002 | Question: 2.5, p. 350 (key p. 402). https://gateoverflow.in/835/gate-cse-2002-question-2-5",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.20, question p. 2, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "47ia6xite",
+      "contentSha256": "e0998a787f313fa9b033ed5aad3950f614394d231661d1f08c3c72e146837a37",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The three states track length modulo 3. Each residue is reachable and a suffix of suitable length distinguishes it from the other residues.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.11.9, Minimal State Automata: GATE CSE 2002 | Question: 2.13, p. 373 (key p. 402). https://gateoverflow.in/843/gate-cse-2002-question-2-13",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.21, question p. 2, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q38",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 22,
+      "id": "dbi5i7vsw",
+      "contentSha256": "fba7d2556d898e2d514228f6082c5a31ddf68a8821e54d8ea8a7250129876aa1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The DFA accepts when it sees 001. With bits 1, 4 and 7 fixed to 1, the two possible occurrences are at bits 2–4 and 5–7. There are four assignments for each occurrence and one overlap, giving seven.",
+      "note": "The edge from the third state to the final state is unlabeled in the app drawing. It must be labeled 1 for a complete binary DFA and is labeled 1 in both PDFs.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.10, Finite Automata: GATE CSE 2003 | Question: 50, p. 351 (key p. 402). https://gateoverflow.in/939/gate-cse-2003-question-50",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.22, question p. 2, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q50",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 23,
+      "id": "5m2el28c0",
+      "contentSha256": "f40be1a54f9ffa4060572385c5802d103067b6fd74500a88845b032a0b6b85a5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "After the reversal of accepting states, the start q₃ accepts ε. On either first symbol the machine may enter q₂ and then stay there on either symbol, so it accepts every binary word.",
+      "note": "Use the plural “changing the non-accepting states of M to accepting states.” Both q₂ and q₃ are made accepting.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.11, Finite Automata: GATE CSE 2003 | Question: 55, p. 351 (key p. 402). https://gateoverflow.in/943/gate-cse-2003-question-55",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.23, question p. 2, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q55",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 24,
+      "id": "zlcvs538t",
+      "contentSha256": "2a5a29b19e891247abb30673801b4e57f46d5655397d0978a935ba7544474d55",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "A, B and D can each produce every word as a sequence of one-letter factors. In C, an a occurs only in an ab block, so the word a is excluded.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.18.25, Regular Expression: GATE IT 2004 | Question: 7, p. 392 (key p. 403). https://gateoverflow.in/3648/gate-it-2004-question-7",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.24, question p. 2, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q7",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 25,
+      "id": "t4crekq5n",
+      "contentSha256": "941ae42c8bc095fc6be5262e61113c1a6980b43b6fd3f935507afdd84c32bc7b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "A transition P on x to Q yields P → xQ, and the sole accepting state B yields B → ε. This gives A → aA or bB and B → aB, bA or ε.",
+      "note": "The app, Made Easy and GATE Overflow have the corrected transition δ(B,b) = A and rules in B. The linked IT paper copy repeats δ(B,a) and has different productions in its option B, so its letter is insufficient to confirm the option text.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.33, Finite Automata: GATE IT 2004 | Question: 41, p. 359 (key p. 402). https://gateoverflow.in/3684/gate-it-2004-question-41",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.25, question p. 2, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q41",
+          "answer": "B for a different production list in the paper copy",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 26,
+      "id": "j0pt02yg3",
+      "contentSha256": "1eed37de063cb65d919628774582b4e31c14a8a134cd4505267f367c0a17f043",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Each 1 advances one column in a 3-cycle, and each 0 swaps the two rows. The only accepting state is the start, so the residues of the counts of 1s and 0s must both be zero.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.12, Finite Automata: GATE CSE 2004 | Question: 86, p. 352 (key p. 402). https://gateoverflow.in/1080/gate-cse-2004-question-86",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.26, question p. 2, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q86",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 27,
+      "id": "rh0dubzm6",
+      "contentSha256": "4f29f7a62339d96fa7aa00e634675add5140f70e8e463a5e70fb45ca222d1dd2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The expression emits 01ᵏ0 for each integer k ≥ 0. There are infinitely many distinct words, each of finite length.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.18.26, Regular Expression: GATE IT 2005 | Question: 5, p. 392 (key p. 403). https://gateoverflow.in/3749/gate-it-2005-question-5",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.27, question p. 2, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 28,
+      "id": "9nz48c09t",
+      "contentSha256": "e15322d9d42803eb89cbdb1e6afd3d96d3ebb52167fbdecf6017b16a08a99642",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The upper bound on n leaves exactly 10⁶ words. Any finite language is regular, for example by a finite union of its individual words.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.9.30, Identify Class Language: GATE IT 2005 | Question: 6, p. 371 (key p. 402). https://gateoverflow.in/3751/gate-it-2005-question-6",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.28, question p. 2, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 29,
+      "id": "fa5qb6wp1",
+      "contentSha256": "68c7328a46dad0a073d14d1e153a025e3f23d13ed648d76fadf6b7fd44c06e3e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The first 0 makes both Y and Z reachable. Once both are reachable, a 0 retains both via Y, and a 1 retains both via Z. Both languages are the binary words containing a 0.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.34, Finite Automata: GATE IT 2005 | Question: 37, p. 360 (key p. 402). https://gateoverflow.in/3784/gate-it-2005-question-37",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.29, question p. 2, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 30,
+      "id": "xxr5fpjwa",
+      "contentSha256": "f61af60aaf0048ed2e610b39bbab5435e5ebdf88491bedc70fc7c9914350aad6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Every return to S adds three a’s. The only terminating path uses X and Z to add two more. Tracking length modulo three with residue two accepting gives the minimal three-state DFA.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.35, Finite Automata: GATE IT 2005 | Question: 39, p. 360 (key p. 402). https://gateoverflow.in/3786/gate-it-2005-question-39",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.30, question p. 2, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 31,
+      "id": "axof7jjkz",
+      "contentSha256": "00344b9ef2d6f1ed6d60d4d546e2c695c78b4d236267ca2d64c0f811a3e0a323",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Consider aⁱbʲcᵏdˡ with i ≠ 1 or j = k = l. It satisfies both pumping conditions with bound two by pumping leading a’s when present (both if i = 2), otherwise pumping the first symbol. Restricting to i = 1 gives a non-context-free language. Regular examples also satisfy both conditions.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.14.2, Pumping Lemma: GATE IT 2005 | Question: 40, p. 378 (key p. 403). https://gateoverflow.in/3787/gate-it-2005-question-40",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.31, question p. 3, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 32,
+      "id": "l280oxvnw",
+      "contentSha256": "d18e2469052fd7d0e8cc8718fdb27a949d231f7414ab583502983561adcfd58b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "The start is rejecting, and each a requires at least two b’s before the next a or the end. The accepted language is b*(abb b*)⁺. The word b disproves A and B, and abba disproves C and D. GATE Overflow lists X. Made Easy lists B, which admits words without any a. The year-paper copy selects C, but the accepting state has an a transition back to the state waiting for two b’s. Correct option B to “contains at least one a, and each a is immediately followed by at least two b’s.”",
+      "status": "verified-with-note",
+      "reason": "The start is rejecting, and each a requires at least two b’s before the next a or the end. The accepted language is b*(abb b*)⁺. The word b disproves A and B, and abba disproves C and D.",
+      "note": "GATE Overflow lists X. Made Easy lists B, which admits words without any a. The year-paper copy selects C, but the accepting state has an a transition back to the state waiting for two b’s. Correct option B to “contains at least one a, and each a is immediately followed by at least two b’s.”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.13, Finite Automata: GATE CSE 2005 | Question: 53, p. 352 (key p. 402). https://gateoverflow.in/1376/gate-cse-2005-question-53",
+          "answer": "X (no keyed choice, and the source diagram has the same rejecting start)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.32, question p. 3, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B (requires two b’s after each a but allows words without a)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q53",
+          "answer": "C = contains abb",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "None of the listed choices",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 33,
+      "id": "z53e3uq62",
+      "contentSha256": "88c2fc32c2e994b10bffc4acf7e88f5567d138b0250b4322453b6cf09483f10a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Reading from the least significant end, the machine copies all bits through the first 1 and flips every later bit. This computes the fixed-width two’s complement.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.14, Finite Automata: GATE CSE 2005 | Question: 63, p. 352 (key p. 402). https://gateoverflow.in/1386/gate-cse-2005-question-63",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.33, question p. 3, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 34,
+      "id": "qj98zsupv",
+      "contentSha256": "926eedc913f146a500b3d34e0184b17d6a2e3ba9c91a8cf85a0bbd2c0a20f91d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Tracing the diagram from s leaves abbaba at t. Both bab and aabb return to s, so only u is accepted.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.36, Finite Automata: GATE IT 2006 | Question: 3, p. 360 (key p. 402). https://gateoverflow.in/3542/gate-it-2006-question-3",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.34, question p. 3, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 35,
+      "id": "e7xf10t3h",
+      "contentSha256": "8fe28c65819ab816d33cb24a5a3657a5da7c119eef4b5765f96c83b9f176eda9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "The start loop consumes any prefix, and the only path to a final state consumes a, then either symbol, then b at the end.",
+      "note": "The first three circles are all labeled s in the drawings. Naming them s₀, s₁ and s₂ distinguishes the three states on the path.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.18.27, Regular Expression: GATE IT 2006 | Question: 5, p. 392 (key p. 403). https://gateoverflow.in/3544/gate-it-2006-question-5",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.35, question p. 3, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 36,
+      "id": "ci2as6umg",
+      "contentSha256": "b7b9658883c66baa42f64e0b6d4c73e43427d265f36629cba6dd0d65465647fc",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "An a switches between S and A and a b leaves the current nonterminal unchanged. Only S can terminate, so the two distinct residual languages are determined by the parity of the a count.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.19.3, Regular Grammar: GATE IT 2006 | Question: 29, p. 394 (key p. 403). https://gateoverflow.in/3568/gate-it-2006-question-29",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.36, question p. 3, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 37,
+      "id": "zyodz0rp9",
+      "contentSha256": "34e5e6fc856eda9afd141382b71ebe7bce986c2ba53e822b8f3c73af61b327cf",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The regular language a*b* contains the nonregular subset {aⁿbⁿ}. The empty language, the full language and all finite languages establish the other three statements.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.32, Regular Language: GATE IT 2006 | Question: 30, p. 400 (key p. 403). https://gateoverflow.in/3569/gate-it-2006-question-30",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.37, question p. 3, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 38,
+      "id": "d87aidz78",
+      "contentSha256": "7ad19f93232a833ba5bac4c835d8aea7f7d3454756c17053b557bec153bf061e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Mark coaccessible states final for prefix and reachable states initial for suffix. For half, track the set of states that can reach a final state in exactly the input length, updating it by one predecessor step per symbol. Copying an arbitrary binary word in repeat can yield a nonregular language.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.33, Regular Language: GATE IT 2006 | Question: 80, p. 401 (key p. 403). https://gateoverflow.in/3624/gate-it-2006-question-80",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.38, question p. 3, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 39,
+      "id": "m1k1prmd0",
+      "contentSha256": "b4f657371d1804c0c89c0ca061b3de7391c58a73278ee2a0b408775adc53edbf",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Repeating words from (a + b)* gives {ww}. Intersect it with a*b a*b to expose the nonregular matching runs aⁿbaⁿb. The other regular choices give finite or periodic repeated languages.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.34, Regular Language: GATE IT 2006 | Question: 81, p. 401 (key p. 403). https://gateoverflow.in/3637/gate-it-2006-question-81",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.39, question p. 3, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 40,
+      "id": "2bcpejk3m",
+      "contentSha256": "cfed464cf2922dda69fefe610c4fb44547dc8f5a28ec84404de9ad949a473d3e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The prefixes 0⁵ⁱ are pairwise distinguishable by suffixes 1⁵ⁱ, since distinct indices give final count difference at least five. The other choices require only bounded counters or modular residues.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.10.1, Medium: GATE CSE 2006 | Question: 29, p. 371 (key p. 402). https://gateoverflow.in/992/gate-cse-2006-question-29",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.40, question p. 3, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q29",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 41,
+      "id": "o8fca56g5",
+      "contentSha256": "58d9f3d90ca95a6ecd20ca9e20107781bb268b91cd64f6a39688330b068b5bf3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "On the unary alphabet the only rejected lengths are 1, 2, 4 and 7. Lengths 0 through 7 have distinct last rejected extensions, and the accepting tail from length 8 adds one more state.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.11.10, Minimal State Automata: GATE CSE 2006 | Question: 34, p. 373 (key p. 402). https://gateoverflow.in/1291/gate-cse-2006-question-34",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.41, question p. 3, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q34",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 42,
+      "id": "co4bh2xam",
+      "contentSha256": "0599fd431805df2f73c983fa9fc5d6842647a4153712af182d0c1be857473184",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Any finite set of strings is regular by writing the union of its individual words. This holds regardless of the language from which the strings were chosen.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.13, Regular Language: GATE CSE 2007 | Question: 7, p. 396 (key p. 403). https://gateoverflow.in/1205/gate-cse-2007-question-7",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.42, question p. 3, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q7",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 43,
+      "id": "67kbhp0ul",
+      "contentSha256": "02f0857ae7f3f43dda6cf1b4e7c8c31a19038c565860982041d15e9051e0bcce",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "A product of the length counters modulo 3 for zeros and modulo 5 for ones has 15 reachable states. Suffixes that zero a particular pair of residues distinguish all the pairs.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.11.11, Minimal State Automata: GATE CSE 2007 | Question: 29, p. 373 (key p. 402). https://gateoverflow.in/1227/gate-cse-2007-question-29",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.43, question p. 3, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q29",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 44,
+      "id": "t8mp2b6fz",
+      "contentSha256": "94a12a46cbb29cd75b1f665964db298e6d9f25742f17862c63913b894a3426a3",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "C",
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "In B, C and D, setting w = ε yields any binary word as x. Each therefore equals {0,1}*. Option A is the even-palindrome language, and prefixes 0ⁿ1 are distinguished by suffixes 10ⁿ.",
+      "note": "The app and Made Easy use Kleene star. The original year-paper and GATE Overflow choices use positive closure, under which C is the sole correct choice. Made Easy lists C, which confirms its regularity but omits B and D for the starred wording. Restore positive closure in A–D to recover the single-choice version.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.12, Regular Language: GATE CSE 2007 | Question: 31, p. 396 (key p. 403). https://gateoverflow.in/1229/gate-cse-2007-question-31",
+          "answer": "C for positive closure",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.44, question p. 3, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C in the table. The starred options on p. 3 also confirm B and D by taking w = ε.",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q31",
+          "answer": "C for positive closure",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "BCD",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 45,
+      "id": "izqoshqeu",
+      "contentSha256": "af723d26553346c891834dcc3f8693ef822d38ecc5206ba501cad5fc03fe65b8",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The start loops on b and the first a reaches an accepting state. Every transition from either reachable accepting state remains accepting, so precisely the words containing an a are accepted.",
+      "note": "The diagonal q₃ → q₁ arc lacks its a label in the app diagram. It is labeled a in the source. The edge is unreachable from q₀, so the answer is unaffected.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.15, Finite Automata: GATE CSE 2007 | Question: 74, p. 353 (key p. 402). https://gateoverflow.in/1270/gate-cse-2007-question-74",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.45, question p. 3, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q74",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 46,
+      "id": "2o4xwcb3g",
+      "contentSha256": "10d0771249aebd79a6410771241d17b5ef3d72281c21b0f84718ba9fc4023224",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Discard unreachable q₃ and merge q₁ with q₂ because both accept every suffix. The remaining start and accepting states are distinguished by ε.",
+      "note": "The reused app diagram omits the a label on q₃ → q₁. Restoring the label has no effect on the minimum because q₃ is unreachable.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.11.12, Minimal State Automata: GATE CSE 2007 | Question: 75, p. 373 (key p. 402). https://gateoverflow.in/43514/gate-cse-2007-question-75",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.46, question p. 3, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q75",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 47,
+      "id": "1goaat730",
+      "contentSha256": "eba56066b5b04c059523d8b4e31875bf9306f2fc51d1d259166878e4835f671f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "In G1, choosing yB ends the possibility of emitting x. In G2, every production emitting x enters B, whose next terminal must be y.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.3.32, Context Free Language: GATE IT 2007 | Question: 46, p. 340 (key p. 402). https://gateoverflow.in/3481/gate-it-2007-question-46",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.47, question p. 3, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 48,
+      "id": "xzhxtea43",
+      "contentSha256": "0c0faf6d72166517946c37166dffab3de68e0626dd77a41259f2f1a3327e60a4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "An x toggles the x-parity and a y toggles the y-parity. Starting at (even, even), the accepting states s₁ and s₃ have opposite count parities.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.38, Finite Automata: GATE IT 2007 | Question: 47, p. 361 (key p. 402). https://gateoverflow.in/3489/gate-it-2007-question-47",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.48, question p. 3, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 49,
+      "id": "y34hbf7yw",
+      "contentSha256": "0542622c12bc3e92c7aa02a02e801059e8e1323701faefd59b18e50a6d6dfdde",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The app grammar derives xyxy by S → xB → xyS → xyxB → xyxy, and yxxy symmetrically. Both words starting xx are impossible because every B production begins with y. The two listed three-letter words cannot complete their derivations.",
+      "note": "GATE Overflow prints B → xBB in the third alternative and includes (ii) in option C. The app and Made Easy use B → yBB and omit (ii) in C. To restore the original, repair both the rule and option C to “(ii), (iii) and (iv).”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.3.33, Context Free Language: GATE IT 2007 | Question: 48, p. 340 (key p. 402). https://gateoverflow.in/3490/gate-it-2007-question-48",
+          "answer": "C = (ii), (iii), (iv) with the source’s B → xBB",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.49, question p. 4, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 50,
+      "id": "d20er9ut6",
+      "contentSha256": "7d3657c359d4226232642e03ac99867baaa40df2850a71b6611d62941559e94f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "The reachable live product starts at (p₀,q₀). The only reachable p₃ pair is (p₃,q₃), and q₃ has no c edge, so the intersection rejects all words containing c. A, B and C accept abc, while D accepts c. The app and Made Easy reverse the c edge of Q compared with GATE Overflow. Draw it q₃ → q₁ and change r₁ → r₃ in live B from b to a to recover the keyed source product. The book’s B has the same two issues. The book also prints “None of the above” as option E, which the app omits.",
+      "status": "verified-with-note",
+      "reason": "The reachable live product starts at (p₀,q₀). The only reachable p₃ pair is (p₃,q₃), and q₃ has no c edge, so the intersection rejects all words containing c. A, B and C accept abc, while D accepts c.",
+      "note": "The app and Made Easy reverse the c edge of Q compared with GATE Overflow. Draw it q₃ → q₁ and change r₁ → r₃ in live B from b to a to recover the keyed source product. The book’s B has the same two issues. The book also prints “None of the above” as option E, which the app omits.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.39, Finite Automata: GATE IT 2007 | Question: 50, p. 362 (key p. 402). https://gateoverflow.in/3492/gate-it-2007-question-50",
+          "answer": "A for the source product (shows the transitions missing from the live choices)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.50, question p. 4, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B, whose selected diagram admits abc",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "None of the listed choices",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 51,
+      "id": "koc9hs2ht",
+      "contentSha256": "15d2e0c5bca80cd1279e82ab229e91fa8f06764a2d20f276e9dc63b77d49ca2b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "A can read a prefix at S₀ and then track the last a or b until it sees an equal adjacent pair. Its accepting state allows any suffix. B, C and D admit aba using a nonfinal loop to skip over b.",
+      "note": "In option D the source makes S₁ accepting and gives S₃ an a,b self-loop. The app drawing omits both details.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.40, Finite Automata: GATE IT 2007 | Question: 71, p. 362 (key p. 402). https://gateoverflow.in/3523/gate-it-2007-question-71",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.51, question p. 4, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 52,
+      "id": "wjmg9b7pg",
+      "contentSha256": "267c6eba8c315991f271776bd1451a41fcb924aeadd04eb1821d5694e37c09f0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Before acceptance A tracks whether the last letter was a or b. A repeated letter enters S₃ or S₄ and later input stays accepting. For example, A accepts abb and rejects ab, while the other choices fail at least one of these checks.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.41, Finite Automata: GATE IT 2007 | Question: 72, p. 363 (key p. 402). https://gateoverflow.in/3524/gate-it-2007-question-72",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.52, question p. 4, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 53,
+      "id": "44ij588aa",
+      "contentSha256": "959cdbeb090b6397fac1925ffeba01427454515bedc0870b2e5d66d60e8538e2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Before the first equal adjacent pair, letters alternate. If the word starts with a, that prefix and the pair match a(ba)*(a + bb), with the symmetric expression for words starting with b. Every remaining suffix is allowed.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.18.28, Regular Expression: GATE IT 2007 | Question: 73, p. 393 (key p. 403). https://gateoverflow.in/3525/gate-it-2007-question-73",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.53, question p. 4, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 54,
+      "id": "37softtbx",
+      "contentSha256": "7c43a97879a1f65466167e6eea7cf77fe8a459dbefa3efcf525a938b630e2103",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The two literal 1s in 0*10*10* are mandatory. All symbols before, between and after them are zeros, giving exactly two 1s in any positions.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.18.29, Regular Expression: GATE IT 2008 | Question: 5, p. 393 (key p. 403). https://gateoverflow.in/3265/gate-it-2008-question-5",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.54, question p. 4, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 55,
+      "id": "uny8auz7d",
+      "contentSha256": "e492ebff35f3cb57f3e08d13a708b0c025159be767e9bf07779b37cf39d537f0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The subset construction has one state per possible subset of the n NFA states, including the empty subset. Minimization can only reduce the count, so m ≤ 2ⁿ.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.11.25, Minimal State Automata: GATE IT 2008 | Question: 6, p. 376 (key p. 403). https://gateoverflow.in/3266/gate-it-2008-question-6",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.55, question p. 4, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 56,
+      "id": "psx1nr322",
+      "contentSha256": "7c517f66030baf8d250fba572f7932e9d0df82ff9b4d506d23e32f18517ecaf4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The states track whether the relevant suffix is empty, a, or ab. Only the ab state was final. In the complete DFA, flipping final states accepts exactly the words whose suffix is different from ab.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.42, Finite Automata: GATE IT 2008 | Question: 32, p. 363 (key p. 402). https://gateoverflow.in/3342/gate-it-2008-question-32",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.56, question p. 4, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 57,
+      "id": "rc3g1w3xr",
+      "contentSha256": "270afddbc50fd09aba71bbce779e7e2ae3f147259c46112a280d65fac182457c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "L₁ is finite and L₃ is recognized by a four-state parity counter. Intersecting the palindrome language L₂ with 0*10* leaves equal-length zero runs on both sides of 1, which are nonregular.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.35, Regular Language: GATE IT 2008 | Question: 35, p. 401 (key p. 403). https://gateoverflow.in/3345/gate-it-2008-question-35",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.57, question p. 4, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 58,
+      "id": "4zmu5ra1a",
+      "contentSha256": "9a5a159abc5f27c03415b42b44eeb35c81b16f98e05bd3f69382135a1dc41902",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "M₁ tracks a pending 1 and accepts after two consecutive 1s. M₂ guesses the start of the same pair and then accepts any suffix. Both recognize (0 + 1)*11(0 + 1)*, so equality and L₁ ∩ complement(L₂) = ∅ both hold.",
+      "note": "Made Easy selects A only. GATE Overflow records X, consistent with the lack of a unique choice. Its option B says proper inclusion, while the app and book use disjointness. Both are false. The live stem should ask “Which statements are true? Select all that apply.”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.43, Finite Automata: GATE IT 2008 | Question: 36, p. 363 (key p. 402). https://gateoverflow.in/3346/gate-it-2008-question-36",
+          "answer": "X (no unique keyed answer)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.58, question p. 4, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A only",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "AC",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 59,
+      "id": "59zirg836",
+      "contentSha256": "65ce9a29004008c9846749ad2d5ed9fe14d7d25d473c36ce5f46217dfd80c8d1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "For coordinates (Z,Y) use P = (1,1), Q = (1,2), R = (2,2) and S = (2,1). The a/b rows are P:(S,R), Q:(R,S), R:(Q,P), S:(P,Q). Only R accepts, and these are exactly the rows in app A.",
+      "note": "Made Easy A has the correct table. GATE Overflow’s keyed A has the last row reversed. The year-paper copy selects B, whose start on b goes to a rejecting state even though Y and Z both accept b. In GATE Overflow A, correct the S row to P,Q.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.16, Finite Automata: GATE CSE 2008 | Question: 49, p. 353 (key p. 402). https://gateoverflow.in/462/gate-cse-2008-question-49",
+          "answer": "A, whose S row in the source is Q,P",
+          "agrees": false
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.59, question p. 4–5, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q49",
+          "answer": "B, with the start on b leading to Q",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 60,
+      "id": "nde60m44a",
+      "contentSha256": "60a61b8f1261c2d69f033e336ae467b9345455cfdf174d9a25d8e8cbf74657df",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "In app diagram B the only departure from its accepting start is labeled a. Taken literally, its only accepted binary word is ε. All four listed expressions contain a nonempty binary word, so none can match that diagram. Label B’s arc from the lower-left start to the upper-left state with 0, as in both PDFs and the year-paper crop. Then A, B, C and D match expressions 1, 2, 3 and 4, which is keyed option C.",
+      "status": "verified-with-note",
+      "reason": "In app diagram B the only departure from its accepting start is labeled a. Taken literally, its only accepted binary word is ε. All four listed expressions contain a nonempty binary word, so none can match that diagram.",
+      "note": "Label B’s arc from the lower-left start to the upper-left state with 0, as in both PDFs and the year-paper crop. Then A, B, C and D match expressions 1, 2, 3 and 4, which is keyed option C.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.17, Finite Automata: GATE CSE 2008 | Question: 52, p. 353 (key p. 402). https://gateoverflow.in/464/gate-cse-2008-question-52",
+          "answer": "C for the source diagrams (B starts with 0)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.60, question p. 5, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C for a 0 edge out of diagram B’s start",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q52",
+          "answer": "C for the original four diagrams with a 0 edge out of B’s start",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "None of the listed choices",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 61,
+      "id": "phjx14vi3",
+      "contentSha256": "9885ed690fae26e54cca6e7606cd3f67d4c08b9257282ee94c2d0318f1d1f1cf",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Set I is a*(bb)* and IV is (a + b)*c(a + b)*. In the app, II requires equal even-length runs, and III, with m allowed to vary, requires equal runs. Both need unbounded matching.",
+      "note": "The original item II is {aⁿbᵐ with n = 2m}, and item III is {aⁿbᵐ with n ≠ m}. The app and book repeat bⁿ in both sets. The restored II is nonregular by counting, and the restored III is the complement of equal runs within a*b*, so it is also nonregular.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.14, Regular Language: GATE CSE 2008 | Question: 53, p. 396 (key p. 403). https://gateoverflow.in/476/gate-cse-2008-question-53",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.61, question p. 5, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q53",
+          "answer": "A = I and IV only (app A after comparing the sets)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 62,
+      "id": "ikwf1j5vt",
+      "contentSha256": "1d4bec15513c24d379192e601c8bc6dc1d1935ad6b75673a9657cd7fefda442d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The two explicit zeros can be separated by any binary string. The three starred factors allow arbitrary intervening, preceding and following bits.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.18.13, Regular Expression: GATE CSE 2009 | Question: 15, p. 389 (key p. 403). https://gateoverflow.in/1307/gate-cse-2009-question-15",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.62, question p. 5, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q15",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 63,
+      "id": "li6ia8de5",
+      "contentSha256": "bd2b840beddf4fbd54d5c5329804bf839e921e83c3cc3be6f232f2e02d8fdee4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "A 1 always goes to the start. Zeros advance from the start to the middle state to the accepting state, where further zeros loop. A word is accepted exactly when it ends in at least two zeros.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.18, Finite Automata: GATE CSE 2009 | Question: 41, p. 354 (key p. 402). https://gateoverflow.in/1327/gate-cse-2009-question-41",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.63, question p. 5, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q41",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 64,
+      "id": "8kqhiod9u",
+      "contentSha256": "32ae7573f49ffbc096d81f5ff9676a7caad9706a4578daffeb745d3d9d236504",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "After any leading zeros, each repetition of 10*10* adds exactly two 1s and permits arbitrary zeros between and after them. Zero repetitions also cover every all-zero word.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.18.14, Regular Expression: GATE CSE 2010 | Question: 39, p. 390 (key p. 403). https://gateoverflow.in/2340/gate-cse-2010-question-39",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.64, question p. 5, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q39",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 65,
+      "id": "a1shf4yzo",
+      "contentSha256": "47ff3443c516d3f3b3b847f8f5c37bc02383b38046d47f8f73d6fea5b30ca752",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Use a path of n + 1 states spelling w. Allow a jump from the initial state to any position on ε and make every state accepting. On an accepting run for w, repeating a state after consuming a positive number of symbols would allow a longer word, so n + 1 states are necessary.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.11.13, Minimal State Automata: GATE CSE 2010 | Question: 41, p. 374 (key p. 402). https://gateoverflow.in/2342/gate-cse-2010-question-41",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.65, question p. 5, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q41",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 66,
+      "id": "jqfmd1q44",
+      "contentSha256": "0adf9c167654d3dc30a3ec6b83cc76a800bc94d989a07ff8f20e2a0f7561b23b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Lexical token patterns are regular languages. A finite automaton recognizes the next token and tracks the longest match without needing an unbounded stack.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 2.15.5, Lexical Analysis: GATE CSE 2011 | Question: 19, p. 154 (key p. 188). https://gateoverflow.in/2121/gate-cse-2011-question-19",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.66, question p. 5, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q19",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 67,
+      "id": "w1bpq2uf0",
+      "contentSha256": "2e364b906880d259554c1af3f33b1ed13fee43a74327591283a55b4e3689126f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Complementing a complete DFA for P gives Σ* − P. For the given nonregular Q, P ∩ Q equals Q, and regularity of P − Q or Σ* − Q would make Q regular by closure under difference.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.15, Regular Language: GATE CSE 2011 | Question: 24, p. 397 (key p. 403). https://gateoverflow.in/3429/gate-cse-2011-question-24",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.67, question p. 5, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q24",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 68,
+      "id": "e7uwztxlr",
+      "contentSha256": "fdd38e826b1fcb362f734346400cd0e640a5a249a923902c0aa7569af160f537",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A rejecting start feeds an n-state cycle with the positive lengths divisible by n accepting. Different residues are distinguished by suffix lengths. The start also differs from every cycle state, since its shortest accepting suffix has length n.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.11.14, Minimal State Automata: GATE CSE 2011 | Question: 42, p. 374 (key p. 402). https://gateoverflow.in/2144/gate-cse-2011-question-42",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.68, question p. 5, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q42",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 69,
+      "id": "3z3lb26i3",
+      "contentSha256": "5435626d6f117c42371d32abfe26ff80b474e54575af52bcb6909507bfce65c2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Merge s and t because they are accepting sinks. The rejecting sink r still differs from p and q on a, and ba is accepted from p and rejected from q. The resulting four states have exactly the arcs of A.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.11.15, Minimal State Automata: GATE CSE 2011 | Question: 45, p. 374 (key p. 402). https://gateoverflow.in/2147/gate-cse-2011-question-45",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.69, question p. 5, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q45",
+          "answer": "A, the diagram with s and t merged",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 70,
+      "id": "gww2vs9oj",
+      "contentSha256": "cf65d145545a2276be75cf7f357b092cb918b1ac119996bd0113e746f461e72e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The first a reaches the accepting state, and two ε moves return to the start so that each further a can do the same. The NFA accepts all positive unary lengths and rejects ε.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.19, Finite Automata: GATE CSE 2012 | Question: 12, p. 354 (key p. 402). https://gateoverflow.in/44/gate-cse-2012-question-12",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.70, question p. 5, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q12",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 71,
+      "id": "754z3jgrk",
+      "contentSha256": "09b8220211dcc2328a6adb9d6c5d72f7ab558c197faeabf7f5eaa22509e7f29d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The factorizations are ab·aa·baa·ab·aa for 1, aa·aa·baa·aa for 2, and baa·aa·ab·aa for 4. String 3 begins with the forced tokens baa·aa·ab·aa·aa and leaves an unmatched b.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.16, Regular Language: GATE CSE 2012 | Question: 25, p. 397 (key p. 403). https://gateoverflow.in/1609/gate-cse-2012-question-25",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.71, question p. 5, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q25",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 72,
+      "id": "fqjh2zcex",
+      "contentSha256": "eeaf147e05c1e1d60883a439326e03307f6f26c5654c9148381f996069d86885",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "The app already has two outgoing edges on 1 from state 0 and no edge on 0 from that state. Its option tables also use 0 and 1 where 00 and 01 are needed. Adding arcs from any table as printed cannot complete a DFA for the requested language. Change 0 → 00 to label 0, label 1 → 11 with 1, mark ε as the start, and restore the first two row and column labels to 00 and 01. The correct missing edges are 00 on 0 to q, 00 on 1 to 01, 01 on 1 to 11, 10 on 0 to 00, and 11 on 0 to 10. The sources confirm D for those corrected figures.",
+      "status": "verified-with-note",
+      "reason": "The app already has two outgoing edges on 1 from state 0 and no edge on 0 from that state. Its option tables also use 0 and 1 where 00 and 01 are needed. Adding arcs from any table as printed cannot complete a DFA for the requested language.",
+      "note": "Change 0 → 00 to label 0, label 1 → 11 with 1, mark ε as the start, and restore the first two row and column labels to 00 and 01. The correct missing edges are 00 on 0 to q, 00 on 1 to 01, 01 on 1 to 11, 10 on 0 to 00, and 11 on 0 to 10. The sources confirm D for those corrected figures.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.20, Finite Automata: GATE CSE 2012 | Question: 46, p. 354 (key p. 402). https://gateoverflow.in/2159/gate-cse-2012-question-46",
+          "answer": "D for the source diagram and 00/01 table headers",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.72, question p. 5–6, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "D with the source’s 00 and 01 table headers",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q46",
+          "answer": "D with the original diagram and table headers",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "None of the listed choices",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 73,
+      "id": "dktgubg9n",
+      "contentSha256": "a90010c79a305eaada8adcb08117e1348c02e12e20bf504d4cc65ce0a7db48ef",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Concatenating the empty language with any language gives the empty language, while the star of the empty language consists of ε. Their union is {ε}.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.17, Regular Language: GATE CSE 2013 | Question: 8, p. 397 (key p. 403). https://gateoverflow.in/1417/gate-cse-2013-question-8",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.73, question p. 6, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 74,
+      "id": "hcabmngka",
+      "contentSha256": "4120dad5f52a2691255c3c73405185c17f8cb7a2dac729414c30690c9460fc2c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The machine accepts exactly the strings containing 0, as does the expression in statement 2. Its complement 1* is regular. The two nonfinal states can merge, and 11 is a rejected word of length two.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.21, Finite Automata: GATE CSE 2013 | Question: 33, p. 355 (key p. 402). https://gateoverflow.in/1544/gate-cse-2013-question-33",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.74, question p. 6, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 75,
+      "id": "x23xa1ftu",
+      "contentSha256": "c9015555b84b95bc4df3a6e005e590211c203560b18db9e5e724b785223e2e61",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The b-count condition is a fixed arithmetic progression and needs only finite-state counting. Equal a/b runs, unary prime lengths and exact binary copies each fail the pumping lemma.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.18, Regular Language: GATE CSE 2014 | Set 1 | Question: 15, p. 397 (key p. 403). https://gateoverflow.in/1781/gate-cse-2014-set-1-question-15",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.75, question p. 6, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 76,
+      "id": "u622e8ep4",
+      "contentSha256": "3993fa64d4b978acaccae3e714722d4598cec07397efef34f2edf1464e5a0cc2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "After 00 only q₀ is reachable. The first 1 gives q₀ and q₁, and the second gives q₀, q₁ and q₂. A further symbol would be needed to enter q₃.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.22, Finite Automata: GATE CSE 2014 | Set 1 | Question: 16, p. 355 (key p. 402). https://gateoverflow.in/1782/gate-cse-2014-set-1-question-16",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.76, question p. 6, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 77,
+      "id": "6len2rp91",
+      "contentSha256": "9b86767de14520e095adfa760027e78395df611f126fb259312dbd83b69724da",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Every 1 enters the accepting state and every 0 leaves or stays at the rejecting state. Expression I encodes runs ending in 1, and III does so directly. Expression II misses 0101.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.18.15, Regular Expression: GATE CSE 2014 | Set 1 | Question: 36, p. 390 (key p. 403). https://gateoverflow.in/1914/gate-cse-2014-set-1-question-36",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.77, question p. 6, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 78,
+      "id": "vkum9tjlw",
+      "contentSha256": "8b518d85c180c4e9bdfc258132def9fea0869b6137eeb37b5b2b8d31c33f54b8",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The concatenation uses independent exponents for a and b and is a*b*. It contains a, which would be absent if the two exponents had to match.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.19, Regular Language: GATE CSE 2014 | Set 2 | Question: 15, p. 397 (key p. 403). https://gateoverflow.in/1971/gate-cse-2014-set-2-question-15",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.78, question p. 6, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 79,
+      "id": "78c4u9202",
+      "contentSha256": "5d43f24185f33b70a5a0764176119c83de7a53acda18a0e5a85cd03c88772404",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The count of 110 minus 011 telescopes to the indicator that the word starts in 11 minus the indicator that it ends in 11. Both are finite-state properties. Restricting L₂ to 0ᵐ1ⁿ with m,n ≥ 3 requires m ≥ n, which is nonregular.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.20, Regular Language: GATE CSE 2014 | Set 2 | Question: 36, p. 398 (key p. 403). https://gateoverflow.in/1995/gate-cse-2014-set-2-question-36",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.79, question p. 6, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 80,
+      "id": "lxhe2ei31",
+      "contentSha256": "993efd68ae23bc656a4f0a68536f6f77dff468e95a0ad36f54f4bc8c9a947111",
+      "questionType": "NAT",
+      "natAnswer": "3",
+      "status": "verified",
+      "reason": "Every word of length at most two can be formed by the expression. The length-three word bab cannot, because after taking ba the remaining b cannot come from the final a*.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.18.16, Regular Expression: GATE CSE 2014 | Set 3 | Question: 15, p. 390 (key p. 403). https://gateoverflow.in/2049/gate-cse-2014-set-3-question-15",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.80, question p. 6, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "3",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 81,
+      "id": "b8r7t90mi",
+      "contentSha256": "8f1ab319e9c78d58b3a177763ab530d54e1b456ed8ae87448407b9625c198baa",
+      "questionType": "NAT",
+      "natAnswer": "1",
+      "status": "verified",
+      "reason": "M accepts exactly the words ending in a and N those ending in b. Their intersection is empty and a one-state rejecting DFA suffices.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.11.16, Minimal State Automata: GATE CSE 2015 | Set 1 | Question: 52, p. 375 (key p. 402). https://gateoverflow.in/8362/gate-cse-2015-set-1-question-52",
+          "answer": "1",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.81, question p. 6, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "1",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "1",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 82,
+      "id": "kex2ktvee",
+      "contentSha256": "733b87417ee976998e6d5bf417a96d9890689c464c1a91661ba841c2a1da9005",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Substitute X₂ into X₁ to obtain X₁ = (0 + 10)X₁ + 1. Arden’s lemma gives X₁ = (0 + 10)*1, and X₀ prepends a 1.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.19.2, Regular Grammar: GATE CSE 2015 | Set 2 | Question: 35, p. 393 (key p. 403). https://gateoverflow.in/8159/gate-cse-2015-set-2-question-35",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.82, question p. 6, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 83,
+      "id": "tjvx0ybbw",
+      "contentSha256": "9c181aab14ab17f19fd00c6297c6271e8e2d2a1c7a5bc2b4685a1cba680818b1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "L₁ is the set of words of length at least three with matching first and last symbols, since w can be one letter. L₃ is a*b*c*. If L₂ were regular, its complement inside a*b* would make equal runs regular.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.21, Regular Language: GATE CSE 2015 | Set 2 | Question: 51, p. 398 (key p. 403). https://gateoverflow.in/8254/gate-cse-2015-set-2-question-51",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.83, question p. 6, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 84,
+      "id": "yx2ponjsj",
+      "contentSha256": "f00c4f1d0af3cd3df7c6eb9f9aad65c4887cfb5bc87b706b2214e6635ecf74c4",
+      "questionType": "NAT",
+      "natAnswer": "3",
+      "status": "verified",
+      "reason": "Track the longest suffix that is a prefix of 10. The three reachable states correspond to ε, 1 and 10. The empty suffix distinguishes the accepting state and suffix 0 separates the other two.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.11.17, Minimal State Automata: GATE CSE 2015 | Set 2 | Question: 53, p. 375 (key p. 402). https://gateoverflow.in/8256/gate-cse-2015-set-2-question-53",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.84, question p. 6, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "3",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 85,
+      "id": "vix3ziqjh",
+      "contentSha256": "f39d5bcfcf2ba46002225eb5e2ae525acff09d4e7bd28a54bc05e6f3a4453fcb",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Four states track the longest pending prefix of 0011, plus a fifth sink for a prior occurrence. Distinct shortest lengths to a first occurrence distinguish the states. Complementing acceptance preserves these distinctions.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.11.18, Minimal State Automata: GATE CSE 2015 | Set 3 | Question: 18, p. 375 (key p. 402). https://gateoverflow.in/8415/gate-cse-2015-set-3-question-18",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.85, question p. 6, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 86,
+      "id": "y21b4h8fi",
+      "contentSha256": "129d6551361f86bbefb2586a14fe2756cbba237e8a35a8b85e3d4227a1cbdeb3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Choose aS or bS for each successive desired symbol, then choose ε to end. This generates every finite word over {a,b}.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.3.15, Context Free Language: GATE CSE 2016 | Set 1 | Question: 16, p. 335 (key p. 402). https://gateoverflow.in/39640/gate-cse-2016-set-1-question-16",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.86, question p. 6, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 87,
+      "id": "i0eex5pd8",
+      "contentSha256": "3530f9de6db053185c682a22937b9af16e908ef18d54781a2da927a306fe0ee5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Product reachability decides NFA intersection emptiness, and parsing decides CFG membership. CFG equivalence would decide CFG universality, and Turing machine language emptiness is undecidable by Rice’s theorem.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.5.23, Decidability: GATE CSE 2016 | Set 1 | Question: 17, p. 346 (key p. 402). https://gateoverflow.in/39651/gate-cse-2016-set-1-question-17",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.87, question p. 6, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 88,
+      "id": "4tq80zvnu",
+      "contentSha256": "332e4d8214b486d135b62e679700ee3e4b6dec6247b2f2a0f2b7b2cd7404bf56",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The required blocks 00 and 11 cannot overlap and may occur in either order. Option B allows arbitrary prefix, gap and suffix around those two blocks.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.18.17, Regular Expression: GATE CSE 2016 | Set 1 | Question: 18, p. 390 (key p. 403). https://gateoverflow.in/39647/gate-cse-2016-set-1-question-18",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.88, question p. 6, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 89,
+      "id": "81h9vf9dj",
+      "contentSha256": "05ac27615100ad3130ff9493d32a5113e29800b05dcf7875d46fece63575c7a5",
+      "questionType": "NAT",
+      "natAnswer": "2",
+      "status": "verified",
+      "reason": "The middle factor forces a symbol and the starred factors allow any additional symbols. A rejecting start and one accepting sink recognize all nonempty binary words, and ε distinguishes them.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.11.19, Minimal State Automata: GATE CSE 2016 | Set 2 | Question: 16, p. 375 (key p. 402). https://gateoverflow.in/39562/gate-cse-2016-set-2-question-16",
+          "answer": "2",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.89, question p. 6, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "2",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "2",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 90,
+      "id": "r4tctkqu9",
+      "contentSha256": "4f6d2b2b46f9fa9d2eb12e77414d3b272c3e3599498bc9d382f70ffd123aa1ee",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "An accepting NFA state can lack an outgoing transition, so a one-state accepting NFA with no edges rejects any nonempty word. Taking A = ∅ makes A ∩ B regular for every B.",
+      "note": "Correct “langauge” to “language” in I and “ture” to “true” in B.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.23, Finite Automata: GATE CSE 2016 | Set 2 | Question: 42, p. 356 (key p. 402). https://gateoverflow.in/39591/gate-cse-2016-set-2-question-42",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.90, question p. 6, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 91,
+      "id": "61svceff6",
+      "contentSha256": "d1e655f06e60039d632511f70f1e2fb9aa1ea3f341edf6fbf05193b2d3c6acae",
+      "questionType": "NAT",
+      "natAnswer": "4",
+      "status": "verified",
+      "reason": "Track whether each of the last two symbols is b, initially padding with a. All four pairs are reachable. Their second-to-last bits are tested by ε, and if only their last bits differ, appending a distinguishes them.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.11.20, Minimal State Automata: GATE CSE 2017 | Set 1 | Question: 22, p. 375 (key p. 402). https://gateoverflow.in/118302/gate-cse-2017-set-1-question-22",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.91, question p. 6, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "4",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 92,
+      "id": "zyrjprg5e",
+      "contentSha256": "85cc147b494469b8abd43b887f115f39c4695367981880fda5767bbd25cace4c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Every derivation has at least as many a’s as b’s. The word babba violates that invariant. The other three derive as ab·ab, a(aa)b and ab·b(a)a using the pair and concatenation rules.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.3.19, Context Free Language: GATE CSE 2017 | Set 1 | Question: 34, p. 336 (key p. 402). https://gateoverflow.in/118316/gate-cse-2017-set-1-question-34",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.92, question p. 6, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 93,
+      "id": "j26xvy4v0",
+      "contentSha256": "ece9dd296dea524e9b89951fe790d770749f33a033e3be825385ddea5d387dca",
+      "questionType": "NAT",
+      "natAnswer": "8",
+      "status": "verified",
+      "reason": "The DFA counts the first three positions, sends a b in position three to a sink, and waits for three further symbols after an a in that position. The seven live states have distinct shortest accepting suffix lengths from six down to zero. The sink has none.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.11.21, Minimal State Automata: GATE CSE 2017 | Set 2 | Question: 25, p. 375 (key p. 402). https://gateoverflow.in/118160/gate-cse-2017-set-2-question-25",
+          "answer": "8",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.93, question p. 6, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "8",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "8",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 94,
+      "id": "27wsw11hl",
+      "contentSha256": "d989a7a1ab9b9b7dde3bc8e8400778a79cd5449fffbe61ddfc676bf913cc1e83",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "G₁ generates aⁱcʲbⁱ and G₂ generates bⁱcʲaⁱ. Their words with any outer pair start with different symbols, leaving just c* in the intersection, which is infinite and regular.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.9.20, Identify Class Language: GATE CSE 2017 | Set 1 | Question: 37, p. 368 (key p. 402). https://gateoverflow.in/118320/gate-cse-2017-set-1-question-37",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.94, question p. 7, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 95,
+      "id": "cfsjd3vsc",
+      "contentSha256": "8d108563f29f9916340c2cf0da791a94d3adf7ee92d8d58e44bf9e8a21ade2ff",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The initial ε-closure is {q₀,q₂}. After a the closure is {q₀,q₁,q₂}, after b it is {q₀,q₂,q₃}, and after the last a it is {q₀,q₁,q₂} again.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.24, Finite Automata: GATE CSE 2017 | Set 2 | Question: 39, p. 356 (key p. 402). https://gateoverflow.in/118384/gate-cse-2017-set-2-question-39",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.95, question p. 7, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 96,
+      "id": "38dxnx3zq",
+      "contentSha256": "b69423e8433ef5917a0de371163997da2f38762b196472ba966660578b5fd92b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A deterministic subset state is a subset of the n original states, so there are at most 2ⁿ subset states before minimization. Some NFAs reach and distinguish all of them, while others minimize to one.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.11.22, Minimal State Automata: GATE CSE 2018 | Question: 6, p. 376 (key p. 402). https://gateoverflow.in/204080/gate-cse-2018-question-6",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.96, question p. 7, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 97,
+      "id": "ofudk27rp",
+      "contentSha256": "c71c23fb0d6eed67d761296682f49aabef52996ba08e7e1da9b9d26e30ca5a6c",
+      "questionType": "NAT",
+      "natAnswer": "2",
+      "status": "verified",
+      "reason": "The initial state accepts ε and the cycle accepts all positive odd lengths. Concatenating two factors also realizes every positive even length as 1 plus an odd length. Thus L² = L³ = 0*, while L⁰ and L¹ each differ from the next power.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.23, Regular Language: GATE CSE 2018 | Question: 52, p. 398 (key p. 403). https://gateoverflow.in/204127/gate-cse-2018-question-52",
+          "answer": "2",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.97, question p. 7, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "2",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "2",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 98,
+      "id": "hjb1h08v0",
+      "contentSha256": "a121e5a50ba461bac5f6ac272130373c0f8d0e081c5564df72817475dae0de7a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "For a-words of length at least 24, pump a block of three. For b-words of length at least 24, the first possible length is 34, so pumping twelve even down to zero repetitions stays in the progression. Each smaller listed bound fails on b¹⁰.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.14.1, Pumping Lemma: GATE CSE 2019 | Question: 15, p. 378 (key p. 403). https://gateoverflow.in/302833/gate-cse-2019-question-15",
+          "answer": "D = 24 (app B)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.98, question p. 7, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 99,
+      "id": "n6vpjexpe",
+      "contentSha256": "1d24cdb27ec13841675dc4db5e80cc94a97248d1ef254c50a0a2a4d5af0063fc",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Reversal and concatenation preserve regularity, and prefix and suffix languages come from changing the accepting or starting states of a finite automaton. With L = {a,b}*, the last construction is the nonregular even-palindrome language.",
+      "note": "Read “is NOT regular” as “is not guaranteed to be regular.” For some regular L, including finite languages, even the last construction is regular.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.24, Regular Language: GATE CSE 2019 | Question: 7, p. 399 (key p. 403). https://gateoverflow.in/302841/gate-cse-2019-question-7",
+          "answer": "B = {wwᴿ with w in L} (app D)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.99, question p. 7, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 100,
+      "id": "3i10a5hvl",
+      "contentSha256": "5c23e64e27e63b4203573532e5b77e0fc6bc40b634497c11207b8583b89ab8ba",
+      "questionType": "NAT",
+      "natAnswer": "120",
+      "status": "verified-with-note",
+      "reason": "Store the running product of the input permutations. All 5! products are reachable using a single alphabet symbol, and a suffix consisting of g⁻¹ accepts from g alone. Thus all 120 states are necessary.",
+      "note": "Made Easy’s answer table gives 2 for this position. Both GATE Overflow and the official GATE 2019 CS key give 120 for the same permutation language.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.11.23, Minimal State Automata: GATE CSE 2019 | Question: 48, p. 376 (key p. 402). https://gateoverflow.in/302800/gate-cse-2019-question-48",
+          "answer": "120",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.100, question p. 7, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "2",
+          "agrees": false
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2019 CS final key Q48. https://gate.iitm.ac.in/gate2019/pdfs/Anskey/CS_key_Published.pdf",
+          "answer": "120 to 120",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "120",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 101,
+      "id": "taeohmdno",
+      "contentSha256": "1cffddee092203bbb5d4ae6d7d7784d1278577a6e267bf6256fbb774d249e4cf",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "A nonregular language and its complement have the regular union Σ*, disproving I. Any nonregular language is an infinite union of its regular singletons, disproving II.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.26, Regular Language: GATE CSE 2020 | Question: 8, p. 399 (key p. 403). https://gateoverflow.in/333223/gate-cse-2020-question-8",
+          "answer": "D = neither statement (app A)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.101, question p. 7, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 102,
+      "id": "c17cqdxfu",
+      "contentSha256": "6bc78fb6ca9db8f1822851fdb4c0459c8a48b05d748a84f8ddb270258efab0ab",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "A misses 10. B and D miss 01. C can generate 1111, which has an even number of ones. The expression 0*(10*10*)*10* permits leading zeros, any number of pairs of ones, and the final unpaired one. GATE Overflow lists X, the Made Easy table has an asterisk, and the official CS Q7 key awarded marks to all. A correct replacement for D would be 0*(10*10*)*10*.",
+      "status": "verified-with-note",
+      "reason": "A misses 10. B and D miss 01. C can generate 1111, which has an even number of ones. The expression 0*(10*10*)*10* permits leading zeros, any number of pairs of ones, and the final unpaired one.",
+      "note": "GATE Overflow lists X, the Made Easy table has an asterisk, and the official CS Q7 key awarded marks to all. A correct replacement for D would be 0*(10*10*)*10*.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.18.18, Regular Expression: GATE CSE 2020 | Question: 7, p. 390 (key p. 403). https://gateoverflow.in/333224/gate-cse-2020-question-7",
+          "answer": "X (no keyed choice)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.102, question p. 7, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "* (no keyed choice)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2020 CS final key, CS Q7. https://gate2024.iisc.ac.in/wp-content/uploads/2020/cs_2020.pdf",
+          "answer": "MTA (marks to all)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "None of the listed choices",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 103,
+      "id": "36c18mi35",
+      "contentSha256": "b000583e36d200ee3eb4c9519df1574f022c33ec79644a35810b085ab9892b8b",
+      "questionType": "NAT",
+      "natAnswer": "6",
+      "status": "verified",
+      "reason": "Count a’s modulo 6 and accept residues 2 and 4. All six residues are reachable, and no nonzero cyclic shift preserves {2,4}, so every pair can be distinguished by appending a suitable number of a’s.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.25, Regular Language: GATE CSE 2020 | Question: 51, p. 399 (key p. 403). https://gateoverflow.in/333180/gate-cse-2020-question-51",
+          "answer": "6",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.103, question p. 7, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "6",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "6",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 104,
+      "id": "ansvqbs3d",
+      "contentSha256": "4bd5c107499c8a8584b64d19826d8708996236a9cf454d556682abd6d5b63b42",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Track the longest suffix that is a prefix of 011. In the accepting 011 state, a 0 returns to the 0 state and a 1 returns to the start. Only the live diagram A has those two outgoing transitions.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.25, Finite Automata: GATE CSE 2021 | Set 1 | Question: 38, p. 356 (key p. 402). https://gateoverflow.in/357413/gate-cse-2021-set-1-question-38",
+          "answer": "D (app A, the final state returns to start on 1 and to the 0 state on 0)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.104, question p. 7, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 105,
+      "id": "9zfd7a0tg",
+      "contentSha256": "f7ab361bc0ef1934f9097b1089b15de94202894430237522fb939273277b7062",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Flipping acceptance in a complete DFA preserves all reachability and every pair of distinguishable states. Therefore the complement has a minimal DFA with the same number of states.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.20.27, Regular Language: GATE CSE 2021 | Set 2 | Question: 9, p. 399 (key p. 403). https://gateoverflow.in/357531/gate-cse-2021-set-2-question-9",
+          "answer": "C = {0,1}* − L (app A)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.105, question p. 7, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 106,
+      "id": "eljxnnfl0",
+      "contentSha256": "0a3d3b1b6349953b28577b1620e1c268e476f36c5d51c7148eecf0fd9d931154",
+      "questionType": "NAT",
+      "natAnswer": "256",
+      "status": "verified",
+      "reason": "At each of the first two levels either bit goes to the next level. A third bit always reaches the accepting state, where both bits loop. Hence all 2⁸ inputs of length eight are accepted.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.26, Finite Automata: GATE CSE 2021 | Set 2 | Question: 17, p. 357 (key p. 402). https://gateoverflow.in/357523/gate-cse-2021-set-2-question-17",
+          "answer": "256 : 256",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.106, question p. 7, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "256",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "256",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 107,
+      "id": "zhkug8q31",
+      "contentSha256": "8529f7f27dca2628279a4becc13c6b93cfc5ffdf6d9793758f12a3ff5642455e",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The remainder update is r → (2r + bit) mod 3. Form B uses the return blocks 0 and 1(01*0)*1, and A groups those same blocks. Form C splits positive first returns into 11 or 10(1 + 00)*01. Form D accepts 11100, which equals 28.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.18.19, Regular Expression: GATE CSE 2021 | Set 2 | Question: 47, p. 390 (key p. 403). https://gateoverflow.in/357493/gate-cse-2021-set-2-question-47",
+          "answer": "A, B, C (map by expression to app B, C, A respectively)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.107, question p. 7, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "ABC",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "ABC",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 108,
+      "id": "jty47biqd",
+      "contentSha256": "96cd78ca1c54e7cd6ac809374ff61adad1bcb2eb45db2a40444f1174f5c254b2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A complete trip back to the start reads ab*b or ba*a. After any sequence of such trips, the final trip stops in an accepting state after ab* or ba*.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.18.20, Regular Expression: GATE CSE 2022 | Question: 2, p. 391 (key p. 403). https://gateoverflow.in/371934/gate-cse-2022-question-2",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.108, question p. 7, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 109,
+      "id": "oqoa5c22u",
+      "contentSha256": "8f14ff9a4573e37ffe341b77f91fb0d20829d3b58583497d190adc670f4578e6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The first 1 takes s to p. Each following 0 keeps p or a block 11 leaves p and returns to it. A 0 at q or at the start enters the rejecting sink.",
+      "note": "The stem explicitly names p as the only final state, but the app diagram omits its second circle. Draw p double-circled as in the sources.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.18.21, Regular Expression: GATE CSE 2023 | Question: 4, p. 391 (key p. 403). https://gateoverflow.in/399308/gate-cse-2023-question-4",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.109, question p. 7, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 110,
+      "id": "e0ubsiemr",
+      "contentSha256": "862633eab3894b1ea6a0db33141c262ff02a82d69fab5b124ea7eee0fea5eeb2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "C requires a letter to reach its final state. Thereafter either ε branch consumes exactly one letter or digit and returns to that same final state, allowing any mixture.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.18.22, Regular Expression: GATE CSE 2023 | Question: 9, p. 391 (key p. 403). https://gateoverflow.in/399303/gate-cse-2023-question-9",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.110, question p. 7, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 111,
+      "id": "lmixd5byn",
+      "contentSha256": "e8e7af2cb969dfbd9bdd96b2c6f9d3e4e6263277acce30d9c34485ded5380d33",
+      "questionType": "NAT",
+      "natAnswer": "4",
+      "status": "verified",
+      "reason": "Three accepting states track zero, one or two trailing 1s. The fourth is a rejecting sink once 111 occurs. Suffixes of 1s distinguish the live states by when they first reject.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.11.24, Minimal State Automata: GATE CSE 2023 | Question: 53, p. 376 (key p. 403). https://gateoverflow.in/399258/gate-cse-2023-question-53",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.111, question p. 8, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "4",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 112,
+      "id": "n8lu5d1a6",
+      "contentSha256": "83d808214d10747f632857c6b72e97b614128c539d2b86ee01daa798c7de0961",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The residues of the zero count minus the one count modulo 3 correspond to the classes {1}, {2,5} and {3,4}. The pairs in A and C are equivalent. Suffix 1 distinguishes states 2 and 4, and equal counts give the accepting residue zero.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.28, Finite Automata: GATE CSE 2024 | Set 1 | Question: 40, p. 357 (key p. 402). https://gateoverflow.in/422802/gate-cse-2024-set-1-question-40",
+          "answer": "B, C (states 3/4 and 2/5, mapping to app C, A)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.112, question p. 8, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "AC",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "AC",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 113,
+      "id": "tv2j48tem",
+      "contentSha256": "f3b3a5a5cd7ac712f61d05c6d1139b41170e1c67f68f0c923fd0719932a15001",
+      "questionType": "NAT",
+      "natAnswer": "44",
+      "status": "verified-with-note",
+      "reason": "There are 63 binary words of length at most five. Expression r contributes 11 and s contributes 10, with 0 and 1 shared. Subtracting the union size 19 leaves 44.",
+      "note": "Read “neither in r nor is s” as “in neither the language of r nor the language of s.”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.18.23, Regular Expression: GATE CSE 2024 | Set 1 | Question: 51, p. 392 (key p. 403). https://gateoverflow.in/422791/gate-cse-2024-set-1-question-51",
+          "answer": "44",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.113, question p. 8, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "44",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "44",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 114,
+      "id": "puozqfe1e",
+      "contentSha256": "abdfcd437bdb7e6ba07f61d7c460dc75409b3128126c9090655bbc6d5294540e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A 0 stays in the current state and a 1 switches states, so acceptance requires an odd count of 1s. After the first 1, option D allows zeros and paired 1s with arbitrary zeros between them.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.29, Finite Automata: GATE CSE 2024 | Set 2 | Question: 12, p. 358 (key p. 402). https://gateoverflow.in/422885/gate-cse-2024-set-2-question-12",
+          "answer": "A = 0*1(0 + 10*1)* (app D)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.114, question p. 8, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 115,
+      "id": "rhys8idnv",
+      "contentSha256": "ba0c3e4a67f11c5834897a4295a787f12d1021cfadf293e6df7c21b7ab8fd21d",
+      "questionType": "NAT",
+      "natAnswer": "15",
+      "status": "verified",
+      "reason": "The expression permits any b placement and an odd count of a’s. Exactly half the words of each positive length satisfy that parity, giving 1 + 2 + 4 + 8 = 15 for lengths one through four.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.18.24, Regular Expression: GATE CSE 2024 | Set 2 | Question: 52, p. 392 (key p. 403). https://gateoverflow.in/422845/gate-cse-2024-set-2-question-52",
+          "answer": "15",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.115, question p. 8, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "15",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "15",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 116,
+      "id": "dz4w33h0s",
+      "contentSha256": "807ec0d770d80f8bda773027858e09425accc22f9664e8f1273081fdedcd33a8",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The upper branch accepts even zeros at state 2 and odd zeros via ε into 5, giving 0*. It can also read even ones after an odd zero prefix, while the lower branch reads odd ones. Together these are 0* plus (1 + 0(00)*)(11)*.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume2.pdf 6.7.30, Finite Automata: GATE CSE 2024 | Set 2 | Question: 31, p. 358 (key p. 402). https://gateoverflow.in/422866/gate-cse-2024-set-2-question-31",
+          "answer": "B = 0* + (1 + 0(00)*)(11)* (app A)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Finite Automata and Regular Languages 1.116, question p. 8, key p. 8 (printed p. 141, also TOC.pdf p. 1)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent analysis of the live question and available diagrams",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

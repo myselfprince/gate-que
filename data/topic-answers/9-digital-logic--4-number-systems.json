@@ -1,0 +1,2188 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "9. Digital Logic",
+  "chapter": "4. Number Systems",
+  "slug": "9-digital-logic--4-number-systems",
+  "reviewedAt": "2026-11-27",
+  "sources": {
+    "gateOverflowPdf": {
+      "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume3.pdf",
+      "sha256": "5c552941136eb96612fabec8a5b2cb67fc07c17023ce15628408ca27d6640c24",
+      "chapter": "4 Digital Logic",
+      "answerKeyPages": [
+        361,
+        362,
+        363
+      ]
+    },
+    "madeEasyQuestionPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\9. Digital Logic\\4. Number Systems.pdf",
+      "sha256": "ed9441210bdacb32ed28da2d4aff0f8f436be776f690e2fbbe1bdf293e699c28",
+      "bookPages": [
+        233,
+        234,
+        235,
+        236,
+        237
+      ]
+    },
+    "madeEasyKeyPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\All Subject Solutions Keys\\Digital Logic.pdf",
+      "sha256": "f9d1048a2162c912f8ee138ac88b34f0021a6b826c5487501911244f41f49035",
+      "answerKeyPage": 4,
+      "bookPage": 238
+    },
+    "yearPapers": "data/papers/*.json (linked by source.copiedFrom.questionId)",
+    "officialKeys": "GATE 2021, 2022 and 2023 official CS answer keys, linked in the relevant entries"
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "madeeasy-digital-logic-number-systems-4-1",
+      "contentSha256": "9e72f1bb736c8acc1b81eb138f1e7569c445274d4c14af5e0135c0de69186f14",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The four hexadecimal digits are 3, F, 5 and 3. Their popcounts are 2, 4, 2 and 2, totaling 10.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.8, Number Representation: GATE CSE 1995 | Question: 2.12, ISRO2015-9, PDF p. 350 (key p. 362). https://gateoverflow.in/2624/gate-cse-1995-question-2-12-isro2015-9",
+          "answer": "C = 10",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.1 (chapter scan PDF p. 1, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "C = 10",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "C = 10",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "madeeasy-digital-logic-number-systems-4-2",
+      "contentSha256": "2a7b2cd18ea5bd71b33a4530430bb622cfbe451fe9f055ee7279772c2cbc1552",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The two 8-bit inputs form 16 address bits, so the ROM has 65,536 words. The largest product, 255 × 255 = 65025, needs a 16-bit word.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.31.2, ROM: GATE CSE 1996 | Question: 1.21, PDF p. 358 (key p. 363). https://gateoverflow.in/2725/gate-cse-1996-question-1-21",
+          "answer": "D = 64\\mathrm{K}\\times16",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.2 (chapter scan PDF p. 1, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "D = 64\\mathrm{K}\\times16",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "D = 64\\mathrm{K}\\times16",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "madeeasy-digital-logic-number-systems-4-3",
+      "contentSha256": "15d0a035869b6b639c617e355234fa0838cc79ca0da0de9201f3ff940eb55803",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Radix-2 Booth recoding adds or subtracts at each 01 or 10 transition. The alternating multiplier has the most transitions among the choices.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.5.2, Booths Algorithm: GATE CSE 1996 | Question: 1.23, PDF p. 296 (key p. 361). https://gateoverflow.in/2727/gate-cse-1996-question-1-23",
+          "answer": "A = 101010\\ldots1010",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.3 (chapter scan PDF p. 1, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "A = 101010\\ldots1010",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "A = 101010\\ldots1010",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "madeeasy-digital-logic-number-systems-4-4",
+      "contentSha256": "61700033861407b8361839ac5acf768d3ad6fc0615410a5ddc64ed9396768bf2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "D is the reference answer for the mantissa magnitude. The full floating-point magnitudes range from 2^−129 to (1 − 2^−23) × 2^127.",
+      "status": "verified-with-note",
+      "reason": "The 24-bit sign-magnitude mantissa has 23 fractional magnitude bits. In normalized form its first fractional bit is 1, giving magnitudes from 1/2 through 1 − 2^−23. The full numbers also include the exponent factor.",
+      "note": "Both printed keys give D, the normalized mantissa magnitude range. Across the full 8-bit two's-complement exponent range, the magnitudes instead run from 2^−129 through (1 − 2^−23) × 2^127. Clarify the stem as “What is the range of magnitudes of the normalized mantissa?”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.9, Number Representation: GATE CSE 1996 | Question: 1.25, PDF p. 350 (key p. 362). https://gateoverflow.in/2729/gate-cse-1996-question-1-25",
+          "answer": "D = normalized mantissa range from 1/2 through 1 - 2^(-23)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.4 (chapter scan PDF p. 1, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "D = normalized mantissa range from 1/2 through 1 - 2^(-23)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "D = normalized mantissa range from 1/2 through 1 - 2^(-23)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "madeeasy-digital-logic-number-systems-4-5",
+      "contentSha256": "41e313194ffe9eebbd2519902fa20985001bd48399060d7276d20c86adc1d10b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Squaring the intended radical gives 2r² + 2r + 4 = (r + 3)², or (r − 5)(r + 1) = 0. Only r = 5 is a radix that admits digit 4.",
+      "note": "The app's LaTeX is missing the backslash on sqrt. The book and GATE Overflow show \\sqrt{(224)_r}=(13)_r.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.10, Number Representation: GATE CSE 1997 | Question: 5.4, PDF p. 350 (key p. 362). https://gateoverflow.in/2255/gate-cse-1997-question-5-4",
+          "answer": "C = 5",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.5 (chapter scan PDF p. 1, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "C = 5",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "C = 5",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "madeeasy-digital-logic-number-systems-4-6",
+      "contentSha256": "3ccdc9469d5f5d03b89a66fc7430b4b185d1796e32d69da50815260610abbe81",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The 8-bit encoding of −57 is 11000111. Subtract each multiplier bit from the previous lower bit, with an appended zero, giving (0, −1, 0, 0, +1, 0, 0, −1).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.5.3, Booths Algorithm: GATE CSE 1999 | Question: 1.20, PDF p. 296 (key p. 361). https://gateoverflow.in/1473/gate-cse-1999-question-1-20",
+          "answer": "B = 0-100+100-1",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.6 (chapter scan PDF p. 1, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "B = 0-100+100-1",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "B = 0-100+100-1",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "madeeasy-digital-logic-number-systems-4-7",
+      "contentSha256": "ff16ffb85fa8aba959a5f9ae6dc77cc74c6a31113eb81322fcade78e43ee3284",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Sign magnitude has positive and negative zero by changing the sign bit. In one's complement, all zeros and all ones encode zero. Two's complement has a single zero.",
+      "note": "The older stem leaves the selection count implicit. The Made Easy key gives sign magnitude and one's complement, and GATE Overflow tags it as multiple-select. Use MSQ and clarify the stem to “In which representations does zero have two encodings? Select all that apply.”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.13, Number Representation: GATE CSE 1999 | Question: 2.17, PDF p. 350 (key p. 363). https://gateoverflow.in/1495/gate-cse-1999-question-2-17",
+          "answer": "A = Sign magnitude, C = 1's complement (app B)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.7 (chapter scan PDF p. 1, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "A = Sign magnitude, B = 1's complement",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "A = Sign magnitude, B = 1's complement",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "madeeasy-digital-logic-number-systems-4-8",
+      "contentSha256": "a84a3e1790f3d076dcb8d62369997998c5bf5c9de76f389a9d73c0cb305df05b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "43 = 32 + 8 + 2 + 1. Its positive 8-bit two's-complement encoding is 00101011.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.14, Number Representation: GATE CSE 2000 | Question: 1.6, PDF p. 351 (key p. 363). https://gateoverflow.in/629/gate-cse-2000-question-1-6",
+          "answer": "C = 00101011",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.8 (chapter scan PDF p. 1, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "C = 00101011",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q6, linked question and keyed option text compared",
+          "answer": "C = 00101011",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "C = 00101011",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "madeeasy-digital-logic-number-systems-4-9",
+      "contentSha256": "c131eb8a4dd975813027be6c451d440a49bd4c9055fb8d7213643a515e8cd24f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "C is the reference answer with the original 32-bit floating-point assumption. The printed stem omits the precision, and sufficiently precise arithmetic gives X=1.0, Y=1.0.",
+      "status": "verified-with-note",
+      "reason": "With binary32, A + B cancels to zero so X becomes 1.0. A + 1.0 rounds to A at that scale so Y becomes 0.0 after adding B.",
+      "note": "The book and app omit the original condition “on a computer using 32-bit floating-point numbers.” The app also has a stray semicolon after the comma in each option. GATE Overflow B and the year-paper B both say X=1.0, Y=0.0, which is app C. Sufficient precision can preserve the added 1.0, making Y=1.0.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.15, Number Representation: GATE CSE 2000 | Question: 2.14, PDF p. 351 (key p. 363). https://gateoverflow.in/661/gate-cse-2000-question-2-14",
+          "answer": "B = X=1.0, Y=0.0 (app C)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.9 (chapter scan PDF p. 1, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "C = X=1.0, Y=0.0 with the original 32-bit assumption",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q37, linked question and keyed option text compared",
+          "answer": "B = X=1.0, Y=0.0 (app C)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "C = X=1.0, Y=0.0 with the original 32-bit assumption",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "madeeasy-digital-logic-number-systems-4-10",
+      "contentSha256": "3c121c9e6b4a5b94ea2b38456419eebcc1ae6dd9036465b154f7f118bf0bcb3a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The three hex digits indicate 12 bits. The residue of −539 modulo 4096 is 3557, which is DE5 in hexadecimal.",
+      "note": "The widths of the choices imply 12 bits. To make the encoding unique, ask for the 12-bit two's-complement representation in hexadecimal.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.16, Number Representation: GATE CSE 2001 | Question: 2.10, PDF p. 351 (key p. 363). https://gateoverflow.in/728/gate-cse-2001-question-2-10",
+          "answer": "C = DE5",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.10 (chapter scan PDF p. 1, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "C = DE5",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q35, linked question and keyed option text compared",
+          "answer": "C = DE5",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "C = DE5",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "madeeasy-digital-logic-number-systems-4-11",
+      "contentSha256": "fc9c4ce1012833b9c4acf5439d01b14d6cb0489acbaafbfbe7c5fca46132b303",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The sum of opposite-sign operands lies between them and stays in range. Signed addition overflows when the carries into and out of the sign bit differ.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.20, Number Representation: GATE CSE 2002 | Question: 1.21, PDF p. 352 (key p. 363). https://gateoverflow.in/826/gate-cse-2002-question-1-21",
+          "answer": "B = cannot occur when a positive value is added to a negative value",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.11 (chapter scan PDF p. 1, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "B = cannot occur when a positive value is added to a negative value",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "B = cannot occur when a positive value is added to a negative value",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "madeeasy-digital-logic-number-systems-4-12",
+      "contentSha256": "f828c9ba7a02edb4f4adfee3e4460ebd322e62c163d5c2ebaad1f95f0e7409bf",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The second binary fractional bit has weight 2^−2, so 0.01 in binary equals 0.25.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.17, Number Representation: GATE CSE 2002 | Question: 1.14, PDF p. 351 (key p. 363). https://gateoverflow.in/818/gate-cse-2002-question-1-14",
+          "answer": "B = is equivalent to binary 0.01",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.12 (chapter scan PDF p. 1, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "B = is equivalent to binary 0.01",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q14, linked question and keyed option text compared",
+          "answer": "B = is equivalent to binary 0.01",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "B = is equivalent to binary 0.01",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "madeeasy-digital-logic-number-systems-4-13",
+      "contentSha256": "0aa910040b763fa296a2362426facdbdd8dc10498f7b5f4eab739b428dc8ca64",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "−15 has shortest two's-complement encoding 10001 because 32 − 15 = 17. Each other listed string is an all-ones encoding of −1.",
+      "note": "Specify the shortest two's-complement encoding, or ask for five bits. Wider correct encodings extend the sign bit.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.18, Number Representation: GATE CSE 2002 | Question: 1.15, PDF p. 351 (key p. 363). https://gateoverflow.in/819/gate-cse-2002-question-1-15",
+          "answer": "D = 10001",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.13 (chapter scan PDF p. 1, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "D = 10001",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q15, linked question and keyed option text compared",
+          "answer": "D = 10001",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "D = 10001",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "madeeasy-digital-logic-number-systems-4-14",
+      "contentSha256": "717b3faa3447b924531150443572baa671b9721ef0a97d7bd85609686ffad137",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Replicating the sign bit into added high positions preserves a signed value when converting it to a wider integer width.",
+      "note": "The Made Easy scan labels both the third and fourth choices (d). Arithmetic left shift belongs to (c), and converting a signed integer between widths belongs to (d). The app's option labels already follow this order.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.19, Number Representation: GATE CSE 2002 | Question: 1.16, PDF p. 351 (key p. 363). https://gateoverflow.in/821/gate-cse-2002-question-1-16",
+          "answer": "D = Converting a signed integer from one size to another",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.14 (chapter scan PDF p. 1, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "D = Converting a signed integer from one size to another",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q16, linked question and keyed option text compared",
+          "answer": "D = Converting a signed integer from one size to another",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "D = Converting a signed integer from one size to another",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "madeeasy-digital-logic-number-systems-4-15",
+      "contentSha256": "19b9a1556239adfa804379c5239217a6c70874abd8759342c58377c0ba86530a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The divisor 11111011 is −5. Options A through D decode to −25, −28, −41 and −37, respectively. Only −25 is divisible by −5.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.22, Number Representation: GATE CSE 2003 | Question: 9, PDF p. 352 (key p. 363). https://gateoverflow.in/900/gate-cse-2003-question-9",
+          "answer": "A = 11100111",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.15 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "A = 11100111",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q9, linked question and keyed option text compared",
+          "answer": "A = 11100111",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "A = 11100111",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "madeeasy-digital-logic-number-systems-4-16",
+      "contentSha256": "1d32179bbba4e6d412acbf3d21214f26e577454eba382ff08590f740b16c2a9f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The diagram gives 9 mantissa bits and 6 exponent bits. The top nonzero exponent field is 62, so the biggest spacing is 2^(62−31−9) = 2^22. Enumeration of all distinct representable values confirmed the maximum.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.18.6, Floating Point Representation: GATE CSE 2003 | Question: 43, PDF p. 328 (key p. 362). https://gateoverflow.in/934/gate-cse-2003-question-43",
+          "answer": "C = 2^{22}",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.16 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "C = 2^{22}",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q43, linked question and keyed option text compared",
+          "answer": "C = 2^{22}",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "C = 2^{22}",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "madeeasy-digital-logic-number-systems-4-17",
+      "contentSha256": "778ea9e77994be1844d7ce07065ef5bfae2526e82319f8de4ff5f9574f6493dd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The radix equation is 7x + 3 = 5y + 4. The pair (8, 11) produces 59 on both sides. The other listed pairs fail the equation.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.23, Number Representation: GATE CSE 2004 | Question: 19, PDF p. 352 (key p. 363). https://gateoverflow.in/1016/gate-cse-2004-question-19",
+          "answer": "D = 8, 11",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.17 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "D = 8, 11",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q19, linked question and keyed option text compared",
+          "answer": "D = 8, 11",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "D = 8, 11",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "madeeasy-digital-logic-number-systems-4-18",
+      "contentSha256": "8a5bbc85a642f3fc69162920661ecff23f47c6e580d1f9280dafb7ee2ecc04ba",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The first inner result is 2.00, so the first expression is 9.51. The other inner result −103.49 rounds to −103 at three significant digits, giving 10.0.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.24, Number Representation: GATE CSE 2004 | Question: 28, PDF p. 352 (key p. 363). https://gateoverflow.in/1025/gate-cse-2004-question-28",
+          "answer": "A = 9.51 and 10.0 respectively",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.18 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "A = 9.51 and 10.0 respectively",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q28, linked question and keyed option text compared",
+          "answer": "A = 9.51 and 10.0 respectively",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "A = 9.51 and 10.0 respectively",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 19,
+      "id": "madeeasy-digital-logic-number-systems-4-19",
+      "contentSha256": "5a97936d6c22042ef03be8f70abe7e437df6c1bd406893287d78ce395c243a9d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The operands decode to −6 and 10, so the product is −60. Its 8-bit encoding is 256 − 60 = 196, or 11000100.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.25, Number Representation: GATE CSE 2004 | Question: 66, PDF p. 353 (key p. 363). https://gateoverflow.in/1060/gate-cse-2004-question-66",
+          "answer": "A = 1100 0100",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.19 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "A = 1100 0100",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q66, linked question and keyed option text compared",
+          "answer": "A = 1100 0100",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "A = 1100 0100",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "madeeasy-digital-logic-number-systems-4-20",
+      "contentSha256": "9cc4bcf4d66e1e95423a5c55c6b832284967768080e2a3a7cbc23a4d1588f2a5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "(123456)₈ equals decimal 42798. The same value is A72E in hexadecimal and 22130232 in base 4.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.53, Number Representation: GATE IT 2004 | Question: 43, PDF p. 357 (key p. 363). https://gateoverflow.in/3686/gate-it-2004-question-43",
+          "answer": "A = (A72E)_{16}\\text{ and }(22130232)_4",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.20 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "A = (A72E)_{16}\\text{ and }(22130232)_4",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q43, linked question and keyed option text compared",
+          "answer": "A = (A72E)_{16}\\text{ and }(22130232)_4",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "A = (A72E)_{16}\\text{ and }(22130232)_4",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "madeeasy-digital-logic-number-systems-4-21",
+      "contentSha256": "925d3b078d87a93b95c7d79b2797ce7402fcc2898f0b701887ecf35e7b4fa001",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The high bit contributes −2^(n−1), and the remaining bits together range from 0 to 2^(n−1)−1. The two endpoints are −2^(n−1) and 2^(n−1)−1.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.26, Number Representation: GATE CSE 2005 | Question: 16, ISRO2009-18, ISRO2015-2, PDF p. 353 (key p. 363). https://gateoverflow.in/1352/gate-cse-2005-question-16-isro2009-18-isro2015-2",
+          "answer": "A = -2^{n-1}\\text{ to }(2^{n-1}-1)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.21 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "A = -2^{n-1}\\text{ to }(2^{n-1}-1)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q16, linked question and keyed option text compared",
+          "answer": "A = -2^{n-1}\\text{ to }(2^{n-1}-1)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "A = -2^{n-1}\\text{ to }(2^{n-1}-1)",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 22,
+      "id": "madeeasy-digital-logic-number-systems-4-22",
+      "contentSha256": "ccf0d24c6cc2bf48531fc0516a430eeb3173b4d2449dbd512836ec809b23f2f9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "6 × 64 + 5 × 8 + 7 = 431 = 1 × 256 + 10 × 16 + 15, which is hexadecimal 1AF.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.27, Number Representation: GATE CSE 2005 | Question: 17, PDF p. 353 (key p. 363). https://gateoverflow.in/1353/gate-cse-2005-question-17",
+          "answer": "A = 1AF",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.22 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "A = 1AF",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q17, linked question and keyed option text compared",
+          "answer": "A = 1AF",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "A = 1AF",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 23,
+      "id": "madeeasy-digital-logic-number-systems-4-23",
+      "contentSha256": "a8277520d98ee1518d60c0e3bc99bd74768bc2593b2aacd2a06f89b7c1f085ae",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The 8-bit multiplier is 11000111. Radix-2 Booth differences yield the signed digits (0, −1, 0, 0, +1, 0, 0, −1), totaling −64 + 8 − 1 = −57.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.5.5, Booths Algorithm: GATE IT 2005 | Question: 8, PDF p. 297 (key p. 362). https://gateoverflow.in/3753/gate-it-2005-question-8",
+          "answer": "A = 0\\ {-1}\\ 0\\ 0\\ 1\\ 0\\ 0\\ {-1}",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.23 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "A = 0\\ {-1}\\ 0\\ 0\\ 1\\ 0\\ 0\\ {-1}",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "A = 0\\ {-1}\\ 0\\ 0\\ 1\\ 0\\ 0\\ {-1}",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 24,
+      "id": "madeeasy-digital-logic-number-systems-4-24",
+      "contentSha256": "dfc3d13f7c70adcec9669960c07db62eaec8c92cb09569a3a8d62ebcdf114149",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The octal inputs equal 28.5 and 19.5 in decimal. The exact product is 555.75, or 1053.6 in octal.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.54, Number Representation: GATE IT 2005 | Question: 47, PDF p. 357 (key p. 363). https://gateoverflow.in/3808/gate-it-2005-question-47",
+          "answer": "A = (1053.6)_8",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.24 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "A = (1053.6)_8",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "A = (1053.6)_8",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 25,
+      "id": "madeeasy-digital-logic-number-systems-4-25",
+      "contentSha256": "fa8719f31c5ea237651c70254ffd5e0725ea455079505e50aa83cb6cb1fc2653",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The diagram places the sign above the seven-bit excess-64 exponent and eight fractional bits. The positive prefix is 64 + 13 = 0x4D and truncating 0.239 × 256 gives 61 = 0x3D.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.18.7, Floating Point Representation: GATE CSE 2005 | Question: 85-a, PDF p. 328 (key p. 362). https://gateoverflow.in/1407/gate-cse-2005-question-85-a",
+          "answer": "D = 4D 3D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.25 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "D = 4D 3D",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q89, linked question and keyed option text compared",
+          "answer": "D = 4D 3D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "D = 4D 3D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 26,
+      "id": "madeeasy-digital-logic-number-systems-4-26",
+      "contentSha256": "769452ddc1e271d144043f5236491721aa823cecc9ca2b03a590bf327c91b444",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Shift the previous eight-bit fraction 00111101 left three places, omit the implicit leading 1 and pad with zeros. The stored fraction is 11101000 (E8) and the biased exponent is 64 + 13 − 3 = 4A in hex.",
+      "note": "The zero-padding rule applies to shifting the truncated field from Q4.25. Quantizing directly from 0.239 would give 4A E9. Clarify by asking to normalize the stored fraction from Q4.25. The book and app show distractor C as 4D D0, while GATE Overflow and the linked year paper show 49 D0.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.18.8, Floating Point Representation: GATE CSE 2005 | Question: 85-b, PDF p. 328-329 (key p. 362). https://gateoverflow.in/82139/gate-cse-2005-question-85-b",
+          "answer": "D = 4A E8",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.26 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "D = 4A E8",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q90, linked question and keyed option text compared",
+          "answer": "D = 4A E8",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "D = 4A E8",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 27,
+      "id": "madeeasy-digital-logic-number-systems-4-27",
+      "contentSha256": "bd8957c7c576d223618beeb3201ca6fc10fd2d9f897c4143784ef598da271b21",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The sum is −3 + 4 = 1, encoded as 0001. Opposite signs preclude signed overflow.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.55, Number Representation: GATE IT 2006 | Question: 7, ISRO2009-41, PDF p. 357 (key p. 363). https://gateoverflow.in/3546/gate-it-2006-question-7-isro2009-41",
+          "answer": "C = 0001 and no overflow",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.27 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "C = 0001 and no overflow",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "C = 0001 and no overflow",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 28,
+      "id": "madeeasy-digital-logic-number-systems-4-28",
+      "contentSha256": "61b141b6766199ce1413b0ca326f051942bdee186f5c00c82eeb4921229a70b0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The multiplier digit for each triplet is −2x_(i+1) + x_i + x_(i−1). It equals −2 for 100 and 0 for 111, giving −2Y and 0.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.5.6, Booths Algorithm: GATE IT 2006 | Question: 38, PDF p. 297 (key p. 362). https://gateoverflow.in/3577/gate-it-2006-question-38",
+          "answer": "C = -2Y\\text{ and }0",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.28 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "C = -2Y\\text{ and }0",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "C = -2Y\\text{ and }0",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 29,
+      "id": "madeeasy-digital-logic-number-systems-4-29",
+      "contentSha256": "41a6aca58a195c082e220cac39c8aa74146e25b8587141e4a4184a2a29b21cd2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The subtraction is (49170 + 37/256) − (1486 + 5/8) = 47683 + 133/256. The integer is 135103 in octal and 133/256 is the octal fraction .412.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.56, Number Representation: GATE IT 2007 | Question: 42, PDF p. 357 (key p. 363). https://gateoverflow.in/3477/gate-it-2007-question-42",
+          "answer": "A = (135103.412)_O",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.29 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "A = (135103.412)_O",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "A = (135103.412)_O",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 30,
+      "id": "madeeasy-digital-logic-number-systems-4-30",
+      "contentSha256": "538af2d1ac9479cde525b5210ca039cebeddea39ab710cc4d04cafec2f0ae06f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The sign is negative, stored exponent 131 gives exponent 4, and the significand is 1 + 1/2 + 1/8. Thus the value is −1.625 × 16 = −26.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.20.14, IEEE Representation: GATE IT 2008 | Question: 7, PDF p. 333 (key p. 362). https://gateoverflow.in/3267/gate-it-2008-question-7",
+          "answer": "C = -26",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.30 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "C = -26",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "C = -26",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 31,
+      "id": "madeeasy-digital-logic-number-systems-4-31",
+      "contentSha256": "24fe5b835a5712d7d5f1d5c4c5eec3a2d7c535f5a36975fbc5c50854de390616",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "IEEE binary32 with sign bit 0 and both exponent and fraction fields zero encodes the special value +0.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.20.1, IEEE Representation: GATE CSE 2008 | Question: 4, PDF p. 330 (key p. 362). https://gateoverflow.in/402/gate-cse-2008-question-4",
+          "answer": "D = the special value +0",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.31 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "D = the special value +0",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q4, linked question and keyed option text compared",
+          "answer": "D = the special value +0",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "D = the special value +0",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 32,
+      "id": "madeeasy-digital-logic-number-systems-4-32",
+      "contentSha256": "2873af30058600082be67eccae6eb2b5fd1291289c9de788f75e8a3fc31279c9",
+      "questionType": "MCQ",
+      "correctOptions": [],
+      "answerDisposition": "none-correct",
+      "specialNote": "The answer is any integer radix r > 2. The app's option D includes radix 2, where the digit 2 is invalid.",
+      "status": "verified-with-note",
+      "reason": "With the intended common radix r, (121)ᵣ = r² + 2r + 1 = (r + 1)² and (11)ᵣ = r + 1. The digit 2 requires integer r > 2. Option D includes invalid r = 2, and A through C omit valid radices.",
+      "note": "Restore r in the opening, add the radix subscripts as \\sqrt{(121)_r}=(11)_r, and change option D to “any integer radix r > 2.” Made Easy, GATE Overflow and the linked year paper all key that strict range. The app's ≥2 includes a radix in which (121) is invalid.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.29, Number Representation: GATE CSE 2008 | Question: 6, PDF p. 353 (key p. 363). https://gateoverflow.in/404/gate-cse-2008-question-6",
+          "answer": "D = any radix r > 2. The app has no matching choice.",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.32 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "D = any radix r > 2 in print. The app has no matching choice.",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q6, linked question and keyed option text compared",
+          "answer": "D = any radix r > 2. The app has no matching choice.",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "No listed choice. The valid integer radices satisfy r > 2.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 33,
+      "id": "madeeasy-digital-logic-number-systems-4-33",
+      "contentSha256": "13c25e964eeca1ab4aba14b83c7e05bf1550179331ba2977ef2e1ece364b2eb2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "For multiplier 0111011110111101, with a zero appended at the right, eight adjacent bit pairs differ. Each contributes one radix-2 Booth addition or subtraction.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.5.7, Booths Algorithm: GATE IT 2008 | Question: 42, PDF p. 297 (key p. 362). https://gateoverflow.in/3352/gate-it-2008-question-42",
+          "answer": "B = 8",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.33 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "B = 8",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "B = 8",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 34,
+      "id": "madeeasy-digital-logic-number-systems-4-34",
+      "contentSha256": "cff01c65fa4ba8a204d859993ba34b901f479bce56eca389190c65caf77efdba",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "(1217)₈ = 512 + 128 + 8 + 7 = 655 = (028F)₁₆.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.30, Number Representation: GATE CSE 2009 | Question: 5, ISRO2017-57, PDF p. 353 (key p. 363). https://gateoverflow.in/1297/gate-cse-2009-question-5-isro2017-57",
+          "answer": "B = (028F)_{16}",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.34 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "B = (028F)_{16}",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q5, linked question and keyed option text compared",
+          "answer": "B = (028F)_{16}",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "B = (028F)_{16}",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 35,
+      "id": "madeeasy-digital-logic-number-systems-4-35",
+      "contentSha256": "a322857dd0bbbbe2372ab1c910bb2709391ab91ac9d28b613247b6b14f1cf74c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "F87B encodes −1925 at width 16. Multiplying by 8 gives −15400, which fits in 16 bits and has hexadecimal encoding C3D8.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.31, Number Representation: GATE CSE 2010 | Question: 8, PDF p. 353-354 (key p. 363). https://gateoverflow.in/2179/gate-cse-2010-question-8",
+          "answer": "A = (C3D8)_{16}",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.35 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "A = (C3D8)_{16}",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q8, linked question and keyed option text compared",
+          "answer": "A = (C3D8)_{16}",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "A = (C3D8)_{16}",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 36,
+      "id": "madeeasy-digital-logic-number-systems-4-36",
+      "contentSha256": "1de62e81163bd864bcad20c85ac7f95a55c8b3a90bdb884a19c0afc36caa0be9",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "0.5 = 1.0 × 2^−1. The fraction field is all zeros and the true exponent is −1, encoded as 126 after adding the bias.",
+      "note": "Clarify “exponent value” as “unbiased exponent.” The actual stored exponent field is 01111110 (126).",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.20.2, IEEE Representation: GATE CSE 2012 | Question: 7, PDF p. 330 (key p. 362). https://gateoverflow.in/39/gate-cse-2012-question-7",
+          "answer": "B = fraction bits of 000 ... 000 and exponent value of -1",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.36 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "B = fraction bits of 000 ... 000 and exponent value of -1",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q7, linked question and keyed option text compared",
+          "answer": "B = fraction bits of 000 ... 000 and exponent value of -1",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "B = fraction bits of 000 ... 000 and exponent value of -1",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 37,
+      "id": "madeeasy-digital-logic-number-systems-4-37",
+      "contentSha256": "fdab8a5258462c7d39239e6fbfa34a4ad348e959366181cfd1117d5d3ccc84fd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The minimum 8-bit two's-complement integer is −2^7 = −128, with encoding 10000000.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.32, Number Representation: GATE CSE 2013 | Question: 4, PDF p. 354 (key p. 363). https://gateoverflow.in/1413/gate-cse-2013-question-4",
+          "answer": "B = -128",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.37 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "B = -128",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "B = -128",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 38,
+      "id": "madeeasy-digital-logic-number-systems-4-38",
+      "contentSha256": "197500406c49b10bd3b778a950853b96ee7204365b0b544230ba5d6270e8a54a",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "5",
+      "status": "verified",
+      "reason": "Cross-multiplication in radix r gives 3r² + r + 2 = 2r(r + 3 + 1/r). This simplifies to r(r − 5) = 0. The valid radix is 5.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.33, Number Representation: GATE CSE 2014 | Set 1 | Question: 8, PDF p. 354 (key p. 363). https://gateoverflow.in/1766/gate-cse-2014-set-1-question-8",
+          "answer": "5",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.38 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "5",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "5",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 39,
+      "id": "madeeasy-digital-logic-number-systems-4-39",
+      "contentSha256": "87f12740d9e6f635784e45060d1165af8a1701e5893a6badee7791b1ff9e7ed2",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "3",
+      "status": "verified",
+      "reason": "(123)₅ = 38, hence xy = 30 with y > 8 and x a digit below y. The pairs (x, y) are (3, 10), (2, 15) and (1, 30).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.34, Number Representation: GATE CSE 2014 | Set 2 | Question: 8, PDF p. 354 (key p. 363). https://gateoverflow.in/1961/gate-cse-2014-set-2-question-8",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.39 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "3",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 40,
+      "id": "madeeasy-digital-logic-number-systems-4-40",
+      "contentSha256": "1719997f9adef1b4497f5727b2249b7d94868b716767bcccbb73e1de0eb1718f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "−14.25 = −(1.11001)₂ × 2³. The fields are sign 1, exponent 130, and fraction starting with 11001 followed by zeros, giving C1640000.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.20.3, IEEE Representation: GATE CSE 2014 | Set 2 | Question: 45, PDF p. 331 (key p. 362). https://gateoverflow.in/2011/gate-cse-2014-set-2-question-45",
+          "answer": "A = C1640000H",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.40 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "A = C1640000H",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "A = C1640000H",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 41,
+      "id": "madeeasy-digital-logic-number-systems-4-41",
+      "contentSha256": "52798aca72dc05c28c40d27bab432f86e35c649fbed9383825a5d67519f0d9ac",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "5",
+      "status": "verified",
+      "reason": "4x + 3 = 8y + 3 implies x = 2y. The digit 4 needs x ≥ 5 and y is a base-8 digit, so y can be 3, 4, 5, 6 or 7.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.35, Number Representation: GATE CSE 2015 | Set 3 | Question: 35, PDF p. 354 (key p. 363). https://gateoverflow.in/8494/gate-cse-2015-set-3-question-35",
+          "answer": "5",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.41 (chapter scan PDF p. 2, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "5",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "5",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 42,
+      "id": "madeeasy-digital-logic-number-systems-4-42",
+      "contentSha256": "a4a647f82862878b4b7ea6a8ca43f9e161e6481bd6e6efa56c74208d7951f590",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "-11",
+      "status": "verified",
+      "reason": "The bit pattern is 0xFFF5 unsigned. Subtracting 2^16 gives 65525 − 65536 = −11.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.36, Number Representation: GATE CSE 2016 | Set 1 | Question: 07, PDF p. 354 (key p. 363). https://gateoverflow.in/39649/gate-cse-2016-set-1-question-07",
+          "answer": "-11",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.42 (chapter scan PDF p. 3, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "-11",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "-11",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 43,
+      "id": "madeeasy-digital-logic-number-systems-4-43",
+      "contentSha256": "fd5c3dc69c88d4a93b49498c463a91da4ef9dc9eb9b5864541e8b537f910169b",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "1",
+      "status": "verified",
+      "reason": "All 2^16 two's-complement encodings represent distinct integers. Sign magnitude has two zero encodings and 2^16 − 1 distinct integers, so the difference is 1.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.37, Number Representation: GATE CSE 2016 | Set 2 | Question: 09, PDF p. 354 (key p. 363). https://gateoverflow.in/39546/gate-cse-2016-set-2-question-09",
+          "answer": "1",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.43 (chapter scan PDF p. 3, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "1",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "1",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 44,
+      "id": "madeeasy-digital-logic-number-systems-4-44",
+      "contentSha256": "45e392ab92d9cd4b55709e359e196459d494d31928af2b5837803a4e0199e32c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The scaled unsigned integer ranges from 0 to (2^n − 1) × 2^−f = 2^i − 2^−f.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.16.1, Fixed Point Representation: GATE CSE 2017 | Set 1 | Question: 7, PDF p. 324 (key p. 362). https://gateoverflow.in/118287/gate-cse-2017-set-1-question-7",
+          "answer": "D = 0\\text{ to }(2^i-2^{-f})",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.44 (chapter scan PDF p. 3, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "D = 0\\text{ to }(2^i-2^{-f})",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "D = 0\\text{ to }(2^i-2^{-f})",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 45,
+      "id": "madeeasy-digital-logic-number-systems-4-45",
+      "contentSha256": "a148bc6bc31e032f754bc8713443f90bc35a7b67948d96b9a58bf7a5dc052377",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The bits are 0x3E6D0000, giving 1.8515625 × 2^−3 = 0.2314453125. The closest listed value is 0.227.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.20.4, IEEE Representation: GATE CSE 2017 | Set 2 | Question: 12, PDF p. 331 (key p. 362). https://gateoverflow.in/118434/gate-cse-2017-set-2-question-12",
+          "answer": "C = 2.27\\times10^{-1}",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.45 (chapter scan PDF p. 3, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "C = 2.27\\times10^{-1}",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "C = 2.27\\times10^{-1}",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 46,
+      "id": "madeeasy-digital-logic-number-systems-4-46",
+      "contentSha256": "57178c65179d99764a492a9e8bb4d39d7a8c093d73fdb6561439539d3c19e98b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Hexadecimal BCA9 is 1011 1100 1010 1001 in binary. Grouping from the right into triples gives 001 011 110 010 101 001, or octal 136251.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.39, Number Representation: GATE CSE 2017 | Set 2 | Question: 1, PDF p. 355 (key p. 363). https://gateoverflow.in/118337/gate-cse-2017-set-2-question-1",
+          "answer": "D = 136251",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.46 (chapter scan PDF p. 3, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "D = 136251",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "D = 136251",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 47,
+      "id": "madeeasy-digital-logic-number-systems-4-47",
+      "contentSha256": "744f56452a93b3eff58f909dc0b63f266665f3618bb97023a384f34069c66d87",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "An 8-bit unsigned value with three fraction bits ranges from 0 to 31.875 in steps of 1/8. Of the four values, only 12.100 and 3.001 fail the multiple-of-1/8 test.",
+      "note": "Label 12.100 as (iii). Made Easy and the app repeat (ii), while the GATE Overflow version has the correct labels. C denotes the third and fourth entries by position.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.16.2, Fixed Point Representation: GATE CSE 2018 | Question: 33, PDF p. 325 (key p. 362). https://gateoverflow.in/204107/gate-cse-2018-question-33",
+          "answer": "C = Only (iii) and (iv) cannot be exactly represented.",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.47 (chapter scan PDF p. 3, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "C = Only (iii) and (iv) cannot be exactly represented.",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "C = Only (iii) and (iv) cannot be exactly represented.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 48,
+      "id": "madeeasy-digital-logic-number-systems-4-48",
+      "contentSha256": "b4844f4b8d6173409275b5f73e8afd1ce75294490fb5201d8f8b04de7c7b6a30",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The 16-bit residue of −28 is 65536 − 28 = 0xFFE4, or 1111 1111 1110 0100.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.41, Number Representation: GATE CSE 2019 | Question: 4, PDF p. 355 (key p. 363). https://gateoverflow.in/302844/gate-cse-2019-question-4",
+          "answer": "C = 1111 1111 1110 0100 (app B)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.48 (chapter scan PDF p. 3, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "B = 1111 1111 1110 0100",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "B = 1111 1111 1110 0100",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 49,
+      "id": "madeeasy-digital-logic-number-systems-4-49",
+      "contentSha256": "6e09fd2ab6b69935cd9d27c6fdbea5fe11b93126cd375fb98f1c1ea25ee3811b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "For n ≥ 2, the largest possible difference magnitude is 2(2^(n−1)−1), reached using opposite sign extremes. It needs n magnitude bits plus a sign bit.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.42, Number Representation: GATE CSE 2019 | Question: 8, PDF p. 355 (key p. 363). https://gateoverflow.in/302840/gate-cse-2019-question-8",
+          "answer": "C = n+1 bits (app D)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.49 (chapter scan PDF p. 3, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "D = n+1$ bits",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "D = n+1$ bits",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 50,
+      "id": "madeeasy-digital-logic-number-systems-4-50",
+      "contentSha256": "cc47369f213528189a26b2e4d8f7998e4b2ac015f36b3b249f3901d1d6647398",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The two registers decode to 40 and −10. Their quotient is −4, whose binary32 encoding is 0xC0800000.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.20.5, IEEE Representation: GATE CSE 2020 | Question: 29, PDF p. 331 (key p. 362). https://gateoverflow.in/333202/gate-cse-2020-question-29",
+          "answer": "B = 0xC0800000 (app A)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.50 (chapter scan PDF p. 3, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "A = 0xC0800000",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "A = 0xC0800000",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 51,
+      "id": "madeeasy-digital-logic-number-systems-4-51",
+      "contentSha256": "683d2ee700e3d817d885a93c47fd2f2033c12afb5a62eceebfa67c5df8e7cf94",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "(210)₃ = 2 × 9 + 3 = 21 in decimal, which is 15 in hexadecimal.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.43, Number Representation: GATE CSE 2021 | Set 1 | Question: 6, PDF p. 355 (key p. 363). https://gateoverflow.in/357446/gate-cse-2021-set-1-question-6",
+          "answer": "A = 15 (app C)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.51 (chapter scan PDF p. 3, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "C = 15",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "C = 15",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 52,
+      "id": "madeeasy-digital-logic-number-systems-4-52",
+      "contentSha256": "0079ba115ea0b9d9d8fcc48a7bb6db0f88329894485e82ca2e4e254d6ecef066",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "-7.75",
+      "status": "verified",
+      "reason": "The stored exponent 129 gives a scale of 2². With sign 1 and fraction .1111₂, the result is −(1 + 15/16) × 4 = −7.75.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.20.6, IEEE Representation: GATE CSE 2021 | Set 1 | Question: 24, PDF p. 331 (key p. 362). https://gateoverflow.in/357427/gate-cse-2021-set-1-question-24",
+          "answer": "-7.75 to -7.75",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.52 (chapter scan PDF p. 3, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "-7.75",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2021 CS-1 official key, session 5 Q24 (https://gate2026.iitg.ac.in/doc/download/Answer_keys2021/cs_merged_2021.pdf)",
+          "answer": "−7.75 to −7.75",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "-7.75",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 53,
+      "id": "madeeasy-digital-logic-number-systems-4-53",
+      "contentSha256": "2d5e7a84d9deba3cf6cdfa02fda0ca39c5702bcb6b46c2506d2d5f2f8b3128b6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The smallest positive normal has sign 0, the smallest nonzero exponent field (00000001) and a zero fraction. Its value is 2^−126.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.20.7, IEEE Representation: GATE CSE 2021 | Set 2 | Question: 4, PDF p. 331-332 (key p. 362). https://gateoverflow.in/357536/gate-cse-2021-set-2-question-4",
+          "answer": "C = exponent 00000001, all 23 fraction bits zero (app B)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.53 (chapter scan PDF p. 3, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "B = exponent = 00000001 and mantissa = 00000000000000000000000",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "B = exponent = 00000001 and mantissa = 00000000000000000000000",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 54,
+      "id": "madeeasy-digital-logic-number-systems-4-54",
+      "contentSha256": "2b04ce06edbb01ff6821c62defe819c310d7aa302551b825e9cd73d52e6bfde2",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "3",
+      "status": "verified",
+      "reason": "0.1101 in binary is 1/2 + 1/4 + 1/16 = 0.8125. Hence x = 1 and y = 2, so their sum is 3.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.44, Number Representation: GATE CSE 2021 | Set 2 | Question: 18, PDF p. 355 (key p. 363). https://gateoverflow.in/357522/gate-cse-2021-set-2-question-18",
+          "answer": "3 to 3",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.54 (chapter scan PDF p. 3, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2021 CS-2 official key, session 6 Q18 (https://gate2026.iitg.ac.in/doc/download/Answer_keys2021/cs_merged_2021.pdf)",
+          "answer": "3 to 3",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "3",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 55,
+      "id": "madeeasy-digital-logic-number-systems-4-55",
+      "contentSha256": "7bb257e94e9a1d8acc290d03f57f030e2fd4e5eb6599a62b369def6319a751b1",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Let H and L be the high and low bytes of the little-endian value. Reversing them changes the value by 255(H − L). H − L = 1 for 0x6665 and 0x0100 only.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.22.1, Little Endian Big Endian: GATE CSE 2021 | Set 2 | Question: 44, PDF p. 338 (key p. 362). https://gateoverflow.in/357496/gate-cse-2021-set-2-question-44",
+          "answer": "A = 0x6665, D = 0x0100 (app C)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.55 (chapter scan PDF p. 3, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "A = 0x6665, C = 0x0100",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "A = 0x6665, C = 0x0100",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 56,
+      "id": "madeeasy-digital-logic-number-systems-4-56",
+      "contentSha256": "b77692b8b69e4cd09a66056e46d49249e61eeaa13c337149ec8b62dfe6ef4c0d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Four-bit two's complement spans −8 to 7. A through D give −7, −10, 7 and −8, respectively. Only −10 overflows.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.45, Number Representation: GATE CSE 2022 | Question: 8, PDF p. 356 (key p. 363). https://gateoverflow.in/371928/gate-cse-2022-question-8",
+          "answer": "B = R1 = 1100 and R2 = 1010",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.56 (chapter scan PDF p. 3, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "B = R1 = 1100 and R2 = 1010",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2022 CS master paper Q18 (https://gate2026.iitg.ac.in/doc/download/2022/cs_2022.pdf#page=14), official key (https://gate2026.iitg.ac.in/doc/download/Answer_keys2022/cs_2022.pdf)",
+          "answer": "B = R1=1100 and R2=1010",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "B = R1 = 1100 and R2 = 1010",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 57,
+      "id": "madeeasy-digital-logic-number-systems-4-57",
+      "contentSha256": "b846800d5b491281b36885e6cde3d62d56cf3afec138665abea0c4e45470ce79",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "B, C and D are false as printed. R_B = 0xC4210000 gives B = −644. The original exam used R_B = 0x42100000, giving B = 36 and making only option B false.",
+      "status": "verified-with-note",
+      "reason": "The app's registers decode to A = −12, B = −644 and C = 12. Then A+C = 0, A+B = −656, 3C = 36 and B−C = −656. B, C and D are all false, so the printed single-choice item is disputed.",
+      "note": "The Made Easy stem and app both print R_B = 0xC4210000. The official 2022 CS paper and GATE Overflow use R_B = 0x42100000, which gives B = 36 and makes only option B false. The official choice is retained as a reference with manual review. The Made Easy single-choice key is incomplete for its printed register value.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.20.8, IEEE Representation: GATE CSE 2022 | Question: 31, PDF p. 332 (key p. 362). https://gateoverflow.in/371905/gate-cse-2022-question-31",
+          "answer": "B = C=A+B is false for original R_B = 0x42100000",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.57 (chapter scan PDF p. 3, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "B only in the table, despite printed R_B = 0xC4210000",
+          "agrees": false
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2022 CS master paper Q41 (https://gate2026.iitg.ac.in/doc/download/2022/cs_2022.pdf#page=27), official key (https://gate2026.iitg.ac.in/doc/download/Answer_keys2022/cs_2022.pdf)",
+          "answer": "B = C=A+B is false for the original R_B = 0x42100000",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "B is the original exam reference. B, C and D are false with the app register.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 58,
+      "id": "madeeasy-digital-logic-number-systems-4-58",
+      "contentSha256": "992c0ef65ac1b07209d4e01621e4bb13458e86714340b329cb773e92999512bf",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "110",
+      "status": "verified",
+      "reason": "(132)₄ = 16 + 12 + 2 = 30. In radix 5, 30 = 25 + 5, giving the digits 110.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.46, Number Representation: GATE CSE 2023 | Question: 22, PDF p. 356 (key p. 363). https://gateoverflow.in/399289/gate-cse-2023-question-22",
+          "answer": "110",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.58 (chapter scan PDF p. 3, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "110",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2023 CS master paper Q32 (https://gate2026.iitg.ac.in/doc/download/2023/cs_2023.pdf#page=30), official key (https://gate2026.iitg.ac.in/doc/download/Answer_keys2023/CS_ANS_GATE2023.pdf)",
+          "answer": "110 to 110",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "110",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 59,
+      "id": "madeeasy-digital-logic-number-systems-4-59",
+      "contentSha256": "5edfbc28fe0bc307c525e75112dbe5705b75ec5884351b8db55a3d44f22c49ef",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "P is −16. Multiplying positive Q by −2⁴ flips the sign and raises its unbiased exponent by four, leaving the fraction bits unchanged. The encoding is 0xC15C2EF4.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.20.9, IEEE Representation: GATE CSE 2023 | Question: 35, PDF p. 332 (key p. 362). https://gateoverflow.in/399276/gate-cse-2023-question-35",
+          "answer": "C = 0xC15C2EF4",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.59 (chapter scan PDF p. 3, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "C = 0xC15C2EF4",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2023 CS master paper Q45 (https://gate2026.iitg.ac.in/doc/download/2023/cs_2023.pdf#page=48), official key (https://gate2026.iitg.ac.in/doc/download/Answer_keys2023/CS_ANS_GATE2023.pdf)",
+          "answer": "C = 0xC15C2EF4",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "C = 0xC15C2EF4",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 60,
+      "id": "madeeasy-digital-logic-number-systems-4-60",
+      "contentSha256": "2680a0a54da062381d57bd00b03467cac7b372a95edf3ddc61f88c3278499f7c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A = 10 and B = −6. The four operations yield −16, 16, 4 and −12. The sole result outside the 5-bit signed range [−16, 15] is A − B.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.47, Number Representation: GATE CSE 2024 | Set 1 | Question: 3, PDF p. 356 (key p. 363). https://gateoverflow.in/422839/gate-cse-2024-set-1-question-3",
+          "answer": "B = A-B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.60 (chapter scan PDF p. 3, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "B = A-B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "B = A-B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 61,
+      "id": "madeeasy-digital-logic-number-systems-4-61",
+      "contentSha256": "384b3d60c3703ed5def80d7680082986573b744207a0321bfad3b235ae0b4f34",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Sign 0, exponent 254 and all-one fraction give the largest finite binary32 value. An exponent of 255 with a nonzero fraction encodes NaN.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.20.10, IEEE Representation: GATE CSE 2024 | Set 2 | Question: 4, PDF p. 332 (key p. 362). https://gateoverflow.in/422893/gate-cse-2024-set-2-question-4",
+          "answer": "B = sign 0, exponent 11111110, all 23 fraction bits one (app C)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.61 (chapter scan PDF p. 3, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "C = sign 0, exponent 11111110, all 23 fraction bits one",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "C = sign 0, exponent 11111110, all 23 fraction bits one",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 62,
+      "id": "madeeasy-digital-logic-number-systems-4-62",
+      "contentSha256": "3d22ee1db13917742066019c313cbaa576132461ae263cb3ce743c3888c04995",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "B",
+        "C"
+      ],
+      "status": "verified",
+      "reason": "(224)₅ = 64. The values of (121)₇, (100)₈ and (64)₁₀ are 64, while (50)₁₆ equals 80.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.48, Number Representation: GATE CSE 2024 | Set 2 | Question: 39, PDF p. 356 (key p. 363). https://gateoverflow.in/422858/gate-cse-2024-set-2-question-39",
+          "answer": "A = 64 in radix-10 (app C), B = 100 in radix-8, D = 121 in radix-7 (app A)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Number Systems Q4.62 (chapter scan PDF p. 3, Digital Logic solutions PDF p. 4, book p. 238)",
+          "answer": "A = 121 in radix-7, B = 100 in radix-8, C = 64 in radix-10",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the app text, options and diagram where supplied",
+          "answer": "A = 121 in radix-7, B = 100 in radix-8, C = 64 in radix-10",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

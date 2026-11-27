@@ -1,0 +1,1344 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "12. DBMS",
+  "chapter": "4. Relational Model",
+  "slug": "12-dbms--4-relational-model",
+  "reviewedAt": "2026-11-27",
+  "sources": {
+    "gateOverflowPdf": {
+      "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume3.pdf",
+      "sha256": "5c552941136eb96612fabec8a5b2cb67fc07c17023ce15628408ca27d6640c24",
+      "chapter": "3 Databases",
+      "answerKeyPages": [
+        273,
+        274
+      ]
+    },
+    "madeEasyPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\12. DBMS\\4. Relational Model.pdf",
+      "sha256": "1556421d5e7360aec7b13f66076ab2cdd803e4318e11e6755763b6ded4208ec7",
+      "questionPages": [
+        1,
+        2,
+        3
+      ]
+    },
+    "madeEasySolutionsPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\All Subject Solutions Keys\\DBMS.pdf",
+      "sha256": "f7952d9ef31419ebae3ce10cd3a4d40784fc81c4176e3a5fb3a61ec205aeb2ca",
+      "answerKeyPage": 8,
+      "answerKeyBookPage": 638
+    },
+    "yearPapers": "data/papers/*.json (verified copies linked by source.copiedFrom.questionId)",
+    "officialKeys": "Official GATE paper and answer key PDFs, cited at the matching question."
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "madeeasy-dbms-relational-model-4-1",
+      "contentSha256": "06a8a4a836d5d55f0340b6fa29d2cb710250471b90daae50c2d88f8ca447e6e7",
+      "questionType": "SUBJECTIVE",
+      "correctOptions": [],
+      "status": "verified-with-note",
+      "reason": "Part (a) finds the distinct titles of books issued to user 6. Part (b) is intended to find the distinct authors of books issued to users whose hometown is Delhi.",
+      "note": "Part (b) has a bare AuthorName as the selection predicate in the app and Made Easy. Replace σ_AuthorName with π_AuthorName, as printed in GATE Overflow. Part (a) retains only the title values associated with user 6.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.18.5, Relational Algebra: GATE CSE 1996 | Question: 27, p.224 (key p.273), https://gateoverflow.in/2779/gate-cse-1996-question-27",
+          "answer": "N/A for the descriptive item. The printed projection in part (b) supports the reference answer.",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.1",
+          "answer": "Book titles issued to user 6 and authors of books issued to users from Delhi.",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "Part (a) gives titles issued to user 6. Part (b), with the projection correction, gives authors of books issued to users from Delhi.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "madeeasy-dbms-relational-model-4-2",
+      "contentSha256": "fd19c24fc8c632640fd1492505558df79509438d647b1f1a49a4e74399c29040",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "If c1 refers to A2, the left side of D can filter on A2, but after projecting only A1 the right side cannot evaluate c1. B starts with a well-typed selection on the projected relation, so its predicate already uses only retained attributes.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.19.2, Relational Calculus: GATE CSE 1998 | Question: 2.19, p.234 (key p.273), https://gateoverflow.in/1692/gate-cse-1998-question-2-19",
+          "answer": "D = move the selection after projection onto A1",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.2",
+          "answer": "D = move the selection after projection onto A1",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "madeeasy-dbms-relational-model-4-3",
+      "contentSha256": "ce91b7a8db7f9f9be587daebc41a42865279d18a6a889b5aa0fb8608e717d860",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "At most mn pairs can satisfy an inner join. All pairs can match when the common attribute value is shared, and no pairs match when the common attribute values are disjoint.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.18.9, Relational Algebra: GATE CSE 1999 | Question: 1.18, ISRO2016-53, p.225 (key p.273), https://gateoverflow.in/1471/gate-cse-1999-question-1-18-isro2016-53",
+          "answer": "B = mn and 0",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.3",
+          "answer": "B = mn and 0",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "madeeasy-dbms-relational-model-4-4",
+      "contentSha256": "b07f48c072776f1925ecbde94653b902aad7eb4cbdf3ecc34812f225c1d69562",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The conjunction requires membership in both selections, so the result is their intersection.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.19.3, Relational Calculus: GATE CSE 1999 | Question: 1.19, p.234 (key p.273), https://gateoverflow.in/1472/gate-cse-1999-question-1-19",
+          "answer": "C = intersection of the selections A=10 and B=20",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.4",
+          "answer": "C = intersection of the selections A=10 and B=20",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "madeeasy-dbms-relational-model-4-5",
+      "contentSha256": "33d9e40f09da51868fa830e89566321c35a8c5076935b702409b95a4b361b7ea",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The listed operators can join, filter and project existing values. A salary sum requires aggregation, which is absent from basic relational algebra.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.18.10, Relational Algebra: GATE CSE 2000 | Question: 1.23, ISRO2016-57, p.225 (key p.273), https://gateoverflow.in/647/gate-cse-2000-question-1-23-isro2016-57",
+          "answer": "C = sum of all employees’ salaries",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.5",
+          "answer": "C = sum of all employees’ salaries",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q23, linked book question and option text compared",
+          "answer": "C = sum of all employees’ salaries",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "madeeasy-dbms-relational-model-4-6",
+      "contentSha256": "e48481b24dbf71177d947b1b1b6cd91193308ebafcd1c6dc6d9c73bacdeeb7c2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "The reference key is C. B is also unsafe when R1 has no A=\"x\" row, so the printed single-choice question has two unsafe expressions.",
+      "status": "verified-with-note",
+      "reason": "C includes every tuple outside R1, so enlarging the underlying domain can enlarge the result. If R1 contains no A=\"x\" row, the antecedent in B is always false. The implication then holds for every output tuple.",
+      "note": "Both printed keys give C. The linked year paper independently flags B as unsafe in the no-x case. To make C unique, specify one-attribute output tuples and assume R1 contains at least one tuple with A=\"x\".",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.19.4, Relational Calculus: GATE CSE 2001 | Question: 2.24, p.234 (key p.273), https://gateoverflow.in/742/gate-cse-2001-question-2-24",
+          "answer": "C = the complement of R1",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.6",
+          "answer": "C = the complement of R1",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q49, linked book question and option text compared",
+          "answer": "C = the complement of R1, with B also unsafe under vacuous truth",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "C and B are unsafe without an additional assumption. C is the reference choice.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "madeeasy-dbms-relational-model-4-7",
+      "contentSha256": "a289e545c9a0c788adac824fc10b1e0db4aeeaa30f0c070e58092153c98ad236",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Relational algebra and domain-independent relational calculus express the same queries. Unrestricted calculus can express domain-dependent queries.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.19.5, Relational Calculus: GATE CSE 2002 | Question: 1.20, p.235 (key p.273), https://gateoverflow.in/825/gate-cse-2002-question-1-20",
+          "answer": "C = same expressive power as safe relational calculus",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.7",
+          "answer": "C = same expressive power as safe relational calculus",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q20, linked book question and option text compared",
+          "answer": "C = same expressive power as safe relational calculus",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "madeeasy-dbms-relational-model-4-8",
+      "contentSha256": "1c33d105a31af69802e589b1ba1979ce4748a6d98baf2979b8eb3a4939b64864",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Every r1.C value must occur as an r2.D value. Under the question’s one-column set-difference convention, subtracting the referenced values therefore leaves the empty relation.",
+      "note": "The GATE Overflow rendering and linked CS 2004 Q13 copy both use r2 as the join operand and show C as only π_D(r1 ⋈_{C≠D} r2). The book and app add a trailing −π_C(r1) to C and capitalize r2 in C and D. Restore the shorter C and the lowercase instance name in both joins. B is valid in either version.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.19.6, Relational Calculus: GATE CSE 2004 | Question: 13, p.235 (key p.273), https://gateoverflow.in/1010/gate-cse-2004-question-13",
+          "answer": "B = projection of C from r1 minus projection of D from r2",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.8",
+          "answer": "B = projection of C from r1 minus projection of D from r2",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q13, linked book question and option text compared",
+          "answer": "B = projection of C from r1 minus projection of D from r2",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "madeeasy-dbms-relational-model-4-9",
+      "contentSha256": "5f26913fa7bba1e74bc07a725022226e3618865b52d7969e0318a98f61cb1fc2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Start with every girl. The renamed self-join removes each girl for whom a boy scored at least as high. The survivors scored strictly higher than every boy.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.18.16, Relational Algebra: GATE CSE 2004 | Question: 51, p.227 (key p.273), https://gateoverflow.in/1047/gate-cse-2004-question-51",
+          "answer": "D = girls scoring strictly higher than every boy",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.9",
+          "answer": "D = girls scoring strictly higher than every boy",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q51, linked book question and option text compared",
+          "answer": "D = girls scoring strictly higher than every boy",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "madeeasy-dbms-relational-model-4-10",
+      "contentSha256": "f10d4c2f22f95b4942cfdabbba886105bac16935e1ffa1f4d77f5e5d23fd1a04",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Joining the two projections on A restores every original tuple. Lossiness means at least one spurious tuple is also produced, so r is a proper subset. Since the schemas coincide, r ⋈ s equals r.",
+      "note": "The app and book define uppercase S and use lowercase s in the options. Use lowercase s throughout for the join result.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.14.1, Natural Join: GATE CSE 2005 | Question: 30, p.219 (key p.273), https://gateoverflow.in/1366/gate-cse-2005-question-30",
+          "answer": "C = r is a proper subset of s",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.10",
+          "answer": "C = r is a proper subset of s",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q30, linked book question and option text compared",
+          "answer": "C = r is a proper subset of s",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "madeeasy-dbms-relational-model-4-11",
+      "contentSha256": "558defc958f0b1a371e574c7733f2ad711c132c223fcf189b8410de85935f310",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "The SQL query returns hostel 5 four times, hostel 6 once and hostel 7 twice, for seven rows. With the join predicate applied to the cross product, the set projection returns {5,6,7}, so the difference is 7 − 3 = 4.",
+      "note": "The printed algebra closes the roll-equality selection before H is in scope. Write π_hostel(σ_{S.roll=H.roll}(σ_{marks>75 ∧ roll>2000 ∧ roll<3000}(S) × H)). The SQL bounds are inclusive and the algebra bounds are strict. No row has marks 75 or roll 2000 or 3000, so both filters select the same rows here.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.18.33, Relational Algebra: GATE IT 2005 | Question: 68, p.233 (key p.273), https://gateoverflow.in/3831/gate-it-2005-question-68",
+          "answer": "B = 4",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.11",
+          "answer": "B = 4",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "SQLite execution of the app SQL and set projection of the transcribed table rows",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "madeeasy-dbms-relational-model-4-12",
+      "contentSha256": "14974580d23ab5830b6b83f3bd39e20fe32b4b9696785fc6f3a0e75ba5a41082",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Relational algebra, safe tuple relational calculus and safe domain relational calculus are equivalent in expressive power.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.19.11, Relational Calculus: GATE IT 2006 | Question: 15, p.236 (key p.273), https://gateoverflow.in/3554/gate-it-2006-question-15",
+          "answer": "D = I, II and III",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.12",
+          "answer": "D = I, II and III",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "madeeasy-dbms-relational-model-4-13",
+      "contentSha256": "727582122f5c2b6707bfe6209043edf2ec87b82890efd8ac289d52543b50ca94",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "C is the reference key. The shown plans tie on predicate checks if each paid student has one enrollment, and Plan 2 can do fewer checks if paid students have no matches.",
+      "status": "verified-with-note",
+      "reason": "At x=5000 all Paid rows pass. Plan 1 tests each Paid row before probing Enrolled, whereas Plan 2 tests each joined row. With identical I/O and more joined rows than Paid rows, Plan 1 does fewer checks. Both plans produce the same course set.",
+      "note": "The universal runtime claim in C is unsupported. With exactly one enrollment per paid student the check counts tie. With no matching enrollments, Plan 2 performs no amount checks. Specify equal I/O, at least one enrollment for every paid student, and more than one for at least one paid student to make C strict. The linked year-paper rationale misdescribes the filter placement and projection shown in the diagram. Its keyed option matches the app.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.21.22, SQL: GATE CSE 2006 | Question: 69, p.244 (key p.273), https://gateoverflow.in/1847/gate-cse-2006-question-69",
+          "answer": "C = Plan 1 is faster at x=5000 under the intended cost comparison",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.13",
+          "answer": "C = Plan 1 is faster at x=5000 under the intended cost comparison",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q69, linked book question and option text compared",
+          "answer": "C = Plan 1 is faster at x=5000 under the intended cost comparison",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "App query-plan diagram and a count of checks before versus after the join",
+          "answer": "C under the intended cost comparison, with counterexamples to the universal claim.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "madeeasy-dbms-relational-model-4-14",
+      "contentSha256": "68dd3bc7cbff3ba4d682a0ce10ad2acd328bfbd0953b3e0f946496e1747b4a50",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A uniform range estimate gives selectivity 100/500 = 0.2. Multiplying by 1,000 gives 200 tuples, the best offered estimate.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.19.12, Relational Calculus: GATE IT 2007 | Question: 65, p.236 (key p.273), https://gateoverflow.in/3510/gate-it-2007-question-65",
+          "answer": "D = 200",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.14",
+          "answer": "D = 200",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "madeeasy-dbms-relational-model-4-15",
+      "contentSha256": "4f3cca5bb2f7cb6daf416bda7429d241b2caf94fb4eb156bbfd6c811437add2d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "GATE Overflow selects A and Made Easy selects B. A is the branch-first heuristic. Relative cost depends on selectivity and the cost model.",
+      "status": "verified-with-note",
+      "reason": "A follows the intended small-branch-first heuristic and filters by city before the first join. B can be cheaper if very few accounts have a negative balance. C and D attempt to filter account by b-city, which belongs to branch.",
+      "note": "The option order matches across sources. GATE Overflow keys A and Made Easy keys B. Relation sizes alone do not determine which plan is cheaper. Use a-num in both account and depositor so their natural join matches account numbers. To make A unique, ask which plan joins filtered Agra branches to account before joining depositor.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.12.7, Joins: GATE IT 2007 | Question: 68, p.218 (key p.273), https://gateoverflow.in/3513/gate-it-2007-question-68",
+          "answer": "A = join filtered Agra branches to account before joining depositor",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.15",
+          "answer": "B = join negative-balance accounts to depositor before joining the filtered branches",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "A under the small-branch-first heuristic. A unique fastest plan needs more information.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "madeeasy-dbms-relational-model-4-16",
+      "contentSha256": "7f3317393074e3345b8df4ffda9c1ed989541ebd57cced09c420875416aa9bf1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "The product creates all possible female-student/course pairs. Subtracting enroll finds missing pairs. Each resulting course has a female student missing and, by assumption, at least one female student enrolled.",
+      "note": "Use courseId consistently in the enroll schema and both projections. The book and app use CourseId in the schema and courseId in the formula.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.18.17, Relational Algebra: GATE CSE 2007 | Question: 59, p.227 (key p.273), https://gateoverflow.in/2428/gate-cse-2007-question-59",
+          "answer": "B = courses with a proper subset of female students enrolled",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.16",
+          "answer": "B = courses with a proper subset of female students enrolled",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q59, linked book question and option text compared",
+          "answer": "B = courses with a proper subset of female students enrolled",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "madeeasy-dbms-relational-model-4-17",
+      "contentSha256": "8330aa9b136ccea0289dafb51e7427b77db441f31063a834b4a04ab9bf8a0305",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Every employee reporting directly to e must be male. Under the question’s male/female convention, e has no immediate female subordinate. Employees with no direct reports also satisfy the predicate.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.19.7, Relational Calculus: GATE CSE 2007 | Question: 60, p.235 (key p.273), https://gateoverflow.in/1258/gate-cse-2007-question-60",
+          "answer": "C = employees with no immediate female subordinates",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.17",
+          "answer": "C = employees with no immediate female subordinates",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q60, linked book question and option text compared",
+          "answer": "C = employees with no immediate female subordinates",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "madeeasy-dbms-relational-model-4-18",
+      "contentSha256": "62572b9e7861ecd54aaa21fb3bd7b1a53db9943dc12be33318743ece82282fff",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The join matches both P and Q, so I projects P from the same (P,Q) intersection as III. IV uses X − (X − Y) = X ∩ Y. II can return a shared P when the Q values differ.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.18.18, Relational Algebra: GATE CSE 2008 | Question: 68, pp.227–228 (key p.273), https://gateoverflow.in/491/gate-cse-2008-question-68",
+          "answer": "D = only I, III and IV",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.18",
+          "answer": "D = only I, III and IV",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q68, linked book question and option text compared",
+          "answer": "D = only I, III and IV",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 19,
+      "id": "madeeasy-dbms-relational-model-4-19",
+      "contentSha256": "6a9981f4f4b9d975d754988d4f685e1f3fbdf87eb25e7c75077e9b5b99deba5d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "A is the key after correcting the schema and instance notation. As printed, I uses a schema as a product operand and II/III project onto an instance.",
+      "status": "verified-with-note",
+      "reason": "I subtracts each (a,b) pair that lacks a c from s. II requires every c from s. With r={(a,b,1)} and s={1,2}, I and II give the empty set. The lone matching row makes IV return (a,b), and III also returns (a,b) because its quantifier ranges over the rows of r.",
+      "note": "Replace schema S by relation s in I’s product, write r in place of π_{R−S,S}(r), and use v[S] in II and III. The supplied expressions have ill-typed schema/instance references. After those corrections A is the supported pair. Made Easy keys C, but IV requires only one match and can also retain duplicates.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.19.9, Relational Calculus: GATE CSE 2009 | Question: 45, pp.235–236 (key p.273), https://gateoverflow.in/1331/gate-cse-2009-question-45",
+          "answer": "A = I and II, with lowercase s as the operand and v[S] as the tuple projection",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.19",
+          "answer": "C = II and IV",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q45, linked book question and option text compared",
+          "answer": "A = I and II after resolving the printed notation",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "A = I and II with consistent relation and attribute notation.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "madeeasy-dbms-relational-model-4-20",
+      "contentSha256": "34d51ad2a92be520048a400996faee286106d569a40a67a86a24dacba55b5cc7",
+      "questionType": "MCQ",
+      "correctOptions": [],
+      "answerDisposition": "none-correct",
+      "specialNote": "The query includes suppliers with no catalog entries and excludes suppliers who supplied a blue part. None of the listed choices expresses both conditions.",
+      "status": "verified-with-note",
+      "reason": "The inner query selects IDs of parts with a non-NULL color other than blue. The outer query retains a supplier exactly when every one of their cataloged part IDs is in that non-blue set, including suppliers with no catalog rows. A and D can both include mixed suppliers, whom the query excludes.",
+      "note": "Replace C with “Find the names of suppliers for whom every cataloged part has a matching non-blue Parts row, including suppliers with no catalog entries.” The linked year-paper key stores D for manual review, but its explanation also finds no exact choice. The original exam’s scoring treatment could not be verified from an official key.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.21.24, SQL: GATE CSE 2009 | Question: 55, p.245 (key p.273), https://gateoverflow.in/1339/gate-cse-2009-question-55",
+          "answer": "X = no keyed choice. The GATE Overflow version changes C to only non-blue parts.",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.20",
+          "answer": "A = suppliers who have supplied a non-blue part",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q55, linked book question and option text compared",
+          "answer": "D = suppliers who have not supplied only blue parts. Its manual-review explanation also finds no exact option.",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "SQLite execution of the app SQL with red-only, blue-only, mixed, and zero-supply suppliers",
+          "answer": "No exact option.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "madeeasy-dbms-relational-model-4-21",
+      "contentSha256": "97d8d883ccbdb94c2e2db74d0c5874669eb6b3612b968687e5ed78d06e46329b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Suppliers has keys sid and (sname, city), Parts has pid, and Catalog has (sid,pid). Under the stipulated dependency set, every nontrivial dependency has a superkey determinant, so the schemas are in BCNF.",
+      "note": "Made Easy keys B with the same option order. It would require a dependency with a non-superkey determinant. The stem expressly excludes additional dependencies and supplies no such determinant.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.21.25, SQL: GATE CSE 2009 | Question: 56, pp.245–246 (key p.273), https://gateoverflow.in/43474/gate-cse-2009-question-56",
+          "answer": "A = the schema is in BCNF",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.21",
+          "answer": "B = 3NF but not BCNF",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q56, linked book question and option text compared",
+          "answer": "A = the schema is in BCNF",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 22,
+      "id": "madeeasy-dbms-relational-model-4-22",
+      "contentSha256": "122a4e124e76994630c8580e55e658c0d88f9a303889c05d034838692b8d07c3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "The foreign key requires the projected B values to lie within the projected C values. Unreferenced rows in r2 are allowed, so the reverse difference need not be empty.",
+      "note": "The book and app omit the paper’s primary-key underlining. Underline A in R1 and C in R2. The foreign-key condition already suffices to choose A.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.17.3, Referential Integrity: GATE CSE 2012 | Question: 43, p.222 (key p.273), https://gateoverflow.in/2151/gate-cse-2012-question-43",
+          "answer": "A = projection of B from r1 minus projection of C from r2 is empty",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.22",
+          "answer": "A = projection of B from r1 minus projection of C from r2 is empty",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q43, linked book question and option text compared",
+          "answer": "A = projection of B from r1 minus projection of C from r2 is empty",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2012 CS booklet A Q43, historical key PDF p.2 (mirrored), https://media.geeksforgeeks.org/wp-content/cdn-uploads/20211005210114/Key_CS_2012.pdf",
+          "answer": "A = projection of B from r1 minus projection of C from r2 is empty",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 23,
+      "id": "madeeasy-dbms-relational-model-4-23",
+      "contentSha256": "9f751bea79ff56872f340d09b52fd68172165d958ea3b72a1aee61f6b2ac3508",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "A is the official key with the original identifiers. Only IV uses the declared identifiers as printed in this copy, and there is no IV-only option.",
+      "status": "verified-with-note",
+      "reason": "With consistent identifiers, SQL DISTINCT and the algebraic projection each give the distinct names for joined registrations with courseno=107 and percent>90. The tuple and domain calculus versions express the same existential matches.",
+      "note": "The official paper uses Students and Registration throughout and joins on R.rollno=S.rollno. In the app, I uses S.roll.no and an undeclared Students table, II uses Regis-tration, and III uses the undeclared plural Students. IV uses the app’s declared Student and Registration. The literal text has no IV-only option. Restore Students in the schema, II and IV, Registration in II, and S.rollno in I. The official D distractor reads “II, III and IV only”.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.19.10, Relational Calculus: GATE CSE 2013 | Question: 35, p.236 (key p.273), https://gateoverflow.in/1546/gate-cse-2013-question-35",
+          "answer": "A = all four formulations with the identifiers Students, Registration and rollno",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.23",
+          "answer": "A = I, II, III and IV",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2013 CS-A Q35, official paper p.8 and historical key PDF p.1 (mirrored), https://gate.iitk.ac.in/GATE2023/doc/papers/2013/cs_2013.pdf and https://media.geeksforgeeks.org/wp-content/cdn-uploads/20211005210048/Key_CS_2013.pdf",
+          "answer": "A = I, II, III and IV with the official paper’s identifiers",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Equivalent SQL, algebra and calculus predicates after normalizing identifiers, with a SQLite check of course, score and duplicates",
+          "answer": "A with the original identifiers. As printed only IV uses the declared identifiers.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 24,
+      "id": "madeeasy-dbms-relational-model-4-24",
+      "contentSha256": "ee0b353b5d24ed856b052bee4d2b3061c7870b9730873535660c35a59109f80e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "With one input block per side, block nested loops cost b_outer + b_outer·b_inner reads. The product term is symmetric, so the smaller relation r gives the lower outer-scan cost.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.12.3, Joins: GATE CSE 2014 | Set 2 | Question: 30, p.217 (key p.273), https://gateoverflow.in/1989/gate-cse-2014-set-2-question-30",
+          "answer": "A = r(R) in the outer loop",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.24",
+          "answer": "A = r(R) in the outer loop",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 25,
+      "id": "madeeasy-dbms-relational-model-4-25",
+      "contentSha256": "e1735adb15188c4e9864727e59a37ff1ee71fff8d824f8b4d9d80c5ae8ea6aeb",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Subtract an employee if an associated dependent has age at least the employee’s age. Every surviving employee is strictly older than each of their own dependents.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.18.20, Relational Algebra: GATE CSE 2014 | Set 3 | Question: 30, p.228 (key p.273), https://gateoverflow.in/2064/gate-cse-2014-set-3-question-30",
+          "answer": "D = all of his/her dependents",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.25",
+          "answer": "D = all of his/her dependents",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 26,
+      "id": "madeeasy-dbms-relational-model-4-26",
+      "contentSha256": "6a766d65923b38a0181af64437ad06beb4338126c761dc5b49f08bb3b748471a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "A=1 gives the matched row (1,5,7). The unmatched A=3 and A=4 rows give (3,7,NULL) and (4,NULL,9), respectively.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.14.3, Natural Join: GATE CSE 2015 | Set 2 | Question: 32, p.219 (key p.273), https://gateoverflow.in/8151/gate-cse-2015-set-2-question-32",
+          "answer": "C = contains e, f and g and excludes a and b",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.26",
+          "answer": "C = contains e, f and g and excludes a and b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 27,
+      "id": "madeeasy-dbms-relational-model-4-27",
+      "contentSha256": "6adf0b0b052eab9d7ad021731c373931045cfb15477590c0805e5aeb067f1f50",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "The reference key is D. An unrestricted output DeptId makes I and II unsafe. III bounds both displayed output attributes, and there is no III-only choice.",
+      "status": "verified-with-note",
+      "reason": "For one employee Alice and one department with ID 1, I and II admit every pair (Alice,d) with d≠1. Their output expands with the domain. III bounds both displayed fields by equality to stored values, so it is safe on the two-attribute output interpretation.",
+      "note": "The printed keys give D, but only III is safe under ordinary domain independence for output (EmpName, DeptId) and unrestricted t. There is no III-only option. To keep the intended D, add “t ranges over tuples of EMP” to all three queries. Use DeptId consistently. The official paper makes this a two-mark question, whereas the book and app label it one mark.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.22.1, Safe Query: GATE CSE 2017 | Set 1 | Question: 41, p.260 (key p.274), https://gateoverflow.in/118324/gate-cse-2017-set-1-question-41",
+          "answer": "D = I, II and III (reference key)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.27",
+          "answer": "D = I, II and III (reference key)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2017 CS-1 Q41, official paper https://gate.iitk.ac.in/GATE2023/doc/papers/2017/cs_2017.pdf and Set 1 key (mirrored) https://media.geeksforgeeks.org/wp-content/cdn-uploads/20211005205110/GATE2017-Set-1.pdf",
+          "answer": "D = I, II and III, 2 marks (reference key)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "III only for a two-attribute output and unrestricted t. D is the reference key.",
+          "agrees": false
+        }
+      ]
+    },
+    {
+      "position": 28,
+      "id": "madeeasy-dbms-relational-model-4-28",
+      "contentSha256": "12304e3f3061a623c89e7396e6f397e6545610d9a20f8ef99f82ba7c20c81ada",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "4",
+      "status": "verified",
+      "reason": "SA takes CA, CB and CC. Dividing CR by that set leaves the four students SA, SC, SD and SF, each of whom takes all three courses.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.18.22, Relational Algebra: GATE CSE 2017 | Set 1 | Question: 46, pp.228–229 (key p.273), https://gateoverflow.in/118329/gate-cse-2017-set-1-question-46",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.28",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2017 CS-1 Q46, official paper https://gate.iitk.ac.in/GATE2023/doc/papers/2017/cs_2017.pdf and Set 1 key (mirrored) https://media.geeksforgeeks.org/wp-content/cdn-uploads/20211005205110/GATE2017-Set-1.pdf",
+          "answer": "4",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Set division over all 18 CR rows in the app worksheet",
+          "answer": "4",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 29,
+      "id": "madeeasy-dbms-relational-model-4-29",
+      "contentSha256": "b0982e510f429d111c3232ae5e442e4fb0fb00386ef09f2e07afc915d6fee555",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "A left join to filtered s preserves r rows with B≥5 by padding C with NULL. The target inner join discards them. Joining to unfiltered s always finds a match because of the foreign key, making the other rewrites equivalent.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.18.23, Relational Algebra: GATE CSE 2018 | Question: 41, p.229 (key p.273), https://gateoverflow.in/204115/gate-cse-2018-question-41",
+          "answer": "C = left join r to s after filtering s on B<5",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.29",
+          "answer": "C = left join r to s after filtering s on B<5",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 30,
+      "id": "madeeasy-dbms-relational-model-4-30",
+      "contentSha256": "84ac014e733f625ee2c1bf334a823bf4e849509461e37586bd4460607d960f73",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "1",
+      "status": "verified",
+      "reason": "The left term projects {X2} because only P’s Y2 matches V2 in R. The right term projects {X1} from the Y2 and Y1 matches with T>2. The set difference has one member.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.18.24, Relational Algebra: GATE CSE 2019 | Question: 55, pp.229–230 (key p.273), https://gateoverflow.in/302793/gate-cse-2019-question-55",
+          "answer": "1",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.30",
+          "answer": "1",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Joins and set projections over the three app tables",
+          "answer": "1",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 31,
+      "id": "madeeasy-dbms-relational-model-4-31",
+      "contentSha256": "fbedb4551f7a8bd4cd55a6d645a24aedd1bf15285d0aace26e601eed531cdc7e",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "820",
+      "natRange": {
+        "min": 819,
+        "max": 820
+      },
+      "status": "verified-with-note",
+      "reason": "Of the 15×20 possible pairs, 10×20 pass A>10 and five more pass B=18. Assuming uniform, independent draws, the estimated count is 1,200×205/300 = 820.",
+      "note": "The official and GATE Overflow PDF keys accept 819–820 or exactly 205. A two-attribute set relation can have at most 300 distinct pairs, of which 205 satisfy the predicate on the full domain. For the 1,200-row estimate, specify independent uniform marginals and allow repeated rows. The app supports one interval, so the proportional-estimate interval 819–820 is stored and the official alternate 205 is documented here.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.21.43, SQL: GATE CSE 2021 | Set 1 | Question: 23, p.253 (key p.274), https://gateoverflow.in/357428/gate-cse-2021-set-1-question-23",
+          "answer": "819–820 or 205",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.31",
+          "answer": "205 only",
+          "agrees": false
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2021 CS-1 subject Q23, official paper p.20 and appended answer key, https://gate2026.iitg.ac.in/doc/download/2021/cs_2021.pdf",
+          "answer": "819–820 or exactly 205",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Exhaustive enumeration of the 300 possible value pairs and the 1,200-row selectivity estimate",
+          "answer": "820 for the scaled uniform-row estimate. 205 matching pairs in the full distinct domain.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 32,
+      "id": "madeeasy-dbms-relational-model-4-32",
+      "contentSha256": "d8d92774eb6f6c0cc2fd77da2cce4a72bf618658fa2cdd53e3cde32d25181a27",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The strict self-join keeps an employee if a strictly younger employee exists. The resulting employee numbers are exactly those above the minimum age, excluding all ties at the minimum.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.18.25, Relational Algebra: GATE CSE 2021 | Set 1 | Question: 27, p.230 (key p.273), https://gateoverflow.in/357424/gate-cse-2021-set-1-question-27",
+          "answer": "C in the GATE Overflow order = employees whose age is not the minimum (app A)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.32",
+          "answer": "A = employees whose age is not the minimum",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2021 CS-1 subject Q27, official paper p.23 and appended answer key, https://gate2026.iitg.ac.in/doc/download/2021/cs_2021.pdf",
+          "answer": "C = employees whose age is not the minimum (app A)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 33,
+      "id": "madeeasy-dbms-relational-model-4-33",
+      "contentSha256": "3af4511eff92330e0c785c38361690653111602eadee23f0be9050029a813726",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "A divides the ownership pairs by all brand IDs. B forms the missing ownership pairs and removes their employee IDs. C uses only brands present in Own. D creates ownership pairs that need not exist in Own.",
+      "note": "The official MSQ key confirms A and B. Both start with eIds in Own. If Brand is empty, a literal universal quantifier over every employee would include employees with no ownership rows. State that Brand is nonempty and Own.eId references Employee.eId.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.18.26, Relational Algebra: GATE CSE 2022 | Question: 15, p.230 (key p.273), https://gateoverflow.in/371921/gate-cse-2022-question-15",
+          "answer": "A and B = divide by Brand or subtract employees with missing Brand pairs",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.33",
+          "answer": "A and B = divide by Brand or subtract employees with missing Brand pairs",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2022 CS master Q25, paper p.20 and official key p.1, https://gate2026.iitg.ac.in/doc/download/2022/cs_2022.pdf and https://gate2026.iitg.ac.in/doc/download/Answer_keys2022/cs_2022.pdf",
+          "answer": "A and B (MSQ)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "AB",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 34,
+      "id": "madeeasy-dbms-relational-model-4-34",
+      "contentSha256": "92b49faffa4e8d6d8461c0fef15d64327e6b69b37bbe147023adc94f8e5d8ccd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Arity counts schema attributes. Cardinality counts tuples and can change while the schema stays fixed.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.20.1, Relational Model: GATE CSE 2023 | Question: 6, p.237 (key p.273), https://gateoverflow.in/399306/gate-cse-2023-question-6",
+          "answer": "A = number of attributes in the relation schema",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.34",
+          "answer": "A = number of attributes in the relation schema",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2023 CS master Q15, paper PDF p.13 and official key p.1, https://gate2026.iitg.ac.in/doc/download/2023/cs_2023.pdf and https://gate2026.iitg.ac.in/doc/download/Answer_keys2023/CS_ANS_GATE2023.pdf",
+          "answer": "A = number of attributes of its relation schema",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 35,
+      "id": "madeeasy-dbms-relational-model-4-35",
+      "contentSha256": "d6cc4d548743710b29e235c690f222b3b2347be58be9332af0a4a12fe70b593d",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "2",
+      "status": "verified-with-note",
+      "reason": "Treat S’s second column as C as specified by S(A,C). At A=10, 20<90 passes. At A=30, 40<45 passes and 50<45 fails. Two tuples survive.",
+      "note": "Change the header of S’s second column from B to C. The app and Made Easy table conflict with their own schema and filter. The official 2024 paper and GATE Overflow both print C.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.18.27, Relational Algebra: GATE CSE 2024 | Set 1 | Question: 25, pp.230–231 (key p.273), https://gateoverflow.in/422817/gate-cse-2024-set-1-question-25",
+          "answer": "2, with S’s second column headed C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.35",
+          "answer": "2, using the stem’s S(A,C)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2024 CS1 master Q35, official paper p.21 and final key p.2, https://gate2026.iitg.ac.in/doc/download/2024/CS124S5.pdf and https://gate2026.iitg.ac.in/doc/download/2024/CS1FinalAnswerKey.pdf",
+          "answer": "2 with S headed A,C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Equality join and numeric comparison over the app tables using the stem’s schema",
+          "answer": "2",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 36,
+      "id": "madeeasy-dbms-relational-model-4-36",
+      "contentSha256": "ccd0d6ab189f3a2ad49153daba5039dbd8a87e47507b3c9baf1d68e1c09f9ee0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Cross three renamed copies of Person using two binary products. Select equal cities and three distinct pids, then project city. One product gives at most two input tuples to compare, so the available operators cannot witness three people.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 3.18.28, Relational Algebra: GATE CSE 2024 | Set 2 | Question: 35, p.231 (key p.273), https://gateoverflow.in/422862/gate-cse-2024-set-2-question-35",
+          "answer": "B = two cross products",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "DBMS solutions PDF p.8 (book p.638), Relational Model Q4.36",
+          "answer": "B = two cross products",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2024 CS2 master Q45, official paper pp.31–32 and final key p.2, https://gate2026.iitg.ac.in/doc/download/2024/CS224S6.pdf and https://gate2026.iitg.ac.in/doc/download/2024/CS2FinalAnswerKey.pdf",
+          "answer": "B = two cross products",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent relational reasoning using the app question and options",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2621 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "4. COA",
+  "chapter": "4. Memory Organization",
+  "slug": "4-coa--4-memory-organization",
+  "reviewedAt": "2026-11-26",
+  "sources": {
+    "gateOverflowPdf": {
+      "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume3.pdf",
+      "sha256": "5c552941136eb96612fabec8a5b2cb67fc07c17023ce15628408ca27d6640c24",
+      "chapters": [
+        "CO & Architecture",
+        "Digital Logic",
+        "Operating Systems"
+      ],
+      "note": "All three volumes were searched for GATE CSE 2000 Q2.13. The graphics-card question was verified using Made Easy and the linked year paper."
+    },
+    "madeEasyChapterPdf": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\4. COA\\4. Memory Organization.pdf",
+      "sha256": "e1b88198e1018531aee17191441bfe1c70efd30be87a44b1f08a771b14af5bfd",
+      "bookPages": [
+        281,
+        282,
+        283,
+        284,
+        285,
+        286,
+        287,
+        288,
+        289
+      ]
+    },
+    "madeEasyKey": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\All Subject Solutions Keys\\COA.pdf",
+      "sha256": "c231c8344a9620d0a112402a69705a0e44cf635bb5f2f7eb323b4e62dc6625b1",
+      "answerKeyPage": 4,
+      "bookPage": 290
+    },
+    "yearPapers": "data/papers/*.json (copies linked by source.copiedFrom.questionId)"
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "madeeasy-coa-memory-4-1",
+      "contentSha256": "a44a8a3979cdcb38f35c38f5482e3dd689dae1ddf74ead6a1e4f7530dee5d2cb",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Temporal and spatial locality make recently used and nearby items likely to be accessed again, which is why keeping copies in a cache improves access time.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.5, Cache Memory: GATE CSE 1995 | Question: 1.6, PDF p.35 (key p.93). https://gateoverflow.in/2593/gate-cse-1995-question-1-6",
+          "answer": "D (Cache Memory)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.1, book p.281. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "D (Cache Memory)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q1 in the reason",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "madeeasy-coa-memory-4-2",
+      "contentSha256": "25bce21dc6695bc03c23bc8798b3d7b99b0e4c6153dd03c9d3267fbcb040eef4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "There are 2c / 2 = c sets. Set-associative mapping sends main-memory block k to set k mod c.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.9, Cache Memory: GATE CSE 1999 | Question: 1.22, PDF p.36 (key p.93). https://gateoverflow.in/1475/gate-cse-1999-question-1-22",
+          "answer": "B ($(k\\bmod c)$ of the cache)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.2, book p.281. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "B ($(k\\bmod c)$ of the cache)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q2 in the reason",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "madeeasy-coa-memory-4-3",
+      "contentSha256": "a38e8c579c872c4bc2ca6187200c2a394464ebe417bee7e4adf0dddd27151b57",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "B",
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "Per-process virtual mappings allow protected address spaces (B), and demand paging allows a program's address space to exceed RAM (D). Link-time placement can already be separated from the physical load point by relocation.",
+      "note": "The question permits multiple choices. GATE Overflow credits protection and programs larger than RAM. Made Easy lists only the latter. The keyed reading treats C as a relocation benefit.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.33.12, Virtual Memory: GATE CSE 1999 | Question: 2.11, PDF p.461 (key p.469). https://gateoverflow.in/1489/gate-cse-1999-question-2-11",
+          "answer": "B, D (protected address spaces / programs larger than RAM can run)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.3, book p.281. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "D (programs larger than RAM can run)",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q3 in the reason",
+          "answer": "BD",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "madeeasy-coa-memory-4-4",
+      "contentSha256": "f0a30770891dc75a302122f0ee442f3d16012148cbb9df39ab8f31f6f20cda77",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A packed frame needs one byte per pixel for 256 colours or three for 16 million. A, B, C and D need 640,000, 1,920,000, 960,000 and 640,000 bytes respectively. Only the 1,920,000-byte frame exceeds 1 MB.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.4, book p.281. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "B ($1600\\times400$ resolution with 16 million colours on a 14 inch monitor)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q36 (linked by copiedFrom.questionId)",
+          "answer": "B ($1600\\times400$ resolution with 16 million colours on a 14 inch monitor)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q4 in the reason",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "madeeasy-coa-memory-4-5",
+      "contentSha256": "ad83f409ae02d2a8fa23d7351a48a487f9611a5ca14782b767464bac3dd42297",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The OS uses a device driver to issue I/O commands to a disk. Registers, cache and main memory are accessed through the processor and memory hardware.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.7.11, Disk: GATE CSE 2001 | Question: 1.22, PDF p.383 (key p.468). https://gateoverflow.in/715/gate-cse-2001-question-1-22",
+          "answer": "D (Disk)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.5, book p.281. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "D (Disk)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q5 in the reason",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "madeeasy-coa-memory-4-6",
+      "contentSha256": "c8af567cdb59bf305f83670f6120964c8cc2710b6fde03d86d4cb91360fdfa5a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Fetching several adjacent words per block exploits spatial locality, since a later access to a neighbouring word can hit in the same cache block.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.10, Cache Memory: GATE CSE 2001 | Question: 1.7, ISRO2008-18, PDF p.36 (key p.93). https://gateoverflow.in/700/gate-cse-2001-question-1-7-isro2008-18",
+          "answer": "B (exploit the spatial locality of reference in a program)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.6, book p.281. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "B (exploit the spatial locality of reference in a program)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q7 (linked by copiedFrom.questionId)",
+          "answer": "B (exploit the spatial locality of reference in a program)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q6 in the reason",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "madeeasy-coa-memory-4-7",
+      "contentSha256": "aba970554066ef1ecbb71f61c2cc6c55f24f016adb2f313dee3e735646d1503c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Virtual memory translates addresses and can keep more processes resident by paging their working sets. Switching address spaces can add translation state work, so reducing context-switch overhead is the false statement.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.33.15, Virtual Memory: GATE CSE 2001 | Question: 1.8, PDF p.461 (key p.469). https://gateoverflow.in/701/gate-cse-2001-question-1-8",
+          "answer": "D (Virtual memory reduces the context switching overhead)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.7, book p.281. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "D (Virtual memory reduces the context switching overhead)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q8 (linked by copiedFrom.questionId)",
+          "answer": "D (Virtual memory reduces the context switching overhead)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q7 in the reason",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "madeeasy-coa-memory-4-8",
+      "contentSha256": "6d9a2d2523ff4682fda089b0424a344f41507c22e3c67c3a722b9bcad33e5f82",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "An opcode identifies the operation an instruction performs. The instruction cache, instruction register and TLB all store information.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.17.4, Instruction Execution: GATE CSE 2002 | Question: 1.13, PDF p.61 (key p.94). https://gateoverflow.in/817/gate-cse-2002-question-1-13",
+          "answer": "C (Instruction opcode)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.8, book p.281. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "C (Instruction opcode)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q8 in the reason",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "madeeasy-coa-memory-4-9",
+      "contentSha256": "005c1a899ab0d5a718c9fb9e7fab1644066e08e976ea34b5c77fa1f57c00e03a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Ignoring time spent in unsuccessful cache lookups, the weighted access time is 0.8 × 1 + 0.2 × 0.9 × 10 + 0.2 × 0.1 × 500 = 12.6 ns.",
+      "note": "Made Easy's 13.0 ns matches charging both cache lookup times along a miss path. The linked IT 2004 scan uses a 0.5 L1 hit rate and gives 30 ns as printed. Its JSON reference C is for the 0.8 variant shown in the app and GATE Overflow.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.62, Cache Memory: GATE IT 2004 | Question: 12, ISRO2016-77, PDF p.48 (key p.93). https://gateoverflow.in/3653/gate-it-2004-question-12-isro2016-77",
+          "answer": "C (12.6 ns)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.9, book p.281. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "A (13.0 ns)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q12 (linked by copiedFrom.questionId)",
+          "answer": "C (reference variant, 12.6 ns). Printed 0.5 L1 hit rate gives 30 ns.",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q9 in the reason",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "madeeasy-coa-memory-4-10",
+      "contentSha256": "dfcc0f560d61e3fe2abbe62646dfcdfe48458ec173cdf4bb2815d5c210ceedb3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Blocks 8, 12 and 0 map to the same two-way set. From an initially empty cache, LRU gives miss, miss, miss, hit, miss, for four misses.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.13, Cache Memory: GATE CSE 2004 | Question: 65, PDF p.37 (key p.93). https://gateoverflow.in/1059/gate-cse-2004-question-65",
+          "answer": "C (4)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.10, book p.281. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "C (4)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q65 (linked by copiedFrom.questionId)",
+          "answer": "C (4)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q10 in the reason",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "madeeasy-coa-memory-4-11",
+      "contentSha256": "1a922c895937cd7128bf9631573cc8b92b5672dfd3797bffb2b0bfeb9ac9f263",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Refresh takes 100 × 100 ns = 10,000 ns per 1,000,000 ns, or 1% of the available time.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.23.5, Memory Interfacing: GATE IT 2005 | Question: 9, PDF p.339 (key p.362). https://gateoverflow.in/3754/gate-it-2005-question-9",
+          "answer": "C (1)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.11, book p.281. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "C (1)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q11 in the reason",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "madeeasy-coa-memory-4-12",
+      "contentSha256": "45d839bb5baf6b13e32d5b6a4225100692e6fff9b886175e13435dcc93799a1f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "More physical frames can keep more working-set pages resident, reducing page faults and the resulting storage accesses.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.20.12, Page Replacement: GATE CSE 2005 | Question: 22, ISRO2015-36, PDF p.403 (key p.468). https://gateoverflow.in/1358/gate-cse-2005-question-22-isro2015-36",
+          "answer": "C (Fewer page faults occur)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.12, book p.281–282. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "C (Fewer page faults occur)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q22 (linked by copiedFrom.questionId)",
+          "answer": "C (Fewer page faults occur)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q12 in the reason",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "madeeasy-coa-memory-4-13",
+      "contentSha256": "aa90fb1cfa80c6eb0f34b8a714990de09c00b95c8b213d22e3912f57b617b50b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The 1,024 lines require 10 index bits. The 32-byte blocks require 5 offset bits, leaving 32 − 10 − 5 = 17 tag bits.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.14, Cache Memory: GATE CSE 2005 | Question: 67, PDF p.37 (key p.93). https://gateoverflow.in/1390/gate-cse-2005-question-67",
+          "answer": "A (10, 17)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.13, book p.282. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "A (10, 17)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q67 (linked by copiedFrom.questionId)",
+          "answer": "A (10, 17)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q13 in the reason",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "madeeasy-coa-memory-4-14",
+      "contentSha256": "d4ee47d958be3c09b7121b6bfd58b15cd2e9f76f65caab753f69f0138e2f5683",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Map each reference to its block number modulo 4 and update its two-way LRU set. Set 0 ends with 0 and 16, set 1 with 5 and 9, and set 3 with 7 and 55 after evicting 3.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.64, Cache Memory: GATE IT 2005 | Question: 61, PDF p.49 (key p.93). https://gateoverflow.in/3822/gate-it-2005-question-61",
+          "answer": "C (0 5 7 9 16 55)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.14, book p.282. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "C (0 5 7 9 16 55)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q14 in the reason",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "madeeasy-coa-memory-4-15",
+      "contentSha256": "301ee758cd7af264ca7b850e0b9fad9409159889149b1050fad5c1dfcf6d1a31",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "At 1 GB/s, transmitting 64 bytes takes 64 ns. Adding the 32 ns startup latency gives 96 ns.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.65, Cache Memory: GATE IT 2006 | Question: 42, PDF p.49 (key p.93). https://gateoverflow.in/3585/gate-it-2006-question-42",
+          "answer": "C (96 ns)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.15, book p.282. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "C (96 ns)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q15 in the reason",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "madeeasy-coa-memory-4-16",
+      "contentSha256": "5e99a77f5ff4819f45560a2b77915ac4b9c2024166f9f3c1d1c349521a044826",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The I-cache, D-cache and L2 have 1,024, 1,024 and 4,096 lines. Their offset widths are 2, 2 and 4 bits and their set index widths are 10, 9 and 10 bits. Subtracting both fields from 30 gives tag widths 18, 19 and 16.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.66, Cache Memory: GATE IT 2006 | Question: 43, PDF p.49 (key p.93). https://gateoverflow.in/3586/gate-it-2006-question-43",
+          "answer": "A ($1\\mathrm{K}\\times18\\text{-bit},\\ 1\\mathrm{K}\\times19\\text{-bit},\\ 4\\mathrm{K}\\times16\\text{-bit}$)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.16, book p.282. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "A ($1\\mathrm{K}\\times18\\text{-bit},\\ 1\\mathrm{K}\\times19\\text{-bit},\\ 4\\mathrm{K}\\times16\\text{-bit}$)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q16 in the reason",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "madeeasy-coa-memory-4-17",
+      "contentSha256": "cbc00fe7871099f947a5eeaae4fc77b38eafac5bc787446ea879e2343975839d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "One bank round provides 24 × 2 = 48 bytes. Fetching 64 bytes takes two rounds, each costing 24/2 + 80 = 92 ns, for 184 ns total.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.22.3, Memory Interfacing: GATE CSE 2006 | Question: 41, PDF p.76 (key p.94). https://gateoverflow.in/1817/gate-cse-2006-question-41",
+          "answer": "D (184 ns)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.17, book p.282. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "D (184 ns)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q41 (linked by copiedFrom.questionId)",
+          "answer": "D (184 ns)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q17 in the reason",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "madeeasy-coa-memory-4-18",
+      "contentSha256": "1822d7092d5ead4bccc3eb170b12bb09d029b9d6c21eadbc40b403452052c432",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "The two-way cache has 512 sets and 32-byte blocks, leaving 32 − 9 − 5 = 18 tag bits. The parallel tag comparisons take 1.8 ns and the way-selection mux adds 0.6 ns, for 2.4 ns.",
+      "note": "The app reads 'The size and address is 32 bits'. The printed stem reads 'The size of an address is 32 bits in both cases.'",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.15, Cache Memory: GATE CSE 2006 | Question: 74, PDF p.37 (key p.93). https://gateoverflow.in/1851/gate-cse-2006-question-74",
+          "answer": "A (2.4 ns)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.18, book p.282. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "A (2.4 ns)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q74 (linked by copiedFrom.questionId)",
+          "answer": "A (2.4 ns)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q18 in the reason",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 19,
+      "id": "madeeasy-coa-memory-4-19",
+      "contentSha256": "aa4d48678670b5a5f11bfead84494ddd27d677ae3cff85cf8de83c4e87e2336f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "The direct-mapped cache has 1,024 lines and 32-byte blocks, leaving 32 − 10 − 5 = 17 tag bits. Its comparator takes 1.7 ns and there is no way-selection mux.",
+      "note": "The app reads 'The size and address is 32 bits'. The printed stem reads 'The size of an address is 32 bits in both cases.'",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.16, Cache Memory: GATE CSE 2006 | Question: 75, PDF p.37–38 (key p.93). https://gateoverflow.in/43565/gate-cse-2006-question-75",
+          "answer": "D (1.7 ns)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.19, book p.282. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "D (1.7 ns)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q75 (linked by copiedFrom.questionId)",
+          "answer": "D (1.7 ns)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q19 in the reason",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "madeeasy-coa-memory-4-20",
+      "contentSha256": "795cb343ab0dfc0a8b4c0c513ca61382860200b9f079aee6027a61c9a31b364f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "P1 visits consecutive elements in row-major order. With a line-aligned array, each 128-byte line holds 16 elements and costs one cold miss, so 512 × 512 / 16 = 16,384 misses.",
+      "note": "The stem leaves the base address unspecified. Add 'A starts on a 128-byte cache-line boundary' for the keyed count. An 8-byte misalignment yields 16,385 misses.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.17, Cache Memory: GATE CSE 2006 | Question: 80, PDF p.38 (key p.93). https://gateoverflow.in/1854/gate-cse-2006-question-80",
+          "answer": "C (16384)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.20, book p.282–283. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "C (16384)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q80 (linked by copiedFrom.questionId)",
+          "answer": "C (16384)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q20 in the reason",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "madeeasy-coa-memory-4-21",
+      "contentSha256": "26a6e9c0dabafa3c1bab03d9c325acb7c94b4aa9568d0a3070145cdca8cf9efe",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "P2 advances 4,096 bytes per inner iteration, so the 512 rows cycle over eight of the 256 cache indices and every access misses. With P1's line-aligned count, M1/M2 = 16,384/262,144 = 1/16.",
+      "note": "The ratio inherits Q20's line-alignment assumption. Add 'A starts on a 128-byte cache-line boundary' to the shared stem.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.18, Cache Memory: GATE CSE 2006 | Question: 81, PDF p.38–39 (key p.93). https://gateoverflow.in/43517/gate-cse-2006-question-81",
+          "answer": "B ($\\frac{1}{16}$)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.21, book p.282–283. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "B ($\\frac{1}{16}$)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2006.json Q81 (linked by copiedFrom.questionId)",
+          "answer": "B ($\\frac{1}{16}$)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q21 in the reason",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 22,
+      "id": "madeeasy-coa-memory-4-22",
+      "contentSha256": "bb2ffb4ce2ac6cec8b049b8061d35ea59c4c3729cd6113b0e8173f6b5a6d5998",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "There are 128/4 = 32 sets and 64 words per line, so the set and word fields use 5 and 6 bits. The tag uses the remaining 20 − 5 − 6 = 9 bits.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.19, Cache Memory: GATE CSE 2007 | Question: 10, PDF p.39 (key p.93). https://gateoverflow.in/1208/gate-cse-2007-question-10",
+          "answer": "D (9, 5, 6)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.22, book p.283. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "D (9, 5, 6)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q10 (linked by copiedFrom.questionId)",
+          "answer": "D (9, 5, 6)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q22 in the reason",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 23,
+      "id": "madeeasy-coa-memory-4-23",
+      "contentSha256": "604b72ab82bee6a42346cf5f93e4e6b67be67061a62444cb0436fde6def2276f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "From aligned address 0x1100, 2,500 contiguous bytes span 40 blocks. The first forward pass misses 40 times. The second forward pass misses on the eight conflicting block pairs in the 32-line cache, giving 40 + 16 = 56.",
+      "note": "Both books key 56 with two forward passes. The stem gives no traversal order. A reverse second pass gives 48 (A). Add 'Access the array twice in increasing address order' to specify the keyed model.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.20, Cache Memory: GATE CSE 2007 | Question: 80, PDF p.39 (key p.93). https://gateoverflow.in/1273/gate-cse-2007-question-80",
+          "answer": "C (56)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.23, book p.283. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "C (56)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q80 (linked by copiedFrom.questionId)",
+          "answer": "C (56)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q23 in the reason",
+          "answer": "C",
+          "agrees": true
+        }
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "Both books key 56 with two forward passes. The stem gives no traversal order. A reverse second pass gives 48 (A). Add 'Access the array twice in increasing address order' to specify the keyed model."
+    },
+    {
+      "position": 24,
+      "id": "madeeasy-coa-memory-4-24",
+      "contentSha256": "2db122f8685744de634656a1616ff60a525a34c55a5551e4988dab3d6ba23418",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "The starting memory block is 0x1100/64 = 68 and maps to line 4. Of the 40 blocks, the eight above the first 32 conflict with the first eight, which are the only lines already holding a different array block. These lines are 4 through 11.",
+      "note": "The GATE stem ends 'in accessing the array for the second time'. The book and app omit that phrase. Lines 4–11 are the only lines whose valid contents are replaced, either on the second pass or across both passes.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.21, Cache Memory: GATE CSE 2007 | Question: 81, PDF p.39 (key p.93). https://gateoverflow.in/43511/gate-cse-2007-question-81",
+          "answer": "A (line 4 to line 11)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.24, book p.283. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "A (line 4 to line 11)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q81 (linked by copiedFrom.questionId)",
+          "answer": "A (line 4 to line 11)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q24 in the reason",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 25,
+      "id": "madeeasy-coa-memory-4-25",
+      "contentSha256": "42f87e90b46318e32cc071c599ee58b1c372a4947cc8b06de012dfbf97009baf",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "One byte per word gives a 20-bit address and seven block-offset bits. The cache has (8 KiB/128)/4 = 16 sets, so the index uses four bits and the tag uses nine.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.68, Cache Memory: GATE IT 2008 | Question: 80, PDF p.49–50 (key p.93). https://gateoverflow.in/3403/gate-it-2008-question-80",
+          "answer": "D (9, 4, 7)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.25, book p.283. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "D (9, 4, 7)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q25 in the reason",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 26,
+      "id": "madeeasy-coa-memory-4-26",
+      "contentSha256": "98d98f04c3a600a64e4770a1fb83066f13b963fa0e31f0cbab749410e7b8e6e3",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The seven offset bits and four set bits occupy the bottom 11 bits. Shifting 0xC795 right by 11 gives 24, represented in the nine-bit tag field as 000011000.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.69, Cache Memory: GATE IT 2008 | Question: 81, PDF p.50 (key p.93). https://gateoverflow.in/3405/gate-it-2008-question-81",
+          "answer": "A (000011000)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.26, book p.283. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "A (000011000)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q26 in the reason",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 27,
+      "id": "madeeasy-coa-memory-4-27",
+      "contentSha256": "2a4d0729b326b523af1e20abdc98fe93d5391e218fff80ba78bf9c4b85d0a82c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Inclusion requires L2 to hold every L1 block, so condition 4 is necessary. Write-back caches can preserve inclusion, and equal associativity can suffice with compatible mapping and replacement.",
+      "note": "Made Easy keys C, '1 and 4 only' in the scan. The app's C reads '1, 2 and 4 only'. GATE's B is '1 and 4 only', and GATE A maps to app A by the text '4 only'. Statement 3 should read 'greater than that of L1'.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.22, Cache Memory: GATE CSE 2008 | Question: 35, PDF p.39 (key p.93). https://gateoverflow.in/446/gate-cse-2008-question-35",
+          "answer": "A (4 only)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.27, book p.283. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "C (1 and 4 only in print, no equivalent app option)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q35 (linked by copiedFrom.questionId)",
+          "answer": "A (IV only) → app A (4 only)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q27 in the reason",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 28,
+      "id": "madeeasy-coa-memory-4-28",
+      "contentSha256": "a5e006aaf882fb097c765c9a12dbfbe9f6c65f584eefb6bbfc5b35fa4a678830",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "In the ordinary pipeline for a direct or indexed memory operand, the data TLB translates the virtual page number of the completed effective address. This happens before a physically addressed cache lookup.",
+      "note": "Made Easy keys B (during address calculation). An indirect pointer fetch can use the TLB earlier. The keyed reading assumes a direct or indexed operand and the TLB lookup for its final address. Expand TLB as 'Translation Lookaside Buffer'.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.28.3, Virtual Memory: GATE CSE 2008 | Question: 38, PDF p.93 (key p.94). https://gateoverflow.in/449/gate-cse-2008-question-38",
+          "answer": "C (after effective address calculation has completed)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.28, book p.283. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "B (during effective address calculation)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q38 (linked by copiedFrom.questionId)",
+          "answer": "C (after effective address calculation has completed)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q28 in the reason",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 29,
+      "id": "madeeasy-coa-memory-4-29",
+      "contentSha256": "c5fb2aa0f68b8e16b4c8f9037f5f2e18551fa999f08b6822f22cf50371421cd6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "There are 4,096 lines and 2,048 sets. A 32-bit virtual address uses 4 block-offset and 11 index bits, so 4,096 × 17 = 69,632 tag bits, or 68 Kibits.",
+      "note": "The shared heading should cover Q4.29 through Q4.31 because all three use the program. The book and app name the array APR, while the GATE paper uses ARR consistently.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.23, Cache Memory: GATE CSE 2008 | Question: 71, PDF p.40 (key p.93). https://gateoverflow.in/494/gate-cse-2008-question-71",
+          "answer": "D (68 kbits)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.29, book p.283. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "D (68 kbits)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q71 (linked by copiedFrom.questionId)",
+          "answer": "D (68 kbits)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q29 in the reason",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 30,
+      "id": "madeeasy-coa-memory-4-30",
+      "contentSha256": "76d6c27aff8dc417e393ae90db6ded85a7ab8ce090e07056a91803caff9adc7e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "A row occupies 8,192 bytes. APR[4][0] is 32,768 bytes after APR[0][0], which is one complete cycle of the index field (2,048 sets × 16 bytes). None of the other offsets is a multiple of that cycle.",
+      "note": "The shared heading should cover Q4.29 through Q4.31 because all three use the program. The book and app name the array APR, while the GATE paper uses ARR consistently.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.24, Cache Memory: GATE CSE 2008 | Question: 72, PDF p.40 (key p.93). https://gateoverflow.in/43490/gate-cse-2008-question-72",
+          "answer": "B (APR[4][0])",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.30, book p.283–284. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "B (APR[4][0])",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q72 (linked by copiedFrom.questionId)",
+          "answer": "B (ARR[4][0]) → app B (APR[4][0])",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q30 in the reason",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 31,
+      "id": "madeeasy-coa-memory-4-31",
+      "contentSha256": "b6ae7ab52356cc3b9e970a1c24a79758c77c4eada9768042d1d408fcb9218c29",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "A 16-byte line holds two consecutive doubles. In the row-major loop, write-allocate loads a line on the first store and the second store hits, so the hit ratio is 50%.",
+      "note": "The shared heading should cover Q4.29 through Q4.31 because all three use the program. The book and app name the array APR, while the GATE paper uses ARR consistently. The stem leaves the store-miss policy open. No-write-allocate makes each store miss (A). Add 'The cache uses write-allocate on a store miss' for the keyed 50%.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.25, Cache Memory: GATE CSE 2008 | Question: 73, PDF p.40–41 (key p.93). https://gateoverflow.in/43491/gate-cse-2008-question-73",
+          "answer": "C (50%)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.31, book p.283–284. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "C (50%)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q73 (linked by copiedFrom.questionId)",
+          "answer": "C (50%)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q31 in the reason",
+          "answer": "C",
+          "agrees": true
+        }
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "The shared heading should cover Q4.29 through Q4.31 because all three use the program. The book and app name the array APR, while the GATE paper uses ARR consistently. The stem leaves the store-miss policy open. No-write-allocate makes each store miss (A). Add 'The cache uses write-allocate on a store miss' for the keyed 50%."
+    },
+    {
+      "position": 32,
+      "id": "madeeasy-coa-memory-4-32",
+      "contentSha256": "637ade9bd73a104a0c8b0a5eece72c100aca1471877e2a95883fa04678157e2d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Eight 32K × 1 chips provide 32K × 8 bits. Eight such banks yield 256K bytes, requiring 64 chips.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.23.2, Memory Interfacing: GATE CSE 2009 | Question: 7, ISRO2015-3, PDF p.339 (key p.362). https://gateoverflow.in/1299/gate-cse-2009-question-7-isro2015-3",
+          "answer": "C (64)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.32, book p.284. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "C (64)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q7 (linked by copiedFrom.questionId)",
+          "answer": "C (64)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q32 in the reason",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 33,
+      "id": "madeeasy-coa-memory-4-33",
+      "contentSha256": "152210c9179ece94960939440623fedb9ad27e2985896dbe7a95117248d85df4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Using block number modulo 4, the set containing 216 ends with 8, 48, 32 and 92 in LRU-to-MRU order. The trace leaves blocks 3 and 129 resident in their respective sets, so only 216 is absent.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.26, Cache Memory: GATE CSE 2009 | Question: 29, PDF p.41 (key p.93). https://gateoverflow.in/1315/gate-cse-2009-question-29",
+          "answer": "D (216)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.33, book p.284. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "D (216)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q29 (linked by copiedFrom.questionId)",
+          "answer": "D (216)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q33 in the reason",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 34,
+      "id": "madeeasy-coa-memory-4-34",
+      "contentSha256": "70d142bc44301e417e94abd94b87edbf266f9568d2ade98a6bb867230f6cd871",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Each refresh activates a row in parallel across the chips. There are 2^10 row addresses, so refreshing all cells takes 100 × 2^10 ns.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.23.3, Memory Interfacing: GATE CSE 2010 | Question: 7, PDF p.339 (key p.362). https://gateoverflow.in/2178/gate-cse-2010-question-7",
+          "answer": "B ($100\\times2^{10}$ nanoseconds)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.34, book p.284. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "B ($100\\times2^{10}$ nanoseconds)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q7 (linked by copiedFrom.questionId)",
+          "answer": "B ($100\\times2^{10}$ nanoseconds)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q34 in the reason",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 35,
+      "id": "madeeasy-coa-memory-4-35",
+      "contentSha256": "c7aecd7292a09ecd3680d91206bdf17aa98721471dc1003aa1c81a8c6e9ab62e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The diagram has a four-word bus and one L1 block is four words. One read from L2 and one write into L1 at the stated access times cost 20 + 2 = 22 ns when serialized.",
+      "note": "The duplicated cache in the app stem should read 'an L1 cache, an L2 cache, and a main memory unit'. Made Easy gives 88 ns, which would count four transfers for a single L1 block. The 22 ns reference charges separate source and destination access times per transfer. The stem leaves overlap unspecified.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.27, Cache Memory: GATE CSE 2010 | Question: 48, PDF p.41 (key p.93). https://gateoverflow.in/2352/gate-cse-2010-question-48",
+          "answer": "C (22 nanoseconds)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.35, book p.284. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "D (88 nanoseconds)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q48 (linked by copiedFrom.questionId)",
+          "answer": "C (22 nanoseconds)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q35 in the reason",
+          "answer": "C",
+          "agrees": true
+        }
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "The duplicated cache in the app stem should read 'an L1 cache, an L2 cache, and a main memory unit'. The reference is C (22 ns), assuming one transfer of four words and separate L2 read and L1 write times. Made Easy gives 88 ns, which would count four transfers for one L1 block."
+    },
+    {
+      "position": 36,
+      "id": "madeeasy-coa-memory-4-36",
+      "contentSha256": "193145b7a73698f084f5643e6c7683f65132d51f11214b19433a17503f35d6e1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Refilling the 16-word L2 line takes four four-word transfers at 200 + 20 ns each. The requested L1 line then takes 20 + 2 ns for one four-word transfer. The total is 902 ns.",
+      "note": "The duplicated cache in the app stem should read 'an L1 cache, an L2 cache, and a main memory unit'. Made Easy gives 968 ns, which would count four transfers on both buses. The question asks for a single four-word transfer into L1 after filling L2. The 902 ns reference charges separate read and write times per transfer with no overlap.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.28, Cache Memory: GATE CSE 2010 | Question: 49, PDF p.41 (key p.93). https://gateoverflow.in/43329/gate-cse-2010-question-49",
+          "answer": "C (902 nanoseconds)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.36, book p.284. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "D (968 nanoseconds)",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q49 (linked by copiedFrom.questionId)",
+          "answer": "C (902 nanoseconds)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q36 in the reason",
+          "answer": "C",
+          "agrees": true
+        }
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "The duplicated cache in the app stem should read 'an L1 cache, an L2 cache, and a main memory unit'. The reference is C (902 ns), counting four transfers into L2 and one into L1 with separate read and write times. Made Easy gives 968 ns, which would count four transfers on both buses."
+    },
+    {
+      "position": 37,
+      "id": "madeeasy-coa-memory-4-37",
+      "contentSha256": "daf6691dbe64e8a0f3f0f113f4a008a4c7d303c5631d446010ad2627efe6d1fd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The cache has 256 lines. A 32-bit address uses eight index and five offset bits, leaving a 19-bit tag. With valid and modified bits included, the total is 256 × (19 + 2) = 5,376 bits.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.29, Cache Memory: GATE CSE 2011 | Question: 43, PDF p.41–42 (key p.93). https://gateoverflow.in/2145/gate-cse-2011-question-43",
+          "answer": "D (5376 bits)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.37, book p.284. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "D (5376 bits)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q43 (linked by copiedFrom.questionId)",
+          "answer": "D (5376 bits)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q37 in the reason",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 38,
+      "id": "madeeasy-coa-memory-4-38",
+      "contentSha256": "7453ee9bcb37a6708ea7b307ac74e2f8ce23b76fdd3520b054ed8b870e572c21",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The 256 KiB cache has 8,192 lines and 2,048 four-way sets. With 11 index bits and a five-bit offset, the address tag is 32 − 11 − 5 = 16 bits.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.30, Cache Memory: GATE CSE 2012 | Question: 54, PDF p.42 (key p.93). https://gateoverflow.in/2192/gate-cse-2012-question-54",
+          "answer": "C (16)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.38, book p.284. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "C (16)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q54 (linked by copiedFrom.questionId)",
+          "answer": "C (16)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q38 in the reason",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 39,
+      "id": "madeeasy-coa-memory-4-39",
+      "contentSha256": "ee391a39e03f608e9e1b20baaadbdc19a617ea35ddd5a657019df40c971c92ad",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Each of the 8,192 lines needs 16 tag bits and four stated status bits. The directory is 8,192 × 20 = 163,840 bits, or 160 Kibits.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.31, Cache Memory: GATE CSE 2012 | Question: 55, PDF p.42 (key p.93). https://gateoverflow.in/43311/gate-cse-2012-question-55",
+          "answer": "A (160 Kbits)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.39, book p.284. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "A (160 Kbits)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q55 (linked by copiedFrom.questionId)",
+          "answer": "A (160 Kbits)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q39 in the reason",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 40,
+      "id": "madeeasy-coa-memory-4-40",
+      "contentSha256": "57696ccf775f0ca4536603b11e2bf1c1262bbbc798c6c5d8be42d0eeb1b05f39",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Block j maps to set j mod v. With k consecutive lines per set, the first line is (j mod v) × k and the last is (j mod v) × k + k − 1.",
+      "note": "The printed B range is malformed and the app gives its first endpoint an extra multiplication by j. GATE Overflow prints B as '(j mod v) to (j mod v) + (k − 1)'.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.32, Cache Memory: GATE CSE 2013 | Question: 20, PDF p.42 (key p.93). https://gateoverflow.in/1442/gate-cse-2013-question-20",
+          "answer": "A ($(j\\bmod v)\\times k$ to $(j\\bmod v)\\times k+(k-1)$)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.40, book p.284–285. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "A ($(j\\bmod v)\\times k$ to $(j\\bmod v)\\times k+(k-1)$)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q40 in the reason",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 41,
+      "id": "madeeasy-coa-memory-4-41",
+      "contentSha256": "4ca3a3b97c469c734c63e08c38f0f55954cd15fd4452dc79ac8d372e539dfde5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Pair two ×8 chips in each 1K × 16 bank. To select one of 16 banks, use one decoder for the upper two bank-select bits and four enabled decoders for the lower two bits. That requires five decoders.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.23.4, Memory Interfacing: GATE CSE 2013 | Question: 46, PDF p.339 (key p.362). https://gateoverflow.in/1555/gate-cse-2013-question-46",
+          "answer": "B (5)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.41, book p.285. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "B (5)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q41 in the reason",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 42,
+      "id": "madeeasy-coa-memory-4-42",
+      "contentSha256": "2953efcca5dbf2483ba58316d8ea9f32c66035fb85b5e58a3cbdd7ebf1c848e4",
+      "questionType": "MCQ",
+      "correctOptions": [],
+      "status": "verified-with-note",
+      "reason": "At A = k = 2, a cold LRU set receiving X, Y, Z, X with all three blocks mapping to it misses four times. This gives 1 instead of n/N = 3/4. None of the formulas is guaranteed by the stated bound.",
+      "note": "The official key, GATE Overflow and Made Easy list A as the historical answer. Source agreement here refers to that reference. Change A ≥ k to A > k and specify an initially empty cache, so every repeat hits and the formula is n/N. The app item is marked no correct option as written.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.33, Cache Memory: GATE CSE 2014 | Set 1 | Question: 44, PDF p.42 (key p.93). https://gateoverflow.in/1922/gate-cse-2014-set-1-question-44",
+          "answer": "A ($\\frac{n}{N}$) (historical reference)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.42, book p.285. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "A ($\\frac{n}{N}$) (historical reference)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 CS session 1 Q44 key, IISc archive. https://gate2024.iisc.ac.in/wp-content/uploads/2014/cs_2014.pdf",
+          "answer": "A (n/N, historical reference)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q42 in the reason",
+          "answer": "No formula is guaranteed. A under the corrected bound and cold-cache assumption.",
+          "agrees": true
+        }
+      ],
+      "answerDisposition": "none-correct",
+      "specialNote": "With A = k = 2 and X, Y, Z, X all mapped to the same set, all four accesses miss. The historical answer A (n/N) holds for an initially empty cache with A > k."
+    },
+    {
+      "position": 43,
+      "id": "madeeasy-coa-memory-4-43",
+      "contentSha256": "80db4fc1ac1d157fe722c922af0478aded5ea05b969ed8dab0f8c7f6980ee01a",
+      "questionType": "NAT",
+      "natAnswer": "20",
+      "status": "verified",
+      "reason": "Each block is 8 × 4 = 32 bytes and there are 16 KiB/(4 × 32) = 128 sets. The physical address uses 32 bits, so the tag is 32 − 5 − 7 = 20 bits.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.36, Cache Memory: GATE CSE 2014 | Set 2 | Question: 9, PDF p.43 (key p.93). https://gateoverflow.in/1963/gate-cse-2014-set-2-question-9",
+          "answer": "20",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.43, book p.285. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "20",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 CS session 2 Q9 key, IISc archive. https://gate2024.iisc.ac.in/wp-content/uploads/2014/cs_2014.pdf",
+          "answer": "20",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q43 in the reason",
+          "answer": "20",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 44,
+      "id": "madeeasy-coa-memory-4-44",
+      "contentSha256": "21d0ae2da0411fc604993f429bb0f1ad6cf66d1e190697169878771701d4c538",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "At fixed memory latency and bandwidth, a smaller block needs a shorter refill transfer and incurs a lower miss penalty.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.34, Cache Memory: GATE CSE 2014 | Set 2 | Question: 43, PDF p.43 (key p.93). https://gateoverflow.in/2009/gate-cse-2014-set-2-question-43",
+          "answer": "D (A smaller block size incurs a lower cache miss penalty)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.44, book p.285. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "D (A smaller block size incurs a lower cache miss penalty)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 CS session 2 Q43 key, IISc archive. https://gate2024.iisc.ac.in/wp-content/uploads/2014/cs_2014.pdf",
+          "answer": "D (shorter miss refill)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q44 in the reason",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 45,
+      "id": "madeeasy-coa-memory-4-45",
+      "contentSha256": "4c31b695e2f987595f4785852c8f0ee87547319a4b2772924fe4f5ddec051d7c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Doubling the ways halves the set count and changes the tag, set index and way-selection logic. The processor-to-main-memory data bus width is independent of those address fields.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.35, Cache Memory: GATE CSE 2014 | Set 2 | Question: 44, PDF p.43 (key p.93). https://gateoverflow.in/2010/gate-cse-2014-set-2-question-44",
+          "answer": "D (Width of processor to main memory data bus)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.45, book p.285. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "D (Width of processor to main memory data bus)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 CS session 2 Q44 key, IISc archive. https://gate2024.iisc.ac.in/wp-content/uploads/2014/cs_2014.pdf",
+          "answer": "D (processor-to-main-memory data bus width)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q45 in the reason",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 46,
+      "id": "madeeasy-coa-memory-4-46",
+      "contentSha256": "b929da70ea7856e26088aa5e924345975b4ca2a833636b66e975ea84615cbd1f",
+      "questionType": "NAT",
+      "natAnswer": "10000",
+      "status": "verified",
+      "reason": "The bus accepts a store every 100 ns. Rotating through eight modules leaves 800 ns between uses of each module, more than the 600 ns it needs. The bus can initiate 1,000,000/100 = 10,000 stores in 1 ms.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 5.17.5, Memory Management: GATE CSE 2014 | Set 2 | Question: 55, PDF p.399 (key p.468). https://gateoverflow.in/2022/gate-cse-2014-set-2-question-55",
+          "answer": "10000",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.46, book p.285. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "10000",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 CS session 2 Q55 key, IISc archive. https://gate2024.iisc.ac.in/wp-content/uploads/2014/cs_2014.pdf",
+          "answer": "10000",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q46 in the reason",
+          "answer": "10000",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 47,
+      "id": "madeeasy-coa-memory-4-47",
+      "contentSha256": "97cf5bd2c4896b8ba3b3ae02a73639891b2f3f57b9b0ef33dcf6d6df3c320017",
+      "questionType": "NAT",
+      "natAnswer": "1.68",
+      "status": "verified-with-note",
+      "reason": "There are 160 reads and 40 writes. At a 90% hit rate for each group, their average latencies are 1.4 ns and 2.8 ns respectively, so the weighted mean is (160 × 1.4 + 40 × 2.8)/200 = 1.68 ns.",
+      "note": "The official value assumes 90% hits for reads and for writes separately. An aggregate 90% permits all 20 misses to be reads (1.60 ns) or writes (2.00 ns). Add 'The cache hit ratio is 0.9 for each of reads and writes' to make 1.68 ns unique.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.37, Cache Memory: GATE CSE 2014 | Set 3 | Question: 44, PDF p.43 (key p.93). https://gateoverflow.in/2078/gate-cse-2014-set-3-question-44",
+          "answer": "1.68",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.47, book p.285. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "1.68",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2014 CS session 3 Q44 key, IISc archive. https://gate2024.iisc.ac.in/wp-content/uploads/2014/cs_2014.pdf",
+          "answer": "1.68",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q47 in the reason",
+          "answer": "1.68",
+          "agrees": true
+        }
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "The official value assumes 90% hits for reads and for writes separately. An aggregate 90% permits all 20 misses to be reads (1.60 ns) or writes (2.00 ns). Add 'The cache hit ratio is 0.9 for each of reads and writes' to make 1.68 ns unique."
+    },
+    {
+      "position": 48,
+      "id": "madeeasy-coa-memory-4-48",
+      "contentSha256": "af6990ff126b6dfec6a78d40f62a0e893453b42d83f346117873bbc1f5609884",
+      "questionType": "NAT",
+      "natAnswer": "14",
+      "status": "verified",
+      "reason": "The given times are complete read latencies. Their weighted mean is 0.8 × 5 + 0.2 × 50 = 14 ns.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.38, Cache Memory: GATE CSE 2015 | Set 2 | Question: 24, PDF p.43 (key p.93). https://gateoverflow.in/8119/gate-cse-2015-set-2-question-24",
+          "answer": "14",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.48, book p.285. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "14",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q48 in the reason",
+          "answer": "14",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 49,
+      "id": "madeeasy-coa-memory-4-49",
+      "contentSha256": "2b6546d4babed16b66492df6f33203f7ba85b044da88636265bc8fee557627ca",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The four low bits are the byte offset and the next 12 bits are the line index. Split E201F as E | 201 | F to get tag E and line 201.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.39, Cache Memory: GATE CSE 2015 | Set 3 | Question: 14, PDF p.43 (key p.93). https://gateoverflow.in/8410/gate-cse-2015-set-3-question-14",
+          "answer": "A (E, 201)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.49, book p.285. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "A (E, 201)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q49 in the reason",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 50,
+      "id": "madeeasy-coa-memory-4-50",
+      "contentSha256": "83006f2ef7b2cb76098260e1ebb7e21dbcadd2e46e44b079788ec111327d6d8d",
+      "questionType": "NAT",
+      "natAnswer": "31",
+      "status": "verified",
+      "reason": "4 GiB contains 2^32 bytes or 2^31 two-byte words. A word address therefore needs 31 bits.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.22.4, Memory Interfacing: GATE CSE 2016 | Set 1 | Question: 09, PDF p.76 (key p.94). https://gateoverflow.in/39632/gate-cse-2016-set-1-question-09",
+          "answer": "31",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.50, book p.285. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "31",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q50 in the reason",
+          "answer": "31",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 51,
+      "id": "madeeasy-coa-memory-4-51",
+      "contentSha256": "94a22d4033be9d9ba34dc2470021399e02aaedfd1dd3a5538feb901f4803689e",
+      "questionType": "NAT",
+      "natAnswer": "24",
+      "status": "verified",
+      "reason": "The index and offset together span one way, 512 KiB/8 = 2^16 bytes. Subtracting those 16 bits from the 40-bit physical address leaves 24 tag bits.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.40, Cache Memory: GATE CSE 2016 | Set 2 | Question: 32, PDF p.44 (key p.93). https://gateoverflow.in/39622/gate-cse-2016-set-2-question-32",
+          "answer": "24",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.51, book p.286. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "24",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q51 in the reason",
+          "answer": "24",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 52,
+      "id": "madeeasy-coa-memory-4-52",
+      "contentSha256": "d0821eb91d48c701c62d101065f769e581e6224bf21cc96825d402e78f1c224d",
+      "questionType": "NAT",
+      "natAnswer": "30",
+      "status": "verified",
+      "reason": "The graph gives 60% misses at 20 MB and 40% at 30 MB. With negligible lookup cost, the mean is (1 − m) × 1 + m × 10 ms, giving 6.4 ms and 4.6 ms respectively. The preceding 10 MB point has an even higher miss rate, so 30 MB is the minimum.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.41, Cache Memory: GATE CSE 2016 | Set 2 | Question: 50, PDF p.44 (key p.93). https://gateoverflow.in/39592/gate-cse-2016-set-2-question-50",
+          "answer": "30",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.52, book p.286. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "30",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q52 in the reason",
+          "answer": "30",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 53,
+      "id": "madeeasy-coa-memory-4-53",
+      "contentSha256": "6adbc869fd27a8b9a9ea5be31a49f30d734be1916266fbfc3e87930e0131e682",
+      "questionType": "NAT",
+      "natAnswer": "76",
+      "status": "verified",
+      "reason": "Block numbers modulo 128 send the two triples to distinct two-way sets. In each set, the first copy of the eight-access pattern has five misses and each of the nine later copies has four. After subtracting three compulsory misses per set, the total is 2 × (5 + 9 × 4 − 3) = 76 conflict misses.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.6.1, Conflict Misses: GATE CSE 2017 | Set 1 | Question: 51, PDF p.50 (key p.93). https://gateoverflow.in/118745/gate-cse-2017-set-1-question-51",
+          "answer": "76",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.53, book p.286. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "76",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q53 in the reason",
+          "answer": "76",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 54,
+      "id": "madeeasy-coa-memory-4-54",
+      "contentSha256": "efd7a198326bfb7bf09bd8d6b52fc4580c107fcc3d1167e0b8d044ae1f105060",
+      "questionType": "NAT",
+      "natAnswer": "14",
+      "status": "verified",
+      "reason": "Changing to 16-way associativity divides the set count by 16 while leaving the block offset unchanged. Four index bits become tag bits, so the tag grows from 10 to 14 bits.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.43, Cache Memory: GATE CSE 2017 | Set 1 | Question: 54, PDF p.44 (key p.93). https://gateoverflow.in/118748/gate-cse-2017-set-1-question-54",
+          "answer": "14",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.54, book p.286. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "14",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q54 in the reason",
+          "answer": "14",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 55,
+      "id": "madeeasy-coa-memory-4-55",
+      "contentSha256": "f4429e9f984c05216611702c0a038632b7309ed8e587935682ad865bca150232",
+      "questionType": "NAT",
+      "natAnswer": "0.05",
+      "status": "verified",
+      "reason": "Per 1,000 instructions there are 1,400 accesses, of which 140 miss L1 and access L2. Seven L2 misses out of 140 L2 accesses give a local miss rate of 0.05.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.42, Cache Memory: GATE CSE 2017 | Set 1 | Question: 25, PDF p.44 (key p.93). https://gateoverflow.in/118305/gate-cse-2017-set-1-question-25",
+          "answer": "0.05",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.55, book p.286. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "0.05",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q55 in the reason",
+          "answer": "0.05",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 56,
+      "id": "madeeasy-coa-memory-4-56",
+      "contentSha256": "af9c585ebe7cb7242fd60ca5c1cb8314d47c5ea74f8c603ad73e6d5c5a334903",
+      "questionType": "NAT",
+      "natAnswer": "18",
+      "status": "verified",
+      "reason": "The 32-byte block offset uses five bits and the 512-line index uses nine bits. A 32-bit address has 32 − 5 − 9 = 18 tag bits.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.46, Cache Memory: GATE CSE 2017 | Set 2 | Question: 53, PDF p.45 (key p.93). https://gateoverflow.in/118613/gate-cse-2017-set-2-question-53",
+          "answer": "18",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.56, book p.286. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "18",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q56 in the reason",
+          "answer": "18",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 57,
+      "id": "madeeasy-coa-memory-4-57",
+      "contentSha256": "65b85fe115c93d5c03ed5752300fb5d662f4374b1e95ba10067abe7bb58639b0",
+      "questionType": "NAT",
+      "natAnswer": "4.72",
+      "status": "verified-with-note",
+      "reason": "L1 misses on 0.60 × 0.20 + 0.40 × 0.10 = 0.16 of reads. With the requested word returned first and clean victims, average latency is 2 + 0.16 × (8 + 0.10 × 90) = 4.72 ns.",
+      "note": "The table header 'Code' should read 'Cache' and 'referred word-first' means requested-word-first. The official answer key gives 4.72 exactly. The wider 4.7–4.8 interval in GATE Overflow contains that value.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.45, Cache Memory: GATE CSE 2017 | Set 2 | Question: 45, PDF p.45 (key p.93). https://gateoverflow.in/118597/gate-cse-2017-set-2-question-45",
+          "answer": "4.7 to 4.8",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.57, book p.286. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "4.72",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2017 CS set 2 Q45, IIT Roorkee answer-key PDF (mirror), p.2. https://previousyearquestions.app/papers/gate-cs/2017/answer-key-set-2.pdf",
+          "answer": "4.72 exactly",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q57 in the reason",
+          "answer": "4.72",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 58,
+      "id": "madeeasy-coa-memory-4-58",
+      "contentSha256": "8f086e2b4626839c43695aabadf8b78cc778b9cce7e5c815e24a5b6016e0e7ad",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Let x be the L2 miss rate, so the L1 miss rate is 2x. The average time is 1 + 2x(8 + 18x) = 2. The positive root is 1/18 for L2 and 1/9 for L1, giving about 0.056 and 0.111 respectively.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.44, Cache Memory: GATE CSE 2017 | Set 2 | Question: 29, PDF p.44 (key p.93). https://gateoverflow.in/118371/gate-cse-2017-set-2-question-29",
+          "answer": "A (0.111 and 0.056)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.58, book p.286. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "A (0.111 and 0.056)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q58 in the reason",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 59,
+      "id": "madeeasy-coa-memory-4-59",
+      "contentSha256": "69ae44bfb107026bafcc1b1231bd204233f1d5475118e60b41d6c35b0a0136b9",
+      "questionType": "NAT",
+      "natAnswer": "59",
+      "natRange": {
+        "min": 59,
+        "max": 60
+      },
+      "status": "verified-with-note",
+      "reason": "Each refresh across the chips covers one row address. The refresh work takes 2^14 × 50 ns = 819,200 ns out of 2,000,000 ns, leaving 59.04% for accesses, which rounds to 59%.",
+      "note": "The official key and GATE Overflow accept 59 through 60. The computed and Made Easy value is 59.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.22.5, Memory Interfacing: GATE CSE 2018 | Question: 23, PDF p.76 (key p.94). https://gateoverflow.in/204097/gate-cse-2018-question-23",
+          "answer": "59 to 60",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.59, book p.286. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "59",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2018 CS Q23, IIT Guwahati answer-key PDF (mirror). https://cdn1.byjus.com/wp-content/uploads/2021/06/GATE-Computer-Science-previous-year-paper-2018-Answer-keys.pdf",
+          "answer": "59.0 to 60.0",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q59 in the reason",
+          "answer": "59",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 60,
+      "id": "madeeasy-coa-memory-4-60",
+      "contentSha256": "f739383e467e3671938fa1645a49afdd1dd68f06c3793203a543b64124b12dea",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A block covers 2^(M+W) bytes, and each set holds K blocks. The offset and index together account for N − log2 K address bits, leaving P − N + log2 K for the tag.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.47, Cache Memory: GATE CSE 2018 | Question: 34, PDF p.45 (key p.93). https://gateoverflow.in/204108/gate-cse-2018-question-34",
+          "answer": "B ($P-N+\\log_2 K$)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.60, book p.287. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "B ($P-N+\\log_2 K$)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q60 in the reason",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 61,
+      "id": "madeeasy-coa-memory-4-61",
+      "contentSha256": "deb2942bef926a8aa8d1f4c728f081e16f0f20eba5c284700fe89df77a34296b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Fully associative placement uses zero index bits. A 16-byte block needs four byte-offset bits, leaving 28 of the 32 address bits for the tag.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.48, Cache Memory: GATE CSE 2019 | Question: 1, PDF p.45 (key p.93). https://gateoverflow.in/302847/gate-cse-2019-question-1",
+          "answer": "D (28 bits and 0 bits) → app A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.61, book p.287. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "A (28 bits and 0 bits)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q61 in the reason",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 62,
+      "id": "madeeasy-coa-memory-4-62",
+      "contentSha256": "c059e06710fd65f52ea0f2eac0094cc8045a0babee222a197929595c8a1e06f5",
+      "questionType": "NAT",
+      "natAnswer": "160",
+      "status": "verified",
+      "reason": "One miss transfers 8 × 4 = 32 bytes in 1 + 3 + 8 = 12 memory cycles. At 60 million cycles per second, that is 160 million bytes per second.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.49, Cache Memory: GATE CSE 2019 | Question: 45, PDF p.45 (key p.93). https://gateoverflow.in/302803/gate-cse-2019-question-45",
+          "answer": "160",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.62, book p.287. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "160",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q62 in the reason",
+          "answer": "160",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 63,
+      "id": "madeeasy-coa-memory-4-63",
+      "contentSha256": "296f64868b6d585c861458c7c76d5d78e482bd2795c6e2bdc476095ad2a6bcff",
+      "questionType": "NAT",
+      "natAnswer": "13.5",
+      "status": "verified-with-note",
+      "reason": "There are 256/8 = 32 words in the block. Refill takes 20 + 31 × 5 = 175 ns, and including lookup time on each access gives 3 + 0.06 × 175 = 13.5 ns.",
+      "note": "The official key also accepts exactly 13.3 ns. Counting 175 ns as the whole miss-path time gives 0.94 × 3 + 0.06 × 175 = 13.32 ns, rounded to 13.3. The editor supports one numeric answer or one interval, so 13.5 is the stored reference and both accepted values are recorded for manual review.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.50, Cache Memory: GATE CSE 2020 | Question: 21, PDF p.46 (key p.93). https://gateoverflow.in/333210/gate-cse-2020-question-21",
+          "answer": "13.3 or 13.5",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.63, book p.287. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "13.5",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2020 CS session 6 Q21 key, IIT Kanpur archive of IIT Delhi paper and key. https://gate.iitk.ac.in/GATE2023/doc/papers/2020/cs_2020.pdf",
+          "answer": "13.3 or 13.5 (two exact values)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q63 in the reason",
+          "answer": "13.5",
+          "agrees": true
+        }
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "The official key also accepts exactly 13.3 ns. Counting 175 ns as the whole miss-path time gives 0.94 × 3 + 0.06 × 175 = 13.32 ns, rounded to 13.3. The editor supports one numeric answer or one interval, so 13.5 is the stored reference and both accepted values are recorded for manual review."
+    },
+    {
+      "position": 64,
+      "id": "madeeasy-coa-memory-4-64",
+      "contentSha256": "41936cac50657f31ecdd3dc5f0de96224770853cdc259468c542caa607a981bf",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A 64 KiB four-way cache with 256-byte blocks has 64 sets. Bits 13 through 8 give set indices 8, 40, 40 and 8 for A1 through A4. A2 and A3 map to the same set.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.51, Cache Memory: GATE CSE 2020 | Question: 30, PDF p.46 (key p.93). https://gateoverflow.in/333201/gate-cse-2020-question-30",
+          "answer": "B (A2 and A3 are mapped to the same cache set.)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.64, book p.287. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "B (A2 and A3 are mapped to the same cache set.)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q64 in the reason",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 65,
+      "id": "madeeasy-coa-memory-4-65",
+      "contentSha256": "b9ec77fc4f23b228a1c1f410daf65fae0e2243280465cde10a68f732b1456fc1",
+      "questionType": "NAT",
+      "natAnswer": "17",
+      "status": "verified",
+      "reason": "The cache has 32 KiB/64 = 512 lines. The 32-bit address uses nine index bits and six offset bits, leaving 17 tag bits.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.52, Cache Memory: GATE CSE 2021 | Set 1 | Question: 22, PDF p.46 (key p.93). https://gateoverflow.in/357429/gate-cse-2021-set-1-question-22",
+          "answer": "17",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.65, book p.287. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "17",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q65 in the reason",
+          "answer": "17",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 66,
+      "id": "madeeasy-coa-memory-4-66",
+      "contentSha256": "83e247f4053b908da525a37286e05f0e05bdaa5aba91d3a26dc3866ed2ab5db8",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "Write-through keeps L2 updated as L1 stores occur, so a read miss has no dirty L1 line to write back. Write allocation is a separate miss policy and can be paired with different write-hit policies. S1 is true and S2 is false.",
+      "note": "Remove the stray opening quote before 'used' in S2. GATE Overflow's A says S1 true and S2 false, which is B in the app.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.54, Cache Memory: GATE CSE 2021 | Set 2 | Question: 27, PDF p.46–47 (key p.93). https://gateoverflow.in/357513/gate-cse-2021-set-2-question-27",
+          "answer": "A ($S_1$ is true and $S_2$ is false.) → app B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.66, book p.287. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "B ($S_1$ is true and $S_2$ is false.)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q66 in the reason",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 67,
+      "id": "madeeasy-coa-memory-4-67",
+      "contentSha256": "b31177398f77f495cae083798f3d101a71fae7aa59f6deaf4b5110e7aad5a4f5",
+      "questionType": "NAT",
+      "natAnswer": "2",
+      "status": "verified",
+      "reason": "With six offset bits and 22 tag bits, the set index has 32 − 6 − 22 = 4 bits. The cache has 32 lines and 16 sets, giving two ways per set.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.53, Cache Memory: GATE CSE 2021 | Set 2 | Question: 19, PDF p.46 (key p.93). https://gateoverflow.in/357521/gate-cse-2021-set-2-question-19",
+          "answer": "2",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.67, book p.287. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "2",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q67 in the reason",
+          "answer": "2",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 68,
+      "id": "madeeasy-coa-memory-4-68",
+      "contentSha256": "6d9680cbe461da816a1fa73658dfa8b2b2ead89bd5011014fdfca85dce53d846",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "B",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A write-through cache does not need dirty bits (A is false) and its evictions need no write-back (C is true). A write-back hit updates the cache without necessarily writing memory (B is false), and a read miss can evict a dirty line (D is false).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.55, Cache Memory: GATE CSE 2022 | Question: 14, PDF p.47 (key p.93). https://gateoverflow.in/371922/gate-cse-2022-question-14",
+          "answer": "A, B, D (both have dirty bits / every WB hit writes memory / WB read miss cannot evict a dirty line)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.68, book p.287. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "A, B, D (both have dirty bits / every WB hit writes memory / WB read miss cannot evict a dirty line)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q68 in the reason",
+          "answer": "ABD",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 69,
+      "id": "madeeasy-coa-memory-4-69",
+      "contentSha256": "998d11b36e5e5f8bd78fc2ca0e64444f4e869614dbf71f6017bafded29530051",
+      "questionType": "NAT",
+      "natAnswer": "0.85",
+      "status": "verified",
+      "reason": "The original average is 10 + (1 − 0.80) × 100 = 30 ns. Requiring 15 + (1 − h) × 100 ≤ 30 gives h ≥ 0.85.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.56, Cache Memory: GATE CSE 2022 | Question: 23, PDF p.47 (key p.93). https://gateoverflow.in/371913/gate-cse-2022-question-23",
+          "answer": "0.85",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.69, book p.288. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "0.85",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q69 in the reason",
+          "answer": "0.85",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 70,
+      "id": "madeeasy-coa-memory-4-70",
+      "contentSha256": "154b829aec46baf1567e07d52a85b48dc7e3f3bd92e3b0fd25bf350504a9fe1c",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "B",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "P and S share the block at 0xA240 in set 9. Q and R use distinct blocks in set 10. P's block stays resident, all S accesses hit and each R access displaces Q. P stays resident with S at the end, so C is false.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.13.1, Direct Mapping: GATE CSE 2022 | Question: 44, PDF p.57 (key p.93). https://gateoverflow.in/371892/gate-cse-2022-question-44",
+          "answer": "A, B, D (all S accesses hit / P is never evicted / each R access evicts Q)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.70, book p.288. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "A, B, D (all S accesses hit / P is never evicted / each R access evicts Q)",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q70 in the reason",
+          "answer": "ABD",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 71,
+      "id": "madeeasy-coa-memory-4-71",
+      "contentSha256": "883fc8728e23b34403a92f1eb0e57a324c1f33b4dac7efcc5da045a265db597d",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The diagram routes IA4 and IA3 to the decoder. With all ten internal address bits zero, decoder inputs 00, 01, 10 and 11 contribute addresses 0, 8, 16 and 24 respectively.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.22.6, Memory Interfacing: GATE CSE 2023 | Question: 32, PDF p.76 (key p.94). https://gateoverflow.in/399279/gate-cse-2023-question-32",
+          "answer": "C ((0, 8, 16, 24))",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.71, book p.288. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "C ((0, 8, 16, 24))",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q71 in the reason",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 72,
+      "id": "madeeasy-coa-memory-4-72",
+      "contentSha256": "1e99b73b736b597815a9a199c02273e6149a261ce7ecd1313f7951412224d3ae",
+      "questionType": "NAT",
+      "natAnswer": "19",
+      "status": "verified",
+      "reason": "Each way can store 64 KiB/8 = 8 KiB. The index and byte offset together span 13 bits within a way, leaving 32 − 13 = 19 tag bits.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.57, Cache Memory: GATE CSE 2023 | Question: 54, PDF p.47 (key p.93). https://gateoverflow.in/399257/gate-cse-2023-question-54",
+          "answer": "19",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.72, book p.288. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "19",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q72 in the reason",
+          "answer": "19",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 73,
+      "id": "madeeasy-coa-memory-4-73",
+      "contentSha256": "41bacbfe7d91fbe251cf2fd294b7fdf3ae636ee6d2d8798b801bfe2b5acb5a56",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A WBC write hit can set a previously clear dirty bit. WTC updates main memory on writes, so a read miss does not write back a victim. A WTC write miss does not always write back a victim, and a WBC read miss can evict a dirty line.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.58, Cache Memory: GATE CSE 2024 | Set 1 | Question: 43, PDF p.47 (key p.93). https://gateoverflow.in/422799/gate-cse-2024-set-1-question-43",
+          "answer": "B (WTC read miss needs no write-back) → app B. C (WBC write hit can set the dirty bit) → app A.",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.73, book p.289. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "A, B (a WBC write hit can set the dirty bit / a WTC read miss needs no write-back)",
+          "agrees": true
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2024 CS1 master Q53, key p.2 and paper p.33. https://gate2024.iisc.ac.in/wp-content/uploads/2024/CS1Key.pdf https://gate2024.iisc.ac.in/wp-content/uploads/2024/CS124S5.pdf",
+          "answer": "B (WTC read miss needs no write-back) → app B. C (WBC write hit can set the dirty bit) → app A.",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q73 in the reason",
+          "answer": "AB",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 74,
+      "id": "madeeasy-coa-memory-4-74",
+      "contentSha256": "b2ec7de0f3a3cc948cf4879b9988d7f94cc999311f4ee449a18c628459bb2cdf",
+      "questionType": "NAT",
+      "natAnswer": "3.00",
+      "status": "verified-with-note",
+      "reason": "Each instruction contributes 0.02 expected instruction-cache misses and 0.25 × 0.08 = 0.02 expected data-cache misses. With 100 cycles per miss, the current CPI is 2 + 4 = 6. Perfect-cache CPI is 2, so the speedup is 6/2 = 3.00.",
+      "note": "Made Easy's 2.56 differs from the calculation and the IISc official key of 3.00.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 1.5.59, Cache Memory: GATE CSE 2024 | Set 1 | Question: 46, PDF p.48 (key p.93). https://gateoverflow.in/422796/gate-cse-2024-set-1-question-46",
+          "answer": "3",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Memory Organization Q4.74, book p.289. Answer table in COA.pdf, PDF p.4 (book p.290).",
+          "answer": "2.56",
+          "agrees": false
+        },
+        {
+          "kind": "official-key",
+          "ref": "GATE 2024 CS1 master Q56, key p.2 and paper p.33. https://gate2024.iisc.ac.in/wp-content/uploads/2024/CS1Key.pdf https://gate2024.iisc.ac.in/wp-content/uploads/2024/CS124S5.pdf",
+          "answer": "3.00 exactly",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution to editor Q74 in the reason",
+          "answer": "3.00",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}

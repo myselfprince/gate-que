@@ -1,0 +1,2417 @@
+{
+  "format": "gate-topic-answers-v1",
+  "subject": "11. Engg. Maths",
+  "chapter": "1. Probability",
+  "slug": "11-engg-maths--1-probability",
+  "reviewedAt": "2026-11-27",
+  "sources": {
+    "gateOverflowPdfs": [
+      {
+        "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume1.pdf",
+        "sha256": "e42a70646bdbc4f86edff44b97555a94c866deda508c761da40c20d95b493a2d",
+        "answerKeyPages": [
+          226,
+          227
+        ]
+      },
+      {
+        "file": "G:\\GateOverflow PYQ PDF all years\\filter1_volume3.pdf",
+        "sha256": "5c552941136eb96612fabec8a5b2cb67fc07c17023ce15628408ca27d6640c24",
+        "answerKeyPages": [
+          363
+        ]
+      }
+    ],
+    "madeEasyChapter": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\11. Engg. Maths\\1. Probability.pdf",
+      "sha256": "e90e2db4cee3877cc55b5300d274bb84ec09928c74008fc6cacce3621a3233c2",
+      "questionPages": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "madeEasyKey": {
+      "file": "C:\\Users\\Prince\\Desktop\\MadeEasy PYQ PDF\\All Subject Solutions Keys\\Discrete Mathemetics.pdf",
+      "sha256": "5c73a1df7848af2b405175dc29721a82eac4e56ca0ea8e1d5a41e4e26f4a0ed6",
+      "answerKeyPage": 5,
+      "bookPage": 82
+    },
+    "yearPapers": "Verified copies in data/papers, linked by source.copiedFrom.questionId"
+  },
+  "questions": [
+    {
+      "position": 1,
+      "id": "madeeasy-maths-probability-5-1",
+      "contentSha256": "8f71a49aeac3b7ef0157dc00aad672734fb87e1c7502abba4fc795e9a09bfe72",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Without replacement, the two possible color orders give 2(10/25)(15/24) = 1/2.",
+      "note": "The sources use the usual no-replacement reading. For clarity, say “Draw two balls uniformly at random without replacement.”",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.2, Probability: GATE CSE 1995 | Question: 2.14, p. 215 (key p. 227), https://gateoverflow.in/2626/gate-cse-1995-question-2-14",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.1, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "id": "madeeasy-maths-probability-5-2",
+      "contentSha256": "104efdd8bb1f7528a2fa0810ee3b8b4d79d5068154029fab26661f1038584ad0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Both dice avoid 6 with probability (5/6)². The complement is 11/36.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.3, Probability: GATE CSE 1996 | Question: 1.5, p. 215 (key p. 227), https://gateoverflow.in/2709/gate-cse-1996-question-1-5",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.2, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "id": "madeeasy-maths-probability-5-3",
+      "contentSha256": "a1717fa4fcdd7b2a593d19af79e4b240d08ca7ebc5bf12186cc599463799b9ef",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The top card is an ace with probability 4/52. There are then three aces among the 51 possible bottom cards.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.4, Probability: GATE CSE 1996 | Question: 2.7, p. 215 (key p. 227), https://gateoverflow.in/2736/gate-cse-1996-question-2-7",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.3, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "id": "madeeasy-maths-probability-5-4",
+      "contentSha256": "3fc3e513d323a0b6bce682862d8bfdf21ee4ff8d7d241b854fa5d2731b652a5b",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Inclusion-exclusion gives 0.5 + 0.6 − 0.7 = 0.4 for rain on both days.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.5, Probability: GATE CSE 1997 | Question: 1.1, p. 216 (key p. 227), https://gateoverflow.in/2217/gate-cse-1997-question-1-1",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.4, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "id": "madeeasy-maths-probability-5-5",
+      "contentSha256": "473ee8bc833ff0cf27a8616b327a4ea7d0e0b0cff1cd34d8e5de996e96411a87",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Choose the odd roll in three ways. Each specified odd/even pattern has probability (1/2)³, giving 3/8.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.6, Probability: GATE CSE 1998 | Question: 1.1, p. 216 (key p. 227), https://gateoverflow.in/1638/gate-cse-1998-question-1-1",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.5, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "id": "madeeasy-maths-probability-5-6",
+      "contentSha256": "4a663e13b6f6fdf49e6a3e7e8b7fcc97b3b3612dca035e1fe470b795eedbaba1",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "If X were strictly below 5 at every sample point, 5 − X would be positive almost surely and have positive expectation. This contradicts E[X] = 5.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.8.1, Expectation: GATE CSE 1999 | Question: 1.1, p. 208 (key p. 227), https://gateoverflow.in/1455/gate-cse-1999-question-1-1",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.6, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "id": "madeeasy-maths-probability-5-7",
+      "contentSha256": "a5681e150eee182bd2ac4cdfc049e410762a696ae026901160e9171d254096de",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "The intersection 1/5 differs from (1/2)(1/3) = 1/6, so the events are dependent. The union is 19/30 and the conditional probability in D is 3/5.",
+      "note": "The book uses a stacked E₁/E₂ in option D. Write the same conditional-probability claim as P(E₁ | E₂) = 4/5. Its actual value is 3/5.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.10.2, Independent Events: GATE CSE 1999 | Question: 2.1, p. 212 (key p. 227), https://gateoverflow.in/1479/gate-cse-1999-question-2-1",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.7, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "id": "madeeasy-maths-probability-5-8",
+      "contentSha256": "1a45503121f58bd63388a0731e2f7cad92a48f01a494c9ea55b95988466caf66",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "If p is the common probability, the probability of neither event is (1 − p)² by independence. The union covers the sample space, so p = 1.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.10.3, Independent Events: GATE CSE 2000 | Question: 2.2, p. 212 (key p. 227), https://gateoverflow.in/649/gate-cse-2000-question-2-2",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.8, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2000.json Q25 (linked and mapped by option text)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "id": "madeeasy-maths-probability-5-9",
+      "contentSha256": "28b9d8755a2491f2be27fe7dd8459d0de7a258c947025014867f929547f888f5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "With independent uniform accident days, the first accident can be on any day. Each of the other six must match it, giving (1/7)⁶.",
+      "note": "The intended model assigns the seven accident days independently and uniformly. State that assumption explicitly to make the probability determinate.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.7, Probability: GATE CSE 2001 | Question: 2.4, p. 216 (key p. 227), https://gateoverflow.in/722/gate-cse-2001-question-2-4",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.9, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2001.json Q29 (linked and mapped by option text)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "id": "madeeasy-maths-probability-5-10",
+      "contentSha256": "8d29cb19f5a749ec666a16c404e97d684b008d3234be828c60474ef890b0bcb7",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Only the all-heads and all-tails results fail. Of the 16 equally likely results, 14 succeed, giving 7/8.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.4.1, Binomial Distribution: GATE CSE 2002 | Question: 2.16, p. 203 (key p. 226), https://gateoverflow.in/846/gate-cse-2002-question-2-16",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.10, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2002.json Q41 (linked and mapped by option text)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 11,
+      "id": "madeeasy-maths-probability-5-11",
+      "contentSha256": "eb90ae424fc095e589b139b5c6558a33f7bcd973654073e223f95b192bb83bcc",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "P(A) = 1 implies P(A ∩ B) = P(B) = 1/2. The conditional probabilities are therefore 1 and 1/2, respectively.",
+      "note": "The book adds independence. GATE CSE 2003 Q3 omits it because P(A) = 1 already gives the result. To match the paper, end the given conditions after P(B) = 1/2.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.6.3, Conditional Probability: GATE CSE 2003 | Question: 3, p. 205 (key p. 226), https://gateoverflow.in/894/gate-cse-2003-question-3",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.11, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q3 (linked and mapped by option text)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 12,
+      "id": "madeeasy-maths-probability-5-12",
+      "contentSha256": "e2e8d0fbd96f26d6ed811f67cd11de255221e9d08d83bec03550b5715d87cb97",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "answerDisposition": "disputed",
+      "specialNote": "The two marginal densities leave the sum density undetermined. Option C is the intended result if the two module execution times are independent.",
+      "status": "verified-with-note",
+      "reason": "With independent execution times the sum density is the convolution ∫₀ᵗ f₁(x)f₂(t − x) dx, option C. Two uniform [0,1] durations have a triangular sum if independent and a uniform [0,2] sum if they are identical. The marginal densities alone leave the sum density undetermined.",
+      "note": "The GATE Overflow and Made Easy keys give C under an implicit independence assumption. The verified year-paper copy marks the question for manual review. Add “Assume that the two module execution times are independent” to make C determinate.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.14.1, Probability Density Function: GATE CSE 2003 | Question: 60, ISRO2007-45, p. 221 (key p. 227), https://gateoverflow.in/948/gate-cse-2003-question-60-isro2007-45",
+          "answer": "C (convolution, with independent execution times)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.12, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "c (convolution, with independent execution times)",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2003.json Q60 (linked and mapped by option text)",
+          "answer": "C with independent durations. Self-assessed as printed.",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "Undetermined as printed. C with independent execution times.",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 13,
+      "id": "madeeasy-maths-probability-5-13",
+      "contentSha256": "3e68fe837e26b2784e19afb700ff0580dab943b83fcec76b6fa9fb68b19db6e4",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Choose the two head positions in C(4,2) = 6 ways among 16 equally likely results, giving 3/8.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.8, Probability: GATE CSE 2004 | Question: 25, p. 216 (key p. 227), https://gateoverflow.in/1022/gate-cse-2004-question-25",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.13, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q25 (linked and mapped by option text)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 14,
+      "id": "madeeasy-maths-probability-5-14",
+      "contentSha256": "6c6e5d2f1d8a0f9fb030f7447c3e0976f8b6dc818380419de4fcb6613f5ea6a2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Two-child families contribute 0.6N children, out of (1.5 + 0.6 + 0.2)N = 2.3N children in total. The probability is 6/23.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.28, Probability: GATE IT 2004 | Question: 1, p. 220 (key p. 227), https://gateoverflow.in/3642/gate-it-2004-question-1",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.14, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q1 (linked and mapped by option text)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 15,
+      "id": "madeeasy-maths-probability-5-15",
+      "contentSha256": "e62c9cb92682d6f06e74aa64cc4b303f3d276f79cfddceb0cb3f4f4adbf25527",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The minimum has survival function exp[−t(1/α + 1/β)] by independence. Its mean is the reciprocal rate, αβ/(α + β).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.9.6, Exponential Distribution: GATE IT 2004 | Question: 33, p. 212 (key p. 227), https://gateoverflow.in/3676/gate-it-2004-question-33",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.15, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-it-2004.json Q33 (linked and mapped by option text)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 16,
+      "id": "madeeasy-maths-probability-5-16",
+      "contentSha256": "8b2d5e311487b159792a8c09ea950f4a6dc4731b2cb7e2a933876bbbeee3a1dd",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A guess earns (1/4)(1) + (3/4)(−0.25) = 1/16 marks in expectation. The sum for 150,000 guesses is 9,375.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.8.2, Expectation: GATE CSE 2004 | Question: 74, p. 208 (key p. 227), https://gateoverflow.in/1068/gate-cse-2004-question-74",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.16, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q74 (linked and mapped by option text)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 17,
+      "id": "madeeasy-maths-probability-5-17",
+      "contentSha256": "12d26a14f6852525e7be0847bd41e4c4739359b9ede9d3426005f2e3226726e0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "For any first string, exactly C(n,d) of the 2ⁿ equally likely second strings differ in d positions.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.19.2, Uniform Distribution: GATE CSE 2004 | Question: 78, p. 224 (key p. 227), https://gateoverflow.in/1072/gate-cse-2004-question-78",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.17, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q78 (linked and mapped by option text)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 18,
+      "id": "madeeasy-maths-probability-5-18",
+      "contentSha256": "24334c4583a48dad255b65621063f58e3f94ac67563d35ba778b92818a89615f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified-with-note",
+      "reason": "The squared distance is X² + Y². The uniform marginals on [0,1] and [0,2] give second moments 1/3 and 4/3, for a total of 5/3.",
+      "note": "Replace “in the X-Y. Plane” with “in the X–Y plane.” The rectangle and keyed value match the original.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.19.3, Uniform Distribution: GATE CSE 2004 | Question: 80, p. 225 (key p. 227), https://gateoverflow.in/1074/gate-cse-2004-question-80",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.18, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2004.json Q80 (linked and mapped by option text)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 19,
+      "id": "madeeasy-maths-probability-5-19",
+      "contentSha256": "3763239b7e1c52c5b9a2f01d5cc2a3ba22dd865c8f8d3c5267e8be67d162ff00",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "For a random variable with density f, the probability on (a,b] is the integral of f from a to b.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.16.1, Random Variable: GATE CSE 2005 | Question: 12, ISRO2009-64, p. 221 (key p. 227), https://gateoverflow.in/1162/gate-cse-2005-question-12-isro2009-64",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.19, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2005.json Q12 (linked and mapped by option text)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 20,
+      "id": "madeeasy-maths-probability-5-20",
+      "contentSha256": "44ae15f3e5ed448698e7d73b4679d89efc4bbdc4f687d35f650e9795227d3db2",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "With three draws total, the colors must be a permutation of blue, green and red. Their probability is 3!(1/6)(1/3)(1/2) = 1/6.",
+      "note": "Both keys interpret “repeated 3 times” as three draws total. Say “Draw three times, replacing the marble after each draw.” Four draws across three colors would make distinct colors impossible.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.29, Probability: GATE IT 2005 | Question: 1, p. 220 (key p. 227), https://gateoverflow.in/3745/gate-it-2005-question-1",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.20, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 21,
+      "id": "madeeasy-maths-probability-5-21",
+      "contentSha256": "1295c175d5ecc6f2190a030071b8285e227c857a77a0814f3a48d28b8136ba61",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "After the first toss, each next toss has conditional probability 1/2 of matching the previous toss. The expected total is 1 + 1/(1/2) = 3.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.4.4, Binomial Distribution: GATE IT 2005 | Question: 32, p. 204 (key p. 226), https://gateoverflow.in/3778/gate-it-2005-question-32",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.21, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 22,
+      "id": "madeeasy-maths-probability-5-22",
+      "contentSha256": "40e50d3176519297aad2db3c13c7de9d327749ab27ca6ff690e7a8422dab172c",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Let h be the chance of rain when the temperature is above 25°C. Total probability gives 0.6 = (0.4 + h)/2, so h = 0.8.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.6.14, Conditional Probability: GATE IT 2006 | Question: 1, p. 207 (key p. 227), https://gateoverflow.in/3538/gate-it-2006-question-1",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.22, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 23,
+      "id": "madeeasy-maths-probability-5-23",
+      "contentSha256": "f7390dba29736f20606c808a06e9c9fee29ed904a8449e37c75d9194f8dc0e39",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The count of tosses through the first head is geometric with success probability p, so its mean is 1/p.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.4.5, Binomial Distribution: GATE IT 2006 | Question: 22, p. 204 (key p. 226), https://gateoverflow.in/3561/gate-it-2006-question-22",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.23, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 24,
+      "id": "madeeasy-maths-probability-5-24",
+      "contentSha256": "cf23dfb2a2f9887a262b7a7910bd8a23ede23bce1736d2c1965dec86f52d7015",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "Weight the two head probabilities equally. The result is (5/8 + 1/4)/2 = 7/16.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.4.6, Binomial Distribution: GATE IT 2007 | Question: 1, p. 204 (key p. 226), https://gateoverflow.in/3432/gate-it-2007-question-1",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.24, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 25,
+      "id": "madeeasy-maths-probability-5-25",
+      "contentSha256": "a5f1e715a07d26b972bd77d699fd764c08bdeadf03497e8019fa8fc3c49593d0",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified-with-note",
+      "reason": "The ten even numbers have an exchangeable relative order in the permutation. Each has probability 1/10 of being the first even number.",
+      "note": "The Made Easy table gives D (“None of these”). The probability 1/10 is printed as B in both the app and GATE Overflow and is confirmed by the verified year-paper copy.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.19.4, Uniform Distribution: GATE CSE 2007 | Question: 24, p. 225 (key p. 227), https://gateoverflow.in/1222/gate-cse-2007-question-24",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.25, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "d",
+          "agrees": false
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2007.json Q24 (linked and mapped by option text)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 26,
+      "id": "madeeasy-maths-probability-5-26",
+      "contentSha256": "d2394131c6057a36a4f023364fd9169d060db1ea8a148159436ae345afff8416",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The 45-minute Poisson mean is 15. The required probability is e⁻¹⁵(15 + 15³/3! + 15⁵/5!) = 6905.625 e⁻¹⁵ ≈ 1.02 × 10⁶ e⁻²⁰.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.12.5, Poisson Distribution: GATE IT 2007 | Question: 57, p. 215 (key p. 227), https://gateoverflow.in/3499/gate-it-2007-question-57",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.26, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 27,
+      "id": "madeeasy-maths-probability-5-27",
+      "contentSha256": "8362b13064dd4188a8d2111eed2df14cc26fb0c29e69883ec609975d348dae3a",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Both marginal probabilities are 2/3. Inclusion-exclusion gives 2/3 + 2/3 − 1/2 = 5/6 = 10/12.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.30, Probability: GATE IT 2008 | Question: 2, p. 220 (key p. 227), https://gateoverflow.in/3224/gate-it-2008-question-2",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.27, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 28,
+      "id": "madeeasy-maths-probability-5-28",
+      "contentSha256": "b0509d15ba5c18bf98d0267bf36b4fc0d58bf7bd1c93404f6a48c67a0925ddd5",
+      "questionType": "MCQ",
+      "correctOptions": [],
+      "answerDisposition": "none-correct",
+      "specialNote": "The given expressions fail even for three people. Under uniform independent birthdays, the complement must include all assignments with only single or double birthdays.",
+      "status": "verified-with-note",
+      "reason": "For r = 3, all three birthdays must match, with probability 1/365² under independent uniform birthdays. All four printed options already fail at r = 3. In general the complementary event allows any number of double birthdays and zero triple or larger birthdays.",
+      "note": "Made Easy lists C and GATE Overflow records X. State that birthdays are independent and uniform over 365 days. Replace C with 1 − [Σₖ C(365,k) C(365−k,r−2k) r!/2ᵏ]/365ʳ for max(0,r−365) ≤ k ≤ min(365,⌊r/2⌋). Each term counts assignments with k double birthdays and r−2k single birthdays.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.31, Probability: GATE IT 2008 | Question: 23, p. 220 (key p. 227), https://gateoverflow.in/3284/gate-it-2008-question-23",
+          "answer": "X (no keyed choice)",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.28, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "c",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "None of the options is correct",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 29,
+      "id": "madeeasy-maths-probability-5-29",
+      "contentSha256": "0de4824d0b5866d562ffdaa280aacef4fe9c4d0caf5b4d2b731789df3266df29",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Under the intended current-day transition rule, the paths CS→CS→CS and CS→Math→CS give 0.4·0.4 + 0.6·0.4 = 0.4.",
+      "note": "The keyed calculation treats the next day’s choice as depending only on the current day. State that assumption explicitly so the two-step probability is determined.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.6.5, Conditional Probability: GATE CSE 2008 | Question: 27, pp. 205–206 (key p. 226), https://gateoverflow.in/425/gate-cse-2008-question-27",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.29, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q27 (linked and mapped by option text)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 30,
+      "id": "madeeasy-maths-probability-5-30",
+      "contentSha256": "701c6b272e58faf9e993369acd144e6f59f866de2049cea46461b09f93900071",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "For X, the threshold −1 is one standard deviation below its mean. By normal symmetry and strict monotonicity of the tail, 2 must be one standard deviation above the mean −1 of Y. Hence the standard deviation of Y is 3.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.11.1, Normal Distribution: GATE CSE 2008 | Question: 29, p. 213 (key p. 227), https://gateoverflow.in/427/gate-cse-2008-question-29",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.30, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2008.json Q29 (linked and mapped by option text)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 31,
+      "id": "madeeasy-maths-probability-5-31",
+      "contentSha256": "702a5b3c4ee442cb2fbe0e77de40fea6f72a7749f58060fea512f894ce012f1f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The total probability of an even value is 1/1.9 = 10/19. Two of the three equally likely even faces exceed 3. Thus P(value > 3) = (20/57)/0.75 = 80/171 ≈ 0.468.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.6.6, Conditional Probability: GATE CSE 2009 | Question: 21, p. 206 (key p. 226), https://gateoverflow.in/798/gate-cse-2009-question-21",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.31, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2009.json Q21 (linked and mapped by option text)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 32,
+      "id": "madeeasy-maths-probability-5-32",
+      "contentSha256": "7f53f411d98335988882faac945efa108f733cfbbcdbb4974753ab021f953901",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The test declares a computer faulty either by correctly detecting a faulty assembly or by misclassifying a good assembly. The two probabilities sum to pq + (1 − p)(1 − q).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.9, Probability: GATE CSE 2010 | Question: 26, p. 216 (key p. 227), https://gateoverflow.in/1152/gate-cse-2010-question-26",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.32, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q26 (linked and mapped by option text)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 33,
+      "id": "madeeasy-maths-probability-5-33",
+      "contentSha256": "b868fe78527930e8e50165e8165cdfcc3470245a2cb9b0d7f453a31ea9286469",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "A uniformly chosen positive divisor is 2ᵃ5ᵇ with both exponents from 0 through 99. A multiple of 10⁹⁶ needs both exponents from 96 through 99, giving 16/10,000 = 1/625.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.10, Probability: GATE CSE 2010 | Question: 27, p. 216 (key p. 227), https://gateoverflow.in/1153/gate-cse-2010-question-27",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.33, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2010.json Q27 (linked and mapped by option text)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 34,
+      "id": "madeeasy-maths-probability-5-34",
+      "contentSha256": "1379c91cfdef19bb9075d848089a214c6d9a5ad04511b1070ef8f92307cd9af5",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Conditioning on at least one head leaves HH, HT and TH equally likely. Only HH has two heads, giving 1/3.",
+      "note": "The app’s two-mark tag follows Made Easy. The verified GATE CSE 2011 Q3 copy is a one-mark question.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.6.7, Conditional Probability: GATE CSE 2011 | Question: 3, p. 206 (key p. 226), https://gateoverflow.in/2105/gate-cse-2011-question-3",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.34, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q3 (linked and mapped by option text)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 35,
+      "id": "madeeasy-maths-probability-5-35",
+      "contentSha256": "d838dd17901630902d42ccc52fa3a382f3a54d40d06c8c11456d20292e650d37",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "R is the variance E[(X − E[X])²], which is nonnegative. A constant random variable achieves zero.",
+      "note": "The book tags this item as GATE 2010 for two marks. The wording and options match GATE CSE 2011 Q18, a one-mark question in the verified year-paper copy.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.8.4, Expectation: GATE CSE 2011 | Question: 18, p. 208 (key p. 227), https://gateoverflow.in/2120/gate-cse-2011-question-18",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.35, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q18 (linked and mapped by option text)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 36,
+      "id": "madeeasy-maths-probability-5-36",
+      "contentSha256": "22119a626a7d0dd861f7bc1e25ee568eba125ad16b938c2bba7d0d33b7854323",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "A positive affine transformation preserves order and ties, so the median and mode positions are preserved and the mean becomes aμₓ + b. Centered deviations scale by a, giving σᵧ = aσₓ.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.16.2, Random Variable: GATE CSE 2011 | Question: 33, p. 221 (key p. 227), https://gateoverflow.in/2135/gate-cse-2011-question-33",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.36, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q33 (linked and mapped by option text)",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 37,
+      "id": "madeeasy-maths-probability-5-37",
+      "contentSha256": "d8f350a8c9e7b22a2ef2c8c7c287aea462a36685d4bbbc950d68166d14b53379",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Four ordered pairs (2,1), (3,2), (4,3), (5,4) satisfy the condition among the 5·4 = 20 possible draws.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.11, Probability: GATE CSE 2011 | Question: 34, p. 217 (key p. 227), https://gateoverflow.in/2136/gate-cse-2011-question-34",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.37, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2011.json Q34 (linked and mapped by option text)",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 38,
+      "id": "madeeasy-maths-probability-5-38",
+      "contentSha256": "b59f1267898dd99a9fe1e32ec911d6d4910106b38eb7cd166597b662507a4210",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The CDF includes mass at its argument. It includes only −1 at the first threshold and both values at +1, giving 0.5 and 1.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.16.3, Random Variable: GATE CSE 2012 | Question: 21, p. 222 (key p. 227), https://gateoverflow.in/1577/gate-cse-2012-question-21",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.38, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q21 (linked and mapped by option text)",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 39,
+      "id": "madeeasy-maths-probability-5-39",
+      "contentSha256": "dfc6650d6b6646c5244cada6dd7fbc32190f7698a1a686224513b8181bda3562",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "A first 6 succeeds immediately. After first rolls 1, 2 and 3, the second die offers 2, 3 and 4 successful values, respectively. The probability is 1/6 + 9/36 = 5/12.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.6.8, Conditional Probability: GATE CSE 2012 | Question: 33, p. 206 (key p. 226), https://gateoverflow.in/1751/gate-cse-2012-question-33",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.39, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "year-paper",
+          "ref": "data/papers/gate-cs-2012.json Q33 (linked and mapped by option text)",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 40,
+      "id": "madeeasy-maths-probability-5-40",
+      "contentSha256": "6262210305d220a24bc7e2fef01f73bc3adb2675a6f64aaf7b565d6a67022e73",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "C"
+      ],
+      "status": "verified-with-note",
+      "reason": "Sum the one-minute Poisson probabilities at 0, 1 and 2. The result is e⁻³(1 + 3 + 9/2) = 17/(2e³).",
+      "note": "The book and app omit the interval endpoint. GATE Overflow gives “between 5 PM and 6 PM.” The one-minute Poisson rate in the stem suffices for the calculation.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.12.2, Poisson Distribution: GATE CSE 2013 | Question: 2, p. 214 (key p. 227), https://gateoverflow.in/62/gate-cse-2013-question-2",
+          "answer": "C",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.40, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "c",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "C",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 41,
+      "id": "madeeasy-maths-probability-5-41",
+      "contentSha256": "cba12a16c52f3fc67d4cc89c66b28ff755815f46e4b29f7e00403e28c7673ebf",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0.25",
+      "natRange": {
+        "min": 0.24,
+        "max": 0.27
+      },
+      "status": "verified",
+      "reason": "The shorter length is min(U,1 − U) for a uniform cut U. By symmetry its mean is twice the integral of u from 0 to 1/2, yielding 1/4.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.19.5, Uniform Distribution: GATE CSE 2014 | Set 1 | Question: 2, p. 225 (key p. 227), https://gateoverflow.in/1717/gate-cse-2014-set-1-question-2",
+          "answer": "0.24 to 0.27",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.41, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "0.25",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "0.25",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 42,
+      "id": "madeeasy-maths-probability-5-42",
+      "contentSha256": "54e5da5094a62bfaedbe94dd60beb45736ad04deaacb4b24bd4e2dafc567f891",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "10",
+      "status": "verified",
+      "reason": "The deficits from rolling four sixes sum to 2. There are four allocations of a single 2 and C(4,2) = 6 allocations of two ones, for ten outcomes.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.12, Probability: GATE CSE 2014 | Set 1 | Question: 48, p. 217 (key p. 227), https://gateoverflow.in/1927/gate-cse-2014-set-1-question-48",
+          "answer": "10",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.42, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "10",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "10",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 43,
+      "id": "madeeasy-maths-probability-5-43",
+      "contentSha256": "89ccd105d267ab1aacb4e72f8203704d50b9d89350c7069ca4f2d4a850b4fbc2",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "11.90",
+      "natRange": {
+        "min": 11.85,
+        "max": 11.95
+      },
+      "status": "verified",
+      "reason": "The number of valid inspection sets is C(4,3)C(6,1) + C(4,4) = 25 out of C(10,4) = 210. Then 100p = 250/21 ≈ 11.90476.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.13, Probability: GATE CSE 2014 | Set 2 | Question: 1, p. 217 (key p. 227), https://gateoverflow.in/1953/gate-cse-2014-set-2-question-1",
+          "answer": "11.85 to 11.95",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.43, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "11.90",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "11.90",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 44,
+      "id": "madeeasy-maths-probability-5-44",
+      "contentSha256": "6b8ec041e90610d38031cf66ff9857268f5aedbfe7dd7b9ff7f02ab49dc5ffc0",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0.26",
+      "natRange": {
+        "min": 0.259,
+        "max": 0.261
+      },
+      "status": "verified",
+      "reason": "Of 100 integers, inclusion-exclusion counts 50 + 33 + 20 − 16 − 10 − 6 + 3 = 74 divisible by at least one of 2, 3 or 5. The remaining 26 give 0.26.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.14, Probability: GATE CSE 2014 | Set 2 | Question: 48, p. 217 (key p. 227), https://gateoverflow.in/2014/gate-cse-2014-set-2-question-48",
+          "answer": "0.259 to 0.261",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.44, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "0.26",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "0.26",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 45,
+      "id": "madeeasy-maths-probability-5-45",
+      "contentSha256": "f383a7558d39eb27e82708e512da4639c3bb4732f70ed1c363f193164b086d45",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0.25",
+      "status": "verified",
+      "reason": "The disjoint exhaustive events have probabilities p and 1 − p. Their product is 1/4 − (p − 1/2)², maximized at 1/4.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.15, Probability: GATE CSE 2014 | Set 3 | Question: 48, p. 217 (key p. 227), https://gateoverflow.in/2082/gate-cse-2014-set-3-question-48",
+          "answer": "0.25",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.45, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "0.25",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "0.25",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 46,
+      "id": "madeeasy-maths-probability-5-46",
+      "contentSha256": "04916fbacaac12ab86251e7af335bc74bfd09b69c50700205a4c695c5d9e9048",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0.75",
+      "status": "verified",
+      "reason": "When X₃ = 0, XOR leaves Y = X₁X₂. Only the pair (1,1) makes this product nonzero, so P(Y = 0 | X₃ = 0) = 3/4.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.16.4, Random Variable: GATE CSE 2015 | Set 3 | Question: 37, p. 222 (key p. 227), https://gateoverflow.in/8496/gate-cse-2015-set-3-question-37",
+          "answer": "0.75",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.46, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "0.75",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "0.75",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 47,
+      "id": "madeeasy-maths-probability-5-47",
+      "contentSha256": "d9c1ccbede5364ad70f41a0a2c1683e47e48bf228b0b794fb8380e2c7718ea5f",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0.5",
+      "status": "verified",
+      "reason": "A finite normalizing integral requires a > 0. Then ∫ₐ¹ x⁻² dx = 1/a − 1 = 1, so a = 1/2.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.7.1, Continuous Distribution: GATE CSE 2016 | Set 1 | Question: 04, p. 207 (key p. 227), https://gateoverflow.in/39661/gate-cse-2016-set-1-question-04",
+          "answer": "0.5",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.47, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "0.5",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "0.5",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 48,
+      "id": "madeeasy-maths-probability-5-48",
+      "contentSha256": "a82dafba4b8fc969b57ac64f116444e25895ba4c2463a8740fc85edde3c1afd8",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0.33",
+      "natRange": {
+        "min": 0.33,
+        "max": 0.34
+      },
+      "status": "verified",
+      "reason": "TH gives Y with probability 1/4 and TT restarts with probability 1/4. The eventual probability satisfies p = 1/4 + p/4, hence p = 1/3.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.16, Probability: GATE CSE 2016 | Set 1 | Question: 29, p. 217 (key p. 227), https://gateoverflow.in/39709/gate-cse-2016-set-1-question-29",
+          "answer": "0.33 to 0.34",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.48, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "0.33",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "0.33",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 49,
+      "id": "madeeasy-maths-probability-5-49",
+      "contentSha256": "66bb9bdd19f9cf893156a6e64e535c3bd4121e5ad136466c9642c92aac4707b0",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0.55",
+      "status": "verified",
+      "reason": "The two bulb types are equally likely. The total probability is (0.7 + 0.4)/2 = 0.55.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.6.9, Conditional Probability: GATE CSE 2016 | Set 2 | Question: 05, p. 206 (key p. 226), https://gateoverflow.in/39541/gate-cse-2016-set-2-question-05",
+          "answer": "0.55",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.49, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "0.55",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "0.55",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 50,
+      "id": "madeeasy-maths-probability-5-50",
+      "contentSha256": "8e3bdda6361090c19e73cfa2c17908dd6950d27f16354e4be4fb07cacc16938f",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0",
+      "status": "verified",
+      "reason": "Y is nonnegative and exactly half the Gaussian mass is mapped to zero by max(X,0). For any positive threshold the probability below it is greater than 1/2, so the median is zero.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.11.3, Normal Distribution: GATE CSE 2017 | Set 1 | Question: 19, p. 214 (key p. 227), https://gateoverflow.in/118299/gate-cse-2017-set-1-question-19",
+          "answer": "0",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.50, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "0",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "0",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 51,
+      "id": "madeeasy-maths-probability-5-51",
+      "contentSha256": "8977e3761e2b18dcab28e2f22dbba985e294e156739564d86013190e9811c09e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "The joint application probability is (1/4)(1/3) = 1/12. Thus P(Q applies) = (1/12)/(1/2) = 1/6 and P(neither applies) = 2/3. The required conditional probability is (2/3)/(5/6) = 4/5.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.6.10, Conditional Probability: GATE CSE 2017 | Set 2 | Question: 26, p. 206 (key p. 226), https://gateoverflow.in/118368/gate-cse-2017-set-2-question-26",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.51, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 52,
+      "id": "madeeasy-maths-probability-5-52",
+      "contentSha256": "f2b5107680c157f7830e4890a62c020eae75fdbd17766a8747001a2b7672a933",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "The derivative of the probability generating function at z = 1 gives E[Y]. Here g′ᵧ(1) = Nβ.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.8.7, Expectation: GATE CSE 2017 | Set 2 | Question: 31, p. 209 (key p. 227), https://gateoverflow.in/118373/gate-cse-2017-set-2-question-31",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.52, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 53,
+      "id": "madeeasy-maths-probability-5-53",
+      "contentSha256": "12a5f55a1633eaebfb172897b603d32b58eab72a37de14895ac11bff9d8a9a54",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "54",
+      "status": "verified",
+      "reason": "The Poisson variance equals its mean of 5. Then E[(X + 2)²] = Var(X) + (E[X] + 2)² = 5 + 49 = 54.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.12.3, Poisson Distribution: GATE CSE 2017 | Set 2 | Question: 48, p. 214 (key p. 227), https://gateoverflow.in/118513/gate-cse-2017-set-2-question-48",
+          "answer": "54",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.53, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "54",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "54",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 54,
+      "id": "madeeasy-maths-probability-5-54",
+      "contentSha256": "75ebcce715b351361211bf5af148fdb157d7f5864c04bffa3dc4f3a27bfbc1ae",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0.023",
+      "natRange": {
+        "min": 0.023,
+        "max": 0.0232
+      },
+      "status": "verified",
+      "reason": "The first two trials must tie and the third must break the tie. Independence gives (1/6)²(5/6) = 5/216 ≈ 0.023148, which rounds to 0.023.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.17, Probability: GATE CSE 2018 | Question: 15, p. 218 (key p. 227), https://gateoverflow.in/204089/gate-cse-2018-question-15",
+          "answer": "0.023 to 0.0232",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.54, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "0.023",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "0.023",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 55,
+      "id": "madeeasy-maths-probability-5-55",
+      "contentSha256": "cf4a7902ee4f02509d817adef9e7699f5a06b492a341c08b299f776ab73640b9",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0.60",
+      "natRange": {
+        "min": 0.6,
+        "max": 0.61
+      },
+      "status": "verified-with-note",
+      "reason": "Bayes’ rule gives (0.2·0.40)/(0.2·0.40 + 0.5·0.10 + 0.3·0.01) = 80/133 ≈ 0.601504, which rounds to 0.60.",
+      "note": "The Made Easy table gives 0.62, which falls outside the GATE Overflow interval. The denominator includes the low-temperature term 0.3·0.01, producing 0.60 at two decimals.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.1.1, Bayes Theorem: GATE CSE 2018 | Question: 44, pp. 200–201 (key p. 226), https://gateoverflow.in/204119/gate-cse-2018-question-44",
+          "answer": "0.6 to 0.61",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.55, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "0.62",
+          "agrees": false
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "0.60",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 56,
+      "id": "madeeasy-maths-probability-5-56",
+      "contentSha256": "7593d1b726904a3e3111e98b867a59a01c157470526ae3833d49dbaaf3716dc1",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0.503",
+      "natRange": {
+        "min": 0.502,
+        "max": 0.504
+      },
+      "status": "verified",
+      "reason": "Numbers 1 through 7 have leading bit 0 and numbers 8 through 13 have leading bit 1. Independent sampling gives (7² + 6²)/13² = 85/169 ≈ 0.502959, which rounds to 0.503.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume3.pdf 4.28.40, Number Representation: GATE CSE 2019 | Question: 22, p. 355 (key p. 363), https://gateoverflow.in/302826/gate-cse-2019-question-22",
+          "answer": "0.502 to 0.504",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.56, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "0.503",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "0.503",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 57,
+      "id": "madeeasy-maths-probability-5-57",
+      "contentSha256": "26715db3ba60c95cf6a1d9f6ae35b814f8c7ee6bc62e5c682a487c27e076ec97",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0.8",
+      "status": "verified",
+      "reason": "The discriminant in x is 36(Y − 2)(Y + 1). It is nonnegative for Y ≥ 2 within (1,6), so the probability is (6 − 2)/(6 − 1) = 0.8.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.19.6, Uniform Distribution: GATE CSE 2019 | Question: 47, p. 225 (key p. 227), https://gateoverflow.in/302801/gate-cse-2019-question-47",
+          "answer": "0.8",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.57, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "0.8",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "0.8",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 58,
+      "id": "madeeasy-maths-probability-5-58",
+      "contentSha256": "a47dd23846f6dfb03815573c5f6641b5d783765928d5139f93cdefcdcf4bc3e1",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0.5",
+      "status": "verified",
+      "reason": "Choose a coordinate with aᵢ = 1. Flipping just that coordinate of x pairs each even dot product with an odd one, so half the vectors give odd parity.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.19.7, Uniform Distribution: GATE CSE 2020 | Question: 45, p. 225 (key p. 227), https://gateoverflow.in/333186/gate-cse-2020-question-45",
+          "answer": "0.5",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.58, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "0.5",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "0.5",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 59,
+      "id": "madeeasy-maths-probability-5-59",
+      "contentSha256": "47080597061793fa144666e7541e1e5533f555ea893f0797ceb8b08741962d88",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified-with-note",
+      "reason": "Cauchy-Schwarz bounds the squared covariance by Var(X)Var(Y), so S1 is false. For X equally likely ±1 and Y = −X, the covariance is −1 while the absolute-deviation expectation is 1. S2 is also false.",
+      "note": "The scan has mismatched delimiters in S1. The app already uses the balanced form (E[(X − E[X])(Y − E[Y])])² > Var(X)Var(Y). The GATE Overflow choice D maps by text to app choice A.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.8.8, Expectation: GATE CSE 2021 | Set 1 | Question: 35, p. 209 (key p. 227), https://gateoverflow.in/357416/gate-cse-2021-set-1-question-35",
+          "answer": "D, both statements false → A in the app",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.59, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 60,
+      "id": "madeeasy-maths-probability-5-60",
+      "contentSha256": "05e90bf8a41e8fc99add3385ae029bc6b84765157738c319978bea5ee75e0500",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0.37",
+      "natRange": {
+        "min": 0.35,
+        "max": 0.39
+      },
+      "status": "verified-with-note",
+      "reason": "For exponential rate λ, the survival probability at the mean 1/λ is e⁻¹ ≈ 0.367879, which rounds to 0.37.",
+      "note": "The Made Easy table prints 0.367, which rounds to 0.37 at the precision requested in the stem. GATE Overflow accepts 0.35 to 0.39.",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.9.1, Exponential Distribution: GATE CSE 2021 | Set 1 | Question: 18, p. 211 (key p. 227), https://gateoverflow.in/357433/gate-cse-2021-set-1-question-18",
+          "answer": "0.35 to 0.39",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.60, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "0.367",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "0.37",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 61,
+      "id": "madeeasy-maths-probability-5-61",
+      "contentSha256": "75a2ac01f73b55825bd21e8b94550d83c7c3ff4b1d3a127f420f0ba4f8f45259",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0.04",
+      "status": "verified",
+      "reason": "The app diagram gives P(receive H | send H) = 0.3 and P(receive H | send L) = 0.8. Bayes’ rule gives (0.1·0.3)/(0.1·0.3 + 0.9·0.8) = 0.04.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.1.2, Bayes Theorem: GATE CSE 2021 | Set 1 | Question: 54, p. 201 (key p. 226), https://gateoverflow.in/357396/gate-cse-2021-set-1-question-54",
+          "answer": "0.04 to 0.04",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.61, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "0.04",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "0.04",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 62,
+      "id": "madeeasy-maths-probability-5-62",
+      "contentSha256": "28a33476095ddf19947c44d3aab6adf6fbd94945edeb3e40655cb30fa54c0f6a",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "15.49",
+      "natRange": {
+        "min": 15,
+        "max": 16
+      },
+      "status": "verified",
+      "reason": "For 1,000 independent tosses the head count is binomial with variance 1000·0.4·0.6 = 240. Its standard deviation is √240 ≈ 15.49.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.18.1, Statistics: GATE CSE 2021 | Set 2 | Question: 22, p. 224 (key p. 227), https://gateoverflow.in/357518/gate-cse-2021-set-2-question-22",
+          "answer": "15 to 16",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.62, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "15.49",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "15.49",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 63,
+      "id": "madeeasy-maths-probability-5-63",
+      "contentSha256": "38b14297b98ae56bc74969094b7f3c149d7cf73bc01a8cfb173a0cd9d7f7400f",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "D"
+      ],
+      "status": "verified",
+      "reason": "Attempting A first gives 0.8·10 + 0.8·0.5·20 = 16. Attempting B first gives 0.5·20 + 0.5·0.8·10 = 14.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.8.9, Expectation: GATE CSE 2021 | Set 2 | Question: 29, p. 209 (key p. 227), https://gateoverflow.in/357511/gate-cse-2021-set-2-question-29",
+          "answer": "D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.63, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "d",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "D",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 64,
+      "id": "madeeasy-maths-probability-5-64",
+      "contentSha256": "c1ef8bf0b9d1b850d5196f4298ac9354b5663a41de0095e2c43616d14a860ab6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "Given R red balls out of T before a draw, the expected new red fraction is (R + R/T)/(T + 1) = R/T. Iterating gives the fourth-draw probability r/(r + b).",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.18, Probability: GATE CSE 2021 | Set 2 | Question: 33, p. 218 (key p. 227), https://gateoverflow.in/357507/gate-cse-2021-set-2-question-33",
+          "answer": "A",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.64, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 65,
+      "id": "madeeasy-maths-probability-5-65",
+      "contentSha256": "58b04b2992d6ea5846bdcb214d880ae7d461ccb060582a6fc0faaeaa617a5c77",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "C",
+        "D"
+      ],
+      "status": "verified",
+      "reason": "The two individual head events B and C are independent and P(B | C) = P(B) = 1/2. Since A is a subset of each, P(A ∩ B) = P(A ∩ C) = 1/4, which differs from the product 1/8 in both cases.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.10.4, Independent Events: GATE CSE 2023 | Question: 43, p. 213 (key p. 227), https://gateoverflow.in/399268/gate-cse-2023-question-43",
+          "answer": "C;D",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.65, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "cd",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "CD",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 66,
+      "id": "madeeasy-maths-probability-5-66",
+      "contentSha256": "b2c92d7d12b9b86137eb7fe2eab57dedce6f2c2d8b1b74697c81ef66c7c135d2",
+      "questionType": "MSQ",
+      "correctOptions": [
+        "A",
+        "C"
+      ],
+      "status": "verified",
+      "reason": "The union is 0.3 + 0.5 − 0.1 = 0.7 and P(A ∩ Bᶜ) = 0.3 − 0.1 = 0.2. The intersection 0.1 differs from 0.3·0.5 = 0.15 and the complement of the union has probability 0.3.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.19, Probability: GATE CSE 2024 | Set 1 | Question: 17, p. 218 (key p. 227), https://gateoverflow.in/422825/gate-cse-2024-set-1-question-17",
+          "answer": "B and C, union 0.7 and A∩Bᶜ 0.2 → A and C in the app",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.66, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "ac",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "AC",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 67,
+      "id": "madeeasy-maths-probability-5-67",
+      "contentSha256": "3e56ef7f583e5907563acb3483b44117cdaaf3a5996aa222b09effcc34ddcb4e",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "B"
+      ],
+      "status": "verified",
+      "reason": "Swapping labels 1 and 2 reverses only X, and swapping 3 and 4 reverses only Y. The four combinations of event truth values are equiprobable, hence X and Y are independent.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.19.8, Uniform Distribution: GATE CSE 2024 | Set 1 | Question: 4, p. 225 (key p. 227), https://gateoverflow.in/422838/gate-cse-2024-set-1-question-4",
+          "answer": "B",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.67, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "b",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "B",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 68,
+      "id": "madeeasy-maths-probability-5-68",
+      "contentSha256": "631a016d2a4aa42a39c29819de59ef264fa082f2f6b17d45680ef0fff2521a65",
+      "questionType": "NAT",
+      "correctOptions": [],
+      "natAnswer": "0.375",
+      "status": "verified",
+      "reason": "After the first red ball is removed, 9 of the remaining 24 balls are red. The conditional probability of a second red is 9/24 = 0.375.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.6.11, Conditional Probability: GATE CSE 2024 | Set 1 | Question: 53, p. 207 (key p. 226), https://gateoverflow.in/422789/gate-cse-2024-set-1-question-53",
+          "answer": "0.375",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.68, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "0.375",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "0.375",
+          "agrees": true
+        }
+      ]
+    },
+    {
+      "position": 69,
+      "id": "madeeasy-maths-probability-5-69",
+      "contentSha256": "026d518146f983356b252760a75420fc30c0587b80bb7f4bd988df89540920f6",
+      "questionType": "MCQ",
+      "correctOptions": [
+        "A"
+      ],
+      "status": "verified",
+      "reason": "There are 6! assignments of the six different faces to the six dice, among 6⁶ equally likely assignments. The resulting probability is 5/324.",
+      "note": "",
+      "sources": [
+        {
+          "kind": "gateoverflow-pdf",
+          "ref": "filter1_volume1.pdf 7.13.20, Probability: GATE CSE 2024 | Set 2 | Question: 8, p. 218 (key p. 227), https://gateoverflow.in/422889/gate-cse-2024-set-2-question-8",
+          "answer": "B, 5/324 → A in the app",
+          "agrees": true
+        },
+        {
+          "kind": "made-easy-key",
+          "ref": "Made Easy Probability Q5.69, Discrete Mathemetics.pdf p. 5 (book p. 82)",
+          "answer": "a",
+          "agrees": true
+        },
+        {
+          "kind": "derived",
+          "ref": "Independent solution from the live question and its options or diagram",
+          "answer": "A",
+          "agrees": true
+        }
+      ]
+    }
+  ]
+}
